@@ -206,7 +206,26 @@ jQuery(document).ready(function () {
                     met = false;
                 }
             }
-            if (level == 'collection') { }
+            if (level == 'collection') {
+                console.log('Checking if cart has at least ' + quantity + ' products from collections ' + pid);
+                let collects = offers['collects'];
+                let needed = collects.filter(e => e.collection_id == pid);
+                let count = 0;
+                for (let i = 0; i <= needed.length - 1; i++) {
+                    console.log('Now checking ' + citems[i]['product_id']);
+                    if (needed.findIndex(x => x.product_id == citems[i]['product_id']) >= 0) {
+                        count = count + 1;
+                        console.log('Found ' + count + ' so far');
+                        if (count >= quantity) {
+                            console.log('Breaking at ' + count);
+                            met = true;
+                            break;
+                        } else {
+                            continue;
+                        }
+                    }
+                }
+            }
         }
         if (type == 'oc2') {
             // Cart has at most
@@ -226,7 +245,27 @@ jQuery(document).ready(function () {
                     met = false;
                 }
             }
-            if (level == 'collection') { }
+            if (level == 'collection') {
+                console.log('Checking if cart has at most ' + quantity + ' products from collections ' + pid);
+                let collects = offers['collects'];
+                let needed = collects.filter(e => e.collection_id == pid);
+                let count = 0;
+                for (let i = 0; i <= needed.length - 1; i++) {
+                    console.log('Now checking ' + citems[i]['product_id']);
+                    if (needed.findIndex(x => x.product_id == citems[i]['product_id']) >= 0) {
+                        count = count + 1;
+                        console.log('Found ' + count + ' so far');
+                        if (count > quantity) {
+                            console.log('Breaking at ' + count);
+                            met = false;
+                            break;
+                        } else {
+                            met = true;
+                            continue;
+                        }
+                    }
+                }
+            }
         }
         if (type == 'oc3') {
             // Cart has exactly
@@ -246,7 +285,26 @@ jQuery(document).ready(function () {
                     met = false;
                 }
             }
-            if (level == 'collection') { }
+            if (level == 'collection') {
+                console.log('Checking if cart has at least ' + quantity + ' products from collections ' + pid);
+                let collects = offers['collects'];
+                let needed = collects.filter(e => e.collection_id == pid);
+                let count = 0;
+                for (let i = 0; i <= needed.length - 1; i++) {
+                    console.log('Now checking ' + citems[i]['product_id']);
+                    if (needed.findIndex(x => x.product_id == citems[i]['product_id']) >= 0) {
+                        count = count + 1;
+                        console.log('Found ' + count + ' so far');
+                        if (count == quantity) {
+                            console.log('Breaking at ' + count);
+                            met = true;
+                            break;
+                        } else {
+                            continue;
+                        }
+                    }
+                }
+            }
         }
         if (type == 'oc4') {
             // Cart does not have any
@@ -266,7 +324,27 @@ jQuery(document).ready(function () {
                     met = false;
                 }
             }
-            if (level == 'collection') { }
+            if (level == 'collection') {
+                console.log('Checking if cart has at least ' + quantity + ' products from collections ' + pid);
+                let collects = offers['collects'];
+                let needed = collects.filter(e => e.collection_id == pid);
+                let count = 0;
+                for (let i = 0; i <= needed.length - 1; i++) {
+                    console.log('Now checking ' + citems[i]['product_id']);
+                    if (needed.findIndex(x => x.product_id == citems[i]['product_id']) >= 0) {
+                        count = count + 1;
+                        console.log('Found ' + count + ' so far');
+                        if (count > 0) {
+                            console.log('Breaking at ' + count);
+                            met = false;
+                            break;
+                        } else {
+                            met = true;
+                            continue;
+                        }
+                    }
+                }
+            }
         }
         if (type == 'oc5') {
             // Cart total is at least
