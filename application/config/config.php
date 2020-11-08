@@ -23,7 +23,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 | a PHP script and you can easily do that on your own.
 |
 */
-$config['base_url'] = 'https://berjis.tech/sleek-upsell/';
+$config['base_url'] = 'https://sleek-upsell.herokuapp.com/';
 
 /*
 |--------------------------------------------------------------------------
@@ -522,6 +522,6 @@ $config['rewrite_short_tags'] = FALSE;
 */
 $config['proxy_ips'] = '';
 
-$config['shopify_api_key'] = 'e15aac0821397883b6e49bb79d9db095';
-$config['shopify_secret'] = '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';
+$config['shopify_api_key'] = 'b39daa7f3c903b0b47d7bf753eb62dd4';
+$config['shopify_secret'] = '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';
 $config['redirect_url'] = '/generate_token';
