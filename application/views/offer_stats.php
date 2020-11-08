@@ -1,11 +1,21 @@
 <?php $duka = $shop . '.myshopify.com'; ?>
-<h2 style="margin-top: -10px; text-align: center;">General stats for <?php echo $shop; ?> offers</h2>
+<h2 style="margin-top: -10px; text-align: center;">
+    Stats for
+    <?php
+    $title = $this->db->where('offer_id', $offer)->get('offers')->row()->title;
+    if ($title == '') {
+        echo ' Offer #' . $offer;
+    } else {
+        echo ' ' . $title;
+    }
+    ?>
+</h2>
 <script type="text/javascript">
     jQuery(document).ready(function() {
         // Sparkline Charts
         jQuery(".sales").sparkline([0,
             <?php
-            foreach ($this->db->select('count(stat_id) as stat, date_format(from_unixtime(date), "%m") as month, date_format(from_unixtime(date), "%Y %m %d") as year')->where('shop', $duka)->where('type', 'purchase')->group_by('month')->order_by('year', 'asc')->get('stats')->result_array() as $fetch) {
+            foreach ($this->db->select('count(stat_id) as stat, date_format(from_unixtime(date), "%m") as month, date_format(from_unixtime(date), "%Y %m %d") as year')->where('shop', $duka)->where('offer', $offer)->where('type', 'purchase')->group_by('month')->order_by('year', 'asc')->get('stats')->result_array() as $fetch) {
                 echo $fetch['stat'] . ',';
             }
             ?>
@@ -28,7 +38,7 @@
 
         jQuery(".customer-reach").sparkline([0,
             <?php
-            foreach ($this->db->select('count(stat_id) as stat, date_format(from_unixtime(date), "%m") as month, date_format(from_unixtime(date), "%Y %m %d") as year')->where('shop', $duka)->where('type', 'impression')->group_by('month')->order_by('year', 'asc')->get('stats')->result_array() as $fetch) {
+            foreach ($this->db->select('count(stat_id) as stat, date_format(from_unixtime(date), "%m") as month, date_format(from_unixtime(date), "%Y %m %d") as year')->where('shop', $duka)->where('offer', $offer)->where('type', 'impression')->group_by('month')->order_by('year', 'asc')->get('stats')->result_array() as $fetch) {
                 echo $fetch['stat'] . ',';
             }
             ?>
@@ -50,7 +60,7 @@
 
         $(".monthly-sales").sparkline([0,
             <?php
-            foreach ($this->db->select('count(stat_id) as stat, date_format(from_unixtime(date), "%m") as month, date_format(from_unixtime(date), "%Y %m %d") as year')->where('shop', $duka)->where('type', 'purchase')->group_by('month')->order_by('year', 'asc')->get('stats')->result_array() as $fetch) {
+            foreach ($this->db->select('count(stat_id) as stat, date_format(from_unixtime(date), "%m") as month, date_format(from_unixtime(date), "%Y %m %d") as year')->where('shop', $duka)->where('offer', $offer)->where('type', 'purchase')->group_by('month')->order_by('year', 'asc')->get('stats')->result_array() as $fetch) {
                 echo $fetch['stat'] . ',';
             }
             ?>
@@ -65,7 +75,7 @@
 
         jQuery(".all-time-sales").sparkline([0,
             <?php
-            foreach ($this->db->select('count(stat_id) as stat, date_format(from_unixtime(date), "%m") as month, date_format(from_unixtime(date), "%Y %m %d") as year')->where('shop', $duka)->where('type', 'checkout')->group_by('month')->order_by('year', 'asc')->get('stats')->result_array() as $fetch) {
+            foreach ($this->db->select('count(stat_id) as stat, date_format(from_unixtime(date), "%m") as month, date_format(from_unixtime(date), "%Y %m %d") as year')->where('shop', $duka)->where('offer', $offer)->where('type', 'checkout')->group_by('month')->order_by('year', 'asc')->get('stats')->result_array() as $fetch) {
                 echo $fetch['stat'] . ',';
             }
             ?>
@@ -158,7 +168,7 @@
                 ?> {
                         y: '<?php echo date('Y'); ?>-<?php echo $month; ?>',
                         a: <?php
-                            $where = "`shop` = '" . $duka . "' AND `type` = 'show' AND `date` BETWEEN '" . $nowmonth . "' AND '" . $newmonth . "'";
+                            $where = "`shop` = '" . $duka . "' AND `offer` = '" . $offer . "' AND `type` = 'show' AND `date` BETWEEN '" . $nowmonth . "' AND '" . $newmonth . "'";
                             $shown = $this->db->where($where)->get('stats')->num_rows();
                             if ($shown == '') {
                                 echo '0';
@@ -167,7 +177,7 @@
                             }
                             ?>,
                         b: <?php
-                            $where = "`shop` = '" . $duka . "' AND `type` = 'purchase' AND `date` BETWEEN '" . $nowmonth . "' AND '" . $newmonth . "'";
+                            $where = "`shop` = '" . $duka . "' AND `offer` = '" . $offer . "' AND `type` = 'purchase' AND `date` BETWEEN '" . $nowmonth . "' AND '" . $newmonth . "'";
                             $purchases = $this->db->where($where)->get('stats')->num_rows();
                             if ($purchases == '') {
                                 echo '0';
@@ -203,19 +213,19 @@
             element: 'donut-chart-demo',
             data: [{
                     label: "Checkout",
-                    value: <?php echo number_format($this->db->where('shop', $duka)->where('type', 'checkout')->get('stats')->num_rows()); ?>
+                    value: <?php echo number_format($this->db->where('shop', $duka)->where('offer', $offer)->where('type', 'checkout')->get('stats')->num_rows()); ?>
                 },
                 {
                     label: "ATC",
-                    value: <?php echo number_format($this->db->where('shop', $duka)->where('type', 'purchase')->get('stats')->num_rows()); ?>
+                    value: <?php echo number_format($this->db->where('shop', $duka)->where('offer', $offer)->where('type', 'purchase')->get('stats')->num_rows()); ?>
                 },
                 {
                     label: "Impressions",
-                    value: <?php echo number_format($this->db->where('shop', $duka)->where('type', 'impression')->get('stats')->num_rows()); ?>
+                    value: <?php echo number_format($this->db->where('shop', $duka)->where('offer', $offer)->where('type', 'impression')->get('stats')->num_rows()); ?>
                 },
                 {
                     label: "Shown",
-                    value: <?php echo number_format($this->db->where('shop', $duka)->where('type', 'show')->get('stats')->num_rows()); ?>
+                    value: <?php echo number_format($this->db->where('shop', $duka)->where('offer', $offer)->where('type', 'show')->get('stats')->num_rows()); ?>
                 }
             ],
             colors: ['#EC3B83', '#00ACD6', '#E8B51B', '#002A5A']
@@ -283,7 +293,7 @@
                 ?> {
                         y: '<?php echo date('Y'); ?>-<?php echo $month; ?>',
                         a: <?php
-                            $where = "`shop` = '" . $duka . "' AND `type` = 'purchase' AND `date` BETWEEN '" . $nowmonth . "' AND '" . $newmonth . "'";
+                            $where = "`shop` = '" . $duka . "' AND `offer` = '" . $offer . "' AND `type` = 'purchase' AND `date` BETWEEN '" . $nowmonth . "' AND '" . $newmonth . "'";
                             $shown = $this->db->where($where)->get('stats')->num_rows();
                             if ($shown == '') {
                                 echo '0';
@@ -292,7 +302,7 @@
                             }
                             ?>,
                         b: <?php
-                            $where = "`shop` = '" . $duka . "' AND `type` = 'checkout' AND `date` BETWEEN '" . $nowmonth . "' AND '" . $newmonth . "'";
+                            $where = "`shop` = '" . $duka . "' AND `offer` = '" . $offer . "' AND `type` = 'checkout' AND `date` BETWEEN '" . $nowmonth . "' AND '" . $newmonth . "'";
                             $purchases = $this->db->where($where)->get('stats')->num_rows();
                             if ($purchases == '') {
                                 echo '0';
@@ -331,19 +341,19 @@
 <div class="row">
     <div class="col-md-4 col-sm-6">
         <div class="tile-stats tile-white stat-tile">
-            <h3><?php echo $this->db->where('shop', $duka)->where('type', 'impression')->get('stats')->num_rows(); ?></h3>
+            <h3><?php echo $this->db->where('shop', $duka)->where('offer', $offer)->where('type', 'impression')->get('stats')->num_rows(); ?></h3>
             <p>Customer impression</p> <span class="customer-reach"></span>
         </div>
     </div>
     <div class="col-md-4 col-sm-6">
         <div class="tile-stats tile-white stat-tile">
-            <h3><?php echo $this->db->where('shop', $duka)->where('type', 'purchase')->get('stats')->num_rows(); ?></h3>
+            <h3><?php echo $this->db->where('shop', $duka)->where('offer', $offer)->where('type', 'purchase')->get('stats')->num_rows(); ?></h3>
             <p>ATC</p> <span class="sales"></span>
         </div>
     </div>
     <div class="col-md-4 col-sm-12">
         <div class="tile-stats tile-white stat-tile">
-            <h3><?php echo $this->db->where('shop', $duka)->where('type', 'checkout')->get('stats')->num_rows(); ?></h3>
+            <h3><?php echo $this->db->where('shop', $duka)->where('offer', $offer)->where('type', 'checkout')->get('stats')->num_rows(); ?></h3>
             <p>Checkouts</p> <span class="all-time-sales"></span>
         </div>
     </div>
