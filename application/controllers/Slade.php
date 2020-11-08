@@ -242,7 +242,7 @@ class Slade extends CI_Controller
         $redirect_uri = base_url() . "generate_token";
         
         // Build install/approval URL to redirect to
-        $install_url = "https://" . $shop . ".myshopify.com/admin/oauth/authorize?client_id=" . $api_key . "&scope=" . $scopes . "&redirect_uri=" . urlencode($redirect_uri);
+        $install_url = "https://" . $shop . ".myshopify.com/admin/oauth/authorize?client_id=" . $api_key . "&scope=" . $scopes . "&redirect_uri=" . $redirect_uri;
         // Redirect
         header("Location: " . $install_url);
         die();
