@@ -522,6 +522,6 @@ $config['rewrite_short_tags'] = FALSE;
 */
 $config['proxy_ips'] = '';
 
-$config['shopify_api_key'] = 'b39daa7f3c903b0b47d7bf753eb62dd4';
-$config['shopify_secret'] = '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';
+$config['shopify_api_key'] = '4d745cfaaf62f06f06b2b8688614dcca';
+$config['shopify_secret'] = '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';
 $config['redirect_url'] = '/generate_token';
