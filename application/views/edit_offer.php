@@ -111,7 +111,7 @@ Not supports in Firefox and IE */
     }
 
     .card .sleek-form {
-        display: flex;
+        display: flex
     }
 
     .sleek-card-atc,
@@ -163,30 +163,13 @@ Not supports in Firefox and IE */
     }
 </style>
 <script>
-    var offer = [{
-        "offer_id": "",
-        "shop": "<?php echo $shop; ?>",
-        "date": "<?php echo time(); ?>",
-        "title": "",
-        "scheme": "",
-        "stop_show": "y",
-        "layout": "card",
-        "required_checkout": "n",
-        "discount": "n",
-        "code": "",
-        "rule": "ALL",
-        "to_checkout": "n",
-        "status": "1",
-        "text": "",
-        "atc": "",
-        "close": "n"
-    }];
-    var products = [];
-    var variants = [];
-    var blocks = [];
-    var conditions = [];
-    var fields = [];
-    var choices = [];
+    let offer = <?php echo json_encode($offer); ?>;
+    let products = <?php echo json_encode($products); ?>;
+    let variants = <?php echo json_encode($variants); ?>;
+    let blocks = <?php echo json_encode($blocks); ?>;
+    let conditions = <?php echo json_encode($conditions); ?>;
+    let fields = <?php echo json_encode($fields); ?>;
+    let choices = <?php echo json_encode($choices); ?>;
 </script>
 <div class="row">
     <div class="col-sm-4 col-xs-12" style="position: fixed; top: 0px; left: 0px; height: 100vh;">
@@ -209,7 +192,7 @@ Not supports in Firefox and IE */
                         <div class="panel-body">
                             <h4>Offer Title <br /><small>(Optional) Your customers won't see this</small></h4>
                             <div style="display: table; width: 100%; margin-bottom: 10px;">
-                                <input type="text" class="form-control offer_title" style="padding: 10px; border: 2px solid #666666; border-radius: 5px;" />
+                                <input type="text" class="form-control offer_title" value="" style="padding: 10px; border: 2px solid #666666; border-radius: 5px;" />
                             </div>
                             <div style="display: table; width: 100%; margin-bottom: 10px; vertical-align: top;">
                                 <div class="panel products_handler">
@@ -920,6 +903,67 @@ Not supports in Firefox and IE */
 </div>
 
 <script>
+    loadOffer();
+    loadProductData();
+    loadUIs();
+    showBlocks();
+    loadConditions();
+    loadFields();
+    populateFields();
+
+    function loadOffer() {
+        let this_offer = offer[0];
+        console.log(this_offer);
+
+        pick(this_offer['layout']);
+
+        $('.offer_title').val(this_offer['title']);
+        $('.offer_general_text').val(this_offer['text']);
+        $('.offer_general_button_text').val(this_offer['atc']);
+        $('.offer_general_color_scheme').val(this_offer['scheme']);
+
+        if (this_offer['close'] == 'y') {
+            $('.offer_closable').prop('checked', true);
+        } else {
+            $('.offer_closable').prop('checked', false);
+        }
+
+        $('.offer_general_rule').val(this_offer['rule']);
+
+        if (this_offer['stop_show'] == 'y') {
+            $('.offer_show_after_accepted').prop('checked', true);
+        } else {
+            $('.offer_show_after_accepted').prop('checked', false);
+        }
+
+
+        if (this_offer['required_checkout'] == 'y') {
+            $('.offer_required_for_checkout').prop('checked', true);
+        } else {
+            $('.offer_required_for_checkout').prop('checked', false);
+        }
+
+        if (this_offer['discount'] == 'y') {
+            $('.offer_apply_discount').prop('checked', true);
+        } else {
+            $('.offer_apply_discount').prop('checked', false);
+        }
+
+        $('.offer_discount_code').val(this_offer['code']);
+
+        if (this_offer['to_checkout'] == 'y') {
+            $('.offer_to_checkout').prop('checked', true);
+        } else {
+            $('.offer_to_checkout').prop('checked', false);
+        }
+
+        if (this_offer['status'] == 1) {
+            $('.offer_status').prop('checked', true);
+        } else {
+            $('.offer_status').prop('checked', false);
+        }
+    }
+
     function addBlock() {
         let bid = "<?php echo time(); ?>_" + blocks.length;
         blocks.push({
@@ -1400,7 +1444,7 @@ Not supports in Firefox and IE */
                             'image']['src'] +
                         '"/> </div><div class="sleek-offer"> <div class="sleek-text">Need Free Shipping?</div><div class="sleek-title">' +
                         datacell['title'] +
-                        '</div><div class="sleek-selectors"> <div class="offer_fields_holder o_h_' + product_id + '"></div> <select class="v-select v-' + product_id +
+                        '</div><div class="sleek-selectors"> <div class="offer_fields_holder o_h_' + product_id + '"></div><select class="v-select v-' + product_id +
                         '"></select> <select class="q-select q-' + product_id +
                         '"></select> </div></div><div class="sleek-card-atc"> <div class="sleek-prices"> <span class="sleek-price money">' +
                         s_data['currency'] + ' ' + datacell['variants'][0]['price'] +
@@ -1419,7 +1463,7 @@ Not supports in Firefox and IE */
                         s_data['currency'] + ' ' + datacell['variants'][0]['price'] +
                         '</span> <span class="sleek-compare-price money">' +
                         s_data['currency'] + ' ' + datacell['variants'][0]['price'] +
-                        '</span> </div><div class="sleek-selectors"> <div class="offer_fields_holder o_h_' + product_id + '"></div> <select class="v-select v-' + product_id +
+                        '</span> </div><div class="sleek-selectors"> <div class="offer_fields_holder o_h_' + product_id + '"></div><select class="v-select v-' + product_id +
                         '"></select> <select class="q-select q-' + product_id +
                         '"></select> </div></div></div><button class="sleek-atc" type="submit" onclick="return false;">' +
                         $(
@@ -1688,7 +1732,6 @@ Not supports in Firefox and IE */
 
         loadFields();
         populateFields();
-
         clear_selections();
     });
 
@@ -2081,26 +2124,27 @@ Not supports in Firefox and IE */
     };
 
     $('.saveOffer').click(function() {
-        $.ajax({
-            type: "POST",
-            url: base_url + 'create_offers',
-            data: {
-                offer,
-                products,
-                variants,
-                blocks,
-                conditions,
-                fields,
-                choices
-            },
-            success: function(response) {
-                window.location.href = base_url + "edit_offer/<?php echo $shop; ?>/<?php echo $token ?>/" + response;
-                //$('.data').html(response);
-            },
-            error: function() {
-                alert('An error occured');
-            }
-        });
+        alert('Work in progress');
+        // $.ajax({
+        //     type: "POST",
+        //     url: base_url + 'create_offers',
+        //     data: {
+        //         offer,
+        //         products,
+        //         variants,
+        //         blocks,
+        //         conditions,
+        //         fields,
+        //         choices
+        //     },
+        //     success: function(response) {
+        //         window.location.href = base_url + "edit_offer/<?php echo $shop; ?>/<?php echo $token ?>/" + response;
+        //         //$('.data').html(response);
+        //     },
+        //     error: function() {
+        //         alert('An error occured');
+        //     }
+        // });
 
     });
 
@@ -2109,6 +2153,7 @@ Not supports in Firefox and IE */
             $(products).each(function(i, e) {
                 var pid = products[i]['product'];
                 let o_fields = fields.filter(e => e.pid == pid);
+                console.log("ofields " + pid);
                 console.log(o_fields);
                 if (o_fields.length > 0) {
                     $('.o_h_' + pid).html('');
@@ -2224,6 +2269,5 @@ Not supports in Firefox and IE */
                 }
             });
         }
-
     }
 </script>
