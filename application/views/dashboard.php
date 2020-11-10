@@ -77,6 +77,7 @@
                         <td style="vertical-align: middle; text-align: center;"><?php echo $key; ?></td>
                         <td style="vertical-align: middle;">
                             <span style="font-weight: bold;">
+<<<<<<< HEAD
                                 <?php
                                 if ($fetch['offer'][0]['title'] == '') {
                                     echo '#' . $fetch['offer'][0]['offer_id'];
@@ -85,6 +86,16 @@
                                 }
                                 ?> : Offer
                                 <?php
+=======
+                                <?php
+                                if ($fetch['offer'][0]['title'] == '') {
+                                    echo '#' . $fetch['offer'][0]['offer_id'];
+                                } else {
+                                    echo $fetch['offer'][0]['title'];
+                                }
+                                ?> : Offer
+                                <?php
+>>>>>>> 16b10df61bc35b01e5f9ea48abe2112a82452fe4
                                 $products = $fetch['products'];
                                 $total_products = count($products);
 
@@ -237,6 +248,7 @@
         top: 0px;
         left: 0px;
     }
+<<<<<<< HEAD
 
     .juu {
         display: table;
@@ -257,6 +269,63 @@
         position: absolute;
         overflow-y: auto;
         background: #ffffff;
+=======
+
+    .juu {
+        display: table;
+        width: 100vw;
+        height: 10vh;
+        background: white;
+        position: absolute;
+        vertical-align: middle;
+        top: 0px;
+        left: 0px;
+    }
+
+    .mwili {
+        top: 10vh;
+        display: block;
+        width: 100vw;
+        height: 90vh;
+        position: absolute;
+        overflow-y: auto;
+        background: #ffffff;
+    }
+
+    /* Customize website's scrollbar like Mac OS
+Not supports in Firefox and IE */
+
+    /* total width */
+    .mwili::-webkit-scrollbar {
+        background-color: #fff;
+        width: 16px
+    }
+
+    /* background of the scrollbar except button or resizer */
+    .mwili::-webkit-scrollbar-track {
+        background-color: #fff
+    }
+
+    .mwili::-webkit-scrollbar-track:hover {
+        background-color: #f4f4f4
+    }
+
+    /* scrollbar itself */
+    .mwili::-webkit-scrollbar-thumb {
+        background-color: #003471;
+        border-radius: 16px;
+        border: 5px solid #fff
+    }
+
+    .mwili::-webkit-scrollbar-thumb:hover {
+        background-color: #063d7d;
+        border: 4px solid #f4f4f4
+    }
+
+    /* set button(top and bottom of the scrollbar) */
+    .mwili::-webkit-scrollbar-button {
+        display: none
+>>>>>>> 16b10df61bc35b01e5f9ea48abe2112a82452fe4
     }
 </style>
 

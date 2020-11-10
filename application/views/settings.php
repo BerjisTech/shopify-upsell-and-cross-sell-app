@@ -9,7 +9,11 @@
     </div>
     <div class="mwili">
         <div class="setting_tab s_p">
+<<<<<<< HEAD
             <div class="col-sm-4 col-xs-12" style="position: fixed; top: 10vh; left: 0px; height: 85vh;">
+=======
+            <div class="col-sm-6 col-xs-12">
+>>>>>>> 16b10df61bc35b01e5f9ea48abe2112a82452fe4
                 <h3 style="width: 100%; text-align: center;">Cart Page Settings</h3>
                 <small style="display: table; width: 100%; text-align: center;">Use this section to select the offer location on the cart page</small>
                 <hr />
@@ -20,6 +24,7 @@
                 </select>
                 <span class="tu_text">the</span>
                 <input class="tu_fields" type="text" placeholder="" />
+<<<<<<< HEAD
                 <span class="tu_text">text.</span>
                 <h3 style="width: 100%; text-align: center;">Cart Drawer Settings</h3>
                 <small style="display: table; width: 100%; text-align: center;">Use this section to select the offer location on the cart drawer (if you have one)</small>
@@ -456,6 +461,25 @@
 <script>
     $('.s_p').trigger('click');
     
+=======
+                    <span class="tu_text">text.</span>
+            </div>
+            <div class="col-sm-6 col-xs-12">
+                <h3 style="width: 100%; text-align: center;">Cart Drawer Settings</h3>
+                <small style="display: table; width: 100%; text-align: center;">Use this section to select the offer location on the cart drawer (if you have one)</small>
+            </div>
+        </div>
+        <div class="setting_tab s_d">
+            <input type="color" class="tu_fields" />
+        </div>
+        <div class="setting_tab s_s"></div>
+        <div class="setting_tab s_a"></div>
+    </div>
+    <div class="chini"></div>
+</div>
+
+<script>
+>>>>>>> 16b10df61bc35b01e5f9ea48abe2112a82452fe4
     let settings = {
         'shop': '<?php echo $shop; ?>',
         'cart_location': 'form[action="/cart/add"]',
@@ -501,12 +525,16 @@
         'image_bc': 'inherit',
         'image_border': 'solid'
     };
+<<<<<<< HEAD
     
+=======
+>>>>>>> 16b10df61bc35b01e5f9ea48abe2112a82452fe4
     $('.whats').click(function() {
         let hii = $(this).attr('id');
         $('.whats').attr('style', '');
         $(this).attr('style', 'background-color: #002A5A; color: white;');
         $('.setting_tab').hide(200);
+<<<<<<< HEAD
         setTimeout(function(){$('.s_' + hii).show(200);}, 250);
     });
 
@@ -723,6 +751,9 @@
     $('.price_size').on('input', function(){
         $('.sleek-price').css('font-size',$(this).val()+'px');
         settings['button_size'] = $(this).val()+'px';
+=======
+        $('.s_' + hii).show(500);
+>>>>>>> 16b10df61bc35b01e5f9ea48abe2112a82452fe4
     });
 </script>
 
@@ -810,6 +841,7 @@
     .tu_text {
         font-size: 20px;
     }
+<<<<<<< HEAD
     input[type=color]{
     	width: 30px;
         position: absolute;
@@ -828,6 +860,9 @@
     input[type="color"]::-webkit-color-swatch {
     	border: solid 1px #000; /*change color of the swatch border here*/
     }
+=======
+
+>>>>>>> 16b10df61bc35b01e5f9ea48abe2112a82452fe4
     /* Customize website's scrollbar like Mac OS Not supports in Firefox and IE */
 
     /* total width */
@@ -861,6 +896,7 @@
     .mwili::-webkit-scrollbar-button {
         display: none
     }
+<<<<<<< HEAD
     .sleek-upsell{
         background: #ECF0F1;
         color: #2B3D51;
@@ -953,4 +989,6 @@
         }
     }
 
+=======
+>>>>>>> 16b10df61bc35b01e5f9ea48abe2112a82452fe4
 </style>

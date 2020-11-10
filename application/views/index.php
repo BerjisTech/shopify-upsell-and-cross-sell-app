@@ -4,6 +4,7 @@
 <head>
     <?php include 'header.php'; ?>
 
+<<<<<<< HEAD
  <!--   <script src="https://cdn.shopify.com/s/assets/external/app.js"></script>-->
 	<!--<script type="text/javascript">-->
 	<!--	ShopifyApp.init({-->
@@ -23,6 +24,30 @@
 	<!--	});-->
 	<!--    console.log(document.referrer);-->
 	<!--</script>-->
+=======
+    <!--script src="https://cdn.shopify.com/s/assets/external/app.js"></script>
+	<script type="text/javascript">
+		ShopifyApp.init({
+			apiKey: '<?php #echo $api_key; 
+                        ?>',
+			shopOrigin: '<?php #echo 'https://'  . $_COOKIE['shop']. '.myshopify.com'; 
+                            ?>' 
+            });
+	</script>
+	<script type="text/javascript">
+		ShopifyApp.ready(function () {
+			ShopifyApp.Bar.initialize({
+				buttons: {
+					primary: {
+						label: 'Save',
+						message: 'unicorn_form_submit',
+						loading: true
+					}
+				}
+			});
+		});
+	</script-->
+>>>>>>> 16b10df61bc35b01e5f9ea48abe2112a82452fe4
 </head>
 
 <body class="page-body skin-blue gray" data-url="<?php echo base_url(); ?>" data-shop-url="https://<?php echo $shop; ?>.myshopify.com/">
@@ -38,6 +63,7 @@
             -webkit-animation: spin 2s linear infinite;
             /* Safari */
             animation: spin 2s linear infinite;
+<<<<<<< HEAD
         }
 
         /* Safari */
@@ -58,10 +84,23 @@
 
             100% {
                 transform: rotate(360deg);
+=======
+        }
+
+        /* Safari */
+        @-webkit-keyframes spin {
+            0% {
+                -webkit-transform: rotate(0deg);
+            }
+
+            100% {
+                -webkit-transform: rotate(360deg);
+>>>>>>> 16b10df61bc35b01e5f9ea48abe2112a82452fe4
             }
         }
         /* Customize website's scrollbar like Mac OS Not supports in Firefox and IE */
 
+<<<<<<< HEAD
         /* total width */
         *::-webkit-scrollbar {
             background-color: #fff;
@@ -92,6 +131,16 @@
         /* set button(top and bottom of the scrollbar) */
         *::-webkit-scrollbar-button {
             display: none
+=======
+        @keyframes spin {
+            0% {
+                transform: rotate(0deg);
+            }
+
+            100% {
+                transform: rotate(360deg);
+            }
+>>>>>>> 16b10df61bc35b01e5f9ea48abe2112a82452fe4
         }
     </style>
 

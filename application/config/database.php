@@ -1,5 +1,5 @@
 <?php
-defined('BASEPATH') OR exit('No direct script access allowed');
+defined('BASEPATH') or exit('No direct script access allowed');
 
 /*
 | -------------------------------------------------------------------
@@ -75,7 +75,11 @@ $query_builder = TRUE;
 
 $db['default'] = array(
 	'dsn'	=> '',
+<<<<<<< HEAD
 	'hostname' => 'localhost',
+=======
+	'hostname' => '207.180.237.29',
+>>>>>>> 16b10df61bc35b01e5f9ea48abe2112a82452fe4
 	'username' => 'berjiste_projects',
 	'password' => '890Berjis*()',
 	'database' => 'berjiste_sleek-upsell',
