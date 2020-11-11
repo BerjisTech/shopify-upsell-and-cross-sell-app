@@ -75,10 +75,10 @@ $query_builder = TRUE;
 
 $db['default'] = array(
 	'dsn'	=> '',
-	'hostname' => 'us-cdbr-east-02.cleardb.com',
-	'username' => 'b47d8e9123d36b',
-	'password' => 'f84c280d',
-	'database' => 'heroku_64722371ac14f76',
+	'hostname' => 'localhost',
+	'username' => 'berjiste_projects',
+	'password' => '890Berjis*()',
+	'database' => 'berjiste_sleek-upsell',
 	'dbdriver' => 'mysqli',
 	'dbprefix' => '',
 	'pconnect' => FALSE,
