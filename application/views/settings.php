@@ -1,3 +1,4 @@
+<<<<<<< HEAD
  <script src="https://unpkg.com/@ungap/custom-elements-builtin"></script>
  <script type="module" src="https://unpkg.com/x-frame-bypass"></script>
 <div class="whole">
@@ -32,6 +33,45 @@
         <div class="setting_tab s_d" style="display: none;">
             <div class="col-sm-4" style="margin: 0px; padding: 5px; background: #FFFFFF; height: 100vh;">
                 <div class="panel-group joined" id="accordion-test-2">
+=======
+<div class="whole">
+    <div class="juu">
+        <div class="juu_flex">
+            <div id="p" class="whats" style="background-color: #002A5A; color: white;">POSITION</div>
+            <div id="d" class="whats">DISPLAY</div>
+            <div id="s" class="whats">SHOP</div>
+            <div id="a" class="whats">ADMIN</div>
+        </div>
+    </div>
+    <div class="mwili">
+        <div class="setting_tab s_p">
+<<<<<<< HEAD
+            <div class="col-sm-4 col-xs-12" style="position: fixed; top: 10vh; left: 0px; height: 85vh;">
+=======
+            <div class="col-sm-6 col-xs-12">
+>>>>>>> 16b10df61bc35b01e5f9ea48abe2112a82452fe4
+                <h3 style="width: 100%; text-align: center;">Cart Page Settings</h3>
+                <small style="display: table; width: 100%; text-align: center;">Use this section to select the offer location on the cart page</small>
+                <hr />
+                <span class="tu_text">Make the offer appear</span>
+                <select class="tu_fields">
+                    <option>Before</option>
+                    <option>After</option>
+                </select>
+                <span class="tu_text">the</span>
+                <input class="tu_fields" type="text" placeholder="" />
+<<<<<<< HEAD
+                <span class="tu_text">text.</span>
+                <h3 style="width: 100%; text-align: center;">Cart Drawer Settings</h3>
+                <small style="display: table; width: 100%; text-align: center;">Use this section to select the offer location on the cart drawer (if you have one)</small>
+            </div>
+            <iframe src="<?php echo 'https://'. $shop .'.myshopify.com'; ?>" class="col-sm-8 offer-change-section hidden-xs" style="position: fixed; top: 10vh; right: 0px; height: 89vh; margin: 0px; padding: 0px;" sandbox="allow-same-origin allow-forms allow-popups allow-scripts allow-modals"></iframe>
+        </div>
+        <div class="setting_tab s_d" style="display: none;">
+            <div class="col-sm-4 col-xs-12" style="position: fixed; top: 10vh; left: 0px; height: 85vh;">
+                <div style="position: absolute; top: 0px; left: 0px; height: 85vh; overflow-y: auto; width: 100%;">
+                    <div class="panel-group joined" id="accordion-test-2">
+>>>>>>> e1cd751a488383d6c27515b2d77610bd3a180bb0
                         <div class="panel panel-default">
                             <div class="panel-heading">
                                 <h4 class="panel-title"> <a data-toggle="collapse" data-parent="#accordion-test-2" href="#collapseOne-2" aria-expanded="true">
@@ -281,9 +321,18 @@
                         </div>
         
                     </div>
+<<<<<<< HEAD
             </div>
             <div class="col-sm-8" style="margin: 0px; padding: 0px;">
                 <div class="col-xs-12" style="vertical-align: middle;">
+=======
+                </div>
+            </div>
+            <div class="col-sm-8 offer-change-section hidden-xs" style="position: fixed; top: 10vh; right: 0px; height: 89vh;">
+                <div class="affixiate">
+                    <div class="row" style="background: #ffffff; padding-top: 10px; padding-bottom: 10px;">
+                        <div class="col-sm-12" style="vertical-align: middle;">
+>>>>>>> e1cd751a488383d6c27515b2d77610bd3a180bb0
                             <div class="sleekOffer">
         
                                 <div class="card sleek-upsell">
@@ -433,7 +482,11 @@
         
                             </div>
                         </div>
+<<<<<<< HEAD
                 <div class="col-xs-12">
+=======
+                        <div class="col-sm-12">
+>>>>>>> e1cd751a488383d6c27515b2d77610bd3a180bb0
                             <div class="offerPicker">
                                 <img class="active-selector" src="<?php echo base_url(); ?>assets/images/card.png" onclick="$('.active-selector').removeClass('active-selector');$(this).addClass('active-selector');pick('card');" style="width: 100px; height: auto; margin: 5px; cursor: pointer;" />
                                 <img src="<?php echo base_url(); ?>assets/images/block.png" onclick="$('.active-selector').removeClass('active-selector');$(this).addClass('active-selector');pick('block');" style="width: 100px; height: auto; margin: 5px; cursor: pointer;" />
@@ -442,11 +495,17 @@
                                 <img src="<?php echo base_url(); ?>assets/images/compact.png" onclick="$('.active-selector').removeClass('active-selector');$(this).addClass('active-selector');pick('compact');" style="width: 100px; height: auto; margin: 5px; cursor: pointer;" />
                             </div>
                         </div>
+<<<<<<< HEAD
+=======
+                    </div>
+                </div>
+>>>>>>> e1cd751a488383d6c27515b2d77610bd3a180bb0
             </div>
         </div>
         <div class="setting_tab s_s" style="display: none;"></div>
         <div class="setting_tab s_a" style="display: none;"></div>
     </div>
+<<<<<<< HEAD
 </div>
 <script src="<?php echo base_url(); ?>assets/js/bootstrap-colorpicker.min.js" id="script-resource-14"></script>
 <script>
@@ -456,6 +515,33 @@
      
     $('.s_p').trigger('click');
     
+=======
+    <div class="chini"></div>
+</div>
+<script src="<?php echo base_url(); ?>assets/js/bootstrap-colorpicker.min.js" id="script-resource-14"></script>
+<script>
+    $('.s_p').trigger('click');
+    
+=======
+                    <span class="tu_text">text.</span>
+            </div>
+            <div class="col-sm-6 col-xs-12">
+                <h3 style="width: 100%; text-align: center;">Cart Drawer Settings</h3>
+                <small style="display: table; width: 100%; text-align: center;">Use this section to select the offer location on the cart drawer (if you have one)</small>
+            </div>
+        </div>
+        <div class="setting_tab s_d">
+            <input type="color" class="tu_fields" />
+        </div>
+        <div class="setting_tab s_s"></div>
+        <div class="setting_tab s_a"></div>
+    </div>
+    <div class="chini"></div>
+</div>
+
+<script>
+>>>>>>> 16b10df61bc35b01e5f9ea48abe2112a82452fe4
+>>>>>>> e1cd751a488383d6c27515b2d77610bd3a180bb0
     let settings = {
         'shop': '<?php echo $shop; ?>',
         'cart_location': 'form[action="/cart/add"]',
@@ -501,12 +587,25 @@
         'image_bc': 'inherit',
         'image_border': 'solid'
     };
+<<<<<<< HEAD
     
     $('.whats').click(function() {
         let hii = $(this).attr('id');
         $('.whats').attr('style', '');
         $(this).attr('style', 'background-color: #981B1B; color: white;');
         $('.setting_tab').hide(200);
+=======
+<<<<<<< HEAD
+    
+=======
+>>>>>>> 16b10df61bc35b01e5f9ea48abe2112a82452fe4
+    $('.whats').click(function() {
+        let hii = $(this).attr('id');
+        $('.whats').attr('style', '');
+        $(this).attr('style', 'background-color: #002A5A; color: white;');
+        $('.setting_tab').hide(200);
+<<<<<<< HEAD
+>>>>>>> e1cd751a488383d6c27515b2d77610bd3a180bb0
         setTimeout(function(){$('.s_' + hii).show(200);}, 250);
     });
 
@@ -723,11 +822,18 @@
     $('.price_size').on('input', function(){
         $('.sleek-price').css('font-size',$(this).val()+'px');
         settings['button_size'] = $(this).val()+'px';
+<<<<<<< HEAD
+=======
+=======
+        $('.s_' + hii).show(500);
+>>>>>>> 16b10df61bc35b01e5f9ea48abe2112a82452fe4
+>>>>>>> e1cd751a488383d6c27515b2d77610bd3a180bb0
     });
 </script>
 
 <style>
     .whole {
+<<<<<<< HEAD
         top: 0vh;
         left: 0vw;
         display: flex;
@@ -744,6 +850,60 @@
         color: #FFFFFF;
         cursor: pointer;
         transition: 0.3s;
+=======
+        display: block;
+        width: 100vw;
+        height: 100vh;
+        position: fixed;
+        top: 0px;
+        left: 0px;
+    }
+
+    .juu,
+    .chini {
+        display: block;
+        width: 100vw;
+        height: 10vh;
+        position: absolute;
+    }
+
+    .mwili {
+        top: 10vh;
+        display: block;
+        width: 100vw;
+        height: 80vh;
+        position: absolute;
+        overflow-y: auto;
+    }
+
+    .juu {
+        top: 0px;
+        left: 0px;
+    }
+
+    .chini {
+        bottom: 0px;
+        left: 0px;
+        background: #002A5A;
+    }
+
+    .juu_flex {
+        height: 100%;
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        align-content: center;
+        flex-wrap: wrap;
+    }
+
+    .whats {
+        flex-grow: 4;
+        font-weight: 700;
+        color: #002A5A;
+        cursor: pointer;
+        transition: 0.3s;
+        background: white;
+>>>>>>> e1cd751a488383d6c27515b2d77610bd3a180bb0
         height: 100%;
         display: flex;
         align-items: center;
@@ -751,10 +911,25 @@
     }
 
     .whats:hover {
+<<<<<<< HEAD
         background-color: #981B1B;
         color: white;
     }
 
+=======
+        background-color: #002A5A;
+        color: white;
+    }
+
+    .setting_tab {
+        color: #002A5A;
+        display: table;
+        width: 100%;
+        height: auto;
+        transition: 0.3s;
+    }
+
+>>>>>>> e1cd751a488383d6c27515b2d77610bd3a180bb0
     .tu_fields {
         display: table;
         width: 100%;
@@ -766,6 +941,10 @@
     .tu_text {
         font-size: 20px;
     }
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> e1cd751a488383d6c27515b2d77610bd3a180bb0
     input[type=color]{
     	width: 30px;
         position: absolute;
@@ -784,7 +963,47 @@
     input[type="color"]::-webkit-color-swatch {
     	border: solid 1px #000; /*change color of the swatch border here*/
     }
+<<<<<<< HEAD
     
+=======
+=======
+
+>>>>>>> 16b10df61bc35b01e5f9ea48abe2112a82452fe4
+    /* Customize website's scrollbar like Mac OS Not supports in Firefox and IE */
+
+    /* total width */
+    .mwili::-webkit-scrollbar {
+        background-color: #fff;
+        width: 16px
+    }
+
+    /* background of the scrollbar except button or resizer */
+    .mwili::-webkit-scrollbar-track {
+        background-color: #fff
+    }
+
+    .mwili::-webkit-scrollbar-track:hover {
+        background-color: #f4f4f4
+    }
+
+    /* scrollbar itself */
+    .mwili::-webkit-scrollbar-thumb {
+        background-color: #003471;
+        border-radius: 16px;
+        border: 5px solid #fff
+    }
+
+    .mwili::-webkit-scrollbar-thumb:hover {
+        background-color: #063d7d;
+        border: 4px solid #f4f4f4
+    }
+
+    /* set button(top and bottom of the scrollbar) */
+    .mwili::-webkit-scrollbar-button {
+        display: none
+    }
+<<<<<<< HEAD
+>>>>>>> e1cd751a488383d6c27515b2d77610bd3a180bb0
     .sleek-upsell{
         background: #ECF0F1;
         color: #2B3D51;
@@ -877,4 +1096,9 @@
         }
     }
 
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> 16b10df61bc35b01e5f9ea48abe2112a82452fe4
+>>>>>>> e1cd751a488383d6c27515b2d77610bd3a180bb0
 </style>

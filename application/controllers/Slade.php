@@ -104,7 +104,14 @@ class Slade extends CI_Controller
             $data['offer'][$oid]['choices'] = $this->db->where('oid', $oid)->get('choices')->result_array();
         }
 
+<<<<<<< HEAD
         $data['api_key'] = $this->config->item('shopify_api_key');
+=======
+<<<<<<< HEAD
+        $data['api_key'] = $this->config->item('shopify_api_key');
+=======
+>>>>>>> 16b10df61bc35b01e5f9ea48abe2112a82452fe4
+>>>>>>> e1cd751a488383d6c27515b2d77610bd3a180bb0
         $data['shop'] = $shop;
         $data['token'] = $token;
         $data['page_name'] = 'dashboard';
@@ -244,8 +251,16 @@ class Slade extends CI_Controller
         $shop = $_GET['shop'];
         $api_key = $this->config->item('shopify_api_key');
         $scopes = "read_orders,write_orders,read_draft_orders,read_content,write_content,read_products,write_products,read_product_listings,read_customers,write_customers,read_inventory,write_inventory,read_locations,read_script_tags,write_script_tags,read_themes,write_themes,read_shipping,write_shipping,read_analytics,read_checkouts,write_checkouts,read_reports,write_reports,read_price_rules,write_price_rules,read_discounts,write_discounts,read_resource_feedbacks,write_resource_feedbacks,read_translations,write_translations,read_locales,write_locales";
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> e1cd751a488383d6c27515b2d77610bd3a180bb0
         $redirect_uri = base_url() . "generate_token";
 
+=======
+        $redirect_uri = "https://sleek-upsell.herokuapp.com/generate_token";
+        
+>>>>>>> 16b10df61bc35b01e5f9ea48abe2112a82452fe4
         // Build install/approval URL to redirect to
         $install_url = "https://" . $shop . ".myshopify.com/admin/oauth/authorize?client_id=" . $api_key . "&scope=" . $scopes . "&redirect_uri=" . urlencode($redirect_uri);
         // Redirect
@@ -269,6 +284,7 @@ class Slade extends CI_Controller
     }
 
     public function edit_offer($shop, $token, $offer)
+<<<<<<< HEAD
     {
         if ($this->db->where('shop', $shop)->get('shops')->num_rows() == 0) {
             echo '<script>window.location.href = "' . base_url() . 'install?shop=' . $_GET['shop'] . '";</script>';
@@ -300,6 +316,73 @@ class Slade extends CI_Controller
         $this->load->view('index', $data);
     }
 
+=======
+<<<<<<< HEAD
+    {
+        if ($this->db->where('shop', $shop)->get('shops')->num_rows() == 0) {
+            echo '<script>window.location.href = "' . base_url() . 'install?shop=' . $_GET['shop'] . '";</script>';
+        }
+
+        $shop_data = $this->db->where('shop', $shop)->get('shops')->row();
+
+        $data['offer'] = $this->db->where('offer_id', $offer)->get('offers')->result_array();
+        $data['products'] = $this->db->where('offer', $offer)->get('products')->result_array();
+        $data['variants'] = $this->db->where('oid', $offer)->get('variants')->result_array();
+        $data['blocks'] = $this->db->where('oid', $offer)->get('cbs')->result_array();
+        $data['conditions'] = $this->db->where('oid', $offer)->get('ocs')->result_array();
+        $data['fields'] = $this->db->where('oid', $offer)->get('cfs')->result_array();
+        $data['choices'] = $this->db->where('oid', $offer)->get('choices')->result_array();
+
+        $data['token'] = $shop_data->token;
+        $data['shop'] = $shop_data->shop;
+
+        $data['page_name'] = 'edit_offer';
+        $this->load->view('index', $data);
+    }
+
+    public function settings($shop, $token)
+    {
+        $data['token'] = $token;
+        $data['shop'] = $shop;
+
+        $data['page_name'] = 'settings';
+        $this->load->view('index', $data);
+    }
+
+=======
+    {
+        if ($this->db->where('shop', $shop)->get('shops')->num_rows() == 0) {
+            echo '<script>window.location.href = "' . base_url() . 'install?shop=' . $_GET['shop'] . '";</script>';
+        }
+
+        $shop_data = $this->db->where('shop', $shop)->get('shops')->row();
+
+        $data['offer'] = $this->db->where('offer_id', $offer)->get('offers')->result_array();
+        $data['products'] = $this->db->where('offer', $offer)->get('products')->result_array();
+        $data['variants'] = $this->db->where('oid', $offer)->get('variants')->result_array();
+        $data['blocks'] = $this->db->where('oid', $offer)->get('cbs')->result_array();
+        $data['conditions'] = $this->db->where('oid', $offer)->get('ocs')->result_array();
+        $data['fields'] = $this->db->where('oid', $offer)->get('cfs')->result_array();
+        $data['choices'] = $this->db->where('oid', $offer)->get('choices')->result_array();
+
+        $data['token'] = $shop_data->token;
+        $data['shop'] = $shop_data->shop;
+
+        $data['page_name'] = 'edit_offer';
+        $this->load->view('index', $data);
+    }
+
+    public function settings($shop, $token)
+    {
+        $data['token'] = $token;
+        $data['shop'] = $shop;
+
+        $data['page_name'] = 'settings';
+        $this->load->view('index', $data);
+    }
+
+>>>>>>> 16b10df61bc35b01e5f9ea48abe2112a82452fe4
+>>>>>>> e1cd751a488383d6c27515b2d77610bd3a180bb0
     public function offers($shop)
     {
         $shop_name = str_replace(".myshopify.com", "", $shop);
@@ -523,6 +606,22 @@ class Slade extends CI_Controller
     public function create_offers()
     {
         $offer_data = $_POST;
+<<<<<<< HEAD
+
+        foreach ($offer_data['offer'] as $o) {
+            $this->db->insert('offers', $o);
+        }
+
+=======
+<<<<<<< HEAD
+
+        foreach ($offer_data['offer'] as $o) {
+            $this->db->insert('offers', $o);
+        }
+
+        $oid = $this->db->limit('1')->order_by('offer_id', 'DESC')->get('offers')->row()->offer_id;
+
+=======
 
         foreach ($offer_data['offer'] as $o) {
             $this->db->insert('offers', $o);
@@ -579,6 +678,108 @@ class Slade extends CI_Controller
 
         $oid = $this->db->limit('1')->order_by('offer_id', 'DESC')->get('offers')->row()->offer_id;
 
+>>>>>>> 16b10df61bc35b01e5f9ea48abe2112a82452fe4
+        if (array_key_exists('products', $offer_data)) {
+            foreach ($offer_data['products'] as $p) {
+                $p['offer'] = $oid;
+                $this->db->insert('products', $p);
+            }
+        }
+        if (array_key_exists('variants', $offer_data)) {
+            foreach ($offer_data['variants'] as $v) {
+                $v['oid'] = $oid;
+                $this->db->insert('variants', $v);
+            }
+        }
+        if (array_key_exists('blocks', $offer_data)) {
+            foreach ($offer_data['blocks'] as $b) {
+                $b['oid'] = $oid;
+                $this->db->insert('cbs', $b);
+            }
+        }
+        if (array_key_exists('conditions', $offer_data)) {
+            foreach ($offer_data['conditions'] as $c) {
+                $c['oid'] = $oid;
+                $this->db->insert('ocs', $c);
+            }
+        }
+        if (array_key_exists('fields', $offer_data)) {
+            foreach ($offer_data['fields'] as $f) {
+                $f['oid'] = $oid;
+                $this->db->insert('cfs', $f);
+            }
+        }
+        if (array_key_exists('choices', $offer_data)) {
+            foreach ($offer_data['choices'] as $ch) {
+                $ch['oid'] = $oid;
+                $this->db->insert('choices', $ch);
+            }
+        }
+
+        echo $oid;
+    }
+    public function update_offers()
+    {
+        $offer_data = $_POST;
+
+<<<<<<< HEAD
+        foreach ($offer_data['offer'] as $o) {
+            $this->db->insert('offers', $o);
+        }
+
+>>>>>>> e1cd751a488383d6c27515b2d77610bd3a180bb0
+        $oid = $this->db->limit('1')->order_by('offer_id', 'DESC')->get('offers')->row()->offer_id;
+
+        if (array_key_exists('products', $offer_data)) {
+            foreach ($offer_data['products'] as $p) {
+                $p['offer'] = $oid;
+                $this->db->insert('products', $p);
+            }
+        }
+        if (array_key_exists('variants', $offer_data)) {
+            foreach ($offer_data['variants'] as $v) {
+                $v['oid'] = $oid;
+                $this->db->insert('variants', $v);
+            }
+        }
+        if (array_key_exists('blocks', $offer_data)) {
+            foreach ($offer_data['blocks'] as $b) {
+                $b['oid'] = $oid;
+                $this->db->insert('cbs', $b);
+            }
+        }
+        if (array_key_exists('conditions', $offer_data)) {
+            foreach ($offer_data['conditions'] as $c) {
+                $c['oid'] = $oid;
+                $this->db->insert('ocs', $c);
+            }
+        }
+        if (array_key_exists('fields', $offer_data)) {
+            foreach ($offer_data['fields'] as $f) {
+                $f['oid'] = $oid;
+                $this->db->insert('cfs', $f);
+            }
+        }
+        if (array_key_exists('choices', $offer_data)) {
+            foreach ($offer_data['choices'] as $ch) {
+                $ch['oid'] = $oid;
+                $this->db->insert('choices', $ch);
+            }
+        }
+
+        echo $oid;
+    }
+    public function update_offers()
+    {
+        $offer_data = $_POST;
+
+<<<<<<< HEAD
+        foreach ($offer_data['offer'] as $o) {
+            $this->db->insert('offers', $o);
+        }
+
+        $oid = $this->db->limit('1')->order_by('offer_id', 'DESC')->get('offers')->row()->offer_id;
+
         if (array_key_exists('products', $offer_data)) {
             foreach ($offer_data['products'] as $p) {
                 $p['offer'] = $oid;
@@ -619,6 +820,10 @@ class Slade extends CI_Controller
         echo $oid;
     }
 
+=======
+=======
+>>>>>>> 16b10df61bc35b01e5f9ea48abe2112a82452fe4
+>>>>>>> e1cd751a488383d6c27515b2d77610bd3a180bb0
     public function new_table()
     {
         $this->db->query('DROP TABLE IF EXISTS `offers`');
