@@ -7,233 +7,725 @@ if (!window.jQuery) {
     document.getElementsByTagName('head')[0].appendChild(script);
 }
 
-
-var contains = function (product) {
-    // Per spec, the way to identify NaN is that it is not equal to itself
-    var findNaN = product !== product;
-    var indexOf;
-
-    if (!findNaN && typeof Array.prototype.indexOf === 'function') {
-        indexOf = Array.prototype.indexOf;
-    } else {
-        indexOf = function (product) {
-            var i = -1, index = -1;
-
-            for (i = 0; i < this.length; i++) {
-                var item = this[i];
-
-                if ((findNaN && item !== item) || item === product) {
-                    index = i;
-                    break;
-                }
-            }
-
-            return index;
+function get_this(request) {
+    if (request) {
+        request.onload = function () {
+            return request.responseText;
         };
+        request.send();
     }
+}
 
-    return indexOf.call(this, product) > -1;
-};
+function createCORSRequest(method, url) {
+    var xhr = new XMLHttpRequest();
+    if ("withCredentials" in xhr) {
+        xhr.open(method, url, true);
+    } else if (typeof XDomainRequest != "undefined") {
+        xhr = new XDomainRequest();
+        xhr.open(method, url);
+    } else {
+        xhr = null;
+    }
+    return xhr;
+}
 
-const oc1 = "";
-const oc2 = "";
-const oc3 = "";
-const oc4 = "";
-const oc5 = "";
-const oc6 = "";
-const oc7 = "";
-const oc8 = "";
-const oc9 = "";
-const oc10 = "";
-const oc11 = "";
-const oc12 = "";
-const oc13 = "";
-const oc14 = "";
-const oc15 = "";
-const oc16 = "";
-const oc17 = "";
-const oc18 = "";
-const oc19 = "";
+function g_d(g_url) {
+    var xmlHttp = new XMLHttpRequest();
+    xmlHttp.open("GET", g_url, false); // false for synchronous request
+    xmlHttp.send(null);
+    return JSON.parse(xmlHttp.responseText);
+}
 
 jQuery(document).ready(function () {
-    $('head').append('');
 
-    var sleek_offer = jQuery('<div class="card sleek-upsell row">'
-        + '<form class="tab-xs-12" method="post" accept-charset="UTF-8" enctype="multipart/form-data" action="/cart/add">'
-        + '<div class="tab-sm-4">'
-        + '<img src="https://cdn.shopify.com/s/files/1/0295/4815/0859/products/man-adjusts-blue-tuxedo-bowtie_925x_656f2a36-34a8-4db2-9701-c01e49e9e5c0_x190.jpg?v=1590595412" class="img img-responsive"/>'
-        + '</div>'
-        + '<div class="tab-sm-5">'
-        + '<div class="tab-xs-12">'
-        + 'Need a free shipping?'
-        + '</div>'
-        + '<div class="tab-xs-12">'
-        + 'Blue Silk Tuxedo'
-        + '</div>'
-        + '<div class="tab-xs-12" style="margin: 0px; padding: 0px;">'
-        + '<div class="tab-xs-9" style="margin: 0px; padding: 0px;">'
-        + '<select class="form-control" style="margin: 0px; ">'
-        + '<option>small</option>'
-        + '<option>large</option>'
-        + '<option>xl</option>'
-        + '</select>'
-        + '</div>'
-        + '<div class="tab-xs-3" style="margin: 0px; padding: 0px;">'
-        + '<select class="form-control" style="margin: 0px; ">'
-        + '<option>1</option>'
-        + '<option>2</option>'
-        + '<option>3</option>'
-        + '</select>'
-        + '</div>'
-        + '</div>'
-        + '</div>'
-        + '<div class="tab-sm-3">'
-        + '<span>$ 200</span>'
-        + '<button style="submit" class="tab-xs-12 form-controll btn">'
-        + 'ADD TO CART'
-        + '</button>'
-        + '</div>'
-        + '</form>'
-        + '</div>').eq(0);
+    var offers_url = 'https://berjis.tech/sleek-upsell/offers/' + Shopify.shop;
 
-    sleek_offer.insertBefore('.cart-drawer__item-list');
-    sleek_offer.insertBefore('form[action="/cart"]');
-
-    var products_array = null;
-    var offers_array = null;
-    var offers_url = 'https://sleek-upsell.herokuapp.com/offers/' + Shopify.shop;
-
-    function createCORSRequest(method, url) {
-        var xhr = new XMLHttpRequest();
-        if ("withCredentials" in xhr) {
-            xhr.open(method, url, true);
-        } else if (typeof XDomainRequest != "undefined") {
-            xhr = new XDomainRequest();
-            xhr.open(method, url);
-        } else {
-            xhr = null;
-        }
-        return xhr;
-    }
-    //var request = createCORSRequest("GET", "https://api.teletext.io/api/v1/geo-ip");
     var location_request = createCORSRequest("GET", "https://json.geoiplookup.io/");
     var offers_request = createCORSRequest("GET", offers_url);
     var cart_request = createCORSRequest("GET", "https://" + Shopify.shop + "/cart.js");
 
-    if (location_request && offers_request && cart_request) {
-        offers_request.onload = function () {
-            // console.log(location_request.responseText);
-            // console.log(offers_request.responseText);
-            // console.log(cart_request.responseText);
-            // var location_data = JSON.parse(location_request.responseText);
-            // var continent_code = location_data['continent_code'];
+    let offers = g_d(offers_url);
+    let cart = g_d("https://" + Shopify.shop + "/cart.js");
+    // console.log(offers);
+    // console.log(offers['offer']);
+    // console.log(Object.keys(offers['offer']));
+    // console.log(Object.keys(offers));
+    // console.log(cart);
+    // console.log(Object.keys(cart));
+    
+    let page = window.location.pathname;
+    let settings = offers['settings'];
+    let drawer_selector = settings.drawer_location;
+    let cart_selector = settings.cart_location;
 
-            var offers = offers_request.responseText;
-            loadOffer(offers);
+    next_offer();
+    
+    function next_offer(){
+        if (cart["item_count"] > 0) {
+            let i = 0;
+            let o_p = Object.keys(offers['offer']);
+            let o_arr = offers['offer'];
+            console.log(o_p);
+            for (i = 0; i <= o_p.length - 1; i++) {
+                let pos = o_p[i];
+                let v = o_arr[pos];
+                if (check_offer(pos, v) == true) {
+                    console.log('Showing this offer now');
+                    console.log(i);
+                    console.log(pos);
+                    console.log(o_arr[pos]);
+                    display_offer(pos)
+                    break;
+                } else {
+                    console.log('Not showing this offer');
+                    console.log(pos);
+                }
+    
+                // console.log(i);
+                // console.log(pos);
+                // console.log(o_arr[pos]);
+            }
+        }
+    }
 
-        };
-        location_request.send();
-        offers_request.send();
-        cart_request.send();
+    function check_offer(index, offer) {
+        console.log('Checking offer ' + index);
+
+        let status = offer['offer'][0]['status'];
+        let o_rule = offer['offer'][0]['rule'];
+        let blocks = offer['blocks'];
+        let bc = blocks.length;
+
+        if (status == 1) {
+            console.log('Offer active');
+            if (sessionStorage.getItem('sleek_shown_' + index) == 'y') {
+                console.log('Offer already shown');
+                return false;
+            } else {
+                if (bc > 0) {
+                    console.log('Offer has blocks');
+                    let what = false;
+                    for (let i = 0; i <= blocks.length - 1; i++) {
+                        let v = blocks[i];
+                        if (o_rule == 'ANY') {
+                            console.log('Checking if any block is met');
+                            if (check_block(i, v) == true) {
+                                console.log('Block ' + i + ' return true');
+                                what = true;
+                                break;
+                            }else{
+                                what = false;
+                                break;
+                            }
+                        }
+                        if (o_rule == 'ALL') {
+                            console.log('Checking if all blocks are met');
+                            if (check_block(i, v) == false) {
+                                console.log('Block ' + i + ' return false');
+                                what = false;
+                                break;
+                            }else{
+                                what = true;
+                                break;
+                            }
+                        }
+    
+                    }
+                    return what;
+                } else {
+                    console.log('Offer has no blocks');
+                    return true;
+                }
+            }
+            
+        } else {
+            console.log('Offer not active');
+            return false;
+        }
+    }
+
+    function check_block(index, block) {
+        let oid = block['oid'];
+        let bid = block['bid'];
+        let b_rule = block['rule'];
+
+        console.log('Checking block ' + bid + ' of offer ' + oid);
+        console.log(block);
+
+        let oc = offers['offer'][oid]['conditions'];
+        let bc = oc.filter(e => e.bid == bid);
+
+        // console.log(oc);
+        console.log(bc);
+
+        if (bc.length > 0) {
+            console.log('This block has conditions');
+            let met = false;
+            for (let i = 0; i <= bc.length - 1; i++) {
+                let cond = bc[i];
+                if (b_rule == 'ANY') {
+                    console.log('Checking if any condition is met');
+                    if (check_condition(i, cond) == true) {
+                        console.log('condition ' + cond['cid'] + ' met');
+                        met = true;
+                        break;
+                    }else{
+                        met = false;
+                        break;
+                    }
+                }
+                if (b_rule == 'ALL') {
+                    console.log('Checking if any condition is met');
+                    if (check_condition(i, cond) == false) {
+                        console.log('condition ' + cond['cid'] + ' not met');
+                        met = false;
+                        break;
+                    }else{
+                        met = true;
+                        break;
+                    }
+                }
+            }
+            return met;
+        } else {
+            return true;
+        }
+    }
+
+    function check_condition(index, condition) {
+        let cid = condition["cid"];
+        let oid = condition["oid"];
+        let bid = condition["bid"];
+        let type = condition["type"];
+        let quantity = condition["quantity"];
+        let level = condition["level"];
+        let content = condition["content"];
+        let pid = condition["pid"];
+        let vid = condition["vid"];
+        let amount = condition["amount"];
+        let country = condition["country"];
+        let citems = cart["items"];
+        console.log('citems');
+        console.log(citems);
+
+        let met = false;
+
+        if (type == 'oc1') {
+            // Cart has at least
+            if (level == 'product') {
+                console.log('Now checking if cart has at least '+quantity+' '+content+' ('+pid+')');
+                console.log('pitems');
+                let pitems = citems.filter(e => e.product_id == pid);
+                console.log(pitems)
+                if (pitems.length >= quantity) {
+                    console.log('found '+pitems.length+' '+content+'s ('+pid+')');
+                    met = true;
+                    console.log(met);
+                } else {
+                    console.log('found only '+pitems.length+' '+content+'s ('+pid+')');
+                    met = false;
+                }
+            }
+            if (level == 'variant') {
+                console.log('Now checking if cart has at least '+quantity+' '+content+' ('+vid+')');
+                let vitems = citems.filter(e => e.variant_id == vid);
+                if (vitems.length >= quantity) {
+                    console.log('found '+vitems.length+' '+content+'s ('+vid+')');
+                    met = true;
+                } else {
+                    console.log('found only '+vitems.length+' '+content+'s ('+vid+')');
+                    met = false;
+                }
+            }
+            if (level == 'collection') { 
+                console.log('Checking if cart has at least ' + quantity + ' products from collections ' + content + '(' + pid + ')');
+                let collects = offers['collects'];
+                let needed = collects.filter(e => e.collection_id == pid);
+                let count = 0;
+                for (let i = 0; i <= citems.length - 1; i++) {
+                    console.log('citems at '+i);
+                    console.log('Now checking ' + citems[i]['product_id']);
+                    if (needed.findIndex(x => x.product_id == citems[i]['product_id']) >= 0) {
+                        count = count + 1;
+                        console.log('Found ' + count + ' so far');
+                        if (count >= quantity) {
+                            console.log('Breaking at ' + count);
+                            met = true;
+                            break;
+                        } else {
+                            continue;
+                        }
+                    }
+                }
+                
+            }
+        }
+        if (type == 'oc2') {
+            // Cart has at most
+            if (level == 'product') {
+                let pitems = citems.filter(e => e.product_id == pid);
+                if (pitems.length <= quantity) {
+                    met = true;
+                } else {
+                    met = false;
+                }
+            }
+            if (level == 'variant') {
+                let vitems = citems.filter(e => e.variant_id == vid);
+                if (vitems.length <= quantity) {
+                    met = true;
+                } else {
+                    met = false;
+                }
+            }
+            if (level == 'collection') { 
+                console.log('Checking if cart has at most ' + quantity + ' products from collections ' + pid);
+                let collects = offers['collects'];
+                let needed = collects.filter(e => e.collection_id == pid);
+                let count = 0;
+                for (let i = 0; i <= citems.length - 1; i++) {
+                    console.log('Now checking ' + citems[i]['product_id']);
+                    if (needed.findIndex(x => x.product_id == citems[i]['product_id']) >= 0) {
+                        count = count + 1;
+                        console.log('Found ' + count + ' so far');
+                        if (count > quantity) {
+                            console.log('Breaking at ' + count);
+                            met = false;
+                            break;
+                        } else {
+                            met = true;
+                            continue;
+                        }
+                    }
+                }
+                
+            }
+        }
+        if (type == 'oc3') {
+            // Cart has exactly
+            if (level == 'product') {
+                let pitems = citems.filter(e => e.product_id == pid);
+                if (pitems.length == quantity) {
+                    met = true;
+                } else {
+                    met = false;
+                }
+            }
+            if (level == 'variant') {
+                let vitems = citems.filter(e => e.variant_id == vid);
+                if (vitems.length == quantity) {
+                    met = true;
+                } else {
+                    met = false;
+                }
+            }
+            if (level == 'collection') { 
+                console.log('Checking if cart has at least ' + quantity + ' products from collections ' + pid);
+                let collects = offers['collects'];
+                let needed = collects.filter(e => e.collection_id == pid);
+                let count = 0;
+                for (let i = 0; i <= citems.length - 1; i++) {
+                    console.log('Now checking ' + citems[i]['product_id']);
+                    if (needed.findIndex(x => x.product_id == citems[i]['product_id']) >= 0) {
+                        count = count + 1;
+                        console.log('Found ' + count + ' so far');
+                        if (count == quantity) {
+                            console.log('Breaking at ' + count);
+                            met = true;
+                            break;
+                        } else {
+                            continue;
+                        }
+                    }
+                }
+                
+            }
+        }
+        if (type == 'oc4') {
+            // Cart does not have any
+            if (level == 'product') {
+                let pitems = citems.filter(e => e.product_id == pid);
+                if (pitems.length > 0) {
+                    met = true;
+                } else {
+                    met = false;
+                }
+            }
+            if (level == 'variant') {
+                let vitems = citems.filter(e => e.variant_id == vid);
+                if (vitems.length > 0) {
+                    met = true;
+                } else {
+                    met = false;
+                }
+            }
+            if (level == 'collection') {
+                console.log('Checking if cart has at least ' + quantity + ' products from collections ' + pid);
+                let collects = offers['collects'];
+                let needed = collects.filter(e => e.collection_id == pid);
+                let count = 0;
+                for (let i = 0; i <= citems.length - 1; i++) {
+                    console.log('Now checking ' + citems[i]['product_id']);
+                    if (needed.findIndex(x => x.product_id == citems[i]['product_id']) >= 0) {
+                        count = count + 1;
+                        console.log('Found ' + count + ' so far');
+                        if (count > 0) {
+                            console.log('Breaking at ' + count);
+                            met = false;
+                            break;
+                        } else {
+                            met = true;
+                            continue;
+                        }
+                    }
+                }
+            }
+        }
+        if (type == 'oc5') {
+            // Cart total is at least
+            if (cart["total_price"] >= amount) {
+                met = true;
+            } else {
+                met = false;
+            }
+        }
+        if (type == 'oc6') {
+            // Cart total is at most
+            if (cart["total_price"] <= amount) {
+                met = true;
+            } else {
+                met = false;
+            }
+        }
+        if (type == 'oc7') {
+            // Customer is located in
+        }
+        if (type == 'oc8') {
+            // Customer is not located in
+        }
+
+
+        return met;
+    }
+    
+    function populateFields(oid,pid) {
+        console.log('Looking for fields');
+        let fields = offers['offer'][oid]['fields'];
+        let choices = offers['offer'][oid]['choices'];
+        if (fields.length > 0) {
+            console.log('Found '+fields.length+' fields');
+            console.log(fields);
+            let o_fields = fields.filter(e => e.pid == pid);
+                console.log(o_fields);
+                if (o_fields.length > 0) {
+                    $('.o_h_' + pid).html('');
+                    $(o_fields).each(function(i, e) {
+                        var fid = o_fields[i]['fid'];
+                        var type = o_fields[i]['type'];
+                        var name = o_fields[i]['name'];
+                        var placeholder = o_fields[i]['placeholder'];
+                        var price = o_fields[i]['price'];
+                        var required = o_fields[i]['required'];
+                        var el_type = '';
+                        var m_c = choices.filter(e => e.fid == fid);
+
+                        if (type == "select") {
+                            $('.o_h_' + pid).append(
+                                '<div>' +
+                                '<label>' + placeholder + '</label>' +
+                                '<select class="form-control select sleek_fields_' + fid + '" id="properties[' + name +
+                                ']" name="properties[' + name + ']"></select>' +
+                                '</div>');
+                            $('.sleek_fields_' + name + '')
+                                .append($("<option></option>")
+                                    .attr("value", "")
+                                    .text(placeholder));
+
+                            // var value_arr = value.split(',');
+                            $(m_c).each(function(key) {
+                                var c_v = m_c[key]['value'];
+                                var c_p = m_c[key]['price'];
+                                $('.sleek_fields_' + fid + '')
+                                    .append($("<option></option>")
+                                        .attr("value", c_v)
+                                        .text(c_v + ' (' + c_p + ')'));
+                            });
+                        }
+                        if (type == "number") {
+                            $('.o_h_' + pid).append(
+                                '<div>' +
+                                '<label>' + placeholder + '</label>' +
+                                '<input type="number" class="form-control" id="properties[' + name + ']" name="properties[' + name +
+                                ']" placeholder="' + placeholder + '" />' +
+                                '</div>');
+                        }
+                        if (type == "text") {
+                            $('.o_h_' + pid).append(
+                                '<div>' +
+                                '<label>' + placeholder + '</label>' +
+                                '<input type="text" class="form-control" id="properties[' + name + ']" name="properties[' + name +
+                                ']" placeholder="' + placeholder + '" />' +
+                                '</div>');
+                        }
+                        if (type == "textarea") {
+                            $('.o_h_' + pid).append(
+                                '<div>' +
+                                '<label>' + placeholder + '</label>' +
+                                '<textarea class="form-control" id="properties[' + name + ']" name="properties[' + name +
+                                ']" placeholder="' + placeholder + '">' + placeholder + '</textarea>' +
+                                '</div>');
+                        }
+                        if (type == "file") {
+                            $('.o_h_' + pid).append(
+                                '<div>' +
+                                '<label>' + placeholder + '</label>' +
+                                '<input type="file" class="form-control" id="properties[' + name + ']" name="properties[' + name +
+                                ']" placeholder="' + placeholder + '" />' +
+                                '</div>');
+                        }
+                        if (type == "checkbox") {
+                            $('.o_h_' + pid).append(
+                                '<div>' +
+                                '<label>' +
+                                '<input type="checkbox" class="form-control" id="properties[' + name + ']" name="properties[' + name +
+                                ']" placeholder="' + placeholder + '" /> ' +
+                                placeholder +
+                                '</label>' +
+                                '</div>');
+                        }
+                        if (type == "checkbox_group") {
+                            $('.o_h_' + pid).append(
+                                '<div>' +
+                                '<label>' + placeholder + '</label>' +
+                                '<input type="text" class="form-control" id="properties[' + name + ']" name="properties[' + name +
+                                ']" placeholder="' + placeholder + '" />' +
+                                '</div>');
+                        }
+                        if (type == "radio") {
+                            $('.o_h_' + pid).append(
+                                '<div>' +
+                                '<label>' +
+                                '<input type="radio" class="form-control" id="properties[' + name + ']" name="properties[' + name +
+                                ']" placeholder="' + placeholder + '" /> ' +
+                                placeholder +
+                                '</label>' +
+                                '</div>');
+                        }
+                        if (type == "date") {
+                            $('.o_h_' + pid).append(
+                                '<div>' +
+                                '<label>' + placeholder + '</label>' +
+                                '<input type="date" class="form-control" id="properties[' + name + ']" name="properties[' + name +
+                                ']" placeholder="' + placeholder + '" />' +
+                                '</div>');
+                        }
+                        if (type == "swatch") {
+                            $('.o_h_' + pid).append(
+                                '<div>' +
+                                '<label>' + placeholder + '</label>' +
+                                '<input type="text" class="form-control" id="properties[' + name + ']" name="properties[' + name +
+                                ']" placeholder="' + placeholder + '" />' +
+                                '</div>');
+                        }
+                    });
+                }
+        }
+
+    }
+    
+    function display_offer(oid) {
+        let element = '';
+        let curr = Shopify.currency['active'];
+        let settings = offers['settings'];
+        
+        if(page.includes('/cart')){element = cart_selector;}
+        else{element = drawer_selector;}
+        
+        $('<style>.sleek-upsell{background:#ecf0f1;color:#2b3d51;padding:5px;font-family:inherit;vertical-align:middle;margin:5px}.sleek-image img{width:100px}.sleek-text{font-weight:700}.sleek-upsell select{padding:4px;margin-top:5px}.sleek-prices{font-weight:700;margin-bottom:5px}.sleek-compare-price{text-decoration:line-through}.sleek-upsell button{padding:10px;border:none;background:#2b3d51;color:#fff;font-weight:700;border-radius:0;cursor:pointer;width:100%}.card{display:table}.card .sleek-form{display:flex}.sleek-card-atc,.sleek-image,.sleek-offer{display:table;align-self:center;padding:5px}.card .sleek-offer{flex-grow:1}.card .sleek-prices{text-align:center}@media only screen and (max-width:600px){.sleek-upsell select{max-width:100px}.sleek-prices *{display:inline-table}}.block,.block .sleek-atc,.block .sleek-form,.block .sleek-text{display:table}.sleek-block{display:flex}.block .sleek-image,.block .sleek-offer{display:table;align-self:center;padding:5px}.block .sleek-offer{flex-grow:1}</style>').insertBefore(element);
+        
+        
+        
+        $('<div class="card sleek-upsell"></div>').insertBefore(element);
+        
+        if(offers['offer'][oid]['offer'][0]['close'] == 'y'){
+            $('.card').append('<div style="display: table; position: relative; width: 100%; text-align: right;"><span class="reject_offer" style="font-size: 15px; cursor: pointer;">x</span></div>');
+        }
+        
+        let products = offers['offer'][oid]['products'];
+        let oprods = offers['products'];
+        console.log('Found products');
+        console.log(products);
+        console.log('Shop products');
+        console.log(oprods);
+
+        $(products).each(function (i, v) {
+            let pid = v['product'];
+            let index = oprods.findIndex(x => x.id == pid);
+            let datacell = oprods[index];
+
+            let oatc = offers['offer'][oid]['offer'][0]['atc'];
+            let vatc = v['atc'];
+            let atc = 'ADD TO CART';
+            
+            let otext = offers['offer'][oid]['offer'][0]['text'];
+            let vtext = v['text'];
+            let dtext = 'ADD TO CART';
+
+            if (oatc != '') {
+                atc = oatc;
+            } else if (vatc != '') {
+                atc = vatc;
+            } else {
+                atc = 'ADD TO CART';
+            }
+            
+            if (otext != '') {
+                dtext = otext;
+            } else if (vtext != '') {
+                dtext = vtext;
+            } else {
+                dtext = 'Would you like a ' + datacell['title'];
+            }
+
+            console.log('Product ' + pid + ' found at position ' + index);
+            console.log(datacell);
+
+            let card_ui = '<form class="sleek-form" action="/cart/add" enctype="multipart/form-data" data-product-index="' + i + '"> <div class="sleek-image"> <img src="' + datacell[
+                'image']['src'] +
+                '"/> </div><div class="sleek-offer"> <div class="sleek-text">'+dtext+'</div><div class="sleek-title">' +
+                datacell['title'] +
+                '</div><div class="sleek-selectors"> <div class="o_h_'+pid+'"></div> <select name="id" class="v-select v-' + pid +
+                '"></select> <select name="quantity" class="q-select q-' + pid +
+                '"></select> </div></div><div class="sleek-card-atc"> <div class="sleek-prices"> <span class="sleek-price money">' +
+                curr + ' ' + datacell['variants'][0]['price'] +
+                '</span> <span class="sleek-compare-price money">' +
+                curr + ' ' + datacell['variants'][0]['price'] +
+                '</span> </div><button class="sleek-atc" type="submit">' + atc + '</button> </div></form>';
+
+            $('.card').append(card_ui);
+            populateFields(oid,pid)
+            $(datacell['variants']).each(function (i) {
+                // console.log(datacell['variants'][i]['title']);
+                $('.v-' + pid).append('<option value="' + datacell['variants'][i]['id'] +
+                    '">' +
+                    datacell['variants'][i]['title'] + ' (' + curr + ' ' +
+                    datacell['variants'][i]['price'] + ')</option>');
+            });
+            for (i = 1; i <= 10; i++) {
+                $('.q-' + pid).append('<option value="' + i + '">' +
+                    i + '</option>')
+            }
+        });
+        
+        $('.reject_offer').click(function(){
+            sessionStorage.setItem('sleek_shown_' + oid , 'y');
+            $('.sleek-upsell').fadeOut("slow", function(){
+                $('.sleek-upsell').remove();
+                next_offer();
+            });
+        });
+        
+        if(settings['layout_bg']){
+            $('.sleek-upsell').css('background',settings['layout_bg']);
+            $('.sleek-upsell select').css('background',settings['layout_bg']);
+        }
+        if(settings['layout_color']){
+            $('.sleek-upsell').css('color',settings['layout_color']);
+            $('.sleek-upsell select').css('color',settings['layout_color']);
+        }
+        if(settings['layout_font']){
+            $('.sleek-upsell').css('font-family',settings['layout_font']);
+        }
+        if(settings['layout_size']){
+            $('.sleek-upsell').css('font-size',settings['layout_size']);
+        }
+        if(settings['layout_mt']){
+            $('.sleek-upsell').css('margin-top',settings['layout_mt']);
+        }
+        if(settings['layout_mb']){
+            $('.sleek-upsell').css('margin-bottom',settings['layout_mb']);
+        }
+        if(settings['offer_radius']){
+            $('.sleek-upsell').css('border-radius',settings['offer_radius']);
+        }
+        if(settings['offer_bs']){
+            $('.sleek-upsell').css('border-width',settings['offer_bs']);
+        }
+        if(settings['offer_bc']){
+            $('.sleek-upsell').css('border-color',settings['offer_bc']);
+        }
+        if(settings['offer_border']){
+           $('.sleek-upsell .sleek-upsell').css('border-style',settings['offer_border']);
+        }
+        if(settings['button_bg']){
+            $('.sleek-upsell button').css('background',settings['button_bg']);
+        }
+        if(settings['button_color']){
+            $('.sleek-upsell button').css('color',settings['button_color']);
+        }
+        if(settings['button_font']){
+            $('.sleek-upsell button').css('font-family',settings['button_font']);
+        }
+        if(settings['button_size']){
+            $('.sleek-upsell button').css('font-size',settings['button_size']);
+        }
+        if(settings['button_mt']){
+            $('.sleek-upsell button').css('margin-top',settings['button_mt']);
+        }
+        if(settings['button_mb']){
+            $('.sleek-upsell button').css('margin-bottom',settings['button_mb']);
+        }
+        if(settings['button_radius']){
+            $('.sleek-upsell button').css('border-radius',settings['button_radius']);
+        }
+        if(settings['button_bs']){
+            $('.sleek-upsell button').css('border-width',settings['button_bs']);
+        }
+        if(settings['button_bc']){
+            $('.sleek-upsell button').css('border-color',settings['button_bc']);
+        }
+        if(settings['button_border']){
+            $('.sleek-upsell button').css('border-style',settings['button_border']);
+        }
+        if(settings['image_radius']){
+            $('.sleek-upsell img').css('border-radius',settings['image_radius']);
+        }
+        if(settings['image_bs']){
+            $('.sleek-upsell img').css('border-width',settings['image_bs']);
+        }
+        if(settings['image_bc']){
+            $('.sleek-upsell img').css('color',settings['image_bc']);
+        }
+        if(settings['image_border']){
+            $('.sleek-upsell img').css('border-style',settings['image_border']);
+        }
+        if(settings['text_color']){
+            $('.sleek-text').css('color',settings['text_color']);
+        }
+        if(settings['text_font']){
+            $('.sleek-text').css('font-family',settings['text_font']);
+        }
+        if(settings['text_size']){
+            $('.sleek-text').css('font-size',settings['text_size']);
+        }
+        if(settings['title_color']){
+            $('.sleek-title').css('color',settings['title_color']);
+        }
+        if(settings['title_font']){
+            $('.sleek-title').css('font-family',settings['title_font']);
+        }
+        if(settings['title_size']){
+            $('.sleek-title').css('font-size',settings['title_size']);
+        }
+        if(settings['price_color']){
+            $('.sleek-price').css('color',settings['price_color']);
+        }
+        if(settings['price_font']){
+            $('.sleek-price').css('font-family',settings['price_font']);
+        }
+        if(settings['price_size']){
+            $('.sleek-price').css('font-size',settings['price_size']);
+        }
+
     }
 });
-
-function checkArraysExists(offers) {
-
-    var cart_products = [];
-    var products_checker = [];
-    var counter = 0;
-    const offer_raw = JSON.parse(offers);
-    const offer_array = offer_raw['offers'];
-
-    fetch('/cart.js')
-        .then(response => response.json())
-        .then(data => {
-
-            var cart_items = data.items;
-            console.log("Offers\n");
-            console.log(offer_array);
-            console.log("Cart items\n");
-            console.log(cart_items);
-
-            let checker = (arr, target) => target.every(v => arr.includes(v));
-
-            $(cart_items).each(function (i) {
-                cart_products[i] = cart_items[i]["product_id"];
-            });
-
-            console.log("Cart products\n");
-            console.log(cart_products);
-
-            $(offer_array).each(function (i) {
-
-                var offer_products = JSON.parse(offer_array[i]['offer_products']);
-                console.log("Offer products\n");
-                console.log(offer_products);
-                console.log(offer_products.length);
-
-                $(offer_products).each(function (i) {
-
-                    products_checker[i] = Number(offer_products[i]['product_id']);
-                });
-
-                console.log("products checker " + counter);
-                console.log(products_checker);
-                console.log(checker(cart_products, products_checker));
-            });
-        });
-}
-
-function loadOffer(offers) {
-    var cart_products = [];
-    const offer_raw = JSON.parse(offers);
-    const offer_array = offer_raw['offers'];
-    fetch('/cart.js').then(response => response.json()).then(data => {
-            var cart_items = data.items;
-            $(cart_items).each(function (i) {
-                cart_products[i] = cart_items[i]["product_id"];
-            });
-
-        });
-
-    $(offer_array).each(function (i) {
-        if (c_o_c_b(i) === true){
-            // display_offer(i);
-        }        
-    });
-}
-
-function c_o_c_b(offer){
-    var o_c_b = JSON.parse(offer_array[i]['ocb']);
-    $(o_c_b).each(function(){
-        if(check_o_c_b(offer,o_c_b) == false){
-            let next_offer = offer + 1;
-            c_o_c_b(next_offer);
-        }else{
-            load_offer(offer);
-        }
-    });
-}
-
-function check_o_c_b(offer, ocb){
-    var ocr = ocb[0];
-    for(i =1; i <= ocb.length; i++){
-        if(ocr == 'ANY'){
-            if(c_c(offer,i) === true){
-                return true;
-            }else{
-                return false;
-            }
-        }else{
-            if(c_c(offer,i) === false){
-                return false;
-            }else{
-                return true;
-            }
-        }
-    }
-}
-
-function c_c(offer, condition){
-
-}

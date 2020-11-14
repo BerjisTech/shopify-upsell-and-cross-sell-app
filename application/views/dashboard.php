@@ -93,20 +93,11 @@
     <div class="mwili">
         <div style="width: 50px; height: 100vh; background: #981B1B; display: flex; flex-direction: column; justify-content: space-between; align-items: center; text-align: center;">
             <span class="whats">
-                <span class="profile-info dropdown">
-                        <span class="btn btn-primary btn-sm dropdown-toggle" data-toggle="dropdown"><i class="entypo-cog"></i></span>
-                        <ul class="dropdown-menu">
-                            <!-- Reverse Caret -->
-                            <li class="caret"></li>
-                            <!-- Profile sub-links -->
-                            <li><a href="<?php echo base_url(); ?>settings/<?php echo $shop; ?>/<?php echo $token; ?>"><i class="entypo-user"></i>Offer settings </a></li>
-                            <li><a href="#"><i class="entypo-mail"></i>Set up wizard </a></li>
-                            <li><a href="#"><i class="entypo-calendar"></i>Subscription </a></li>
-                            <li><a href="#"><i class="entypo-clipboard"></i>Catalog </a></li>
-                        </ul>
-                    </span>
-                <span><a href="<?php echo base_url(); ?>new_offer/<?php echo $shop; ?>/<?php echo $token; ?>"><span class="btn btn-primary btn-sm"><i class="entypo-plus"></i></span></a></span>
-                <span><a href="<?php echo base_url(); ?>stats/<?php echo $shop; ?>/<?php echo $token; ?>"><span class="btn btn-primary btn-sm"><i class="entypo-chart-line"></i></span></a></span>
+                <a title="Settings" href="<?php echo base_url(); ?>settings/<?php echo $shop; ?>/<?php echo $token; ?>"><span class="btn btn-primary entypo-cog"></span></a>
+                <a title="Setup Wizard" href="<?php echo base_url(); ?>settings/<?php echo $shop; ?>/<?php echo $token; ?>"><span class="btn btn-primary entypo-feather"></span></a>
+                <a title="Subscription" href="<?php echo base_url(); ?>settings/<?php echo $shop; ?>/<?php echo $token; ?>"><span class="btn btn-primary entypo-credit-card"></span></a>
+                <span><a title="New Offer" href="<?php echo base_url(); ?>new_offer/<?php echo $shop; ?>/<?php echo $token; ?>"><span class="btn btn-primary btn-sm"><i class="entypo-plus"></i></span></a></span>
+                <span><a title="Stats" href="<?php echo base_url(); ?>stats/<?php echo $shop; ?>/<?php echo $token; ?>"><span class="btn btn-primary btn-sm"><i class="entypo-chart-line"></i></span></a></span>
             </span>
             <span class="whats">
                 <span class="dropdown language-selector">
@@ -119,10 +110,8 @@
                         <li><a href="#"><img src="https://demo.neontheme.com/assets/images/flags/flag-es.png" width="16" height="16" /><span>Español</span></a></li>
                     </ul>
                 </span>
-                <span><a href="#" data-toggle="chat" data-collapse-sidebar="1" class="btn btn-primary btn-sm"><i class="entypo-chat"></i>
-                            <span class="badge badge-success chat-notifications-badge is-hidden">0</span></a>
-                    </span>
-                <span> <i class="btn btn-primary btn-sm entypo-help"></i></a></span>
+                <a href="#" data-toggle="chat" data-collapse-sidebar="1" class="btn btn-primary btn-sm"><i class="entypo-chat"></i><span class="badge badge-success chat-notifications-badge is-hidden">0</span></a>
+                <span> <i class="btn btn-primary btn-sm entypo-help"></i></span>
             </span>
         </div>
         <div style="height: 100vh; overflow-y: auto; flex-grow: 4; padding-top: 10px; padding-left: 10px; padding-right: 10px; padding-bottom: 0px;">
@@ -336,7 +325,8 @@
 </div>
 
 <style>
-    .whats, .whats span{
+    .whats, .whats span, .whats a{
+        color: #ffffff;
         width: 100%;
         font-size: 18px;
     }

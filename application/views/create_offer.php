@@ -518,7 +518,7 @@ Not supports in Firefox and IE */
                     <div class="sleekOffer">
 
                         <div class="card sleek-upsell">
-
+                            
                         </div>
                         <div class="hidden halfBlock sleek-upsell">
                             <form class="col-xs-12">
@@ -1036,6 +1036,15 @@ Not supports in Firefox and IE */
             });
         }
     });
+    $('.offer_closable').change(function() {
+        if (this.checked) {
+            $('.reject_offer').show();
+            offer[0]['close'] = 'y';
+        } else {
+            $('.reject_offer').hide();
+            offer[0]['close'] = 'n';
+        }
+    });
     $('.offer_text').on('keyup change', function() {
         $('form[data-product-index="' + $('.toplect').val() + '"]  .sleek-text').html($(this).val());
         products[$('.toplect').val()]['text'] = $(this).val();
@@ -1257,6 +1266,8 @@ Not supports in Firefox and IE */
                 "ab_atc": ""
             });
         }
+        
+        loadUIs();
 
         var vs = createCORSRequest("GET", "<?php echo base_url(); ?>variants/" + p +
             "/<?php echo $token; ?>/<?php echo $shop; ?>");
@@ -1282,8 +1293,7 @@ Not supports in Firefox and IE */
                 console.log(products);
                 console.log(variants);
 
-                loadProductData(p);
-                loadUIs();
+                loadProductData();
             };
             vs.send();
         }
@@ -1312,6 +1322,7 @@ Not supports in Firefox and IE */
                 "ab_atc": ""
             });
         }
+        loadUIs();
 
         v = parseInt(variant);
         // if (variants.findIndex(x => x.vid == v) == -1) {
@@ -1328,8 +1339,7 @@ Not supports in Firefox and IE */
                 "vid": v
             });
 
-            loadProductData(product);
-            loadUIs();
+            loadProductData();
         }
 
         console.log(products);
@@ -1383,8 +1393,8 @@ Not supports in Firefox and IE */
     }
 
     function loadUIs() {
-        $('.card').html('');
-        $('.block').html('');
+        $('.card').html('<div class="reject_offer" style="display: none; position: relative; width: 100%; text-align: right;"><span style="font-size: 15px; cursor: pointer;">x</span></div>');
+        $('.block').html('<div class="reject_offer" style="display: none; position: relative; width: 100%; text-align: right;"><span style="font-size: 15px; cursor: pointer;">x</span></div>');
 
         $(products).each(function(i, e) {
             var product_id = products[i]['product'];
@@ -1422,8 +1432,7 @@ Not supports in Firefox and IE */
                         '</span> </div><div class="sleek-selectors"> <div class="offer_fields_holder o_h_' + product_id + '"></div> <select class="v-select v-' + product_id +
                         '"></select> <select class="q-select q-' + product_id +
                         '"></select> </div></div></div><button class="sleek-atc" type="submit" onclick="return false;">' +
-                        $(
-                            '.offer_button_text').val() + '</button> </form>';
+                        $('.offer_button_text').val() + '</button> </form>';
                     $('.card').append(card_ui);
                     $('.block').append(block_ui);
 
@@ -1438,7 +1447,6 @@ Not supports in Firefox and IE */
                         $('.q-' + product_id).append('<option value="' + i + '">' +
                             i + '</option>')
                     }
-                    $('.sleek-title')
                 };
                 product_data.send();
             }
@@ -1453,8 +1461,8 @@ Not supports in Firefox and IE */
         console.log(products);
         console.log(variants);
 
+        loadUIs();
         loadProductData();
-        loadUIs(product);
     }
 
     $('#conditionSelector').change(function() {

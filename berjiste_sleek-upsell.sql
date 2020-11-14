@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Nov 10, 2020 at 05:35 PM
+-- Generation Time: Nov 14, 2020 at 04:31 PM
 -- Server version: 10.3.25-MariaDB-cll-lve
 -- PHP Version: 7.3.6
 
@@ -39,8 +39,6 @@ CREATE TABLE `cbs` (
 --
 
 INSERT INTO `cbs` (`bid`, `rule`, `oid`) VALUES
-('1603662108_0', 'ALL', '3'),
-('1603662108_1', 'ANY', '3'),
 ('1603971021_0', 'ALL', '7'),
 ('1604051352_0', 'ALL', '8');
 
@@ -61,15 +59,6 @@ CREATE TABLE `cfs` (
   `required` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
---
--- Dumping data for table `cfs`
---
-
-INSERT INTO `cfs` (`fid`, `oid`, `pid`, `type`, `name`, `placeholder`, `price`, `required`) VALUES
-('1603661670_0', '2', '4582708969547', 'select', 'color', 'Choose color of choice', '', ''),
-('1604595656_0', '9', '4582708314187', 'select', 'color', 'Choose a color', '', 'true'),
-('1604595656_1', '9', '4582708314187', 'number', 'size', 'Specify your size', '', 'true');
-
 -- --------------------------------------------------------
 
 --
@@ -83,18 +72,6 @@ CREATE TABLE `choices` (
   `price` text NOT NULL,
   `value` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `choices`
---
-
-INSERT INTO `choices` (`fid`, `oid`, `pid`, `price`, `value`) VALUES
-('1603661670_0', '2', '4582708969547', '0', 'black'),
-('1603661670_0', '2', '4582708969547', '0', 'grey'),
-('1603661670_0', '2', '4582708969547', '0', 'transparent'),
-('1604595656_0', '9', '4582708314187', '45', 'red'),
-('1604595656_0', '9', '4582708314187', '23', 'blue'),
-('1604595656_0', '9', '4582708314187', '19', 'green');
 
 -- --------------------------------------------------------
 
@@ -121,9 +98,6 @@ CREATE TABLE `ocs` (
 --
 
 INSERT INTO `ocs` (`cid`, `oid`, `bid`, `type`, `quantity`, `level`, `content`, `pid`, `vid`, `amount`, `country`) VALUES
-('1603662108_0', '3', '1603662108_0', 'oc1', '1', 'product', 'Chequered Red Shirt', '4582708445259', '4582708445259', '', 'AF'),
-('1603662108_1', '3', '1603662108_0', 'oc1', '1', 'collection', 'Home page', '163926802507', '163926802507', '', 'AF'),
-('1603662108_2', '3', '1603662108_1', 'oc6', '1', 'collection', 'Home page', '163926802507', '163926802507', '1000', 'AF'),
 ('1603971021_0', '7', '1603971021_0', 'oc1', '1', 'product', 'Blue Silk Tuxedo', '4582708314187', '4582708314187', '', 'AF'),
 ('1604051352_0', '8', '1604051352_0', 'oc1', '1', 'collection', 'Home page', '163926802507', '163926802507', '', 'AF');
 
@@ -157,12 +131,9 @@ CREATE TABLE `offers` (
 --
 
 INSERT INTO `offers` (`offer_id`, `shop`, `date`, `title`, `scheme`, `stop_show`, `layout`, `required_checkout`, `discount`, `code`, `rule`, `to_checkout`, `status`, `text`, `atc`, `close`) VALUES
-(2, 'berjis-tech-ltd', '1603661670', '', '', 'y', 'card', 'n', 'n', '', 'ALL', 'n', '1', '', '', 'n'),
-(3, 'berjis-tech-ltd', '1603662108', '', '', 'y', 'card', 'n', 'n', '', 'ALL', 'n', '1', '', '', 'n'),
-(6, 'berjis-tech-ltd', '1603662665', 'Homepage Collection', '', 'y', 'card', 'n', 'n', '', 'ALL', 'n', '1', '', '', 'n'),
 (7, 'berjis-tech-ltd', '1603971021', 'Q1', '', 'y', 'card', 'n', 'n', '', 'ALL', 'n', '1', '', '', 'n'),
 (8, 'berjis-tech-ltd', '1604051352', 'Testing collections', '', 'y', 'card', 'n', 'n', '', 'ALL', 'n', '1', '', '', 'n'),
-(9, 'berjis-tech-ltd', '1604595656', '', '', 'y', 'card', 'n', 'n', '', 'ALL', 'n', '1', '', '', 'n');
+(10, 'berjis-tech-ltd', '1605357794', 'Offer text', '', 'y', 'card', 'n', 'n', '', 'ALL', 'n', '1', '', '', 'n');
 
 -- --------------------------------------------------------
 
@@ -193,14 +164,66 @@ CREATE TABLE `products` (
 --
 
 INSERT INTO `products` (`product_id`, `product`, `offer`, `text`, `atc`, `show_title`, `show_price`, `show_image`, `v_price`, `c_price`, `linked`, `q_select`, `ab_test`, `ab_text`, `ab_atc`) VALUES
-(2, '4582708314187', '2', 'Need something cool?', '', 'y', 'y', 'y', 'y', 'y', 'n', 'y', 'n', '', ''),
-(3, '4582708969547', '2', 'How about free shipping?', '', 'y', 'y', 'y', 'y', 'y', 'n', 'y', 'n', '', ''),
-(4, '4582709395531', '3', '', '', 'y', 'y', 'y', 'y', 'y', 'n', 'y', 'n', '', ''),
-(7, '4582708445259', '6', '', '', 'y', 'y', 'y', 'y', 'y', 'n', 'y', 'n', '', ''),
 (8, '4582708445259', '7', '', '', 'y', 'y', 'y', 'y', 'y', 'n', 'y', 'n', '', ''),
 (9, '4582708904011', '8', '', '', 'y', 'y', 'y', 'y', 'y', 'n', 'y', 'n', '', ''),
-(10, '4582708314187', '9', 'How about a free shipping?', '', 'n', 'y', 'y', 'y', 'y', 'n', 'y', 'n', '', ''),
-(11, '4582708445259', '9', 'Would you like a classy shirt', '', 'n', 'y', 'y', 'y', 'y', 'n', 'y', 'n', '', '');
+(12, '4582708969547', '10', 'How about free shipping?', 'YES!', 'n', 'y', 'y', 'y', 'y', 'n', 'y', 'n', '', ''),
+(13, '4582708904011', '10', 'Need a classy denim jacket', '', 'n', 'y', 'y', 'y', 'y', 'n', 'y', 'n', '', '');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `settings`
+--
+
+CREATE TABLE `settings` (
+  `shop` text NOT NULL,
+  `cart_location` text NOT NULL,
+  `cart_position` text NOT NULL,
+  `drawer_location` text NOT NULL,
+  `drawer_position` text NOT NULL,
+  `refresh_state` text NOT NULL,
+  `drawer_refresh` text NOT NULL,
+  `layout_bg` text NOT NULL,
+  `layout_color` text NOT NULL,
+  `layout_font` text NOT NULL,
+  `layout_size` text NOT NULL,
+  `layout_mt` text NOT NULL,
+  `layout_mb` text NOT NULL,
+  `offer_radius` text NOT NULL,
+  `offer_bs` text NOT NULL,
+  `offer_bc` text NOT NULL,
+  `offer_border` text NOT NULL,
+  `button_bg` text NOT NULL,
+  `button_color` text NOT NULL,
+  `button_font` text NOT NULL,
+  `button_size` text NOT NULL,
+  `button_mt` text NOT NULL,
+  `button_mb` text NOT NULL,
+  `button_radius` text NOT NULL,
+  `button_bs` text NOT NULL,
+  `button_bc` text NOT NULL,
+  `button_border` text NOT NULL,
+  `image_radius` text NOT NULL,
+  `image_bs` text NOT NULL,
+  `image_bc` text NOT NULL,
+  `image_border` text NOT NULL,
+  `text_color` text NOT NULL,
+  `text_font` text NOT NULL,
+  `text_size` text NOT NULL,
+  `title_color` text NOT NULL,
+  `title_font` text NOT NULL,
+  `title_size` text NOT NULL,
+  `price_color` text NOT NULL,
+  `price_font` text NOT NULL,
+  `price_size` text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `settings`
+--
+
+INSERT INTO `settings` (`shop`, `cart_location`, `cart_position`, `drawer_location`, `drawer_position`, `refresh_state`, `drawer_refresh`, `layout_bg`, `layout_color`, `layout_font`, `layout_size`, `layout_mt`, `layout_mb`, `offer_radius`, `offer_bs`, `offer_bc`, `offer_border`, `button_bg`, `button_color`, `button_font`, `button_size`, `button_mt`, `button_mb`, `button_radius`, `button_bs`, `button_bc`, `button_border`, `image_radius`, `image_bs`, `image_bc`, `image_border`, `text_color`, `text_font`, `text_size`, `title_color`, `title_font`, `title_size`, `price_color`, `price_font`, `price_size`) VALUES
+('berjis-tech-ltd', 'form.cart', 'before', '.ajaxcart_product:first', 'before', 'y', 'refreshCart();', '#b6a0a0', '#ffffff', 'inherit', '11px', '5px', '6px', '15px', 'inherit', '#b6a0a0', 'inherit', '#ffffff', '#b6a0a0', 'inherit', '13px', '13px', 'inherit', '7px', '0px', 'inherit', 'inherit', '8px', 'inherit', 'inherit', 'inherit', 'inherit', 'inherit', '19px', 'inherit', 'inherit', '13px', 'inherit', 'inherit', '18px');
 
 -- --------------------------------------------------------
 
@@ -686,30 +709,6 @@ CREATE TABLE `variants` (
 --
 
 INSERT INTO `variants` (`id`, `oid`, `pid`, `vid`) VALUES
-(7, '2', '4582708314187', '32337482678347'),
-(8, '2', '4582708314187', '32337482711115'),
-(9, '2', '4582708314187', '32337482743883'),
-(10, '2', '4582708314187', '32337482776651'),
-(11, '2', '4582708314187', '32337482809419'),
-(12, '2', '4582708314187', '32337482842187'),
-(13, '2', '4582708969547', '32337487659083'),
-(14, '2', '4582708969547', '32337487724619'),
-(15, '2', '4582708969547', '32337487790155'),
-(16, '2', '4582708969547', '32337487822923'),
-(17, '2', '4582708969547', '32337487888459'),
-(18, '2', '4582708969547', '32337487921227'),
-(19, '3', '4582709395531', '32337489821771'),
-(20, '3', '4582709395531', '32337489854539'),
-(21, '3', '4582709395531', '32337489887307'),
-(22, '3', '4582709395531', '32337489920075'),
-(23, '3', '4582709395531', '32337489952843'),
-(24, '3', '4582709395531', '32337489985611'),
-(37, '6', '4582708445259', '32337483432011'),
-(38, '6', '4582708445259', '32337483464779'),
-(39, '6', '4582708445259', '32337483497547'),
-(40, '6', '4582708445259', '32337483530315'),
-(41, '6', '4582708445259', '32337483563083'),
-(42, '6', '4582708445259', '32337483595851'),
 (43, '7', '4582708445259', '32337483432011'),
 (44, '7', '4582708445259', '32337483464779'),
 (45, '7', '4582708445259', '32337483497547'),
@@ -722,18 +721,18 @@ INSERT INTO `variants` (`id`, `oid`, `pid`, `vid`) VALUES
 (52, '8', '4582708904011', '32337487364171'),
 (53, '8', '4582708904011', '32337487396939'),
 (54, '8', '4582708904011', '32337487429707'),
-(55, '9', '4582708314187', '32337482678347'),
-(56, '9', '4582708314187', '32337482711115'),
-(57, '9', '4582708314187', '32337482743883'),
-(58, '9', '4582708314187', '32337482776651'),
-(59, '9', '4582708314187', '32337482809419'),
-(60, '9', '4582708314187', '32337482842187'),
-(61, '9', '4582708445259', '32337483432011'),
-(62, '9', '4582708445259', '32337483464779'),
-(63, '9', '4582708445259', '32337483497547'),
-(64, '9', '4582708445259', '32337483530315'),
-(65, '9', '4582708445259', '32337483563083'),
-(66, '9', '4582708445259', '32337483595851');
+(67, '10', '4582708969547', '32337487659083'),
+(68, '10', '4582708969547', '32337487724619'),
+(69, '10', '4582708969547', '32337487790155'),
+(70, '10', '4582708969547', '32337487822923'),
+(71, '10', '4582708969547', '32337487888459'),
+(72, '10', '4582708969547', '32337487921227'),
+(73, '10', '4582708904011', '32337487265867'),
+(74, '10', '4582708904011', '32337487298635'),
+(75, '10', '4582708904011', '32337487331403'),
+(76, '10', '4582708904011', '32337487364171'),
+(77, '10', '4582708904011', '32337487396939'),
+(78, '10', '4582708904011', '32337487429707');
 
 --
 -- Indexes for dumped tables
@@ -777,13 +776,13 @@ ALTER TABLE `variants`
 -- AUTO_INCREMENT for table `offers`
 --
 ALTER TABLE `offers`
-  MODIFY `offer_id` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `offer_id` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `products`
 --
 ALTER TABLE `products`
-  MODIFY `product_id` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `product_id` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT for table `shops`
@@ -801,7 +800,7 @@ ALTER TABLE `stats`
 -- AUTO_INCREMENT for table `variants`
 --
 ALTER TABLE `variants`
-  MODIFY `id` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=67;
+  MODIFY `id` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=79;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

@@ -299,6 +299,23 @@ class Slade extends CI_Controller
         $data['page_name'] = 'settings';
         $this->load->view('index', $data);
     }
+    
+    public function update_settings(){
+        if(isset($_POST)){
+            print_r($_POST);
+            if($this->db->where('shop', $_POST['shop'])->get('settings')->num_rows() > 0){
+                echo 'This shop settings exists';
+                echo 'Updating '.$_POST['shop'];
+                $this->db->where('shop', $_POST['shop'])->update('settings', $_POST);
+            }else{
+                $this->db->insert('settings', $_POST);
+                echo 'Created new entry';
+            }
+        }else{
+            echo 'Couldnt find post';
+            print_r($_POST);
+        }
+    }
 
     public function offers($shop)
     {
@@ -330,6 +347,7 @@ class Slade extends CI_Controller
         $params['themes'] = json_decode($themes['response'], true);
 
         $offers = $this->db->where('shop', $shop_name)->get('offers')->result_array();
+        $data['settings'] = $this->db->where('shop', $shop_name)->get('settings')->row();
 
         foreach ($offers as $key => $value) {
             $oid = $value['offer_id'];
@@ -569,6 +587,7 @@ class Slade extends CI_Controller
 
         echo $oid;
     }
+    
     public function update_offers()
     {
         $offer_data = $_POST;
@@ -659,6 +678,60 @@ class Slade extends CI_Controller
 
         if ($this->db->query($query)) {
             $this->db->query('TRUNCATE TABLE `offers`');
+            $this->db->query('COMMIT;');
+            echo 'table created';
+        }
+    }
+
+    public function new_settings_table()
+    {
+        $this->db->query('DROP TABLE IF EXISTS `settings`');
+        $query = '   
+        CREATE TABLE IF NOT EXISTS `settings` (
+            `shop` text NOT NULL,
+            `cart_location` text NOT NULL,
+            `cart_position` text NOT NULL,
+            `drawer_location` text NOT NULL,
+            `drawer_position` text NOT NULL,
+            `refresh_state` text NOT NULL,
+            `drawer_refresh` text NOT NULL,
+            `layout_bg` text NOT NULL,
+            `layout_color` text NOT NULL,
+            `layout_font` text NOT NULL,
+            `layout_size` text NOT NULL,
+            `layout_mt` text NOT NULL,
+            `layout_mb` text NOT NULL,
+            `offer_radius` text NOT NULL,
+            `offer_bs` text NOT NULL,
+            `offer_bc` text NOT NULL,
+            `offer_border` text NOT NULL,
+            `button_bg` text NOT NULL,
+            `button_color` text NOT NULL,
+            `button_font` text NOT NULL,
+            `button_size` text NOT NULL,
+            `button_mt` text NOT NULL,
+            `button_mb` text NOT NULL,
+            `button_radius` text NOT NULL,
+            `button_bs` text NOT NULL,
+            `button_bc` text NOT NULL,
+            `button_border` text NOT NULL,
+            `image_radius` text NOT NULL,
+            `image_bs` text NOT NULL,
+            `image_bc` text NOT NULL,
+            `image_border` text NOT NULL,
+            `text_color` text NOT NULL,
+            `text_font` text NOT NULL,
+            `text_size` text NOT NULL,
+            `title_color` text NOT NULL,
+            `title_font` text NOT NULL,
+            `title_size` text NOT NULL,
+            `price_color` text NOT NULL,
+            `price_font` text NOT NULL,
+            `price_size` text NOT NULL
+        ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;';
+
+        if ($this->db->query($query)) {
+            $this->db->query('TRUNCATE TABLE `settings`');
             $this->db->query('COMMIT;');
             echo 'table created';
         }
