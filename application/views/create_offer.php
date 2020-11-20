@@ -1185,6 +1185,7 @@ Not supports in Firefox and IE */
         hideAll();
         $('.' + offerLayout).removeClass('hidden');
         $('.offer_layout').val(offerLayout);
+        offer[0]['layout'] = offerLayout;
     }
 
     function activateOffer() {
