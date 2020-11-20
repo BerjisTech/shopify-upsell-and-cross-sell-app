@@ -3,7 +3,6 @@
     jQuery(document).ready(function() {
         // Sparkline Charts
         jQuery(".sales").sparkline([0,
-            <?php for($i = 1; $i <= 5; $i++){ echo mt_rand(1, 9).','; }?>
             <?php
             foreach ($this->db->select('count(stat_id) as stat, date_format(from_unixtime(date), "%m") as month, date_format(from_unixtime(date), "%Y %m %d") as year')->where('shop', $duka)->where('type', 'purchase')->group_by('month')->order_by('year', 'asc')->get('stats')->result_array() as $fetch) {
                 echo $fetch['stat'] . ',';
@@ -27,7 +26,6 @@
 
 
         jQuery(".customer-reach").sparkline([0,
-            <?php for($i = 1; $i <= 5; $i++){ echo mt_rand(100, 400).','; }?>
             <?php
             foreach ($this->db->select('count(stat_id) as stat, date_format(from_unixtime(date), "%m") as month, date_format(from_unixtime(date), "%Y %m %d") as year')->where('shop', $duka)->where('type', 'impression')->group_by('month')->order_by('year', 'asc')->get('stats')->result_array() as $fetch) {
                 echo $fetch['stat'] . ',';
@@ -49,24 +47,7 @@
             drawNormalOnTop: true
         });
 
-        jQuery(".monthly-sales").sparkline([0,
-            <?php for($i = 1; $i <= 5; $i++){ echo mt_rand(10, 20).','; }?>
-            <?php
-            foreach ($this->db->select('count(stat_id) as stat, date_format(from_unixtime(date), "%m") as month, date_format(from_unixtime(date), "%Y %m %d") as year')->where('shop', $duka)->where('type', 'purchase')->group_by('month')->order_by('year', 'asc')->get('stats')->result_array() as $fetch) {
-                echo $fetch['stat'] . ',';
-            }
-            ?>
-        ], {
-            type: 'bar',
-            barColor: '#ff4e50',
-            height: '55px',
-            width: '100%',
-            barWidth: 8,
-            barSpacing: 1
-        });
-
         jQuery(".all-time-sales").sparkline([0,
-            <?php for($i = 1; $i <= 5; $i++){ echo mt_rand(5, 10).','; }?>
             <?php
             foreach ($this->db->select('count(stat_id) as stat, date_format(from_unixtime(date), "%m") as month, date_format(from_unixtime(date), "%Y %m %d") as year')->where('shop', $duka)->where('type', 'checkout')->group_by('month')->order_by('year', 'asc')->get('stats')->result_array() as $fetch) {
                 echo $fetch['stat'] . ',';

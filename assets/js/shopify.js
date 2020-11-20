@@ -36,7 +36,45 @@ function g_d(g_url) {
     return JSON.parse(xmlHttp.responseText);
 }
 
+ function user_browser() { 
+    if((navigator.userAgent.indexOf("Opera") || navigator.userAgent.indexOf('OPR')) != -1 ) {
+        return 'Opera';
+    }
+    else if(navigator.userAgent.indexOf("Chrome") != -1 ){
+        return 'Chrome';
+    }
+    else if(navigator.userAgent.indexOf("Safari") != -1){
+        return 'Safari';
+    }
+    else if(navigator.userAgent.indexOf("Firefox") != -1 ) {
+         return 'Firefox';
+    }
+    else if((navigator.userAgent.indexOf("MSIE") != -1 ) || (!!document.documentMode == true )){
+      return 'IE'; 
+    }  
+    else{
+       return 'unknown';
+    }
+}
+
+const device = () => {
+    const ua = navigator.userAgent;
+    if (/(tablet|ipad|playbook|silk)|(android(?!.*mobi))/i.test(ua)) {
+        return "tablet";
+    }
+    if (
+        /Mobile|iP(hone|od|ad)|Android|BlackBerry|IEMobile|Kindle|Silk-Accelerated|(hpw|web)OS|Opera M(obi|ini)/.test(
+            ua
+            )
+            ) {
+                return "mobile";
+                }
+                return "desktop";
+};
+    
 jQuery(document).ready(function () {
+    
+    
 
     var offers_url = 'https://berjis.tech/sleek-upsell/offers/' + Shopify.shop;
 
@@ -630,6 +668,52 @@ jQuery(document).ready(function () {
         
     }
     
+    function brgxczvy(oid, pid, vid, quantity, price, action, type){
+        let citems = [];
+        
+        $(cart['items']).each(function(i,v){
+            citems.push(v['product_id']);
+        });
+        
+        let s = {
+            'stat_id' : '',
+            'date' : Math.floor(Date.now() / 1000),
+            'shop' : Shopify.shop,
+            'offer' : oid,
+            'product' : pid,
+            'variant' : vid,
+            'quantity' : quantity,
+            'ip' : '',
+            'country' : '',
+            'type' : type,
+            'action' : action,
+            'page' : page,
+            'device' : device(),
+            'browser' : user_browser(),
+            'citems' : citems,
+            'price': price
+        }
+        
+        console.log(s);
+        
+        var http = new XMLHttpRequest();
+        var url = 'https://berjis.tech/sleek-upsell/brgxczvy';
+        var params = 'stat_id=""&date='+Math.floor(Date.now() / 1000) +'&shop='+Shopify.shop+'&offer='+oid+'&product='+pid+'&variant='+vid+'&quantity='+quantity+'&ip=""&country=""&type='+type+'&action='+action+'&page='+page+'&device='+device()+'&browser='+user_browser()+'&citems='+JSON.stringify(citems)+'&price='+price;
+        http.open('POST', url, true);
+
+        //Send the proper header information along with the request
+        http.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+
+        http.onreadystatechange = function () {//Call a function when the state changes.
+            if (http.readyState == 4 && http.status == 200) {
+                console.log(http.responseText);
+            }
+        }
+        http.send(params);
+        
+        
+    }
+    
     function display_offer(oid) {
         let element = '';
         let curr = Shopify.currency['active'];
@@ -734,10 +818,25 @@ jQuery(document).ready(function () {
                 $('.q-' + pid).append('<option value="' + i + '">' +
                     i + '</option>')
             }
+            brgxczvy(oid, pid, $('.v-' + pid).val(), $('.q-' + pid).val(), datacell['variants'][0]['price'], 'show', 'show');
+            $('.v-' + pid).change(function(){
+                brgxczvy(oid, pid, $(this).val(), $('.q-' + pid).val(), datacell['variants'][0]['price'], 'variant change', 'impression');
+            });
+            $('.q-' + pid).change(function(){
+                brgxczvy(oid, pid, $('.v-' + pid).val(), $(this).val(), datacell['variants'][0]['price'], 'quantity change', 'impression');
+            });
+            $('.sleek-form').hover(function(){
+                brgxczvy(oid, pid, $('.v-' + pid).val(), $('.q-' + pid).val(), datacell['variants'][0]['price'], 'hover', 'impression');
+            });
+            $('.sleek-form').submit(function(e){
+                e.preventDefault();
+                brgxczvy(oid, pid, $('.v-' + pid).val(), $('.q-' + pid).val(), datacell['variants'][0]['price'], 'add to cart', 'purchase');
+            });
         });
         
         $('.reject_offer').click(function(){
             sessionStorage.setItem('sleek_shown_' + oid , 'y');
+            brgxczvy(oid, '', '', '', '', 'reject', 'reject');
             $('.sleek-upsell').fadeOut("slow", function(){
                 $('.sleek-upsell').remove();
                 next_offer();
