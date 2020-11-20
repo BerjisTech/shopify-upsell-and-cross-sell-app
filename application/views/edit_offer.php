@@ -64,106 +64,171 @@ Not supports in Firefox and IE */
 </style>
 
 <style>
-    .sleek-upsell {
-        background: #ecf0f1;
-        color: #2b3d51;
+    .sleek-upsell{
+        background: #ECF0F1;
+        color: #2B3D51;
         padding: 5px;
         font-family: inherit;
         vertical-align: middle;
-        margin: 5px
+        margin: 5px;
     }
-
     .sleek-image img {
-        width: 100px
+        width: 100px;
     }
-
     .sleek-text {
-        font-weight: 700
+        font-weight: bold;
     }
-
-    .sleek-upsell select {
+    .sleek-upsell select{
         padding: 4px;
-        margin-top: 5px
+        margin-top: 5px;
     }
-
-    .sleek-prices {
-        font-weight: 700;
-        margin-bottom: 5px
+    .sleek-prices{
+        font-weight: bold;
+        margin-bottom: 5px;
     }
-
-    .sleek-compare-price {
-        text-decoration: line-through
+    .sleek-compare-price{
+        text-decoration: line-through;
     }
-
-    .sleek-upsell button {
+    .sleek-upsell button{
         padding: 10px;
         border: none;
-        background: #2b3d51;
-        color: #fff;
-        font-weight: 700;
-        border-radius: 0;
+        background: #2B3D51;
+        color: #FFFFFF;
+        font-weight: bold;
+        border-radius: 0px;
         cursor: pointer;
-        width: 100%
+        width: 100%;
     }
-
-    .card {
-        display: table
+    
+    /*--------------------------------------*/
+    .card{
+        display: table;
     }
-
-    .card .sleek-form {
-        display: flex
+    .card .sleek-form{
+        display: flex;
     }
-
-    .sleek-card-atc,
-    .sleek-image,
-    .sleek-offer {
+    .card .sleek-image, .card .sleek-offer, .card .sleek-card-atc{
         display: table;
         align-self: center;
-        padding: 5px
+        padding: 5px;
     }
-
-    .card .sleek-offer {
-        flex-grow: 1
+    .card .sleek-offer{
+        flex-grow: 4;
     }
-
-    .card .sleek-prices {
-        text-align: center
+    .card .sleek-prices{
+        text-align: center;
     }
-
-    @media only screen and (max-width:600px) {
-        .sleek-upsell select {
-            max-width: 100px
-        }
-
-        .sleek-prices * {
-            display: inline-table
-        }
+    
+    /*--------------------------------------*/
+    .block, .block .sleek-form, .block .sleek-text, .block .sleek-atc{
+        display: table;
     }
-
-    .block,
-    .block .sleek-atc,
-    .block .sleek-form,
-    .block .sleek-text {
-        display: table
+    .sleek-block{
+        display: flex;
     }
-
-    .sleek-block {
-        display: flex
-    }
-
-    .block .sleek-image,
-    .block .sleek-offer {
+    .block .sleek-image, .block .sleek-offer{
         display: table;
         align-self: center;
-        padding: 5px
+        padding: 5px;
+    }
+    .block .sleek-offer{
+        flex-grow: 1;
+    }
+    
+    /*--------------------------------------*/
+    .half-block, .half-block .sleek-form, .half-block .sleek-text, .half-block .sleek-atc{
+        display: table;
+    }
+    .sleek-half-block{
+        display: flex;
+    }
+    .half-block .sleek-image, .half-block .sleek-offer{
+        display: table;
+        align-self: center;
+        padding: 5px;
+    }
+    .half-block .sleek-offer{
+        flex-grow: 1;
+    }
+    
+    /*--------------------------------------*/
+    .flat, .flat .sleek-form, .flat .sleek-text{
+        display: table;
+    }
+    .sleek-flat{
+        display: flex;
+    }
+    .flat .sleek-image, .flat .sleek-offer{
+        display: table;
+        align-self: center;
+        padding: 5px;
+    }
+    .flat .sleek-offer{
+        flex-grow: 1;
+    }
+    .flat .flex-select{
+        display: flex;
+        width: auto;
+        margin-top:  10px;
+    }
+    .flat .v-select{
+        display: table;
+        width: 100%;
+        align-items: center;
+        justify-content: space-between;
+    }
+    .flat .atc{
+        flex-grow: 4;
+    }
+    .flat .q-select{
+        margin-top: 0px;
+        margin-right: 10px;
+    }
+    
+    /*--------------------------------------*/
+    .compact, .compact .sleek-form, .compact .sleek-text, .compact .sleek-atc{
+        display: table;
+    }
+    .sleek-compact{
+        display: flex;
+    }
+    .compact .sleek-image, .compact .sleek-offer{
+        display: table;
+        align-self: center;
+        padding: 5px;
+    }
+    .compact .sleek-offer{
+        flex-grow: 1;
+    }
+    .compact .sleek-atc{
+        margin-top: 5px;
+    }
+    
+    
+    /*--------------------------------------*/
+    @media only screen and (max-width: 600px) {
+        .sleek-upsell{
+            width: 97%;
+            margin: 5px auto;
+        }
+        .card select{
+            max-width: 100px;
+        }
+        .block select{
+            max-width: 200px;
+        }
+        .sleek-prices *{
+            display: inline-table;
+        }
+        .block .sleek-form, .block .sleek-text, .block .sleek-atc{
+            width: 100%;
+        }
     }
 
-    .block .sleek-offer {
-        flex-grow: 1
-    }
 </style>
 <script>
     let offer = <?php echo json_encode($offer); ?>;
+    let updateing_offer = offer[0]['offer_id'];
     let products = <?php echo json_encode($products); ?>;
     let variants = <?php echo json_encode($variants); ?>;
     let blocks = <?php echo json_encode($blocks); ?>;
@@ -192,7 +257,7 @@ Not supports in Firefox and IE */
                         <div class="panel-body">
                             <h4>Offer Title <br /><small>(Optional) Your customers won't see this</small></h4>
                             <div style="display: table; width: 100%; margin-bottom: 10px;">
-                                <input type="text" class="form-control offer_title" value="" style="padding: 10px; border: 2px solid #666666; border-radius: 5px;" />
+                                <input type="text" class="form-control offer_title" style="padding: 10px; border: 2px solid #666666; border-radius: 5px;" />
                             </div>
                             <div style="display: table; width: 100%; margin-bottom: 10px; vertical-align: top;">
                                 <div class="panel products_handler">
@@ -500,96 +565,11 @@ Not supports in Firefox and IE */
                 <div class="col-sm-12" style="vertical-align: middle;">
                     <div class="sleekOffer">
 
-                        <div class="card sleek-upsell">
-
-                        </div>
-                        <div class="hidden halfBlock sleek-upsell">
-                            <form class="col-xs-12">
-                                <div class="col-sm-4 product-image-wrapper">
-                                    <img src="https://cdn.shopify.com/s/files/1/0295/4815/0859/products/man-adjusts-blue-tuxedo-bowtie_925x_656f2a36-34a8-4db2-9701-c01e49e9e5c0_x190.jpg?v=1590595412" class="img img-responsive product-image" />
-                                </div>
-                                <div class="col-sm-8 offer-wrapper">
-                                    <div class="col-xs-12 offer-text">Need a free shipping?</div>
-                                    <div class="col-xs-12 product-title">Blue Silk Tuxedo</div>
-                                    <div class="col-xs-12"><span class="product-price money">$ 200</span><span class="product-compare-price money">$ 200</span></div>
-                                    <div class="col-xs-12" style="margin: 0px; padding: 0px;">
-                                        <div class="col-xs-9" style="margin: 0px; padding: 0px;">
-                                            <select class="form-control v-select" style="margin: 0px; ">
-                                                <option>small</option>
-                                                <option>large</option>
-                                                <option>xl</option>
-                                            </select>
-                                        </div>
-                                        <div class="col-xs-3" style="margin: 0px; padding: 0px;">
-                                            <select class="form-control q-select" style="margin: 0px; ">
-                                                <option>1</option>
-                                                <option>2</option>
-                                                <option>3</option>
-                                            </select>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-sm-12">
-                                    <button type="submit" class="col-xs-12 form-controll btn form-submit-btn">ADD TO
-                                        CART</button>
-                                </div>
-                            </form>
-                        </div>
-                        <div class="hidden block sleek-upsell">
-
-                        </div>
-                        <div class="hidden flat sleek-upsell">
-                            <form class="col-xs-12">
-                                <div class="col-xs-12 offer-text">Need a free shipping?</div>
-                                <div class="col-sm-4 product-image-wrapper">
-                                    <img src="https://cdn.shopify.com/s/files/1/0295/4815/0859/products/man-adjusts-blue-tuxedo-bowtie_925x_656f2a36-34a8-4db2-9701-c01e49e9e5c0_x190.jpg?v=1590595412" class="img img-responsive product-image" />
-                                </div>
-                                <div class="col-sm-8 offer-wrapper">
-                                    <div class="col-xs-12 product-title">Blue Silk Tuxedo</div>
-                                    <div class="col-xs-12"><span class="product-price money">$ 200</span><span class="product-compare-price money">$ 200</span></div>
-                                    <div class="col-xs-12" style="margin: 0px; padding: 0px;">
-                                        <select class="form-control v-select col-xs-12" style="margin: 0px; ">
-                                            <option>small</option>
-                                            <option>large</option>
-                                            <option>xl</option>
-                                        </select>
-                                        <select class="form-control q-select col-xs-3" style="margin: 0px; ">
-                                            <option>1</option>
-                                            <option>2</option>
-                                            <option>3</option>
-                                        </select>
-                                        <button type="submit" class="form-controll btn col-xs-9 form-submit-btn">ADD TO
-                                            CART</button>
-                                    </div>
-                                </div>
-                            </form>
-                        </div>
-                        <div class="hidden compact sleek-upsell">
-                            <form class="col-xs-12">
-                                <div class="col-sm-4 product-image-wrapper">
-                                    <img src="https://cdn.shopify.com/s/files/1/0295/4815/0859/products/man-adjusts-blue-tuxedo-bowtie_925x_656f2a36-34a8-4db2-9701-c01e49e9e5c0_x190.jpg?v=1590595412" class="img img-responsive product-image" />
-                                </div>
-                                <div class="col-sm-8 offer-wrapper">
-                                    <div class="col-xs-12 offer-text">Need a free shipping?</div>
-                                    <div class="col-xs-12 product-title">Blue Silk Tuxedo</div>
-                                    <div class="col-xs-12"><span class="product-price money">$ 200</span><span class="product-compare-price money">$ 200</span></div>
-                                    <div class="col-xs-12" style="margin: 0px; padding: 0px;">
-                                        <select class="form-control col-xs-12 v-select" style="margin: 0px; ">
-                                            <option>small</option>
-                                            <option>large</option>
-                                            <option>xl</option>
-                                        </select>
-                                        <select class="form-control q-select" style="margin: 0px; ">
-                                            <option>1</option>
-                                            <option>2</option>
-                                            <option>3</option>
-                                        </select>
-                                        <button type="submit" class="col-xs-12 form-controll btn form-submit-btn">ADD TO
-                                            CART</button>
-                                    </div>
-                                </div>
-                            </form>
-                        </div>
+                        <div class="card sleek-upsell"></div>
+                        <div class="hidden half-block sleek-upsell"></div>
+                        <div class="hidden block sleek-upsell"></div>
+                        <div class="hidden flat sleek-upsell"></div>
+                        <div class="hidden compact sleek-upsell"></div>
 
                     </div>
                 </div>
@@ -597,7 +577,7 @@ Not supports in Firefox and IE */
                     <div class="offerPicker">
                         <img class="active-selector" src="<?php echo base_url(); ?>assets/images/card.png" onclick="$('.active-selector').removeClass('active-selector');$(this).addClass('active-selector');pick('card');" style="width: 100px; height: auto; margin: 5px; cursor: pointer;" />
                         <img src="<?php echo base_url(); ?>assets/images/block.png" onclick="$('.active-selector').removeClass('active-selector');$(this).addClass('active-selector');pick('block');" style="width: 100px; height: auto; margin: 5px; cursor: pointer;" />
-                        <img src="<?php echo base_url(); ?>assets/images/half_block.png" onclick="$('.active-selector').removeClass('active-selector');$(this).addClass('active-selector');pick('halfBlock');" style="width: 100px; height: auto; margin: 5px; cursor: pointer;" />
+                        <img src="<?php echo base_url(); ?>assets/images/half_block.png" onclick="$('.active-selector').removeClass('active-selector');$(this).addClass('active-selector');pick('half-block');" style="width: 100px; height: auto; margin: 5px; cursor: pointer;" />
                         <img src="<?php echo base_url(); ?>assets/images/flat.png" onclick="$('.active-selector').removeClass('active-selector');$(this).addClass('active-selector');pick('flat');" style="width: 100px; height: auto; margin: 5px; cursor: pointer;" />
                         <img src="<?php echo base_url(); ?>assets/images/compact.png" onclick="$('.active-selector').removeClass('active-selector');$(this).addClass('active-selector');pick('compact');" style="width: 100px; height: auto; margin: 5px; cursor: pointer;" />
                     </div>
@@ -910,7 +890,7 @@ Not supports in Firefox and IE */
     loadConditions();
     loadFields();
     populateFields();
-
+    
     function loadOffer() {
         let this_offer = offer[0];
         console.log(this_offer);
@@ -963,7 +943,7 @@ Not supports in Firefox and IE */
             $('.offer_status').prop('checked', false);
         }
     }
-
+    
     function addBlock() {
         let bid = "<?php echo time(); ?>_" + blocks.length;
         blocks.push({
@@ -1078,6 +1058,15 @@ Not supports in Firefox and IE */
                     offer[0]['atc'] = $('.general_offer_button_text').val();
                 }
             });
+        }
+    });
+    $('.offer_closable').change(function() {
+        if (this.checked) {
+            $('.reject_offer').show();
+            offer[0]['close'] = 'y';
+        } else {
+            $('.reject_offer').hide();
+            offer[0]['close'] = 'n';
         }
     });
     $('.offer_text').on('keyup change', function() {
@@ -1231,7 +1220,7 @@ Not supports in Firefox and IE */
 
     function hideAll() {
         $('.card').addClass('hidden');
-        $('.halfBlock').addClass('hidden');
+        $('.half-block').addClass('hidden');
         $('.block').addClass('hidden');
         $('.flat').addClass('hidden');
         $('.compact').addClass('hidden');
@@ -1301,6 +1290,8 @@ Not supports in Firefox and IE */
                 "ab_atc": ""
             });
         }
+        
+        loadUIs();
 
         var vs = createCORSRequest("GET", "<?php echo base_url(); ?>variants/" + p +
             "/<?php echo $token; ?>/<?php echo $shop; ?>");
@@ -1326,8 +1317,7 @@ Not supports in Firefox and IE */
                 console.log(products);
                 console.log(variants);
 
-                loadProductData(p);
-                loadUIs();
+                loadProductData();
             };
             vs.send();
         }
@@ -1356,6 +1346,7 @@ Not supports in Firefox and IE */
                 "ab_atc": ""
             });
         }
+        loadUIs();
 
         v = parseInt(variant);
         // if (variants.findIndex(x => x.vid == v) == -1) {
@@ -1372,8 +1363,7 @@ Not supports in Firefox and IE */
                 "vid": v
             });
 
-            loadProductData(product);
-            loadUIs();
+            loadProductData();
         }
 
         console.log(products);
@@ -1427,8 +1417,11 @@ Not supports in Firefox and IE */
     }
 
     function loadUIs() {
-        $('.card').html('');
-        $('.block').html('');
+        $('.card').html('<div class="reject_offer" style="display: none; position: relative; width: 100%; text-align: right;"><span style="font-size: 15px; cursor: pointer;">x</span></div>');
+        $('.block').html('<div class="reject_offer" style="display: none; position: relative; width: 100%; text-align: right;"><span style="font-size: 15px; cursor: pointer;">x</span></div>');
+        $('.half-block').html('<div class="reject_offer" style="display: none; position: relative; width: 100%; text-align: right;"><span style="font-size: 15px; cursor: pointer;">x</span></div>');
+        $('.flat').html('<div class="reject_offer" style="display: none; position: relative; width: 100%; text-align: right;"><span style="font-size: 15px; cursor: pointer;">x</span></div>');
+        $('.compact').html('<div class="reject_offer" style="display: none; position: relative; width: 100%; text-align: right;"><span style="font-size: 15px; cursor: pointer;">x</span></div>');
 
         $(products).each(function(i, e) {
             var product_id = products[i]['product'];
@@ -1440,36 +1433,25 @@ Not supports in Firefox and IE */
                     var s_data = data['shop'];
                     var datacell = data['product'];
                     // console.log(data);
-                    let card_ui = '<form class="sleek-form" data-product-index="' + i + '"> <div class="sleek-image"> <img src="' + datacell[
-                            'image']['src'] +
-                        '"/> </div><div class="sleek-offer"> <div class="sleek-text">Need Free Shipping?</div><div class="sleek-title">' +
-                        datacell['title'] +
-                        '</div><div class="sleek-selectors"> <div class="offer_fields_holder o_h_' + product_id + '"></div><select class="v-select v-' + product_id +
-                        '"></select> <select class="q-select q-' + product_id +
-                        '"></select> </div></div><div class="sleek-card-atc"> <div class="sleek-prices"> <span class="sleek-price money">' +
-                        s_data['currency'] + ' ' + datacell['variants'][0]['price'] +
-                        '</span> <span class="sleek-compare-price money">' +
-                        s_data['currency'] + ' ' + datacell['variants'][0]['price'] +
-                        '</span> </div><button class="sleek-atc" type="submit" onclick="return false;">' + $(
-                            '.offer_button_text').val() + '</button> </div></form>';
+                    
+                    let card_ui = '<form class="sleek-form" data-product-index="' + i + '"> <div class="sleek-image"> <img src="' + datacell['image']['src'] + '"/> </div><div class="sleek-offer"> <div class="sleek-text">Need Free Shipping?</div><div class="sleek-title">' + datacell['title'] + '</div><div class="sleek-selectors"> <div class="offer_fields_holder o_h_' + product_id + '"></div> <select class="v-select v-' + product_id + '"></select> <select class="q-select q-' + product_id + '"></select> </div></div><div class="sleek-card-atc"> <div class="sleek-prices"> <span class="sleek-price money">' + s_data['currency'] + ' ' + datacell['variants'][0]['price'] + '</span> <span class="sleek-compare-price money">' + s_data['currency'] + ' ' + datacell['variants'][0]['price'] + '</span> </div><button class="sleek-atc" type="submit" onclick="return false;">' + $('.offer_button_text').val() + '</button> </div></form>';
 
                     let block_ui =
-                        '<form class="sleek-form" data-product-index="' + i + '"> <div class="sleek-text">Need Free Shipping?</div><div class="sleek-block"> <div class="sleek-image"> <img src="' +
-                        datacell[
-                            'image']['src'] +
-                        '"/> </div><div class="sleek-offer"> <div class="sleek-title">' +
-                        datacell['title'] +
-                        '</div><div class="sleek-prices"> <span class="sleek-price money">' +
-                        s_data['currency'] + ' ' + datacell['variants'][0]['price'] +
-                        '</span> <span class="sleek-compare-price money">' +
-                        s_data['currency'] + ' ' + datacell['variants'][0]['price'] +
-                        '</span> </div><div class="sleek-selectors"> <div class="offer_fields_holder o_h_' + product_id + '"></div><select class="v-select v-' + product_id +
-                        '"></select> <select class="q-select q-' + product_id +
-                        '"></select> </div></div></div><button class="sleek-atc" type="submit" onclick="return false;">' +
-                        $(
-                            '.offer_button_text').val() + '</button> </form>';
+                        '<form class="sleek-form" data-product-index="' + i + '"> <div class="sleek-text">Need Free Shipping?</div><div class="sleek-block"> <div class="sleek-image"> <img src="' + datacell['image']['src'] + '"/> </div><div class="sleek-offer"> <div class="sleek-title">' + datacell['title'] + '</div><div class="sleek-prices"> <span class="sleek-price money">' + s_data['currency'] + ' ' + datacell['variants'][0]['price'] + '</span> <span class="sleek-compare-price money">' + s_data['currency'] + ' ' + datacell['variants'][0]['price'] + '</span> </div><div class="sleek-selectors"> <div class="offer_fields_holder o_h_' + product_id + '"></div> <select class="v-select v-' + product_id + '"></select> <select class="q-select q-' + product_id + '"></select> </div></div></div><button class="sleek-atc" type="submit" onclick="return false;">' + $('.offer_button_text').val() + '</button> </form>';
+                        
+                    let half_block_ui =
+                        '<form class="sleek-form" data-product-index="' + i + '"> <div class="sleek-half-block"> <div class="sleek-image"> <img src="' + datacell['image']['src'] + '"/> </div><div class="sleek-offer"> <div class="sleek-text">Need Free Shipping?</div><div class="sleek-title">' + datacell['title'] + '</div><div class="sleek-prices"> <span class="sleek-price money">' + s_data['currency'] + ' ' + datacell['variants'][0]['price'] + '</span> <span class="sleek-compare-price money">' + s_data['currency'] + ' ' + datacell['variants'][0]['price'] + '</span> </div><div class="sleek-selectors"> <div class="offer_fields_holder o_h_' + product_id + '"></div> <select class="v-select v-' + product_id + '"></select> <select class="q-select q-' + product_id + '"></select> </div></div></div><button class="sleek-atc" type="submit" onclick="return false;">' + $('.offer_button_text').val() + '</button> </form>';
+                        
+                    let flat_ui = 
+                        '<form class="sleek-form" data-product-index="' + i + '"> <div class="sleek-text">Need Free Shipping?</div><div class="sleek-flat"> <div class="sleek-image"> <img src="' + datacell['image']['src'] + '"/> </div><div class="sleek-offer"> <div class="sleek-title">' + datacell['title'] + '</div><div class="sleek-prices"> <span class="sleek-price money">' + s_data['currency'] + ' ' + datacell['variants'][0]['price'] + '</span> <span class="sleek-compare-price money">' + s_data['currency'] + ' ' + datacell['variants'][0]['price'] + '</span> </div><div class="sleek-selectors"> <div class="offer_fields_holder o_h_' + product_id + '"></div> <select class="v-select v-' + product_id + '"></select> <div class="flex-select"> <select class="q-select q-' + product_id + '"></select> <button class="sleek-atc" type="submit" onclick="return false;">' + $('.offer_button_text').val() + '</button> </div></div></div></div></form>'
+                        
+                    let compact_ui = 
+                        '<form class="sleek-form" data-product-index="' + i + '"> <div class="sleek-compact"> <div class="sleek-image"> <img src="' + datacell['image']['src'] + '"/> </div><div class="sleek-offer"> <div class="sleek-text">Need Free Shipping?</div><div class="sleek-title">' + datacell['title'] + '</div><div class="sleek-prices"> <span class="sleek-price money">' + s_data['currency'] + ' ' + datacell['variants'][0]['price'] + '</span> <span class="sleek-compare-price money">' + s_data['currency'] + ' ' + datacell['variants'][0]['price'] + '</span> </div><div class="sleek-selectors"> <div class="offer_fields_holder o_h_' + product_id + '"></div> <select class="v-select v-' + product_id + '"></select> <select class="q-select q-' + product_id + '"></select> </div><button class="sleek-atc" type="submit" onclick="return false;">' + $('.offer_button_text').val() + '</button> </div></div></form>'
                     $('.card').append(card_ui);
                     $('.block').append(block_ui);
+                    $('.half-block').append(half_block_ui);
+                    $('.flat').append(flat_ui);
+                    $('.compact').append(compact_ui);
 
                     $(datacell['variants']).each(function(i) {
                         // console.log(datacell['variants'][i]['title']);
@@ -1482,7 +1464,6 @@ Not supports in Firefox and IE */
                         $('.q-' + product_id).append('<option value="' + i + '">' +
                             i + '</option>')
                     }
-                    $('.sleek-title')
                 };
                 product_data.send();
             }
@@ -1497,8 +1478,8 @@ Not supports in Firefox and IE */
         console.log(products);
         console.log(variants);
 
+        loadUIs();
         loadProductData();
-        loadUIs(product);
     }
 
     $('#conditionSelector').change(function() {
@@ -1732,6 +1713,7 @@ Not supports in Firefox and IE */
 
         loadFields();
         populateFields();
+
         clear_selections();
     });
 
@@ -2124,27 +2106,30 @@ Not supports in Firefox and IE */
     };
 
     $('.saveOffer').click(function() {
-        alert('Work in progress');
-        // $.ajax({
-        //     type: "POST",
-        //     url: base_url + 'create_offers',
-        //     data: {
-        //         offer,
-        //         products,
-        //         variants,
-        //         blocks,
-        //         conditions,
-        //         fields,
-        //         choices
-        //     },
-        //     success: function(response) {
-        //         window.location.href = base_url + "edit_offer/<?php echo $shop; ?>/<?php echo $token ?>/" + response;
-        //         //$('.data').html(response);
-        //     },
-        //     error: function() {
-        //         alert('An error occured');
-        //     }
-        // });
+        $.ajax({
+            type: "POST",
+            url: base_url + 'update_offers/'+updateing_offer,
+            data: {
+                offer,
+                products,
+                variants,
+                blocks,
+                conditions,
+                fields,
+                choices
+            },
+            success: function(response) {
+                alert('Succesfully updated offer '+response);
+                // console.log(response);
+                window.location.href = base_url + "edit_offer/<?php echo $shop; ?>/<?php echo $token ?>/" + response;
+                //$('.data').html(response);
+            },
+            error: function(response) {
+                alert('An error occured');
+                console.log(response);
+                console.log(response.responseText);
+            }
+        });
 
     });
 
@@ -2153,7 +2138,6 @@ Not supports in Firefox and IE */
             $(products).each(function(i, e) {
                 var pid = products[i]['product'];
                 let o_fields = fields.filter(e => e.pid == pid);
-                console.log("ofields " + pid);
                 console.log(o_fields);
                 if (o_fields.length > 0) {
                     $('.o_h_' + pid).html('');
@@ -2269,5 +2253,6 @@ Not supports in Firefox and IE */
                 }
             });
         }
+
     }
 </script>

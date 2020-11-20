@@ -393,38 +393,7 @@
                                         </div>
                                     </form>
                                 </div>
-                                <div class="hidden halfBlock sleek-upsell">
-                                    <form class="col-xs-12">
-                                        <div class="col-sm-4 product-image-wrapper">
-                                            <img src="https://cdn.shopify.com/s/files/1/0295/4815/0859/products/man-adjusts-blue-tuxedo-bowtie_925x_656f2a36-34a8-4db2-9701-c01e49e9e5c0_x190.jpg?v=1590595412" class="img img-responsive product-image" />
-                                        </div>
-                                        <div class="col-sm-8 offer-wrapper">
-                                            <div class="col-xs-12 offer-text">Need a free shipping?</div>
-                                            <div class="col-xs-12 product-title">Blue Silk Tuxedo</div>
-                                            <div class="col-xs-12"><span class="product-price money">$ 200</span><span class="product-compare-price money">$ 200</span></div>
-                                            <div class="col-xs-12" style="margin: 0px; padding: 0px;">
-                                                <div class="col-xs-9" style="margin: 0px; padding: 0px;">
-                                                    <select class="form-control v-select" style="margin: 0px; ">
-                                                        <option>small</option>
-                                                        <option>large</option>
-                                                        <option>xl</option>
-                                                    </select>
-                                                </div>
-                                                <div class="col-xs-3" style="margin: 0px; padding: 0px;">
-                                                    <select class="form-control q-select" style="margin: 0px; ">
-                                                        <option>1</option>
-                                                        <option>2</option>
-                                                        <option>3</option>
-                                                    </select>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-sm-12">
-                                            <button type="submit" class="col-xs-12 form-controll btn form-submit-btn">ADD TO
-                                                CART</button>
-                                        </div>
-                                    </form>
-                                </div>
+                        
                                 <div class="hidden block sleek-upsell">
                                     <form class="sleek-form">
                                         <div class="sleek-text">Need Free Shipping?</div>
@@ -455,54 +424,97 @@
                                         <button class="sleek-atc" type="submit" onclick="return false;">ADD TO CART</button>
                                     </form>
                                 </div>
-                                <div class="hidden flat sleek-upsell">
-                                    <form class="col-xs-12">
-                                        <div class="col-xs-12 offer-text">Need a free shipping?</div>
-                                        <div class="col-sm-4 product-image-wrapper">
-                                            <img src="https://cdn.shopify.com/s/files/1/0295/4815/0859/products/man-adjusts-blue-tuxedo-bowtie_925x_656f2a36-34a8-4db2-9701-c01e49e9e5c0_x190.jpg?v=1590595412" class="img img-responsive product-image" />
+                        
+                                <div class="hidden half-block sleek-upsell">
+                                    <form class="sleek-form">
+                                        <div class="sleek-half-block">
+                                            <div class="sleek-image">
+                                                <img src="https://cdn.shopify.com/s/files/1/0295/4815/0859/products/man-adjusts-blue-tuxedo-bowtie_925x_656f2a36-34a8-4db2-9701-c01e49e9e5c0_x190.jpg?v=1590595412"/>
+                                            </div>
+                                            <div class="sleek-offer">
+                                                <div class="sleek-text">Need Free Shipping?</div>
+                                                <div class="sleek-title">Blue silk tuxedo</div>
+                                                <div class="sleek-prices">
+                                                    <span class="sleek-price money">KES 200</span>
+                                                    <span class="sleek-compare-price money">KES 200</span>
+                                                </div>
+                                                <div class="sleek-selectors">
+                                                    <select class="v-select">
+                                                        <option>small one very loong text here dfgdfsgsdfg sdf gsdf gsdf g</option>
+                                                        <option>large ones very loong text heresd fgsd fg sdfgsdf gdf gdfg</option>
+                                                        <option>xl for fatty very loong text here sdef gsdfg sdfg sdfgsdf</option>
+                                                    </select>
+                                                    <select class="q-select">
+                                                        <option>1</option>
+                                                        <option>2</option>
+                                                        <option>3</option>
+                                                    </select>
+                                                </div>
+                                            </div>
                                         </div>
-                                        <div class="col-sm-8 offer-wrapper">
-                                            <div class="col-xs-12 product-title">Blue Silk Tuxedo</div>
-                                            <div class="col-xs-12"><span class="product-price money">$ 200</span><span class="product-compare-price money">$ 200</span></div>
-                                            <div class="col-xs-12" style="margin: 0px; padding: 0px;">
-                                                <select class="form-control v-select col-xs-12" style="margin: 0px; ">
-                                                    <option>small</option>
-                                                    <option>large</option>
-                                                    <option>xl</option>
-                                                </select>
-                                                <select class="form-control q-select col-xs-3" style="margin: 0px; ">
-                                                    <option>1</option>
-                                                    <option>2</option>
-                                                    <option>3</option>
-                                                </select>
-                                                <button type="submit" class="form-controll btn col-xs-9 form-submit-btn">ADD TO
-                                                    CART</button>
+                                        <button class="sleek-atc" type="submit" onclick="return false;">ADD TO CART</button>
+                                    </form>
+                                </div>
+                        
+                                <div class="hidden flat sleek-upsell">
+                                    <form class="sleek-form">
+                                        <div class="sleek-text">Need Free Shipping?</div>
+                                        <div class="sleek-flat">
+                                            <div class="sleek-image">
+                                                <img src="https://cdn.shopify.com/s/files/1/0295/4815/0859/products/man-adjusts-blue-tuxedo-bowtie_925x_656f2a36-34a8-4db2-9701-c01e49e9e5c0_x190.jpg?v=1590595412"/>
+                                            </div>
+                                            <div class="sleek-offer">
+                                                <div class="sleek-title">Blue silk tuxedo</div>
+                                                <div class="sleek-prices">
+                                                    <span class="sleek-price money">KES 200</span>
+                                                    <span class="sleek-compare-price money">KES 200</span>
+                                                </div>
+                                                <div class="sleek-selectors">
+                                                    <select class="v-select">
+                                                        <option>small one very loong text here dfgdfsgsdfg sdf gsdf gsdf g</option>
+                                                        <option>large ones very loong text heresd fgsd fg sdfgsdf gdf gdfg</option>
+                                                        <option>xl for fatty very loong text here sdef gsdfg sdfg sdfgsdf</option>
+                                                    </select>
+                                                    <div class="flex-select">
+                                                        <select class="q-select">
+                                                            <option>1</option>
+                                                            <option>2</option>
+                                                            <option>3</option>
+                                                        </select>
+                                                        <button class="sleek-atc" type="submit" onclick="return false;">ADD TO CART</button>
+                                                    </div>
+                                                </div>
                                             </div>
                                         </div>
                                     </form>
                                 </div>
+                        
                                 <div class="hidden compact sleek-upsell">
-                                    <form class="col-xs-12">
-                                        <div class="col-sm-4 product-image-wrapper">
-                                            <img src="https://cdn.shopify.com/s/files/1/0295/4815/0859/products/man-adjusts-blue-tuxedo-bowtie_925x_656f2a36-34a8-4db2-9701-c01e49e9e5c0_x190.jpg?v=1590595412" class="img img-responsive product-image" />
-                                        </div>
-                                        <div class="col-sm-8 offer-wrapper">
-                                            <div class="col-xs-12 offer-text">Need a free shipping?</div>
-                                            <div class="col-xs-12 product-title">Blue Silk Tuxedo</div>
-                                            <div class="col-xs-12"><span class="product-price money">$ 200</span><span class="product-compare-price money">$ 200</span></div>
-                                            <div class="col-xs-12" style="margin: 0px; padding: 0px;">
-                                                <select class="form-control col-xs-12 v-select" style="margin: 0px; ">
-                                                    <option>small</option>
-                                                    <option>large</option>
-                                                    <option>xl</option>
-                                                </select>
-                                                <select class="form-control q-select" style="margin: 0px; ">
-                                                    <option>1</option>
-                                                    <option>2</option>
-                                                    <option>3</option>
-                                                </select>
-                                                <button type="submit" class="col-xs-12 form-controll btn form-submit-btn">ADD TO
-                                                    CART</button>
+                                    <form class="sleek-form">
+                                        <div class="sleek-compact">
+                                            <div class="sleek-image">
+                                                <img src="https://cdn.shopify.com/s/files/1/0295/4815/0859/products/man-adjusts-blue-tuxedo-bowtie_925x_656f2a36-34a8-4db2-9701-c01e49e9e5c0_x190.jpg?v=1590595412"/>
+                                            </div>
+                                            <div class="sleek-offer">
+                                                <div class="sleek-text">Need Free Shipping?</div>
+                                                <div class="sleek-title">Blue silk tuxedo</div>
+                                                <div class="sleek-prices">
+                                                    <span class="sleek-price money">KES 200</span>
+                                                    <span class="sleek-compare-price money">KES 200</span>
+                                                </div>
+                                                <div class="sleek-selectors">
+                                                    <select class="v-select">
+                                                        <option>small one very loong text here dfgdfsgsdfg sdf gsdf gsdf g</option>
+                                                        <option>large ones very loong text heresd fgsd fg sdfgsdf gdf gdfg</option>
+                                                        <option>xl for fatty very loong text here sdef gsdfg sdfg sdfgsdf</option>
+                                                    </select>
+                                                    <select class="q-select">
+                                                        <option>1</option>
+                                                        <option>2</option>
+                                                        <option>3</option>
+                                                    </select>
+                                                </div>
+                                                <button class="sleek-atc" type="submit" onclick="return false;">ADD TO CART</button>
                                             </div>
                                         </div>
                                     </form>
@@ -514,7 +526,7 @@
                             <div class="offerPicker">
                                 <img class="active-selector" src="<?php echo base_url(); ?>assets/images/card.png" onclick="$('.active-selector').removeClass('active-selector');$(this).addClass('active-selector');pick('card');" style="width: 100px; height: auto; margin: 5px; cursor: pointer;" />
                                 <img src="<?php echo base_url(); ?>assets/images/block.png" onclick="$('.active-selector').removeClass('active-selector');$(this).addClass('active-selector');pick('block');" style="width: 100px; height: auto; margin: 5px; cursor: pointer;" />
-                                <img src="<?php echo base_url(); ?>assets/images/half_block.png" onclick="$('.active-selector').removeClass('active-selector');$(this).addClass('active-selector');pick('halfBlock');" style="width: 100px; height: auto; margin: 5px; cursor: pointer;" />
+                                <img src="<?php echo base_url(); ?>assets/images/half_block.png" onclick="$('.active-selector').removeClass('active-selector');$(this).addClass('active-selector');pick('half-block');" style="width: 100px; height: auto; margin: 5px; cursor: pointer;" />
                                 <img src="<?php echo base_url(); ?>assets/images/flat.png" onclick="$('.active-selector').removeClass('active-selector');$(this).addClass('active-selector');pick('flat');" style="width: 100px; height: auto; margin: 5px; cursor: pointer;" />
                                 <img src="<?php echo base_url(); ?>assets/images/compact.png" onclick="$('.active-selector').removeClass('active-selector');$(this).addClass('active-selector');pick('compact');" style="width: 100px; height: auto; margin: 5px; cursor: pointer;" />
                             </div>
@@ -544,7 +556,7 @@
 
     function hideAll() {
         $('.card').addClass('hidden');
-        $('.halfBlock').addClass('hidden');
+        $('.half-block').addClass('hidden');
         $('.block').addClass('hidden');
         $('.flat').addClass('hidden');
         $('.compact').addClass('hidden');
@@ -1034,6 +1046,7 @@
     });
 </script>
 <style>
+.active-selector{border: 2px solid #981B1B; border-radius: 5px;}
 .sleek-upsell, .sleek-upsell button, .sleek-upsell img{ border-width: 0px; border-style: solid;}
     .whole {
         top: 0vh;
@@ -1097,95 +1110,165 @@
     }
     
     .sleek-upsell{
-        background: #ECF0F1;
-        color: #2B3D51;
-        padding: 5px;
-        font-family: inherit;
-        vertical-align: middle;
-        margin: 5px;
+    background: #ECF0F1;
+    color: #2B3D51;
+    padding: 5px;
+    font-family: inherit;
+    vertical-align: middle;
+    margin: 5px;
+}
+.sleek-image img {
+    width: 100px;
+}
+.sleek-text {
+    font-weight: bold;
+}
+.sleek-upsell select{
+    padding: 4px;
+    margin-top: 5px;
+}
+.sleek-prices{
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+.sleek-compare-price{
+    text-decoration: line-through;
+}
+.sleek-upsell button{
+    padding: 10px;
+    border: none;
+    background: #2B3D51;
+    color: #FFFFFF;
+    font-weight: bold;
+    border-radius: 0px;
+    cursor: pointer;
+    width: 100%;
+}
+
+/*--------------------------------------*/
+.card{
+    display: table;
+}
+.card .sleek-form{
+    display: flex;
+}
+.card .sleek-image, .card .sleek-offer, .card .sleek-card-atc{
+    display: table;
+    align-self: center;
+    padding: 5px;
+}
+.card .sleek-offer{
+    flex-grow: 4;
+}
+.card .sleek-prices{
+    text-align: center;
+}
+
+/*--------------------------------------*/
+.block, .block .sleek-form, .block .sleek-text, .block .sleek-atc{
+    display: table;
+}
+.sleek-block{
+    display: flex;
+}
+.block .sleek-image, .block .sleek-offer{
+    display: table;
+    align-self: center;
+    padding: 5px;
+}
+.block .sleek-offer{
+    flex-grow: 1;
+}
+
+/*--------------------------------------*/
+.half-block, .half-block .sleek-form, .half-block .sleek-text, .half-block .sleek-atc{
+    display: table;
+}
+.sleek-half-block{
+    display: flex;
+}
+.half-block .sleek-image, .half-block .sleek-offer{
+    display: table;
+    align-self: center;
+    padding: 5px;
+}
+.half-block .sleek-offer{
+    flex-grow: 1;
+}
+
+/*--------------------------------------*/
+.flat, .flat .sleek-form, .flat .sleek-text{
+    display: table;
+}
+.sleek-flat{
+    display: flex;
+}
+.flat .sleek-image, .flat .sleek-offer{
+    display: table;
+    align-self: center;
+    padding: 5px;
+}
+.flat .sleek-offer{
+    flex-grow: 1;
+}
+.flat .flex-select{
+    display: flex;
+    width: auto;
+    margin-top:  10px;
+}
+.flat .v-select{
+    display: table;
+    width: 100%;
+    align-items: center;
+    justify-content: space-between;
+}
+.flat .atc{
+    flex-grow: 4;
+}
+.flat .q-select{
+    margin-top: 0px;
+    margin-right: 10px;
+}
+
+/*--------------------------------------*/
+.compact, .compact .sleek-form, .compact .sleek-text, .compact .sleek-atc{
+    display: table;
+}
+.sleek-compact{
+    display: flex;
+}
+.compact .sleek-image, .compact .sleek-offer{
+    display: table;
+    align-self: center;
+    padding: 5px;
+}
+.compact .sleek-offer{
+    flex-grow: 1;
+}
+.compact .sleek-atc{
+    margin-top: 5px;
+}
+
+
+/*--------------------------------------*/
+@media only screen and (max-width: 600px) {
+    .sleek-upsell{
+        width: 97%;
+        margin: 5px auto;
     }
-    .sleek-image img {
-        width: 100px;
+    .card select{
+        max-width: 100px;
     }
-    .sleek-text {
-        font-weight: bold;
+    .block select{
+        max-width: 200px;
     }
-    .sleek-upsell select{
-        padding: 4px;
-        margin-top: 5px;
+    .sleek-prices *{
+        display: inline-table;
     }
-    .sleek-prices{
-        font-weight: bold;
-        margin-bottom: 5px;
-    }
-    .sleek-compare-price{
-        text-decoration: line-through;
-    }
-    .sleek-upsell button{
-        padding: 10px;
-        border: none;
-        background: #2B3D51;
-        color: #FFFFFF;
-        font-weight: bold;
-        border-radius: 0px;
-        cursor: pointer;
+    .block .sleek-form, .block .sleek-text, .block .sleek-atc{
         width: 100%;
     }
-    
-    /*--------------------------------------*/
-    .card{
-        display: table;
-    }
-    .card .sleek-form{
-        display: flex;
-    }
-    .card .sleek-image, .card .sleek-offer, .card .sleek-card-atc{
-        display: table;
-        align-self: center;
-        padding: 5px;
-    }
-    .card .sleek-offer{
-        flex-grow: 4;
-    }
-    .card .sleek-prices{
-        text-align: center;
-    }
-    
-    /*--------------------------------------*/
-    .block, .block .sleek-form, .block .sleek-text, .block .sleek-atc{
-        display: table;
-    }
-    .sleek-block{
-        display: flex;
-    }
-    .block .sleek-image, .block .sleek-offer{
-        display: table;
-        align-self: center;
-        padding: 5px;
-    }
-    .block .sleek-offer{
-        flex-grow: 1;
-    }
-    
-    
-    /*--------------------------------------*/
-    @media only screen and (max-width: 600px) {
-        .sleek-upsell{
-            width: 97%;
-            margin: 5px auto;
-        }
-        .card select{
-            max-width: 100px;
-        }
-        .block select{
-            max-width: 200px;
-        }
-        .sleek-prices *{
-            display: inline-table;
-        }
-        .block .sleek-form, .block .sleek-text, .block .sleek-atc{
-            width: 100%;
-        }
-    }
+}
+
 
 </style>

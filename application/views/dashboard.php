@@ -114,7 +114,7 @@
                 <span> <i class="btn btn-primary btn-sm entypo-help"></i></span>
             </span>
         </div>
-        <div style="height: 100vh; overflow-y: auto; flex-grow: 4; padding-top: 10px; padding-left: 10px; padding-right: 10px; padding-bottom: 0px;">
+        <div style="height: 100vh; overflow-y: auto; flex-grow: 4; padding-top: 10px; padding-left: 100px; padding-right: 100px; padding-bottom: 0px; background: #F1F2F3;">
             <div class="row">
                 <div class="col-md-4 col-sm-6">
                     <div class="tile-stats tile-white stat-tile" style="box-shadow: 0px 0px 5px rgba(2, 2, 2, 0.2);">
@@ -154,21 +154,21 @@
                     });
                 });
             </script>
-            <table class="table table-bordered datatable" id="table-4">
-                <thead>
-                    <tr>
-                        <th>Offer ID</th>
-                        <th>Offer</th>
-                        <th>Active</th>
-                        <th></th>
+            <table class="datatable" id="table-4" style="border: none;">
+                <thead style="border: none;">
+                    <tr style="border: none;">
+                        <th style="border: none;"></th>
+                        <th style="border: none;"></th>
+                        <th style="border: none; flex-grow: 4;"></th>
+                        <th style="border: none;"></th>
                     </tr>
                 </thead>
-                <tbody>
+                <tbody style="border: none;">
                     <?php
                     foreach ($offer as $key => $fetch) : ?>
-                        <tr>
-                            <td style="vertical-align: middle; text-align: center;"><?php echo $key; ?></td>
-                            <td style="vertical-align: middle;">
+                        <tr style="">
+                            <td style="vertical-align: middle; border: none; text-align: center; color: #FFFFFF; font-size: 1px;"><?php echo $key; ?></td>
+                            <td style="vertical-align: middle; border: none; flex-grow: 4;">
                                 <span style="font-weight: bold;">
                                     <?php
                                     if ($fetch['offer'][0]['title'] == '') {
@@ -289,7 +289,7 @@
                                         ?>
                                 </ul>
                             </td>
-                            <td style="vertical-align: middle;">
+                            <td style="vertical-align: middle; border: none;">
                                 <span class="col-xs-12 status">
                                     <label class="switch">
                                         <input onchange="activeStat(<?php echo $key; ?>, $(this));" class="switcheck offer_status" type="checkbox" value="<?php if ($fetch['offer'][0]['status'] == '') {
@@ -301,7 +301,7 @@
                                     </label>
                                 </span>
                             </td>
-                            <td style="text-align: center; vertical-align: middle;">
+                            <td style="text-align: center; vertical-align: middle; border: none;">
                                 <ul class="user-info" style="display: table; text-align: center; cursor: pointer;">
                                     <li class="profile-info dropdown"><span class="dropdown-toggle" data-toggle="dropdown"><i class="entypo-dot-3"></i></span>
                                         <ul class="dropdown-menu pull-right">
@@ -325,6 +325,33 @@
 </div>
 
 <style>
+    .dataTables_wrapper{
+        background: #ffffff;
+        padding-left: 10px;
+        padding-right: 10px;
+        border-radius: 10px;
+    }
+    .datatable *, .datatable, .dataTables_wrapper{
+        border: none !important;
+    }
+    .datatable thead, .datatable tbody{
+        display: table; 
+        border: none; 
+        width: 100%;
+    }
+    .datatable tr{
+        display: flex; 
+        border: none; 
+        width: 100%;
+        align-items: center;
+        justify-content: space-between;
+    }
+    .datatable tbody tr{
+        border-radius: 10px; 
+        margin-top: 10px; 
+        margin-bottom: 10px; 
+        box-shadow: 0px 0px 10px rgba(6, 6, 6, 0.2); 
+    }
     .whats, .whats span, .whats a{
         color: #ffffff;
         width: 100%;

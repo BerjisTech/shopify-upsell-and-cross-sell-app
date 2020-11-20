@@ -58,7 +58,8 @@ jQuery(document).ready(function () {
     let drawer_selector = settings.drawer_location;
     let cart_selector = settings.cart_location;
 
-    next_offer();
+    // next_offer();
+    collection_based();
     
     function next_offer(){
         if (cart["item_count"] > 0) {
@@ -84,6 +85,67 @@ jQuery(document).ready(function () {
                 // console.log(i);
                 // console.log(pos);
                 // console.log(o_arr[pos]);
+            }
+        }
+    }
+    
+    function collection_based(){
+        if(page.includes('/cart')){
+            if (cart["item_count"] > 0) {
+                let collects = offers['collects'];
+                let items = cart['items'];
+                let pid = '';
+                console.log('items');
+                console.log(items);
+                console.log('Looping through ' + items.length + ' items');
+                for(let i = 0; i < items.length; i++){
+                    pid = items[i]['product_id'];
+                    console.log('Checking items ' + i + ' : ' + pid);
+                    if(sessionStorage.getItem('c_upsold_' + pid) == 'y'){
+                        console.log('This has already been upsold');
+                        continue;
+                    }else{
+                        console.log('Creating upsell for ' + pid);
+                        if(collects.findIndex(x => x.product_id == pid) != -1){
+                            sessionStorage.setItem('c_upsold_' + pid, 'y');
+                            let n = collects.filter(x => x.product_id == pid);
+                            let cid = n[0]['collection_id'];
+                            let cb = collects.filter(x => x.collection_id == cid);
+                            
+                            console.log('Needed object');
+                            console.log(n);
+                            console.log('Collection ID ' + cid);
+                            console.log(cb);
+                            
+                            console.log('Looping through ' + cb.length + ' collection items');
+                            for(let c = 0; c < cb.length; c++){
+                                console.log('Checking collection item ' + c);
+                                if(sessionStorage.getItem('c_used_' + cb[c]['product_id']) == 'z'){
+                                    console.log('This item was already an upsell ' + cb[c]['product_id']);
+                                    continue;
+                                }else{
+                                    if(items.findIndex(x => x.product_id == cb[c]['product_id']) != -1){
+                                        sessionStorage.setItem('c_used_' + cb[c]['product_id'], 'z');
+                                        continue;
+                                    }else{
+                                        sessionStorage.setItem('c_used_' + cb[c]['product_id'], 'z');
+                                        console.log('Using ' + cb[c]['product_id'] + ' as an upsell for ' + pid);
+                                        // alert('Display '+cb[c]['product_id']);
+                                        load_c_based(cb[c]['product_id']);
+                                        break;  
+                                    }
+                                }
+                            }
+                            break;
+                            
+                        }
+                        
+                        else{
+                            console.log('This product aint part of a collection');
+                            continue;
+                        }
+                    }
+                }
             }
         }
     }
@@ -531,6 +593,41 @@ jQuery(document).ready(function () {
                 }
         }
 
+    }
+    
+    function load_c_based(pid){
+        let curr = Shopify.currency['active'];
+        $('<style>.sleek-upsell{background:#ecf0f1;color:#2b3d51;padding:5px;font-family:inherit;vertical-align:middle;margin:5px}.sleek-image img{width:100px}.sleek-text{font-weight:700}.sleek-upsell select{padding:4px;margin-top:5px}.sleek-prices{font-weight:700;margin-bottom:5px}.sleek-compare-price{text-decoration:line-through}.sleek-upsell button{padding:10px;border:none;background:#2b3d51;color:#fff;font-weight:700;border-radius:0;cursor:pointer;width:100%}.card{display:table}.card .sleek-form{display:flex}.sleek-card-atc,.sleek-image,.sleek-offer{display:table;align-self:center;padding:5px}.card .sleek-offer{flex-grow:1}.card .sleek-prices{text-align:center}@media only screen and (max-width:600px){.sleek-upsell select{max-width:100px}.sleek-prices *{display:inline-table}}.block,.block .sleek-atc,.block .sleek-form,.block .sleek-text{display:table}.sleek-block{display:flex}.block .sleek-image,.block .sleek-offer{display:table;align-self:center;padding:5px}.block .sleek-offer{flex-grow:1}</style>').insertBefore('form.cart');
+        $('<div class="card sleek-upsell"></div>').insertBefore('form.cart');
+        let oprods = offers['products'];
+        let index = oprods.findIndex(x => x.id == pid);
+        let datacell = oprods[index];
+        
+        let card_ui = '<form class="sleek-form" action="/cart/add" enctype="multipart/form-data" data-product-id="' + pid + '"> <div class="sleek-image"> <img src="' + datacell[
+            'image']['src'] +
+            '"/> </div><div class="sleek-offer"> <div class="sleek-text">Would you like an extra something? </div><div class="sleek-title">' +
+            datacell['title'] +
+            '</div><div class="sleek-selectors"> <div class="o_h_'+pid+'"></div> <select name="id" class="v-select v-' + pid +
+            '"></select> <select name="quantity" class="q-select q-' + pid +
+            '"></select> </div></div><div class="sleek-card-atc"> <div class="sleek-prices"> <span class="sleek-price money">' +
+            curr + ' ' + datacell['variants'][0]['price'] +
+            '</span> <span class="sleek-compare-price money">' +
+            curr + ' ' + datacell['variants'][0]['price'] +
+            '</span> </div><button class="sleek-atc" type="submit">YES PLEASE</button> </div></form>';
+
+        $('.card').append(card_ui);
+        $(datacell['variants']).each(function (i) {
+            // console.log(datacell['variants'][i]['title']);
+            $('.v-' + pid).append('<option value="' + datacell['variants'][i]['id'] +
+                '">' +
+                datacell['variants'][i]['title'] + ' (' + curr + ' ' +
+                datacell['variants'][i]['price'] + ')</option>');
+        });
+        for (i = 1; i <= 10; i++) {
+            $('.q-' + pid).append('<option value="' + i + '">' +
+                i + '</option>')
+        }
+        
     }
     
     function display_offer(oid) {
