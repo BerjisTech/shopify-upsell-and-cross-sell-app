@@ -74,11 +74,11 @@
     <div class="mwili">
         <div style="width: 50px; height: 100vh; background: #981B1B; display: flex; flex-direction: column; justify-content: space-between; align-items: center; text-align: center;">
             <span class="whats">
-                <a title="Settings" href="<?php echo base_url(); ?>settings/<?php echo $shop; ?>/<?php echo $token; ?>"><span class="btn btn-primary entypo-cog"></span></a>
-                <a title="Setup Wizard" href="<?php echo base_url(); ?>settings/<?php echo $shop; ?>/<?php echo $token; ?>"><span class="btn btn-primary entypo-feather"></span></a>
-                <a title="Subscription" href="<?php echo base_url(); ?>settings/<?php echo $shop; ?>/<?php echo $token; ?>"><span class="btn btn-primary entypo-credit-card"></span></a>
-                <span><a title="New Offer" href="<?php echo base_url(); ?>new_offer/<?php echo $shop; ?>/<?php echo $token; ?>"><span class="btn btn-primary btn-sm"><i class="entypo-plus"></i></span></a></span>
-                <span><a title="Stats" href="<?php echo base_url(); ?>stats/<?php echo $shop; ?>/<?php echo $token; ?>"><span class="btn btn-primary btn-sm"><i class="entypo-chart-line"></i></span></a></span>
+                <a title="Settings" href="<?php echo base_url(); ?>settings/<?php echo $shop; ?>/<?php echo $token; ?>?<?php echo $_SERVER['QUERY_STRING']; ?>"><span class="btn btn-primary entypo-cog"></span></a>
+                <a title="Setup Wizard" href="<?php echo base_url(); ?>settings/<?php echo $shop; ?>/<?php echo $token; ?>?<?php echo $_SERVER['QUERY_STRING']; ?>"><span class="btn btn-primary entypo-feather"></span></a>
+                <a title="Subscription" href="<?php echo base_url(); ?>settings/<?php echo $shop; ?>/<?php echo $token; ?>?<?php echo $_SERVER['QUERY_STRING']; ?>"><span class="btn btn-primary entypo-credit-card"></span></a>
+                <span><a title="New Offer" href="<?php echo base_url(); ?>new_offer/<?php echo $shop; ?>/<?php echo $token; ?>?<?php echo $_SERVER['QUERY_STRING']; ?>"><span class="btn btn-primary btn-sm"><i class="entypo-plus"></i></span></a></span>
+                <span><a title="Stats" href="<?php echo base_url(); ?>stats/<?php echo $shop; ?>/<?php echo $token; ?>?<?php echo $_SERVER['QUERY_STRING']; ?>"><span class="btn btn-primary btn-sm"><i class="entypo-chart-line"></i></span></a></span>
             </span>
             <span class="whats">
                 <span class="dropdown language-selector">
@@ -289,8 +289,8 @@
                                             <!-- Reverse Caret -->
                                             <li class="caret"></li>
                                             <!-- Profile sub-links -->
-                                            <li><a href="<?php echo base_url(); ?>edit_offer/<?php echo $shop; ?>/<?php echo $token; ?>/<?php echo $fetch['offer'][0]['offer_id']; ?>"><i class="entypo-pencil"></i>Edit</a></li>
-                                            <li><a href="<?php echo base_url(); ?>offer_stats/<?php echo $shop; ?>/<?php echo $fetch['offer'][0]['offer_id']; ?>">
+                                            <li><a href="<?php echo base_url(); ?>edit_offer/<?php echo $shop; ?>/<?php echo $token; ?>/<?php echo $fetch['offer'][0]['offer_id']; ?>?<?php echo $_SERVER['QUERY_STRING']; ?>"><i class="entypo-pencil"></i>Edit</a></li>
+                                            <li><a href="<?php echo base_url(); ?>offer_stats/<?php echo $shop; ?>/<?php echo $fetch['offer'][0]['offer_id']; ?>?<?php echo $_SERVER['QUERY_STRING']; ?>">
                                                     <i class="entypo-chart-line"></i>Stats</a></li>
                                             <li><a href="#"><i class="entypo-trash"></i>Delete</a></li>
                                         </ul>

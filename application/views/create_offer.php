@@ -2056,7 +2056,7 @@ Not supports in Firefox and IE */
     $('.saveOffer').click(function() {
         $.ajax({
             type: "POST",
-            url: base_url + 'create_offers',
+            url: base_url + 'create_offers?<?php echo $_SERVER['QUERY_STRING']; ?>',
             data: {
                 offer,
                 products,
@@ -2067,7 +2067,7 @@ Not supports in Firefox and IE */
                 choices
             },
             success: function(response) {
-                window.location.href = base_url + "edit_offer/<?php echo $shop; ?>/<?php echo $token ?>/" + response;
+                window.location.href = base_url + "edit_offer/<?php echo $shop; ?>/<?php echo $token ?>/" + response + '?<?php echo $_SERVER['QUERY_STRING']; ?>';
                 //$('.data').html(response);
             },
             error: function() {

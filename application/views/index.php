@@ -110,8 +110,7 @@
         <div class="main-content">
             <?php include $page_name . '.php'; ?>
         </div>
-    </div><?php include 'footer.php';
-            ?>
+    </div><?php include 'footer.php'; ?>
 </body>
 
 </html>

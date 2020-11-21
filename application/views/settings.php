@@ -1032,7 +1032,7 @@
         $('.saving').show();
         $.ajax({
             type: "POST",
-            url: base_url + 'update_settings',
+            url: base_url + 'update_settings?<?php echo $_SERVER['QUERY_STRING']; ?>',
             data: settings,
             success: function(response) {
                 console.log(response);

@@ -2101,7 +2101,7 @@ Not supports in Firefox and IE */
     $('.saveOffer').click(function() {
         $.ajax({
             type: "POST",
-            url: base_url + 'update_offers/'+updateing_offer,
+            url: base_url + 'update_offers/'+updateing_offer+'?<?php echo $_SERVER['QUERY_STRING']; ?>',
             data: {
                 offer,
                 products,
@@ -2114,7 +2114,7 @@ Not supports in Firefox and IE */
             success: function(response) {
                 alert('Succesfully updated offer '+response);
                 // console.log(response);
-                window.location.href = base_url + "edit_offer/<?php echo $shop; ?>/<?php echo $token ?>/" + response;
+                window.location.reload(false);
                 //$('.data').html(response);
             },
             error: function(response) {
