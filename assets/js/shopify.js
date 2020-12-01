@@ -831,6 +831,21 @@ jQuery(document).ready(function () {
             $('.sleek-form').submit(function(e){
                 e.preventDefault();
                 brgxczvy(oid, pid, $('.v-' + pid).val(), $('.q-' + pid).val(), datacell['variants'][0]['price'], 'add to cart', 'purchase');
+                $.ajax({
+                  type: 'POST', 
+                  url: '/cart/add.js',
+                  dataType: 'json', 
+                  data: $(this).serialize(),
+                  success: function(response){
+                      console.log(response);
+                      window.location.reload(false); 
+                  },
+                  error: function(response){
+                      console.log(response);
+                      $(this).find('button').html('Could not add product');
+                      setTimeout(function(){$(this).remove()}, 1000);
+                  }
+               });
             });
         });
         

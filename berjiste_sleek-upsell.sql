@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Nov 20, 2020 at 07:26 PM
+-- Generation Time: Nov 27, 2020 at 10:13 PM
 -- Server version: 10.3.25-MariaDB-cll-lve
 -- PHP Version: 7.3.6
 
@@ -234,15 +234,27 @@ CREATE TABLE `shops` (
   `shop_id` int(30) NOT NULL,
   `shop` varchar(10000) NOT NULL,
   `token` varchar(10000) NOT NULL,
-  `date` int(30) NOT NULL
+  `date` int(30) NOT NULL,
+  `type` text NOT NULL,
+  `name` text NOT NULL,
+  `price` text NOT NULL,
+  `bill_interval` text NOT NULL,
+  `capped_amount` text NOT NULL,
+  `terms` text NOT NULL,
+  `trial_days` text NOT NULL,
+  `test` text NOT NULL,
+  `on_install` text NOT NULL,
+  `created_at` text NOT NULL,
+  `updated_at` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `shops`
 --
 
-INSERT INTO `shops` (`shop_id`, `shop`, `token`, `date`) VALUES
-(1, 'berjis-tech-ltd', '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', 1605018387);
+INSERT INTO `shops` (`shop_id`, `shop`, `token`, `date`, `type`, `name`, `price`, `bill_interval`, `capped_amount`, `terms`, `trial_days`, `test`, `on_install`, `created_at`, `updated_at`) VALUES
+(1, 'berjis-tech-ltd', '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', 1605018387, 'RECURRING', 'Sleek', '19.99', 'EVERY_30_DAYS', '19.99', 'NO_TERMS', '14', 'true', '1', '', ''),
+(2, 'sleek-apps', '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', 1606424313, 'RECURRING', 'Sleek', '19.99', 'EVERY_30_DAYS', '19.99', 'NO_TERMS', '14', 'true', '1', '', '');
 
 -- --------------------------------------------------------
 
@@ -329,7 +341,8 @@ INSERT INTO `stats` (`stat_id`, `date`, `shop`, `offer`, `product`, `variant`, `
 (53, '1605889128', 'berjis-tech-ltd.myshopify.com', '10', '4582708969547', '32337487724619', '3', '\"\"', '\"\"', 'impression', 'hover', '/cart', 'desktop', 'Chrome', '[4582708314187]', '40.00'),
 (54, '1605889128', 'berjis-tech-ltd.myshopify.com', '10', '4582708904011', '32337487331403', '3', '\"\"', '\"\"', 'impression', 'hover', '/cart', 'desktop', 'Chrome', '[4582708314187]', '66.00'),
 (55, '1605889128', 'berjis-tech-ltd.myshopify.com', '10', '4582708904011', '32337487331403', '3', '\"\"', '\"\"', 'impression', 'hover', '/cart', 'desktop', 'Chrome', '[4582708314187]', '66.00'),
-(56, '1605889128', 'berjis-tech-ltd.myshopify.com', '10', '4582708904011', '32337487331403', '3', '\"\"', '\"\"', 'impression', 'hover', '/cart', 'desktop', 'Chrome', '[4582708314187]', '66.00');
+(56, '1605889128', 'berjis-tech-ltd.myshopify.com', '10', '4582708904011', '32337487331403', '3', '\"\"', '\"\"', 'impression', 'hover', '/cart', 'desktop', 'Chrome', '[4582708314187]', '66.00'),
+(57, '1605949993', 'berjis-tech-ltd.myshopify.com', '7', '4582708445259', 'undefined', 'undefined', '\"\"', '\"\"', 'show', 'show', '/', 'desktop', 'Chrome', '[4582708904011,4582708445259,4582708969547,4582708084811]', '68.00');
 
 -- --------------------------------------------------------
 
@@ -428,13 +441,13 @@ ALTER TABLE `products`
 -- AUTO_INCREMENT for table `shops`
 --
 ALTER TABLE `shops`
-  MODIFY `shop_id` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `shop_id` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `stats`
 --
 ALTER TABLE `stats`
-  MODIFY `stat_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=57;
+  MODIFY `stat_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=58;
 
 --
 -- AUTO_INCREMENT for table `variants`
