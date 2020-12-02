@@ -94,8 +94,8 @@ jQuery(document).ready(function () {
     
     let page = window.location.pathname;
     let settings = offers['settings'];
-    let drawer_selector = '';
-    let cart_selector = '';
+    let drawer_selector = 'form[action="/cart"]';
+    let cart_selector = 'form[action="/cart"]';
     if(settings != null){
         drawer_selector = settings.drawer_location;
     }
