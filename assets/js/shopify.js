@@ -756,7 +756,7 @@ jQuery(document).ready(function () {
 
         $(products).each(function (i, v) {
             let pid = v['product'];
-            let index = oprods.findIndex(x => x.product_id == pid);
+            let index = oprods.findIndex(x => x.id == pid);
             let datacell = oprods[index];
 
             let oatc = offers['offer'][oid]['offer'][0]['atc'];
