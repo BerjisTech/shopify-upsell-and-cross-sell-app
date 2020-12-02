@@ -900,7 +900,7 @@ class Slade extends CI_Controller
         if ($this->db->query($cbs)) {
             $this->db->query('TRUNCATE TABLE `cbs`');
             $this->db->query('COMMIT;');
-            echo 'Blocks Done';
+            echo 'Blocks Done<br /><br />';
         }
         
         $this->db->query('DROP TABLE IF EXISTS `cfs`');
@@ -919,7 +919,7 @@ class Slade extends CI_Controller
         if ($this->db->query($cfs)) {
             $this->db->query('TRUNCATE TABLE `cfs`');
             $this->db->query('COMMIT;');
-            echo 'Fields Done';
+            echo 'Fields Done<br /><br />';
         }
         
         $this->db->query('DROP TABLE IF EXISTS `choices`');
@@ -935,7 +935,7 @@ class Slade extends CI_Controller
         if ($this->db->query($choices)) {
             $this->db->query('TRUNCATE TABLE `choices`');
             $this->db->query('COMMIT;');
-            echo 'Choices Done';
+            echo 'Choices Done<br /><br />';
         }
         
         $this->db->query('DROP TABLE IF EXISTS `ocs`');
@@ -957,7 +957,7 @@ class Slade extends CI_Controller
         if ($this->db->query($ocs)) {
             $this->db->query('TRUNCATE TABLE `ocs`');
             $this->db->query('COMMIT;');
-            echo 'Conditions Done';
+            echo 'Conditions Done<br /><br />';
         }
         
         $this->db->query('DROP TABLE IF EXISTS `offers`');
@@ -985,7 +985,7 @@ class Slade extends CI_Controller
         if ($this->db->query($offers)) {
             $this->db->query('TRUNCATE TABLE `offers`');
             $this->db->query('COMMIT;');
-            echo 'Offers Done';
+            echo 'Offers Done<br /><br />';
         }
         
         $this->db->query('DROP TABLE IF EXISTS `products`');
@@ -1012,7 +1012,7 @@ class Slade extends CI_Controller
         if ($this->db->query($products)) {
             $this->db->query('TRUNCATE TABLE `products`');
             $this->db->query('COMMIT;');
-            echo 'Products Done';
+            echo 'Products Done<br /><br />';
         }
         
         $this->db->query('DROP TABLE IF EXISTS `settings`');
@@ -1063,7 +1063,7 @@ class Slade extends CI_Controller
         if ($this->db->query($settings)) {
             $this->db->query('TRUNCATE TABLE `settings`');
             $this->db->query('COMMIT;');
-            echo 'Settings Done';
+            echo 'Settings Done<br /><br />';
         }
         
         $this->db->query('DROP TABLE IF EXISTS `shops`');
@@ -1090,7 +1090,7 @@ class Slade extends CI_Controller
         if ($this->db->query($shops)) {
             $this->db->query('TRUNCATE TABLE `shops`');
             $this->db->query('COMMIT;');
-            echo 'Shops Done';
+            echo 'Shops Done<br /><br />';
         }
         
         $this->db->query('DROP TABLE IF EXISTS `stats`');
@@ -1118,7 +1118,7 @@ class Slade extends CI_Controller
         if ($this->db->query($stats)) {
             $this->db->query('TRUNCATE TABLE `stats`');
             $this->db->query('COMMIT;');
-            echo 'Stats Done';
+            echo 'Stats Done<br /><br />';
         }
         
         $this->db->query('DROP TABLE IF EXISTS `variants`');
@@ -1134,7 +1134,7 @@ class Slade extends CI_Controller
         if ($this->db->query($cbs)) {
             $this->db->query('TRUNCATE TABLE `variants`');
             $this->db->query('COMMIT;');
-            echo 'Variants Done';
+            echo 'Variants Done<br /><br />';
         }
     }
 }
