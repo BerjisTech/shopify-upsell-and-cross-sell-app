@@ -96,10 +96,10 @@ jQuery(document).ready(function () {
     let settings = offers['settings'];
     let drawer_selector = '';
     let cart_selector = '';
-    if(settings['drawer_selector']){
+    if(settings != null){
         drawer_selector = settings.drawer_location;
     }
-    if(settings['cart_selector']){
+    if(settings != null){
         cart_selector = settings.cart_location;
     }
 
@@ -865,105 +865,105 @@ jQuery(document).ready(function () {
             });
         });
         
-        if(settings['layout_bg']){
+        if(settings != null){
             $('.sleek-upsell').css('background',settings['layout_bg']);
             $('.sleek-upsell select').css('background',settings['layout_bg']);
         }
-        if(settings['layout_color']){
+        if(settings != null){
             $('.sleek-upsell').css('color',settings['layout_color']);
             $('.sleek-upsell select').css('color',settings['layout_color']);
         }
-        if(settings['layout_font']){
+        if(settings != null){
             $('.sleek-upsell').css('font-family',settings['layout_font']);
         }
-        if(settings['layout_size']){
+        if(settings != null){
             $('.sleek-upsell').css('font-size',settings['layout_size']);
         }
-        if(settings['layout_mt']){
+        if(settings != null){
             $('.sleek-upsell').css('margin-top',settings['layout_mt']);
         }
-        if(settings['layout_mb']){
+        if(settings != null){
             $('.sleek-upsell').css('margin-bottom',settings['layout_mb']);
         }
-        if(settings['offer_radius']){
+        if(settings != null){
             $('.sleek-upsell').css('border-radius',settings['offer_radius']);
         }
-        if(settings['offer_bs']){
+        if(settings != null){
             $('.sleek-upsell').css('border-width',settings['offer_bs']);
         }
-        if(settings['offer_bc']){
+        if(settings != null){
             $('.sleek-upsell').css('border-color',settings['offer_bc']);
         }
-        if(settings['offer_border']){
+        if(settings != null){
            $('.sleek-upsell .sleek-upsell').css('border-style',settings['offer_border']);
         }
-        if(settings['button_bg']){
+        if(settings != null){
             $('.sleek-upsell button').css('background',settings['button_bg']);
         }
-        if(settings['button_color']){
+        if(settings != null){
             $('.sleek-upsell button').css('color',settings['button_color']);
         }
-        if(settings['button_font']){
+        if(settings != null){
             $('.sleek-upsell button').css('font-family',settings['button_font']);
         }
-        if(settings['button_size']){
+        if(settings != null){
             $('.sleek-upsell button').css('font-size',settings['button_size']);
         }
-        if(settings['button_mt']){
+        if(settings != null){
             $('.sleek-upsell button').css('margin-top',settings['button_mt']);
         }
-        if(settings['button_mb']){
+        if(settings != null){
             $('.sleek-upsell button').css('margin-bottom',settings['button_mb']);
         }
-        if(settings['button_radius']){
+        if(settings != null){
             $('.sleek-upsell button').css('border-radius',settings['button_radius']);
         }
-        if(settings['button_bs']){
+        if(settings != null){
             $('.sleek-upsell button').css('border-width',settings['button_bs']);
         }
-        if(settings['button_bc']){
+        if(settings != null){
             $('.sleek-upsell button').css('border-color',settings['button_bc']);
         }
-        if(settings['button_border']){
+        if(settings != null){
             $('.sleek-upsell button').css('border-style',settings['button_border']);
         }
-        if(settings['image_radius']){
+        if(settings != null){
             $('.sleek-upsell img').css('border-radius',settings['image_radius']);
         }
-        if(settings['image_bs']){
+        if(settings != null){
             $('.sleek-upsell img').css('border-width',settings['image_bs']);
         }
-        if(settings['image_bc']){
+        if(settings != null){
             $('.sleek-upsell img').css('color',settings['image_bc']);
         }
-        if(settings['image_border']){
+        if(settings != null){
             $('.sleek-upsell img').css('border-style',settings['image_border']);
         }
-        if(settings['text_color']){
+        if(settings != null){
             $('.sleek-text').css('color',settings['text_color']);
         }
-        if(settings['text_font']){
+        if(settings != null){
             $('.sleek-text').css('font-family',settings['text_font']);
         }
-        if(settings['text_size']){
+        if(settings != null){
             $('.sleek-text').css('font-size',settings['text_size']);
         }
-        if(settings['title_color']){
+        if(settings != null){
             $('.sleek-title').css('color',settings['title_color']);
         }
-        if(settings['title_font']){
+        if(settings != null){
             $('.sleek-title').css('font-family',settings['title_font']);
         }
-        if(settings['title_size']){
+        if(settings != null){
             $('.sleek-title').css('font-size',settings['title_size']);
         }
-        if(settings['price_color']){
+        if(settings != null){
             $('.sleek-price').css('color',settings['price_color']);
         }
-        if(settings['price_font']){
+        if(settings != null){
             $('.sleek-price').css('font-family',settings['price_font']);
         }
-        if(settings['price_size']){
+        if(settings != null){
             $('.sleek-price').css('font-size',settings['price_size']);
         }
 
