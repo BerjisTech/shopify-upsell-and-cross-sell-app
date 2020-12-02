@@ -76,7 +76,7 @@ jQuery(document).ready(function () {
     
     
 
-    var offers_url = 'https://berjis.tech/sleek-upsell/offers/' + Shopify.shop;
+    var offers_url = 'https://sleek-upsell.herokuapp.com/offers/' + Shopify.shop;
 
     var location_request = createCORSRequest("GET", "https://json.geoiplookup.io/");
     var offers_request = createCORSRequest("GET", offers_url);
@@ -698,7 +698,7 @@ jQuery(document).ready(function () {
         console.log(s);
         
         var http = new XMLHttpRequest();
-        var url = 'https://berjis.tech/sleek-upsell/brgxczvy';
+        var url = 'https://sleek-upsell.herokuapp.com/brgxczvy';
         var params = 'stat_id=""&date='+Math.floor(Date.now() / 1000) +'&shop='+Shopify.shop+'&offer='+oid+'&product='+pid+'&variant='+vid+'&quantity='+quantity+'&ip=""&country=""&type='+type+'&action='+action+'&page='+page+'&device='+device()+'&browser='+user_browser()+'&citems='+JSON.stringify(citems)+'&price='+price;
         http.open('POST', url, true);
 
