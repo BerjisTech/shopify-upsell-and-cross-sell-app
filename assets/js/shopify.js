@@ -85,7 +85,7 @@ jQuery(document).ready(function () {
     let offers = g_d(offers_url);
     let cart = g_d("https://" + Shopify.shop + "/cart.js");
 
-    console.log(offers);
+    // console.log(offers);
     // console.log(offers['offer']);
     // console.log(Object.keys(offers['offer']));
     // console.log(Object.keys(offers));
