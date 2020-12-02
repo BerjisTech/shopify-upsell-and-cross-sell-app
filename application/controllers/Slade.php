@@ -1137,4 +1137,21 @@ class Slade extends CI_Controller
             echo 'Variants Done<br /><br />';
         }
     }
+
+    public function metadata()
+    {
+        $tables = $this->db->list_tables();
+
+        foreach ($tables as $table) {
+            // echo '<h3>'.$table . '</h3><br />';
+            // print_r($this->db->get($table)->result_array());
+            // echo '<br /><br /><hr />';
+            $data[$table] = $this->db->get($table)->result_array();
+
+        }
+
+        
+        header('Content-Type: application/json');
+        echo json_encode($data);
+    }
 }
