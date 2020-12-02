@@ -94,8 +94,14 @@ jQuery(document).ready(function () {
     
     let page = window.location.pathname;
     let settings = offers['settings'];
-    let drawer_selector = settings.drawer_location;
-    let cart_selector = settings.cart_location;
+    let drawer_selector = '';
+    let cart_selector = '';
+    if(settings['drawer_selector']){
+        drawer_selector = settings.drawer_location;
+    }
+    if(settings['cart_selector']){
+        cart_selector = settings.cart_location;
+    }
 
     next_offer();
     // collection_based();
