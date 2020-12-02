@@ -19,7 +19,7 @@ class Slade extends CI_Controller
             echo '<script>window.location.href = "' . base_url() . 'get_app";</script>';
         }
         if (!isset($_GET['hmac'])) {
-            echo '<script>window.location.href = "' . $_GET['shop'] . '/admin/apps";</script>';
+            echo '<script>window.location.href = "https://' . $_GET['shop'] . '/admin/apps";</script>';
         }
 
         $this_shop = str_replace(".myshopify.com", "", $_GET['shop']);
