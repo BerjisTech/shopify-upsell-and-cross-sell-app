@@ -64,8 +64,7 @@
                     </div>
                 
             </div>
-            <div style="height: 100vh; margin: 0px; padding: 0px; text-align: center; flex-grow: 4;">
-                <iframe is="x-frame-bypass" src="https://berjis.tech" align="middle" frameborder="0" class="previewFrame" id="previewFrame" width="100%" height="100%;"></iframe>
+            <div style="display: none;">
                 <div style="display: flex; position: absolute; bottom: 10px; right: 10px; background: #fff; padding: 20px;">
                     <img src="https://cdn4.iconfinder.com/data/icons/48-bubbles/48/29.Mac-512.png" style="height: 50px; cursor: pointer;" onclick="$('.previewFrame').width('100%');$('.previewFrame').height('100%');" />
                     <img src="https://image.flaticon.com/icons/png/512/59/59505.png" style="height: 50px; cursor: pointer;" onclick="$('.previewFrame').width(1024);$('.previewFrame').height(768);" />
