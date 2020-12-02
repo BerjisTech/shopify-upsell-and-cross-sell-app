@@ -199,7 +199,7 @@ class Slade extends CI_Controller
             echo '<script>window.location.href = "https://' . $params['shop'] . '/admin/apps/sleek-upsell";</script>';
         } else {
             // Someone is trying to be shady!
-            header("Location: http://berjis.tech/sleek-upsell");
+            header("Location: https://sleek-upsell.herokuapp.com/");
             die('This request is NOT from Shopify!');
         }
     }
