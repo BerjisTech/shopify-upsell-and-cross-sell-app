@@ -36,24 +36,24 @@ function g_d(g_url) {
     return JSON.parse(xmlHttp.responseText);
 }
 
- function user_browser() { 
-    if((navigator.userAgent.indexOf("Opera") || navigator.userAgent.indexOf('OPR')) != -1 ) {
+function user_browser() {
+    if ((navigator.userAgent.indexOf("Opera") || navigator.userAgent.indexOf('OPR')) != -1) {
         return 'Opera';
     }
-    else if(navigator.userAgent.indexOf("Chrome") != -1 ){
+    else if (navigator.userAgent.indexOf("Chrome") != -1) {
         return 'Chrome';
     }
-    else if(navigator.userAgent.indexOf("Safari") != -1){
+    else if (navigator.userAgent.indexOf("Safari") != -1) {
         return 'Safari';
     }
-    else if(navigator.userAgent.indexOf("Firefox") != -1 ) {
-         return 'Firefox';
+    else if (navigator.userAgent.indexOf("Firefox") != -1) {
+        return 'Firefox';
     }
-    else if((navigator.userAgent.indexOf("MSIE") != -1 ) || (!!document.documentMode == true )){
-      return 'IE'; 
-    }  
-    else{
-       return 'unknown';
+    else if ((navigator.userAgent.indexOf("MSIE") != -1) || (!!document.documentMode == true)) {
+        return 'IE';
+    }
+    else {
+        return 'unknown';
     }
 }
 
@@ -65,16 +65,16 @@ const device = () => {
     if (
         /Mobile|iP(hone|od|ad)|Android|BlackBerry|IEMobile|Kindle|Silk-Accelerated|(hpw|web)OS|Opera M(obi|ini)/.test(
             ua
-            )
-            ) {
-                return "mobile";
-                }
-                return "desktop";
+        )
+    ) {
+        return "mobile";
+    }
+    return "desktop";
 };
-    
+
 jQuery(document).ready(function () {
-    
-    
+
+
 
     var offers_url = 'https://sleek-upsell.herokuapp.com/offers/' + Shopify.shop;
 
@@ -91,22 +91,20 @@ jQuery(document).ready(function () {
     // console.log(Object.keys(offers));
     // console.log(cart);
     // console.log(Object.keys(cart));
-    
+
     let page = window.location.pathname;
     let settings = offers['settings'];
     let drawer_selector = 'form[action="/cart"]';
     let cart_selector = 'form[action="/cart"]';
-    if(settings != null){
+    if (settings != null) {
         drawer_selector = settings.drawer_location;
-    }
-    if(settings != null){
         cart_selector = settings.cart_location;
     }
 
     next_offer();
     // collection_based();
-    
-    function next_offer(){
+
+    function next_offer() {
         if (cart["item_count"] > 0) {
             let i = 0;
             let o_p = Object.keys(offers['offer']);
@@ -126,16 +124,16 @@ jQuery(document).ready(function () {
                     console.log('Not showing this offer');
                     console.log(pos);
                 }
-    
+
                 // console.log(i);
                 // console.log(pos);
                 // console.log(o_arr[pos]);
             }
         }
     }
-    
-    function collection_based(){
-        if(page.includes('/cart')){
+
+    function collection_based() {
+        if (page.includes('/cart')) {
             if (cart["item_count"] > 0) {
                 let collects = offers['collects'];
                 let items = cart['items'];
@@ -143,49 +141,49 @@ jQuery(document).ready(function () {
                 console.log('items');
                 console.log(items);
                 console.log('Looping through ' + items.length + ' items');
-                for(let i = 0; i < items.length; i++){
+                for (let i = 0; i < items.length; i++) {
                     pid = items[i]['product_id'];
                     console.log('Checking items ' + i + ' : ' + pid);
-                    if(sessionStorage.getItem('c_upsold_' + pid) == 'y'){
+                    if (sessionStorage.getItem('c_upsold_' + pid) == 'y') {
                         console.log('This has already been upsold');
                         continue;
-                    }else{
+                    } else {
                         console.log('Creating upsell for ' + pid);
-                        if(collects.findIndex(x => x.product_id == pid) != -1){
+                        if (collects.findIndex(x => x.product_id == pid) != -1) {
                             sessionStorage.setItem('c_upsold_' + pid, 'y');
                             let n = collects.filter(x => x.product_id == pid);
                             let cid = n[0]['collection_id'];
                             let cb = collects.filter(x => x.collection_id == cid);
-                            
+
                             console.log('Needed object');
                             console.log(n);
                             console.log('Collection ID ' + cid);
                             console.log(cb);
-                            
+
                             console.log('Looping through ' + cb.length + ' collection items');
-                            for(let c = 0; c < cb.length; c++){
+                            for (let c = 0; c < cb.length; c++) {
                                 console.log('Checking collection item ' + c);
-                                if(sessionStorage.getItem('c_used_' + cb[c]['product_id']) == 'z'){
+                                if (sessionStorage.getItem('c_used_' + cb[c]['product_id']) == 'z') {
                                     console.log('This item was already an upsell ' + cb[c]['product_id']);
                                     continue;
-                                }else{
-                                    if(items.findIndex(x => x.product_id == cb[c]['product_id']) != -1){
+                                } else {
+                                    if (items.findIndex(x => x.product_id == cb[c]['product_id']) != -1) {
                                         sessionStorage.setItem('c_used_' + cb[c]['product_id'], 'z');
                                         continue;
-                                    }else{
+                                    } else {
                                         sessionStorage.setItem('c_used_' + cb[c]['product_id'], 'z');
                                         console.log('Using ' + cb[c]['product_id'] + ' as an upsell for ' + pid);
                                         // alert('Display '+cb[c]['product_id']);
                                         load_c_based(cb[c]['product_id']);
-                                        break;  
+                                        break;
                                     }
                                 }
                             }
                             break;
-                            
+
                         }
-                        
-                        else{
+
+                        else {
                             console.log('This product aint part of a collection');
                             continue;
                         }
@@ -220,7 +218,7 @@ jQuery(document).ready(function () {
                                 console.log('Block ' + i + ' return true');
                                 what = true;
                                 break;
-                            }else{
+                            } else {
                                 what = false;
                                 break;
                             }
@@ -231,12 +229,12 @@ jQuery(document).ready(function () {
                                 console.log('Block ' + i + ' return false');
                                 what = false;
                                 break;
-                            }else{
+                            } else {
                                 what = true;
                                 break;
                             }
                         }
-    
+
                     }
                     return what;
                 } else {
@@ -244,7 +242,7 @@ jQuery(document).ready(function () {
                     return true;
                 }
             }
-            
+
         } else {
             console.log('Offer not active');
             return false;
@@ -276,7 +274,7 @@ jQuery(document).ready(function () {
                         console.log('condition ' + cond['cid'] + ' met');
                         met = true;
                         break;
-                    }else{
+                    } else {
                         met = false;
                         break;
                     }
@@ -287,7 +285,7 @@ jQuery(document).ready(function () {
                         console.log('condition ' + cond['cid'] + ' not met');
                         met = false;
                         break;
-                    }else{
+                    } else {
                         met = true;
                         break;
                     }
@@ -320,37 +318,37 @@ jQuery(document).ready(function () {
         if (type == 'oc1') {
             // Cart has at least
             if (level == 'product') {
-                console.log('Now checking if cart has at least '+quantity+' '+content+' ('+pid+')');
+                console.log('Now checking if cart has at least ' + quantity + ' ' + content + ' (' + pid + ')');
                 console.log('pitems');
                 let pitems = citems.filter(e => e.product_id == pid);
                 console.log(pitems)
                 if (pitems.length >= quantity) {
-                    console.log('found '+pitems.length+' '+content+'s ('+pid+')');
+                    console.log('found ' + pitems.length + ' ' + content + 's (' + pid + ')');
                     met = true;
                     console.log(met);
                 } else {
-                    console.log('found only '+pitems.length+' '+content+'s ('+pid+')');
+                    console.log('found only ' + pitems.length + ' ' + content + 's (' + pid + ')');
                     met = false;
                 }
             }
             if (level == 'variant') {
-                console.log('Now checking if cart has at least '+quantity+' '+content+' ('+vid+')');
+                console.log('Now checking if cart has at least ' + quantity + ' ' + content + ' (' + vid + ')');
                 let vitems = citems.filter(e => e.variant_id == vid);
                 if (vitems.length >= quantity) {
-                    console.log('found '+vitems.length+' '+content+'s ('+vid+')');
+                    console.log('found ' + vitems.length + ' ' + content + 's (' + vid + ')');
                     met = true;
                 } else {
-                    console.log('found only '+vitems.length+' '+content+'s ('+vid+')');
+                    console.log('found only ' + vitems.length + ' ' + content + 's (' + vid + ')');
                     met = false;
                 }
             }
-            if (level == 'collection') { 
+            if (level == 'collection') {
                 console.log('Checking if cart has at least ' + quantity + ' products from collections ' + content + '(' + pid + ')');
                 let collects = offers['collects'];
                 let needed = collects.filter(e => e.collection_id == pid);
                 let count = 0;
                 for (let i = 0; i <= citems.length - 1; i++) {
-                    console.log('citems at '+i);
+                    console.log('citems at ' + i);
                     console.log('Now checking ' + citems[i]['product_id']);
                     if (needed.findIndex(x => x.product_id == citems[i]['product_id']) >= 0) {
                         count = count + 1;
@@ -364,7 +362,7 @@ jQuery(document).ready(function () {
                         }
                     }
                 }
-                
+
             }
         }
         if (type == 'oc2') {
@@ -385,7 +383,7 @@ jQuery(document).ready(function () {
                     met = false;
                 }
             }
-            if (level == 'collection') { 
+            if (level == 'collection') {
                 console.log('Checking if cart has at most ' + quantity + ' products from collections ' + pid);
                 let collects = offers['collects'];
                 let needed = collects.filter(e => e.collection_id == pid);
@@ -405,7 +403,7 @@ jQuery(document).ready(function () {
                         }
                     }
                 }
-                
+
             }
         }
         if (type == 'oc3') {
@@ -426,7 +424,7 @@ jQuery(document).ready(function () {
                     met = false;
                 }
             }
-            if (level == 'collection') { 
+            if (level == 'collection') {
                 console.log('Checking if cart has at least ' + quantity + ' products from collections ' + pid);
                 let collects = offers['collects'];
                 let needed = collects.filter(e => e.collection_id == pid);
@@ -445,7 +443,7 @@ jQuery(document).ready(function () {
                         }
                     }
                 }
-                
+
             }
         }
         if (type == 'oc4') {
@@ -514,145 +512,145 @@ jQuery(document).ready(function () {
 
         return met;
     }
-    
-    function populateFields(oid,pid) {
+
+    function populateFields(oid, pid) {
         console.log('Looking for fields');
         let fields = offers['offer'][oid]['fields'];
         let choices = offers['offer'][oid]['choices'];
         if (fields.length > 0) {
-            console.log('Found '+fields.length+' fields');
+            console.log('Found ' + fields.length + ' fields');
             console.log(fields);
             let o_fields = fields.filter(e => e.pid == pid);
-                console.log(o_fields);
-                if (o_fields.length > 0) {
-                    $('.o_h_' + pid).html('');
-                    $(o_fields).each(function(i, e) {
-                        var fid = o_fields[i]['fid'];
-                        var type = o_fields[i]['type'];
-                        var name = o_fields[i]['name'];
-                        var placeholder = o_fields[i]['placeholder'];
-                        var price = o_fields[i]['price'];
-                        var required = o_fields[i]['required'];
-                        var el_type = '';
-                        var m_c = choices.filter(e => e.fid == fid);
+            console.log(o_fields);
+            if (o_fields.length > 0) {
+                $('.o_h_' + pid).html('');
+                $(o_fields).each(function (i, e) {
+                    var fid = o_fields[i]['fid'];
+                    var type = o_fields[i]['type'];
+                    var name = o_fields[i]['name'];
+                    var placeholder = o_fields[i]['placeholder'];
+                    var price = o_fields[i]['price'];
+                    var required = o_fields[i]['required'];
+                    var el_type = '';
+                    var m_c = choices.filter(e => e.fid == fid);
 
-                        if (type == "select") {
-                            $('.o_h_' + pid).append(
-                                '<div>' +
-                                '<label>' + placeholder + '</label>' +
-                                '<select class="form-control select sleek_fields_' + fid + '" id="properties[' + name +
-                                ']" name="properties[' + name + ']"></select>' +
-                                '</div>');
-                            $('.sleek_fields_' + name + '')
+                    if (type == "select") {
+                        $('.o_h_' + pid).append(
+                            '<div>' +
+                            '<label>' + placeholder + '</label>' +
+                            '<select class="form-control select sleek_fields_' + fid + '" id="properties[' + name +
+                            ']" name="properties[' + name + ']"></select>' +
+                            '</div>');
+                        $('.sleek_fields_' + name + '')
+                            .append($("<option></option>")
+                                .attr("value", "")
+                                .text(placeholder));
+
+                        // var value_arr = value.split(',');
+                        $(m_c).each(function (key) {
+                            var c_v = m_c[key]['value'];
+                            var c_p = m_c[key]['price'];
+                            $('.sleek_fields_' + fid + '')
                                 .append($("<option></option>")
-                                    .attr("value", "")
-                                    .text(placeholder));
-
-                            // var value_arr = value.split(',');
-                            $(m_c).each(function(key) {
-                                var c_v = m_c[key]['value'];
-                                var c_p = m_c[key]['price'];
-                                $('.sleek_fields_' + fid + '')
-                                    .append($("<option></option>")
-                                        .attr("value", c_v)
-                                        .text(c_v + ' (' + c_p + ')'));
-                            });
-                        }
-                        if (type == "number") {
-                            $('.o_h_' + pid).append(
-                                '<div>' +
-                                '<label>' + placeholder + '</label>' +
-                                '<input type="number" class="form-control" id="properties[' + name + ']" name="properties[' + name +
-                                ']" placeholder="' + placeholder + '" />' +
-                                '</div>');
-                        }
-                        if (type == "text") {
-                            $('.o_h_' + pid).append(
-                                '<div>' +
-                                '<label>' + placeholder + '</label>' +
-                                '<input type="text" class="form-control" id="properties[' + name + ']" name="properties[' + name +
-                                ']" placeholder="' + placeholder + '" />' +
-                                '</div>');
-                        }
-                        if (type == "textarea") {
-                            $('.o_h_' + pid).append(
-                                '<div>' +
-                                '<label>' + placeholder + '</label>' +
-                                '<textarea class="form-control" id="properties[' + name + ']" name="properties[' + name +
-                                ']" placeholder="' + placeholder + '">' + placeholder + '</textarea>' +
-                                '</div>');
-                        }
-                        if (type == "file") {
-                            $('.o_h_' + pid).append(
-                                '<div>' +
-                                '<label>' + placeholder + '</label>' +
-                                '<input type="file" class="form-control" id="properties[' + name + ']" name="properties[' + name +
-                                ']" placeholder="' + placeholder + '" />' +
-                                '</div>');
-                        }
-                        if (type == "checkbox") {
-                            $('.o_h_' + pid).append(
-                                '<div>' +
-                                '<label>' +
-                                '<input type="checkbox" class="form-control" id="properties[' + name + ']" name="properties[' + name +
-                                ']" placeholder="' + placeholder + '" /> ' +
-                                placeholder +
-                                '</label>' +
-                                '</div>');
-                        }
-                        if (type == "checkbox_group") {
-                            $('.o_h_' + pid).append(
-                                '<div>' +
-                                '<label>' + placeholder + '</label>' +
-                                '<input type="text" class="form-control" id="properties[' + name + ']" name="properties[' + name +
-                                ']" placeholder="' + placeholder + '" />' +
-                                '</div>');
-                        }
-                        if (type == "radio") {
-                            $('.o_h_' + pid).append(
-                                '<div>' +
-                                '<label>' +
-                                '<input type="radio" class="form-control" id="properties[' + name + ']" name="properties[' + name +
-                                ']" placeholder="' + placeholder + '" /> ' +
-                                placeholder +
-                                '</label>' +
-                                '</div>');
-                        }
-                        if (type == "date") {
-                            $('.o_h_' + pid).append(
-                                '<div>' +
-                                '<label>' + placeholder + '</label>' +
-                                '<input type="date" class="form-control" id="properties[' + name + ']" name="properties[' + name +
-                                ']" placeholder="' + placeholder + '" />' +
-                                '</div>');
-                        }
-                        if (type == "swatch") {
-                            $('.o_h_' + pid).append(
-                                '<div>' +
-                                '<label>' + placeholder + '</label>' +
-                                '<input type="text" class="form-control" id="properties[' + name + ']" name="properties[' + name +
-                                ']" placeholder="' + placeholder + '" />' +
-                                '</div>');
-                        }
-                    });
-                }
+                                    .attr("value", c_v)
+                                    .text(c_v + ' (' + c_p + ')'));
+                        });
+                    }
+                    if (type == "number") {
+                        $('.o_h_' + pid).append(
+                            '<div>' +
+                            '<label>' + placeholder + '</label>' +
+                            '<input type="number" class="form-control" id="properties[' + name + ']" name="properties[' + name +
+                            ']" placeholder="' + placeholder + '" />' +
+                            '</div>');
+                    }
+                    if (type == "text") {
+                        $('.o_h_' + pid).append(
+                            '<div>' +
+                            '<label>' + placeholder + '</label>' +
+                            '<input type="text" class="form-control" id="properties[' + name + ']" name="properties[' + name +
+                            ']" placeholder="' + placeholder + '" />' +
+                            '</div>');
+                    }
+                    if (type == "textarea") {
+                        $('.o_h_' + pid).append(
+                            '<div>' +
+                            '<label>' + placeholder + '</label>' +
+                            '<textarea class="form-control" id="properties[' + name + ']" name="properties[' + name +
+                            ']" placeholder="' + placeholder + '">' + placeholder + '</textarea>' +
+                            '</div>');
+                    }
+                    if (type == "file") {
+                        $('.o_h_' + pid).append(
+                            '<div>' +
+                            '<label>' + placeholder + '</label>' +
+                            '<input type="file" class="form-control" id="properties[' + name + ']" name="properties[' + name +
+                            ']" placeholder="' + placeholder + '" />' +
+                            '</div>');
+                    }
+                    if (type == "checkbox") {
+                        $('.o_h_' + pid).append(
+                            '<div>' +
+                            '<label>' +
+                            '<input type="checkbox" class="form-control" id="properties[' + name + ']" name="properties[' + name +
+                            ']" placeholder="' + placeholder + '" /> ' +
+                            placeholder +
+                            '</label>' +
+                            '</div>');
+                    }
+                    if (type == "checkbox_group") {
+                        $('.o_h_' + pid).append(
+                            '<div>' +
+                            '<label>' + placeholder + '</label>' +
+                            '<input type="text" class="form-control" id="properties[' + name + ']" name="properties[' + name +
+                            ']" placeholder="' + placeholder + '" />' +
+                            '</div>');
+                    }
+                    if (type == "radio") {
+                        $('.o_h_' + pid).append(
+                            '<div>' +
+                            '<label>' +
+                            '<input type="radio" class="form-control" id="properties[' + name + ']" name="properties[' + name +
+                            ']" placeholder="' + placeholder + '" /> ' +
+                            placeholder +
+                            '</label>' +
+                            '</div>');
+                    }
+                    if (type == "date") {
+                        $('.o_h_' + pid).append(
+                            '<div>' +
+                            '<label>' + placeholder + '</label>' +
+                            '<input type="date" class="form-control" id="properties[' + name + ']" name="properties[' + name +
+                            ']" placeholder="' + placeholder + '" />' +
+                            '</div>');
+                    }
+                    if (type == "swatch") {
+                        $('.o_h_' + pid).append(
+                            '<div>' +
+                            '<label>' + placeholder + '</label>' +
+                            '<input type="text" class="form-control" id="properties[' + name + ']" name="properties[' + name +
+                            ']" placeholder="' + placeholder + '" />' +
+                            '</div>');
+                    }
+                });
+            }
         }
 
     }
-    
-    function load_c_based(pid){
+
+    function load_c_based(pid) {
         let curr = Shopify.currency['active'];
         $('<style>.sleek-upsell{background:#ecf0f1;color:#2b3d51;padding:5px;font-family:inherit;vertical-align:middle;margin:5px}.sleek-image img{width:100px}.sleek-text{font-weight:700}.sleek-upsell select{padding:4px;margin-top:5px}.sleek-prices{font-weight:700;margin-bottom:5px}.sleek-compare-price{text-decoration:line-through}.sleek-upsell button{padding:10px;border:none;background:#2b3d51;color:#fff;font-weight:700;border-radius:0;cursor:pointer;width:100%}.card{display:table}.card .sleek-form{display:flex}.sleek-card-atc,.sleek-image,.sleek-offer{display:table;align-self:center;padding:5px}.card .sleek-offer{flex-grow:1}.card .sleek-prices{text-align:center}@media only screen and (max-width:600px){.sleek-upsell select{max-width:100px}.sleek-prices *{display:inline-table}}.block,.block .sleek-atc,.block .sleek-form,.block .sleek-text{display:table}.sleek-block{display:flex}.block .sleek-image,.block .sleek-offer{display:table;align-self:center;padding:5px}.block .sleek-offer{flex-grow:1}</style>').insertBefore('form.cart');
         $('<div class="card sleek-upsell"></div>').insertBefore('form.cart');
         let oprods = offers['products'];
         let index = oprods.findIndex(x => x.id == pid);
         let datacell = oprods[index];
-        
+
         let card_ui = '<form class="sleek-form" action="/cart/add" enctype="multipart/form-data" data-product-id="' + pid + '"> <div class="sleek-image"> <img src="' + datacell[
             'image']['src'] +
             '"/> </div><div class="sleek-offer"> <div class="sleek-text">Would you like an extra something? </div><div class="sleek-title">' +
             datacell['title'] +
-            '</div><div class="sleek-selectors"> <div class="o_h_'+pid+'"></div> <select name="id" class="v-select v-' + pid +
+            '</div><div class="sleek-selectors"> <div class="o_h_' + pid + '"></div> <select name="id" class="v-select v-' + pid +
             '"></select> <select name="quantity" class="q-select q-' + pid +
             '"></select> </div></div><div class="sleek-card-atc"> <div class="sleek-prices"> <span class="sleek-price money">' +
             curr + ' ' + datacell['variants'][0]['price'] +
@@ -672,40 +670,40 @@ jQuery(document).ready(function () {
             $('.q-' + pid).append('<option value="' + i + '">' +
                 i + '</option>')
         }
-        
+
     }
-    
-    function brgxczvy(oid, pid, vid, quantity, price, action, type){
+
+    function brgxczvy(oid, pid, vid, quantity, price, action, type) {
         let citems = [];
-        
-        $(cart['items']).each(function(i,v){
+
+        $(cart['items']).each(function (i, v) {
             citems.push(v['product_id']);
         });
-        
+
         let s = {
-            'stat_id' : '',
-            'date' : Math.floor(Date.now() / 1000),
-            'shop' : Shopify.shop,
-            'offer' : oid,
-            'product' : pid,
-            'variant' : vid,
-            'quantity' : quantity,
-            'ip' : '',
-            'country' : '',
-            'type' : type,
-            'action' : action,
-            'page' : page,
-            'device' : device(),
-            'browser' : user_browser(),
-            'citems' : citems,
+            'stat_id': '',
+            'date': Math.floor(Date.now() / 1000),
+            'shop': Shopify.shop,
+            'offer': oid,
+            'product': pid,
+            'variant': vid,
+            'quantity': quantity,
+            'ip': '',
+            'country': '',
+            'type': type,
+            'action': action,
+            'page': page,
+            'device': device(),
+            'browser': user_browser(),
+            'citems': citems,
             'price': price
         }
-        
+
         console.log(s);
-        
+
         var http = new XMLHttpRequest();
         var url = 'https://sleek-upsell.herokuapp.com/brgxczvy';
-        var params = 'stat_id=""&date='+Math.floor(Date.now() / 1000) +'&shop='+Shopify.shop+'&offer='+oid+'&product='+pid+'&variant='+vid+'&quantity='+quantity+'&ip=""&country=""&type='+type+'&action='+action+'&page='+page+'&device='+device()+'&browser='+user_browser()+'&citems='+JSON.stringify(citems)+'&price='+price;
+        var params = 'stat_id=""&date=' + Math.floor(Date.now() / 1000) + '&shop=' + Shopify.shop + '&offer=' + oid + '&product=' + pid + '&variant=' + vid + '&quantity=' + quantity + '&ip=""&country=""&type=' + type + '&action=' + action + '&page=' + page + '&device=' + device() + '&browser=' + user_browser() + '&citems=' + JSON.stringify(citems) + '&price=' + price;
         http.open('POST', url, true);
 
         //Send the proper header information along with the request
@@ -717,43 +715,43 @@ jQuery(document).ready(function () {
             }
         }
         http.send(params);
-        
-        
+
+
     }
-    
+
     function display_offer(oid) {
         let element = '';
         let curr = Shopify.currency['active'];
         let settings = offers['settings'];
         let lay = offers['offer'][oid]['offer'][0]['layout'];
         let lay_el = '<div class="card sleek-upsell"></div>';
-        
-        if(page.includes('/cart')){element = cart_selector;}
-        else{element = drawer_selector;}
-        
+
+        if (page.includes('/cart')) { element = cart_selector; }
+        else { element = drawer_selector; }
+
         $('<style>.sleek-upsell{background: #ECF0F1; color: #2B3D51; padding: 5px; font-family: inherit; vertical-align: middle; margin: 5px;}.sleek-image img{width: 100px;}.sleek-text{font-weight: bold;}.sleek-upsell select{padding: 4px; margin-top: 5px;}.sleek-prices{font-weight: bold; margin-bottom: 5px;}.sleek-compare-price{text-decoration: line-through;}.sleek-upsell button{padding: 10px; border: none; background: #2B3D51; color: #FFFFFF; font-weight: bold; border-radius: 0px; cursor: pointer; width: 100%;}.card{display: table;}.card .sleek-form{display: flex;}.card .sleek-image, .card .sleek-offer, .card .sleek-card-atc{display: table; align-self: center; padding: 5px;}.card .sleek-offer{flex-grow: 4;}.card .sleek-prices{text-align: center;}.block, .block .sleek-form, .block .sleek-text, .block .sleek-atc{display: table;}.sleek-block{display: flex;}.block .sleek-image, .block .sleek-offer{display: table; align-self: center; padding: 5px;}.block .sleek-offer{flex-grow: 1;}.half-block, .half-block .sleek-form, .half-block .sleek-text, .half-block .sleek-atc{display: table;}.sleek-half-block{display: flex;}.half-block .sleek-image, .half-block .sleek-offer{display: table; align-self: center; padding: 5px;}.half-block .sleek-offer{flex-grow: 1;}.flat, .flat .sleek-form, .flat .sleek-text{display: table;}.sleek-flat{display: flex;}.flat .sleek-image, .flat .sleek-offer{display: table; align-self: center; padding: 5px;}.flat .sleek-offer{flex-grow: 1;}.flat .flex-select{display: flex; width: auto; margin-top: 10px;}.flat .v-select{display: table; width: 100%; align-items: center; justify-content: space-between;}.flat .atc{flex-grow: 4;}.flat .q-select{margin-top: 0px; margin-right: 10px;}.compact, .compact .sleek-form, .compact .sleek-text, .compact .sleek-atc{display: table;}.sleek-compact{display: flex;}.compact .sleek-image, .compact .sleek-offer{display: table; align-self: center; padding: 5px;}.compact .sleek-offer{flex-grow: 1;}.compact .sleek-atc{margin-top: 5px;}@media only screen and (max-width: 600px){.sleek-upsell{width: 97%; margin: 5px auto;}.card select{max-width: 100px;}.block select{max-width: 200px;}.sleek-prices *{display: inline-table;}.block .sleek-form, .block .sleek-text, .block .sleek-atc{width: 100%;}}</style>').insertBefore(element);
-        
-        if(lay == 'card'){
+
+        if (lay == 'card') {
             lay_el = '<div class="card sleek-upsell"></div>';
         }
-        if(lay == 'flat'){
+        if (lay == 'flat') {
             lay_el = '<div class="flat sleek-upsell"></div>';
         }
-        if(lay == 'block'){
+        if (lay == 'block') {
             lay_el = '<div class="block sleek-upsell"></div>';
         }
-        if(lay == 'half-block'){
+        if (lay == 'half-block') {
             lay_el = '<div class="half-block sleek-upsell"></div>';
         }
-        if(lay == 'compact'){
+        if (lay == 'compact') {
             lay_el = '<div class="compact sleek-upsell"></div>';
         }
-        
+
         $(lay_el).insertBefore(element);
-        if(offers['offer'][oid]['offer'][0]['close'] == 'y'){
+        if (offers['offer'][oid]['offer'][0]['close'] == 'y') {
             $(lay_el).append('<div style="display: table; position: relative; width: 100%; text-align: right;"><span class="reject_offer" style="font-size: 15px; cursor: pointer;">x</span></div>');
         }
-        
+
         let products = offers['offer'][oid]['products'];
         let oprods = offers['products'];
         console.log('Found products');
@@ -769,7 +767,7 @@ jQuery(document).ready(function () {
             let oatc = offers['offer'][oid]['offer'][0]['atc'];
             let vatc = v['atc'];
             let atc = 'ADD TO CART';
-            
+
             let otext = offers['offer'][oid]['offer'][0]['text'];
             let vtext = v['text'];
             let dtext = 'ADD TO CART';
@@ -781,7 +779,7 @@ jQuery(document).ready(function () {
             } else {
                 atc = 'ADD TO CART';
             }
-            
+
             if (otext != '') {
                 dtext = otext;
             } else if (vtext != '') {
@@ -792,28 +790,28 @@ jQuery(document).ready(function () {
 
             console.log('Product ' + pid + ' found at position ' + index);
             console.log(datacell);
-            
+
             let o_ui = '<form class="sleek-form" data-product-index="' + i + '"> <div class="sleek-image"> <img src="' + datacell['image']['src'] + '"/> </div><div class="sleek-offer"> <div class="sleek-text">' + dtext + '</div><div class="sleek-title">' + datacell['title'] + '</div><div class="sleek-selectors"> <div class="offer_fields_holder o_h_' + pid + '"></div> <select name="id" class="v-select v-' + pid + '"></select> <select name="quantity" class="q-select q-' + pid + '"></select> </div></div><div class="sleek-card-atc"> <div class="sleek-prices"> <span class="sleek-price money">' + curr + ' ' + datacell['variants'][0]['price'] + '</span> <span class="sleek-compare-price money">' + curr + ' ' + datacell['variants'][0]['price'] + '</span> </div><button class="sleek-atc" type="submit">' + atc + '</button> </div></form>';
 
 
-            if(lay == 'card'){
+            if (lay == 'card') {
                 o_ui = '<form class="sleek-form" action="/cart/add" enctype="multipart/form-data" data-product-index="' + i + ' data-product-product_id="' + pid + '"> <div class="sleek-image"> <img src="' + datacell['image']['src'] + '"/> </div><div class="sleek-offer"> <div class="sleek-text">' + dtext + '</div><div class="sleek-title">' + datacell['title'] + '</div><div class="sleek-selectors"> <div class="offer_fields_holder o_h_' + pid + '"></div> <select name="id" class="v-select v-' + pid + '"></select> <select name="quantity" class="q-select q-' + pid + '"></select> </div></div><div class="sleek-card-atc"> <div class="sleek-prices"> <span class="sleek-price money">' + curr + ' ' + datacell['variants'][0]['price'] + '</span> <span class="sleek-compare-price money">' + curr + ' ' + datacell['variants'][0]['price'] + '</span> </div><button class="sleek-atc" type="submit">' + atc + '</button> </div></form>';
             }
-            if(lay == 'flat'){
-                o_ui =  '<form class="sleek-form" action="/cart/add" enctype="multipart/form-data" data-product-index="' + i + ' data-product-product_id="' + pid + '"> <div class="sleek-text">' + dtext + '</div><div class="sleek-flat"> <div class="sleek-image"> <img src="' + datacell['image']['src'] + '"/> </div><div class="sleek-offer"> <div class="sleek-title">' + datacell['title'] + '</div><div class="sleek-prices"> <span class="sleek-price money">' + curr + ' ' + datacell['variants'][0]['price'] + '</span> <span class="sleek-compare-price money">' + curr + ' ' + datacell['variants'][0]['price'] + '</span> </div><div class="sleek-selectors"> <div class="offer_fields_holder o_h_' + pid + '"></div> <select name="id" class="v-select v-' + pid + '"></select> <div class="flex-select"> <select name="quantity" class="q-select q-' + pid + '"></select> <button class="sleek-atc" type="submit">' + atc + '</button> </div></div></div></div></form>'
+            if (lay == 'flat') {
+                o_ui = '<form class="sleek-form" action="/cart/add" enctype="multipart/form-data" data-product-index="' + i + ' data-product-product_id="' + pid + '"> <div class="sleek-text">' + dtext + '</div><div class="sleek-flat"> <div class="sleek-image"> <img src="' + datacell['image']['src'] + '"/> </div><div class="sleek-offer"> <div class="sleek-title">' + datacell['title'] + '</div><div class="sleek-prices"> <span class="sleek-price money">' + curr + ' ' + datacell['variants'][0]['price'] + '</span> <span class="sleek-compare-price money">' + curr + ' ' + datacell['variants'][0]['price'] + '</span> </div><div class="sleek-selectors"> <div class="offer_fields_holder o_h_' + pid + '"></div> <select name="id" class="v-select v-' + pid + '"></select> <div class="flex-select"> <select name="quantity" class="q-select q-' + pid + '"></select> <button class="sleek-atc" type="submit">' + atc + '</button> </div></div></div></div></form>'
             }
-            if(lay == 'block'){
+            if (lay == 'block') {
                 o_ui = '<form class="sleek-form" action="/cart/add" enctype="multipart/form-data" data-product-index="' + i + ' data-product-product_id="' + pid + '"> <div class="sleek-text">' + dtext + '</div><div class="sleek-block"> <div class="sleek-image"> <img src="' + datacell['image']['src'] + '"/> </div><div class="sleek-offer"> <div class="sleek-title">' + datacell['title'] + '</div><div class="sleek-prices"> <span class="sleek-price money">' + curr + ' ' + datacell['variants'][0]['price'] + '</span> <span class="sleek-compare-price money">' + curr + ' ' + datacell['variants'][0]['price'] + '</span> </div><div class="sleek-selectors"> <div class="offer_fields_holder o_h_' + pid + '"></div> <select name="id" class="v-select v-' + pid + '"></select> <select name="quantity" class="q-select q-' + pid + '"></select> </div></div></div><button class="sleek-atc" type="submit">' + atc + '</button> </form>';
             }
-            if(lay == 'half-block'){
+            if (lay == 'half-block') {
                 o_ui = '<form class="sleek-form" action="/cart/add" enctype="multipart/form-data" data-product-index="' + i + ' data-product-product_id="' + pid + '"> <div class="sleek-half-block"> <div class="sleek-image"> <img src="' + datacell['image']['src'] + '"/> </div><div class="sleek-offer"> <div class="sleek-text">' + dtext + '</div><div class="sleek-title">' + datacell['title'] + '</div><div class="sleek-prices"> <span class="sleek-price money">' + curr + ' ' + datacell['variants'][0]['price'] + '</span> <span class="sleek-compare-price money">' + curr + ' ' + datacell['variants'][0]['price'] + '</span> </div><div class="sleek-selectors"> <div class="offer_fields_holder o_h_' + pid + '"></div> <select name="id" class="v-select v-' + pid + '"></select> <select name="quantity" class="q-select q-' + pid + '"></select> </div></div></div><button class="sleek-atc" type="submit">' + atc + '</button> </form>';
             }
-            if(lay == 'compact'){
-                o_ui =  '<form class="sleek-form" action="/cart/add" enctype="multipart/form-data" data-product-index="' + i + ' data-product-product_id="' + pid + '"> <div class="sleek-compact"> <div class="sleek-image"> <img src="' + datacell['image']['src'] + '"/> </div><div class="sleek-offer"> <div class="sleek-text">' + dtext + '</div><div class="sleek-title">' + datacell['title'] + '</div><div class="sleek-prices"> <span class="sleek-price money">' + curr + ' ' + datacell['variants'][0]['price'] + '</span> <span class="sleek-compare-price money">' + curr + ' ' + datacell['variants'][0]['price'] + '</span> </div><div class="sleek-selectors"> <div class="offer_fields_holder o_h_' + pid + '"></div> <select name="id" class="v-select v-' + pid + '"></select> <select name="quantity" class="q-select q-' + pid + '"></select> </div><button class="sleek-atc" type="submit">' + atc + '</button> </div></div></form>'
+            if (lay == 'compact') {
+                o_ui = '<form class="sleek-form" action="/cart/add" enctype="multipart/form-data" data-product-index="' + i + ' data-product-product_id="' + pid + '"> <div class="sleek-compact"> <div class="sleek-image"> <img src="' + datacell['image']['src'] + '"/> </div><div class="sleek-offer"> <div class="sleek-text">' + dtext + '</div><div class="sleek-title">' + datacell['title'] + '</div><div class="sleek-prices"> <span class="sleek-price money">' + curr + ' ' + datacell['variants'][0]['price'] + '</span> <span class="sleek-compare-price money">' + curr + ' ' + datacell['variants'][0]['price'] + '</span> </div><div class="sleek-selectors"> <div class="offer_fields_holder o_h_' + pid + '"></div> <select name="id" class="v-select v-' + pid + '"></select> <select name="quantity" class="q-select q-' + pid + '"></select> </div><button class="sleek-atc" type="submit">' + atc + '</button> </div></div></form>'
             }
-            $('.'+lay).append(o_ui);
-            sessionStorage.setItem('sleek_shown_' + oid , 'y');
-            populateFields(oid,pid)
+            $('.' + lay).append(o_ui);
+            sessionStorage.setItem('sleek_shown_' + oid, 'y');
+            populateFields(oid, pid)
             $(datacell['variants']).each(function (i) {
                 // console.log(datacell['variants'][i]['title']);
                 $('.v-' + pid).append('<option value="' + datacell['variants'][i]['id'] +
@@ -826,145 +824,81 @@ jQuery(document).ready(function () {
                     i + '</option>')
             }
             brgxczvy(oid, pid, $('.v-' + pid).val(), $('.q-' + pid).val(), datacell['variants'][0]['price'], 'show', 'show');
-            $('.v-' + pid).change(function(){
+            $('.v-' + pid).change(function () {
                 brgxczvy(oid, pid, $(this).val(), $('.q-' + pid).val(), datacell['variants'][0]['price'], 'variant change', 'impression');
             });
-            $('.q-' + pid).change(function(){
+            $('.q-' + pid).change(function () {
                 brgxczvy(oid, pid, $('.v-' + pid).val(), $(this).val(), datacell['variants'][0]['price'], 'quantity change', 'impression');
             });
-            $('.sleek-form').hover(function(){
+            $('.sleek-form').hover(function () {
                 brgxczvy(oid, pid, $('.v-' + pid).val(), $('.q-' + pid).val(), datacell['variants'][0]['price'], 'hover', 'impression');
             });
-            $('.sleek-form').submit(function(e){
+            $('.sleek-form').submit(function (e) {
                 e.preventDefault();
                 brgxczvy(oid, pid, $('.v-' + pid).val(), $('.q-' + pid).val(), datacell['variants'][0]['price'], 'add to cart', 'purchase');
                 $.ajax({
-                  type: 'POST', 
-                  url: '/cart/add.js',
-                  dataType: 'json', 
-                  data: $(this).serialize(),
-                  success: function(response){
-                      console.log(response);
-                      window.location.reload(false); 
-                  },
-                  error: function(response){
-                      console.log(response);
-                      $(this).find('button').html('Could not add product');
-                      setTimeout(function(){$(this).remove()}, 1000);
-                  }
-               });
+                    type: 'POST',
+                    url: '/cart/add.js',
+                    dataType: 'json',
+                    data: $(this).serialize(),
+                    success: function (response) {
+                        console.log(response);
+                        window.location.reload(false);
+                    },
+                    error: function (response) {
+                        console.log(response);
+                        $(this).find('button').html('Could not add product');
+                        setTimeout(function () { $(this).remove() }, 1000);
+                    }
+                });
             });
         });
-        
-        $('.reject_offer').click(function(){
-            sessionStorage.setItem('sleek_shown_' + oid , 'y');
+
+        $('.reject_offer').click(function () {
+            sessionStorage.setItem('sleek_shown_' + oid, 'y');
             brgxczvy(oid, '', '', '', '', 'reject', 'reject');
-            $('.sleek-upsell').fadeOut("slow", function(){
+            $('.sleek-upsell').fadeOut("slow", function () {
                 $('.sleek-upsell').remove();
                 next_offer();
             });
         });
-        
-        if(settings != null){
-            $('.sleek-upsell').css('background',settings['layout_bg']);
-            $('.sleek-upsell select').css('background',settings['layout_bg']);
-        }
-        if(settings != null){
-            $('.sleek-upsell').css('color',settings['layout_color']);
-            $('.sleek-upsell select').css('color',settings['layout_color']);
-        }
-        if(settings != null){
-            $('.sleek-upsell').css('font-family',settings['layout_font']);
-        }
-        if(settings != null){
-            $('.sleek-upsell').css('font-size',settings['layout_size']);
-        }
-        if(settings != null){
-            $('.sleek-upsell').css('margin-top',settings['layout_mt']);
-        }
-        if(settings != null){
-            $('.sleek-upsell').css('margin-bottom',settings['layout_mb']);
-        }
-        if(settings != null){
-            $('.sleek-upsell').css('border-radius',settings['offer_radius']);
-        }
-        if(settings != null){
-            $('.sleek-upsell').css('border-width',settings['offer_bs']);
-        }
-        if(settings != null){
-            $('.sleek-upsell').css('border-color',settings['offer_bc']);
-        }
-        if(settings != null){
-           $('.sleek-upsell .sleek-upsell').css('border-style',settings['offer_border']);
-        }
-        if(settings != null){
-            $('.sleek-upsell button').css('background',settings['button_bg']);
-        }
-        if(settings != null){
-            $('.sleek-upsell button').css('color',settings['button_color']);
-        }
-        if(settings != null){
-            $('.sleek-upsell button').css('font-family',settings['button_font']);
-        }
-        if(settings != null){
-            $('.sleek-upsell button').css('font-size',settings['button_size']);
-        }
-        if(settings != null){
-            $('.sleek-upsell button').css('margin-top',settings['button_mt']);
-        }
-        if(settings != null){
-            $('.sleek-upsell button').css('margin-bottom',settings['button_mb']);
-        }
-        if(settings != null){
-            $('.sleek-upsell button').css('border-radius',settings['button_radius']);
-        }
-        if(settings != null){
-            $('.sleek-upsell button').css('border-width',settings['button_bs']);
-        }
-        if(settings != null){
-            $('.sleek-upsell button').css('border-color',settings['button_bc']);
-        }
-        if(settings != null){
-            $('.sleek-upsell button').css('border-style',settings['button_border']);
-        }
-        if(settings != null){
-            $('.sleek-upsell img').css('border-radius',settings['image_radius']);
-        }
-        if(settings != null){
-            $('.sleek-upsell img').css('border-width',settings['image_bs']);
-        }
-        if(settings != null){
-            $('.sleek-upsell img').css('color',settings['image_bc']);
-        }
-        if(settings != null){
-            $('.sleek-upsell img').css('border-style',settings['image_border']);
-        }
-        if(settings != null){
-            $('.sleek-text').css('color',settings['text_color']);
-        }
-        if(settings != null){
-            $('.sleek-text').css('font-family',settings['text_font']);
-        }
-        if(settings != null){
-            $('.sleek-text').css('font-size',settings['text_size']);
-        }
-        if(settings != null){
-            $('.sleek-title').css('color',settings['title_color']);
-        }
-        if(settings != null){
-            $('.sleek-title').css('font-family',settings['title_font']);
-        }
-        if(settings != null){
-            $('.sleek-title').css('font-size',settings['title_size']);
-        }
-        if(settings != null){
-            $('.sleek-price').css('color',settings['price_color']);
-        }
-        if(settings != null){
-            $('.sleek-price').css('font-family',settings['price_font']);
-        }
-        if(settings != null){
-            $('.sleek-price').css('font-size',settings['price_size']);
+
+        if (settings != null) {
+            $('.sleek-upsell').css('background', settings['layout_bg']);
+            $('.sleek-upsell select').css('background', settings['layout_bg']);
+            $('.sleek-upsell').css('color', settings['layout_color']);
+            $('.sleek-upsell select').css('color', settings['layout_color']);
+            $('.sleek-upsell').css('font-family', settings['layout_font']);
+            $('.sleek-upsell').css('font-size', settings['layout_size']);
+            $('.sleek-upsell').css('margin-top', settings['layout_mt']);
+            $('.sleek-upsell').css('margin-bottom', settings['layout_mb']);
+            $('.sleek-upsell').css('border-radius', settings['offer_radius']);
+            $('.sleek-upsell').css('border-width', settings['offer_bs']);
+            $('.sleek-upsell').css('border-color', settings['offer_bc']);
+            $('.sleek-upsell .sleek-upsell').css('border-style', settings['offer_border']);
+            $('.sleek-upsell button').css('background', settings['button_bg']);
+            $('.sleek-upsell button').css('color', settings['button_color']);
+            $('.sleek-upsell button').css('font-family', settings['button_font']);
+            $('.sleek-upsell button').css('font-size', settings['button_size']);
+            $('.sleek-upsell button').css('margin-top', settings['button_mt']);
+            $('.sleek-upsell button').css('margin-bottom', settings['button_mb']);
+            $('.sleek-upsell button').css('border-radius', settings['button_radius']);
+            $('.sleek-upsell button').css('border-width', settings['button_bs']);
+            $('.sleek-upsell button').css('border-color', settings['button_bc']);
+            $('.sleek-upsell button').css('border-style', settings['button_border']);
+            $('.sleek-upsell img').css('border-radius', settings['image_radius']);
+            $('.sleek-upsell img').css('border-width', settings['image_bs']);
+            $('.sleek-upsell img').css('color', settings['image_bc']);
+            $('.sleek-upsell img').css('border-style', settings['image_border']);
+            $('.sleek-text').css('color', settings['text_color']);
+            $('.sleek-text').css('font-family', settings['text_font']);
+            $('.sleek-text').css('font-size', settings['text_size']);
+            $('.sleek-title').css('color', settings['title_color']);
+            $('.sleek-title').css('font-family', settings['title_font']);
+            $('.sleek-title').css('font-size', settings['title_size']);
+            $('.sleek-price').css('color', settings['price_color']);
+            $('.sleek-price').css('font-family', settings['price_font']);
+            $('.sleek-price').css('font-size', settings['price_size']);
         }
 
     }
