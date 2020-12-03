@@ -264,7 +264,7 @@ Not supports in Firefox and IE */
             <div class="col-xs-4" style="margin: 0px; padding: 0px; height: 100%; vertical-align: middle;"><span style="width: 100%; height: 100%; margin: 0px; vertical-align: middle; padding-top: 2vh;" onclick="showAjaxModal('products');" class="btn btn-primary btn-icon icon-right"><i class="entypo-plus" style="padding-top: 2vh;"></i>Add
                     Product</span></div>
         </div>
-        <div style="position: absolute; top: 7vh; left: 0px; height: 86vh; overflow-y: auto; width: 100%;" class="globalSets">
+        <div style="position: absolute; top: 7vh; left: 0px; height: 93vh; overflow-y: auto; width: 100%;" class="globalSets">
             <div class="panel-group joined" id="accordion-test-2">
                 <div class="panel panel-default">
                     <div class="panel-heading">
@@ -416,7 +416,7 @@ Not supports in Firefox and IE */
 
             </div>
         </div>
-        <div style="position: absolute; top: 7vh; left: 0px; height: 86vh; overflow-y: auto; width: 100%; display: none;" class="offerForm">
+        <div style="position: absolute; top: 7vh; left: 0px; height: 93vh; overflow-y: auto; width: 100%; display: none;" class="offerForm">
             <input autocomplete="false" type="hidden" value="card" class="offer_layout" />
             <div class="panel-group joined" id="accordion-test-p2">
                 <div class="panel panel-default">
@@ -576,7 +576,6 @@ Not supports in Firefox and IE */
                 <div onclick="console.log(offer);console.log(products);console.log(variants);console.log(blocks);console.log(conditions);console.log(fields);console.log(choices);">Log Arrays</div>
             </div>
         </div>
-        <div style="background: #003471; position: absolute; bottom: 0px; left: 0px; height: 7vh; width: 100%;"></div>
     </div>
     <div class="col-sm-8 offer-change-section hidden-xs">
         <div class="affixiate">
