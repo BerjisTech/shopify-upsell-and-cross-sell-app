@@ -95,7 +95,7 @@
                 <span> <i class="btn btn-primary btn-sm entypo-help"></i></span>
             </span>
         </div>
-        <div style="height: 100vh; overflow-y: auto; flex-grow: 4; padding-top: 10px; padding-left: 100px; padding-right: 100px; padding-bottom: 0px; background: #F1F2F3;">
+        <div style="height: 100vh; overflow-y: auto; flex-grow: 4; padding-top: 10px; padding-left: 0px; padding-right: 0px; padding-bottom: 0px; background: #F1F2F3;">
             <div class="row">
                 <div class="col-md-4 col-sm-6">
                     <div class="tile-stats tile-white stat-tile" style="box-shadow: 0px 0px 5px rgba(2, 2, 2, 0.2);">
