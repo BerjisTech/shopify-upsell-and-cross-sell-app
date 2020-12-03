@@ -255,8 +255,8 @@ Not supports in Firefox and IE */
 <div class="row">
     <div class="col-sm-4 col-xs-12" style="position: fixed; top: 0px; left: 0px; height: 100vh;">
         <div style="background: #003471; position: absolute; top: 0px; left: 0px; height: 7vh; width: 100%; vertical-align: middle;">
-            <div class="col-xs-2" onclick="window.history.back();" style="margin: 0px; padding: 0px; height: 100%; vertical-align: middle; border-radius: 0px;">
-                <span style="width: 100%; height: 100%; margin: 0px; vertical-align: middle; padding-top: 2vh;" class="btn btn-primary btn-icon entypo-home"></span>
+            <div class="col-xs-2" onclick="window.history.back();" style="margin: 0px; padding: 0px; height: 100%; vertical-align: middle; text-align: center; border-radius: 0px;">
+                <span style="width: 100%; height: 100%; margin: 0px; vertical-align: middle; padding-top: 2vh; text-align: center;" class="btn btn-primary btn-icon entypo-home"></span>
             </div>
             <div class="col-xs-6" style="margin: 0px; padding: 0px; height: 100%; vertical-align: middle;"><select style="border-radius: 0px; width: 100%; height: 100%; margin: 0px; vertical-align: middle;" class="toplect form-control">
                     <option value="global">Global</option>
