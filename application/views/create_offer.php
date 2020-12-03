@@ -254,14 +254,14 @@ Not supports in Firefox and IE */
 </script>
 <div class="row">
     <div class="col-sm-4 col-xs-12" style="position: fixed; top: 0px; left: 0px; height: 100vh;">
-        <div style="background: #003471; position: absolute; top: 0px; left: 0px; height: 7vh; width: 100%; vertical-align: middle;">
-            <div class="col-xs-1" onclick="window.history.back();" style="margin: 0px; padding: 0px; height: 100%; vertical-align: middle; text-align: center; border-radius: 0px;">
+        <div style="display: flex; align-items: center; justify-content: space-between; background: #003471; position: absolute; top: 0px; left: 0px; height: 7vh; width: 100%; vertical-align: middle;">
+            <div onclick="window.history.back();" style="margin: 0px; padding: 0px; height: 100%; vertical-align: middle; text-align: center; border-radius: 0px;">
                 <span style="width: 100%; height: 100%; margin: 0px; vertical-align: middle; padding-top: 2vh; text-align: center;" class="btn btn-primary btn-icon entypo-home"></span>
             </div>
-            <div class="col-xs-7" style="margin: 0px; padding: 0px; height: 100%; vertical-align: middle;"><select style="border-radius: 0px; width: 100%; height: 100%; margin: 0px; vertical-align: middle;" class="toplect form-control">
+            <div style="flex-grow: 4; margin: 0px; padding: 0px; height: 100%; vertical-align: middle;"><select style="border-radius: 0px; width: 100%; height: 100%; margin: 0px; vertical-align: middle;" class="toplect form-control">
                     <option value="global">Global</option>
                 </select></div>
-            <div class="col-xs-4" style="margin: 0px; padding: 0px; height: 100%; vertical-align: middle;"><span style="width: 100%; height: 100%; margin: 0px; vertical-align: middle; padding-top: 2vh;" onclick="showAjaxModal('products');" class="btn btn-primary btn-icon icon-right"><i class="entypo-plus" style="padding-top: 2vh;"></i>Add
+            <div style="margin: 0px; padding: 0px; height: 100%; vertical-align: middle;"><span style="width: 100%; height: 100%; margin: 0px; vertical-align: middle; padding-top: 2vh;" onclick="showAjaxModal('products');" class="btn btn-primary btn-icon icon-right"><i class="entypo-plus" style="padding-top: 2vh;"></i>Add
                     Product</span></div>
         </div>
         <div style="position: absolute; top: 7vh; left: 0px; height: 93vh; overflow-y: auto; width: 100%;" class="globalSets">
