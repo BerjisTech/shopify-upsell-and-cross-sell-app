@@ -122,7 +122,7 @@ jQuery(document).ready(function () {
     }
 
     next_offer();
-    collection_based();
+    // collection_based();
 
     function next_offer() {
         if (cart["item_count"] > 0) {
