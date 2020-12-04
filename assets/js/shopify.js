@@ -875,6 +875,7 @@ jQuery(document).ready(function () {
                         if (page.includes('/cart')) {
                             console.log(response);
                             sessionStorage.setItem('sleek_shown_' + oid, 'y');
+                            $('.sleek-upsell').remove();
 
                             if (offers['offer'][oid]['offer'][0]['to_checkout'] == 'y') { window.location.href = "/checkout"; }
                             else { window.location.reload(false); }
