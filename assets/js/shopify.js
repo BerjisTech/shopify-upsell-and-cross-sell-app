@@ -893,7 +893,6 @@ jQuery(document).ready(function () {
                         console.log(response);
                         $(this).find('button').html('Could not add product');
                         setTimeout(function () { $(this).remove() }, 1000);
-                        if (offers['offer'][oid]['offer'][0]['to_checkout'] == 'y') { window.location.href = "/checkout"; }
                     }
                 });
             });
