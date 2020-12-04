@@ -197,7 +197,7 @@ class Slade extends CI_Controller
 
                 $this->db->insert('shops', $shop_data);
             }
-            echo '<script>window.location.href = "https://' . $params['shop'] . '/admin/apps/sleek-upsell/activate' .$_SERVER['QUERY_STRING']. '";</script>';
+            echo '<script>window.location.href = "https://' . $params['shop'] . '/admin/apps/sleek-upsell/activate?' .$_SERVER['QUERY_STRING']. '";</script>';
         } else {
             // Someone is trying to be shady!
             header("Location: https://sleek-upsell.herokuapp.com/");
@@ -239,9 +239,15 @@ class Slade extends CI_Controller
 
     public function install(){
         if (isset($_GET['shop'])) :
-            $shop = str_replace(".myshopify.com", "", $_GET['shop']);
+            $shop = $_GET['shop'];
+            $shop = str_replace(".myshopify.com", "", $shop);
+            $shop = str_replace("https://", "", $shop);
+            $shop = str_replace("http://", "", $shop);
         elseif (isset($_POST['shop'])) :
+            $shop = $_POST['shop'];
             $shop = str_replace(".myshopify.com", "", $_POST['shop']);
+            $shop = str_replace("https://", "", $_POST['shop']);
+            $shop = str_replace("http://", "", $_POST['shop']);
         endif;
         $api_key = $this->config->item('shopify_api_key');
         $scopes = "read_orders,write_orders,read_draft_orders,read_content,write_content,read_products,write_products,read_product_listings,read_customers,write_customers,read_inventory,write_inventory,read_locations,read_script_tags,write_script_tags,read_themes,write_themes,read_shipping,write_shipping,read_analytics,read_checkouts,write_checkouts,read_reports,write_reports,read_price_rules,write_price_rules,read_discounts,write_discounts,read_resource_feedbacks,write_resource_feedbacks,read_translations,write_translations,read_locales,write_locales";
