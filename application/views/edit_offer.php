@@ -239,7 +239,7 @@ Not supports in Firefox and IE */
 <div class="row">
     <div class="col-sm-4 col-xs-12" style="position: fixed; top: 0px; left: 0px; height: 100vh;">
         <div style="display: flex; align-items: center; justify-content: space-between; background: #003471; position: absolute; top: 0px; left: 0px; height: 7vh; width: 100%; vertical-align: middle;">
-            <div onclick="window.location.replace('<?php echo base_url() . $_SERVER['QUERY_STRING']; ?>');" style="margin: 0px; padding: 0px; height: 100%; vertical-align: middle; text-align: center; border-radius: 0px;">
+            <div onclick="window.location.replace('<?php echo base_url() .'?'. $_SERVER['QUERY_STRING']; ?>');" style="margin: 0px; padding: 0px; height: 100%; vertical-align: middle; text-align: center; border-radius: 0px;">
                 <span style="height: 100%; margin: 0px; vertical-align: middle; padding-top: 2vh; text-align: center;" class="btn btn-primary entypo-home"></span>
             </div>
             <div style="flex-grow: 4; margin: 0px; padding: 0px; height: 100%; vertical-align: middle;"><select style="border-radius: 0px; width: 100%; height: 100%; margin: 0px; vertical-align: middle;" class="toplect form-control">
