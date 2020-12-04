@@ -95,10 +95,14 @@ jQuery(document).ready(function () {
     let page = window.location.pathname;
     let settings = offers['settings'];
     let drawer_selector = 'form[action="/cart"]';
+    let drawer_position = 'before';
     let cart_selector = 'form[action="/cart"]';
+    let cart_position = 'before';
     if (settings != null) {
         drawer_selector = settings.drawer_location;
         cart_selector = settings.cart_location;
+        cart_position = settings.cart_position;
+        drawer_position = settings.drawer_position;
     }
 
     next_offer();
@@ -725,9 +729,10 @@ jQuery(document).ready(function () {
         let settings = offers['settings'];
         let lay = offers['offer'][oid]['offer'][0]['layout'];
         let lay_el = '<div class="card sleek-upsell"></div>';
+        let nudge = 'before';
 
-        if (page.includes('/cart')) { element = cart_selector; }
-        else { element = drawer_selector; }
+        if (page.includes('/cart')) { element = cart_selector; nudge = cart_position; }
+        else { element = drawer_selector; nudge = drawer_position; }
 
         $('<style>.sleek-upsell{background: #ECF0F1; color: #2B3D51; padding: 5px; font-family: inherit; vertical-align: middle; margin: 5px;}.sleek-image img{width: 100px;}.sleek-text{font-weight: bold;}.sleek-upsell select{padding: 4px; margin-top: 5px;}.sleek-prices{font-weight: bold; margin-bottom: 5px;}.sleek-compare-price{text-decoration: line-through;}.sleek-upsell button{padding: 10px; border: none; background: #2B3D51; color: #FFFFFF; font-weight: bold; border-radius: 0px; cursor: pointer; width: 100%;}.card{display: table;}.card .sleek-form{display: flex;}.card .sleek-image, .card .sleek-offer, .card .sleek-card-atc{display: table; align-self: center; padding: 5px;}.card .sleek-offer{flex-grow: 4;}.card .sleek-prices{text-align: center;}.block, .block .sleek-form, .block .sleek-text, .block .sleek-atc{display: table;}.sleek-block{display: flex;}.block .sleek-image, .block .sleek-offer{display: table; align-self: center; padding: 5px;}.block .sleek-offer{flex-grow: 1;}.half-block, .half-block .sleek-form, .half-block .sleek-text, .half-block .sleek-atc{display: table;}.sleek-half-block{display: flex;}.half-block .sleek-image, .half-block .sleek-offer{display: table; align-self: center; padding: 5px;}.half-block .sleek-offer{flex-grow: 1;}.flat, .flat .sleek-form, .flat .sleek-text{display: table;}.sleek-flat{display: flex;}.flat .sleek-image, .flat .sleek-offer{display: table; align-self: center; padding: 5px;}.flat .sleek-offer{flex-grow: 1;}.flat .flex-select{display: flex; width: auto; margin-top: 10px;}.flat .v-select{display: table; width: 100%; align-items: center; justify-content: space-between;}.flat .atc{flex-grow: 4;}.flat .q-select{margin-top: 0px; margin-right: 10px;}.compact, .compact .sleek-form, .compact .sleek-text, .compact .sleek-atc{display: table;}.sleek-compact{display: flex;}.compact .sleek-image, .compact .sleek-offer{display: table; align-self: center; padding: 5px;}.compact .sleek-offer{flex-grow: 1;}.compact .sleek-atc{margin-top: 5px;}@media only screen and (max-width: 600px){.sleek-upsell{width: 97%; margin: 5px auto;}.card select{max-width: 100px;}.block select{max-width: 200px;}.sleek-prices *{display: inline-table;}.block .sleek-form, .block .sleek-text, .block .sleek-atc{width: 100%;}}</style>').insertBefore(element);
 
@@ -747,7 +752,15 @@ jQuery(document).ready(function () {
             lay_el = '<div class="compact sleek-upsell"></div>';
         }
 
-        $(lay_el).insertBefore(element);
+        if (nudge == 'prepend'){ $(element).prepend(lay_el); }
+        if (nudge == 'append'){ $(element).append(lay_el); }
+        
+        if (nudge == 'before'){ $(lay_el).insertBefore(element); }
+        if (nudge == 'after'){ $(lay_el).insertAfter(element); }
+        
+
+        if(drawer_position == 'before'){}
+
         if (offers['offer'][oid]['offer'][0]['close'] == 'y') {
             $(lay_el).append('<div style="display: table; position: relative; width: 100%; text-align: right;"><span class="reject_offer" style="font-size: 15px; cursor: pointer;">x</span></div>');
         }
@@ -809,6 +822,7 @@ jQuery(document).ready(function () {
             if (lay == 'compact') {
                 o_ui = '<form class="sleek-form" action="/cart/add" enctype="multipart/form-data" data-product-index="' + i + ' data-product-product_id="' + pid + '"> <div class="sleek-compact"> <div class="sleek-image"> <img src="' + datacell['image']['src'] + '"/> </div><div class="sleek-offer"> <div class="sleek-text">' + dtext + '</div><div class="sleek-title">' + datacell['title'] + '</div><div class="sleek-prices"> <span class="sleek-price money">' + curr + ' ' + datacell['variants'][0]['price'] + '</span> <span class="sleek-compare-price money">' + curr + ' ' + datacell['variants'][0]['price'] + '</span> </div><div class="sleek-selectors"> <div class="offer_fields_holder o_h_' + pid + '"></div> <select name="id" class="v-select v-' + pid + '"></select> <select name="quantity" class="q-select q-' + pid + '"></select> </div><button class="sleek-atc" type="submit">' + atc + '</button> </div></div></form>'
             }
+            
             $('.' + lay).append(o_ui);
             populateFields(oid, pid)
             $(datacell['variants']).each(function (i) {
