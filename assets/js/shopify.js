@@ -86,6 +86,7 @@ jQuery(document).ready(function () {
                     "/cart/clear.js",
                 ].includes(this._url)
             ) {
+                console.log('Cart has changed');
                 console.log(this.response);
                 next_offer();
             }
