@@ -917,7 +917,7 @@ jQuery(document).ready(function () {
 
     }
 
-    Shopify.onCartUpdate = function (cart) {
-        alert('There are now ' + cart.item_count + ' items in the cart.');
-    };
+    ​Object.observe(arr, function(changes) {
+        console.log("The array changed. Changes:", changes);
+    });
 });
