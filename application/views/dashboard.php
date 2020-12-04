@@ -364,8 +364,6 @@
         position: fixed;
         background: #ffffff;
     }
-
-    .pull-down {}
 </style>
 
 <script>
