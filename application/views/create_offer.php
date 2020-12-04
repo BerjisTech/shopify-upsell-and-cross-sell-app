@@ -425,7 +425,7 @@ Not supports in Firefox and IE */
                     </div>
                     <div id="collapseFour-2" class="panel-collapse collapse">
                         <div class="panel-body">
-                            <div style="display: table; width: 100%; margin-bottom: 10px;">
+                            <div style="display: none; width: 100%; margin-bottom: 10px;">
                                 <label><input type="checkbox" class="offer_apply_discount" value="1" /> Add add
                                     discount to this offer. <br /><span class="text-info">Paste your discount code
                                         below</span></label><br />
