@@ -1,6 +1,6 @@
 <div class="saving" style="display: none; position: absolute; top: 0px; right: 0px; z-index: 2000000; width: 100vw; height: 100vh; background: rgba(152,27,27,0.5); vertical-align: middle; text-align: center;" ><img src="<?php echo base_url(); ?>assets/images/loader_2.gif" style="margin-top: 30vh;"/></div>
 <div class="btn btn-primary saver" style="display: table; position: absolute; top: 10px; right: 115px; z-index: 2000000;"><span class="entypo-floppy"> SAVE</span></div>
-<div class="btn btn-primary" oclick="window.history.back();" style="display: table; position: absolute; top: 10px; right: 30px; z-index: 2000000;"><span class="entypo-home"> BACK</span></div>
+<div class="btn btn-primary" onclick="window.history.back();" style="display: table; position: absolute; top: 10px; right: 30px; z-index: 2000000;"><span class="entypo-home"> BACK</span></div>
 <div class="whole">
     <div style="width: 50px; height: 100vh; background: #981B1B; display: flex; flex-direction: column; justify-content: space-between; align-items: center; text-align: center;">
         <div id="p" class="whats btn btn-primary" style="background-color: #981B1B; color: white;"><span class="entypo-leaf"></span></div>
