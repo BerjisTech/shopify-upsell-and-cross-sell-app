@@ -775,14 +775,13 @@
     $('input[name="cart_dom"]').on('input', function(){
         settings['cart_location'] = $(this).val();
     });
-    $('input[name="cart_pos"]').change(function(){
+    $('select[name="cart_pos"]').change(function(){
         settings['cart_position'] = $(this).val();
-        alert($(this).val());
     });
     $('input[name="drawer_dom"]').on('input', function(){
         settings['drawer_location'] = $(this).val();
     });
-    $('input[name="drawer_pos"]').change(function(){
+    $('select[name="drawer_pos"]').change(function(){
         settings['drawer_position'] = $(this).val();
     });
     $('input[name="drawer_refresh"]').change(function(){
