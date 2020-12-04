@@ -112,7 +112,7 @@ jQuery(document).ready(function () {
                 ].includes(this._url)
             ) {
                 cart = g_d("https://" + Shopify.shop + "/cart.js");
-                console.log('Cart has changed: New item count - '+cart["item_count"]);
+                console.log('Cart has changed: New item count - ' + cart["item_count"]);
                 console.log(this.response);
                 next_offer();
             }
@@ -872,9 +872,17 @@ jQuery(document).ready(function () {
                     dataType: 'json',
                     data: $(this).serialize(),
                     success: function (response) {
-                        console.log(response);
-                        sessionStorage.setItem('sleek_shown_' + oid, 'y');
-                        window.location.reload(false);
+                        if (page.includes('/cart')) {
+                            console.log(response);
+                            sessionStorage.setItem('sleek_shown_' + oid, 'y');
+                            window.location.reload(false);
+                        }
+                        else {
+                            $('.sleek-upsell').remove();
+                            console.log(response);
+                            sessionStorage.setItem('sleek_shown_' + oid, 'y');
+                            next_offer();
+                        }
                     },
                     error: function (response) {
                         console.log(response);
