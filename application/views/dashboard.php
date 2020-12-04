@@ -385,7 +385,8 @@
                     }
                 });
             }
-        } else {
+        } 
+        if ($('.os' + o).is(":not:checked")) { {
             if (confirm('Are you sure you want to deactivate this offer?')) {
                 $.ajax({
                     type: "POST",
