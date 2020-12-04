@@ -273,7 +273,7 @@
                             <td style="vertical-align: middle; border: none;">
                                 <span class="col-xs-12 status">
                                     <label class="switch">
-                                        <input onchange="activeStat(<?php echo $fetch['offer'][0]['offer_id']; ?>, $(this));" class="switcheck offer_status os<?php $fetch['offer'][0]['offer_id']; ?>" type="checkbox" value="<?php if ($fetch['offer'][0]['status'] == '') {
+                                        <input onchange="activeStat(<?php echo $fetch['offer'][0]['offer_id']; ?>);" class="switcheck offer_status os<?php $fetch['offer'][0]['offer_id']; ?>" type="checkbox" value="<?php if ($fetch['offer'][0]['status'] == '') {
                                                                                                                                                                 echo 0;
                                                                                                                                                             } else {
                                                                                                                                                                 echo 1;
@@ -359,11 +359,9 @@
 </style>
 
 <script>
-    function activeStat(o, a) {
+    function activeStat(o) {
         console.log(o);
-        console.log(a);
-        console.log(a.val());
-        if ('os'+o.checked) {
+        if ('.os'+o.checked) {
             a.val(0);
         } else {
             a.val(1);
