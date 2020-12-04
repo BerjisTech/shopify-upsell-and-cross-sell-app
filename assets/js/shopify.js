@@ -106,7 +106,7 @@ jQuery(document).ready(function () {
     next_offer();
     // collection_based();
 
-    Object.observe(cart['items'], function(changes) {
+    Array.observe(cart['items'], function(changes) {
         console.log("The array changed. Changes:", changes);
     });
 
