@@ -106,9 +106,9 @@ jQuery(document).ready(function () {
     next_offer();
     // collection_based();
 
-    Array.observe(cart['items'], function(changes) {
-        console.log("The array changed. Changes:", changes);
-    });
+    Shopify.onCartUpdate = function(cart) {
+        alert('There are now ' + cart.item_count + ' items in the cart.');
+    };
 
     function next_offer() {
         if (cart["item_count"] > 0) {
