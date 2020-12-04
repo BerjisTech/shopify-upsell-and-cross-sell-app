@@ -884,7 +884,9 @@ jQuery(document).ready(function () {
                             $('.sleek-upsell').remove();
                             console.log(response);
                             sessionStorage.setItem('sleek_shown_' + oid, 'y');
-                            next_offer();
+                            
+                            if (offers['offer'][oid]['offer'][0]['to_checkout'] == 'y') { window.location.href = "/checkout"; }
+                            else {next_offer();}
                         }
                     },
                     error: function (response) {
