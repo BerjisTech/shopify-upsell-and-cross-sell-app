@@ -752,14 +752,14 @@ jQuery(document).ready(function () {
             lay_el = '<div class="compact sleek-upsell"></div>';
         }
 
-        if (nudge == 'prepend'){ $(element).prepend(lay_el); }
-        if (nudge == 'append'){ $(element).append(lay_el); }
-        
-        if (nudge == 'before'){ $(lay_el).insertBefore(element); }
-        if (nudge == 'after'){ $(lay_el).insertAfter(element); }
-        
+        if (nudge == 'prepend') { $(element).prepend(lay_el); }
+        if (nudge == 'append') { $(element).append(lay_el); }
 
-        if(drawer_position == 'before'){}
+        if (nudge == 'before') { $(lay_el).insertBefore(element); }
+        if (nudge == 'after') { $(lay_el).insertAfter(element); }
+
+
+        if (drawer_position == 'before') { }
 
         if (offers['offer'][oid]['offer'][0]['close'] == 'y') {
             $(lay_el).append('<div style="display: table; position: relative; width: 100%; text-align: right;"><span class="reject_offer" style="font-size: 15px; cursor: pointer;">x</span></div>');
@@ -822,7 +822,7 @@ jQuery(document).ready(function () {
             if (lay == 'compact') {
                 o_ui = '<form class="sleek-form" action="/cart/add" enctype="multipart/form-data" data-product-index="' + i + ' data-product-product_id="' + pid + '"> <div class="sleek-compact"> <div class="sleek-image"> <img src="' + datacell['image']['src'] + '"/> </div><div class="sleek-offer"> <div class="sleek-text">' + dtext + '</div><div class="sleek-title">' + datacell['title'] + '</div><div class="sleek-prices"> <span class="sleek-price money">' + curr + ' ' + datacell['variants'][0]['price'] + '</span> <span class="sleek-compare-price money">' + curr + ' ' + datacell['variants'][0]['price'] + '</span> </div><div class="sleek-selectors"> <div class="offer_fields_holder o_h_' + pid + '"></div> <select name="id" class="v-select v-' + pid + '"></select> <select name="quantity" class="q-select q-' + pid + '"></select> </div><button class="sleek-atc" type="submit">' + atc + '</button> </div></div></form>'
             }
-            
+
             $('.' + lay).append(o_ui);
             populateFields(oid, pid)
             $(datacell['variants']).each(function (i) {
@@ -916,4 +916,8 @@ jQuery(document).ready(function () {
         }
 
     }
+
+    Shopify.onCartUpdate = function (cart) {
+        alert('There are now ' + cart.item_count + ' items in the cart.');
+    };
 });
