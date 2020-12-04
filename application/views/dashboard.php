@@ -362,9 +362,29 @@
     function activeStat(o) {
         console.log(o);
         if ('.os'+o.checked) {
-            a.val(0);
+            $.ajax({
+                type: "POST",
+                url: base_url + 'offer_status/' +o+ '/0?<?php echo $_SERVER['QUERY_STRING']; ?>',
+                data: '',
+                success: function(response) {
+                    a.val(0);
+                },
+                error: function() {
+                    alert('An error occured');
+                }
+            });
         } else {
-            a.val(1);
+            $.ajax({
+                type: "POST",
+                url: base_url + 'offer_status/' +o+ '/1?<?php echo $_SERVER['QUERY_STRING']; ?>',
+                data: '',
+                success: function(response) {
+                    a.val(1);
+                },
+                error: function() {
+                    alert('An error occured');
+                }
+            });
         }
     }
 </script>

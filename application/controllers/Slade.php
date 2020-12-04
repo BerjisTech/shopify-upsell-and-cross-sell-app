@@ -402,6 +402,10 @@ class Slade extends CI_Controller
         $this->load->view('index', $data);
     }
 
+    public function offer_status($oid,$status){
+        $this->db->where('offer_id', $oid)->set('status', $status)->update('offers');
+    }
+
     public function settings($shop, $token){
         $data['token'] = $token;
         $data['shop'] = $shop;
