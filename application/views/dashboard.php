@@ -146,8 +146,7 @@
                 </thead>
                 <tbody style="border: none;">
                     <?php
-                    foreach ($offer as $key => $fetch) : 
-                    echo '<script>console.log('.json_encode($fetch).');</script>'?>
+                    foreach ($offer as $key => $fetch) : ?>
                         <tr style="">
                             <td style="vertical-align: middle; border: none; text-align: center; color: #FFFFFF; font-size: 1px;"><?php echo $key; ?></td>
                             <td style="vertical-align: middle; border: none; flex-grow: 4;">
@@ -274,7 +273,7 @@
                             <td style="vertical-align: middle; border: none;">
                                 <span class="col-xs-12 status">
                                     <label class="switch">
-                                        <input onchange="activeStat(<?php echo $fetch['offer'][0]['offer_id']; ?>);" class="switcheck offer_status os<?php $fetch['offer'][0]['offer_id']; ?>" type="checkbox" value="<?php echo $fetch['offer'][0]['status']; ?>" checked>
+                                        <input onchange="activeStat(<?php echo $fetch['offer'][0]['offer_id']; ?>);" class="switcheck offer_status os<?php $fetch['offer'][0]['offer_id']; ?>" type="checkbox" <?php if($fetch['offer'][0]['status'] == "1"){ echo "checked"; }; ?> />
                                         <span class="slidr round"></span>
                                     </label>
                                 </span>
@@ -358,13 +357,13 @@
 <script>
     function activeStat(o) {
         console.log(o);
-        if ('.os'+o.checked) {
+        if ($('.os'+o).prop('checked') == false) {
             $.ajax({
                 type: "POST",
                 url: base_url + 'offer_status/' +o+ '/0?<?php echo $_SERVER['QUERY_STRING']; ?>',
                 data: '',
                 success: function(response) {
-                    a.val(0);
+                    $('.os'+o).prop('checked', false);
                 },
                 error: function() {
                     alert('An error occured');
@@ -376,7 +375,7 @@
                 url: base_url + 'offer_status/' +o+ '/1?<?php echo $_SERVER['QUERY_STRING']; ?>',
                 data: '',
                 success: function(response) {
-                    a.val(1);
+                    $('.os'+o).prop('checked', true);
                 },
                 error: function() {
                     alert('An error occured');
