@@ -74,28 +74,6 @@ const device = () => {
 
 jQuery(document).ready(function () {
 
-    const open = window.XMLHttpRequest.prototype.open;
-
-    function openReplacement() {
-        this.addEventListener("load", function () {
-            if (
-                [
-                    "/cart/add.js",
-                    "/cart/update.js",
-                    "/cart/change.js",
-                    "/cart/clear.js",
-                ].includes(this._url)
-            ) {
-                console.log('Cart has changed');
-                console.log(this.response);
-                next_offer();
-            }
-        });
-        return open.apply(this, arguments);
-    }
-
-    window.XMLHttpRequest.prototype.open = openReplacement;
-
     var offers_url = 'https://sleek-upsell.herokuapp.com/offers/' + Shopify.shop;
 
     let offers = g_d(offers_url);
@@ -120,6 +98,28 @@ jQuery(document).ready(function () {
         cart_position = settings.cart_position;
         drawer_position = settings.drawer_position;
     }
+
+    const open = window.XMLHttpRequest.prototype.open;
+
+    function openReplacement() {
+        this.addEventListener("load", function () {
+            if (
+                [
+                    "/cart/add.js",
+                    "/cart/update.js",
+                    "/cart/change.js",
+                    "/cart/clear.js",
+                ].includes(this._url)
+            ) {
+                console.log('Cart has changed');
+                console.log(this.response);
+                next_offer();
+            }
+        });
+        return open.apply(this, arguments);
+    }
+
+    window.XMLHttpRequest.prototype.open = openReplacement;
 
     next_offer();
     // collection_based();
