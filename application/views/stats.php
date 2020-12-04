@@ -1,4 +1,5 @@
 <?php $duka = $shop . '.myshopify.com'; ?>
+<div class="btn btn-primary" onclick="window.history.back();" style="display: table; position: absolute; top: 10px; right: 30px; z-index: 2000000;"><span class="entypo-home"> BACK</span></div>
 <h2 style="margin-top: -10px; text-align: center;">General stats for <?php echo $shop; ?> offers</h2>
 <script type="text/javascript">
     jQuery(document).ready(function() {
