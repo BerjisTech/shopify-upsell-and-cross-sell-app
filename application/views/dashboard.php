@@ -273,9 +273,9 @@
                             <td style="vertical-align: middle; border: none;">
                                 <span class="col-xs-12 status">
                                     <label class="switch">
-                                        <input onclick="activeStat(<?php echo $fetch['offer'][0]['offer_id']; ?>);" class="switcheck offer_status os<?php $fetch['offer'][0]['offer_id']; ?>" type="checkbox" <?php if ($fetch['offer'][0]['status'] == "1") {
-                                                                                                                                                                                                                    echo "checked";
-                                                                                                                                                                                                                }; ?> />
+                                        <input data-oid="<?php echo $fetch['offer'][0]['offer_id']; ?>" class="switcheck offer_status" type="checkbox" <?php if ($fetch['offer'][0]['status'] == "1") {
+                                                                                                                                                            echo "checked";
+                                                                                                                                                        }; ?> />
                                         <span class="slidr round"></span>
                                     </label>
                                 </span>
@@ -369,9 +369,9 @@
 </style>
 
 <script>
-    function activeStat(o) {
-        console.log(o);
-        if ($('.os' + o).is(":checked")) {
+    $('.offer_status').change(function() {
+        let o = $(this).attr('data-oid');
+        if (this.checked) {
             if (confirm('Are you sure you want to activate this offer?')) {
                 $.ajax({
                     type: "POST",
@@ -385,8 +385,7 @@
                     }
                 });
             }
-        } 
-        if ($('.os' + o).is(":not:checked")) { {
+        } else {
             if (confirm('Are you sure you want to deactivate this offer?')) {
                 $.ajax({
                     type: "POST",
@@ -401,7 +400,7 @@
                 });
             }
         }
-    }
+    });
 </script>
 <link rel="stylesheet" href="<?php echo base_url(); ?>assets/js/datatables/datatables.css" id="style-resource-1">
 <link rel="stylesheet" href="<?php echo base_url(); ?>assets/js/select2/select2-bootstrap.css" id="style-resource-2">
