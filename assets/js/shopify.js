@@ -111,7 +111,8 @@ jQuery(document).ready(function () {
                     "/cart/clear.js",
                 ].includes(this._url)
             ) {
-                console.log('Cart has changed');
+                cart = g_d("https://" + Shopify.shop + "/cart.js");
+                console.log('Cart has changed: New item count - '+cart["item_count"]);
                 console.log(this.response);
                 next_offer();
             }
