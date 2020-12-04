@@ -99,7 +99,7 @@ Not supports in Firefox and IE */
         cursor: pointer;
         width: 100%;
     }
-    
+
     /*--------------------------------------*/
     .card{
         display: table;
@@ -118,7 +118,7 @@ Not supports in Firefox and IE */
     .card .sleek-prices{
         text-align: center;
     }
-    
+
     /*--------------------------------------*/
     .block, .block .sleek-form, .block .sleek-text, .block .sleek-atc{
         display: table;
@@ -134,7 +134,7 @@ Not supports in Firefox and IE */
     .block .sleek-offer{
         flex-grow: 1;
     }
-    
+
     /*--------------------------------------*/
     .half-block, .half-block .sleek-form, .half-block .sleek-text, .half-block .sleek-atc{
         display: table;
@@ -150,7 +150,7 @@ Not supports in Firefox and IE */
     .half-block .sleek-offer{
         flex-grow: 1;
     }
-    
+
     /*--------------------------------------*/
     .flat, .flat .sleek-form, .flat .sleek-text{
         display: table;
@@ -184,7 +184,7 @@ Not supports in Firefox and IE */
         margin-top: 0px;
         margin-right: 10px;
     }
-    
+
     /*--------------------------------------*/
     .compact, .compact .sleek-form, .compact .sleek-text, .compact .sleek-atc{
         display: table;
@@ -203,8 +203,8 @@ Not supports in Firefox and IE */
     .compact .sleek-atc{
         margin-top: 5px;
     }
-    
-    
+
+
     /*--------------------------------------*/
     @media only screen and (max-width: 600px) {
         .sleek-upsell{
@@ -228,7 +228,7 @@ Not supports in Firefox and IE */
 </style>
 <script>
     let offer = <?php echo json_encode($offer); ?>;
-    let updateing_offer = offer[0]['offer_id'];
+    let updating_offer = offer[0]['offer_id'];
     let products = <?php echo json_encode($products); ?>;
     let variants = <?php echo json_encode($variants); ?>;
     let blocks = <?php echo json_encode($blocks); ?>;
@@ -239,7 +239,7 @@ Not supports in Firefox and IE */
 <div class="row">
     <div class="col-sm-4 col-xs-12" style="position: fixed; top: 0px; left: 0px; height: 100vh;">
         <div style="display: flex; align-items: center; justify-content: space-between; background: #003471; position: absolute; top: 0px; left: 0px; height: 7vh; width: 100%; vertical-align: middle;">
-            <div onclick="window.location.replace('<?php echo base_url() .'?'. $_SERVER['QUERY_STRING']; ?>');" style="margin: 0px; padding: 0px; height: 100%; vertical-align: middle; text-align: center; border-radius: 0px;">
+            <div onclick="window.location.replace('<?php echo base_url() . '?' . $_SERVER['QUERY_STRING']; ?>');" style="margin: 0px; padding: 0px; height: 100%; vertical-align: middle; text-align: center; border-radius: 0px;">
                 <span style="height: 100%; margin: 0px; vertical-align: middle; padding-top: 2vh; text-align: center;" class="btn btn-primary entypo-home"></span>
             </div>
             <div style="flex-grow: 4; margin: 0px; padding: 0px; height: 100%; vertical-align: middle;"><select style="border-radius: 0px; width: 100%; height: 100%; margin: 0px; vertical-align: middle;" class="toplect form-control">
@@ -612,9 +612,9 @@ Not supports in Firefox and IE */
                         <option value="oc8">Customer is not located in</option>
                     </select>
                     <select type="text" autocomplete="off" class="small form-control" id="oc1Quantity" style="margin: 3px; max-width: 250px; border: 2px solid #666666; border-radius: 5px;">
-                        <?php for ($i = 1; $i <= 20; $i++) : ?>
+                        <?php for ($i = 1; $i <= 20; $i++): ?>
                             <option value="<?php echo $i; ?>"><?php echo $i; ?></option>
-                        <?php endfor; ?>
+                        <?php endfor;?>
                     </select>
                     <select type="text" autocomplete="off" class="small form-control" id="oc1Type" style="margin: 3px; width: 250px; border: 2px solid #666666; border-radius: 5px;">
                         <option value="product">Of product</option>
@@ -892,7 +892,7 @@ Not supports in Firefox and IE */
     loadConditions();
     loadFields();
     populateFields();
-    
+
     function loadOffer() {
         let this_offer = offer[0];
         console.log(this_offer);
@@ -945,7 +945,7 @@ Not supports in Firefox and IE */
             $('.offer_status').prop('checked', false);
         }
     }
-    
+
     function addBlock() {
         let bid = "<?php echo time(); ?>_" + blocks.length;
         blocks.push({
@@ -1069,6 +1069,27 @@ Not supports in Firefox and IE */
         } else {
             $('.reject_offer').hide();
             offer[0]['close'] = 'n';
+        }
+    });
+    $('.offer_to_checkout').change(function() {
+        if (this.checked) {
+            offer[0]['to_checkout'] = 'y';
+        } else {
+            offer[0]['to_checkout'] = 'n';
+        }
+    });
+    $('.offer_apply_discount').change(function(){
+        if (this.checked) {
+            offer[0]['discount'] = 'y';
+        } else {
+            offer[0]['discount'] = 'n';
+        }
+    });
+    $('.offer_status').change(function(){
+        if (this.checked) {
+            offer[0]['status'] = '1';
+        } else {
+            offer[0]['status'] = '0';
         }
     });
     $('.offer_text').on('keyup change', function() {
@@ -1236,6 +1257,7 @@ Not supports in Firefox and IE */
     }
 
     function activateOffer() {
+        offer[0]['status'] = '1';
         $('.switcheck').prop('checked', true);
         $('.offerDraftBtn').css({
             'font-size': '12px;',
@@ -1248,6 +1270,7 @@ Not supports in Firefox and IE */
     }
 
     function deactivateOffer() {
+        offer[0]['status'] = '0';
         $('.switcheck').prop('checked', false);
         $('.offerDraftBtn').css({
             'font-size': '20px;',
@@ -1293,7 +1316,7 @@ Not supports in Firefox and IE */
                 "ab_atc": ""
             });
         }
-        
+
         loadUIs();
 
         var vs = createCORSRequest("GET", "<?php echo base_url(); ?>variants/" + p +
@@ -1436,7 +1459,7 @@ Not supports in Firefox and IE */
                     var s_data = data['shop'];
                     var datacell = data['product'];
                     // console.log(data);
-                    
+
                     let card_ui = '<form class="sleek-form" data-product-index="' + i + '"> <div class="sleek-image"> <img src="' + datacell['image']['src'] + '"/> </div><div class="sleek-offer"> <div class="sleek-text">Need Free Shipping?</div><div class="sleek-title">' + datacell['title'] + '</div><div class="sleek-selectors"> <div class="offer_fields_holder o_h_' + product_id + '"></div> <select class="v-select v-' + product_id + '"></select> <select class="q-select q-' + product_id + '"></select> </div></div><div class="sleek-card-atc"> <div class="sleek-prices"> <span class="sleek-price money">' + s_data['currency'] + ' ' + datacell['variants'][0]['price'] + '</span> <span class="sleek-compare-price money">' + s_data['currency'] + ' ' + datacell['variants'][0]['price'] + '</span> </div><button class="sleek-atc" type="submit" onclick="return false;">' + $('.offer_button_text').val() + '</button> </div></form>';
                     let block_ui = '<form class="sleek-form" data-product-index="' + i + '"> <div class="sleek-text">Need Free Shipping?</div><div class="sleek-block"> <div class="sleek-image"> <img src="' + datacell['image']['src'] + '"/> </div><div class="sleek-offer"> <div class="sleek-title">' + datacell['title'] + '</div><div class="sleek-prices"> <span class="sleek-price money">' + s_data['currency'] + ' ' + datacell['variants'][0]['price'] + '</span> <span class="sleek-compare-price money">' + s_data['currency'] + ' ' + datacell['variants'][0]['price'] + '</span> </div><div class="sleek-selectors"> <div class="offer_fields_holder o_h_' + product_id + '"></div> <select class="v-select v-' + product_id + '"></select> <select class="q-select q-' + product_id + '"></select> </div></div></div><button class="sleek-atc" type="submit" onclick="return false;">' + $('.offer_button_text').val() + '</button> </form>';
                     let half_block_ui = '<form class="sleek-form" data-product-index="' + i + '"> <div class="sleek-half-block"> <div class="sleek-image"> <img src="' + datacell['image']['src'] + '"/> </div><div class="sleek-offer"> <div class="sleek-text">Need Free Shipping?</div><div class="sleek-title">' + datacell['title'] + '</div><div class="sleek-prices"> <span class="sleek-price money">' + s_data['currency'] + ' ' + datacell['variants'][0]['price'] + '</span> <span class="sleek-compare-price money">' + s_data['currency'] + ' ' + datacell['variants'][0]['price'] + '</span> </div><div class="sleek-selectors"> <div class="offer_fields_holder o_h_' + product_id + '"></div> <select class="v-select v-' + product_id + '"></select> <select class="q-select q-' + product_id + '"></select> </div></div></div><button class="sleek-atc" type="submit" onclick="return false;">' + $('.offer_button_text').val() + '</button> </form>';
@@ -2101,9 +2124,10 @@ Not supports in Firefox and IE */
     };
 
     $('.saveOffer').click(function() {
+        console.log(base_url + 'update_offers/'+updating_offer+'?<?php echo $_SERVER['QUERY_STRING']; ?>');
         $.ajax({
             type: "POST",
-            url: base_url + 'update_offers/'+updateing_offer+'?<?php echo $_SERVER['QUERY_STRING']; ?>',
+            url: base_url + 'update_offers/'+updating_offer+'?<?php echo $_SERVER['QUERY_STRING']; ?>',
             data: {
                 offer,
                 products,
