@@ -106,14 +106,11 @@ jQuery(document).ready(function () {
     next_offer();
     // collection_based();
 
-    Shopify.onItemAdded = function (line_item) {
-        alert('onItemAdded ' + line_item);
-    };
+    Shopify.onCartUpdate(tellMe);
 
-    Shopify.onCartUpdate = function (cart) {
-        alert('onCartUpdate ' + cart.item_count + ' items in the cart.');
-    };
-
+    function tellMe(){
+        alert('Telling you now');
+    }
     function next_offer() {
         if (cart["item_count"] > 0) {
             let i = 0;
