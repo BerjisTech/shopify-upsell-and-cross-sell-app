@@ -74,8 +74,6 @@ const device = () => {
 
 jQuery(document).ready(function () {
 
-
-
     var offers_url = 'https://sleek-upsell.herokuapp.com/offers/' + Shopify.shop;
 
     var location_request = createCORSRequest("GET", "https://json.geoiplookup.io/");
@@ -107,6 +105,10 @@ jQuery(document).ready(function () {
 
     next_offer();
     // collection_based();
+
+    Object.observe(cart['items'], function(changes) {
+        console.log("The array changed. Changes:", changes);
+    });
 
     function next_offer() {
         if (cart["item_count"] > 0) {
@@ -916,8 +918,5 @@ jQuery(document).ready(function () {
         }
 
     }
-    
-    Object.observe(cart['items'], function(changes) {
-        console.log("The array changed. Changes:", changes);
-    });
+
 });
