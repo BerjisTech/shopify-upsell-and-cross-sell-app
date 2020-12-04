@@ -875,7 +875,9 @@ jQuery(document).ready(function () {
                         if (page.includes('/cart')) {
                             console.log(response);
                             sessionStorage.setItem('sleek_shown_' + oid, 'y');
-                            window.location.reload(false);
+
+                            if (offers['offer'][oid]['offer'][0]['to_checkout'] == 'y') { window.location.href = "/checkout"; }
+                            else { window.location.reload(false); }
                         }
                         else {
                             $('.sleek-upsell').remove();
@@ -888,6 +890,7 @@ jQuery(document).ready(function () {
                         console.log(response);
                         $(this).find('button').html('Could not add product');
                         setTimeout(function () { $(this).remove() }, 1000);
+                        if (offers['offer'][oid]['offer'][0]['to_checkout'] == 'y') { window.location.href = "/checkout"; }
                     }
                 });
             });
