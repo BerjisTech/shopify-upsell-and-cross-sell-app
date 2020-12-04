@@ -76,10 +76,6 @@ jQuery(document).ready(function () {
 
     var offers_url = 'https://sleek-upsell.herokuapp.com/offers/' + Shopify.shop;
 
-    var location_request = createCORSRequest("GET", "https://json.geoiplookup.io/");
-    var offers_request = createCORSRequest("GET", offers_url);
-    var cart_request = createCORSRequest("GET", "https://" + Shopify.shop + "/cart.js");
-
     let offers = g_d(offers_url);
     let cart = g_d("https://" + Shopify.shop + "/cart.js");
 
