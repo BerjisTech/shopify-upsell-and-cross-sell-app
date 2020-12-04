@@ -146,7 +146,8 @@
                 </thead>
                 <tbody style="border: none;">
                     <?php
-                    foreach ($offer as $key => $fetch) : ?>
+                    foreach ($offer as $key => $fetch) : 
+                    echo '<script>console.log('.json_encode($fetch).');</script>'?>
                         <tr style="">
                             <td style="vertical-align: middle; border: none; text-align: center; color: #FFFFFF; font-size: 1px;"><?php echo $key; ?></td>
                             <td style="vertical-align: middle; border: none; flex-grow: 4;">
