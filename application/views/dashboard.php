@@ -161,7 +161,7 @@
                                     <?php
                                     $products = $fetch['products'];
                                     $total_products = count($products);
-    
+
                                     if ($total_products == 1) {
                                         $product_id = $products[0]['product'];
                                         $product_name = $this->Shopify->shopify_call($token, $shop, '/admin/api/2020-04/products/' . $product_id . '.json', array('fields' => 'title'), 'GET');
@@ -185,95 +185,97 @@
                                 </span>
                                 <span class="triprev btn entypo-eye" onclick="$('.triggers<?php echo $fetch['offer'][0]['offer_id']; ?>').toggle(200)">Offer conditions</span>
                                 <ul class="triggers<?php echo $fetch['offer'][0]['offer_id']; ?>" style="list-style: none; display: none;">
-                                        <?php
-    
-                                        if (count($fetch['blocks']) == 0) {
-                                            echo 'To every customer';
-                                        } else {
-                                            // $conditions = $fetch['conditions'];
-                                            $blocks = $fetch['blocks'];
-    
-                                            foreach ($blocks as $k => $v) {
-                                                $rule = $v['rule'];
-                                                $bid = $v['bid'];
-                                                $oid = $v['oid'];
-    
-                                                if ($rule == 'ALL') {
-                                                    $connector = 'AND';
-                                                }
-                                                if ($rule == 'ANY') {
-                                                    $connector = 'OR';
-                                                }
-    
-                                                $conditions = $fetch['conditions'];
-                                                foreach ($conditions as $ck => $cv) {?>
-                                                
-                                    <li>
+                                    <?php
+
+                                    if (count($fetch['blocks']) == 0) {
+                                        echo 'To every customer';
+                                    } else {
+                                        // $conditions = $fetch['conditions'];
+                                        $blocks = $fetch['blocks'];
+
+                                        foreach ($blocks as $k => $v) {
+                                            $rule = $v['rule'];
+                                            $bid = $v['bid'];
+                                            $oid = $v['oid'];
+
+                                            if ($rule == 'ALL') {
+                                                $connector = 'AND';
+                                            }
+                                            if ($rule == 'ANY') {
+                                                $connector = 'OR';
+                                            }
+
+                                            $conditions = $fetch['conditions'];
+                                            foreach ($conditions as $ck => $cv) { ?>
+
+                                                <li>
                                                 <?php
-    
-                                                    if ($cv['bid'] == $bid && $cv['oid'] == $oid) {
-                                                        $condition_type = $cv['type'];
-    
-                                                        if ($ck == '0') {
-                                                            $prepend = 'When ';
-                                                        } else if ($ck == count($conditions) - 1) {
-                                                            $prepend = '<strong>' . $connector . '</strong> ';
-                                                        } else {
-                                                            $prepend = '<strong>' . $connector . '</strong> ';
+
+                                                if ($cv['bid'] == $bid && $cv['oid'] == $oid) {
+                                                    $condition_type = $cv['type'];
+
+                                                    if ($ck == '0') {
+                                                        $prepend = 'When ';
+                                                    } else if ($ck == count($conditions) - 1) {
+                                                        $prepend = '<strong>' . $connector . '</strong> ';
+                                                    } else {
+                                                        $prepend = '<strong>' . $connector . '</strong> ';
+                                                    }
+
+                                                    if ($condition_type == 'oc1' || $condition_type == 'oc2' || $condition_type == 'oc3') {
+                                                        $quantity = $cv['quantity'];
+                                                        $type = $cv['type'];
+                                                        $content = $cv['content'];
+
+                                                        if ($condition_type == 'oc1') {
+                                                            echo $prepend . 'Cart has at least ' . $quantity . ' ' . $content;
                                                         }
-    
-                                                        if ($condition_type == 'oc1' || $condition_type == 'oc2' || $condition_type == 'oc3') {
-                                                            $quantity = $cv['quantity'];
-                                                            $type = $cv['type'];
-                                                            $content = $cv['content'];
-    
-                                                            if ($condition_type == 'oc1') {
-                                                                echo $prepend . 'Cart has at least ' . $quantity . ' ' . $content;
-                                                            }
-                                                            if ($condition_type == 'oc2') {
-                                                                echo $prepend . 'Cart has at most ' . $quantity . ' ' . $content;
-                                                            }
-                                                            if ($condition_type == 'oc3') {
-                                                                echo $prepend . 'Cart has exactly ' . $quantity . ' ' . $content;
-                                                            }
+                                                        if ($condition_type == 'oc2') {
+                                                            echo $prepend . 'Cart has at most ' . $quantity . ' ' . $content;
                                                         }
-    
-                                                        if ($condition_type == 'oc4') {
-                                                            $type = $cv['type'];
-                                                            $content = $cv['content'];
-    
-                                                            echo $prepend . 'Cart does not have any ' . $content;
-                                                        }
-    
-                                                        if ($condition_type == 'oc5' || $condition_type == 'oc6' || $condition_type == 'oc7' || $condition_type == 'oc8') {
-                                                            if ($condition_type == 'oc6') {
-                                                                echo $prepend . 'Cart total is at least ' . $cv['amount'] . ' cents';
-                                                            }
-                                                            if ($condition_type == 'oc6') {
-                                                                echo $prepend . 'Cart total is at most ' . $cv['amount'] . ' cents';
-                                                            }
-                                                            if ($condition_type == 'oc7') {
-                                                                echo $prepend . 'Customer is located in ' . $cv['country'];
-                                                            }
-                                                            if ($condition_type == 'oc8') {
-                                                                echo $prepend . 'Customer is not located in ' . $cv['country'];
-                                                            }
+                                                        if ($condition_type == 'oc3') {
+                                                            echo $prepend . 'Cart has exactly ' . $quantity . ' ' . $content;
                                                         }
                                                     }
-                                                }?>
-                                                
-                                    </li>
-                                                <?php
-                                            }
+
+                                                    if ($condition_type == 'oc4') {
+                                                        $type = $cv['type'];
+                                                        $content = $cv['content'];
+
+                                                        echo $prepend . 'Cart does not have any ' . $content;
+                                                    }
+
+                                                    if ($condition_type == 'oc5' || $condition_type == 'oc6' || $condition_type == 'oc7' || $condition_type == 'oc8') {
+                                                        if ($condition_type == 'oc6') {
+                                                            echo $prepend . 'Cart total is at least ' . $cv['amount'] . ' cents';
+                                                        }
+                                                        if ($condition_type == 'oc6') {
+                                                            echo $prepend . 'Cart total is at most ' . $cv['amount'] . ' cents';
+                                                        }
+                                                        if ($condition_type == 'oc7') {
+                                                            echo $prepend . 'Customer is located in ' . $cv['country'];
+                                                        }
+                                                        if ($condition_type == 'oc8') {
+                                                            echo $prepend . 'Customer is not located in ' . $cv['country'];
+                                                        }
+                                                    }
+                                                }
+                                            } ?>
+
+                                                </li>
+                                        <?php
                                         }
-    
+                                    }
+
                                         ?>
                                 </ul>
                             </td>
                             <td style="vertical-align: middle; border: none;">
                                 <span class="col-xs-12 status">
                                     <label class="switch">
-                                        <input onchange="activeStat(<?php echo $fetch['offer'][0]['offer_id']; ?>);" class="switcheck offer_status os<?php $fetch['offer'][0]['offer_id']; ?>" type="checkbox" <?php if($fetch['offer'][0]['status'] == "1"){ echo "checked"; }; ?> />
+                                        <input onchange="activeStat(<?php echo $fetch['offer'][0]['offer_id']; ?>);" class="switcheck offer_status os<?php $fetch['offer'][0]['offer_id']; ?>" type="checkbox" <?php if ($fetch['offer'][0]['status'] == "1") {
+                                                                                                                                                                                                                    echo "checked";
+                                                                                                                                                                                                                }; ?> />
                                         <span class="slidr round"></span>
                                     </label>
                                 </span>
@@ -302,38 +304,49 @@
 </div>
 
 <style>
-    .dataTables_wrapper{
+    .dataTables_wrapper {
         background: #ffffff;
         padding-left: 10px;
         padding-right: 10px;
         border-radius: 10px;
     }
-    .datatable *, .datatable, .dataTables_wrapper{
+
+    .datatable *,
+    .datatable,
+    .dataTables_wrapper {
         border: none !important;
     }
-    .datatable thead, .datatable tbody{
-        display: table; 
-        border: none; 
+
+    .datatable thead,
+    .datatable tbody {
+        display: table;
+        border: none;
         width: 100%;
     }
-    .datatable tr{
-        display: flex; 
-        border: none; 
+
+    .datatable tr {
+        display: flex;
+        border: none;
         width: 100%;
         align-items: center;
         justify-content: space-between;
     }
-    .datatable tbody tr{
-        border-radius: 10px; 
-        margin-top: 10px; 
-        margin-bottom: 10px; 
-        box-shadow: 0px 0px 10px rgba(6, 6, 6, 0.2); 
+
+    .datatable tbody tr {
+        border-radius: 10px;
+        margin-top: 10px;
+        margin-bottom: 10px;
+        box-shadow: 0px 0px 10px rgba(6, 6, 6, 0.2);
     }
-    .whats, .whats span, .whats a{
+
+    .whats,
+    .whats span,
+    .whats a {
         color: #ffffff;
         width: 100%;
         font-size: 18px;
     }
+
     .whole {
         display: block;
         width: 100vw;
@@ -351,36 +364,41 @@
         position: fixed;
         background: #ffffff;
     }
-    .pull-down{}
+
+    .pull-down {}
 </style>
 
 <script>
     function activeStat(o) {
         console.log(o);
-        if ($('.os'+o).is(":checked")) {
-            $.ajax({
-                type: "POST",
-                url: base_url + 'offer_status/' +o+ '/1?<?php echo $_SERVER['QUERY_STRING']; ?>',
-                data: '',
-                success: function(response) {
-                    $('.os'+o).prop('checked', true);
-                },
-                error: function() {
-                    alert('An error occured');
-                }
-            });
+        if ($('.os' + o).is(":checked")) {
+            if (confirm('Are you sure you want to activate this offer?')) {
+                $.ajax({
+                    type: "POST",
+                    url: base_url + 'offer_status/' + o + '/1?<?php echo $_SERVER['QUERY_STRING']; ?>',
+                    data: '',
+                    success: function(response) {
+                        $('.os' + o).prop('checked', true);
+                    },
+                    error: function() {
+                        alert('An error occured');
+                    }
+                });
+            }
         } else {
-            $.ajax({
-                type: "POST",
-                url: base_url + 'offer_status/' +o+ '/0?<?php echo $_SERVER['QUERY_STRING']; ?>',
-                data: '',
-                success: function(response) {
-                    $('.os'+o).prop('checked', false);
-                },
-                error: function() {
-                    alert('An error occured');
-                }
-            });
+            if (confirm('Are you sure you want to deactivate this offer?')) {
+                $.ajax({
+                    type: "POST",
+                    url: base_url + 'offer_status/' + o + '/0?<?php echo $_SERVER['QUERY_STRING']; ?>',
+                    data: '',
+                    success: function(response) {
+                        $('.os' + o).prop('checked', false);
+                    },
+                    error: function() {
+                        alert('An error occured');
+                    }
+                });
+            }
         }
     }
 </script>
