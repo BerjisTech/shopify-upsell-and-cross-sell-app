@@ -357,13 +357,13 @@
 <script>
     function activeStat(o) {
         console.log(o);
-        if ($('.os'+o).prop('checked') == false) {
+        if ($('.os'+o).is(":checked")) {
             $.ajax({
                 type: "POST",
-                url: base_url + 'offer_status/' +o+ '/0?<?php echo $_SERVER['QUERY_STRING']; ?>',
+                url: base_url + 'offer_status/' +o+ '/1?<?php echo $_SERVER['QUERY_STRING']; ?>',
                 data: '',
                 success: function(response) {
-                    $('.os'+o).prop('checked', false);
+                    $('.os'+o).prop('checked', true);
                 },
                 error: function() {
                     alert('An error occured');
@@ -372,10 +372,10 @@
         } else {
             $.ajax({
                 type: "POST",
-                url: base_url + 'offer_status/' +o+ '/1?<?php echo $_SERVER['QUERY_STRING']; ?>',
+                url: base_url + 'offer_status/' +o+ '/0?<?php echo $_SERVER['QUERY_STRING']; ?>',
                 data: '',
                 success: function(response) {
-                    $('.os'+o).prop('checked', true);
+                    $('.os'+o).prop('checked', false);
                 },
                 error: function() {
                     alert('An error occured');
