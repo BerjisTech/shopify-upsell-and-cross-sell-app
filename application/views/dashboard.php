@@ -273,11 +273,7 @@
                             <td style="vertical-align: middle; border: none;">
                                 <span class="col-xs-12 status">
                                     <label class="switch">
-                                        <input onchange="activeStat(<?php echo $fetch['offer'][0]['offer_id']; ?>);" class="switcheck offer_status os<?php $fetch['offer'][0]['offer_id']; ?>" type="checkbox" value="<?php if ($fetch['offer'][0]['status'] == '') {
-                                                                                                                                                                echo 0;
-                                                                                                                                                            } else {
-                                                                                                                                                                echo 1;
-                                                                                                                                                            } ?>" checked>
+                                        <input onchange="activeStat(<?php echo $fetch['offer'][0]['offer_id']; ?>);" class="switcheck offer_status os<?php $fetch['offer'][0]['offer_id']; ?>" type="checkbox" value="<?php echo $fetch['offer'][0]['status']; ?>" checked>
                                         <span class="slidr round"></span>
                                     </label>
                                 </span>

@@ -571,7 +571,7 @@
     
     <?php if ($this->db->where('shop', $shop)->get('settings')->num_rows() > 0): ?>
         let settings = <?php echo json_encode($this->db->where('shop', $shop)->get('settings')->row()); ?>;
-        if(settings){
+        if(settings != null){
             $('input[name="cart_dom"]').val(settings['cart_location']);
             $('input[name="cart_pos"]').val(settings['cart_position']);
             $('input[name="drawer_dom"]').val(settings['drawer_location']);
