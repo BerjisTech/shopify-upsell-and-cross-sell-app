@@ -917,7 +917,7 @@ jQuery(document).ready(function () {
 
     }
 
-    ​Object.observe(arr, function(changes) {
+    ​Object.observe(cart['items'], function(changes) {
         console.log("The array changed. Changes:", changes);
     });
 });
