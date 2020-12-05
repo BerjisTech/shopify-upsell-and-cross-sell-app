@@ -10,6 +10,7 @@
 
 
 <div class="saving" style="display: none; position: absolute; top: 0px; right: 0px; z-index: 2000000; width: 300px; height: 400px; background: rgba(152,27,27,0.5); vertical-align: middle; text-align: center;"><img src="<?php echo base_url(); ?>assets/images/loader_2.gif" style="margin-top: 30vh;" /></div>
+<div style="display: table; position: absolute; top: 10px; left: 10px; z-index: 2000000;">SETUP WIZARD</div>
 <div class="btn btn-primary saver" style="display: table; position: absolute; top: 10px; right: 10px; z-index: 2000000;"><span class="entypo-floppy"> SAVE</span></div>
 <div class="btn btn-primary" onclick="$('.suw').remove();sessionStorage.setItem('s_u_w', false);" style="display: table; position: absolute; bottom: 10px; right: 10px; z-index: 2000000;"><span class="entypo-cancel"> CLOSE</span></div>
 <div class="whole">
