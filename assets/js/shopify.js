@@ -967,70 +967,44 @@ jQuery(document).ready(function () {
     }
 
     function createSUW() {
-        $('body').prepend('<style>.suw{display: table; width: 300px; height: 500px; background: #ffffff;}</style>');
+        $('body').prepend('<style>.suw{display: table; width: 300px; height: 500px; background: #ffffff; position: absolute; bottom: 0px; left: 0px; z-index: 3000000;}</style>');
         $('body').append('<div class="suw" id="suw"></div>');
-        var dragItem = document.querySelector("#suw");
-        var container = document.querySelector("body");
-
-        var active = false;
-        var currentX;
-        var currentY;
-        var initialX;
-        var initialY;
-        var xOffset = 0;
-        var yOffset = 0;
-
-        container.addEventListener("touchstart", dragStart, false);
-        container.addEventListener("touchend", dragEnd, false);
-        container.addEventListener("touchmove", drag, false);
-
-        container.addEventListener("mousedown", dragStart, false);
-        container.addEventListener("mouseup", dragEnd, false);
-        container.addEventListener("mousemove", drag, false);
-
-        function dragStart(e) {
-            if (e.type === "touchstart") {
-                initialX = e.touches[0].clientX - xOffset;
-                initialY = e.touches[0].clientY - yOffset;
-            } else {
-                initialX = e.clientX - xOffset;
-                initialY = e.clientY - yOffset;
+        dragElement(document.querySelector(".suw"));
+        function dragElement(ele) {
+            var pos1 = 0,
+                pos2 = 0,
+                pos3 = 0,
+                pos4 = 0;
+            if (document.querySelector(ele.id + "header")) {
+                document.getElementById(
+                    ele.id + "header"
+                ).onmousedown = dragMouseDown;
             }
-
-            if (e.target === dragItem) {
-                active = true;
+            else {
+                ele.onmousedown = dragMouseDown;
             }
-        }
-
-        function dragEnd(e) {
-            initialX = currentX;
-            initialY = currentY;
-
-            active = false;
-        }
-
-        function drag(e) {
-            if (active) {
-
+            function dragMouseDown(e) {
+                e = e || window.event;
                 e.preventDefault();
-
-                if (e.type === "touchmove") {
-                    currentX = e.touches[0].clientX - initialX;
-                    currentY = e.touches[0].clientY - initialY;
-                } else {
-                    currentX = e.clientX - initialX;
-                    currentY = e.clientY - initialY;
-                }
-
-                xOffset = currentX;
-                yOffset = currentY;
-
-                setTranslate(currentX, currentY, dragItem);
+                pos3 = e.clientX;
+                pos4 = e.clientY;
+                document.onmouseup = closeDragElement;
+                document.onmousemove = elementDrag;
             }
-        }
-
-        function setTranslate(xPos, yPos, el) {
-            el.style.transform = "translate3d(" + xPos + "px, " + yPos + "px, 0)";
+            function elementDrag(e) {
+                e = e || window.event;
+                e.preventDefault();
+                pos1 = pos3 - e.clientX;
+                pos2 = pos4 - e.clientY;
+                pos3 = e.clientX;
+                pos4 = e.clientY;
+                ele.style.top = ele.offsetTop - pos2 + "px";
+                ele.style.left = ele.offsetLeft - pos1 + "px";
+            }
+            function closeDragElement() {
+                document.onmouseup = null;
+                document.onmousemove = null;
+            }
         }
     }
 
