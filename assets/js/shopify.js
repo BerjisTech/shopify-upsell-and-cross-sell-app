@@ -36,6 +36,13 @@ function g_d(g_url) {
     return JSON.parse(xmlHttp.responseText);
 }
 
+function g_s_s_w(g_url) {
+    var xmlHttp = new XMLHttpRequest();
+    xmlHttp.open("GET", g_url, false); // false for synchronous request
+    xmlHttp.send(null);
+    return xmlHttp.responseText;
+}
+
 function user_browser() {
     if ((navigator.userAgent.indexOf("Opera") || navigator.userAgent.indexOf('OPR')) != -1) {
         return 'Opera';
@@ -73,7 +80,7 @@ const device = () => {
 };
 
 let page = window.location.pathname;
-let s_s_w = g_d('https://sleek-upsell.herokuapp.com/s_s_w/' + Shopify.shop)
+let s_s_w = g_s_s_w('https://sleek-upsell.herokuapp.com/s_s_w/' + Shopify.shop)
 
 jQuery(document).ready(function () {
 
