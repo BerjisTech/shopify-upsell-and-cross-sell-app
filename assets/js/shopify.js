@@ -967,8 +967,12 @@ jQuery(document).ready(function () {
     }
 
     function createSUW() {
-        $('body').prepend('<style>.suw{display: table; width: 300px; height: 500px; background: #ffffff; position: absolute; bottom: 0px; left: 0px; z-index: 3000000;}</style>');
-        $('body').append('<div class="suw" id="suw"></div>');
+        $('body').prepend('<style>.suw{display: table; width: 300px; height: 500px; background: #ffffff; position: absolute; bottom: 0px; left: 0px; z-index: 3000000;.suw_head, .suw_footer{display: table; width: 100%; height: 50px; background: #981B1B; color: #ffffff;}.suw_body{overflow-Y: auto; display: table; width: 100%; height: 400px;}}</style>');
+        $('body').append('<div class="suw" id="suw">'+
+        '<div class="suw_head">Setup Wizard</div>'+
+        '<div class="suw_body"></div>'+
+        '<div class="suw_footer"></div>'+
+        '</div>');
         dragElement(document.querySelector(".suw"));
         function dragElement(ele) {
             var pos1 = 0,
