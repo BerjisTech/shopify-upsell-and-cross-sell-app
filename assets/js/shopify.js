@@ -7,6 +7,21 @@ if (!window.jQuery) {
     document.getElementsByTagName('head')[0].appendChild(script);
 }
 
+function $_GET(param) {
+    var vars = {};
+    window.location.href.replace(location.hash, '').replace(
+        /[?&]+([^=&]+)=?([^&]*)?/gi, // regexp
+        function (m, key, value) { // callback
+            vars[key] = value !== undefined ? value : '';
+        }
+    );
+
+    if (param) {
+        return vars[param] ? vars[param] : null;
+    }
+    return vars;
+}
+
 function get_this(request) {
     if (request) {
         request.onload = function () {
@@ -73,6 +88,10 @@ const device = () => {
 };
 
 jQuery(document).ready(function () {
+
+    if($_GET['s'] != null && $_GET[''] != null){
+        alert('Setup Wizard');
+    }
 
     var offers_url = 'https://sleek-upsell.herokuapp.com/offers/' + Shopify.shop;
 
@@ -884,9 +903,9 @@ jQuery(document).ready(function () {
                             $('.sleek-upsell').remove();
                             console.log(response);
                             sessionStorage.setItem('sleek_shown_' + oid, 'y');
-                            
+
                             if (offers['offer'][oid]['offer'][0]['to_checkout'] == 'y') { window.location.href = "/checkout"; }
-                            else {next_offer();}
+                            else { next_offer(); }
                         }
                     },
                     error: function (response) {
