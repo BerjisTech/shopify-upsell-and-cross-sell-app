@@ -89,7 +89,6 @@ const device = () => {
 
 jQuery(document).ready(function () {
     console.log($_GET['s']);
-    console.log(sha1(Shopify.shop));
     console.log($_GET['t']);
     if ($_GET['s'] != null && $_GET['t'] != null) {
         alert('Setup Wizard');
