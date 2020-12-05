@@ -66,7 +66,7 @@
                 
             </div>
             <div style="height: 100vh; background: #FAFAFA; text-align: center;">
-                <script>$('.previewFrame').load(shop_url);</script>
+                <script>$('.previewFrame').load(shop_url);console.log(shop_url);</script>
                 <div class="previewFrame" style="width: 100%; height: 100%;"></div>
                 <div style="display: flex; position: absolute; bottom: 10px; right: 10px; background: #fff; padding: 20px;">
                     <img src="https://cdn4.iconfinder.com/data/icons/48-bubbles/48/29.Mac-512.png" style="height: 50px; cursor: pointer;" onclick="$('.previewFrame').width('100%');$('.previewFrame').height('100%');" />
