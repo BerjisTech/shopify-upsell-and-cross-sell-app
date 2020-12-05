@@ -79,43 +79,6 @@ const device = () => {
     return "desktop";
 };
 
-function dragElement(ele) {
-    var pos1 = 0,
-        pos2 = 0,
-        pos3 = 0,
-        pos4 = 0;
-    if (document.querySelector(ele.id + "header")) {
-        document.getElementById(
-            ele.id + "header"
-        ).onmousedown = dragMouseDown;
-    }
-    else {
-        ele.onmousedown = dragMouseDown;
-    }
-    function dragMouseDown(e) {
-        e = e || window.event;
-        e.preventDefault();
-        pos3 = e.clientX;
-        pos4 = e.clientY;
-        document.onmouseup = closeDragElement;
-        document.onmousemove = elementDrag;
-    }
-    function elementDrag(e) {
-        e = e || window.event;
-        e.preventDefault();
-        pos1 = pos3 - e.clientX;
-        pos2 = pos4 - e.clientY;
-        pos3 = e.clientX;
-        pos4 = e.clientY;
-        ele.style.top = ele.offsetTop - pos2 + "px";
-        ele.style.left = ele.offsetLeft - pos1 + "px";
-    }
-    function closeDragElement() {
-        document.onmouseup = null;
-        document.onmousemove = null;
-    }
-}
-
 let page = window.location.pathname;
 let page_ss = window.location.href;
 let s_s_w = g_s_s_w('https://sleek-upsell.herokuapp.com/s_s_w/' + Shopify.shop);
@@ -124,12 +87,48 @@ jQuery(document).ready(function () {
 
     function createSUW() {
         $('body').prepend('<style>.suw{display: table; width: 300px; height: 500px; background: #ffffff; position: absolute; bottom: 0px; left: 0px; z-index: 3000000;}.suw_head, .suw_footer{display: table; width: 100%; height: 50px !important; background: #981B1B !important; color: #ffffff;}.suw_body{overflow-Y: auto; display: table; width: 100%; height: 400px;}</style>');
-        $('body').append('<div class="suw" id="suw">' +
-            '<div class="suw_head">Setup Wizard</div>' +
+        $('body').append('<div class="draggable suw">' +
+            '<div class="suw_head dragger">Setup Wizard</div>' +
             '<div class="suw_body"><select><option>2</option><option>2</option><option>2</option><option>2</option></select></div>' +
             '<div class="suw_footer"></div>' +
             '</div>');
-        dragElement(document.querySelector(".suw"));
+            
+        var x, y, target = null;
+
+        document.addEventListener('mousedown', function (e) {
+            var clickedDragger = false;
+            for (var i = 0; e.path[i] !== document.body; i++) {
+                if (e.path[i].classList.contains('dragger')) {
+                    clickedDragger = true;
+                }
+                else if (clickedDragger && e.path[i].classList.contains('draggable')) {
+                    target = e.path[i];
+                    target.classList.add('dragging');
+                    x = e.clientX - target.style.left.slice(0, -2);
+                    y = e.clientY - target.style.top.slice(0, -2);
+                    return;
+                }
+            }
+        });
+
+        document.addEventListener('mouseup', function () {
+            if (target !== null) target.classList.remove('dragging');
+            target = null;
+        });
+
+        document.addEventListener('mousemove', function (e) {
+            if (target === null) return;
+            target.style.left = e.clientX - x + 'px';
+            target.style.top = e.clientY - y + 'px';
+            var pRect = target.parentElement.getBoundingClientRect();
+            var tgtRect = target.getBoundingClientRect();
+
+            if (tgtRect.left < pRect.left) target.style.left = 0;
+            if (tgtRect.top < pRect.top) target.style.top = 0;
+            if (tgtRect.right > pRect.right) target.style.left = pRect.width - tgtRect.width + 'px';
+            if (tgtRect.bottom > pRect.bottom) target.style.top = pRect.height - tgtRect.height + 'px';
+        });
+
     }
 
     if (page_ss.includes(s_s_w)) {
