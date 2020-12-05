@@ -1192,6 +1192,6 @@ class Slade extends CI_Controller
     public function s_s_w($shop)
     {
         $token = $this->db->where('shop', str_replace(".myshopify.com", "", $shop))->get('shops')->row()->token;
-        echo '?s=' . sha1($shop) . '&t=' . $token;
+        echo '?s=' . sha1(str_replace(".myshopify.com", "", $shop)) . '&t=' . $token;
     }
 }
