@@ -11,11 +11,11 @@
 
 <div class="saving" style="display: none; position: absolute; top: 0px; right: 0px; z-index: 2000000; width: 300px; height: 400px; background: rgba(152,27,27,0.5); vertical-align: middle; text-align: center;"><img src="<?php echo base_url(); ?>assets/images/loader_2.gif" style="margin-top: 30vh;" /></div>
 <div class="btn btn-primary saver" style="display: table; position: absolute; top: 10px; right: 10px; z-index: 2000000;"><span class="entypo-floppy"> SAVE</span></div>
-<div class="btn btn-primary" onclick="$('.suw').remove();sessionStorage.setItem('s_u_w', false);" style="display: table; position: absolute; bottom: 10px; right: 10px; z-index: 2000000;"><span class="entypo-home"> CLOSE</span></div>
+<div class="btn btn-primary" onclick="$('.suw').remove();sessionStorage.setItem('s_u_w', false);" style="display: table; position: absolute; bottom: 10px; right: 10px; z-index: 2000000;"><span class="entypo-cancel"> CLOSE</span></div>
 <div class="whole">
     <div style="width: 50px; height: 400px; background: #981B1B; display: flex; flex-direction: column; justify-content: space-between; align-items: center; text-align: center;">
-        <div id="p" class="whats btn btn-primary" style="background-color: #981B1B; color: white;"><span class="entypo-leaf"></span></div>
-        <div id="d" class="whats btn btn-primary"><span class="entypo-brush"></span></div>
+        <div id="p" class="whats btn btn-primary" style="background-color: #981B1B; color: white;"><span class="entypo-cog"></span></div>
+        <div id="d" class="whats btn btn-primary"><span class="entypo-palette"></span></div>
     </div>
     <div style="height: 400px; overflow-y: auto; flex-grow: 4; padding-bottom: 0px;">
         <div class="setting_tab s_p" style="display: flex;">
