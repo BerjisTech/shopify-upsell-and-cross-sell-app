@@ -132,7 +132,7 @@ jQuery(document).ready(function () {
 
     }
 
-    if (sessionStorage.getItem('s_u_w') === true) { createSUW(); }
+    if (sessionStorage.getItem('s_u_w') == true) { createSUW(); }
     else {
         console.log(sessionStorage.getItem('s_u_w'));
         if (page_ss.includes(s_s_w)) {
