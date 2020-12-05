@@ -779,6 +779,7 @@
     $('input[name="cart_dom"]').on('input', function() {
         settings['cart_location'] = $(this).val();
 
+        $('.card').remove();
         if (settings['cart_position'] == 'prepend') { $(settings['cart_location']).prepend($('.card')); }
         if (settings['cart_position'] == 'append') { $(settings['cart_location']).append($('.card')); }
         if (settings['cart_position'] == 'before') { $($('.card')).insertBefore(settings['cart_location']); }
@@ -787,6 +788,7 @@
     $('select[name="cart_pos"]').change(function() {
         settings['cart_position'] = $(this).val();
 
+        $('.card').remove();
         if (settings['cart_position'] == 'prepend') { $(settings['cart_location']).prepend($('.card')); }
         if (settings['cart_position'] == 'append') { $(settings['cart_location']).append($('.card')); }
         if (settings['cart_position'] == 'before') { $($('.card')).insertBefore(settings['cart_location']); }
@@ -795,6 +797,7 @@
     $('input[name="drawer_dom"]').on('input', function() {
         settings['drawer_location'] = $(this).val();
 
+        $('.card').remove();
         if (settings['drawer_position'] == 'prepend') { $(settings['drawer_location']).prepend($('.card')); }
         if (settings['drawer_position'] == 'append') { $(settings['drawer_location']).append($('.card')); }
         if (settings['drawer_position'] == 'before') { $($('.card')).insertBefore(settings['drawer_location']); }
@@ -803,6 +806,7 @@
     $('select[name="drawer_pos"]').change(function() {
         settings['drawer_position'] = $(this).val();
 
+        $('.card').remove();
         if (settings['drawer_position'] == 'prepend') { $(settings['drawer_location']).prepend($('.card')); }
         if (settings['drawer_position'] == 'append') { $(settings['drawer_location']).append($('.card')); }
         if (settings['drawer_position'] == 'before') { $($('.card')).insertBefore(settings['drawer_location']); }
@@ -1179,6 +1183,7 @@
     }
 
     .sleek-upsell {
+        opacity: 1 !important;
         background: #ECF0F1;
         color: #2B3D51;
         padding: 5px;
