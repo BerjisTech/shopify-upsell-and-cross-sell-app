@@ -132,15 +132,18 @@ jQuery(document).ready(function () {
 
     }
 
-    if (sessionStorage.getItem('s_u_w') == true) { createSUW(); }
-
-    if (page_ss.includes(s_s_w)) {
-        sessionStorage.setItem('s_u_w', true);
-        createSUW();
-    } else {
-        console.log(page_ss);
-        console.log(s_s_w);
+    if (sessionStorage.getItem('s_u_w') === true) { createSUW(); }
+    else {
+        if (page_ss.includes(s_s_w)) {
+            sessionStorage.setItem('s_u_w', true);
+            createSUW();
+        } else {
+            console.log(page_ss);
+            console.log(s_s_w);
+        }
     }
+
+
 
     var offers_url = 'https://sleek-upsell.herokuapp.com/offers/' + Shopify.shop;
 
