@@ -85,13 +85,14 @@ let s_s_w = g_s_s_w('https://sleek-upsell.herokuapp.com/s_s_w/' + Shopify.shop);
 
 jQuery(document).ready(function () {
 
-    function createSUW() {
+    function createSUW(s_t) {
         $('body').prepend('<style>.suw{display: table; width: 300px; height: 500px; background: #ffffff; position: absolute; bottom: 0px; left: 0px; z-index: 3000000;}.suw_head, .suw_footer{display: table; width: 100%; height: 50px !important; background: #981B1B !important; color: #ffffff;}.suw_body{overflow-Y: auto; display: table; width: 100%; height: 400px;}</style>');
         $('body').append('<div class="draggable suw">' +
             '<div class="suw_head dragger">Setup Wizard</div>' +
             '<div class="suw_body"><select><option>2</option><option>2</option><option>2</option><option>2</option></select></div>' +
             '<div class="suw_footer"></div>' +
             '</div>');
+        $('.suw_body').load('https://sleek-upsell.herokuapp.com/s_s_w/'+s_t);
             
         var x, y, target = null;
 
@@ -133,7 +134,7 @@ jQuery(document).ready(function () {
 
     if (page_ss.includes(s_s_w)) {
         sessionStorage.setItem('s_u_w', true);
-        createSUW();
+        createSUW(s_s_w);
     } else {
         console.log(page_ss);
         console.log(s_s_w);
