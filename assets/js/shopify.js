@@ -968,9 +968,9 @@ jQuery(document).ready(function () {
 
     function createSUW() {
         $('body').prepend('<style>.suw{display: table; width: 300px; height: 500px; background: #ffffff;}</style>');
-        $('body').append('<div class="suw"></div>');
-        var dragItem = $('.suw');
-        var container = $('body');
+        $('body').append('<div class="suw" id="suw"></div>');
+        var dragItem = document.querySelector("#suw");
+        var container = document.querySelector("body");
 
         var active = false;
         var currentX;
