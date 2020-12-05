@@ -777,17 +777,36 @@
     <?php endif;?>
 
     $('input[name="cart_dom"]').on('input', function() {
-
         settings['cart_location'] = $(this).val();
+
+        if (settings['cart_position'] == 'prepend') { $(settings['cart_location']).prepend($('.card')); }
+        if (settings['cart_position'] == 'append') { $(settings['cart_location']).append($('.card')); }
+        if (settings['cart_position'] == 'before') { $($('.card')).insertBefore(settings['cart_location']); }
+        if (settings['cart_position'] == 'after') { $($('.card')).insertAfter(settings['cart_location']); }
     });
     $('select[name="cart_pos"]').change(function() {
         settings['cart_position'] = $(this).val();
+
+        if (settings['cart_position'] == 'prepend') { $(settings['cart_location']).prepend($('.card')); }
+        if (settings['cart_position'] == 'append') { $(settings['cart_location']).append($('.card')); }
+        if (settings['cart_position'] == 'before') { $($('.card')).insertBefore(settings['cart_location']); }
+        if (settings['cart_position'] == 'after') { $($('.card')).insertAfter(settings['cart_location']); }
     });
     $('input[name="drawer_dom"]').on('input', function() {
         settings['drawer_location'] = $(this).val();
+
+        if (settings['drawer_position'] == 'prepend') { $(settings['drawer_location']).prepend($('.card')); }
+        if (settings['drawer_position'] == 'append') { $(settings['drawer_location']).append($('.card')); }
+        if (settings['drawer_position'] == 'before') { $($('.card')).insertBefore(settings['drawer_location']); }
+        if (settings['drawer_position'] == 'after') { $($('.card')).insertAfter(settings['drawer_location']); }
     });
     $('select[name="drawer_pos"]').change(function() {
         settings['drawer_position'] = $(this).val();
+
+        if (settings['drawer_position'] == 'prepend') { $(settings['drawer_location']).prepend($('.card')); }
+        if (settings['drawer_position'] == 'append') { $(settings['drawer_location']).append($('.card')); }
+        if (settings['drawer_position'] == 'before') { $($('.card')).insertBefore(settings['drawer_location']); }
+        if (settings['drawer_position'] == 'after') { $($('.card')).insertAfter(settings['drawer_location']); }
     });
     $('input[name="drawer_refresh"]').change(function() {
         if (this.checked) {
