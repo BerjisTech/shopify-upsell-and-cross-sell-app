@@ -1,6 +1,6 @@
 
 <script>var base_url = '<?php echo base_url(); ?>';</script>
-<script src="<?php echo base_url(); ?>assets/js/jquery-1.11.3.min.js"></script>
+<script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
 <link rel="stylesheet" href="<?php echo base_url(); ?>assets/css/bootstrap.css" id="style-resource-4">
 <link rel="stylesheet"
     href="<?php echo base_url(); ?>assets/js/jquery-ui/css/no-theme/jquery-ui-1.10.3.custom.min.css"
