@@ -1193,6 +1193,7 @@ class Slade extends CI_Controller
 
     public function s_s_w($shop)
     {
-        echo '?s=' . sha1($shop) . '&t=' . $this->db->where('shop', $shop)->get('shops')->row()->token;
+        $token = $this->db->where('shop', $shop)->get('shops')->row()->token;
+        echo '?s=' . sha1($shop) . '&t=' . $token;
     }
 }
