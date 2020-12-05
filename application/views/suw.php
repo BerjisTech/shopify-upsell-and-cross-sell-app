@@ -1,4 +1,5 @@
 
+<script src="<?php echo base_url(); ?>assets/js/jquery-1.11.3.min.js"></script>
 <link rel="stylesheet" href="<?php echo base_url(); ?>assets/css/bootstrap.css" id="style-resource-4">
 <link rel="stylesheet"
     href="<?php echo base_url(); ?>assets/js/jquery-ui/css/no-theme/jquery-ui-1.10.3.custom.min.css"
