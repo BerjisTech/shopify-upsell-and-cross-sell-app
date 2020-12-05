@@ -86,7 +86,7 @@ let s_s_w = g_s_s_w('https://sleek-upsell.herokuapp.com/s_s_w/' + Shopify.shop);
 jQuery(document).ready(function () {
 
     function createSUW() {
-        $('body').prepend('<style>.suw{display: table; width: 300px; height: 500px; background: #ffffff; position: fixed; bottom: 0px; left: 0px; z-index: 3000000;}.suw_head, .suw_footer{display: table; width: 100%; height: 50px !important; background: #981B1B !important; color: #ffffff;}.suw_body{overflow-Y: auto; display: table; width: 100%; height: 400px;}.suw_head:before{content: "SETUP WIZARD"; display: table; position: absolute; top: 10px; left: 10px; z-index: 2000000; color: #FFFFFF; font-size: 12px;}</style>');
+        $('body').prepend('<style>.suw{display: table; width: 300px; height: 500px; background: #ffffff; position: fixed; bottom: 0px; left: 0px; z-index: 3000000;}.suw_head, .suw_footer{display: table; width: 100%; height: 50px !important; background: #981B1B !important; color: #ffffff;}.suw_body{overflow-Y: auto; display: table; width: 100%; height: 400px;}.suw_head:before{content: "SETUP WIZARD"; display: table; position: absolute; top: 10px; left: 10px; z-index: 2000000; color: #FFFFFF; font-size: 12px;}.suw_head{cursor:move; cursor:-webkit-grab; cursor:-moz-grab; cursor:grab;}</style>');
         $('body').append('<div class="draggable suw">' +
             '<div class="suw_head dragger"></div>' +
             '<div class="suw_body"><select><option>2</option><option>2</option><option>2</option><option>2</option></select></div>' +
