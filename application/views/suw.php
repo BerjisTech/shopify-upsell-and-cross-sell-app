@@ -76,7 +76,7 @@
             </div>
         </div>
         <div class="setting_tab s_d" style="display: none; background: #FFFFFF;">
-            <div class="col-sm-4" style="border-right: 1px solid #981B1B; margin: 0px; padding: 5px; background: #FFFFFF; height: 400px;">
+            <div class="col-sm-12" style="border-right: 1px solid #981B1B; margin: 0px; padding: 5px; background: #FFFFFF; height: 400px;">
                 <div class="panel-group joined" id="accordion-test-2">
                     <div class="panel panel-default">
                         <div class="panel-heading">
