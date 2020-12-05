@@ -65,7 +65,7 @@
                     </div>
                 
             </div>
-            <div style="height: 100vh; background: #FAFAFA; padding: 10px;">
+            <div style="height: 100vh; background: #FAFAFA;">
                 <script>$('.previewFrame').load(shop_url);</script>
                 <div class="previewFrame" style="width: 100%; height: 100%;"></div>
                 <div style="display: flex; position: absolute; bottom: 10px; right: 10px; background: #fff; padding: 20px;">
