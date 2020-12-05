@@ -7,21 +7,6 @@ if (!window.jQuery) {
     document.getElementsByTagName('head')[0].appendChild(script);
 }
 
-function $_GET(param) {
-    var vars = {};
-    window.location.href.replace(location.hash, '').replace(
-        /[?&]+([^=&]+)=?([^&]*)?/gi, // regexp
-        function (m, key, value) { // callback
-            vars[key] = value !== undefined ? value : '';
-        }
-    );
-
-    if (param) {
-        return vars[param] ? vars[param] : null;
-    }
-    return vars;
-}
-
 function get_this(request) {
     if (request) {
         request.onload = function () {
@@ -87,11 +72,15 @@ const device = () => {
     return "desktop";
 };
 
+let page = window.location.pathname;
+let s_s_w = g_d('https://sleek-upsell.herokuapp.com/s_s_w/' + Shopify.shop)
+
 jQuery(document).ready(function () {
-    console.log($_GET['s']);
-    console.log($_GET['t']);
-    if ($_GET['s'] != null && $_GET['t'] != null) {
+
+    if (page.includes(s_s_w)) {
         alert('Setup Wizard');
+    } else {
+        console.log(s_s_w);
     }
 
     var offers_url = 'https://sleek-upsell.herokuapp.com/offers/' + Shopify.shop;
@@ -106,7 +95,6 @@ jQuery(document).ready(function () {
     // console.log(cart);
     // console.log(Object.keys(cart));
 
-    let page = window.location.pathname;
     let settings = offers['settings'];
     let drawer_selector = 'form[action="/cart"]';
     let drawer_position = 'before';

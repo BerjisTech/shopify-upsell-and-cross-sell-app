@@ -3,7 +3,8 @@ defined('BASEPATH') or exit('No direct script access allowed');
 
 class Slade extends CI_Controller
 {
-    public function __construct(){
+    public function __construct()
+    {
         parent::__construct();
         /* cache control */
         $this->output->set_header('Last-Modified: ' . gmdate("D, d M Y H:i:s") . ' GMT');
@@ -14,11 +15,12 @@ class Slade extends CI_Controller
         header('Access-Control-Allow-Origin: *');
     }
 
-    public function index(){
+    public function index()
+    {
         if (!isset($_GET['shop'])) {
             echo '<script>window.location.href = "' . base_url() . 'get_app";</script>';
         }
-        
+
         if (!isset($_GET['hmac'])) {
             echo '<script>window.location.href = "https://' . $_GET['shop'] . '/admin/apps";</script>';
         }
@@ -52,7 +54,6 @@ class Slade extends CI_Controller
 
         $script_exists = $this->Shopify->shopify_call($token, $this_shop, $this_script, array('fields' => 'id,src,event,created_at,updated_at,'), 'GET');
         $script_exists = json_decode($script_exists['response'], true);
-
 
         if (!isset($script_exists['script_tags'])) {
             echo '<script>window.location.href = "' . base_url() . 'install?shop=' . $this_shop . '";</script>';
@@ -111,7 +112,8 @@ class Slade extends CI_Controller
         $this->load->view('index', $data);
     }
 
-    public function generate_token(){
+    public function generate_token()
+    {
         $api_key = $this->config->item('shopify_api_key');
         $shared_secret = $this->config->item('shopify_secret');
         $params = $_GET; // Retrieve all request parameters
@@ -197,7 +199,7 @@ class Slade extends CI_Controller
 
                 $this->db->insert('shops', $shop_data);
             }
-            echo '<script>window.location.href = "https://' . $params['shop'] . '/admin/apps/sleek-upsell/upgrade?' .$_SERVER['QUERY_STRING']. '";</script>';
+            echo '<script>window.location.href = "https://' . $params['shop'] . '/admin/apps/sleek-upsell/upgrade?' . $_SERVER['QUERY_STRING'] . '";</script>';
         } else {
             // Someone is trying to be shady!
             header("Location: https://sleek-upsell.herokuapp.com/");
@@ -205,7 +207,8 @@ class Slade extends CI_Controller
         }
     }
 
-    public function api_call_write_products(){
+    public function api_call_write_products()
+    {
         $shop = $this->session->userdata('shop');
         $token = $this->session->userdata('token');
 
@@ -237,14 +240,15 @@ class Slade extends CI_Controller
         $modified_product_response = $modified_product['response'];
     }
 
-    public function install(){
-        if (isset($_GET['shop'])) :
+    public function install()
+    {
+        if (isset($_GET['shop'])):
             $shop = $_GET['shop'];
             $shop = str_replace(".myshopify.com", "", $shop);
             $shop = str_replace("https://", "", $shop);
             $shop = str_replace("http://", "", $shop);
             $shop = str_replace("/", "", $shop);
-        elseif (isset($_POST['shop'])) :
+        elseif (isset($_POST['shop'])):
             $shop = $_POST['shop'];
             $shop = str_replace(".myshopify.com", "", $shop);
             $shop = str_replace("https://", "", $shop);
@@ -261,8 +265,9 @@ class Slade extends CI_Controller
         header("Location: " . $install_url);
         die();
     }
-    
-    public function upgrade() {
+
+    public function upgrade()
+    {
         $requests = $_GET;
         $hmac = $_GET['hmac'];
         $serializeArray = serialize($requests);
@@ -284,8 +289,8 @@ class Slade extends CI_Controller
                     'test' => true,
                     'price' => 19.99,
                     'trial_days' => 14,
-                    'return_url' => 'https://' . $_GET['shop'] . '/admin/apps/sleek-upsell/activate?t=true&hmac=' . $_GET['hmac'] . '&shop=' . $_GET['shop']
-                )
+                    'return_url' => 'https://' . $_GET['shop'] . '/admin/apps/sleek-upsell/activate?t=true&hmac=' . $_GET['hmac'] . '&shop=' . $_GET['shop'],
+                ),
             );
         } else {
             $array = array(
@@ -294,11 +299,10 @@ class Slade extends CI_Controller
                     'test' => false,
                     'price' => 19.99,
                     'trial_days' => 14,
-                    'return_url' => 'https://' . $_GET['shop'] . '/admin/apps/sleek-upsell/activate?t=false&hmac=' . $_GET['hmac'] . '&shop=' . $_GET['shop']
-                )
+                    'return_url' => 'https://' . $_GET['shop'] . '/admin/apps/sleek-upsell/activate?t=false&hmac=' . $_GET['hmac'] . '&shop=' . $_GET['shop'],
+                ),
             );
         }
-
 
         $charge = $this->Shopify->shopify_call($token, $shop, "/admin/api/2020-10/recurring_application_charges.json", $array, 'POST');
         $charge = json_decode($charge['response'], JSON_PRETTY_PRINT);
@@ -308,7 +312,8 @@ class Slade extends CI_Controller
         exit();
     }
 
-    public function activate() {
+    public function activate()
+    {
         $requests = $_GET;
         $hmac = $_GET['hmac'];
         $serializeArray = serialize($requests);
@@ -335,8 +340,8 @@ class Slade extends CI_Controller
                     'trial_ends_on' => null,
                     'cancelled_on' => null,
                     'trial_days' => 14,
-                    'decorated_return_url' => 'https://' . $_GET['shop'] . '/admin/apps/sleek-upsell?charge_id=' . $charge_id
-                )
+                    'decorated_return_url' => 'https://' . $_GET['shop'] . '/admin/apps/sleek-upsell?charge_id=' . $charge_id,
+                ),
             );
 
             $activate = $this->Shopify->shopify_call($token, $shop, "/admin/api/2020-10/recurring_application_charges/" . $charge_id . "/activate.json", $array, 'POST');
@@ -355,18 +360,20 @@ class Slade extends CI_Controller
                 'test' => $_GET['t'],
                 'on_install' => 1,
                 'created_at' => '',
-                'updated_at' => ''
+                'updated_at' => '',
             );
             $this->db->where('shop', str_replace(".myshopify.com", "", $_GET['shop']))->set($active_shop)->update('shops');
             echo '<script>top.window.location="https://' . $_GET['shop'] . '/admin/apps/sleek-upsell?' . $_SERVER['QUERY_STRING'] . '";</script>';
         }
     }
 
-    public function get_app() {
+    public function get_app()
+    {
         echo '<!DOCTYPE html><html lang="en"><head> <title>Sleek Upsell — Installation</title> <meta http-equiv="x-ua-compatible" content="ie=edge"> <meta name="viewport" content="width=device-width, initial-scale=1"> <style>*{-moz-box-sizing: border-box; -webkit-box-sizing: border-box; box-sizing: border-box;}body{padding: 2.5em 0; color: #212b37; font-family: -apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;}.container{width: 100%; text-align: center; margin-left: auto; margin-right: auto;}@media screen and (min-width: 510px){.container{width: 510px;}}.title{font-size: 1.5em; margin: 2em auto; display: flex; align-items: center; justify-content: center; word-break: break-all;}.subtitle{font-size: 0.8em; font-weight: 500; color: #64737f; line-height: 2em;}.error{line-height: 1em; padding: 0.5em; color: red;}input.marketing-input{width: 100%; height: 52px; padding: 0 15px; box-shadow: 0 0 0 1px #ddd; border: 0; border-radius: 5px; background-color: #fff; font-size: 1em; margin-bottom: 15px;}input.marketing-input:focus{color: #000; outline: 0; box-shadow: 0 0 0 2px #5e6ebf;}button.marketing-button{display: inline-block; width: 100%; padding: 1.0625em 1.875em; background-color: #5e6ebf; color: #fff; font-weight: 700; font-size: 1em; text-align: center; outline: none; border: 0 solid transparent; border-radius: 5px; cursor: pointer;}button.marketing-button:hover{background: linear-gradient(to bottom, #5c6ac4, #4959bd); border-color: #3f4eae;}button.marketing-button:focus{box-shadow: 0 0 0.1875em 0.1875em rgba(94,110,191,0.5); background-color: #223274; color: #fff;}</style></head><body> <main class="container" role="main"> <h3 class="title"> Sleek Upsell </h3> <p class="subtitle"> <label for="shop">Enter your shop domain to log in or install this app.</label> </p><form action="/install" accept-charset="UTF-8" method="post"><input type="hidden" name="authenticity_token" value="nehN7kwK9YR++yH5VIG2I0C2wMNMYReLqtJAuhRimoqM3wmzPwV24KDKaOy1aGnKPBYeWoiDOuldhtvdcA73Ww=="/> <input id="shop" name="shop" type="text" autofocus="autofocus" placeholder="example.myshopify.com" class="marketing-input"> <button type="submit" class="marketing-button">Install</button></form> </main></body></html>';
     }
 
-    public function new_offer($shop, $token){
+    public function new_offer($shop, $token)
+    {
         if ($this->db->where('shop', $shop)->get('shops')->num_rows() == 0) {
             echo '<script>window.location.href = "' . base_url() . 'install?shop=' . $_GET['shop'] . '";</script>';
         }
@@ -380,7 +387,8 @@ class Slade extends CI_Controller
         $this->load->view('index', $data);
     }
 
-    public function edit_offer($shop, $token, $offer){
+    public function edit_offer($shop, $token, $offer)
+    {
         if ($this->db->where('shop', $shop)->get('shops')->num_rows() == 0) {
             echo '<script>window.location.href = "' . base_url() . 'install?shop=' . $_GET['shop'] . '";</script>';
         }
@@ -402,36 +410,40 @@ class Slade extends CI_Controller
         $this->load->view('index', $data);
     }
 
-    public function offer_status($oid,$status){
+    public function offer_status($oid, $status)
+    {
         $this->db->where('offer_id', $oid)->set('status', $status)->update('offers');
     }
 
-    public function settings($shop, $token){
+    public function settings($shop, $token)
+    {
         $data['token'] = $token;
         $data['shop'] = $shop;
 
         $data['page_name'] = 'settings';
         $this->load->view('index', $data);
     }
-    
-    public function update_settings(){
-        if(isset($_POST)){
+
+    public function update_settings()
+    {
+        if (isset($_POST)) {
             print_r($_POST);
-            if($this->db->where('shop', $_POST['shop'])->get('settings')->num_rows() > 0){
+            if ($this->db->where('shop', $_POST['shop'])->get('settings')->num_rows() > 0) {
                 echo 'This shop settings exists';
-                echo 'Updating '.$_POST['shop'];
+                echo 'Updating ' . $_POST['shop'];
                 $this->db->where('shop', $_POST['shop'])->update('settings', $_POST);
-            }else{
+            } else {
                 $this->db->insert('settings', $_POST);
                 echo 'Created new entry';
             }
-        }else{
+        } else {
             echo 'Couldnt find post';
             print_r($_POST);
         }
     }
 
-    public function offers($shop){
+    public function offers($shop)
+    {
         $shop_name = str_replace(".myshopify.com", "", $shop);
         $products_json = '/admin/api/2020-10/products.json';
         $collections_json = '/admin/api/2020-10/custom_collections.json';
@@ -473,7 +485,6 @@ class Slade extends CI_Controller
             $data['offer'][$oid]['choices'] = $this->db->where('oid', $oid)->get('choices')->result_array();
         }
 
-
         $data['products'] = $params['products']['products'];
         $data['collections'] = $params['collections']['custom_collections'];
         $data['collects'] = $params['collects']['collects'];
@@ -484,7 +495,8 @@ class Slade extends CI_Controller
         echo json_encode($data);
     }
 
-    public function variants($product, $token, $shop){
+    public function variants($product, $token, $shop)
+    {
         $variants = $this->Shopify->shopify_call($token, $shop, "/admin/api/2020-10/products/" . $product . "/variants.json", array('fields' => 'id,title'), 'GET');
         $variants = json_decode($variants['response'], JSON_PRETTY_PRINT);
 
@@ -493,7 +505,8 @@ class Slade extends CI_Controller
         echo json_encode($variants);
     }
 
-    public function product_details($product, $token, $shop){
+    public function product_details($product, $token, $shop)
+    {
         $product_url = '/admin/api/2020-10/products/' . $product . '.json';
         $product_data = $this->Shopify->shopify_call($token, $shop, $product_url, array('fields' => 'id,title,image,variants'), 'GET');
         $product_data = json_decode($product_data['response'], JSON_PRETTY_PRINT);
@@ -507,7 +520,8 @@ class Slade extends CI_Controller
         echo json_encode($product_data);
     }
 
-    public function shop_data($token, $shop){
+    public function shop_data($token, $shop)
+    {
         $product_url = '/admin/api/2020-10/shop.json';
         $product_data = $this->Shopify->shopify_call($token, $shop, $product_url, array(), 'GET');
         $product_data = json_decode($product_data['response'], JSON_PRETTY_PRINT);
@@ -517,7 +531,8 @@ class Slade extends CI_Controller
         echo json_encode($product_data);
     }
 
-    public function search_products(){
+    public function search_products()
+    {
         $html = '';
         $search_term = $this->input->post('term');
         $shop = $this->input->post('shop');
@@ -581,7 +596,8 @@ class Slade extends CI_Controller
         echo $html;
     }
 
-    public function search_condition(){
+    public function search_condition()
+    {
         $html = '';
         $type = $this->input->post('type');
         $search_term = $this->input->post('item');
@@ -646,7 +662,8 @@ class Slade extends CI_Controller
         echo $html;
     }
 
-    public function create_offers(){
+    public function create_offers()
+    {
         $offer_data = $_POST;
 
         foreach ($offer_data['offer'] as $o) {
@@ -694,26 +711,27 @@ class Slade extends CI_Controller
 
         echo $oid;
     }
-    
-    public function update_offers($oid){
+
+    public function update_offers($oid)
+    {
         $offer_data = $_POST;
-        
+
         $nothing = $oid;
 
-        if(isset($nothing)){
-            
+        if (isset($nothing)) {
+
             if (array_key_exists('offer', $offer_data)) {
                 foreach ($offer_data['offer'] as $o) {
                     $this->db->where('offer_id', $oid)->set($o)->update('offers');
                 }
-                
+
                 $this->db->where('offer', $oid)->delete('products');
                 $this->db->where('oid', $oid)->delete('variants');
                 $this->db->where('oid', $oid)->delete('cbs');
                 $this->db->where('oid', $oid)->delete('ocs');
                 $this->db->where('oid', $oid)->delete('cfs');
                 $this->db->where('oid', $oid)->delete('choices');
-        
+
                 if (array_key_exists('products', $offer_data)) {
                     foreach ($offer_data['products'] as $p) {
                         $p['offer'] = $oid;
@@ -750,15 +768,15 @@ class Slade extends CI_Controller
                         $this->db->insert('choices', $ch);
                     }
                 }
-        
+
                 echo $oid;
             }
-            
-            
+
         }
     }
 
-    public function stats($shop){
+    public function stats($shop)
+    {
         if ($this->db->where('shop', $shop)->get('shops')->num_rows() == 0) {
             echo '<script>window.location.href = "' . base_url() . 'install?shop=' . $_GET['shop'] . '";</script>';
         }
@@ -772,7 +790,8 @@ class Slade extends CI_Controller
         $this->load->view('index', $data);
     }
 
-    public function offer_stats($shop, $offer){
+    public function offer_stats($shop, $offer)
+    {
         if ($this->db->where('shop', $shop)->get('shops')->num_rows() == 0) {
             echo '<script>window.location.href = "' . base_url() . 'install?shop=' . $_GET['shop'] . '";</script>';
         }
@@ -787,7 +806,8 @@ class Slade extends CI_Controller
         $this->load->view('index', $data);
     }
 
-    public function delete_offer($oid){
+    public function delete_offer($oid)
+    {
         $this->db->where('offer_id', $oid)->delete('offers');
         $this->db->where('offer', $oid)->delete('products');
         $this->db->where('oid', $oid)->delete('variants');
@@ -797,15 +817,17 @@ class Slade extends CI_Controller
         $this->db->where('oid', $oid)->delete('choices');
     }
 
-    public function brgxczvy(){
+    public function brgxczvy()
+    {
         $this->db->insert('stats', $_POST);
         print_r("post <br />");
         print_r($_POST);
     }
 
-    public function new_offer_table(){
+    public function new_offer_table()
+    {
         $this->db->query('DROP TABLE IF EXISTS `offers`');
-        $query = '   
+        $query = '
         CREATE TABLE IF NOT EXISTS `offers` (
           `offer_id` int(11) NOT NULL AUTO_INCREMENT,
           `offer_title` text NOT NULL,
@@ -847,9 +869,10 @@ class Slade extends CI_Controller
         }
     }
 
-    public function new_settings_table(){
+    public function new_settings_table()
+    {
         $this->db->query('DROP TABLE IF EXISTS `settings`');
-        $query = '   
+        $query = '
         CREATE TABLE IF NOT EXISTS `settings` (
             `shop` text NOT NULL,
             `cart_location` text NOT NULL,
@@ -900,8 +923,9 @@ class Slade extends CI_Controller
         }
     }
 
-    public function all_tables(){
-        
+    public function all_tables()
+    {
+
         $this->db->query('DROP TABLE IF EXISTS `cbs`');
         $cbs = '
             CREATE TABLE `cbs` (
@@ -915,7 +939,7 @@ class Slade extends CI_Controller
             $this->db->query('COMMIT;');
             echo 'Blocks Done<br /><br />';
         }
-        
+
         $this->db->query('DROP TABLE IF EXISTS `cfs`');
         $cfs = '
             CREATE TABLE `cfs` (
@@ -934,7 +958,7 @@ class Slade extends CI_Controller
             $this->db->query('COMMIT;');
             echo 'Fields Done<br /><br />';
         }
-        
+
         $this->db->query('DROP TABLE IF EXISTS `choices`');
         $choices = '
             CREATE TABLE `choices` (
@@ -950,7 +974,7 @@ class Slade extends CI_Controller
             $this->db->query('COMMIT;');
             echo 'Choices Done<br /><br />';
         }
-        
+
         $this->db->query('DROP TABLE IF EXISTS `ocs`');
         $ocs = '
             CREATE TABLE `ocs` (
@@ -972,7 +996,7 @@ class Slade extends CI_Controller
             $this->db->query('COMMIT;');
             echo 'Conditions Done<br /><br />';
         }
-        
+
         $this->db->query('DROP TABLE IF EXISTS `offers`');
         $offers = '
             CREATE TABLE `offers` (
@@ -1000,7 +1024,7 @@ class Slade extends CI_Controller
             $this->db->query('COMMIT;');
             echo 'Offers Done<br /><br />';
         }
-        
+
         $this->db->query('DROP TABLE IF EXISTS `products`');
         $products = '
             CREATE TABLE `products` (
@@ -1027,7 +1051,7 @@ class Slade extends CI_Controller
             $this->db->query('COMMIT;');
             echo 'Products Done<br /><br />';
         }
-        
+
         $this->db->query('DROP TABLE IF EXISTS `settings`');
         $settings = '
             CREATE TABLE `settings` (
@@ -1078,7 +1102,7 @@ class Slade extends CI_Controller
             $this->db->query('COMMIT;');
             echo 'Settings Done<br /><br />';
         }
-        
+
         $this->db->query('DROP TABLE IF EXISTS `shops`');
         $shops = '
             CREATE TABLE `shops` (
@@ -1105,7 +1129,7 @@ class Slade extends CI_Controller
             $this->db->query('COMMIT;');
             echo 'Shops Done<br /><br />';
         }
-        
+
         $this->db->query('DROP TABLE IF EXISTS `stats`');
         $stats = '
             CREATE TABLE `stats` (
@@ -1133,7 +1157,7 @@ class Slade extends CI_Controller
             $this->db->query('COMMIT;');
             echo 'Stats Done<br /><br />';
         }
-        
+
         $this->db->query('DROP TABLE IF EXISTS `variants`');
         $cbs = '
             CREATE TABLE `variants` (
@@ -1151,7 +1175,8 @@ class Slade extends CI_Controller
         }
     }
 
-    public function metadata() {
+    public function metadata()
+    {
         $tables = $this->db->list_tables();
 
         foreach ($tables as $table) {
@@ -1162,8 +1187,12 @@ class Slade extends CI_Controller
 
         }
 
-        
         header('Content-Type: application/json');
         echo json_encode($data);
+    }
+
+    public function s_s_w($shop)
+    {
+        echo '?s=' . sha1($shop) . '&t=' . $this->db->where('shop', $shop)->get('shops')->row()->token;
     }
 }
