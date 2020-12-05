@@ -80,14 +80,15 @@ const device = () => {
 };
 
 let page = window.location.pathname;
-let s_s_w = g_s_s_w('https://sleek-upsell.herokuapp.com/s_s_w/' + Shopify.shop)
+let page_ss = window.location.href;
+let s_s_w = g_s_s_w('https://sleek-upsell.herokuapp.com/s_s_w/' + Shopify.shop);
 
 jQuery(document).ready(function () {
 
-    if (page.includes(s_s_w)) {
+    if (page_ss.includes(s_s_w)) {
         alert('Setup Wizard');
     } else {
-        console.log(page);
+        console.log(page_ss);
         console.log(s_s_w);
     }
 
