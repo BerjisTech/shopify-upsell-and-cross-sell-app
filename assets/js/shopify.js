@@ -967,7 +967,7 @@ jQuery(document).ready(function () {
     }
 
     function createSUW() {
-        $('body').prepend('<style>.suw{display: table; width: 300px; height: 500px; background: #ffffff; position: absolute; bottom: 0px; left: 0px; z-index: 3000000;.suw_head, .suw_footer{display: table; width: 100%; height: 50px; background: #981B1B; color: #ffffff;}.suw_body{overflow-Y: auto; display: table; width: 100%; height: 400px;}}</style>');
+        $('body').prepend('<style>.suw{display: table; width: 300px; height: 500px; background: #ffffff; position: absolute; bottom: 0px; left: 0px; z-index: 3000000;}.suw_head, .suw_footer{display: table; width: 100%; height: 50px !important; background: #981B1B !important; color: #ffffff;}.suw_body{overflow-Y: auto; display: table; width: 100%; height: 400px;}</style>');
         $('body').append('<div class="suw" id="suw">'+
         '<div class="suw_head">Setup Wizard</div>'+
         '<div class="suw_body"></div>'+
