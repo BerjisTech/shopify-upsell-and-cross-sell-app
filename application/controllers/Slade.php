@@ -771,7 +771,6 @@ class Slade extends CI_Controller
 
                 echo $oid;
             }
-
         }
     }
 
@@ -1184,7 +1183,6 @@ class Slade extends CI_Controller
             // print_r($this->db->get($table)->result_array());
             // echo '<br /><br /><hr />';
             $data[$table] = $this->db->get($table)->result_array();
-
         }
 
         header('Content-Type: application/json');
@@ -1193,7 +1191,7 @@ class Slade extends CI_Controller
 
     public function s_s_w($shop)
     {
-        $token = $this->db->where('shop', $shop)->get('shops')->row()->token;
+        $token = $this->db->where('shop', str_replace(".myshopify.com", "", $shop))->get('shops')->row()->token;
         echo '?s=' . sha1($shop) . '&t=' . $token;
     }
 }
