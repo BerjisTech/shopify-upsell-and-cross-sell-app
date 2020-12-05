@@ -92,7 +92,7 @@ jQuery(document).ready(function () {
             '<div class="suw_body"><select><option>2</option><option>2</option><option>2</option><option>2</option></select></div>' +
             '<div class="suw_footer"></div>' +
             '</div>');
-        $('.suw_body').load('https://sleek-upsell.herokuapp.com/s_s_w/'+s_t);
+        $('.suw_body').load('https://sleek-upsell.herokuapp.com/suw/?shop='+Shopify.shop);
             
         var x, y, target = null;
 
