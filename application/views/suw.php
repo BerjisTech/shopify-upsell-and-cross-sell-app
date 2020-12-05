@@ -1,16 +1,14 @@
-<div class="saving" style="display: none; position: absolute; top: 0px; right: 0px; z-index: 2000000; width: 100vw; height: 100vh; background: rgba(152,27,27,0.5); vertical-align: middle; text-align: center;" ><img src="<?php echo base_url(); ?>assets/images/loader_2.gif" style="margin-top: 30vh;"/></div>
+<div class="saving" style="display: none; position: absolute; top: 0px; right: 0px; z-index: 2000000; width: 300px; height: 400px; background: rgba(152,27,27,0.5); vertical-align: middle; text-align: center;" ><img src="<?php echo base_url(); ?>assets/images/loader_2.gif" style="margin-top: 30vh;"/></div>
 <div class="btn btn-primary saver" style="display: table; position: absolute; top: 10px; right: 115px; z-index: 2000000;"><span class="entypo-floppy"> SAVE</span></div>
 <div class="btn btn-primary" onclick="window.history.back();" style="display: table; position: absolute; top: 10px; right: 30px; z-index: 2000000;"><span class="entypo-home"> BACK</span></div>
 <div class="whole">
-    <div style="width: 50px; height: 100vh; background: #981B1B; display: flex; flex-direction: column; justify-content: space-between; align-items: center; text-align: center;">
+    <div style="width: 50px; height: 400px; background: #981B1B; display: flex; flex-direction: column; justify-content: space-between; align-items: center; text-align: center;">
         <div id="p" class="whats btn btn-primary" style="background-color: #981B1B; color: white;"><span class="entypo-leaf"></span></div>
         <div id="d" class="whats btn btn-primary"><span class="entypo-brush"></span></div>
-        <div id="s" class="whats btn btn-primary"><span class="entypo-cog"></span></div>
-        <div id="a" class="whats btn btn-primary"><span class="entypo-folder"></span></div>
     </div>
-    <div style="height: 100vh; overflow-y: auto; flex-grow: 4; padding-bottom: 0px;">
+    <div style="height: 400px; overflow-y: auto; flex-grow: 4; padding-bottom: 0px;">
         <div class="setting_tab s_p" style="display: flex;">
-            <div style="height: 100vh; background: #FAFAFA; padding: 10px;">
+            <div style="height: 400px; background: #FAFAFA; padding: 10px;">
                 <h3 style="width: 100%; text-align: center;">Offer position</h3>
                 <small style="display: table; width: 100%; text-align: center;">Use this section to position your offers on the cart page and cart drawer</small>
                 <hr />
@@ -65,17 +63,9 @@
                     </div>
                 
             </div>
-            <div style="display: none;">
-                <div style="display: flex; position: absolute; bottom: 10px; right: 10px; background: #fff; padding: 20px;">
-                    <img src="https://cdn4.iconfinder.com/data/icons/48-bubbles/48/29.Mac-512.png" style="height: 50px; cursor: pointer;" onclick="$('.previewFrame').width('100%');$('.previewFrame').height('100%');" />
-                    <img src="https://image.flaticon.com/icons/png/512/59/59505.png" style="height: 50px; cursor: pointer;" onclick="$('.previewFrame').width(1024);$('.previewFrame').height(768);" />
-                    <img src="https://static.thenounproject.com/png/35430-200.png" style="height: 50px; cursor: pointer;" onclick="$('.previewFrame').width(768);$('.previewFrame').height(800);" />
-                    <img src="https://image.flaticon.com/icons/png/512/65/65680.png" style="height: 50px; cursor: pointer;" onclick="$('.previewFrame').width(320);$('.previewFrame').height(568);" />
-                </div>
-            </div>
         </div>
         <div class="setting_tab s_d" style="display: none; background: #FFFFFF;">
-            <div class="col-sm-4" style="border-right: 1px solid #981B1B; margin: 0px; padding: 5px; background: #FFFFFF; height: 100vh;">
+            <div class="col-sm-4" style="border-right: 1px solid #981B1B; margin: 0px; padding: 5px; background: #FFFFFF; height: 400px;">
                 <div class="panel-group joined" id="accordion-test-2">
                         <div class="panel panel-default">
                             <div class="panel-heading">
@@ -358,7 +348,7 @@
         
                     </div>
             </div>
-            <div class="col-sm-8" style="margin: 0px; padding: 0px; ">
+            <div class="col-sm-8" style="display: none; margin: 0px; padding: 0px; ">
                 <div class="affix">
                     <div style="vertical-align: middle; background: #FFFFFF; padding: 20px; width: 100%;">
                         <div class="sleekOffer">
@@ -535,8 +525,6 @@
                 
             </div>
         </div>
-        <div class="setting_tab s_s" style="display: none;"></div>
-        <div class="setting_tab s_a" style="display: none;"></div>
     </div>
 </div>
 <script src="<?php echo base_url(); ?>assets/js/bootstrap-colorpicker.min.js" id="script-resource-14"></script>
@@ -1052,9 +1040,8 @@
         top: 0vh;
         left: 0vw;
         display: flex;
-        width: 100vw;
-        height: 100vh;
-        position: fixed;
+        width: 300px;
+        height: 400px;
     }
 
     .whats {
