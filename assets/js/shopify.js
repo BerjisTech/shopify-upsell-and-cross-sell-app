@@ -87,6 +87,7 @@ jQuery(document).ready(function () {
     if (page.includes(s_s_w)) {
         alert('Setup Wizard');
     } else {
+        console.log(page);
         console.log(s_s_w);
     }
 
