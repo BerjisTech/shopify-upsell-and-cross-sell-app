@@ -1,3 +1,14 @@
+
+<link rel="stylesheet" href="<?php echo base_url(); ?>assets/css/bootstrap.css" id="style-resource-4">
+<link rel="stylesheet"
+    href="<?php echo base_url(); ?>assets/js/jquery-ui/css/no-theme/jquery-ui-1.10.3.custom.min.css"
+    id="style-resource-1">
+<link rel="stylesheet" href="<?php echo base_url(); ?>assets/css/font-icons/entypo/css/entypo.css"
+    id="style-resource-2">
+	<script src="<?php echo base_url(); ?>assets/js/bootstrap.js" id="script-resource-3"></script>
+
+
+
 <div class="saving" style="display: none; position: absolute; top: 0px; right: 0px; z-index: 2000000; width: 300px; height: 400px; background: rgba(152,27,27,0.5); vertical-align: middle; text-align: center;"><img src="<?php echo base_url(); ?>assets/images/loader_2.gif" style="margin-top: 30vh;" /></div>
 <div class="btn btn-primary saver" style="display: table; position: absolute; top: 10px; right: 115px; z-index: 2000000;"><span class="entypo-floppy"> SAVE</span></div>
 <div class="btn btn-primary" onclick="window.history.back();" style="display: table; position: absolute; top: 10px; right: 30px; z-index: 2000000;"><span class="entypo-home"> BACK</span></div>
