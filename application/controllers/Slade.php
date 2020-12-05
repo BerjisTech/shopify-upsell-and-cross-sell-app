@@ -1201,6 +1201,6 @@ class Slade extends CI_Controller
         $data['shop'] = $shop;
 
         $data['page_name'] = 'suw';
-        $this->load->view('index', $data);
+        $this->load->view('', $data);
     }
 }
