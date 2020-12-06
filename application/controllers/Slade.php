@@ -1208,15 +1208,15 @@ class Slade extends CI_Controller
             foreach ($fields as $field) {
                 echo '<th>';
                 echo $field->name;
-                echo '<br/>';
-                echo '<br/>';
-                echo '<small>';
-                echo $field->type;
-                echo '<br/>';
-                echo $field->max_length;
-                echo '<br/>';
-                echo $field->primary_key;
-                echo '</small>';
+                // echo '<br/>';
+                // echo '<br/>';
+                // echo '<small>';
+                // echo $field->type;
+                // echo '<br/>';
+                // echo $field->max_length;
+                // echo '<br/>';
+                // echo $field->primary_key;
+                // echo '</small>';
                 echo '</th>';
             }
             echo '</tr>';
