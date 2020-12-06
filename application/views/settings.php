@@ -542,14 +542,12 @@
 </div>
 <script src="<?php echo base_url(); ?>assets/js/bootstrap-colorpicker.min.js" id="script-resource-14"></script>
 <script>
-    fetch(shop_url, {
-    credentials: 'same-origin',
-    method: 'GET'
-    }).then(function (content) {
-    content.text().then(function(html){
-        $('.previewFrame').html(html);
-    })
-    })
+    const proxyurl = "https://cors-anywhere.herokuapp.com/";
+    fetch(proxyurl + shop_url) // https://cors-anywhere.herokuapp.com/https://example.com
+        .then(response => response.text())
+        .then(contents => $('.previewFrame').html(contents)) //console.log(contents))
+        .catch(() => console.log("Can’t access " + shop_url + " response. Blocked by browser?"))
+
     $('.whats').click(function() {
         let hii = $(this).attr('id');
         $('.whats').attr('style', '');
