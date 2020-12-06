@@ -1225,7 +1225,9 @@ class Slade extends CI_Controller
             foreach ($data[$table] as $k => $f) {
                 foreach ($fields as $field) {
                     echo '<tr>';
+                    echo '<td>';
                     echo $f[$field->name];
+                    echo '</td>';
                     echo '</tr>';
                 }
             }
