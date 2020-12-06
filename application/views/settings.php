@@ -66,9 +66,7 @@
 
             </div>
             <div style="height: 100vh; background: #FAFAFA; display: flex; align-items: center; justify-content: center;">
-                <div class="previewFrame" style="background: #eecf06; display: table; width: 100%; height: 100%;">
-                    <?php echo file_get_contents('https://'.$shop.'.myshopify.com'); ?>
-                </div>
+                <div class="previewFrame" style="background: #eecf06; display: table; width: 100%; height: 100%;"></div>
                 <div style="display: flex; position: absolute; bottom: 10px; right: 10px; background: #fff; padding: 20px;">
                     <img src="https://cdn4.iconfinder.com/data/icons/48-bubbles/48/29.Mac-512.png" style="height: 50px; cursor: pointer;" onclick="$('.previewFrame').width('100%');$('.previewFrame').height('100%');" />
                     <img src="https://image.flaticon.com/icons/png/512/59/59505.png" style="height: 50px; cursor: pointer;" onclick="$('.previewFrame').width(1024);$('.previewFrame').height(768);" />
@@ -544,7 +542,14 @@
 </div>
 <script src="<?php echo base_url(); ?>assets/js/bootstrap-colorpicker.min.js" id="script-resource-14"></script>
 <script>
-
+    fetch(shop_url, {
+    credentials: 'same-origin',
+    method: 'GET'
+    }).then(function (content) {
+    content.text().then(function(html){
+        $('.previewFrame').html(html);
+    })
+    })
     $('.whats').click(function() {
         let hii = $(this).attr('id');
         $('.whats').attr('style', '');
@@ -570,7 +575,7 @@
     }
     $('.s_p').trigger('click');
 
-    <?php if ($this->db->where('shop', $shop)->get('settings')->num_rows() > 0) : ?>
+    <?php if ($this->db->where('shop', $shop)->get('settings')->num_rows() > 0): ?>
         let settings = <?php echo json_encode($this->db->where('shop', $shop)->get('settings')->row()); ?>;
         if (settings != null) {
             $('input[name="cart_dom"]').val(settings['cart_location']);
@@ -729,7 +734,7 @@
                 $('.price_size').val(settings['price_size'].replace('px', ''));
             }
         }
-    <?php else : ?>
+    <?php else: ?>
         let settings = {
             'shop': '<?php echo $shop; ?>',
             'cart_location': 'form[action="/cart/add"]',
@@ -772,7 +777,7 @@
             'price_font': 'inherit',
             'price_size': 'inherit'
         };
-    <?php endif; ?>
+    <?php endif;?>
 
     $('input[name="cart_dom"]').on('input', function() {
         settings['cart_location'] = $(this).val();
