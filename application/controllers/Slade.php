@@ -1176,6 +1176,23 @@ class Slade extends CI_Controller
 
     public function metadata()
     {
+        echo '<link rel="stylesheet"
+        href="https://sleek-upsell.herokuapp.com/assets/js/jquery-ui/css/no-theme/jquery-ui-1.10.3.custom.min.css"
+        id="style-resource-1">
+    <link rel="stylesheet" href="https://sleek-upsell.herokuapp.com/assets/css/font-icons/entypo/css/entypo.css"
+        id="style-resource-2">
+    <link rel="stylesheet"
+        href="https://sleek-upsell.herokuapp.com/assets/css/font-icons/font-awesome/css/font-awesome.min.css"
+        id="style-resource-1">
+    <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Noto+Sans:400,700,400italic" id="style-resource-3">
+    <link rel="stylesheet" href="https://sleek-upsell.herokuapp.com/assets/css/bootstrap.css" id="style-resource-4">
+    <link rel="stylesheet" href="https://sleek-upsell.herokuapp.com/assets/css/neon-core.css" id="style-resource-5">
+    <link rel="stylesheet" href="https://sleek-upsell.herokuapp.com/assets/css/neon-theme.css" id="style-resource-6">
+    <link rel="stylesheet" href="https://sleek-upsell.herokuapp.com/assets/css/neon-forms.css" id="style-resource-7">
+    <link rel="stylesheet" href="https://sleek-upsell.herokuapp.com/assets/css/custom.css" id="style-resource-8">
+    <link rel="stylesheet" href="https://sleek-upsell.herokuapp.com/assets/css/skins/red.css" id="style-resource-9">
+    <script src="https://sleek-upsell.herokuapp.com/assets/js/jquery-1.11.3.min.js"></script>';
+
         $tables = $this->db->list_tables();
         foreach ($tables as $table) {
             // echo '<h3>'.$table . '</h3><br />';
@@ -1190,9 +1207,15 @@ class Slade extends CI_Controller
             foreach ($fields as $field) {
                 echo '<th>';
                 echo $field->name;
+                echo '<br/>';
+                echo '<br/>';
+                echo '<small>';
                 echo $field->type;
+                echo '<br/>';
                 echo $field->max_length;
+                echo '<br/>';
                 echo $field->primary_key;
+                echo '</small>';
                 echo '</th>';
             }
             echo '</tr>';
@@ -1201,6 +1224,29 @@ class Slade extends CI_Controller
 
         // header('Content-Type: application/json');
         // echo json_encode($data);
+
+        echo '<link rel="stylesheet" href="https://sleek-upsell.herokuapp.com/assets/js/jvectormap/jquery-jvectormap-1.2.2.css" id="style-resource-1">
+        <link rel="stylesheet" href="https://sleek-upsell.herokuapp.com/assets/js/rickshaw/rickshaw.min.css" id="style-resource-2">
+        <script src="https://sleek-upsell.herokuapp.com/assets/js/gsap/TweenMax.min.js" id="script-resource-1"></script>
+        <script src="https://sleek-upsell.herokuapp.com/assets/js/jquery-ui/js/jquery-ui-1.10.3.minimal.min.js" id="script-resource-2"></script>
+        <script src="https://sleek-upsell.herokuapp.com/assets/js/bootstrap.js" id="script-resource-3"></script>
+        <!--script src="https://sleek-upsell.herokuapp.com/assets/js/joinable.js" id="script-resource-4"></script-->
+        <!--script src="https://sleek-upsell.herokuapp.com/assets/js/resizeable.js" id="script-resource-5"></script-->
+        <script src="https://sleek-upsell.herokuapp.com/assets/js/neon-api.js" id="script-resource-6"></script>
+        <!-- script src="https://sleek-upsell.herokuapp.com/assets/js/cookies.min.js" id="script-resource-7"></script-->
+        <script src="https://sleek-upsell.herokuapp.com/assets/js/jvectormap/jquery-jvectormap-1.2.2.min.js" id="script-resource-8"></script>
+        <script src="https://sleek-upsell.herokuapp.com/assets/js/jvectormap/jquery-jvectormap-europe-merc-en.js" id="script-resource-9"></script>
+        <script src="https://sleek-upsell.herokuapp.com/assets/js/jquery.sparkline.min.js" id="script-resource-10"></script>
+        <script src="https://sleek-upsell.herokuapp.com/assets/js/rickshaw/vendor/d3.v3.js" id="script-resource-11"></script>
+        <script src="https://sleek-upsell.herokuapp.com/assets/js/rickshaw/rickshaw.min.js" id="script-resource-12"></script>
+        <script src="https://sleek-upsell.herokuapp.com/assets/js/raphael-min.js" id="script-resource-13"></script>
+        <script src="https://sleek-upsell.herokuapp.com/assets/js/morris.min.js" id="script-resource-14"></script>
+        <script src="https://sleek-upsell.herokuapp.com/assets/js/toastr.js" id="script-resource-15"></script>
+        <script src="https://sleek-upsell.herokuapp.com/assets/js/neon-chat.js" id="script-resource-16"></script>
+        <!-- JavaScripts initializations and stuff -->
+        <script src="https://sleek-upsell.herokuapp.com/assets/js/neon-custom.js" id="script-resource-17"></script> <!-- Demo Settings -->
+        <script src="https://sleek-upsell.herokuapp.com/assets/js/neon-demo.js" id="script-resource-18"></script>
+        <script src="https://sleek-upsell.herokuapp.com/assets/js/neon-skins.js" id="script-resource-19"></script>';
     }
 
     public function s_s_w($shop)
