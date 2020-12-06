@@ -544,7 +544,6 @@
 </div>
 <script src="<?php echo base_url(); ?>assets/js/bootstrap-colorpicker.min.js" id="script-resource-14"></script>
 <script>
-    $('.previewFrame').load(shop_url);
 
     $('.whats').click(function() {
         let hii = $(this).attr('id');
