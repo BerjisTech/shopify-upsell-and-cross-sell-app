@@ -65,7 +65,7 @@
                 </div>
 
             </div>
-            <div style="height: 100vh; background: #FAFAFA; display: flex; align-items: center; justify-content: center;">
+            <div style=" display: none; height: 100vh; background: #FAFAFA; align-items: center; justify-content: center;">
                 <div class="previewFrame" style="background: #eecf06; display: table; width: 1024; height: 768;"></div>
                 <div style="display: flex; position: absolute; bottom: 10px; right: 10px; background: #fff; padding: 20px; z-index: 3000000;">
                     <img src="https://cdn4.iconfinder.com/data/icons/48-bubbles/48/29.Mac-512.png" style="height: 50px; cursor: pointer;" onclick="$('.previewFrame').width('100%');$('.previewFrame').height('100%');" />
@@ -542,11 +542,11 @@
 </div>
 <script src="<?php echo base_url(); ?>assets/js/bootstrap-colorpicker.min.js" id="script-resource-14"></script>
 <script>
-    const proxyurl = "https://cors-anywhere.herokuapp.com/";
-    fetch(proxyurl + shop_url) // https://cors-anywhere.herokuapp.com/https://example.com
-        .then(response => response.text())
-        .then(contents => $('.previewFrame').html(contents)) //console.log(contents))
-        .catch(() => console.log("Can’t access " + shop_url + " response. Blocked by browser?"))
+    // const proxyurl = "https://cors-anywhere.herokuapp.com/";
+    // fetch(proxyurl + shop_url) // https://cors-anywhere.herokuapp.com/https://example.com
+    //     .then(response => response.text())
+    //     .then(contents => $('.previewFrame').html(contents)) //console.log(contents))
+    //     .catch(() => console.log("Can’t access " + shop_url + " response. Blocked by browser?"))
 
     $('.whats').click(function() {
         let hii = $(this).attr('id');
