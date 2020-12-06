@@ -27,7 +27,7 @@ foreach ($tables as $t_key => $table) :
             });
         });
     </script>
-    <table class="datatable table table-striped table-hover table-sm" id="table-<?php echo $t_key; ?>">
+    <table class="datatable table table-striped table-hover table-sm table-dark" id="table-<?php echo $t_key; ?>">
         <thead class="thead-dark">
             <?php $fields = $this->db->field_data($table); ?>
             <tr>
