@@ -7,6 +7,7 @@ foreach ($tables as $t_key => $table) {
 ?>
     <br />
     <hr />
+    <h1><?php echo $table; ?></h1>
     <script type="text/javascript">
         jQuery(document).ready(function($) {
             var $table<?php echo $t_key; ?> = jQuery("#table-<?php echo $t_key; ?>");
