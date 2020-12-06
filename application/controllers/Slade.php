@@ -1201,7 +1201,8 @@ class Slade extends CI_Controller
             $data[$table] = $this->db->get($table)->result_array();
             echo '<br />';
             echo '<hr />';
-            echo '<table>';
+            echo '<table class="table table-responsive">';
+            echo '<thead class="thead-dark">';
             $fields = $this->db->field_data($table);
             echo '<tr>';
             foreach ($fields as $field) {
@@ -1219,6 +1220,17 @@ class Slade extends CI_Controller
                 echo '</th>';
             }
             echo '</tr>';
+            echo '</thead>';
+            echo '<tbody>';
+            foreach ($data[$table] as $k => $f) {
+                foreach ($fields as $field) {
+                    echo '<tr>';
+                    echo $f[$field->name];
+                    echo '</tr>';
+                }
+            }
+            echo '</tbody>';
+
             echo '</table>';
         }
 
