@@ -66,7 +66,7 @@
 
             </div>
             <div style="height: 100vh; background: #FAFAFA; display: flex; align-items: center; justify-content: center;">
-                <div class="previewFrame" style="background: #eecf06; display: table; width: 100%; height: 100%;"></div>
+                <div class="previewFrame" style="background: #eecf06; display: table; width: 1024; height: 768;"></div>
                 <div style="display: flex; position: absolute; bottom: 10px; right: 10px; background: #fff; padding: 20px;">
                     <img src="https://cdn4.iconfinder.com/data/icons/48-bubbles/48/29.Mac-512.png" style="height: 50px; cursor: pointer;" onclick="$('.previewFrame').width('100%');$('.previewFrame').height('100%');" />
                     <img src="https://image.flaticon.com/icons/png/512/59/59505.png" style="height: 50px; cursor: pointer;" onclick="$('.previewFrame').width(1024);$('.previewFrame').height(768);" />
@@ -1050,6 +1050,9 @@
     });
 </script>
 <style>
+    .sleek-upsell, .sleek-upsell *{
+        opacity: 1 !important;
+    }
     .active-selector {
         border: 2px solid #981B1B;
         border-radius: 5px;
