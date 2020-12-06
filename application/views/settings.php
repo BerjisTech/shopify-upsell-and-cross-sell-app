@@ -1,8 +1,8 @@
-<div class="saving" style="display: none; position: absolute; top: 0px; right: 0px; z-index: 2000000; width: 100vw; height: 100vh; background: rgba(152,27,27,0.5); vertical-align: middle; text-align: center;"><img src="<?php echo base_url(); ?>assets/images/loader_2.gif" style="margin-top: 30vh;" /></div>
-<div class="btn btn-primary saver" style="display: table; position: absolute; top: 10px; right: 115px; z-index: 2000000;"><span class="entypo-floppy"> SAVE</span></div>
-<div class="btn btn-primary" onclick="window.history.back();" style="display: table; position: absolute; top: 10px; right: 30px; z-index: 2000000;"><span class="entypo-home"> BACK</span></div>
+<div class="saving" style="display: none; position: absolute; top: 0px; right: 0px; z-index: 4000000; width: 100vw; height: 100vh; background: rgba(152,27,27,0.5); vertical-align: middle; text-align: center;"><img src="<?php echo base_url(); ?>assets/images/loader_2.gif" style="margin-top: 30vh;" /></div>
+<div class="btn btn-primary saver" style="display: table; position: absolute; top: 10px; right: 115px; z-index: 3000000;"><span class="entypo-floppy"> SAVE</span></div>
+<div class="btn btn-primary" onclick="window.history.back();" style="display: table; position: absolute; top: 10px; right: 30px; z-index: 3000000;"><span class="entypo-home"> BACK</span></div>
 <div class="whole">
-    <div style="width: 50px; height: 100vh; background: #981B1B; display: flex; flex-direction: column; justify-content: space-between; align-items: center; text-align: center;">
+    <div style=" z-index: 3000000; width: 50px; height: 100vh; background: #981B1B; display: flex; flex-direction: column; justify-content: space-between; align-items: center; text-align: center;">
         <div id="p" class="whats btn btn-primary" style="background-color: #981B1B; color: white;"><span class="entypo-leaf"></span></div>
         <div id="d" class="whats btn btn-primary"><span class="entypo-brush"></span></div>
         <div id="s" class="whats btn btn-primary"><span class="entypo-cog"></span></div>
@@ -67,7 +67,7 @@
             </div>
             <div style="height: 100vh; background: #FAFAFA; display: flex; align-items: center; justify-content: center;">
                 <iframe class="previewFrame" style="background: #eecf06; display: table; width: 1024; height: 768;"></iframe>
-                <div style="display: flex; position: absolute; bottom: 10px; right: 10px; background: #fff; padding: 20px;">
+                <div style="display: flex; position: absolute; bottom: 10px; right: 10px; background: #fff; padding: 20px; z-index: 3000000;">
                     <img src="https://cdn4.iconfinder.com/data/icons/48-bubbles/48/29.Mac-512.png" style="height: 50px; cursor: pointer;" onclick="$('.previewFrame').width('100%');$('.previewFrame').height('100%');" />
                     <img src="https://image.flaticon.com/icons/png/512/59/59505.png" style="height: 50px; cursor: pointer;" onclick="$('.previewFrame').width(1024);$('.previewFrame').height(768);" />
                     <img src="https://static.thenounproject.com/png/35430-200.png" style="height: 50px; cursor: pointer;" onclick="$('.previewFrame').width(768);$('.previewFrame').height(800);" />
