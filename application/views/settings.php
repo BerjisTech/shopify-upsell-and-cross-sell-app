@@ -66,7 +66,7 @@
 
             </div>
             <div style="height: 100vh; background: #FAFAFA; display: flex; align-items: center; justify-content: center;">
-                <iframe class="previewFrame" style="background: #eecf06; display: table; width: 1024; height: 768;"></iframe>
+                <div class="previewFrame" style="background: #eecf06; display: table; width: 1024; height: 768;"></div>
                 <div style="display: flex; position: absolute; bottom: 10px; right: 10px; background: #fff; padding: 20px; z-index: 3000000;">
                     <img src="https://cdn4.iconfinder.com/data/icons/48-bubbles/48/29.Mac-512.png" style="height: 50px; cursor: pointer;" onclick="$('.previewFrame').width('100%');$('.previewFrame').height('100%');" />
                     <img src="https://image.flaticon.com/icons/png/512/59/59505.png" style="height: 50px; cursor: pointer;" onclick="$('.previewFrame').width(1024);$('.previewFrame').height(768);" />
