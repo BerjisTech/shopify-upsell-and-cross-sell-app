@@ -1177,12 +1177,26 @@ class Slade extends CI_Controller
     public function metadata()
     {
         $tables = $this->db->list_tables();
-
         foreach ($tables as $table) {
             // echo '<h3>'.$table . '</h3><br />';
             // print_r($this->db->get($table)->result_array());
             // echo '<br /><br /><hr />';
             $data[$table] = $this->db->get($table)->result_array();
+            echo '<br />';
+            echo '<hr />';
+            echo '<table>';
+            $fields = $this->db->field_data($table);
+            echo '<tr>';
+            foreach ($fields as $field) {
+                echo '<th>';
+                echo $field->name;
+                echo $field->type;
+                echo $field->max_length;
+                echo $field->primary_key;
+                echo '</th>';
+            }
+            echo '</tr>';
+            echo '</table>';
         }
 
         header('Content-Type: application/json');
