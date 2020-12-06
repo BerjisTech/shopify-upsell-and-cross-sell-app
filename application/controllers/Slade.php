@@ -1223,13 +1223,13 @@ class Slade extends CI_Controller
             echo '</thead>';
             echo '<tbody>';
             foreach ($data[$table] as $k => $f) {
+                echo '<tr>';
+                echo '<td>';
                 foreach ($fields as $field) {
-                    echo '<tr>';
-                    echo '<td>';
                     echo $f[$field->name];
-                    echo '</td>';
-                    echo '</tr>';
                 }
+                echo '</td>';
+                echo '</tr>';
             }
             echo '</tbody>';
 
