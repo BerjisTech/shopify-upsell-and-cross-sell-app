@@ -1,5 +1,5 @@
 <?php $tables = $this->db->list_tables();
-foreach ($tables as $t_key => $table) {
+foreach ($tables as $t_key => $table) :
     // echo '<h3>'.$table . '</h3><br />';
     // print_r($this->db->get($table)->result_array());
     // echo '<br /><br /><hr />';
@@ -31,7 +31,7 @@ foreach ($tables as $t_key => $table) {
         <thead class="thead-dark">
             <?php $fields = $this->db->field_data($table); ?>
             <tr>
-                <?php foreach ($fields as $field) { ?>
+                <?php foreach ($fields as $field) : ?>
                     <th>
                         <?php echo $field->name;
                         // echo '<br/>';
@@ -45,23 +45,23 @@ foreach ($tables as $t_key => $table) {
                         // echo '</small>';
                         ?>
                     </th>
-                <?php } ?>
+                <?php endforeach; ?>
             </tr>
         </thead>
         <tbody>
-            <?php foreach ($data[$table] as $k => $f) { ?>
+            <?php foreach ($data[$table] as $k => $f) : ?>
                 <tr scope="row">
-                    <?php foreach ($fields as $field) { ?>
+                    <?php foreach ($fields as $field) : ?>
                         <td>
                             <?php echo $f[$field->name]; ?>
                         </td>
-                    <?php } ?>
+                    <?php endforeach; ?>
                 </tr>
-            <?php } ?>
+            <?php endforeach; ?>
         </tbody>
 
     </table>
-<?php } ?>
+<?php endforeach; ?>
 <link rel="stylesheet" href="<?php echo base_url(); ?>assets/js/datatables/datatables.css" id="style-resource-1">
 <link rel="stylesheet" href="<?php echo base_url(); ?>assets/js/select2/select2-bootstrap.css" id="style-resource-2">
 <link rel="stylesheet" href="<?php echo base_url(); ?>assets/js/select2/select2.css" id="style-resource-3">
