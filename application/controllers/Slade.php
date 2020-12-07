@@ -18,7 +18,7 @@ class Slade extends CI_Controller
     public function index()
     {
         if (!isset($_GET['shop'])) {
-            echo '<script>window.location.href = "https://' . $_GET['shop'] . '/admin/apps";</script>';
+            echo '<script>window.location.href = "'.base_url().'get_app";</script>';
         }
 
         if (!isset($_GET['hmac'])) {
