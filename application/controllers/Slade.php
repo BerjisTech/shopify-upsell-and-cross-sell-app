@@ -289,7 +289,7 @@ class Slade extends CI_Controller
                     'test' => true,
                     'price' => 19.99,
                     'trial_days' => 14,
-                    'return_url' => 'https://' . $_GET['shop'] . '/admin/apps/sleek-upsell/activate?t=true&hmac=' . $_GET['hmac'] . '&shop=' . $_GET['shop'],
+                    'return_url' => base_url().'/activate?t=true&hmac=' . $_GET['hmac'] . '&shop=' . $_GET['shop'],
                 ),
             );
         } else {
@@ -299,7 +299,7 @@ class Slade extends CI_Controller
                     'test' => false,
                     'price' => 19.99,
                     'trial_days' => 14,
-                    'return_url' => 'https://' . $_GET['shop'] . '/admin/apps/sleek-upsell/activate?t=false&hmac=' . $_GET['hmac'] . '&shop=' . $_GET['shop'],
+                    'return_url' => base_url().'/activate?t=false&hmac=' . $_GET['hmac'] . '&shop=' . $_GET['shop'],
                 ),
             );
         }
