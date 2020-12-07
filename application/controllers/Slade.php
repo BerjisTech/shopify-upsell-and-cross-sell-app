@@ -13,14 +13,6 @@ class Slade extends CI_Controller
         $this->output->set_header("Expires: Mon, 26 Jul 2025 05:00:00 GMT");
         date_default_timezone_set("Africa/Nairobi");
         header('Access-Control-Allow-Origin: *');
-
-        if (!isset($_GET['shop'])) {
-            echo '<script>window.location.href = "' . base_url() . 'get_app";</script>';
-        }
-
-        if (!isset($_GET['hmac'])) {
-            echo '<script>window.location.href = "https://' . $_GET['shop'] . '/admin/apps";</script>';
-        }
     }
 
     public function index()
