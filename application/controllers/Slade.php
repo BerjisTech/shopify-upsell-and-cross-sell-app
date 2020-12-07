@@ -347,7 +347,7 @@ class Slade extends CI_Controller
             $activate = $this->Shopify->shopify_call($token, $shop, "/admin/api/2020-10/recurring_application_charges/" . $charge_id . "/activate.json", $array, 'POST');
             $activate = json_decode($activate['response'], JSON_PRETTY_PRINT);
 
-            print_r($activate);
+            // print_r($activate);
 
             $active_shop = array(
                 'type' => 'RECURRING',
