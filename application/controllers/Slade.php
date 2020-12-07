@@ -199,7 +199,7 @@ class Slade extends CI_Controller
 
                 $this->db->insert('shops', $shop_data);
             }
-            echo '<script>window.location.href = "https://' . $params['shop'] . '/admin/apps/sleek-upsell/upgrade?' . $_SERVER['QUERY_STRING'] . '";</script>';
+            echo '<script>window.location.href = "' . base_url() . 'upgrade?' . $_SERVER['QUERY_STRING'] . '";</script>';
         } else {
             // Someone is trying to be shady!
             header("Location: https://sleek-upsell.herokuapp.com/");
