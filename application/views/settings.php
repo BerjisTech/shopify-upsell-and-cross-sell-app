@@ -5,8 +5,8 @@
     <div style=" z-index: 3000000; width: 50px; height: 100vh; background: #003471; display: flex; flex-direction: column; justify-content: space-between; align-items: center; text-align: center;">
         <div id="p" class="whats btn btn-primary" style="background-color: #003471; color: white;"><span class="entypo-leaf"></span></div>
         <div id="d" class="whats btn btn-primary"><span class="entypo-brush"></span></div>
-        <div id="s" class="whats btn btn-primary"><span class="entypo-cog"></span></div>
-        <div id="a" class="whats btn btn-primary"><span class="entypo-folder"></span></div>
+        <!--div id="s" class="whats btn btn-primary"><span class="entypo-cog"></span></div>
+        <div id="a" class="whats btn btn-primary"><span class="entypo-folder"></span></div-->
     </div>
     <div style="height: 100vh; overflow-y: auto; flex-grow: 4; padding-bottom: 0px;">
         <div class="setting_tab s_p" style="display: flex;">
@@ -573,7 +573,7 @@
     }
     $('.s_p').trigger('click');
 
-    <?php if ($this->db->where('shop', $shop)->get('settings')->num_rows() > 0): ?>
+    <?php if ($this->db->where('shop', $shop)->get('settings')->num_rows() > 0) : ?>
         let settings = <?php echo json_encode($this->db->where('shop', $shop)->get('settings')->row()); ?>;
         if (settings != null) {
             $('input[name="cart_dom"]').val(settings['cart_location']);
@@ -732,7 +732,7 @@
                 $('.price_size').val(settings['price_size'].replace('px', ''));
             }
         }
-    <?php else: ?>
+    <?php else : ?>
         let settings = {
             'shop': '<?php echo $shop; ?>',
             'cart_location': 'form[action="/cart/add"]',
@@ -775,7 +775,7 @@
             'price_font': 'inherit',
             'price_size': 'inherit'
         };
-    <?php endif;?>
+    <?php endif; ?>
 
     $('input[name="cart_dom"]').on('input', function() {
         settings['cart_location'] = $(this).val();
@@ -1050,9 +1050,11 @@
     });
 </script>
 <style>
-    .sleek-upsell, .sleek-upsell *{
+    .sleek-upsell,
+    .sleek-upsell * {
         opacity: 1 !important;
     }
+
     .active-selector {
         border: 2px solid #003471;
         border-radius: 5px;
