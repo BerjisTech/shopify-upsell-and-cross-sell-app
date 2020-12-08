@@ -79,13 +79,13 @@
     
         /* scrollbar itself */
         *::-webkit-scrollbar-thumb {
-            background-color: #981B1B;
+            background-color: #003471;
             border-radius: 16px;
             border: 5px solid #fff
         }
     
         *::-webkit-scrollbar-thumb:hover {
-            background-color: #981B1B;
+            background-color: #003471;
             border: 4px solid #f4f4f4
         }
     

@@ -21,7 +21,7 @@
 <link rel="stylesheet" href="<?php echo base_url(); ?>assets/css/neon-theme.css" id="style-resource-6">
 <link rel="stylesheet" href="<?php echo base_url(); ?>assets/css/neon-forms.css" id="style-resource-7">
 <link rel="stylesheet" href="<?php echo base_url(); ?>assets/css/custom.css" id="style-resource-8">
-<link rel="stylesheet" href="<?php echo base_url(); ?>assets/css/skins/red.css" id="style-resource-9">
+<link rel="stylesheet" href="<?php echo base_url(); ?>assets/css/skins/blue.css" id="style-resource-9">
 <script src="<?php echo base_url(); ?>assets/js/jquery-1.11.3.min.js"></script>
 <!--[if lt IE 9]><script src="<?php echo base_url(); ?>/assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
 <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
@@ -67,11 +67,11 @@
     }
 
     input:checked+.slidr {
-        background-color: #981B1B;
+        background-color: #003471;
     }
 
     input:focus+.slidr {
-        box-shadow: 0 0 1px #981B1B;
+        box-shadow: 0 0 1px #003471;
     }
 
     input:checked+.slidr:before {

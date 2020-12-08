@@ -2,8 +2,8 @@
 <div class="btn btn-primary saver" style="display: table; position: absolute; top: 10px; right: 115px; z-index: 3000000;"><span class="entypo-floppy"> SAVE</span></div>
 <div class="btn btn-primary" onclick="window.history.back();" style="display: table; position: absolute; top: 10px; right: 30px; z-index: 3000000;"><span class="entypo-home"> BACK</span></div>
 <div class="whole">
-    <div style=" z-index: 3000000; width: 50px; height: 100vh; background: #981B1B; display: flex; flex-direction: column; justify-content: space-between; align-items: center; text-align: center;">
-        <div id="p" class="whats btn btn-primary" style="background-color: #981B1B; color: white;"><span class="entypo-leaf"></span></div>
+    <div style=" z-index: 3000000; width: 50px; height: 100vh; background: #003471; display: flex; flex-direction: column; justify-content: space-between; align-items: center; text-align: center;">
+        <div id="p" class="whats btn btn-primary" style="background-color: #003471; color: white;"><span class="entypo-leaf"></span></div>
         <div id="d" class="whats btn btn-primary"><span class="entypo-brush"></span></div>
         <div id="s" class="whats btn btn-primary"><span class="entypo-cog"></span></div>
         <div id="a" class="whats btn btn-primary"><span class="entypo-folder"></span></div>
@@ -76,7 +76,7 @@
             </div>
         </div>
         <div class="setting_tab s_d" style="display: none; background: #FFFFFF;">
-            <div class="col-sm-4" style="border-right: 1px solid #981B1B; margin: 0px; padding: 5px; background: #FFFFFF; height: 100vh;">
+            <div class="col-sm-4" style="border-right: 1px solid #003471; margin: 0px; padding: 5px; background: #FFFFFF; height: 100vh;">
                 <div class="panel-group joined" id="accordion-test-2">
                     <div class="panel panel-default">
                         <div class="panel-heading">
@@ -551,7 +551,7 @@
     $('.whats').click(function() {
         let hii = $(this).attr('id');
         $('.whats').attr('style', '');
-        $(this).attr('style', 'background-color: #981B1B; color: white;');
+        $(this).attr('style', 'background-color: #003471; color: white;');
         $('.setting_tab').hide(200);
         setTimeout(function() {
             $('.s_' + hii).show(200);
@@ -1054,7 +1054,7 @@
         opacity: 1 !important;
     }
     .active-selector {
-        border: 2px solid #981B1B;
+        border: 2px solid #003471;
         border-radius: 5px;
     }
 
@@ -1089,7 +1089,7 @@
     }
 
     .whats:hover {
-        background-color: #981B1B;
+        background-color: #003471;
         color: white;
     }
 
@@ -1106,7 +1106,7 @@
     }
 
     input[type="range"]::-webkit-slider-thumb {
-        background: #981B1B;
+        background: #003471;
     }
 
     input[type=color] {

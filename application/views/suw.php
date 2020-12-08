@@ -15,8 +15,8 @@
 <div class="btn btn-primary saver" style="display: table; position: absolute; top: 10px; right: 10px; z-index: 2000000;"><span class="entypo-floppy"> SAVE</span></div>
 <div class="btn btn-primary" onclick="$('.suw').remove();sessionStorage.setItem('s_u_w', 'n');" style="display: table; position: absolute; bottom: 10px; right: 10px; z-index: 2000000;"><span class="entypo-cancel"> CLOSE</span></div>
 <div class="whole">
-    <div style="width: 50px; height: 400px; background: #981B1B; display: flex; flex-direction: column; justify-content: space-between; align-items: center; text-align: center;">
-        <div id="p" class="whats btn btn-primary" style="background-color: #981B1B; color: white;"><span class="entypo-cog"></span></div>
+    <div style="width: 50px; height: 400px; background: #003471; display: flex; flex-direction: column; justify-content: space-between; align-items: center; text-align: center;">
+        <div id="p" class="whats btn btn-primary" style="background-color: #003471; color: white;"><span class="entypo-cog"></span></div>
         <div id="d" class="whats btn btn-primary"><span class="entypo-palette"></span></div>
     </div>
     <div style="height: 400px; overflow-y: auto; flex-grow: 4; padding-bottom: 0px;">
@@ -78,7 +78,7 @@
             </div>
         </div>
         <div class="setting_tab s_d" style="display: none; background: #FFFFFF;">
-            <div class="col-sm-12" style="border-right: 1px solid #981B1B; margin: 0px; padding: 5px; background: #FFFFFF; height: 400px;">
+            <div class="col-sm-12" style="border-right: 1px solid #003471; margin: 0px; padding: 5px; background: #FFFFFF; height: 400px;">
                 <div class="panel-group joined" id="accordion-test-2">
                     <div class="panel panel-default">
                         <div class="panel-heading">
@@ -550,7 +550,7 @@
     $('.whats').click(function() {
         let hii = $(this).attr('id');
         $('.whats').attr('style', '');
-        $(this).attr('style', 'background-color: #981B1B; color: white;');
+        $(this).attr('style', 'background-color: #003471; color: white;');
         $('.setting_tab').hide(200);
         setTimeout(function() {
             $('.s_' + hii).show(200);
@@ -1090,13 +1090,13 @@
 
     /* scrollbar itself */
     .suw *::-webkit-scrollbar-thumb {
-        background-color: #981B1B;
+        background-color: #003471;
         border-radius: 16px;
         border: 5px solid #fff
     }
 
     .suw *::-webkit-scrollbar-thumb:hover {
-        background-color: #981B1B;
+        background-color: #003471;
         border: 4px solid #f4f4f4
     }
 
@@ -1106,7 +1106,7 @@
     }
 
     .active-selector {
-        border: 2px solid #981B1B;
+        border: 2px solid #003471;
         border-radius: 5px;
     }
 
@@ -1140,7 +1140,7 @@
     }
 
     .whats:hover {
-        background-color: #981B1B;
+        background-color: #003471;
         color: white;
     }
 
@@ -1157,7 +1157,7 @@
     }
 
     input[type="range"]::-webkit-slider-thumb {
-        background: #981B1B;
+        background: #003471;
     }
 
     input[type=color] {
