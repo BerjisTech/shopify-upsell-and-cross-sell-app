@@ -916,27 +916,27 @@ jQuery(document).ready(function () {
                 o_ui = '<form class="sleek-form" action="/cart/add" enctype="multipart/form-data" data-product-index="' + i + ' data-product-product_id="' + pid + '"> <div class="sleek-compact"> <div class="sleek-image"> <img src="' + datacell['image']['src'] + '"/> </div><div class="sleek-offer"> <div class="sleek-text">' + dtext + '</div><div class="sleek-title">' + datacell['title'] + '</div><div class="sleek-prices"> <span class="sleek-price money">' + curr + ' ' + datacell['variants'][0]['price'] + '</span> <span class="sleek-compare-price money">' + curr + ' ' + datacell['variants'][0]['price'] + '</span> </div><div class="sleek-selectors"> <div class="offer_fields_holder o_h_' + pid + '"></div> <select name="id" class="v-select v-' + pid + '"></select> <select name="quantity" class="q-select q-' + pid + '"></select> </div><button class="sleek-atc" type="submit">' + atc + '</button> </div></div></form>'
             }
 
-            if(v['show_title'] == 'n'){
+            if (v['show_title'] == 'n') {
                 $('.sleek-title').remove();
             }
 
-            if(v['show_price'] == 'n'){
+            if (v['show_price'] == 'n') {
                 $('.sleek-prices').remove();
             }
 
-            if(v['show_image'] == 'n'){
+            if (v['show_image'] == 'n') {
                 $('.sleek-image').remove();
             }
 
-            if(v['v_price'] == 'n'){
+            if (v['v_price'] == 'n') {
                 $('.sleek-compare-price').remove();
             }
 
-            if(v['c_price'] == 'n'){
+            if (v['c_price'] == 'n') {
                 $('.sleek-price').remove();
             }
 
-            if(v['q_select'] == 'n'){
+            if (v['q_select'] == 'n') {
                 $('.q_select').css('display', 'none');
             }
 
@@ -1007,6 +1007,7 @@ jQuery(document).ready(function () {
             });
         });
 
+        $('.sleek-upsell').css('opacity', '1 !important');
         if (settings != null) {
             $('.sleek-upsell').css('background', settings['layout_bg']);
             $('.sleek-upsell select').css('background', settings['layout_bg']);
