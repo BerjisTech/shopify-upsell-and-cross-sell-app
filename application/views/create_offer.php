@@ -2033,7 +2033,7 @@ Not supports in Firefox and IE */
                     '<div id="collapse' + i + '" class="panel-collapse collapse" aria-expanded="false">' +
                     '<div class="panel-body">' +
                     '<label>' + placeholder + '</label>' +
-                    '<input type="text" class="form-control" id="properties[' + name + ']" name="' + name +
+                    '<input type="color" class="form-control" id="properties[' + name + ']" name="' + name +
                     '" placeholder="' + placeholder + '" />' +
                     '</div>' +
                     '</div>' +
@@ -2264,7 +2264,7 @@ Not supports in Firefox and IE */
                             $('.o_h_' + pid).append(
                                 '<div>' +
                                 '<label>' + placeholder + '</label>' +
-                                '<input type="text" class="form-control" id="properties[' + name + ']" name="properties[' + name +
+                                '<input type="color" class="form-control" id="properties[' + name + ']" name="properties[' + name +
                                 ']" placeholder="' + placeholder + '" />' +
                                 '</div>');
                         }

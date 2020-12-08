@@ -18,7 +18,7 @@ class Slade extends CI_Controller
     public function index()
     {
         if (!isset($_GET['shop'])) {
-            echo '<script>window.location.href = "http://sleek-upsell.com/get_app";</script>';
+            echo '<script>window.location.href = "' . base_url() . 'get_app";</script>';
         }
 
         if (!isset($_GET['hmac'])) {
@@ -199,7 +199,7 @@ class Slade extends CI_Controller
 
                 $this->db->insert('shops', $shop_data);
             }
-            echo '<script>window.location.href = "https://' . $params['shop'] . '/admin/apps/sleek-upsell/upgrade?' . $_SERVER['QUERY_STRING'] . '";</script>';
+            echo '<script>window.location.href = "' . base_url() . 'upgrade?' . $_SERVER['QUERY_STRING'] . '";</script>';
         } else {
             // Someone is trying to be shady!
             header("Location: https://sleek-upsell.herokuapp.com/");
@@ -347,7 +347,7 @@ class Slade extends CI_Controller
             $activate = $this->Shopify->shopify_call($token, $shop, "/admin/api/2020-10/recurring_application_charges/" . $charge_id . "/activate.json", $array, 'POST');
             $activate = json_decode($activate['response'], JSON_PRETTY_PRINT);
 
-            print_r($activate);
+            // print_r($activate);
 
             $active_shop = array(
                 'type' => 'RECURRING',

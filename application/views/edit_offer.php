@@ -64,7 +64,7 @@ Not supports in Firefox and IE */
 </style>
 
 <style>
-    .sleek-upsell{
+    .sleek-upsell {
         background: #ECF0F1;
         color: #2B3D51;
         padding: 5px;
@@ -72,24 +72,30 @@ Not supports in Firefox and IE */
         vertical-align: middle;
         margin: 5px;
     }
+
     .sleek-image img {
         width: 100px;
     }
+
     .sleek-text {
         font-weight: bold;
     }
-    .sleek-upsell select{
+
+    .sleek-upsell select {
         padding: 4px;
         margin-top: 5px;
     }
-    .sleek-prices{
+
+    .sleek-prices {
         font-weight: bold;
         margin-bottom: 5px;
     }
-    .sleek-compare-price{
+
+    .sleek-compare-price {
         text-decoration: line-through;
     }
-    .sleek-upsell button{
+
+    .sleek-upsell button {
         padding: 10px;
         border: none;
         background: #2B3D51;
@@ -101,130 +107,173 @@ Not supports in Firefox and IE */
     }
 
     /*--------------------------------------*/
-    .card{
+    .card {
         display: table;
     }
-    .card .sleek-form{
+
+    .card .sleek-form {
         display: flex;
     }
-    .card .sleek-image, .card .sleek-offer, .card .sleek-card-atc{
+
+    .card .sleek-image,
+    .card .sleek-offer,
+    .card .sleek-card-atc {
         display: table;
         align-self: center;
         padding: 5px;
     }
-    .card .sleek-offer{
+
+    .card .sleek-offer {
         flex-grow: 4;
     }
-    .card .sleek-prices{
+
+    .card .sleek-prices {
         text-align: center;
     }
 
     /*--------------------------------------*/
-    .block, .block .sleek-form, .block .sleek-text, .block .sleek-atc{
+    .block,
+    .block .sleek-form,
+    .block .sleek-text,
+    .block .sleek-atc {
         display: table;
     }
-    .sleek-block{
+
+    .sleek-block {
         display: flex;
     }
-    .block .sleek-image, .block .sleek-offer{
+
+    .block .sleek-image,
+    .block .sleek-offer {
         display: table;
         align-self: center;
         padding: 5px;
     }
-    .block .sleek-offer{
+
+    .block .sleek-offer {
         flex-grow: 1;
     }
 
     /*--------------------------------------*/
-    .half-block, .half-block .sleek-form, .half-block .sleek-text, .half-block .sleek-atc{
+    .half-block,
+    .half-block .sleek-form,
+    .half-block .sleek-text,
+    .half-block .sleek-atc {
         display: table;
     }
-    .sleek-half-block{
+
+    .sleek-half-block {
         display: flex;
     }
-    .half-block .sleek-image, .half-block .sleek-offer{
+
+    .half-block .sleek-image,
+    .half-block .sleek-offer {
         display: table;
         align-self: center;
         padding: 5px;
     }
-    .half-block .sleek-offer{
+
+    .half-block .sleek-offer {
         flex-grow: 1;
     }
 
     /*--------------------------------------*/
-    .flat, .flat .sleek-form, .flat .sleek-text{
+    .flat,
+    .flat .sleek-form,
+    .flat .sleek-text {
         display: table;
     }
-    .sleek-flat{
+
+    .sleek-flat {
         display: flex;
     }
-    .flat .sleek-image, .flat .sleek-offer{
+
+    .flat .sleek-image,
+    .flat .sleek-offer {
         display: table;
         align-self: center;
         padding: 5px;
     }
-    .flat .sleek-offer{
+
+    .flat .sleek-offer {
         flex-grow: 1;
     }
-    .flat .flex-select{
+
+    .flat .flex-select {
         display: flex;
         width: auto;
-        margin-top:  10px;
+        margin-top: 10px;
     }
-    .flat .v-select{
+
+    .flat .v-select {
         display: table;
         width: 100%;
         align-items: center;
         justify-content: space-between;
     }
-    .flat .atc{
+
+    .flat .atc {
         flex-grow: 4;
     }
-    .flat .q-select{
+
+    .flat .q-select {
         margin-top: 0px;
         margin-right: 10px;
     }
 
     /*--------------------------------------*/
-    .compact, .compact .sleek-form, .compact .sleek-text, .compact .sleek-atc{
+    .compact,
+    .compact .sleek-form,
+    .compact .sleek-text,
+    .compact .sleek-atc {
         display: table;
     }
-    .sleek-compact{
+
+    .sleek-compact {
         display: flex;
     }
-    .compact .sleek-image, .compact .sleek-offer{
+
+    .compact .sleek-image,
+    .compact .sleek-offer {
         display: table;
         align-self: center;
         padding: 5px;
     }
-    .compact .sleek-offer{
+
+    .compact .sleek-offer {
         flex-grow: 1;
     }
-    .compact .sleek-atc{
+
+    .compact .sleek-atc {
         margin-top: 5px;
     }
 
 
     /*--------------------------------------*/
     @media only screen and (max-width: 600px) {
-        .sleek-upsell{
+        .sleek-upsell {
             width: 97%;
             margin: 5px auto;
         }
-        .card select{
+
+        .card select {
             max-width: 100px;
         }
-        .block select{
+
+        .block select {
             max-width: 200px;
         }
-        .sleek-prices *{
+
+        .sleek-prices * {
             display: inline-table;
         }
-        .block .sleek-form, .block .sleek-text, .block .sleek-atc{
+
+        .block .sleek-form,
+        .block .sleek-text,
+        .block .sleek-atc {
             width: 100%;
         }
     }
-
 </style>
 <script>
     let offer = <?php echo json_encode($offer); ?>;
@@ -612,9 +661,9 @@ Not supports in Firefox and IE */
                         <option value="oc8">Customer is not located in</option>
                     </select>
                     <select type="text" autocomplete="off" class="small form-control" id="oc1Quantity" style="margin: 3px; max-width: 250px; border: 2px solid #666666; border-radius: 5px;">
-                        <?php for ($i = 1; $i <= 20; $i++): ?>
+                        <?php for ($i = 1; $i <= 20; $i++) : ?>
                             <option value="<?php echo $i; ?>"><?php echo $i; ?></option>
-                        <?php endfor;?>
+                        <?php endfor; ?>
                     </select>
                     <select type="text" autocomplete="off" class="small form-control" id="oc1Type" style="margin: 3px; width: 250px; border: 2px solid #666666; border-radius: 5px;">
                         <option value="product">Of product</option>
@@ -1078,14 +1127,14 @@ Not supports in Firefox and IE */
             offer[0]['to_checkout'] = 'n';
         }
     });
-    $('.offer_apply_discount').change(function(){
+    $('.offer_apply_discount').change(function() {
         if (this.checked) {
             offer[0]['discount'] = 'y';
         } else {
             offer[0]['discount'] = 'n';
         }
     });
-    $('.offer_status').change(function(){
+    $('.offer_status').change(function() {
         if (this.checked) {
             offer[0]['status'] = '1';
         } else {
@@ -1463,8 +1512,8 @@ Not supports in Firefox and IE */
                     let card_ui = '<form class="sleek-form" data-product-index="' + i + '"> <div class="sleek-image"> <img src="' + datacell['image']['src'] + '"/> </div><div class="sleek-offer"> <div class="sleek-text">Need Free Shipping?</div><div class="sleek-title">' + datacell['title'] + '</div><div class="sleek-selectors"> <div class="offer_fields_holder o_h_' + product_id + '"></div> <select class="v-select v-' + product_id + '"></select> <select class="q-select q-' + product_id + '"></select> </div></div><div class="sleek-card-atc"> <div class="sleek-prices"> <span class="sleek-price money">' + s_data['currency'] + ' ' + datacell['variants'][0]['price'] + '</span> <span class="sleek-compare-price money">' + s_data['currency'] + ' ' + datacell['variants'][0]['price'] + '</span> </div><button class="sleek-atc" type="submit" onclick="return false;">' + $('.offer_button_text').val() + '</button> </div></form>';
                     let block_ui = '<form class="sleek-form" data-product-index="' + i + '"> <div class="sleek-text">Need Free Shipping?</div><div class="sleek-block"> <div class="sleek-image"> <img src="' + datacell['image']['src'] + '"/> </div><div class="sleek-offer"> <div class="sleek-title">' + datacell['title'] + '</div><div class="sleek-prices"> <span class="sleek-price money">' + s_data['currency'] + ' ' + datacell['variants'][0]['price'] + '</span> <span class="sleek-compare-price money">' + s_data['currency'] + ' ' + datacell['variants'][0]['price'] + '</span> </div><div class="sleek-selectors"> <div class="offer_fields_holder o_h_' + product_id + '"></div> <select class="v-select v-' + product_id + '"></select> <select class="q-select q-' + product_id + '"></select> </div></div></div><button class="sleek-atc" type="submit" onclick="return false;">' + $('.offer_button_text').val() + '</button> </form>';
                     let half_block_ui = '<form class="sleek-form" data-product-index="' + i + '"> <div class="sleek-half-block"> <div class="sleek-image"> <img src="' + datacell['image']['src'] + '"/> </div><div class="sleek-offer"> <div class="sleek-text">Need Free Shipping?</div><div class="sleek-title">' + datacell['title'] + '</div><div class="sleek-prices"> <span class="sleek-price money">' + s_data['currency'] + ' ' + datacell['variants'][0]['price'] + '</span> <span class="sleek-compare-price money">' + s_data['currency'] + ' ' + datacell['variants'][0]['price'] + '</span> </div><div class="sleek-selectors"> <div class="offer_fields_holder o_h_' + product_id + '"></div> <select class="v-select v-' + product_id + '"></select> <select class="q-select q-' + product_id + '"></select> </div></div></div><button class="sleek-atc" type="submit" onclick="return false;">' + $('.offer_button_text').val() + '</button> </form>';
-                    let flat_ui =  '<form class="sleek-form" data-product-index="' + i + '"> <div class="sleek-text">Need Free Shipping?</div><div class="sleek-flat"> <div class="sleek-image"> <img src="' + datacell['image']['src'] + '"/> </div><div class="sleek-offer"> <div class="sleek-title">' + datacell['title'] + '</div><div class="sleek-prices"> <span class="sleek-price money">' + s_data['currency'] + ' ' + datacell['variants'][0]['price'] + '</span> <span class="sleek-compare-price money">' + s_data['currency'] + ' ' + datacell['variants'][0]['price'] + '</span> </div><div class="sleek-selectors"> <div class="offer_fields_holder o_h_' + product_id + '"></div> <select class="v-select v-' + product_id + '"></select> <div class="flex-select"> <select class="q-select q-' + product_id + '"></select> <button class="sleek-atc" type="submit" onclick="return false;">' + $('.offer_button_text').val() + '</button> </div></div></div></div></form>';
-                    let compact_ui =  '<form class="sleek-form" data-product-index="' + i + '"> <div class="sleek-compact"> <div class="sleek-image"> <img src="' + datacell['image']['src'] + '"/> </div><div class="sleek-offer"> <div class="sleek-text">Need Free Shipping?</div><div class="sleek-title">' + datacell['title'] + '</div><div class="sleek-prices"> <span class="sleek-price money">' + s_data['currency'] + ' ' + datacell['variants'][0]['price'] + '</span> <span class="sleek-compare-price money">' + s_data['currency'] + ' ' + datacell['variants'][0]['price'] + '</span> </div><div class="sleek-selectors"> <div class="offer_fields_holder o_h_' + product_id + '"></div> <select class="v-select v-' + product_id + '"></select> <select class="q-select q-' + product_id + '"></select> </div><button class="sleek-atc" type="submit" onclick="return false;">' + $('.offer_button_text').val() + '</button> </div></div></form>';
+                    let flat_ui = '<form class="sleek-form" data-product-index="' + i + '"> <div class="sleek-text">Need Free Shipping?</div><div class="sleek-flat"> <div class="sleek-image"> <img src="' + datacell['image']['src'] + '"/> </div><div class="sleek-offer"> <div class="sleek-title">' + datacell['title'] + '</div><div class="sleek-prices"> <span class="sleek-price money">' + s_data['currency'] + ' ' + datacell['variants'][0]['price'] + '</span> <span class="sleek-compare-price money">' + s_data['currency'] + ' ' + datacell['variants'][0]['price'] + '</span> </div><div class="sleek-selectors"> <div class="offer_fields_holder o_h_' + product_id + '"></div> <select class="v-select v-' + product_id + '"></select> <div class="flex-select"> <select class="q-select q-' + product_id + '"></select> <button class="sleek-atc" type="submit" onclick="return false;">' + $('.offer_button_text').val() + '</button> </div></div></div></div></form>';
+                    let compact_ui = '<form class="sleek-form" data-product-index="' + i + '"> <div class="sleek-compact"> <div class="sleek-image"> <img src="' + datacell['image']['src'] + '"/> </div><div class="sleek-offer"> <div class="sleek-text">Need Free Shipping?</div><div class="sleek-title">' + datacell['title'] + '</div><div class="sleek-prices"> <span class="sleek-price money">' + s_data['currency'] + ' ' + datacell['variants'][0]['price'] + '</span> <span class="sleek-compare-price money">' + s_data['currency'] + ' ' + datacell['variants'][0]['price'] + '</span> </div><div class="sleek-selectors"> <div class="offer_fields_holder o_h_' + product_id + '"></div> <select class="v-select v-' + product_id + '"></select> <select class="q-select q-' + product_id + '"></select> </div><button class="sleek-atc" type="submit" onclick="return false;">' + $('.offer_button_text').val() + '</button> </div></div></form>';
                     $('.card').append(card_ui);
                     $('.block').append(block_ui);
                     $('.half-block').append(half_block_ui);
@@ -1485,6 +1534,31 @@ Not supports in Firefox and IE */
                 };
                 product_data.send();
             }
+
+            if (products[i]['show_title'] == 'n') {
+                $('.sleek-title').remove();
+            }
+
+            if (products[i]['show_price'] == 'n') {
+                $('.sleek-prices').remove();
+            }
+
+            if (products[i]['show_image'] == 'n') {
+                $('.sleek-image').remove();
+            }
+
+            if (products[i]['v_price'] == 'n') {
+                $('.sleek-compare-price').remove();
+            }
+
+            if (products[i]['c_price'] == 'n') {
+                $('.sleek-price').remove();
+            }
+
+            if (products[i]['q_select'] == 'n') {
+                $('.q_select').css('display', 'none');
+            }
+            populateFields();
         });
     }
 
@@ -2028,7 +2102,7 @@ Not supports in Firefox and IE */
                     '<div id="collapse' + i + '" class="panel-collapse collapse" aria-expanded="false">' +
                     '<div class="panel-body">' +
                     '<label>' + placeholder + '</label>' +
-                    '<input type="text" class="form-control" id="properties[' + name + ']" name="' + name +
+                    '<input type="color" class="form-control" id="properties[' + name + ']" name="' + name +
                     '" placeholder="' + placeholder + '" />' +
                     '</div>' +
                     '</div>' +
@@ -2124,10 +2198,10 @@ Not supports in Firefox and IE */
     };
 
     $('.saveOffer').click(function() {
-        console.log(base_url + 'update_offers/'+updating_offer+'?<?php echo $_SERVER['QUERY_STRING']; ?>');
+        console.log(base_url + 'update_offers/' + updating_offer + '?<?php echo $_SERVER['QUERY_STRING']; ?>');
         $.ajax({
             type: "POST",
-            url: base_url + 'update_offers/'+updating_offer+'?<?php echo $_SERVER['QUERY_STRING']; ?>',
+            url: base_url + 'update_offers/' + updating_offer + '?<?php echo $_SERVER['QUERY_STRING']; ?>',
             data: {
                 offer,
                 products,
@@ -2138,7 +2212,7 @@ Not supports in Firefox and IE */
                 choices
             },
             success: function(response) {
-                alert('Succesfully updated offer '+response);
+                alert('Succesfully updated offer ' + response);
                 // console.log(response);
                 window.location.reload(false);
                 //$('.data').html(response);
@@ -2264,7 +2338,7 @@ Not supports in Firefox and IE */
                             $('.o_h_' + pid).append(
                                 '<div>' +
                                 '<label>' + placeholder + '</label>' +
-                                '<input type="text" class="form-control" id="properties[' + name + ']" name="properties[' + name +
+                                '<input type="color" class="form-control" id="properties[' + name + ']" name="properties[' + name +
                                 ']" placeholder="' + placeholder + '" />' +
                                 '</div>');
                         }
