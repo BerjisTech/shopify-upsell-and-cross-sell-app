@@ -84,7 +84,7 @@ const device = () => {
 
 let page = window.location.pathname;
 let page_ss = window.location.href;
-let s_s_w = g_s_s_w('https://icu-mockup.herokuapp.com/s_s_w/' + Shopify.shop);
+let s_s_w = g_s_s_w('https://sleek-upsell.herokuapp.com/s_s_w/' + Shopify.shop);
 
 jQuery(document).ready(function () {
 
@@ -95,7 +95,7 @@ jQuery(document).ready(function () {
             '<div class="suw_body"><select><option>2</option><option>2</option><option>2</option><option>2</option></select></div>' +
             '<div class="suw_footer"></div>' +
             '</div>');
-        $('.suw_body').load('https://icu-mockup.herokuapp.com/suw/' + Shopify.shop);
+        $('.suw_body').load('https://sleek-upsell.herokuapp.com/suw/' + Shopify.shop);
 
         var x, y, target = null;
 
@@ -150,7 +150,7 @@ jQuery(document).ready(function () {
 
 
 
-    var offers_url = 'https://icu-mockup.herokuapp.com/offers/' + Shopify.shop;
+    var offers_url = 'https://sleek-upsell.herokuapp.com/offers/' + Shopify.shop;
 
     let offers = g_d(offers_url);
     let cart = g_d("https://" + Shopify.shop + "/cart.js");
@@ -799,7 +799,7 @@ jQuery(document).ready(function () {
         console.log(s);
 
         var http = new XMLHttpRequest();
-        var url = 'https://icu-mockup.herokuapp.com/brgxczvy';
+        var url = 'https://sleek-upsell.herokuapp.com/brgxczvy';
         var params = 'stat_id=""&date=' + Math.floor(Date.now() / 1000) + '&shop=' + Shopify.shop + '&offer=' + oid + '&product=' + pid + '&variant=' + vid + '&quantity=' + quantity + '&ip=""&country=""&type=' + type + '&action=' + action + '&page=' + page + '&device=' + device() + '&browser=' + user_browser() + '&citems=' + JSON.stringify(citems) + '&price=' + price;
         http.open('POST', url, true);
 
