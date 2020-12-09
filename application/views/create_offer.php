@@ -84,6 +84,7 @@ Not supports in Firefox and IE */
     .sleek-upsell select {
         padding: 4px;
         margin-top: 5px;
+        color: #000000;
     }
 
     .sleek-prices {
@@ -98,8 +99,6 @@ Not supports in Firefox and IE */
     .sleek-upsell button {
         padding: 10px;
         border: none;
-        background: #2B3D51;
-        color: #FFFFFF;
         font-weight: bold;
         border-radius: 0px;
         cursor: pointer;
