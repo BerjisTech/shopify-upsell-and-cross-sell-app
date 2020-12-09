@@ -1569,7 +1569,7 @@ Not supports in Firefox and IE */
                         $('.sleek-price').css('font-family', settings['price_font']);
                         $('.sleek-price').css('font-size', settings['price_size']);
                     }
-                    console, log('Adjusting product ' + i);
+                    console.log('Adjusting product ' + i);
                     console.log(products[i]);
 
                     if (products[i]['show_title'] == 'n') {
