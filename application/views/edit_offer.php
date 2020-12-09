@@ -63,6 +63,218 @@ Not supports in Firefox and IE */
     }
 </style>
 
+<style>
+    .sleek-upsell {
+        background: #ECF0F1;
+        color: #2B3D51;
+        padding: 5px;
+        font-family: inherit;
+        vertical-align: middle;
+        margin: 5px;
+    }
+
+    .sleek-image img {
+        width: 100px;
+    }
+
+    .sleek-text {
+        font-weight: bold;
+    }
+
+    .sleek-upsell select {
+        padding: 4px;
+        margin-top: 5px;
+    }
+
+    .sleek-prices {
+        font-weight: bold;
+        margin-bottom: 5px;
+    }
+
+    .sleek-compare-price {
+        text-decoration: line-through;
+    }
+
+    .sleek-upsell button {
+        padding: 10px;
+        border: none;
+        background: #2B3D51;
+        color: #FFFFFF;
+        font-weight: bold;
+        border-radius: 0px;
+        cursor: pointer;
+        width: 100%;
+    }
+
+    /*--------------------------------------*/
+    .card {
+        display: table;
+    }
+
+    .card .sleek-form {
+        display: flex;
+    }
+
+    .card .sleek-image,
+    .card .sleek-offer,
+    .card .sleek-card-atc {
+        display: table;
+        align-self: center;
+        padding: 5px;
+    }
+
+    .card .sleek-offer {
+        flex-grow: 4;
+    }
+
+    .card .sleek-prices {
+        text-align: center;
+    }
+
+    /*--------------------------------------*/
+    .block,
+    .block .sleek-form,
+    .block .sleek-text,
+    .block .sleek-atc {
+        display: table;
+    }
+
+    .sleek-block {
+        display: flex;
+    }
+
+    .block .sleek-image,
+    .block .sleek-offer {
+        display: table;
+        align-self: center;
+        padding: 5px;
+    }
+
+    .block .sleek-offer {
+        flex-grow: 1;
+    }
+
+    /*--------------------------------------*/
+    .half-block,
+    .half-block .sleek-form,
+    .half-block .sleek-text,
+    .half-block .sleek-atc {
+        display: table;
+    }
+
+    .sleek-half-block {
+        display: flex;
+    }
+
+    .half-block .sleek-image,
+    .half-block .sleek-offer {
+        display: table;
+        align-self: center;
+        padding: 5px;
+    }
+
+    .half-block .sleek-offer {
+        flex-grow: 1;
+    }
+
+    /*--------------------------------------*/
+    .flat,
+    .flat .sleek-form,
+    .flat .sleek-text {
+        display: table;
+    }
+
+    .sleek-flat {
+        display: flex;
+    }
+
+    .flat .sleek-image,
+    .flat .sleek-offer {
+        display: table;
+        align-self: center;
+        padding: 5px;
+    }
+
+    .flat .sleek-offer {
+        flex-grow: 1;
+    }
+
+    .flat .flex-select {
+        display: flex;
+        width: auto;
+        margin-top: 10px;
+    }
+
+    .flat .v-select {
+        display: table;
+        width: 100%;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    .flat .atc {
+        flex-grow: 4;
+    }
+
+    .flat .q-select {
+        margin-top: 0px;
+        margin-right: 10px;
+    }
+
+    /*--------------------------------------*/
+    .compact,
+    .compact .sleek-form,
+    .compact .sleek-text,
+    .compact .sleek-atc {
+        display: table;
+    }
+
+    .sleek-compact {
+        display: flex;
+    }
+
+    .compact .sleek-image,
+    .compact .sleek-offer {
+        display: table;
+        align-self: center;
+        padding: 5px;
+    }
+
+    .compact .sleek-offer {
+        flex-grow: 1;
+    }
+
+    .compact .sleek-atc {
+        margin-top: 5px;
+    }
+
+
+    /*--------------------------------------*/
+    @media only screen and (max-width: 600px) {
+        .sleek-upsell {
+            width: 97%;
+            margin: 5px auto;
+        }
+
+        .card select {
+            max-width: 100px;
+        }
+
+        .block select {
+            max-width: 200px;
+        }
+
+        .sleek-prices * {
+            display: inline-table;
+        }
+
+        .block .sleek-form,
+        .block .sleek-text,
+        .block .sleek-atc {
+            width: 100%;
+        }
+    }
+</style>
 <script>
     let offer = <?php echo json_encode($offer); ?>;
     let updating_offer = offer[0]['offer_id'];
@@ -729,7 +941,7 @@ Not supports in Firefox and IE */
     loadConditions();
     loadFields();
     populateFields();
-    stylizeOffer();
+    let settings = <?php echo json_encode($this->db->where('shop', $shop)->get('settings')->row()); ?>;
 
     function loadOffer() {
         let this_offer = offer[0];
@@ -1320,37 +1532,73 @@ Not supports in Firefox and IE */
                         $('.q-' + product_id).append('<option value="' + i + '">' +
                             i + '</option>')
                     }
+                    if (settings != null) {
+                        $('.sleek-upsell').css('background', settings['layout_bg']);
+                        $('.sleek-upsell select').css('background', settings['layout_bg']);
+                        $('.sleek-upsell').css('color', settings['layout_color']);
+                        $('.sleek-upsell select').css('color', settings['layout_color']);
+                        $('.sleek-upsell').css('font-family', settings['layout_font']);
+                        $('.sleek-upsell').css('font-size', settings['layout_size']);
+                        $('.sleek-upsell').css('margin-top', settings['layout_mt']);
+                        $('.sleek-upsell').css('margin-bottom', settings['layout_mb']);
+                        $('.sleek-upsell').css('border-radius', settings['offer_radius']);
+                        $('.sleek-upsell').css('border-width', settings['offer_bs']);
+                        $('.sleek-upsell').css('border-color', settings['offer_bc']);
+                        $('.sleek-upsell').css('border-style', settings['offer_border']);
+                        $('.sleek-upsell button').css('background', settings['button_bg']);
+                        $('.sleek-upsell button').css('color', settings['button_color']);
+                        $('.sleek-upsell button').css('font-family', settings['button_font']);
+                        $('.sleek-upsell button').css('font-size', settings['button_size']);
+                        $('.sleek-upsell button').css('margin-top', settings['button_mt']);
+                        $('.sleek-upsell button').css('margin-bottom', settings['button_mb']);
+                        $('.sleek-upsell button').css('border-radius', settings['button_radius']);
+                        $('.sleek-upsell button').css('border-width', settings['button_bs']);
+                        $('.sleek-upsell button').css('border-color', settings['button_bc']);
+                        $('.sleek-upsell button').css('border-style', settings['button_border']);
+                        $('.sleek-upsell img').css('border-radius', settings['image_radius']);
+                        $('.sleek-upsell img').css('border-width', settings['image_bs']);
+                        $('.sleek-upsell img').css('color', settings['image_bc']);
+                        $('.sleek-upsell img').css('border-style', settings['image_border']);
+                        $('.sleek-text').css('color', settings['text_color']);
+                        $('.sleek-text').css('font-family', settings['text_font']);
+                        $('.sleek-text').css('font-size', settings['text_size']);
+                        $('.sleek-title').css('color', settings['title_color']);
+                        $('.sleek-title').css('font-family', settings['title_font']);
+                        $('.sleek-title').css('font-size', settings['title_size']);
+                        $('.sleek-price').css('color', settings['price_color']);
+                        $('.sleek-price').css('font-family', settings['price_font']);
+                        $('.sleek-price').css('font-size', settings['price_size']);
+                    }
+
+                    if (products[i]['show_title'] == 'n') {
+                        $('.sleek-title').remove();
+                    }
+
+                    if (products[i]['show_price'] == 'n') {
+                        $('.sleek-prices').remove();
+                    }
+
+                    if (products[i]['show_image'] == 'n') {
+                        $('.sleek-image').remove();
+                    }
+
+                    if (products[i]['v_price'] == 'n') {
+                        $('.sleek-compare-price').remove();
+                    }
+
+                    if (products[i]['c_price'] == 'n') {
+                        $('.sleek-price').remove();
+                    }
+
+                    if (products[i]['q_select'] == 'n') {
+                        $('.q_select').css('display', 'none');
+                    }
                 };
                 product_data.send();
-            }
-
-            if (products[i]['show_title'] == 'n') {
-                $('.sleek-title').remove();
-            }
-
-            if (products[i]['show_price'] == 'n') {
-                $('.sleek-prices').remove();
-            }
-
-            if (products[i]['show_image'] == 'n') {
-                $('.sleek-image').remove();
-            }
-
-            if (products[i]['v_price'] == 'n') {
-                $('.sleek-compare-price').remove();
-            }
-
-            if (products[i]['c_price'] == 'n') {
-                $('.sleek-price').remove();
-            }
-
-            if (products[i]['q_select'] == 'n') {
-                $('.q_select').css('display', 'none');
             }
         });
 
         populateFields();
-        stylizeOffer();
     }
 
     function removeOfferable(index, product) {
@@ -2139,258 +2387,4 @@ Not supports in Firefox and IE */
         }
 
     }
-
-    function stylizeOffer() {
-        let settings = <?php echo json_encode($this->db->where('shop', $shop)->get('settings')->row()); ?>;
-        if (settings != null) {
-            console.log('settings');
-            console.log(settings);
-            $('.sleek-upsell').css('background', settings['layout_bg']);
-            $('.sleek-upsell select').css('background', settings['layout_bg']);
-            $('.sleek-upsell').css('color', settings['layout_color']);
-            $('.sleek-upsell select').css('color', settings['layout_color']);
-            $('.sleek-upsell').css('font-family', settings['layout_font']);
-            $('.sleek-upsell').css('font-size', settings['layout_size']);
-            $('.sleek-upsell').css('margin-top', settings['layout_mt']);
-            $('.sleek-upsell').css('margin-bottom', settings['layout_mb']);
-            $('.sleek-upsell').css('border-radius', settings['offer_radius']);
-            $('.sleek-upsell').css('border-width', settings['offer_bs']);
-            $('.sleek-upsell').css('border-color', settings['offer_bc']);
-            $('.sleek-upsell').css('border-style', settings['offer_border']);
-            $('.sleek-upsell button').css('background', settings['button_bg']);
-            $('.sleek-upsell button').css('color', settings['button_color']);
-            $('.sleek-upsell button').css('font-family', settings['button_font']);
-            $('.sleek-upsell button').css('font-size', settings['button_size']);
-            $('.sleek-upsell button').css('margin-top', settings['button_mt']);
-            $('.sleek-upsell button').css('margin-bottom', settings['button_mb']);
-            $('.sleek-upsell button').css('border-radius', settings['button_radius']);
-            $('.sleek-upsell button').css('border-width', settings['button_bs']);
-            $('.sleek-upsell button').css('border-color', settings['button_bc']);
-            $('.sleek-upsell button').css('border-style', settings['button_border']);
-            $('.sleek-upsell img').css('border-radius', settings['image_radius']);
-            $('.sleek-upsell img').css('border-width', settings['image_bs']);
-            $('.sleek-upsell img').css('color', settings['image_bc']);
-            $('.sleek-upsell img').css('border-style', settings['image_border']);
-            $('.sleek-text').css('color', settings['text_color']);
-            $('.sleek-text').css('font-family', settings['text_font']);
-            $('.sleek-text').css('font-size', settings['text_size']);
-            $('.sleek-title').css('color', settings['title_color']);
-            $('.sleek-title').css('font-family', settings['title_font']);
-            $('.sleek-title').css('font-size', settings['title_size']);
-            $('.sleek-price').css('color', settings['price_color']);
-            $('.sleek-price').css('font-family', settings['price_font']);
-            $('.sleek-price').css('font-size', settings['price_size']);
-        }
-    }
 </script>
-<style>
-    .sleek-upsell {
-        background: #ECF0F1;
-        color: #2B3D51;
-        padding: 5px;
-        font-family: inherit;
-        vertical-align: middle;
-        margin: 5px;
-    }
-
-    .sleek-image img {
-        width: 100px;
-    }
-
-    .sleek-text {
-        font-weight: bold;
-    }
-
-    .sleek-upsell select {
-        padding: 4px;
-        margin-top: 5px;
-        color: #000000;
-    }
-
-    .sleek-prices {
-        font-weight: bold;
-        margin-bottom: 5px;
-    }
-
-    .sleek-compare-price {
-        text-decoration: line-through;
-    }
-
-    .sleek-upsell button {
-        padding: 10px;
-        border: none;
-        font-weight: bold;
-        border-radius: 0px;
-        cursor: pointer;
-        width: 100%;
-    }
-
-    /*--------------------------------------*/
-    .card {
-        display: table;
-    }
-
-    .card .sleek-form {
-        display: flex;
-    }
-
-    .card .sleek-image,
-    .card .sleek-offer,
-    .card .sleek-card-atc {
-        display: table;
-        align-self: center;
-        padding: 5px;
-    }
-
-    .card .sleek-offer {
-        flex-grow: 4;
-    }
-
-    .card .sleek-prices {
-        text-align: center;
-    }
-
-    /*--------------------------------------*/
-    .block,
-    .block .sleek-form,
-    .block .sleek-text,
-    .block .sleek-atc {
-        display: table;
-    }
-
-    .sleek-block {
-        display: flex;
-    }
-
-    .block .sleek-image,
-    .block .sleek-offer {
-        display: table;
-        align-self: center;
-        padding: 5px;
-    }
-
-    .block .sleek-offer {
-        flex-grow: 1;
-    }
-
-    /*--------------------------------------*/
-    .half-block,
-    .half-block .sleek-form,
-    .half-block .sleek-text,
-    .half-block .sleek-atc {
-        display: table;
-    }
-
-    .sleek-half-block {
-        display: flex;
-    }
-
-    .half-block .sleek-image,
-    .half-block .sleek-offer {
-        display: table;
-        align-self: center;
-        padding: 5px;
-    }
-
-    .half-block .sleek-offer {
-        flex-grow: 1;
-    }
-
-    /*--------------------------------------*/
-    .flat,
-    .flat .sleek-form,
-    .flat .sleek-text {
-        display: table;
-    }
-
-    .sleek-flat {
-        display: flex;
-    }
-
-    .flat .sleek-image,
-    .flat .sleek-offer {
-        display: table;
-        align-self: center;
-        padding: 5px;
-    }
-
-    .flat .sleek-offer {
-        flex-grow: 1;
-    }
-
-    .flat .flex-select {
-        display: flex;
-        width: auto;
-        margin-top: 10px;
-    }
-
-    .flat .v-select {
-        display: table;
-        width: 100%;
-        align-items: center;
-        justify-content: space-between;
-    }
-
-    .flat .atc {
-        flex-grow: 4;
-    }
-
-    .flat .q-select {
-        margin-top: 0px;
-        margin-right: 10px;
-    }
-
-    /*--------------------------------------*/
-    .compact,
-    .compact .sleek-form,
-    .compact .sleek-text,
-    .compact .sleek-atc {
-        display: table;
-    }
-
-    .sleek-compact {
-        display: flex;
-    }
-
-    .compact .sleek-image,
-    .compact .sleek-offer {
-        display: table;
-        align-self: center;
-        padding: 5px;
-    }
-
-    .compact .sleek-offer {
-        flex-grow: 1;
-    }
-
-    .compact .sleek-atc {
-        margin-top: 5px;
-    }
-
-
-    /*--------------------------------------*/
-    @media only screen and (max-width: 600px) {
-        .sleek-upsell {
-            width: 97%;
-            margin: 5px auto;
-        }
-
-        .card select {
-            max-width: 100px;
-        }
-
-        .block select {
-            max-width: 200px;
-        }
-
-        .sleek-prices * {
-            display: inline-table;
-        }
-
-        .block .sleek-form,
-        .block .sleek-text,
-        .block .sleek-atc {
-            width: 100%;
-        }
-    }
-</style>
