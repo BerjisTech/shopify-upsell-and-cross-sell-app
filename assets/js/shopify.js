@@ -1008,6 +1008,7 @@ jQuery(document).ready(function () {
         });
 
         $('.sleek-upsell').css('opacity', '1 !important');
+        $('.sleek-upsell form').css('margin-bottom', '0px !important');
         if (settings != null) {
             $('.sleek-upsell').css('background', settings['layout_bg']);
             $('.sleek-upsell select').css('background', settings['layout_bg']);
