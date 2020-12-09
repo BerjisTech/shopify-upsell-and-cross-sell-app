@@ -63,217 +63,6 @@ Not supports in Firefox and IE */
     }
 </style>
 
-<style>
-    .sleek-upsell {
-        background: #ECF0F1;
-        color: #2B3D51;
-        padding: 5px;
-        font-family: inherit;
-        vertical-align: middle;
-        margin: 5px;
-    }
-
-    .sleek-image img {
-        width: 100px;
-    }
-
-    .sleek-text {
-        font-weight: bold;
-    }
-
-    .sleek-upsell select {
-        padding: 4px;
-        margin-top: 5px;
-        color: #000000;
-    }
-
-    .sleek-prices {
-        font-weight: bold;
-        margin-bottom: 5px;
-    }
-
-    .sleek-compare-price {
-        text-decoration: line-through;
-    }
-
-    .sleek-upsell button {
-        padding: 10px;
-        border: none;
-        font-weight: bold;
-        border-radius: 0px;
-        cursor: pointer;
-        width: 100%;
-    }
-
-    /*--------------------------------------*/
-    .card {
-        display: table;
-    }
-
-    .card .sleek-form {
-        display: flex;
-    }
-
-    .card .sleek-image,
-    .card .sleek-offer,
-    .card .sleek-card-atc {
-        display: table;
-        align-self: center;
-        padding: 5px;
-    }
-
-    .card .sleek-offer {
-        flex-grow: 4;
-    }
-
-    .card .sleek-prices {
-        text-align: center;
-    }
-
-    /*--------------------------------------*/
-    .block,
-    .block .sleek-form,
-    .block .sleek-text,
-    .block .sleek-atc {
-        display: table;
-    }
-
-    .sleek-block {
-        display: flex;
-    }
-
-    .block .sleek-image,
-    .block .sleek-offer {
-        display: table;
-        align-self: center;
-        padding: 5px;
-    }
-
-    .block .sleek-offer {
-        flex-grow: 1;
-    }
-
-    /*--------------------------------------*/
-    .half-block,
-    .half-block .sleek-form,
-    .half-block .sleek-text,
-    .half-block .sleek-atc {
-        display: table;
-    }
-
-    .sleek-half-block {
-        display: flex;
-    }
-
-    .half-block .sleek-image,
-    .half-block .sleek-offer {
-        display: table;
-        align-self: center;
-        padding: 5px;
-    }
-
-    .half-block .sleek-offer {
-        flex-grow: 1;
-    }
-
-    /*--------------------------------------*/
-    .flat,
-    .flat .sleek-form,
-    .flat .sleek-text {
-        display: table;
-    }
-
-    .sleek-flat {
-        display: flex;
-    }
-
-    .flat .sleek-image,
-    .flat .sleek-offer {
-        display: table;
-        align-self: center;
-        padding: 5px;
-    }
-
-    .flat .sleek-offer {
-        flex-grow: 1;
-    }
-
-    .flat .flex-select {
-        display: flex;
-        width: auto;
-        margin-top: 10px;
-    }
-
-    .flat .v-select {
-        display: table;
-        width: 100%;
-        align-items: center;
-        justify-content: space-between;
-    }
-
-    .flat .atc {
-        flex-grow: 4;
-    }
-
-    .flat .q-select {
-        margin-top: 0px;
-        margin-right: 10px;
-    }
-
-    /*--------------------------------------*/
-    .compact,
-    .compact .sleek-form,
-    .compact .sleek-text,
-    .compact .sleek-atc {
-        display: table;
-    }
-
-    .sleek-compact {
-        display: flex;
-    }
-
-    .compact .sleek-image,
-    .compact .sleek-offer {
-        display: table;
-        align-self: center;
-        padding: 5px;
-    }
-
-    .compact .sleek-offer {
-        flex-grow: 1;
-    }
-
-    .compact .sleek-atc {
-        margin-top: 5px;
-    }
-
-
-    /*--------------------------------------*/
-    @media only screen and (max-width: 600px) {
-        .sleek-upsell {
-            width: 97%;
-            margin: 5px auto;
-        }
-
-        .card select {
-            max-width: 100px;
-        }
-
-        .block select {
-            max-width: 200px;
-        }
-
-        .sleek-prices * {
-            display: inline-table;
-        }
-
-        .block .sleek-form,
-        .block .sleek-text,
-        .block .sleek-atc {
-            width: 100%;
-        }
-    }
-</style>
 <script>
     var offer = [{
         "offer_id": "",
@@ -2322,3 +2111,214 @@ Not supports in Firefox and IE */
         }
     }
 </script>
+<style>
+    .sleek-upsell {
+        background: #ECF0F1;
+        color: #2B3D51;
+        padding: 5px;
+        font-family: inherit;
+        vertical-align: middle;
+        margin: 5px;
+    }
+
+    .sleek-image img {
+        width: 100px;
+    }
+
+    .sleek-text {
+        font-weight: bold;
+    }
+
+    .sleek-upsell select {
+        padding: 4px;
+        margin-top: 5px;
+        color: #000000;
+    }
+
+    .sleek-prices {
+        font-weight: bold;
+        margin-bottom: 5px;
+    }
+
+    .sleek-compare-price {
+        text-decoration: line-through;
+    }
+
+    .sleek-upsell button {
+        padding: 10px;
+        border: none;
+        font-weight: bold;
+        border-radius: 0px;
+        cursor: pointer;
+        width: 100%;
+    }
+
+    /*--------------------------------------*/
+    .card {
+        display: table;
+    }
+
+    .card .sleek-form {
+        display: flex;
+    }
+
+    .card .sleek-image,
+    .card .sleek-offer,
+    .card .sleek-card-atc {
+        display: table;
+        align-self: center;
+        padding: 5px;
+    }
+
+    .card .sleek-offer {
+        flex-grow: 4;
+    }
+
+    .card .sleek-prices {
+        text-align: center;
+    }
+
+    /*--------------------------------------*/
+    .block,
+    .block .sleek-form,
+    .block .sleek-text,
+    .block .sleek-atc {
+        display: table;
+    }
+
+    .sleek-block {
+        display: flex;
+    }
+
+    .block .sleek-image,
+    .block .sleek-offer {
+        display: table;
+        align-self: center;
+        padding: 5px;
+    }
+
+    .block .sleek-offer {
+        flex-grow: 1;
+    }
+
+    /*--------------------------------------*/
+    .half-block,
+    .half-block .sleek-form,
+    .half-block .sleek-text,
+    .half-block .sleek-atc {
+        display: table;
+    }
+
+    .sleek-half-block {
+        display: flex;
+    }
+
+    .half-block .sleek-image,
+    .half-block .sleek-offer {
+        display: table;
+        align-self: center;
+        padding: 5px;
+    }
+
+    .half-block .sleek-offer {
+        flex-grow: 1;
+    }
+
+    /*--------------------------------------*/
+    .flat,
+    .flat .sleek-form,
+    .flat .sleek-text {
+        display: table;
+    }
+
+    .sleek-flat {
+        display: flex;
+    }
+
+    .flat .sleek-image,
+    .flat .sleek-offer {
+        display: table;
+        align-self: center;
+        padding: 5px;
+    }
+
+    .flat .sleek-offer {
+        flex-grow: 1;
+    }
+
+    .flat .flex-select {
+        display: flex;
+        width: auto;
+        margin-top: 10px;
+    }
+
+    .flat .v-select {
+        display: table;
+        width: 100%;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    .flat .atc {
+        flex-grow: 4;
+    }
+
+    .flat .q-select {
+        margin-top: 0px;
+        margin-right: 10px;
+    }
+
+    /*--------------------------------------*/
+    .compact,
+    .compact .sleek-form,
+    .compact .sleek-text,
+    .compact .sleek-atc {
+        display: table;
+    }
+
+    .sleek-compact {
+        display: flex;
+    }
+
+    .compact .sleek-image,
+    .compact .sleek-offer {
+        display: table;
+        align-self: center;
+        padding: 5px;
+    }
+
+    .compact .sleek-offer {
+        flex-grow: 1;
+    }
+
+    .compact .sleek-atc {
+        margin-top: 5px;
+    }
+
+
+    /*--------------------------------------*/
+    @media only screen and (max-width: 600px) {
+        .sleek-upsell {
+            width: 97%;
+            margin: 5px auto;
+        }
+
+        .card select {
+            max-width: 100px;
+        }
+
+        .block select {
+            max-width: 200px;
+        }
+
+        .sleek-prices * {
+            display: inline-table;
+        }
+
+        .block .sleek-form,
+        .block .sleek-text,
+        .block .sleek-atc {
+            width: 100%;
+        }
+    }
+</style>
