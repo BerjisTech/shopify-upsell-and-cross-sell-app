@@ -1487,11 +1487,10 @@ Not supports in Firefox and IE */
                             datacell['variants'][i]['title'] + ' (' + s_data['currency'] + ' ' +
                             datacell['variants'][i]['price'] + ')</option>');
                     });
-                    for (i = 1; i <= 10; i++) {
-                        $('.q-' + product_id).append('<option value="' + i + '">' +
-                            i + '</option>')
+                    for (let q = 1; q <= 10; q++) {
+                        $('.q-' + product_id).append('<option value="' + q + '">' +
+                            q + '</option>')
                     }
-
                     if (settings != null) {
                         $('.sleek-upsell').css('background', settings['layout_bg']);
                         $('.sleek-upsell select').css('background', settings['layout_bg']);
@@ -1528,6 +1527,32 @@ Not supports in Firefox and IE */
                         $('.sleek-price').css('color', settings['price_color']);
                         $('.sleek-price').css('font-family', settings['price_font']);
                         $('.sleek-price').css('font-size', settings['price_size']);
+                    }
+                    console.log('Adjusting product ' + i);
+                    console.log(products[i]);
+
+                    if (products[i]['show_title'] == 'n') {
+                        $('.sleek-title').remove();
+                    }
+
+                    if (products[i]['show_price'] == 'n') {
+                        $('.sleek-prices').remove();
+                    }
+
+                    if (products[i]['show_image'] == 'n') {
+                        $('.sleek-image').remove();
+                    }
+
+                    if (products[i]['v_price'] == 'n') {
+                        $('.sleek-compare-price').remove();
+                    }
+
+                    if (products[i]['c_price'] == 'n') {
+                        $('.sleek-price').remove();
+                    }
+
+                    if (products[i]['q_select'] == 'n') {
+                        $('.q_select').css('display', 'none');
                     }
 
                 };
