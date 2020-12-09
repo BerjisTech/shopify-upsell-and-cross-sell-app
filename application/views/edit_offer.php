@@ -1528,9 +1528,9 @@ Not supports in Firefox and IE */
                             datacell['variants'][i]['title'] + ' (' + s_data['currency'] + ' ' +
                             datacell['variants'][i]['price'] + ')</option>');
                     });
-                    for (i = 1; i <= 10; i++) {
-                        $('.q-' + product_id).append('<option value="' + i + '">' +
-                            i + '</option>')
+                    for (let q = 1; q <= 10; q++) {
+                        $('.q-' + product_id).append('<option value="' + q + '">' +
+                            q + '</option>')
                     }
                     if (settings != null) {
                         $('.sleek-upsell').css('background', settings['layout_bg']);
