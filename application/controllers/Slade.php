@@ -18,98 +18,99 @@ class Slade extends CI_Controller
     public function index()
     {
         if (!isset($_GET['shop'])) {
-            echo '<script>window.location.href = "' . base_url() . 'get_app";</script>';
-        }
-
-        if (!isset($_GET['hmac'])) {
-            echo '<script>window.location.href = "https://' . $_GET['shop'] . '/admin/apps";</script>';
-        }
-
-        $this_shop = str_replace(".myshopify.com", "", $_GET['shop']);
-
-        if (!$this->db->table_exists('shops')) {
-            echo '<script>window.location.href = "' . base_url() . 'install?shop=' . $this_shop . '";</script>';
-        }
-
-        if ($this->db->where('shop', $this_shop)->get('shops')->num_rows() == 0) {
-            echo '<script>window.location.href = "' . base_url() . 'install?shop=' . $this_shop . '";</script>';
-        }
-
-        $shop_data = $this->db->where('shop', $this_shop)->get('shops')->row();
-
-        if ($shop_data->type == '') {
-            echo '<script>window.location.href = "' . base_url() . 'upgrade?' . $_SERVER['QUERY_STRING'] . '";</script>';
-        }
-
-        $requests = $_GET;
-        $hmac = $_GET['hmac'];
-        $serializeArray = serialize($requests);
-        $requests = array_diff_key($requests, array('hmac' => ''));
-        ksort($requests);
-
-        $token = $shop_data->token;
-        $shop = $shop_data->shop;
-        $this_script = '/admin/api/2020-10/script_tags.json';
-        $script_tags_url = "/admin/api/2020-10/script_tags.json";
-
-        $script_exists = $this->Shopify->shopify_call($token, $this_shop, $this_script, array('fields' => 'id,src,event,created_at,updated_at,'), 'GET');
-        $script_exists = json_decode($script_exists['response'], true);
-
-        if (!isset($script_exists['script_tags'])) {
-            echo '<script>window.location.href = "' . base_url() . 'install?shop=' . $this_shop . '";</script>';
-        }
-        // CREATE NEW SCRIPT TAG
-        if (count($script_exists['script_tags']) == 0) {
-            $script_array = array(
-                'script_tag' => array(
-                    'event' => 'onload',
-                    'src' => base_url() . 'assets/js/shopify.js',
-                ),
-            );
-
-            $scriptTag = $this->Shopify->shopify_call($token, $this_shop, $script_tags_url, $script_array, 'POST');
-            $scriptTag = json_decode($scriptTag['response'], JSON_PRETTY_PRINT);
+            $data['page_name'] = 'home';
+            $this->load->view('index', $data);
         } else {
-            echo '<script>console.log(' . json_encode($script_exists) . ');</script>';
-        }
-
-        // REMOVE OLD SCRIPT TAGS
-        if (count($script_exists['script_tags']) > 1) {
-            foreach ($script_exists['script_tags'] as $key => $fetch) {
-                $delete_script = $this->Shopify->shopify_call($token, $this_shop, '/admin/api/2020-10/script_tags/' . $fetch['id'] . '.json', array('fields' => 'id,src,event,created_at,updated_at,'), 'DELETE');
-                $delete_script = json_decode($delete_script['response'], true);
-                echo '<script>console.log(' . json_encode($delete_script) . ');</script>';
+            if (!isset($_GET['hmac'])) {
+                echo '<script>window.location.href = "https://' . $_GET['shop'] . '/admin/apps";</script>';
             }
 
-            $script_array = array(
-                'script_tag' => array(
-                    'event' => 'onload',
-                    'src' => base_url() . 'assets/js/shopify.js',
-                ),
-            );
+            $this_shop = str_replace(".myshopify.com", "", $_GET['shop']);
 
-            $scriptTag = $this->Shopify->shopify_call($token, $this_shop, $script_tags_url, $script_array, 'POST');
-            $scriptTag = json_decode($scriptTag['response'], JSON_PRETTY_PRINT);
+            if (!$this->db->table_exists('shops')) {
+                echo '<script>window.location.href = "' . base_url() . 'install?shop=' . $this_shop . '";</script>';
+            }
+
+            if ($this->db->where('shop', $this_shop)->get('shops')->num_rows() == 0) {
+                echo '<script>window.location.href = "' . base_url() . 'install?shop=' . $this_shop . '";</script>';
+            }
+
+            $shop_data = $this->db->where('shop', $this_shop)->get('shops')->row();
+
+            if ($shop_data->type == '') {
+                echo '<script>window.location.href = "' . base_url() . 'upgrade?' . $_SERVER['QUERY_STRING'] . '";</script>';
+            }
+
+            $requests = $_GET;
+            $hmac = $_GET['hmac'];
+            $serializeArray = serialize($requests);
+            $requests = array_diff_key($requests, array('hmac' => ''));
+            ksort($requests);
+
+            $token = $shop_data->token;
+            $shop = $shop_data->shop;
+            $this_script = '/admin/api/2020-10/script_tags.json';
+            $script_tags_url = "/admin/api/2020-10/script_tags.json";
+
+            $script_exists = $this->Shopify->shopify_call($token, $this_shop, $this_script, array('fields' => 'id,src,event,created_at,updated_at,'), 'GET');
+            $script_exists = json_decode($script_exists['response'], true);
+
+            if (!isset($script_exists['script_tags'])) {
+                echo '<script>window.location.href = "' . base_url() . 'install?shop=' . $this_shop . '";</script>';
+            }
+            // CREATE NEW SCRIPT TAG
+            if (count($script_exists['script_tags']) == 0) {
+                $script_array = array(
+                    'script_tag' => array(
+                        'event' => 'onload',
+                        'src' => base_url() . 'assets/js/shopify.js',
+                    ),
+                );
+
+                $scriptTag = $this->Shopify->shopify_call($token, $this_shop, $script_tags_url, $script_array, 'POST');
+                $scriptTag = json_decode($scriptTag['response'], JSON_PRETTY_PRINT);
+            } else {
+                echo '<script>console.log(' . json_encode($script_exists) . ');</script>';
+            }
+
+            // REMOVE OLD SCRIPT TAGS
+            if (count($script_exists['script_tags']) > 1) {
+                foreach ($script_exists['script_tags'] as $key => $fetch) {
+                    $delete_script = $this->Shopify->shopify_call($token, $this_shop, '/admin/api/2020-10/script_tags/' . $fetch['id'] . '.json', array('fields' => 'id,src,event,created_at,updated_at,'), 'DELETE');
+                    $delete_script = json_decode($delete_script['response'], true);
+                    echo '<script>console.log(' . json_encode($delete_script) . ');</script>';
+                }
+
+                $script_array = array(
+                    'script_tag' => array(
+                        'event' => 'onload',
+                        'src' => base_url() . 'assets/js/shopify.js',
+                    ),
+                );
+
+                $scriptTag = $this->Shopify->shopify_call($token, $this_shop, $script_tags_url, $script_array, 'POST');
+                $scriptTag = json_decode($scriptTag['response'], JSON_PRETTY_PRINT);
+            }
+
+            $offers = $this->db->where('shop', $shop)->get('offers')->result_array();
+
+            foreach ($offers as $key => $value) {
+                $oid = $value['offer_id'];
+                $data['offer'][$oid]['offer'] = $this->db->where('offer_id', $oid)->get('offers')->result_array();
+                $data['offer'][$oid]['products'] = $this->db->where('offer', $oid)->get('products')->result_array();
+                $data['offer'][$oid]['variants'] = $this->db->where('oid', $oid)->get('variants')->result_array();
+                $data['offer'][$oid]['blocks'] = $this->db->where('oid', $oid)->get('cbs')->result_array();
+                $data['offer'][$oid]['conditions'] = $this->db->where('oid', $oid)->get('ocs')->result_array();
+                $data['offer'][$oid]['fields'] = $this->db->where('oid', $oid)->get('cfs')->result_array();
+                $data['offer'][$oid]['choices'] = $this->db->where('oid', $oid)->get('choices')->result_array();
+            }
+
+            $data['api_key'] = $this->config->item('shopify_api_key');
+            $data['shop'] = $shop;
+            $data['token'] = $token;
+            $data['page_name'] = 'dashboard';
+            $this->load->view('index', $data);
         }
-
-        $offers = $this->db->where('shop', $shop)->get('offers')->result_array();
-
-        foreach ($offers as $key => $value) {
-            $oid = $value['offer_id'];
-            $data['offer'][$oid]['offer'] = $this->db->where('offer_id', $oid)->get('offers')->result_array();
-            $data['offer'][$oid]['products'] = $this->db->where('offer', $oid)->get('products')->result_array();
-            $data['offer'][$oid]['variants'] = $this->db->where('oid', $oid)->get('variants')->result_array();
-            $data['offer'][$oid]['blocks'] = $this->db->where('oid', $oid)->get('cbs')->result_array();
-            $data['offer'][$oid]['conditions'] = $this->db->where('oid', $oid)->get('ocs')->result_array();
-            $data['offer'][$oid]['fields'] = $this->db->where('oid', $oid)->get('cfs')->result_array();
-            $data['offer'][$oid]['choices'] = $this->db->where('oid', $oid)->get('choices')->result_array();
-        }
-
-        $data['api_key'] = $this->config->item('shopify_api_key');
-        $data['shop'] = $shop;
-        $data['token'] = $token;
-        $data['page_name'] = 'dashboard';
-        $this->load->view('index', $data);
     }
 
     public function generate_token()
