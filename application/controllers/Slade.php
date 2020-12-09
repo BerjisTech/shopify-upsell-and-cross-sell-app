@@ -107,13 +107,7 @@ class Slade extends CI_Controller
                     $data['offer'][$oid]['choices'] = $this->db->where('oid', $oid)->get('choices')->result_array();
                 }
             } else {
-                $data['offer'][0]['offer'] = array();
-                $data['offer'][0]['products'] = array();
-                $data['offer'][0]['variants'] = array();
-                $data['offer'][0]['blocks'] = array();
-                $data['offer'][0]['conditions'] = array();
-                $data['offer'][0]['fields'] = array();
-                $data['offer'][0]['choices'] = array();
+                $data['offer'] = array();
             }
 
 
