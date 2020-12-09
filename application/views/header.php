@@ -1,3 +1,15 @@
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-3416DX49FZ"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+
+    function gtag() {
+        dataLayer.push(arguments);
+    }
+    gtag('js', new Date());
+
+    gtag('config', 'G-3416DX49FZ');
+</script>
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta charset="utf-8">
 <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
@@ -7,14 +19,9 @@
 <meta name="author" content="Berjis Technologies" />
 <link rel="icon" href="<?php echo base_url(); ?>assets/images/logo.png">
 <title>Sleek upsell | <?php echo $shop; ?> | <?php echo date('d M, Y'); ?></title>
-<link rel="stylesheet"
-    href="<?php echo base_url(); ?>assets/js/jquery-ui/css/no-theme/jquery-ui-1.10.3.custom.min.css"
-    id="style-resource-1">
-<link rel="stylesheet" href="<?php echo base_url(); ?>assets/css/font-icons/entypo/css/entypo.css"
-    id="style-resource-2">
-<link rel="stylesheet"
-    href="<?php echo base_url(); ?>assets/css/font-icons/font-awesome/css/font-awesome.min.css"
-    id="style-resource-1">
+<link rel="stylesheet" href="<?php echo base_url(); ?>assets/js/jquery-ui/css/no-theme/jquery-ui-1.10.3.custom.min.css" id="style-resource-1">
+<link rel="stylesheet" href="<?php echo base_url(); ?>assets/css/font-icons/entypo/css/entypo.css" id="style-resource-2">
+<link rel="stylesheet" href="<?php echo base_url(); ?>assets/css/font-icons/font-awesome/css/font-awesome.min.css" id="style-resource-1">
 <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Noto+Sans:400,700,400italic" id="style-resource-3">
 <link rel="stylesheet" href="<?php echo base_url(); ?>assets/css/bootstrap.css" id="style-resource-4">
 <link rel="stylesheet" href="<?php echo base_url(); ?>assets/css/neon-core.css" id="style-resource-5">
@@ -32,7 +39,7 @@
         display: table;
         width: 50px;
         height: 20px;
-		margin: 10px auto;
+        margin: 10px auto;
     }
 
     .switch input {
