@@ -1530,29 +1530,6 @@ Not supports in Firefox and IE */
                         $('.sleek-price').css('font-size', settings['price_size']);
                     }
 
-                    if (products[i]['show_title'] == 'n') {
-                        $('.sleek-title').remove();
-                    }
-
-                    if (products[i]['show_price'] == 'n') {
-                        $('.sleek-prices').remove();
-                    }
-
-                    if (products[i]['show_image'] == 'n') {
-                        $('.sleek-image').remove();
-                    }
-
-                    if (products[i]['v_price'] == 'n') {
-                        $('.sleek-compare-price').remove();
-                    }
-
-                    if (products[i]['c_price'] == 'n') {
-                        $('.sleek-price').remove();
-                    }
-
-                    if (products[i]['q_select'] == 'n') {
-                        $('.q_select').css('display', 'none');
-                    }
                 };
                 product_data.send();
             }
