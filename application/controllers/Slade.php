@@ -18,7 +18,7 @@ class Slade extends CI_Controller
     public function index()
     {
         if (!isset($_GET['shop'])) {
-            echo '<script>window.location.href = "'.base_url().'get_app";</script>';
+            echo '<script>window.location.href = "' . base_url() . 'get_app";</script>';
         }
 
         if (!isset($_GET['hmac'])) {
@@ -157,6 +157,7 @@ class Slade extends CI_Controller
             $shop = str_replace(".myshopify.com", "", $params['shop']);
 
             $shop_data = array(
+                'shop_id' => $this->db->get('shops')->num_rows() + 1,
                 'shop' => $shop,
                 'token' => $access_token,
                 'date' => time(),
@@ -667,6 +668,7 @@ class Slade extends CI_Controller
         $offer_data = $_POST;
 
         foreach ($offer_data['offer'] as $o) {
+            $o['offer_id'] = $this->db->get('offers')->num_rows() + 1;
             $this->db->insert('offers', $o);
         }
 
@@ -675,12 +677,14 @@ class Slade extends CI_Controller
         if (array_key_exists('products', $offer_data)) {
             foreach ($offer_data['products'] as $p) {
                 $p['offer'] = $oid;
+                $p['product_id'] = $this->db->get('products')->num_rows() + 1;
                 $this->db->insert('products', $p);
             }
         }
         if (array_key_exists('variants', $offer_data)) {
             foreach ($offer_data['variants'] as $v) {
                 $v['oid'] = $oid;
+                $v['id'] = $this->db->get('variants')->num_rows() + 1;
                 $this->db->insert('variants', $v);
             }
         }
@@ -735,12 +739,14 @@ class Slade extends CI_Controller
                 if (array_key_exists('products', $offer_data)) {
                     foreach ($offer_data['products'] as $p) {
                         $p['offer'] = $oid;
+                        $p['product_id'] = $this->db->get('products')->num_rows() + 1;
                         $this->db->insert('products', $p);
                     }
                 }
                 if (array_key_exists('variants', $offer_data)) {
                     foreach ($offer_data['variants'] as $v) {
                         $v['oid'] = $oid;
+                        $v['id'] = $this->db->get('variants')->num_rows() + 1;
                         $this->db->insert('variants', $v);
                     }
                 }
@@ -818,6 +824,8 @@ class Slade extends CI_Controller
 
     public function brgxczvy()
     {
+        $_POST['stat_id'] = $this->db->get('stats')->num_rows() + 1;
+
         $this->db->insert('stats', $_POST);
         print_r("post <br />");
         print_r($_POST);

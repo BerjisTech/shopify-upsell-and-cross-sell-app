@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Nov 27, 2020 at 10:13 PM
+-- Generation Time: Dec 09, 2020 at 12:45 PM
 -- Server version: 10.3.25-MariaDB-cll-lve
 -- PHP Version: 7.3.6
 
@@ -253,7 +253,7 @@ CREATE TABLE `shops` (
 --
 
 INSERT INTO `shops` (`shop_id`, `shop`, `token`, `date`, `type`, `name`, `price`, `bill_interval`, `capped_amount`, `terms`, `trial_days`, `test`, `on_install`, `created_at`, `updated_at`) VALUES
-(1, 'berjis-tech-ltd', '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', 1605018387, 'RECURRING', 'Sleek', '19.99', 'EVERY_30_DAYS', '19.99', 'NO_TERMS', '14', 'true', '1', '', ''),
+(1, 'berjis-tech-ltd', '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', 1606834341, 'RECURRING', 'Sleek', '19.99', 'EVERY_30_DAYS', '19.99', 'NO_TERMS', '14', 'true', '1', '', ''),
 (2, 'sleek-apps', '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', 1606424313, 'RECURRING', 'Sleek', '19.99', 'EVERY_30_DAYS', '19.99', 'NO_TERMS', '14', 'true', '1', '', '');
 
 -- --------------------------------------------------------
@@ -342,7 +342,50 @@ INSERT INTO `stats` (`stat_id`, `date`, `shop`, `offer`, `product`, `variant`, `
 (54, '1605889128', 'berjis-tech-ltd.myshopify.com', '10', '4582708904011', '32337487331403', '3', '\"\"', '\"\"', 'impression', 'hover', '/cart', 'desktop', 'Chrome', '[4582708314187]', '66.00'),
 (55, '1605889128', 'berjis-tech-ltd.myshopify.com', '10', '4582708904011', '32337487331403', '3', '\"\"', '\"\"', 'impression', 'hover', '/cart', 'desktop', 'Chrome', '[4582708314187]', '66.00'),
 (56, '1605889128', 'berjis-tech-ltd.myshopify.com', '10', '4582708904011', '32337487331403', '3', '\"\"', '\"\"', 'impression', 'hover', '/cart', 'desktop', 'Chrome', '[4582708314187]', '66.00'),
-(57, '1605949993', 'berjis-tech-ltd.myshopify.com', '7', '4582708445259', 'undefined', 'undefined', '\"\"', '\"\"', 'show', 'show', '/', 'desktop', 'Chrome', '[4582708904011,4582708445259,4582708969547,4582708084811]', '68.00');
+(57, '1605949993', 'berjis-tech-ltd.myshopify.com', '7', '4582708445259', 'undefined', 'undefined', '\"\"', '\"\"', 'show', 'show', '/', 'desktop', 'Chrome', '[4582708904011,4582708445259,4582708969547,4582708084811]', '68.00'),
+(58, '1606834383', 'berjis-tech-ltd.myshopify.com', '7', '4582708445259', 'undefined', 'undefined', '\"\"', '\"\"', 'show', 'show', '/products/blue-silk-tuxedo', 'desktop', 'Chrome', '[4582708314187]', '68.00'),
+(59, '1606834390', 'berjis-tech-ltd.myshopify.com', '8', '4582708904011', '32337487265867', '1', '\"\"', '\"\"', 'show', 'show', '/cart', 'desktop', 'Chrome', '[4582708314187]', '66.00'),
+(60, '1606834392', 'berjis-tech-ltd.myshopify.com', '8', '4582708904011', '32337487265867', '1', '\"\"', '\"\"', 'impression', 'hover', '/cart', 'desktop', 'Chrome', '[4582708314187]', '66.00'),
+(61, '1606834394', 'berjis-tech-ltd.myshopify.com', '8', '4582708904011', '32337487331403', '1', '\"\"', '\"\"', 'impression', 'variant change', '/cart', 'desktop', 'Chrome', '[4582708314187]', '66.00'),
+(62, '1606834394', 'berjis-tech-ltd.myshopify.com', '8', '4582708904011', '32337487331403', '1', '\"\"', '\"\"', 'impression', 'hover', '/cart', 'desktop', 'Chrome', '[4582708314187]', '66.00'),
+(63, '1606834394', 'berjis-tech-ltd.myshopify.com', '8', '4582708904011', '32337487331403', '1', '\"\"', '\"\"', 'impression', 'hover', '/cart', 'desktop', 'Chrome', '[4582708314187]', '66.00'),
+(64, '1606834395', 'berjis-tech-ltd.myshopify.com', '8', '4582708904011', '32337487331403', '4', '\"\"', '\"\"', 'impression', 'quantity change', '/cart', 'desktop', 'Chrome', '[4582708314187]', '66.00'),
+(65, '1606834395', 'berjis-tech-ltd.myshopify.com', '8', '4582708904011', '32337487331403', '4', '\"\"', '\"\"', 'impression', 'hover', '/cart', 'desktop', 'Chrome', '[4582708314187]', '66.00'),
+(66, '1606834396', 'berjis-tech-ltd.myshopify.com', '8', '4582708904011', '32337487331403', '4', '\"\"', '\"\"', 'impression', 'hover', '/cart', 'desktop', 'Chrome', '[4582708314187]', '66.00'),
+(67, '1606834396', 'berjis-tech-ltd.myshopify.com', '8', '4582708904011', '32337487331403', '4', '\"\"', '\"\"', 'purchase', 'add to cart', '/cart', 'desktop', 'Chrome', '[4582708314187]', '66.00'),
+(68, '1606834396', 'berjis-tech-ltd.myshopify.com', '8', '4582708904011', '32337487331403', '4', '\"\"', '\"\"', 'impression', 'hover', '/cart', 'desktop', 'Chrome', '[4582708314187]', '66.00'),
+(69, '1606834403', 'berjis-tech-ltd.myshopify.com', '8', '4582708904011', '32337487331403', '4', '\"\"', '\"\"', 'impression', 'hover', '/cart', 'desktop', 'Chrome', '[4582708314187]', '66.00'),
+(70, '1606834405', 'berjis-tech-ltd.myshopify.com', '8', '4582708904011', '32337487331403', '4', '\"\"', '\"\"', 'impression', 'hover', '/cart', 'desktop', 'Chrome', '[4582708314187]', '66.00'),
+(71, '1606834413', 'berjis-tech-ltd.myshopify.com', '8', '4582708904011', '32337487331403', '4', '\"\"', '\"\"', 'impression', 'hover', '/cart', 'desktop', 'Chrome', '[4582708314187]', '66.00'),
+(72, '1606834414', 'berjis-tech-ltd.myshopify.com', '8', '4582708904011', '32337487331403', '4', '\"\"', '\"\"', 'purchase', 'add to cart', '/cart', 'desktop', 'Chrome', '[4582708314187]', '66.00'),
+(73, '1606834415', 'berjis-tech-ltd.myshopify.com', '8', '4582708904011', '32337487331403', '4', '\"\"', '\"\"', 'impression', 'hover', '/cart', 'desktop', 'Chrome', '[4582708314187]', '66.00'),
+(74, '1606834423', 'berjis-tech-ltd.myshopify.com', '8', '4582708904011', '32337487331403', '4', '\"\"', '\"\"', 'impression', 'hover', '/cart', 'desktop', 'Chrome', '[4582708314187]', '66.00'),
+(75, '1606834423', 'berjis-tech-ltd.myshopify.com', '8', '4582708904011', '32337487331403', '4', '\"\"', '\"\"', 'impression', 'hover', '/cart', 'desktop', 'Chrome', '[4582708314187]', '66.00'),
+(76, '1606834424', 'berjis-tech-ltd.myshopify.com', '8', '4582708904011', '32337487331403', '4', '\"\"', '\"\"', 'impression', 'hover', '/cart', 'desktop', 'Chrome', '[4582708314187]', '66.00'),
+(77, '1606834426', 'berjis-tech-ltd.myshopify.com', '8', '4582708904011', '32337487331403', '4', '\"\"', '\"\"', 'purchase', 'add to cart', '/cart', 'desktop', 'Chrome', '[4582708314187]', '66.00'),
+(78, '1606834429', 'berjis-tech-ltd.myshopify.com', '8', '4582708904011', '32337487331403', '4', '\"\"', '\"\"', 'impression', 'hover', '/cart', 'desktop', 'Chrome', '[4582708314187]', '66.00'),
+(79, '1606834807', 'berjis-tech-ltd.myshopify.com', '10', '4582708969547', '32337487659083', '1', '\"\"', '\"\"', 'show', 'show', '/cart', 'desktop', 'Chrome', '[4582708314187]', '40.00'),
+(80, '1606834807', 'berjis-tech-ltd.myshopify.com', '10', '4582708904011', '32337487265867', '1', '\"\"', '\"\"', 'show', 'show', '/cart', 'desktop', 'Chrome', '[4582708314187]', '66.00'),
+(81, '1606834808', 'berjis-tech-ltd.myshopify.com', '10', '4582708904011', '32337487265867', '1', '\"\"', '\"\"', 'impression', 'hover', '/cart', 'desktop', 'Chrome', '[4582708314187]', '66.00'),
+(82, '1606834809', 'berjis-tech-ltd.myshopify.com', '10', '4582708904011', '32337487265867', '1', '\"\"', '\"\"', 'impression', 'hover', '/cart', 'desktop', 'Chrome', '[4582708314187]', '66.00'),
+(83, '1606834809', 'berjis-tech-ltd.myshopify.com', '10', '4582708969547', '32337487659083', '1', '\"\"', '\"\"', 'impression', 'hover', '/cart', 'desktop', 'Chrome', '[4582708314187]', '40.00'),
+(84, '1606834809', 'berjis-tech-ltd.myshopify.com', '10', '4582708904011', '32337487265867', '1', '\"\"', '\"\"', 'impression', 'hover', '/cart', 'desktop', 'Chrome', '[4582708314187]', '66.00'),
+(85, '1606834809', 'berjis-tech-ltd.myshopify.com', '10', '4582708969547', '32337487659083', '1', '\"\"', '\"\"', 'purchase', 'add to cart', '/cart', 'desktop', 'Chrome', '[4582708314187]', '40.00'),
+(86, '1606834811', 'berjis-tech-ltd.myshopify.com', '10', '4582708969547', '32337487659083', '1', '\"\"', '\"\"', 'impression', 'hover', '/cart', 'desktop', 'Chrome', '[4582708314187]', '40.00'),
+(87, '1606834811', 'berjis-tech-ltd.myshopify.com', '10', '4582708904011', '32337487265867', '1', '\"\"', '\"\"', 'impression', 'hover', '/cart', 'desktop', 'Chrome', '[4582708314187]', '66.00'),
+(88, '1606834973', 'berjis-tech-ltd.myshopify.com', '7', '4582708445259', '32337483432011', '1', '\"\"', '\"\"', 'show', 'show', '/cart', 'desktop', 'Chrome', '[4582708314187]', '68.00'),
+(89, '1606834974', 'berjis-tech-ltd.myshopify.com', '7', '4582708445259', '32337483432011', '1', '\"\"', '\"\"', 'impression', 'hover', '/cart', 'desktop', 'Chrome', '[4582708314187]', '68.00'),
+(90, '1606834975', 'berjis-tech-ltd.myshopify.com', '7', '4582708445259', '32337483432011', '1', '\"\"', '\"\"', 'purchase', 'add to cart', '/cart', 'desktop', 'Chrome', '[4582708314187]', '68.00'),
+(91, '1606834975', 'berjis-tech-ltd.myshopify.com', '7', '4582708445259', '32337483432011', '1', '\"\"', '\"\"', 'impression', 'hover', '/cart', 'desktop', 'Chrome', '[4582708314187]', '68.00'),
+(92, '1606834978', 'berjis-tech-ltd.myshopify.com', '8', '4582708904011', '32337487265867', '1', '\"\"', '\"\"', 'show', 'show', '/cart', 'desktop', 'Chrome', '[4582708445259,4582708314187]', '66.00'),
+(93, '1606834981', 'berjis-tech-ltd.myshopify.com', '8', '4582708904011', '32337487265867', '1', '\"\"', '\"\"', 'impression', 'hover', '/cart', 'desktop', 'Chrome', '[4582708445259,4582708314187]', '66.00'),
+(94, '1606834981', 'berjis-tech-ltd.myshopify.com', '8', '4582708904011', '32337487265867', '1', '\"\"', '\"\"', 'purchase', 'add to cart', '/cart', 'desktop', 'Chrome', '[4582708445259,4582708314187]', '66.00'),
+(95, '1606834981', 'berjis-tech-ltd.myshopify.com', '8', '4582708904011', '32337487265867', '1', '\"\"', '\"\"', 'impression', 'hover', '/cart', 'desktop', 'Chrome', '[4582708445259,4582708314187]', '66.00'),
+(96, '1606834985', 'berjis-tech-ltd.myshopify.com', '10', '4582708969547', '32337487659083', '1', '\"\"', '\"\"', 'show', 'show', '/cart', 'desktop', 'Chrome', '[4582708904011,4582708445259,4582708314187]', '40.00'),
+(97, '1606834985', 'berjis-tech-ltd.myshopify.com', '10', '4582708904011', '32337487265867', '1', '\"\"', '\"\"', 'show', 'show', '/cart', 'desktop', 'Chrome', '[4582708904011,4582708445259,4582708314187]', '66.00'),
+(98, '1606834988', 'berjis-tech-ltd.myshopify.com', '10', '4582708904011', '32337487265867', '1', '\"\"', '\"\"', 'impression', 'hover', '/cart', 'desktop', 'Chrome', '[4582708904011,4582708445259,4582708314187]', '66.00'),
+(99, '1606834988', 'berjis-tech-ltd.myshopify.com', '10', '4582708904011', '32337487265867', '1', '\"\"', '\"\"', 'purchase', 'add to cart', '/cart', 'desktop', 'Chrome', '[4582708904011,4582708445259,4582708314187]', '66.00'),
+(100, '1606834988', 'berjis-tech-ltd.myshopify.com', '10', '4582708904011', '32337487265867', '1', '\"\"', '\"\"', 'impression', 'hover', '/cart', 'desktop', 'Chrome', '[4582708904011,4582708445259,4582708314187]', '66.00');
 
 -- --------------------------------------------------------
 
@@ -447,7 +490,7 @@ ALTER TABLE `shops`
 -- AUTO_INCREMENT for table `stats`
 --
 ALTER TABLE `stats`
-  MODIFY `stat_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=58;
+  MODIFY `stat_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=101;
 
 --
 -- AUTO_INCREMENT for table `variants`
