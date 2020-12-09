@@ -163,20 +163,31 @@ class Slade extends CI_Controller
 
             $shop = str_replace(".myshopify.com", "", $params['shop']);
 
-            $shop_data = array(
-                'shop_id' => $this->db->get('shops')->num_rows() + 1,
-                'shop' => $shop,
-                'token' => $access_token,
-                'date' => time(),
-            );
-
             if ($this->db->table_exists('shops')) {
                 if ($this->db->where('shop', $shop)->get('shops')->num_rows() == 0) {
+                    $shop_data = array(
+                        'shop_id' => $this->db->get('shops')->num_rows() + 1,
+                        'shop' => $shop,
+                        'token' => $access_token,
+                        'date' => time(),
+                    );
                     $this->db->insert('shops', $shop_data);
                 } else {
+                    $shop_data = array(
+                        'shop_id' => '',
+                        'shop' => $shop,
+                        'token' => $access_token,
+                        'date' => time(),
+                    );
                     $this->db->where('shop', $shop)->update('shops', array('token' => $access_token, 'date' => time()));
                 }
             } else {
+                $shop_data = array(
+                    'shop_id' => $this->db->get('shops')->num_rows() + 1,
+                    'shop' => $shop,
+                    'token' => $access_token,
+                    'date' => time(),
+                );
                 $this->load->dbforge();
                 $fields = array(
                     'shop_id' => array(
@@ -742,6 +753,14 @@ class Slade extends CI_Controller
                 $this->db->where('oid', $oid)->delete('ocs');
                 $this->db->where('oid', $oid)->delete('cfs');
                 $this->db->where('oid', $oid)->delete('choices');
+
+                foreach ($this->db->get('products')->result_array() as $key => $fetch) {
+                    $this->db->where('product_id', $fetch['product_id'])->set('product_id', $key + 1)->update('products');
+                }
+
+                foreach ($this->db->get('variants')->result_array() as $key => $fetch) {
+                    $this->db->where('id', $fetch['id'])->set('id', $key + 1)->update('variants');
+                }
 
                 if (array_key_exists('products', $offer_data)) {
                     foreach ($offer_data['products'] as $p) {
