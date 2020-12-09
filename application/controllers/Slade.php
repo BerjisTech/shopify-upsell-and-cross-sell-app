@@ -19,7 +19,7 @@ class Slade extends CI_Controller
     {
         if (!isset($_GET['shop'])) {
             $data['page_name'] = 'home';
-            $this->load->view('index', $data);
+            $this->load->view('index_home', $data);
         } else {
             if (!isset($_GET['hmac'])) {
                 echo '<script>window.location.href = "https://' . $_GET['shop'] . '/admin/apps";</script>';
