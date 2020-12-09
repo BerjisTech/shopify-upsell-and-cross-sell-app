@@ -844,6 +844,8 @@ jQuery(document).ready(function () {
             lay_el = '<div class="compact sleek-upsell"></div>';
         }
 
+        $(lay_el).remove();
+
         if (nudge == 'prepend') { $(element).prepend(lay_el); }
         if (nudge == 'append') { $(element).append(lay_el); }
 
