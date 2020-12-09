@@ -2283,6 +2283,8 @@ Not supports in Firefox and IE */
     function stylizeOffer() {
         let settings = <?php echo json_encode($this->db->where('shop', $shop)->get('settings')->row()); ?>;
         if (settings != null) {
+            console.log('settings');
+            console.log(settings);
             $('.sleek-upsell').css('background', settings['layout_bg']);
             $('.sleek-upsell select').css('background', settings['layout_bg']);
             $('.sleek-upsell').css('color', settings['layout_color']);
