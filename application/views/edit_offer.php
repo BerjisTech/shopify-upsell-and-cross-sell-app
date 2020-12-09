@@ -335,11 +335,11 @@ Not supports in Firefox and IE */
                                 <h4>Button Text <br /><small>eg Yes Please or Add To Cart</small></h4>
                                 <input type="text" name="button-text" value="ADD TO CART" class="form-control general_offer_button_text" style="padding: 10px; border: 2px solid #666666; border-radius: 5px;" />
                             </div>
-                            <div style="display: table; width: 100%;">
+                            <div style="display: none; width: 100%;">
                                 <h4>Color Scheme <br /><small>Choose the offer color scheme</small></h4>
                                 <select name="button-text" placeholder="ADD TO CART" class="form-control general_offer_color_scheme" style="border: 2px solid #666666; border-radius: 5px;">
-                                    <option value="default">Default</option>
                                     <option value="custom">Custom</option>
+                                    <option value="default">Default</option>
                                 </select>
                             </div>
                             <div style="display: table; width: 100%;">
@@ -941,6 +941,7 @@ Not supports in Firefox and IE */
     loadConditions();
     loadFields();
     populateFields();
+    stylizeOffer();
 
     function loadOffer() {
         let this_offer = offer[0];
@@ -1558,8 +1559,10 @@ Not supports in Firefox and IE */
             if (products[i]['q_select'] == 'n') {
                 $('.q_select').css('display', 'none');
             }
-            populateFields();
         });
+
+        populateFields();
+        stylizeOffer();
     }
 
     function removeOfferable(index, product) {
@@ -2347,5 +2350,46 @@ Not supports in Firefox and IE */
             });
         }
 
+    }
+
+    function stylizeOffer() {
+        let settings = <?php echo json_encode($this->db->where('shop', $shop)->get('settings')->row()); ?>;
+        if (settings != null) {
+            $('.sleek-upsell').css('background', settings['layout_bg']);
+            $('.sleek-upsell select').css('background', settings['layout_bg']);
+            $('.sleek-upsell').css('color', settings['layout_color']);
+            $('.sleek-upsell select').css('color', settings['layout_color']);
+            $('.sleek-upsell').css('font-family', settings['layout_font']);
+            $('.sleek-upsell').css('font-size', settings['layout_size']);
+            $('.sleek-upsell').css('margin-top', settings['layout_mt']);
+            $('.sleek-upsell').css('margin-bottom', settings['layout_mb']);
+            $('.sleek-upsell').css('border-radius', settings['offer_radius']);
+            $('.sleek-upsell').css('border-width', settings['offer_bs']);
+            $('.sleek-upsell').css('border-color', settings['offer_bc']);
+            $('.sleek-upsell').css('border-style', settings['offer_border']);
+            $('.sleek-upsell button').css('background', settings['button_bg']);
+            $('.sleek-upsell button').css('color', settings['button_color']);
+            $('.sleek-upsell button').css('font-family', settings['button_font']);
+            $('.sleek-upsell button').css('font-size', settings['button_size']);
+            $('.sleek-upsell button').css('margin-top', settings['button_mt']);
+            $('.sleek-upsell button').css('margin-bottom', settings['button_mb']);
+            $('.sleek-upsell button').css('border-radius', settings['button_radius']);
+            $('.sleek-upsell button').css('border-width', settings['button_bs']);
+            $('.sleek-upsell button').css('border-color', settings['button_bc']);
+            $('.sleek-upsell button').css('border-style', settings['button_border']);
+            $('.sleek-upsell img').css('border-radius', settings['image_radius']);
+            $('.sleek-upsell img').css('border-width', settings['image_bs']);
+            $('.sleek-upsell img').css('color', settings['image_bc']);
+            $('.sleek-upsell img').css('border-style', settings['image_border']);
+            $('.sleek-text').css('color', settings['text_color']);
+            $('.sleek-text').css('font-family', settings['text_font']);
+            $('.sleek-text').css('font-size', settings['text_size']);
+            $('.sleek-title').css('color', settings['title_color']);
+            $('.sleek-title').css('font-family', settings['title_font']);
+            $('.sleek-title').css('font-size', settings['title_size']);
+            $('.sleek-price').css('color', settings['price_color']);
+            $('.sleek-price').css('font-family', settings['price_font']);
+            $('.sleek-price').css('font-size', settings['price_size']);
+        }
     }
 </script>
