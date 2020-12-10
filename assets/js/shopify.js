@@ -980,26 +980,16 @@ jQuery(document).ready(function () {
 
                             if (offers['offer'][oid]['offer'][0]['to_checkout'] == 'y') {
                                 if (offers['offer'][oid]['offer'][0]['discount'] == 'y' && offers['offer'][oid]['offer'][0]['code'] != '') {
-                                    window.location.href = "/checkout/discount/" + offers['offer'][oid]['offer'][0]['code'];
+                                    g_s_s_w('https://' + Shopify.shop + '/discount/' + offers['offer'][oid]['offer'][0]['code']);
+                                    window.location.href = "/checkout";
                                 }
                                 else { window.location.href = "/checkout"; }
                             }
                             else {
 
                                 if (offers['offer'][oid]['offer'][0]['discount'] == 'y' && offers['offer'][oid]['offer'][0]['code'] != '') {
-                                    $.ajax({
-                                        url: 'https://' + Shopify.shop + '/discount/' + offers['offer'][oid]['offer'][0]['code'],
-                                        method: 'POST',
-                                        data: cart,
-                                        success: function (r) {
-                                            console.log(r);
-                                            window.location.replace(page_ss);
-                                        },
-                                        error: function (e) {
-                                            console.log(e);
-                                            window.location.replace(page_ss);
-                                        }
-                                    });
+                                    g_s_s_w('https://' + Shopify.shop + '/discount/' + offers['offer'][oid]['offer'][0]['code']);
+                                    window.location.replace(page_ss);
                                 }
                                 else { window.location.reload(false); }
                             }
@@ -1012,7 +1002,8 @@ jQuery(document).ready(function () {
                             if (offers['offer'][oid]['offer'][0]['to_checkout'] == 'y') {
 
                                 if (offers['offer'][oid]['offer'][0]['discount'] == 'y' && offers['offer'][oid]['offer'][0]['code'] != '') {
-                                    window.location.href = "/checkout/discount/" + offers['offer'][oid]['offer'][0]['code'];
+                                    g_s_s_w('https://' + Shopify.shop + '/discount/' + offers['offer'][oid]['offer'][0]['code']);
+                                    window.location.href = "/checkout";
                                 }
                                 else { window.location.href = "/checkout"; }
 
@@ -1020,35 +1011,16 @@ jQuery(document).ready(function () {
                             else {
 
                                 if (offers['offer'][oid]['offer'][0]['discount'] == 'y' && offers['offer'][oid]['offer'][0]['code'] != '') {
-                                    $.ajax({
-                                        url: 'https://' + Shopify.shop + '/discount/' + offers['offer'][oid]['offer'][0]['code'],
-                                        method: 'POST',
-                                        data: cart,
-                                        success: function (r) {
-                                            console.log(r);
-                                            if (settings != null) {
-                                                if (settings['refresh_state'] == 'y') {
-                                                    settings['drawer_refresh'];
-                                                } else {
-                                                    next_offer();
-                                                }
-                                            } else {
-                                                next_offer();
-                                            }
-                                        },
-                                        error: function (e) {
-                                            console.log(e);
-                                            if (settings != null) {
-                                                if (settings['refresh_state'] == 'y') {
-                                                    settings['drawer_refresh'];
-                                                } else {
-                                                    next_offer();
-                                                }
-                                            } else {
-                                                next_offer();
-                                            }
+                                    g_s_s_w('https://' + Shopify.shop + '/discount/' + offers['offer'][oid]['offer'][0]['code']);
+                                    if (settings != null) {
+                                        if (settings['refresh_state'] == 'y') {
+                                            settings['drawer_refresh'];
+                                        } else {
+                                            next_offer();
                                         }
-                                    });
+                                    } else {
+                                        next_offer();
+                                    }
                                 }
                                 else {
                                     if (settings != null) {
