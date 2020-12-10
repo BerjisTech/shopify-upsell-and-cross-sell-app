@@ -988,10 +988,11 @@ jQuery(document).ready(function () {
 
                                 if (offers['offer'][oid]['offer'][0]['discount'] == 'y' && offers['offer'][oid]['offer'][0]['code'] != '') {
                                     $.ajax({
-                                        url: '/checkout/discount/' + offers['offer'][oid]['offer'][0]['code'],
+                                        url: Shopify.shop + '/discount/' + offers['offer'][oid]['offer'][0]['code'],
                                         method: 'POST',
                                         data: cart,
-                                        success: function () {
+                                        success: function (r) {
+                                            console.log(r);
                                             window.location.replace(page_ss);
                                         },
                                         error: function (e) {
@@ -1020,10 +1021,11 @@ jQuery(document).ready(function () {
 
                                 if (offers['offer'][oid]['offer'][0]['discount'] == 'y' && offers['offer'][oid]['offer'][0]['code'] != '') {
                                     $.ajax({
-                                        url: '/checkout/discount/' + offers['offer'][oid]['offer'][0]['code'],
+                                        url: Shopify.shop + '/discount/' + offers['offer'][oid]['offer'][0]['code'],
                                         method: 'POST',
                                         data: cart,
-                                        success: function () {
+                                        success: function (r) {
+                                            console.log(r);
                                             if (settings != null) {
                                                 if (settings['refresh_state'] == 'y') {
                                                     settings['drawer_refresh'];
