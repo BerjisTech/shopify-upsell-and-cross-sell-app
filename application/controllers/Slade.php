@@ -393,11 +393,6 @@ class Slade extends CI_Controller
 
     public function new_offer($shop, $token)
     {
-
-        $codes = '/admin/api/2020-10/price_rules/507328175/discount_codes.json';
-        $codes = $this->Shopify->shopify_call($token, $shop, $codes, array(), 'GET');
-        $data['codes'] = json_decode($codes['response'], true);
-
         if ($this->db->where('shop', $shop)->get('shops')->num_rows() == 0) {
             echo '<script>window.location.href = "' . base_url() . 'install?shop=' . $_GET['shop'] . '";</script>';
         }
