@@ -988,7 +988,7 @@ jQuery(document).ready(function () {
 
                                 if (offers['offer'][oid]['offer'][0]['discount'] == 'y' && offers['offer'][oid]['offer'][0]['code'] != '') {
                                     $.ajax({
-                                        url: Shopify.shop + '/discount/' + offers['offer'][oid]['offer'][0]['code'],
+                                        url: 'https://' + Shopify.shop + '/discount/' + offers['offer'][oid]['offer'][0]['code'],
                                         method: 'POST',
                                         data: cart,
                                         success: function (r) {
@@ -1021,7 +1021,7 @@ jQuery(document).ready(function () {
 
                                 if (offers['offer'][oid]['offer'][0]['discount'] == 'y' && offers['offer'][oid]['offer'][0]['code'] != '') {
                                     $.ajax({
-                                        url: Shopify.shop + '/discount/' + offers['offer'][oid]['offer'][0]['code'],
+                                        url: 'https://' + Shopify.shop + '/discount/' + offers['offer'][oid]['offer'][0]['code'],
                                         method: 'POST',
                                         data: cart,
                                         success: function (r) {
