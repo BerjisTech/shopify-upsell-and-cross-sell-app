@@ -1136,7 +1136,7 @@ Not supports in Firefox and IE */
         }
     });
     $('.offer_discount_code').on('input', function() {
-        offer[0]['discount'] = $(this).val();
+        offer[0]['code'] = $(this).val();
     });
     $('.offer_status').change(function() {
         if (this.checked) {
