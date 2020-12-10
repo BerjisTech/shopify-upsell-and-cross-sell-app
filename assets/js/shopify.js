@@ -979,17 +979,32 @@ jQuery(document).ready(function () {
                             $('.sleek-upsell').remove();
 
                             if (offers['offer'][oid]['offer'][0]['to_checkout'] == 'y') {
-                                window.location.href = "/checkout";
+                                if (offers['offer'][oid]['offer'][0]['discount'] == 'y' && offers['offer'][oid]['offer'][0]['code'] != '') { window.location.href = "/checkout/discount/" + offers['offer'][oid]['offer'][0]['code']; }
+                                else { window.location.href = "/checkout"; }
                             }
-                            else { window.location.reload(false); }
+                            else {
+
+                                if (offers['offer'][oid]['offer'][0]['discount'] == 'y' && offers['offer'][oid]['offer'][0]['code'] != '') { window.location.replace(page_ss + '/discount/' + offers['offer'][oid]['offer'][0]['code']); }
+                                else { window.location.reload(false); }
+                            }
                         }
                         else {
                             $('.sleek-upsell').remove();
                             // console.log(response);
                             sessionStorage.setItem('sleek_shown_' + oid, 'y');
 
-                            if (offers['offer'][oid]['offer'][0]['to_checkout'] == 'y') { window.location.href = "/checkout"; }
-                            else { next_offer(); }
+                            if (offers['offer'][oid]['offer'][0]['to_checkout'] == 'y') {
+
+                                if (offers['offer'][oid]['offer'][0]['discount'] == 'y' && offers['offer'][oid]['offer'][0]['code'] != '') { window.location.href = "/checkout/discount/" + offers['offer'][oid]['offer'][0]['code']; }
+                                else { window.location.href = "/checkout"; }
+
+                            }
+                            else {
+
+                                if (offers['offer'][oid]['offer'][0]['discount'] == 'y' && offers['offer'][oid]['offer'][0]['code'] != '') { window.location.replace(page_ss + '/discount/' + offers['offer'][oid]['offer'][0]['code']); }
+                                else { window.location.reload(false); }
+                                next_offer();
+                            }
                         }
                     },
                     error: function (response) {

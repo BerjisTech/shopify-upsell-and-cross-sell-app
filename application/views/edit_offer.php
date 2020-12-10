@@ -409,7 +409,7 @@ Not supports in Firefox and IE */
                     </div>
                     <div id="collapseFour-2" class="panel-collapse collapse">
                         <div class="panel-body">
-                            <div style="display: none; width: 100%; margin-bottom: 10px;">
+                            <div style="display: table; width: 100%; margin-bottom: 10px;">
                                 <label><input type="checkbox" class="offer_apply_discount" value="1" /> Add add
                                     discount to this offer. <br /><span class="text-info">Paste your discount code
                                         below</span></label><br />
@@ -498,7 +498,7 @@ Not supports in Firefox and IE */
                         </div>
                     </div>
                 </div>
-                <div class="panel panel-default">
+                <div class="panel panel-default" style="display: none;">
                     <div class="panel-heading">
                         <h4 class="panel-title"> <a data-toggle="collapse" data-parent="#accordion-test-p2" href="#collapseThree-p2" class="collapsed">
                                 2: Product A/B Test
@@ -523,7 +523,7 @@ Not supports in Firefox and IE */
                 <div class="panel panel-default">
                     <div class="panel-heading">
                         <h4 class="panel-title"> <a data-toggle="collapse" data-parent="#accordion-test-p2" href="#collapseFour-p2" class="collapsed">
-                                3: Product Custom Fields
+                                2: Product Custom Fields
                             </a> </h4>
                     </div>
                     <div id="collapseFour-p2" class="panel-collapse collapse" style="margin: 0px; padding: 0px;">
