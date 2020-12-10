@@ -979,12 +979,27 @@ jQuery(document).ready(function () {
                             $('.sleek-upsell').remove();
 
                             if (offers['offer'][oid]['offer'][0]['to_checkout'] == 'y') {
-                                if (offers['offer'][oid]['offer'][0]['discount'] == 'y' && offers['offer'][oid]['offer'][0]['code'] != '') { window.location.href = "/checkout/discount/" + offers['offer'][oid]['offer'][0]['code']; }
+                                if (offers['offer'][oid]['offer'][0]['discount'] == 'y' && offers['offer'][oid]['offer'][0]['code'] != '') {
+                                    window.location.href = "/checkout/discount/" + offers['offer'][oid]['offer'][0]['code'];
+                                }
                                 else { window.location.href = "/checkout"; }
                             }
                             else {
 
-                                if (offers['offer'][oid]['offer'][0]['discount'] == 'y' && offers['offer'][oid]['offer'][0]['code'] != '') { window.location.replace(page_ss + '/discount/' + offers['offer'][oid]['offer'][0]['code']); }
+                                if (offers['offer'][oid]['offer'][0]['discount'] == 'y' && offers['offer'][oid]['offer'][0]['code'] != '') {
+                                    $.ajax({
+                                        url: '/checkout/discount/' + offers['offer'][oid]['offer'][0]['code'],
+                                        method: 'POST',
+                                        data: cart,
+                                        success: function () {
+                                            window.location.replace(page_ss);
+                                        },
+                                        error: function (e) {
+                                            console.log(e);
+                                            window.location.replace(page_ss);
+                                        }
+                                    });
+                                }
                                 else { window.location.reload(false); }
                             }
                         }
@@ -995,13 +1010,44 @@ jQuery(document).ready(function () {
 
                             if (offers['offer'][oid]['offer'][0]['to_checkout'] == 'y') {
 
-                                if (offers['offer'][oid]['offer'][0]['discount'] == 'y' && offers['offer'][oid]['offer'][0]['code'] != '') { window.location.href = "/checkout/discount/" + offers['offer'][oid]['offer'][0]['code']; }
+                                if (offers['offer'][oid]['offer'][0]['discount'] == 'y' && offers['offer'][oid]['offer'][0]['code'] != '') {
+                                    window.location.href = "/checkout/discount/" + offers['offer'][oid]['offer'][0]['code'];
+                                }
                                 else { window.location.href = "/checkout"; }
 
                             }
                             else {
 
-                                if (offers['offer'][oid]['offer'][0]['discount'] == 'y' && offers['offer'][oid]['offer'][0]['code'] != '') { window.location.replace(page_ss + '/discount/' + offers['offer'][oid]['offer'][0]['code']); next_offer(); }
+                                if (offers['offer'][oid]['offer'][0]['discount'] == 'y' && offers['offer'][oid]['offer'][0]['code'] != '') {
+                                    $.ajax({
+                                        url: '/checkout/discount/' + offers['offer'][oid]['offer'][0]['code'],
+                                        method: 'POST',
+                                        data: cart,
+                                        success: function () {
+                                            if (settings != null) {
+                                                if (settings['refresh_state'] == 'y') {
+                                                    settings['drawer_refresh'];
+                                                } else {
+                                                    next_offer();
+                                                }
+                                            } else {
+                                                next_offer();
+                                            }
+                                        },
+                                        error: function (e) {
+                                            console.log(e);
+                                            if (settings != null) {
+                                                if (settings['refresh_state'] == 'y') {
+                                                    settings['drawer_refresh'];
+                                                } else {
+                                                    next_offer();
+                                                }
+                                            } else {
+                                                next_offer();
+                                            }
+                                        }
+                                    });
+                                }
                                 else {
                                     if (settings != null) {
                                         if (settings['refresh_state'] == 'y') {
