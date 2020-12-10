@@ -1015,12 +1015,10 @@ jQuery(document).ready(function () {
                                     if (settings != null) {
                                         if (settings['refresh_state'] == 'y') {
                                             settings['drawer_refresh'];
-                                        } else {
-                                            next_offer();
                                         }
-                                    } else {
-                                        next_offer();
                                     }
+                                    $('.sleek-upsell').remove();
+                                    next_offer();
                                 }
                                 else {
                                     if (settings != null) {
