@@ -1091,6 +1091,10 @@ Not supports in Firefox and IE */
             offer[0]['discount'] = 'n';
         }
     });
+
+    $('.offer_discount_code').on('input', function() {
+        offer[0]['discount'] = $(this).val();
+    });
     $('.offer_status').change(function() {
         if (this.checked) {
             offer[0]['status'] = '1';
