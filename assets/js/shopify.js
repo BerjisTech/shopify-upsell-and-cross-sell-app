@@ -1001,7 +1001,7 @@ jQuery(document).ready(function () {
                             }
                             else {
 
-                                if (offers['offer'][oid]['offer'][0]['discount'] == 'y' && offers['offer'][oid]['offer'][0]['code'] != '') { window.location.replace(page_ss + '/discount/' + offers['offer'][oid]['offer'][0]['code']); }
+                                if (offers['offer'][oid]['offer'][0]['discount'] == 'y' && offers['offer'][oid]['offer'][0]['code'] != '') { window.location.replace(page_ss + '/discount/' + offers['offer'][oid]['offer'][0]['code']); next_offer(); }
                                 else {
                                     if (settings != null) {
                                         if (settings['refresh_state'] == 'y') {
