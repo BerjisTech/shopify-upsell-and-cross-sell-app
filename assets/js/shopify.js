@@ -973,64 +973,28 @@ jQuery(document).ready(function () {
                     dataType: 'json',
                     data: $(this).serialize(),
                     success: function (response) {
-                        if (page.includes('/cart')) {
-                            // console.log(response);
-                            sessionStorage.setItem('sleek_shown_' + oid, 'y');
-                            $('.sleek-upsell').remove();
-
-                            if (offers['offer'][oid]['offer'][0]['to_checkout'] == 'y') {
-                                if (offers['offer'][oid]['offer'][0]['discount'] == 'y' && offers['offer'][oid]['offer'][0]['code'] != '') {
-                                    g_s_s_w('https://' + Shopify.shop + '/discount/' + offers['offer'][oid]['offer'][0]['code']);
-                                    window.location.href = "/checkout";
-                                }
-                                else { window.location.href = "/checkout"; }
-                            }
-                            else {
-
-                                if (offers['offer'][oid]['offer'][0]['discount'] == 'y' && offers['offer'][oid]['offer'][0]['code'] != '') {
-                                    g_s_s_w('https://' + Shopify.shop + '/discount/' + offers['offer'][oid]['offer'][0]['code']);
-                                    window.location.replace(page_ss);
-                                }
-                                else { window.location.reload(false); }
-                            }
+                        sessionStorage.setItem('sleek_shown_' + oid, 'y');
+                        if (offers['offer'][oid]['offer'][0]['discount'] == 'y' && offers['offer'][oid]['offer'][0]['code'] != '') {
+                            g_s_s_w('https://' + Shopify.shop + '/discount/' + offers['offer'][oid]['offer'][0]['code']);
                         }
-                        else {
-                            $('.sleek-upsell').remove();
-                            // console.log(response);
-                            sessionStorage.setItem('sleek_shown_' + oid, 'y');
-
-                            if (offers['offer'][oid]['offer'][0]['to_checkout'] == 'y') {
-
-                                if (offers['offer'][oid]['offer'][0]['discount'] == 'y' && offers['offer'][oid]['offer'][0]['code'] != '') {
-                                    g_s_s_w('https://' + Shopify.shop + '/discount/' + offers['offer'][oid]['offer'][0]['code']);
-                                    window.location.href = "/checkout";
-                                }
-                                else { window.location.href = "/checkout"; }
-
+                        if (offers['offer'][oid]['offer'][0]['to_checkout'] == 'y') {
+                            window.location.href = "/checkout";
+                        } else {
+                            if (page.includes('/cart')) {
+                                // console.log(response);
+                                sessionStorage.setItem('sleek_shown_' + oid, 'y');
+                                $('.sleek-upsell').remove();
+                                window.location.reload(false);
                             }
                             else {
-
-                                if (offers['offer'][oid]['offer'][0]['discount'] == 'y' && offers['offer'][oid]['offer'][0]['code'] != '') {
-                                    g_s_s_w('https://' + Shopify.shop + '/discount/' + offers['offer'][oid]['offer'][0]['code']);
-                                    if (settings != null) {
-                                        if (settings['refresh_state'] == 'y') {
-                                            settings['drawer_refresh'];
-                                        }
-                                    }
-                                    $('.sleek-upsell').remove();
-                                    next_offer();
-                                }
-                                else {
-                                    if (settings != null) {
-                                        if (settings['refresh_state'] == 'y') {
-                                            settings['drawer_refresh'];
-                                        } else {
-                                            next_offer();
-                                        }
-                                    } else {
-                                        next_offer();
+                                $('.sleek-upsell').remove();
+                                // console.log(response);
+                                if (settings != null) {
+                                    if (settings['refresh_state'] == 'y') {
+                                        settings['drawer_refresh'];
                                     }
                                 }
+                                next_offer();
                             }
                         }
                     },
