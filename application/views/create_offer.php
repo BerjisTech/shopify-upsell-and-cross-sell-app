@@ -1,3 +1,8 @@
+<?php foreach ($codes as $f) {
+    print_r($f);
+    echo '<br /><hr />';
+} ?>
+
 <script>
     $(window).keydown(function(event) {
         if (event.keyCode == 13) {
