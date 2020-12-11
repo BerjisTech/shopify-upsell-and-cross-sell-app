@@ -4,10 +4,21 @@
 <!-- Mirrored from demo.web3canvas.com/themeforest/startly/saas/ by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 11 Dec 2020 06:45:57 GMT -->
 
 <head>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-3416DX49FZ"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
 
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+        gtag('js', new Date());
+
+        gtag('config', 'G-3416DX49FZ');
+    </script>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Sleek Upsell — SAAS Software Landing Template</title>
+    <title>Sleek Upsell — Upselling Reimagined</title>
 
     <meta property="og:title" content="Sleek Upsell - Upselling Reimagined " />
     <meta property="og:type" content="website" />
@@ -27,7 +38,7 @@
 <body class="overflow-hidden">
     <header id="home">
 
-        <nav class="navbar navbar-expand-lg navbar-light bg-light affix">
+        <nav class="navbar navbar-expand-lg navbar-light bg-light position-fixed">
             <div class="container">
                 <a class="navbar-brand" href="#">
                     <h3 class="gradient-mask">Sleek Upsell</h3>
