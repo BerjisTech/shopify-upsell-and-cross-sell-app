@@ -779,19 +779,19 @@ function display_offer(oid) {
     document.querySelector(element).insertAdjacentElement('beforeend', style);
 
     if (lay == 'card') {
-        lay_el = document.createElement('div').setAttribute('class', 'card sleek-upsell');
+        lay_el = '<div class"card sleek-upsell"></div>';
     }
     if (lay == 'flat') {
-        lay_el = document.createElement('div').setAttribute('class', 'flat sleek-upsell');
+        lay_el = '<div class"flat sleek-upsell"></div>';
     }
     if (lay == 'block') {
-        lay_el = document.createElement('div').setAttribute('class', 'block sleek-upsell');
+        lay_el = '<div class"block sleek-upsell"></div>';
     }
     if (lay == 'half-block') {
-        lay_el = document.createElement('div').setAttribute('class', 'half-block sleek-upsell');
+        lay_el = '<div class"half-block sleek-upsell"></div>';
     }
     if (lay == 'compact') {
-        lay_el = document.createElement('div').setAttribute('class', 'compact sleek-upsell');
+        lay_el = '<div class"compact sleek-upsell"></div>';
     }
 
     if (nudge == 'prepend') { document.querySelector(element).insertAdjacentElement('afterbegin', lay_el); }
