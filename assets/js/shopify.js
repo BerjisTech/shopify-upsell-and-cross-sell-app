@@ -812,7 +812,7 @@ function display_offer(oid) {
     let curr = Shopify.currency['active'];
     let settings = offers['settings'];
     let lay = offers['offer'][oid]['offer'][0]['layout'];
-    let lay_el = '<div class="card sleek-upsell" id="sleek-upsell"></div>';
+    let lay_el = '<div class="card sleek-upsell"></div>';
     let nudge = 'before';
 
     if (page.includes('/cart')) { element = cart_selector; nudge = cart_position; }
@@ -821,19 +821,19 @@ function display_offer(oid) {
     document.querySelector(element).insertAdjacentHTML('beforebegin', '<style>.sleek-upsell{background: #ECF0F1; color: #2B3D51; padding: 5px; font-family: inherit; vertical-align: middle; margin: 5px;}.sleek-image img{width: 100px;}.sleek-text{font-weight: bold;}.sleek-upsell select{padding: 4px; margin-top: 5px;}.sleek-prices{font-weight: bold; margin-bottom: 5px;}.sleek-compare-price{text-decoration: line-through;}.sleek-upsell button{padding: 10px; border: none; background: #2B3D51; color: #FFFFFF; font-weight: bold; border-radius: 0px; cursor: pointer; width: 100%;}.card{display: table;}.card .sleek-form{display: flex;}.card .sleek-image, .card .sleek-offer, .card .sleek-card-atc{display: table; align-self: center; padding: 5px;}.card .sleek-offer{flex-grow: 4;}.card .sleek-prices{text-align: center;}.block, .block .sleek-form, .block .sleek-text, .block .sleek-atc{display: table;}.sleek-block{display: flex;}.block .sleek-image, .block .sleek-offer{display: table; align-self: center; padding: 5px;}.block .sleek-offer{flex-grow: 1;}.half-block, .half-block .sleek-form, .half-block .sleek-text, .half-block .sleek-atc{display: table;}.sleek-half-block{display: flex;}.half-block .sleek-image, .half-block .sleek-offer{display: table; align-self: center; padding: 5px;}.half-block .sleek-offer{flex-grow: 1;}.flat, .flat .sleek-form, .flat .sleek-text{display: table;}.sleek-flat{display: flex;}.flat .sleek-image, .flat .sleek-offer{display: table; align-self: center; padding: 5px;}.flat .sleek-offer{flex-grow: 1;}.flat .flex-select{display: flex; width: auto; margin-top: 10px;}.flat .v-select{display: table; width: 100%; align-items: center; justify-content: space-between;}.flat .atc{flex-grow: 4;}.flat .q-select{margin-top: 0px; margin-right: 10px;}.compact, .compact .sleek-form, .compact .sleek-text, .compact .sleek-atc{display: table;}.sleek-compact{display: flex;}.compact .sleek-image, .compact .sleek-offer{display: table; align-self: center; padding: 5px;}.compact .sleek-offer{flex-grow: 1;}.compact .sleek-atc{margin-top: 5px;}@media only screen and (max-width: 600px){.sleek-upsell{width: 97%; margin: 5px auto;}.card select{max-width: 100px;}.block select{max-width: 200px;}.sleek-prices *{display: inline-table;}.block .sleek-form, .block .sleek-text, .block .sleek-atc{width: 100%;}}</style>');
 
     if (lay == 'card') {
-        lay_el = '<div class="card sleek-upsell" id="sleekUpsell"></div>';
+        lay_el = '<div class="card sleek-upsell"></div>';
     }
     if (lay == 'flat') {
-        lay_el = '<div class="flat sleek-upsell" id="sleekUpsell"></div>';
+        lay_el = '<div class="flat sleek-upsell"></div>';
     }
     if (lay == 'block') {
-        lay_el = '<div class="block sleek-upsell" id="sleekUpsell"></div>';
+        lay_el = '<div class="block sleek-upsell"></div>';
     }
     if (lay == 'half-block') {
-        lay_el = '<div class="half-block sleek-upsell" id="sleekUpsell"></div>';
+        lay_el = '<div class="half-block sleek-upsell"></div>';
     }
     if (lay == 'compact') {
-        lay_el = '<div class="compact sleek-upsell" id="sleekUpsell"></div>';
+        lay_el = '<div class="compact sleek-upsell"></div>';
     }
 
     if (nudge == 'prepend') { document.querySelector(element).insertAdjacentHTML('afterbegin', lay_el); }
@@ -908,9 +908,7 @@ function display_offer(oid) {
             o_ui = '<form class="sleek-form" action="/cart/add" enctype="multipart/form-data" data-product-index="' + i + '" data-product-product_id="' + pid + '"> <div class="sleek-compact"> <div class="sleek-image"> <img src="' + datacell['image']['src'] + '"/> </div><div class="sleek-offer"> <div class="sleek-text">' + dtext + '</div><div class="sleek-title">' + datacell['title'] + '</div><div class="sleek-prices"> <span class="sleek-price money">' + curr + ' ' + datacell['variants'][0]['price'] + '</span> <span class="sleek-compare-price money">' + curr + ' ' + datacell['variants'][0]['price'] + '</span> </div><div class="sleek-selectors"> <div class="offer_fields_holder o_h_' + pid + '"></div> <select name="id" class="v-select v-' + pid + '"></select> <select name="quantity" class="q-select q-' + pid + '"></select> </div><button class="sleek-atc" type="submit">' + atc + '</button> </div></div></form>'
         }
 
-        console.log(o_ui);
-
-        document.getElementById('sleekUpsell').insertAdjacentHTML('beforeend', o_ui);
+        document.querySelector('.' + lay).insertAdjacentHTML('beforeend', '<div></div>');
 
         if (v['show_title'] == 'n') {
             document.querySelector('.sleek-title').remove()
