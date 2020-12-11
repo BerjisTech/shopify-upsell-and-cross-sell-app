@@ -298,54 +298,20 @@
                 <p>Simple pricing. no hidden charges. Choose a plan fit your needs</p>
             </div>
             <div class="row">
-                <div class="col-lg-4">
+                <div class="col-lg-4 col-lg-offset-4">
                     <div class="card pricing">
                         <div class="card-body">
-                            <small class="text-muted">PERSONAL</small>
-                            <h5 class="card-title">$9</h5>
+                            <small class="text-muted">SLEEK</small>
+                            <h5 class="card-title">$19.99</h5>
                             <p class="card-text">
                                 <ul class="list-unstyled">
-                                    <li>3 Projects</li>
-                                    <li class="plan-muted">Team Collaboration</li>
-                                    <li class="plan-muted">Analytics &amp; Reports</li>
-                                    <li>One user</li>
-                                </ul>
-                            </p>
-                            <a href="#" class="btn btn-xl btn-outline-primary">Choose this plan</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4">
-                    <div class="card pricing">
-                        <div class="card-body">
-                            <small class="text-muted">STARTUP</small>
-                            <h5 class="card-title">$29</h5>
-                            <p class="card-text">
-                                <ul class="list-unstyled">
-                                    <li>20 Projects</li>
-                                    <li>Team Collaboration</li>
+                                    <li>Unlimited Upsells and Cross-sells</li>
+                                    <li>Advanced Geo-targetting</li>
                                     <li>Analytics &amp; Reports</li>
-                                    <li>10 Active users</li>
+                                    <li>Visual &amp; Logical customizations</li>
                                 </ul>
                             </p>
-                            <a href="#" class="btn btn-xl btn-primary">Choose this plan</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4">
-                    <div class="card pricing">
-                        <div class="card-body">
-                            <small class="text-muted">ENTERPRISE</small>
-                            <h5 class="card-title">$149</h5>
-                            <p class="card-text">
-                                <ul class="list-unstyled">
-                                    <li>Unlimited Projects</li>
-                                    <li>Team Collaboration</li>
-                                    <li>Analytics &amp; Reports</li>
-                                    <li>Priority Support</li>
-                                </ul>
-                            </p>
-                            <a href="#" class="btn btn-xl btn-outline-primary">Choose this plan</a>
+                            <a href="/get_app" class="btn btn-xl btn-primary">Choose this plan</a>
                         </div>
                     </div>
                 </div>
@@ -362,7 +328,7 @@
             </div>
             <div class="row justify-content-md-center">
                 <div class="col col-md-5">
-                    <form action="https://sleek-upsell.com/install">
+                    <form action="/install">
                         <input type="hidden" name="authenticity_token" value="<?php echo sha1(md5('nehN7kwK9YR++yH5VIG2I0C2wMNMYReLqtJAuhRimoqM3wmzPwV24KDKaOy1aGnKPBYeWoiDOuldhtvdcA73Ww==')); ?>">
                         <div class="form-group">
                             <input style="text-align: center;" id="shop" name="shop" type="text" autofocus="autofocus" placeholder="example.myshopify.com" class="form-control">
