@@ -908,6 +908,8 @@ function display_offer(oid) {
             o_ui = '<form class="sleek-form" action="/cart/add" enctype="multipart/form-data" data-product-index="' + i + '" data-product-product_id="' + pid + '"> <div class="sleek-compact"> <div class="sleek-image"> <img src="' + datacell['image']['src'] + '"/> </div><div class="sleek-offer"> <div class="sleek-text">' + dtext + '</div><div class="sleek-title">' + datacell['title'] + '</div><div class="sleek-prices"> <span class="sleek-price money">' + curr + ' ' + datacell['variants'][0]['price'] + '</span> <span class="sleek-compare-price money">' + curr + ' ' + datacell['variants'][0]['price'] + '</span> </div><div class="sleek-selectors"> <div class="offer_fields_holder o_h_' + pid + '"></div> <select name="id" class="v-select v-' + pid + '"></select> <select name="quantity" class="q-select q-' + pid + '"></select> </div><button class="sleek-atc" type="submit">' + atc + '</button> </div></div></form>'
         }
 
+        document.querySelector('.' + lay).insertAdjacentHTML('beforeend', o_ui);
+
         if (v['show_title'] == 'n') {
             document.querySelector('.sleek-title').parentNode.removeChild(document.querySelector('.sleek-upsell'));
         }
@@ -931,8 +933,6 @@ function display_offer(oid) {
         if (v['q_select'] == 'n') {
             document.querySelector('.q_select').style.display = 'none';
         }
-
-        document.querySelector('.' + lay).insertAdjacentHTML('beforeend', o_ui);
 
         populateFields(oid, pid);
 
