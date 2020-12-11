@@ -297,7 +297,7 @@
                 <h3>Choose your plan</h3>
                 <p>Simple pricing. no hidden charges. Choose a plan fit your needs</p>
             </div>
-            <div class="row">
+            <div class="row" style="text-align: center;">
                 <div class="col-lg-4 col-lg-offset-4">
                     <div class="card pricing">
                         <div class="card-body">
