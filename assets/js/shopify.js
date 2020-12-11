@@ -911,23 +911,23 @@ function display_offer(oid) {
         document.querySelector('.' + lay).insertAdjacentHTML('beforeend', o_ui);
 
         if (v['show_title'] == 'n') {
-            document.querySelector('.sleek-title').parentNode.removeChild(document.querySelector('.sleek-upsell'));
+            document.querySelector('.sleek-title').parentNode.removeChild(document.querySelector('.sleek-title'));
         }
 
         if (v['show_price'] == 'n') {
-            document.querySelector('.sleek-price').parentNode.removeChild(document.querySelector('.sleek-upsell'));
+            document.querySelector('.sleek-price').parentNode.removeChild(document.querySelector('.sleek-price'));
         }
 
         if (v['show_image'] == 'n') {
-            document.querySelector('.sleek-image').parentNode.removeChild(document.querySelector('.sleek-upsell'));
+            document.querySelector('.sleek-image').parentNode.removeChild(document.querySelector('.sleek-image'));
         }
 
         if (v['v_price'] == 'n') {
-            document.querySelector('.sleek-compare-price').parentNode.removeChild(document.querySelector('.sleek-upsell'));
+            document.querySelector('.sleek-compare-price').parentNode.removeChild(document.querySelector('.sleek-compare-price'));
         }
 
         if (v['c_price'] == 'n') {
-            document.querySelector('.sleek-price').parentNode.removeChild(document.querySelector('.sleek-upsell'));
+            document.querySelector('.sleek-price').parentNode.removeChild(document.querySelector('.sleek-price'));
         }
 
         if (v['q_select'] == 'n') {
