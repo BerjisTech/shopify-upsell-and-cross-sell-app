@@ -165,7 +165,7 @@
                             </div>
                         </div>
                         <div class="content">
-                            <img src="fe/images/dashboard.jpg" alt="image">
+                            <img src="fe/images/dashboard.png" alt="image">
                         </div>
                     </div>
                 </div>
