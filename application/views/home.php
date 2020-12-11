@@ -56,7 +56,7 @@
                             <a class="nav-link" href="#">Help</a>
                         </li>
                         <li class="nav-item text-center">
-                            <a href="https://sleek-upsell.com/get_app" class="btn align-middle btn-primary my-2 my-lg-0">GET STARTED</a>
+                            <a href="#signup" class="btn align-middle btn-primary my-2 my-lg-0">GET STARTED</a>
                         </li>
                     </ul>
                 </div>
