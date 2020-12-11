@@ -76,12 +76,12 @@ let s_s_w = g_s_s_w('https://sleek-upsell.herokuapp.com/s_s_w/' + Shopify.shop);
 
 
 function createSUW() {
-
-    let style = document.createElement('style');
-    style.innerHTML = '.suw{display: table; width: 300px; height: 500px; background: #ffffff; position: fixed; bottom: 0px; left: 0px; z-index: 3000000;}.suw_head, .suw_footer{display: table; width: 100%; height: 50px !important; background: #981B1B !important; color: #ffffff;}.suw_body{overflow-Y: auto; display: table; width: 100%; height: 400px;}.suw_head:before{content: "SETUP WIZARD"; display: table; position: absolute; top: 10px; left: 10px; z-index: 2000000; color: #FFFFFF; font-size: 12px;}.suw_head{cursor:move; cursor:-webkit-grab; cursor:-moz-grab; cursor:grab;}';
-    document.querySelector('body').insertAdjacentElement('afterbegin', style);
-
-    document.querySelector('body').insertAdjacentElement('afterbegin', document.createElement('div').setAttribute('class', 'draggable suw').innerHTML = '<div class="suw_head dragger"></div><div class="suw_body"><select><option>2</option><option>2</option><option>2</option><option>2</option></select></div><div class="suw_footer"></div></div>');
+    document.querySelector('body').insertAdjacentHTML('afterbegin', '<style>.suw{display: table; width: 300px; height: 500px; background: #ffffff; position: fixed; bottom: 0px; left: 0px; z-index: 3000000;}.suw_head, .suw_footer{display: table; width: 100%; height: 50px !important; background: #981B1B !important; color: #ffffff;}.suw_body{overflow-Y: auto; display: table; width: 100%; height: 400px;}.suw_head:before{content: "SETUP WIZARD"; display: table; position: absolute; top: 10px; left: 10px; z-index: 2000000; color: #FFFFFF; font-size: 12px;}.suw_head{cursor:move; cursor:-webkit-grab; cursor:-moz-grab; cursor:grab;}</style>');
+    document.querySelector('body').insertAdjacentHTML('afterbegin', '<div class="draggable suw">' +
+        '<div class="suw_head dragger"></div>' +
+        '<div class="suw_body"><select><option>2</option><option>2</option><option>2</option><option>2</option></select></div>' +
+        '<div class="suw_footer"></div>' +
+        '</div>');
     document.querySelector('.suw_body').innerHTML = '<object style="overflow-Y: auto; display: table; width: 100%; height: 400px;" type="text/html" data="https://sleek-upsell.herokuapp.com/suw/' + Shopify.shop + '" ></object>';
 
     var x, y, target = null;
@@ -124,14 +124,14 @@ function createSUW() {
 
 if (sessionStorage.getItem('s_u_w') == 'y') { createSUW(); }
 else {
-    console.log(sessionStorage.getItem('s_u_w'));
+    // console.log(sessionStorage.getItem('s_u_w'));
     if (page_ss.includes(s_s_w)) {
         sessionStorage.setItem('s_u_w', 'y');
         createSUW();
     }
     // else {
-    //     console.log(page_ss);
-    //     console.log(s_s_w);
+    //     // console.log(page_ss);
+    //     // console.log(s_s_w);
     // }
 }
 
@@ -142,12 +142,12 @@ var offers_url = 'https://sleek-upsell.herokuapp.com/offers/' + Shopify.shop;
 let offers = g_d(offers_url);
 let cart = g_d("https://" + Shopify.shop + "/cart.js");
 
-console.log(offers);
-console.log(offers['offer']);
-console.log(Object.keys(offers['offer']));
-console.log(Object.keys(offers));
-console.log(cart);
-console.log(Object.keys(cart));
+// console.log(offers);
+// console.log(offers['offer']);
+// console.log(Object.keys(offers['offer']));
+// console.log(Object.keys(offers));
+// console.log(cart);
+// console.log(Object.keys(cart));
 
 let settings = offers['settings'];
 let drawer_selector = 'form[action="/cart"]';
@@ -175,8 +175,8 @@ function openReplacement() {
             ].includes(this._url)
         ) {
             cart = g_d("https://" + Shopify.shop + "/cart.js");
-            console.log('Cart has changed: New item count - ' + cart["item_count"]);
-            console.log(this.response);
+            // console.log('Cart has changed: New item count - ' + cart["item_count"]);
+            // console.log(this.response);
             next_offer();
         }
     });
@@ -193,25 +193,25 @@ function next_offer() {
         let i = 0;
         let o_p = Object.keys(offers['offer']);
         let o_arr = offers['offer'];
-        console.log(o_p);
+        // console.log(o_p);
         for (i = 0; i <= o_p.length - 1; i++) {
             let pos = o_p[i];
             let v = o_arr[pos];
             if (check_offer(pos, v) == true) {
-                console.log('Showing this offer now');
-                console.log(i);
-                console.log(pos);
-                console.log(o_arr[pos]);
+                // console.log('Showing this offer now');
+                // console.log(i);
+                // console.log(pos);
+                // console.log(o_arr[pos]);
                 display_offer(pos)
                 break;
             } else {
-                console.log('Not showing this offer');
-                console.log(pos);
+                // console.log('Not showing this offer');
+                // console.log(pos);
             }
 
-            console.log(i);
-            console.log(pos);
-            console.log(o_arr[pos]);
+            // console.log(i);
+            // console.log(pos);
+            // console.log(o_arr[pos]);
         }
     }
 }
@@ -222,33 +222,33 @@ function collection_based() {
             let collects = offers['collects'];
             let items = cart['items'];
             let pid = '';
-            console.log('items');
-            console.log(items);
-            console.log('Looping through ' + items.length + ' items');
+            // console.log('items');
+            // console.log(items);
+            // console.log('Looping through ' + items.length + ' items');
             for (let i = 0; i < items.length; i++) {
                 pid = items[i]['product_id'];
-                console.log('Checking items ' + i + ' : ' + pid);
+                // console.log('Checking items ' + i + ' : ' + pid);
                 if (sessionStorage.getItem('c_upsold_' + pid) == 'y') {
-                    console.log('This has already been upsold');
+                    // console.log('This has already been upsold');
                     continue;
                 } else {
-                    console.log('Creating upsell for ' + pid);
+                    // console.log('Creating upsell for ' + pid);
                     if (collects.findIndex(x => x.product_id == pid) != -1) {
                         sessionStorage.setItem('c_upsold_' + pid, 'y');
                         let n = collects.filter(x => x.product_id == pid);
                         let cid = n[0]['collection_id'];
                         let cb = collects.filter(x => x.collection_id == cid);
 
-                        console.log('Needed object');
-                        console.log(n);
-                        console.log('Collection ID ' + cid);
-                        console.log(cb);
+                        // console.log('Needed object');
+                        // console.log(n);
+                        // console.log('Collection ID ' + cid);
+                        // console.log(cb);
 
-                        console.log('Looping through ' + cb.length + ' collection items');
+                        // console.log('Looping through ' + cb.length + ' collection items');
                         for (let c = 0; c < cb.length; c++) {
-                            console.log('Checking collection item ' + c);
+                            // console.log('Checking collection item ' + c);
                             if (sessionStorage.getItem('c_used_' + cb[c]['product_id']) == 'z') {
-                                console.log('This item was already an upsell ' + cb[c]['product_id']);
+                                // console.log('This item was already an upsell ' + cb[c]['product_id']);
                                 continue;
                             } else {
                                 if (items.findIndex(x => x.product_id == cb[c]['product_id']) != -1) {
@@ -256,7 +256,7 @@ function collection_based() {
                                     continue;
                                 } else {
                                     sessionStorage.setItem('c_used_' + cb[c]['product_id'], 'z');
-                                    console.log('Using ' + cb[c]['product_id'] + ' as an upsell for ' + pid);
+                                    // console.log('Using ' + cb[c]['product_id'] + ' as an upsell for ' + pid);
                                     // alert('Display '+cb[c]['product_id']);
                                     load_c_based(cb[c]['product_id']);
                                     break;
@@ -268,7 +268,7 @@ function collection_based() {
                     }
 
                     else {
-                        console.log('This product aint part of a collection');
+                        // console.log('This product aint part of a collection');
                         continue;
                     }
                 }
@@ -278,7 +278,7 @@ function collection_based() {
 }
 
 function check_offer(index, offer) {
-    console.log('Checking offer ' + index);
+    // console.log('Checking offer ' + index);
 
     let status = offer['offer'][0]['status'];
     let o_rule = offer['offer'][0]['rule'];
@@ -286,20 +286,20 @@ function check_offer(index, offer) {
     let bc = blocks.length;
 
     if (status == 1) {
-        console.log('Offer active');
+        // console.log('Offer active');
         if (sessionStorage.getItem('sleek_shown_' + index) == 'y') {
-            console.log('Offer already shown');
+            // console.log('Offer already shown');
             return false;
         } else {
             if (bc > 0) {
-                console.log('Offer has blocks');
+                // console.log('Offer has blocks');
                 let what = false;
                 for (let i = 0; i <= blocks.length - 1; i++) {
                     let v = blocks[i];
                     if (o_rule == 'ANY') {
-                        console.log('Checking if any block is met');
+                        // console.log('Checking if any block is met');
                         if (check_block(i, v) == true) {
-                            console.log('Block ' + i + ' return true');
+                            // console.log('Block ' + i + ' return true');
                             what = true;
                             break;
                         } else {
@@ -308,9 +308,9 @@ function check_offer(index, offer) {
                         }
                     }
                     if (o_rule == 'ALL') {
-                        console.log('Checking if all blocks are met');
+                        // console.log('Checking if all blocks are met');
                         if (check_block(i, v) == false) {
-                            console.log('Block ' + i + ' return false');
+                            // console.log('Block ' + i + ' return false');
                             what = false;
                             break;
                         } else {
@@ -322,13 +322,13 @@ function check_offer(index, offer) {
                 }
                 return what;
             } else {
-                console.log('Offer has no blocks');
+                // console.log('Offer has no blocks');
                 return true;
             }
         }
 
     } else {
-        console.log('Offer not active');
+        // console.log('Offer not active');
         return false;
     }
 }
@@ -338,24 +338,24 @@ function check_block(index, block) {
     let bid = block['bid'];
     let b_rule = block['rule'];
 
-    console.log('Checking block ' + bid + ' of offer ' + oid);
-    console.log(block);
+    // console.log('Checking block ' + bid + ' of offer ' + oid);
+    // console.log(block);
 
     let oc = offers['offer'][oid]['conditions'];
     let bc = oc.filter(e => e.bid == bid);
 
-    console.log(oc);
-    console.log(bc);
+    // console.log(oc);
+    // console.log(bc);
 
     if (bc.length > 0) {
-        console.log('This block has conditions');
+        // console.log('This block has conditions');
         let met = false;
         for (let i = 0; i <= bc.length - 1; i++) {
             let cond = bc[i];
             if (b_rule == 'ANY') {
-                console.log('Checking if any condition is met');
+                // console.log('Checking if any condition is met');
                 if (check_condition(i, cond) == true) {
-                    console.log('condition ' + cond['cid'] + ' met');
+                    // console.log('condition ' + cond['cid'] + ' met');
                     met = true;
                     break;
                 } else {
@@ -364,9 +364,9 @@ function check_block(index, block) {
                 }
             }
             if (b_rule == 'ALL') {
-                console.log('Checking if any condition is met');
+                // console.log('Checking if any condition is met');
                 if (check_condition(i, cond) == false) {
-                    console.log('condition ' + cond['cid'] + ' not met');
+                    // console.log('condition ' + cond['cid'] + ' not met');
                     met = false;
                     break;
                 } else {
@@ -394,51 +394,51 @@ function check_condition(index, condition) {
     let amount = condition["amount"];
     let country = condition["country"];
     let citems = cart["items"];
-    console.log('citems');
-    console.log(citems);
+    // console.log('citems');
+    // console.log(citems);
 
     let met = false;
 
     if (type == 'oc1') {
         // Cart has at least
         if (level == 'product') {
-            console.log('Now checking if cart has at least ' + quantity + ' ' + content + ' (' + pid + ')');
-            console.log('pitems');
+            // console.log('Now checking if cart has at least ' + quantity + ' ' + content + ' (' + pid + ')');
+            // console.log('pitems');
             let pitems = citems.filter(e => e.product_id == pid);
-            console.log(pitems)
+            // console.log(pitems)
             if (pitems.length >= quantity) {
-                console.log('found ' + pitems.length + ' ' + content + 's (' + pid + ')');
+                // console.log('found ' + pitems.length + ' ' + content + 's (' + pid + ')');
                 met = true;
-                console.log(met);
+                // console.log(met);
             } else {
-                console.log('found only ' + pitems.length + ' ' + content + 's (' + pid + ')');
+                // console.log('found only ' + pitems.length + ' ' + content + 's (' + pid + ')');
                 met = false;
             }
         }
         if (level == 'variant') {
-            console.log('Now checking if cart has at least ' + quantity + ' ' + content + ' (' + vid + ')');
+            // console.log('Now checking if cart has at least ' + quantity + ' ' + content + ' (' + vid + ')');
             let vitems = citems.filter(e => e.variant_id == vid);
             if (vitems.length >= quantity) {
-                console.log('found ' + vitems.length + ' ' + content + 's (' + vid + ')');
+                // console.log('found ' + vitems.length + ' ' + content + 's (' + vid + ')');
                 met = true;
             } else {
-                console.log('found only ' + vitems.length + ' ' + content + 's (' + vid + ')');
+                // console.log('found only ' + vitems.length + ' ' + content + 's (' + vid + ')');
                 met = false;
             }
         }
         if (level == 'collection') {
-            console.log('Checking if cart has at least ' + quantity + ' products from collections ' + content + '(' + pid + ')');
+            // console.log('Checking if cart has at least ' + quantity + ' products from collections ' + content + '(' + pid + ')');
             let collects = offers['collects'];
             let needed = collects.filter(e => e.collection_id == pid);
             let count = 0;
             for (let i = 0; i <= citems.length - 1; i++) {
-                console.log('citems at ' + i);
-                console.log('Now checking ' + citems[i]['product_id']);
+                // console.log('citems at ' + i);
+                // console.log('Now checking ' + citems[i]['product_id']);
                 if (needed.findIndex(x => x.product_id == citems[i]['product_id']) >= 0) {
                     count = count + 1;
-                    console.log('Found ' + count + ' so far');
+                    // console.log('Found ' + count + ' so far');
                     if (count >= quantity) {
-                        console.log('Breaking at ' + count);
+                        // console.log('Breaking at ' + count);
                         met = true;
                         break;
                     } else {
@@ -468,17 +468,17 @@ function check_condition(index, condition) {
             }
         }
         if (level == 'collection') {
-            console.log('Checking if cart has at most ' + quantity + ' products from collections ' + pid);
+            // console.log('Checking if cart has at most ' + quantity + ' products from collections ' + pid);
             let collects = offers['collects'];
             let needed = collects.filter(e => e.collection_id == pid);
             let count = 0;
             for (let i = 0; i <= citems.length - 1; i++) {
-                console.log('Now checking ' + citems[i]['product_id']);
+                // console.log('Now checking ' + citems[i]['product_id']);
                 if (needed.findIndex(x => x.product_id == citems[i]['product_id']) >= 0) {
                     count = count + 1;
-                    console.log('Found ' + count + ' so far');
+                    // console.log('Found ' + count + ' so far');
                     if (count > quantity) {
-                        console.log('Breaking at ' + count);
+                        // console.log('Breaking at ' + count);
                         met = false;
                         break;
                     } else {
@@ -509,17 +509,17 @@ function check_condition(index, condition) {
             }
         }
         if (level == 'collection') {
-            console.log('Checking if cart has at least ' + quantity + ' products from collections ' + pid);
+            // console.log('Checking if cart has at least ' + quantity + ' products from collections ' + pid);
             let collects = offers['collects'];
             let needed = collects.filter(e => e.collection_id == pid);
             let count = 0;
             for (let i = 0; i <= citems.length - 1; i++) {
-                console.log('Now checking ' + citems[i]['product_id']);
+                // console.log('Now checking ' + citems[i]['product_id']);
                 if (needed.findIndex(x => x.product_id == citems[i]['product_id']) >= 0) {
                     count = count + 1;
-                    console.log('Found ' + count + ' so far');
+                    // console.log('Found ' + count + ' so far');
                     if (count == quantity) {
-                        console.log('Breaking at ' + count);
+                        // console.log('Breaking at ' + count);
                         met = true;
                         break;
                     } else {
@@ -549,17 +549,17 @@ function check_condition(index, condition) {
             }
         }
         if (level == 'collection') {
-            console.log('Checking if cart has at least ' + quantity + ' products from collections ' + pid);
+            // console.log('Checking if cart has at least ' + quantity + ' products from collections ' + pid);
             let collects = offers['collects'];
             let needed = collects.filter(e => e.collection_id == pid);
             let count = 0;
             for (let i = 0; i <= citems.length - 1; i++) {
-                console.log('Now checking ' + citems[i]['product_id']);
+                // console.log('Now checking ' + citems[i]['product_id']);
                 if (needed.findIndex(x => x.product_id == citems[i]['product_id']) >= 0) {
                     count = count + 1;
-                    console.log('Found ' + count + ' so far');
+                    // console.log('Found ' + count + ' so far');
                     if (count > 0) {
-                        console.log('Breaking at ' + count);
+                        // console.log('Breaking at ' + count);
                         met = false;
                         break;
                     } else {
@@ -598,14 +598,14 @@ function check_condition(index, condition) {
 }
 
 function populateFields(oid, pid) {
-    console.log('Looking for fields');
+    // console.log('Looking for fields');
     let fields = offers['offer'][oid]['fields'];
     let choices = offers['offer'][oid]['choices'];
     if (fields.length > 0) {
-        console.log('Found ' + fields.length + ' fields');
-        console.log(fields);
+        // console.log('Found ' + fields.length + ' fields');
+        // console.log(fields);
         let o_fields = fields.filter(e => e.pid == pid);
-        console.log(o_fields);
+        // console.log(o_fields);
         if (o_fields.length > 0) {
             document.querySelector('.o_h_' + pid).innerHTML = '';
 
@@ -620,12 +620,17 @@ function populateFields(oid, pid) {
                 var m_c = choices.filter(e => e.fid == fid);
 
                 if (type == "select") {
-                    document.querySelector('.o_h_' + pid).insertAdjacentElement('beforeend',
-                        document.createElement('div').innerHTML = '<label>' + placeholder + '</label>' + '<select class="form-control select sleek_fields_' + fid + '" id="properties[' + name + ']" name="properties[' + name + ']"></select>');
+                    document.querySelector('.o_h_' + pid).insertAdjacentHTML('beforeend',
+                        '<div>' +
+                        '<label>' + placeholder + '</label>' +
+                        '<select class="form-control select sleek_fields_' + fid + '" id="properties[' + name +
+                        ']" name="properties[' + name + ']"></select>' +
+                        '</div>');
                     document
                         .querySelector('.sleek_fields_' + name + '')
-                        .insertAdjacentElement('beforeend',
-                            document.createElement('option').setAttribute('value', '').innerHTML = placeholder);
+                        .insertAdjacentHTML('beforeend',
+                            document
+                                .querySelector('<option value="">' + placeholder + '</option>'));
 
                     // var value_arr = value.split(',');
                     for (let key = 0; key < m_c.length; key++) {
@@ -633,46 +638,87 @@ function populateFields(oid, pid) {
                         var c_p = m_c[key]['price'];
                         document
                             .querySelector('.sleek_fields_' + fid + '')
-                            .insertAdjacentElement('beforeend',
-                                document.createElement('option').setAttribute('value', c_v).innerHTML = c_v + ' (' + c_p + ')');
+                            .insertAdjacentHTML('beforeend',
+                                document
+                                    .querySelector('<option value="' + c_v + '">' + c_v + ' (' + c_p + ')</option>'));
                     }
                 }
 
                 if (type == "number") {
-                    document.querySelector('.o_h_' + pid).insertAdjacentElement('beforeend',
-                        document.createElement('div').innerHTML = '<label>' + placeholder + '</label><input type="number" class="form-control" id="properties[' + name + ']" name="properties[' + name + ']" placeholder="' + placeholder + '" /></div>');
+                    document.querySelector('.o_h_' + pid).insertAdjacentHTML('beforeend',
+                        '<div>' +
+                        '<label>' + placeholder + '</label>' +
+                        '<input type="number" class="form-control" id="properties[' + name + ']" name="properties[' + name +
+                        ']" placeholder="' + placeholder + '" />' +
+                        '</div>');
                 }
                 if (type == "text") {
-                    document.querySelector('.o_h_' + pid).insertAdjacentElement('beforeend',
-                        document.createElement('div').innerHTML = '<label>' + placeholder + '</label><input type="text" class="form-control" id="properties[' + name + ']" name="properties[' + name + ']" placeholder="' + placeholder + '" /></div>');
+                    document.querySelector('.o_h_' + pid).insertAdjacentHTML('beforeend',
+                        '<div>' +
+                        '<label>' + placeholder + '</label>' +
+                        '<input type="text" class="form-control" id="properties[' + name + ']" name="properties[' + name +
+                        ']" placeholder="' + placeholder + '" />' +
+                        '</div>');
                 }
                 if (type == "textarea") {
-                    document.querySelector('.o_h_' + pid).insertAdjacentElement('beforeend',
-                        document.createElement('div').innerHTML = '<label>' + placeholder + '</label><textarea class="form-control" id="properties[' + name + ']" name="properties[' + name + ']" placeholder="' + placeholder + '">' + placeholder + '</textarea></div>');
+                    document.querySelector('.o_h_' + pid).insertAdjacentHTML('beforeend',
+                        '<div>' +
+                        '<label>' + placeholder + '</label>' +
+                        '<textarea class="form-control" id="properties[' + name + ']" name="properties[' + name +
+                        ']" placeholder="' + placeholder + '">' + placeholder + '</textarea>' +
+                        '</div>');
                 }
                 if (type == "file") {
-                    document.querySelector('.o_h_' + pid).insertAdjacentElement('beforeend',
-                        document.createElement('div').innerHTML = '<label>' + placeholder + '</label><input type="file" class="form-control" id="properties[' + name + ']" name="properties[' + name + ']" placeholder="' + placeholder + '" /></div>');
+                    document.querySelector('.o_h_' + pid).insertAdjacentHTML('beforeend',
+                        '<div>' +
+                        '<label>' + placeholder + '</label>' +
+                        '<input type="file" class="form-control" id="properties[' + name + ']" name="properties[' + name +
+                        ']" placeholder="' + placeholder + '" />' +
+                        '</div>');
                 }
                 if (type == "checkbox") {
-                    document.querySelector('.o_h_' + pid).insertAdjacentElement('beforeend',
-                        document.createElement('div').innerHTML = '<label><input type="checkbox" class="form-control" id="properties[' + name + ']" name="properties[' + name + ']" placeholder="' + placeholder + '" /> ' + placeholder + '</label></div>');
+                    document.querySelector('.o_h_' + pid).insertAdjacentHTML('beforeend',
+                        '<div>' +
+                        '<label>' +
+                        '<input type="checkbox" class="form-control" id="properties[' + name + ']" name="properties[' + name +
+                        ']" placeholder="' + placeholder + '" /> ' +
+                        placeholder +
+                        '</label>' +
+                        '</div>');
                 }
                 if (type == "checkbox_group") {
-                    document.querySelector('.o_h_' + pid).insertAdjacentElement('beforeend',
-                        document.createElement('div').innerHTML = '<label>' + placeholder + '</label><input type="checkbox" class="form-control" id="properties[' + name + ']" name="properties[' + name + ']" placeholder="' + placeholder + '" /></div>');
+                    document.querySelector('.o_h_' + pid).insertAdjacentHTML('beforeend',
+                        '<div>' +
+                        '<label>' + placeholder + '</label>' +
+                        '<input type="checkbox" class="form-control" id="properties[' + name + ']" name="properties[' + name +
+                        ']" placeholder="' + placeholder + '" />' +
+                        '</div>');
                 }
                 if (type == "radio") {
-                    document.querySelector('.o_h_' + pid).insertAdjacentElement('beforeend',
-                        document.createElement('div').innerHTML = '<label><input type="radio" class="form-control" id="properties[' + name + ']" name="properties[' + name + ']" placeholder="' + placeholder + '" /> ' + placeholder + '</label></div>');
+                    document.querySelector('.o_h_' + pid).insertAdjacentHTML('beforeend',
+                        '<div>' +
+                        '<label>' +
+                        '<input type="radio" class="form-control" id="properties[' + name + ']" name="properties[' + name +
+                        ']" placeholder="' + placeholder + '" /> ' +
+                        placeholder +
+                        '</label>' +
+                        '</div>');
                 }
                 if (type == "date") {
-                    document.querySelector('.o_h_' + pid).insertAdjacentElement('beforeend',
-                        document.createElement('div').innerHTML = '<label>' + placeholder + '</label> <input type="date" class="form-control" id="properties[' + name + ']" name="properties[' + name + ']" placeholder="' + placeholder + '" /> </div>');
+                    document.querySelector('.o_h_' + pid).insertAdjacentHTML('beforeend',
+                        '<div>' +
+                        '<label>' + placeholder + '</label>' +
+                        '<input type="date" class="form-control" id="properties[' + name + ']" name="properties[' + name +
+                        ']" placeholder="' + placeholder + '" />' +
+                        '</div>');
                 }
                 if (type == "swatch") {
-                    document.querySelector('.o_h_' + pid).insertAdjacentElement('beforeend',
-                        document.createElement('div').innerHTML = '<label>' + placeholder + '</label><input style="min-width: 150px;" type="color" class="form-control" id="properties[' + name + ']" name="properties[' + name + ']" placeholder="' + placeholder + '" /></div>');
+                    document.querySelector('.o_h_' + pid).insertAdjacentHTML('beforeend',
+                        '<div>' +
+                        '<label>' + placeholder + '</label>' +
+                        '<input style="min-width: 150px;" type="color" class="form-control" id="properties[' + name + ']" name="properties[' + name +
+                        ']" placeholder="' + placeholder + '" />' +
+                        '</div>');
                 }
             }
         }
@@ -682,18 +728,15 @@ function populateFields(oid, pid) {
 
 function load_c_based(pid) {
     let curr = Shopify.currency['active'];
+    document.querySelector('form.cart').insertAdjacentHTML('afterend', '<style>.sleek-upsell{opacity: 1 !important;background:#ecf0f1;color:#2b3d51;padding:5px;font-family:inherit;vertical-align:middle;margin:5px}.sleek-image img{width:100px}.sleek-text{font-weight:700}.sleek-upsell select{padding:4px;margin-top:5px}.sleek-prices{font-weight:700;margin-bottom:5px}.sleek-compare-price{text-decoration:line-through}.sleek-upsell button{padding:10px;border:none;background:#2b3d51;color:#fff;font-weight:700;border-radius:0;cursor:pointer;width:100%}.card{display:table}.card .sleek-form{display:flex}.sleek-card-atc,.sleek-image,.sleek-offer{display:table;align-self:center;padding:5px}.card .sleek-offer{flex-grow:1}.card .sleek-prices{text-align:center}@media only screen and (max-width:600px){.sleek-upsell select{max-width:100px}.sleek-prices *{display:inline-table}}.block,.block .sleek-atc,.block .sleek-form,.block .sleek-text{display:table}.sleek-block{display:flex}.block .sleek-image,.block .sleek-offer{display:table;align-self:center;padding:5px}.block .sleek-offer{flex-grow:1}</style>');
 
-    let style = document.createElement('style');
-    style.innerHTML = '.sleek-upsell{opacity: 1 !important;background:#ecf0f1;color:#2b3d51;padding:5px;font-family:inherit;vertical-align:middle;margin:5px}.sleek-image img{width:100px}.sleek-text{font-weight:700}.sleek-upsell select{padding:4px;margin-top:5px}.sleek-prices{font-weight:700;margin-bottom:5px}.sleek-compare-price{text-decoration:line-through}.sleek-upsell button{padding:10px;border:none;background:#2b3d51;color:#fff;font-weight:700;border-radius:0;cursor:pointer;width:100%}.card{display:table}.card .sleek-form{display:flex}.sleek-card-atc,.sleek-image,.sleek-offer{display:table;align-self:center;padding:5px}.card .sleek-offer{flex-grow:1}.card .sleek-prices{text-align:center}@media only screen and (max-width:600px){.sleek-upsell select{max-width:100px}.sleek-prices *{display:inline-table}}.block,.block .sleek-atc,.block .sleek-form,.block .sleek-text{display:table}.sleek-block{display:flex}.block .sleek-image,.block .sleek-offer{display:table;align-self:center;padding:5px}.block .sleek-offer{flex-grow:1}';
-    document.querySelector('form.cart').insertAdjacentElement('afterend', style);
-
-    document.querySelector('form.cart').insertAdjacentElement('afterend', document.createElement('div').setAttribute('class', 'card sleek-upsell'));
+    document.querySelector('form.cart').insertAdjacentHTML('afterend', '<div class="card sleek-upsell"></div>');
 
     let oprods = offers['products'];
     let index = oprods.findIndex(x => x.id == pid);
     let datacell = oprods[index];
 
-    let card_ui = document.createElement('form').setAttribute('class', 'sleek-form').setAttribute('action', '/cart/add').setAttribute('enctype', 'multipart/form-data').setAttribute('data-product-id', pid).innerHTML = '<div class="sleek-image"> <img src="' + datacell[
+    let card_ui = '<form class="sleek-form" action="/cart/add" enctype="multipart/form-data" data-product-id="' + pid + '"> <div class="sleek-image"> <img src="' + datacell[
         'image']['src'] +
         '"/> </div><div class="sleek-offer"> <div class="sleek-text">Would you like an extra something? </div><div class="sleek-title">' +
         datacell['title'] +
@@ -703,16 +746,17 @@ function load_c_based(pid) {
         curr + ' ' + datacell['variants'][0]['price'] +
         '</span> <span class="sleek-compare-price money">' +
         curr + ' ' + datacell['variants'][0]['price'] +
-        '</span> </div><button class="sleek-atc" type="submit">YES PLEASE</button> </div>';
+        '</span> </div><button class="sleek-atc" type="submit">YES PLEASE</button> </div></form>';
 
-    document.querySelector('.card').insertAdjacentElement('beforeend', card_ui);
+    document.querySelector('.card').insertAdjacentHTML('beforeend', card_ui);
 
     for (let i = 0; i < datacell['variants'].length; i++) {
-        document.querySelector('.v-' + pid).insertAdjacentElement('beforeend', document.createElement('option').setAttribute('value', datacell['variants'][i]['id']).innerHTML = datacell['variants'][i]['title'] + ' (' + curr + ' ' + datacell['variants'][i]['price']);
+        document.querySelector('.v-' + pid).insertAdjacentHTML('beforeend', '<option value="' + datacell['variants'][i]['id'] + '">' + datacell['variants'][i]['title'] + ' (' + curr + ' ' + datacell['variants'][i]['price'] + ')</option>');
     }
 
     for (i = 1; i <= 10; i++) {
-        document.querySelector('.q-' + pid).insertAdjacentElement('beforeend', document.createElement('option').setAttribute('value', i).innerHTML = i);
+        document.querySelector('.q-' + pid).insertAdjacentHTML('beforeend', '<option value="' + i + '">' +
+            i + '</option>')
     }
 
 }
@@ -743,7 +787,7 @@ function brgxczvy(oid, pid, vid, quantity, price, action, type) {
         'price': price
     }
 
-    console.log(s);
+    // console.log(s);
 
     var http = new XMLHttpRequest();
     var url = 'https://sleek-upsell.herokuapp.com/brgxczvy';
@@ -755,7 +799,7 @@ function brgxczvy(oid, pid, vid, quantity, price, action, type) {
 
     http.onreadystatechange = function () {//Call a function when the state changes.
         if (http.readyState == 4 && http.status == 200) {
-            console.log(http.responseText);
+            // console.log(http.responseText);
         }
     }
     http.send(params);
@@ -768,51 +812,51 @@ function display_offer(oid) {
     let curr = Shopify.currency['active'];
     let settings = offers['settings'];
     let lay = offers['offer'][oid]['offer'][0]['layout'];
-    let lay_el = document.createElement('div').setAttribute('class', 'card sleek-upsell');
+    let lay_el = '<div class="card sleek-upsell"></div>';
     let nudge = 'before';
 
     if (page.includes('/cart')) { element = cart_selector; nudge = cart_position; }
     else { element = drawer_selector; nudge = drawer_position; }
 
-    let style = document.createElement('style');
-    style.innerHTML = '.sleek-image img{width:100px}.sleek-text{font-weight:700}.sleek-upsell select{padding:4px;margin-top:5px}.sleek-prices{font-weight:700;margin-bottom:5px}.sleek-compare-price{text-decoration:line-through}.sleek-upsell button{padding:10px;border:none;background:#2b3d51;color:#fff;font-weight:700;border-radius:0;cursor:pointer;width:100%}.card{display:table}.card .sleek-form{display:flex}.card .sleek-card-atc,.card .sleek-image,.card .sleek-offer{display:table;align-self:center;padding:5px}.card .sleek-offer{flex-grow:4}.card .sleek-prices{text-align:center}.block,.block .sleek-atc,.block .sleek-form,.block .sleek-text{display:table}.sleek-block{display:flex}.block .sleek-image,.block .sleek-offer{display:table;align-self:center;padding:5px}.block .sleek-offer{flex-grow:1}.half-block,.half-block .sleek-atc,.half-block .sleek-form,.half-block .sleek-text{display:table}.sleek-half-block{display:flex}.half-block .sleek-image,.half-block .sleek-offer{display:table;align-self:center;padding:5px}.half-block .sleek-offer{flex-grow:1}.flat,.flat .sleek-form,.flat .sleek-text{display:table}.sleek-flat{display:flex}.flat .sleek-image,.flat .sleek-offer{display:table;align-self:center;padding:5px}.flat .sleek-offer{flex-grow:1}.flat .flex-select{display:flex;width:auto;margin-top:10px}.flat .v-select{display:table;width:100%;align-items:center;justify-content:space-between}.flat .atc{flex-grow:4}.flat .q-select{margin-top:0;margin-right:10px}.compact,.compact .sleek-atc,.compact .sleek-form,.compact .sleek-text{display:table}.sleek-compact{display:flex}.compact .sleek-image,.compact .sleek-offer{display:table;align-self:center;padding:5px}.compact .sleek-offer{flex-grow:1}.compact .sleek-atc{margin-top:5px}@media only screen and (max-width:600px){.sleek-upsell{width:97%;margin:5px auto}.card select{max-width:100px}.block select{max-width:200px}.sleek-prices *{display:inline-table}.block .sleek-atc,.block .sleek-form,.block .sleek-text{width:100%}}';
-    document.querySelector(element).insertAdjacentElement('beforeend', style);
+    document.querySelector(element).insertAdjacentHTML('beforebegin', '<style>.sleek-upsell{background: #ECF0F1; color: #2B3D51; padding: 5px; font-family: inherit; vertical-align: middle; margin: 5px;}.sleek-image img{width: 100px;}.sleek-text{font-weight: bold;}.sleek-upsell select{padding: 4px; margin-top: 5px;}.sleek-prices{font-weight: bold; margin-bottom: 5px;}.sleek-compare-price{text-decoration: line-through;}.sleek-upsell button{padding: 10px; border: none; background: #2B3D51; color: #FFFFFF; font-weight: bold; border-radius: 0px; cursor: pointer; width: 100%;}.card{display: table;}.card .sleek-form{display: flex;}.card .sleek-image, .card .sleek-offer, .card .sleek-card-atc{display: table; align-self: center; padding: 5px;}.card .sleek-offer{flex-grow: 4;}.card .sleek-prices{text-align: center;}.block, .block .sleek-form, .block .sleek-text, .block .sleek-atc{display: table;}.sleek-block{display: flex;}.block .sleek-image, .block .sleek-offer{display: table; align-self: center; padding: 5px;}.block .sleek-offer{flex-grow: 1;}.half-block, .half-block .sleek-form, .half-block .sleek-text, .half-block .sleek-atc{display: table;}.sleek-half-block{display: flex;}.half-block .sleek-image, .half-block .sleek-offer{display: table; align-self: center; padding: 5px;}.half-block .sleek-offer{flex-grow: 1;}.flat, .flat .sleek-form, .flat .sleek-text{display: table;}.sleek-flat{display: flex;}.flat .sleek-image, .flat .sleek-offer{display: table; align-self: center; padding: 5px;}.flat .sleek-offer{flex-grow: 1;}.flat .flex-select{display: flex; width: auto; margin-top: 10px;}.flat .v-select{display: table; width: 100%; align-items: center; justify-content: space-between;}.flat .atc{flex-grow: 4;}.flat .q-select{margin-top: 0px; margin-right: 10px;}.compact, .compact .sleek-form, .compact .sleek-text, .compact .sleek-atc{display: table;}.sleek-compact{display: flex;}.compact .sleek-image, .compact .sleek-offer{display: table; align-self: center; padding: 5px;}.compact .sleek-offer{flex-grow: 1;}.compact .sleek-atc{margin-top: 5px;}@media only screen and (max-width: 600px){.sleek-upsell{width: 97%; margin: 5px auto;}.card select{max-width: 100px;}.block select{max-width: 200px;}.sleek-prices *{display: inline-table;}.block .sleek-form, .block .sleek-text, .block .sleek-atc{width: 100%;}}</style>');
 
     if (lay == 'card') {
-        lay_el = document.createElement('div').setAttribute('class', 'card sleek-upsell');
+        lay_el = '<div class="card sleek-upsell"></div>';
     }
     if (lay == 'flat') {
-        lay_el = document.createElement('div').setAttribute('class', 'flat sleek-upsell');
+        lay_el = '<div class="flat sleek-upsell"></div>';
     }
     if (lay == 'block') {
-        lay_el = document.createElement('div').setAttribute('class', 'block sleek-upsell');
+        lay_el = '<div class="block sleek-upsell"></div>';
     }
     if (lay == 'half-block') {
-        lay_el = document.createElement('div').setAttribute('class', 'half-block sleek-upsell');
+        lay_el = '<div class="half-block sleek-upsell"></div>';
     }
     if (lay == 'compact') {
-        lay_el = document.createElement('div').setAttribute('class', 'compact sleek-upsell');
+        lay_el = '<div class="compact sleek-upsell"></div>';
     }
 
-    if (nudge == 'prepend') { document.querySelector(element).insertAdjacentElement('afterbegin', lay_el); }
-    if (nudge == 'append') { document.querySelector(element).insertAdjacentElement('beforeend', lay_el); }
+    document.querySelector('.sleek-upsell').parentNode.removeChild(document.querySelector('.sleek-upsell'));
 
-    if (nudge == 'before') { document.querySelector(element).insertAdjacentElement('beforebegin', lay_el); }
-    if (nudge == 'after') { document.querySelector(element).insertAdjacentElement('afterend', lay_el); }
+    if (nudge == 'prepend') { document.querySelector(element).insertAdjacentHTML('afterbegin', lay_el); }
+    if (nudge == 'append') { document.querySelector(element).insertAdjacentHTML('beforeend', lay_el); }
+
+    if (nudge == 'before') { document.querySelector(element).insertAdjacentHTML('beforebegin', lay_el); }
+    if (nudge == 'after') { document.querySelector(element).insertAdjacentHTML('afterend', lay_el); }
 
 
     if (drawer_position == 'before') { }
 
     if (offers['offer'][oid]['offer'][0]['close'] == 'y') {
-        document.querySelector(lay_el).insertAdjacentElement('beforeend', document.createElement('div').setAttribute('style', 'display: table; position: relative; width: 100%; text-align: right;').innerHTML = '<span class="reject_offer" style="font-size: 15px; cursor: pointer;">x</span>');
+        document.querySelector(lay_el).insertAdjacentHTML('beforeend', '<div style="display: table; position: relative; width: 100%; text-align: right;"><span class="reject_offer" style="font-size: 15px; cursor: pointer;">x</span></div>');
     }
 
     let products = offers['offer'][oid]['products'];
     let oprods = offers['products'];
-    console.log('Found products');
-    console.log(products);
-    console.log('Shop products');
-    console.log(oprods);
+    // console.log('Found products');
+    // console.log(products);
+    // console.log('Shop products');
+    // console.log(oprods);
 
     for (let i = 0; i < products.length; i++) {
         let v = products[i];
@@ -844,26 +888,26 @@ function display_offer(oid) {
             dtext = 'Would you like a ' + datacell['title'];
         }
 
-        console.log('Product ' + pid + ' found at position ' + index);
-        console.log(datacell);
+        // console.log('Product ' + pid + ' found at position ' + index);
+        // console.log(datacell);
 
-        let o_ui = document.createElement('form').setAttribute('class', "sleek-form").setAttribute('action', "/cart/add").setAttribute('enctype', "multipart/form-data").setAttribute('data-product-index', i).setAttribute('data-product-product_id', pid).innerHTML = '<div class="sleek-image"> <img src="' + datacell['image']['src'] + '"/> </div><div class="sleek-offer"> <div class="sleek-text">' + dtext + '</div><div class="sleek-title">' + datacell['title'] + '</div><div class="sleek-selectors"> <div class="offer_fields_holder o_h_' + pid + '"></div> <select name="id" class="v-select v-' + pid + '"></select> <select name="quantity" class="q-select q-' + pid + '"></select> </div></div><div class="sleek-card-atc"> <div class="sleek-prices"> <span class="sleek-price money">' + curr + ' ' + datacell['variants'][0]['price'] + '</span> <span class="sleek-compare-price money">' + curr + ' ' + datacell['variants'][0]['price'] + '</span> </div><button class="sleek-atc" type="submit">' + atc + '</button> </div>';
+        let o_ui = '<form class="sleek-form" data-product-index="' + i + '" data-product-product_id="' + pid + '"> <div class="sleek-image"> <img src="' + datacell['image']['src'] + '"/> </div><div class="sleek-offer"> <div class="sleek-text">' + dtext + '</div><div class="sleek-title">' + datacell['title'] + '</div><div class="sleek-selectors"> <div class="offer_fields_holder o_h_' + pid + '"></div> <select name="id" class="v-select v-' + pid + '"></select> <select name="quantity" class="q-select q-' + pid + '"></select> </div></div><div class="sleek-card-atc"> <div class="sleek-prices"> <span class="sleek-price money">' + curr + ' ' + datacell['variants'][0]['price'] + '</span> <span class="sleek-compare-price money">' + curr + ' ' + datacell['variants'][0]['price'] + '</span> </div><button class="sleek-atc" type="submit">' + atc + '</button> </div></form>';
 
 
         if (lay == 'card') {
-            o_ui = document.createElement('form').setAttribute('class', "sleek-form").setAttribute('action', "/cart/add").setAttribute('enctype', "multipart/form-data").setAttribute('data-product-index', i).setAttribute('data-product-product_id', pid).innerHTML = '<div class="sleek-image"> <img src="' + datacell['image']['src'] + '"/> </div><div class="sleek-offer"> <div class="sleek-text">' + dtext + '</div><div class="sleek-title">' + datacell['title'] + '</div><div class="sleek-selectors"> <div class="offer_fields_holder o_h_' + pid + '"></div> <select name="id" class="v-select v-' + pid + '"></select> <select name="quantity" class="q-select q-' + pid + '"></select> </div></div><div class="sleek-card-atc"> <div class="sleek-prices"> <span class="sleek-price money">' + curr + ' ' + datacell['variants'][0]['price'] + '</span> <span class="sleek-compare-price money">' + curr + ' ' + datacell['variants'][0]['price'] + '</span> </div><button class="sleek-atc" type="submit">' + atc + '</button> </div>';
+            o_ui = '<form class="sleek-form" action="/cart/add" enctype="multipart/form-data" data-product-index="' + i + '" data-product-product_id="' + pid + '"> <div class="sleek-image"> <img src="' + datacell['image']['src'] + '"/> </div><div class="sleek-offer"> <div class="sleek-text">' + dtext + '</div><div class="sleek-title">' + datacell['title'] + '</div><div class="sleek-selectors"> <div class="offer_fields_holder o_h_' + pid + '"></div> <select name="id" class="v-select v-' + pid + '"></select> <select name="quantity" class="q-select q-' + pid + '"></select> </div></div><div class="sleek-card-atc"> <div class="sleek-prices"> <span class="sleek-price money">' + curr + ' ' + datacell['variants'][0]['price'] + '</span> <span class="sleek-compare-price money">' + curr + ' ' + datacell['variants'][0]['price'] + '</span> </div><button class="sleek-atc" type="submit">' + atc + '</button> </div></form>';
         }
         if (lay == 'flat') {
-            o_ui = document.createElement('form').setAttribute('class', "sleek-form").setAttribute('action', "/cart/add").setAttribute('enctype', "multipart/form-data").setAttribute('data-product-index', i).setAttribute('data-product-product_id', pid).innerHTML = '<div class="sleek-text">' + dtext + '</div><div class="sleek-flat"> <div class="sleek-image"> <img src="' + datacell['image']['src'] + '"/> </div><div class="sleek-offer"> <div class="sleek-title">' + datacell['title'] + '</div><div class="sleek-prices"> <span class="sleek-price money">' + curr + ' ' + datacell['variants'][0]['price'] + '</span> <span class="sleek-compare-price money">' + curr + ' ' + datacell['variants'][0]['price'] + '</span> </div><div class="sleek-selectors"> <div class="offer_fields_holder o_h_' + pid + '"></div> <select name="id" class="v-select v-' + pid + '"></select> <div class="flex-select"> <select name="quantity" class="q-select q-' + pid + '"></select> <button class="sleek-atc" type="submit">' + atc + '</button> </div></div></div></div>';
+            o_ui = '<form class="sleek-form" action="/cart/add" enctype="multipart/form-data" data-product-index="' + i + '" data-product-product_id="' + pid + '"> <div class="sleek-text">' + dtext + '</div><div class="sleek-flat"> <div class="sleek-image"> <img src="' + datacell['image']['src'] + '"/> </div><div class="sleek-offer"> <div class="sleek-title">' + datacell['title'] + '</div><div class="sleek-prices"> <span class="sleek-price money">' + curr + ' ' + datacell['variants'][0]['price'] + '</span> <span class="sleek-compare-price money">' + curr + ' ' + datacell['variants'][0]['price'] + '</span> </div><div class="sleek-selectors"> <div class="offer_fields_holder o_h_' + pid + '"></div> <select name="id" class="v-select v-' + pid + '"></select> <div class="flex-select"> <select name="quantity" class="q-select q-' + pid + '"></select> <button class="sleek-atc" type="submit">' + atc + '</button> </div></div></div></div></form>'
         }
         if (lay == 'block') {
-            o_ui = document.createElement('form').setAttribute('class', "sleek-form").setAttribute('action', "/cart/add").setAttribute('enctype', "multipart/form-data").setAttribute('data-product-index', i).setAttribute('data-product-product_id', pid).innerHTML = '<div class="sleek-text">' + dtext + '</div><div class="sleek-block"> <div class="sleek-image"> <img src="' + datacell['image']['src'] + '"/> </div><div class="sleek-offer"> <div class="sleek-title">' + datacell['title'] + '</div><div class="sleek-prices"> <span class="sleek-price money">' + curr + ' ' + datacell['variants'][0]['price'] + '</span> <span class="sleek-compare-price money">' + curr + ' ' + datacell['variants'][0]['price'] + '</span> </div><div class="sleek-selectors"> <div class="offer_fields_holder o_h_' + pid + '"></div> <select name="id" class="v-select v-' + pid + '"></select> <select name="quantity" class="q-select q-' + pid + '"></select> </div></div></div><button class="sleek-atc" type="submit">' + atc + '</button> ';
+            o_ui = '<form class="sleek-form" action="/cart/add" enctype="multipart/form-data" data-product-index="' + i + '" data-product-product_id="' + pid + '"> <div class="sleek-text">' + dtext + '</div><div class="sleek-block"> <div class="sleek-image"> <img src="' + datacell['image']['src'] + '"/> </div><div class="sleek-offer"> <div class="sleek-title">' + datacell['title'] + '</div><div class="sleek-prices"> <span class="sleek-price money">' + curr + ' ' + datacell['variants'][0]['price'] + '</span> <span class="sleek-compare-price money">' + curr + ' ' + datacell['variants'][0]['price'] + '</span> </div><div class="sleek-selectors"> <div class="offer_fields_holder o_h_' + pid + '"></div> <select name="id" class="v-select v-' + pid + '"></select> <select name="quantity" class="q-select q-' + pid + '"></select> </div></div></div><button class="sleek-atc" type="submit">' + atc + '</button> </form>';
         }
         if (lay == 'half-block') {
-            o_ui = document.createElement('form').setAttribute('class', "sleek-form").setAttribute('action', "/cart/add").setAttribute('enctype', "multipart/form-data").setAttribute('data-product-index', i).setAttribute('data-product-product_id', pid).innerHTML = '<div class="sleek-half-block"> <div class="sleek-image"> <img src="' + datacell['image']['src'] + '"/> </div><div class="sleek-offer"> <div class="sleek-text">' + dtext + '</div><div class="sleek-title">' + datacell['title'] + '</div><div class="sleek-prices"> <span class="sleek-price money">' + curr + ' ' + datacell['variants'][0]['price'] + '</span> <span class="sleek-compare-price money">' + curr + ' ' + datacell['variants'][0]['price'] + '</span> </div><div class="sleek-selectors"> <div class="offer_fields_holder o_h_' + pid + '"></div> <select name="id" class="v-select v-' + pid + '"></select> <select name="quantity" class="q-select q-' + pid + '"></select> </div></div></div><button class="sleek-atc" type="submit">' + atc + '</button> ';
+            o_ui = '<form class="sleek-form" action="/cart/add" enctype="multipart/form-data" data-product-index="' + i + '" data-product-product_id="' + pid + '"> <div class="sleek-half-block"> <div class="sleek-image"> <img src="' + datacell['image']['src'] + '"/> </div><div class="sleek-offer"> <div class="sleek-text">' + dtext + '</div><div class="sleek-title">' + datacell['title'] + '</div><div class="sleek-prices"> <span class="sleek-price money">' + curr + ' ' + datacell['variants'][0]['price'] + '</span> <span class="sleek-compare-price money">' + curr + ' ' + datacell['variants'][0]['price'] + '</span> </div><div class="sleek-selectors"> <div class="offer_fields_holder o_h_' + pid + '"></div> <select name="id" class="v-select v-' + pid + '"></select> <select name="quantity" class="q-select q-' + pid + '"></select> </div></div></div><button class="sleek-atc" type="submit">' + atc + '</button> </form>';
         }
         if (lay == 'compact') {
-            o_ui = document.createElement('form').setAttribute('class', "sleek-form").setAttribute('action', "/cart/add").setAttribute('enctype', "multipart/form-data").setAttribute('data-product-index', i).setAttribute('data-product-product_id', pid).innerHTML = '<div class="sleek-compact"> <div class="sleek-image"> <img src="' + datacell['image']['src'] + '"/> </div><div class="sleek-offer"> <div class="sleek-text">' + dtext + '</div><div class="sleek-title">' + datacell['title'] + '</div><div class="sleek-prices"> <span class="sleek-price money">' + curr + ' ' + datacell['variants'][0]['price'] + '</span> <span class="sleek-compare-price money">' + curr + ' ' + datacell['variants'][0]['price'] + '</span> </div><div class="sleek-selectors"> <div class="offer_fields_holder o_h_' + pid + '"></div> <select name="id" class="v-select v-' + pid + '"></select> <select name="quantity" class="q-select q-' + pid + '"></select> </div><button class="sleek-atc" type="submit">' + atc + '</button> </div></div>';
+            o_ui = '<form class="sleek-form" action="/cart/add" enctype="multipart/form-data" data-product-index="' + i + '" data-product-product_id="' + pid + '"> <div class="sleek-compact"> <div class="sleek-image"> <img src="' + datacell['image']['src'] + '"/> </div><div class="sleek-offer"> <div class="sleek-text">' + dtext + '</div><div class="sleek-title">' + datacell['title'] + '</div><div class="sleek-prices"> <span class="sleek-price money">' + curr + ' ' + datacell['variants'][0]['price'] + '</span> <span class="sleek-compare-price money">' + curr + ' ' + datacell['variants'][0]['price'] + '</span> </div><div class="sleek-selectors"> <div class="offer_fields_holder o_h_' + pid + '"></div> <select name="id" class="v-select v-' + pid + '"></select> <select name="quantity" class="q-select q-' + pid + '"></select> </div><button class="sleek-atc" type="submit">' + atc + '</button> </div></div></form>'
         }
 
         if (v['show_title'] == 'n') {
@@ -890,16 +934,19 @@ function display_offer(oid) {
             document.querySelector('.q_select').style.display = 'none';
         }
 
-        document.querySelector('.' + lay).insertAdjacentElement('beforeend', o_ui);
+        document.querySelector('.' + lay).insertAdjacentHTML('beforeend', o_ui);
 
         populateFields(oid, pid);
 
         for (let i = 0; i < datacell['variants'].length; i++) {
-            console.log(datacell['variants'][i]['title']);
-            document.querySelector('.v-' + pid).insertAdjacentElement('beforeend', document.createElement('option').setAttribute('value', datacell['variants'][i]['id']).innerHTML = datacell['variants'][i]['title'] + ' (' + curr + ' ' + datacell['variants'][i]['price']);
+            // console.log(datacell['variants'][i]['title']);
+            document.querySelector('.v-' + pid).insertAdjacentHTML('beforeend', '<option value="' + datacell['variants'][i]['id'] +
+                '">' +
+                datacell['variants'][i]['title'] + ' (' + curr + ' ' +
+                datacell['variants'][i]['price'] + ')</option>');
         }
         for (q = 1; q <= 10; q++) {
-            document.querySelector('.q-' + pid).insertAdjacentElement('beforeend', document.createElement('option').setAttribute('value', q).innerHTML = q);
+            document.querySelector('.q-' + pid).insertAdjacentHTML('beforeend', '<option value="' + q + '">' + q + '</option>')
         }
 
         brgxczvy(oid, pid, document.querySelector('.v-' + pid).value, document.querySelector('.q-' + pid).value, datacell['variants'][0]['price'], 'show', 'show');
@@ -935,14 +982,14 @@ function display_offer(oid) {
                     window.location.href = "/checkout";
                 } else {
                     if (page.includes('/cart')) {
-                        console.log(response);
+                        // console.log(response);
                         sessionStorage.setItem('sleek_shown_' + oid, 'y');
                         document.querySelector('.sleek-upsell').parentNode.removeChild(document.querySelector('.sleek-upsell'));
                         window.location.reload(false);
                     }
                     else {
                         document.querySelector('.sleek-upsell').parentNode.removeChild(document.querySelector('.sleek-upsell'));
-                        console.log(response);
+                        // console.log(response);
                         if (settings != null) {
                             if (settings['refresh_state'] == 'y') {
                                 settings['drawer_refresh'];
