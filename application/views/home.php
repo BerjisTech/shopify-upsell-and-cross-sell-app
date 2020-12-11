@@ -298,7 +298,8 @@
                 <p>Simple pricing. no hidden charges. Choose a plan fit your needs</p>
             </div>
             <div class="row">
-                <div class="col-lg-4 col-offset-lg-4">
+                <div class="col-lg-4"></div>
+                <div class="col-lg-4">
                     <div class="card pricing">
                         <div class="card-body">
                             <small class="text-muted">SLEEK</small>
@@ -315,6 +316,7 @@
                         </div>
                     </div>
                 </div>
+                <div class="col-lg-4"></div>
             </div>
         </div>
     </div>
