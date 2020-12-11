@@ -1003,11 +1003,13 @@ function display_offer(oid) {
         }
     }
 
-    document.querySelector('.reject_offer').onclick = function () {
-        sessionStorage.setItem('sleek_shown_' + oid, 'y');
-        brgxczvy(oid, '', '', '', '', 'reject', 'reject');
-        document.querySelector('.sleek-upsell').remove();
-        setTimeout(function () { next_offer() }, 300);
+    if (document.querySelector('.reject_offer') != null) {
+        document.querySelector('.reject_offer').onclick = function () {
+            sessionStorage.setItem('sleek_shown_' + oid, 'y');
+            brgxczvy(oid, '', '', '', '', 'reject', 'reject');
+            document.querySelector('.sleek-upsell').remove();
+            setTimeout(function () { next_offer() }, 300);
+        }
     }
 
     document.querySelector('.sleek-upsell').style.opacity = '1';
