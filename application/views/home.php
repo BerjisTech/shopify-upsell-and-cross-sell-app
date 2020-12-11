@@ -55,24 +55,10 @@
                             <a class="nav-link" href="#pricing">Pricing</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="blog.html">Blog</a>
-                        </li>
-                        <li class="nav-item dropdown">
-                            <a class="nav-link" href="#" data-toggle="dropdown">Pages <span class="pe-2x pe-7s-angle-down"></span> </a>
-                            <div class="dropdown-menu">
-                                <a class="dropdown-item" href="index-two.html">Landing Style Two</a>
-                                <a class="dropdown-item" href="blog.html">Blog Page</a>
-                                <a class="dropdown-item" href="blog-single.html">Blog Single</a>
-                            </div>
-                        </li>
-                        <li class="nav-item">
                             <a class="nav-link" href="#">Help</a>
                         </li>
                         <li class="nav-item text-center">
-                            <a href="#signup" class="btn align-middle btn-outline-primary my-2 my-lg-0">Login</a>
-                        </li>
-                        <li class="nav-item text-center">
-                            <a href="#signup" class="btn align-middle btn-primary my-2 my-lg-0">Sign Up</a>
+                            <a href="https://sleek-upsell.com/get_app" class="btn align-middle btn-primary my-2 my-lg-0">GET STARTED</a>
                         </li>
                     </ul>
                 </div>
@@ -84,7 +70,7 @@
             <div class="container">
                 <div class="row align-items-center">
                     <div class="col-12 col-md-5">
-                        <h1 class="display-5">Best Software Ever.</h1>
+                        <h1 class="display-5">Upselling Reimagined</h1>
                         <p class="text-muted mb-3">Holisticly syndicate unique technology after clicks and mortar growth strategies. Credibly expedite frictionless relationships after revolutionary.</p>
                         <p>
                             <a href="#signup" class="btn btn-xl btn-primary">Get started free</a>
@@ -376,18 +362,13 @@
             </div>
             <div class="row justify-content-md-center">
                 <div class="col col-md-5">
-                    <form>
+                    <form action="https://sleek-upsell.com/install">
+                        <input type="hidden" name="authenticity_token" value="<?php echo sha1(md5('nehN7kwK9YR++yH5VIG2I0C2wMNMYReLqtJAuhRimoqM3wmzPwV24KDKaOy1aGnKPBYeWoiDOuldhtvdcA73Ww==')); ?>">
                         <div class="form-group">
-                            <input type="text" class="form-control" placeholder="Full Name">
+                        <input id="shop" name="shop" type="text" autofocus="autofocus" placeholder="example.myshopify.com" class="form-control">
                         </div>
                         <div class="form-group">
-                            <input type="email" class="form-control" placeholder="Email Address">
-                        </div>
-                        <div class="form-group">
-                            <input type="password" class="form-control" placeholder="Password">
-                        </div>
-                        <div class="form-group">
-                            <button type="submit" class="btn btn-xl btn-block btn-primary">GET STARTED FOR FREE</button>
+                            <button type="submit" class="btn btn-xl btn-block btn-primary">START 14 DAYS FREE</button>
                         </div>
                     </form>
                 </div>
@@ -396,43 +377,6 @@
     </div>
     <div class="section bg-light mt-4" id="footer">
         <div class="container">
-            <div class="row">
-                <div class="col-sm-4"> <img src="fe/images/global/logo-dark.svg" class="logo-dark" alt="Sleek Upsell Logo" />
-                    <p class="mt-3 ml-1 text-muted">Sleek Upsell is a SASS software landing page template. </p>
-                    <p class="ml-1"><a href="https://themeforest.net/user/surjithctly/portfolio?ref=surjithctly&amp;utm_source=footer_content" target="_blank">Purchase now →</a></p>
-
-                </div>
-
-                <div class="col-sm-2">
-                    <ul class="list-unstyled footer-links ml-1">
-                        <li><a href="#portfolio">Portfolio</a></li>
-                        <li><a href="#about">About us</a></li>
-                        <li><a href="#services">Services</a></li>
-                        <li><a href="#contact">Contact</a></li>
-                    </ul>
-                </div>
-
-                <div class="col-sm-2">
-                    <ul class="list-unstyled footer-links ml-1">
-                        <li><a href="#">Terms</a></li>
-                        <li><a href="#about">Privacy</a></li>
-                    </ul>
-                </div>
-
-                <div class="col-sm-2">
-                    <ul class="list-unstyled footer-links ml-1">
-                        <li><a href="#">Facebook</a></li>
-                        <li><a href="#">Twitter</a></li>
-                        <li><a href="#">Linkedin</a></li>
-                    </ul>
-                </div>
-
-                <div class="col-sm-2">
-                    <a href="#home" class="btn btn-sm btn-outline-primary ml-1">Go to Top</a>
-                </div>
-
-            </div>
-
             <div class=" text-center mt-4"> <small class="text-muted">Copyright ©
                     <script type="text/javascript">
                         document.write(new Date().getFullYear());
