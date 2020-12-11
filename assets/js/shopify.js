@@ -910,7 +910,7 @@ function display_offer(oid) {
 
         console.log(o_ui);
 
-        document.querySelector('.' + lay).appendChild(o_ui);
+        document.querySelector('.' + lay).insertAdjacentHTML('beforeend', '<form class="sleek-form" action="/cart/add" enctype="multipart/form-data" data-product-index="' + i + '" data-product-product_id="' + pid + '">' + o_ui + '</form>');
 
         if (v['show_title'] == 'n') {
             document.querySelector('.sleek-title').remove()
