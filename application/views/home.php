@@ -312,7 +312,7 @@
                     <form action="/install">
                         <input type="hidden" name="authenticity_token" value="<?php echo sha1(md5('nehN7kwK9YR++yH5VIG2I0C2wMNMYReLqtJAuhRimoqM3wmzPwV24KDKaOy1aGnKPBYeWoiDOuldhtvdcA73Ww==')); ?>">
                         <div class="form-group">
-                            <input style="text-align: center;" id="shop" name="shop" type="text" autofocus="autofocus" placeholder="example.myshopify.com" class="form-control">
+                            <input style="text-align: center;" id="shop" name="shop" type="text" placeholder="example.myshopify.com" class="form-control">
                         </div>
                         <div class="form-group">
                             <button type="submit" class="btn btn-xl btn-block btn-primary">START 14 DAYS FREE</button>
