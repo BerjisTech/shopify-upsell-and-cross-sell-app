@@ -955,7 +955,7 @@ function display_offer(oid) {
         document.querySelector('.q-' + pid).onchange = function () {
             brgxczvy(oid, pid, document.querySelector('.v-' + pid).value, document.querySelector(this).value, datacell['variants'][0]['price'], 'quantity change', 'impression');
         }
-        document.querySelector('.sleek-form').onhover = function () {
+        document.querySelector('.sleek-form').onmouseover = function () {
             brgxczvy(oid, pid, document.querySelector('.v-' + pid).value, document.querySelector('.q-' + pid).value, datacell['variants'][0]['price'], 'hover', 'impression');
         }
 
