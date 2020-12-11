@@ -291,7 +291,7 @@
     </div>
 
 
-    <div class="section bg-light py-lg" id="pricing">
+    <div class="section" id="pricing">
         <div class="container">
             <div class="section-title text-center mt-0 mb-5">
                 <h3>Choose your plan</h3>
@@ -322,7 +322,7 @@
     </div>
 
 
-    <div class="section" id="signup">
+    <div class="section bg-light py-lg" id="signup">
         <div class="container">
             <div class="section-title text-center">
                 <h3>Start your free trial</h3>
