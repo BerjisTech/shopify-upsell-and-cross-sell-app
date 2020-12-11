@@ -341,7 +341,7 @@
             </div>
         </div>
     </div>
-    <div class="section bg-light mt-4" id="footer" style="margin-top: 0px;">
+    <div class="section bg-light mt-4" id="footer" style="margin-top: 0px !important;">
         <div class="container">
             <div class=" text-center mt-4"> <small class="text-muted">Copyright ©
                     <script type="text/javascript">
