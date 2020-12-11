@@ -800,7 +800,7 @@ function brgxczvy(oid, pid, vid, quantity, price, action, type) {
     http.onreadystatechange = function () {//Call a function when the state changes.
         if (http.readyState == 4 && http.status == 200) {
             console.log(http.responseText);
-        }else{
+        } else {
             console.log(http.responseText);
         }
     }
@@ -910,7 +910,7 @@ function display_offer(oid) {
             o_ui = '<form class="sleek-form" action="/cart/add" enctype="multipart/form-data" data-product-index="' + i + '" data-product-product_id="' + pid + '"> <div class="sleek-compact"> <div class="sleek-image"> <img src="' + datacell['image']['src'] + '"/> </div><div class="sleek-offer"> <div class="sleek-text">' + dtext + '</div><div class="sleek-title">' + datacell['title'] + '</div><div class="sleek-prices"> <span class="sleek-price money">' + curr + ' ' + datacell['variants'][0]['price'] + '</span> <span class="sleek-compare-price money">' + curr + ' ' + datacell['variants'][0]['price'] + '</span> </div><div class="sleek-selectors"> <div class="offer_fields_holder o_h_' + pid + '"></div> <select name="id" class="v-select v-' + pid + '"></select> <select name="quantity" class="q-select q-' + pid + '"></select> </div><button class="sleek-atc" type="submit">' + atc + '</button> </div></div></form>'
         }
 
-        document.querySelector('.sleek-upsell').insertAdjacentHTML('beforeend', '<form></form>'+o_ui);
+        document.querySelector('.sleek-upsell').insertAdjacentHTML('beforeend', '<form></form>' + o_ui);
 
         if (v['show_title'] == 'n') {
             document.querySelector('.sleek-title').remove()
@@ -958,7 +958,7 @@ function display_offer(oid) {
             brgxczvy(oid, pid, document.querySelector('.v-' + pid).value, document.querySelector(this).value, datacell['variants'][0]['price'], 'quantity change', 'impression');
         }
         document.querySelector('.sleek-form').onmouseover = function () {
-            brgxczvy(oid, pid, document.querySelector('.v-' + pid).value, document.querySelector('.q-' + pid).value, datacell['variants'][0]['price'], 'hover', 'impression');
+            // brgxczvy(oid, pid, document.querySelector('.v-' + pid).value, document.querySelector('.q-' + pid).value, datacell['variants'][0]['price'], 'hover', 'impression');
         }
 
         document.querySelector('.sleek-form').onsubmit = function (e) {
