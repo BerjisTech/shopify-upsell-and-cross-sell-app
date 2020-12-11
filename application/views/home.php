@@ -1,8 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<!-- Mirrored from demo.web3canvas.com/themeforest/startly/saas/ by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 11 Dec 2020 06:45:57 GMT -->
-
 <head>
     <!-- Global site tag (gtag.js) - Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-3416DX49FZ"></script>
@@ -366,7 +364,5 @@
     <script src="fe/js/script.js"></script>
 
 </body>
-
-<!-- Mirrored from demo.web3canvas.com/themeforest/startly/saas/ by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 11 Dec 2020 06:46:03 GMT -->
 
 </html>
