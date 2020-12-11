@@ -17,7 +17,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <meta name="description" content="Sleek Upsell" />
 <meta name="author" content="Berjis Technologies" />
-<link rel="icon" href="<?php echo base_url(); ?>assets/images/logo.png">
+<link rel="icon" href="<?php echo base_url(); ?>logo.png">
 <title>Sleek upsell | <?php if(isset($shop)){echo $shop." | ";} ?><?php echo date('d M, Y'); ?></title>
 <link rel="stylesheet" href="<?php echo base_url(); ?>assets/js/jquery-ui/css/no-theme/jquery-ui-1.10.3.custom.min.css" id="style-resource-1">
 <link rel="stylesheet" href="<?php echo base_url(); ?>assets/css/font-icons/entypo/css/entypo.css" id="style-resource-2">

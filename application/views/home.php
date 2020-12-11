@@ -20,8 +20,9 @@
 
     <meta property="og:title" content="Sleek Upsell - Upselling Reimagined " />
     <meta property="og:type" content="website" />
-    <meta property="og:image" content="fe/images/screen.jpg" />
+    <meta property="og:image" content="logo.png" />
 
+    <link rel="icon" href="<?php echo base_url(); ?>logo.png">
     <link href="https://fonts.googleapis.com/css?family=Product+Sans:300,400,700" rel="stylesheet">
 
 
