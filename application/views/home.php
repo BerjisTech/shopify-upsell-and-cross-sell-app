@@ -164,7 +164,7 @@
                                 <div class="circle circle-blue"></div>
                             </div>
                         </div>
-                        <div class="content">
+                        <div class="content" style="max-height: 220px;">
                             <img src="fe/images/dashboard.png" alt="image">
                         </div>
                     </div>
