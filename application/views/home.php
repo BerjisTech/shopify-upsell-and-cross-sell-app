@@ -36,40 +36,34 @@
         /* Customize website's scrollbar like Mac OS Not supports in Firefox and IE */
 
         /* total width */
-        .globalSets::-webkit-scrollbar,
-        .offerForm::-webkit-scrollbar {
+        *::-webkit-scrollbar {
             background-color: #fff;
             width: 16px
         }
 
         /* background of the scrollbar except button or resizer */
-        .globalSets::-webkit-scrollbar-track,
-        .offerForm::-webkit-scrollbar-track {
+        *::-webkit-scrollbar-track {
             background-color: #fff
         }
 
-        .globalSets::-webkit-scrollbar-track:hover,
-        .offerForm::-webkit-scrollbar-track:hover {
+        *::-webkit-scrollbar-track:hover {
             background-color: #f4f4f4
         }
 
         /* scrollbar itself */
-        .globalSets::-webkit-scrollbar-thumb,
-        .offerForm::-webkit-scrollbar-thumb {
+        *::-webkit-scrollbar-thumb {
             background-color: #4259ff;
             border-radius: 16px;
             border: 5px solid #fff
         }
 
-        .globalSets::-webkit-scrollbar-thumb:hover,
-        .offerForm::-webkit-scrollbar-thumb:hover {
+        *::-webkit-scrollbar-thumb:hover {
             background-color: #7642ff;
             border: 4px solid #f4f4f4
         }
 
         /* set button(top and bottom of the scrollbar) */
-        .globalSets::-webkit-scrollbar-button,
-        .offerForm::-webkit-scrollbar-button {
+        *::-webkit-scrollbar-button {
             display: none
         }
     </style>
