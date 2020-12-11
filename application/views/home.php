@@ -196,41 +196,6 @@
         </div>
     </div>
 
-    <div class="section bg-light py-lg">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-6 col-lg-4">
-                    <div class="media">
-
-                        <div class="media-body text-center">
-                            <div class="color-icon mb-3"> <i class="pe-7s-medal pe-3x"></i> </div>
-                            <h5 class="mt-0">Award Winning Design</h5> Monotonectally envisioneer e-business niche markets vis-a-vis cost effective information. objectively promote worldwide.
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6 col-lg-4">
-                    <div class="media">
-
-                        <div class="media-body text-center">
-                            <div class="color-icon mb-3"> <i class="pe-7s-diamond pe-3x"></i> </div>
-                            <h5 class="mt-0">Carefully Crafted</h5> Authoritatively streamline strategic markets without user-centric potentialities. Credibly integrate progressive technologies
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6 col-lg-4">
-                    <div class="media">
-
-                        <div class="media-body text-center">
-                            <div class="color-icon mb-3"> <i class="pe-7s-cloud-upload pe-3x"></i> </div>
-                            <h5 class="mt-0">Cloud Sync</h5>Objectively underwhelm e-business leadership skills after cross-unit best practices. Continually innovate robust action items
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-
     <div class="section" style="display: none;">
         <div class="container">
             <div class="section-title text-center">
@@ -271,7 +236,7 @@
     </div>
 
 
-    <div class="section" id="pricing">
+    <div class="section bg-light py-lg" id="pricing">
         <div class="container">
             <div class="section-title text-center mt-0 mb-5">
                 <h3>Choose your plan</h3>
@@ -302,7 +267,7 @@
     </div>
 
 
-    <div class="section bg-light py-lg" id="signup">
+    <div class="section" id="signup">
         <div class="container">
             <div class="section-title text-center">
                 <h3>Start your free trial</h3>
