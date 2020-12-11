@@ -917,7 +917,7 @@ function display_offer(oid) {
         form.setAttribute('data-product-product_id', pid);
         form.innerHTML = o_ui;
 
-        document.querySelector('.' + lay).insertAdjacentHTML('beforeend', form);
+        document.querySelector('.sleek-upsell').insertAdjacentHTML('beforeend', form);
 
         if (v['show_title'] == 'n') {
             document.querySelector('.sleek-title').remove()
