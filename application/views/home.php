@@ -38,7 +38,7 @@
 <body class="overflow-hidden">
     <header id="home">
 
-        <nav class="navbar navbar-expand-lg navbar-light bg-light position-fixed">
+        <nav class="navbar navbar-expand-lg navbar-light bg-light" style="z-index: 3000; position: fixed; width: 100vw;">
             <div class="container">
                 <a class="navbar-brand" href="#">
                     <h3 class="gradient-mask">Sleek Upsell</h3>
