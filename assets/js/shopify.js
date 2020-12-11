@@ -845,8 +845,6 @@ function display_offer(oid) {
         lay_el = '<div class="compact sleek-upsell"></div>';
     }
 
-    document.querySelector('.sleek-upsell').parentNode.removeChild(document.querySelector('.sleek-upsell'));
-
     if (nudge == 'prepend') { document.querySelector(element).insertAdjacentElement('afterbegin', lay_el); }
     if (nudge == 'append') { document.querySelector(element).insertAdjacentElement('beforeend', lay_el); }
 
