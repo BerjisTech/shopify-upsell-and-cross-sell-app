@@ -911,23 +911,23 @@ function display_offer(oid) {
         document.querySelector('.' + lay).insertAdjacentHTML('beforeend', o_ui);
 
         if (v['show_title'] == 'n') {
-            document.querySelector('.sleek-title').parentNode.removeChild(document.querySelector('.sleek-title'));
+            document.querySelector('.sleek-title').remove()
         }
 
         if (v['show_price'] == 'n') {
-            document.querySelector('.sleek-price').parentNode.removeChild(document.querySelector('.sleek-price'));
+            document.querySelector('.sleek-prices').remove()
         }
 
         if (v['show_image'] == 'n') {
-            document.querySelector('.sleek-image').parentNode.removeChild(document.querySelector('.sleek-image'));
+            document.querySelector('.sleek-image').remove()
         }
 
         if (v['v_price'] == 'n') {
-            document.querySelector('.sleek-compare-price').parentNode.removeChild(document.querySelector('.sleek-compare-price'));
+            document.querySelector('.sleek-compare-price').remove()
         }
 
         if (v['c_price'] == 'n') {
-            document.querySelector('.sleek-price').parentNode.removeChild(document.querySelector('.sleek-price'));
+            document.querySelector('.sleek-price').remove()
         }
 
         if (v['q_select'] == 'n') {
@@ -982,11 +982,11 @@ function display_offer(oid) {
                     if (page.includes('/cart')) {
                         // console.log(response);
                         sessionStorage.setItem('sleek_shown_' + oid, 'y');
-                        document.querySelector('.sleek-upsell').parentNode.removeChild(document.querySelector('.sleek-upsell'));
+                        document.querySelector('.sleek-upsell').remove();
                         window.location.reload(false);
                     }
                     else {
-                        document.querySelector('.sleek-upsell').parentNode.removeChild(document.querySelector('.sleek-upsell'));
+                        document.querySelector('.sleek-upsell').remove();
                         // console.log(response);
                         if (settings != null) {
                             if (settings['refresh_state'] == 'y') {
@@ -1006,7 +1006,7 @@ function display_offer(oid) {
     document.querySelector('.reject_offer').onclick = function () {
         sessionStorage.setItem('sleek_shown_' + oid, 'y');
         brgxczvy(oid, '', '', '', '', 'reject', 'reject');
-        document.querySelector('.sleek-upsell').parentNode.removeChild(document.querySelector('.sleek-upsell'));
+        document.querySelector('.sleek-upsell').remove();
         setTimeout(function () { next_offer() }, 300);
     }
 
