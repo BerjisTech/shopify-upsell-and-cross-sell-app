@@ -251,7 +251,7 @@
     </div>
 
 
-    <div class="section">
+    <div class="section hidden">
         <div class="container">
             <div class="section-title text-center">
                 <h3>What our users say</h3>
