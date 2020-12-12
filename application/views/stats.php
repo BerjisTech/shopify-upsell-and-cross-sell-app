@@ -285,7 +285,7 @@
                         y: '<?php echo date('Y'); ?>-<?php echo $month; ?>',
                         a: <?php
                             $where = "`shop` = '" . $duka . "' AND `type` = 'purchase' AND `date` BETWEEN '" . $nowmonth . "' AND '" . $newmonth . "'";
-                            $shown = $this->db->slect('sum(price) as total')->where($where)->get('stats')->row()->total;
+                            $shown = $this->db->select('sum(price) as total')->where($where)->get('stats')->row()->total;
                             if ($shown == '') {
                                 echo '0';
                             } else {
@@ -294,7 +294,7 @@
                             ?>,
                         b: <?php
                             $where = "`shop` = '" . $duka . "' AND `type` = 'checkout' AND `date` BETWEEN '" . $nowmonth . "' AND '" . $newmonth . "'";
-                            $purchases = $this->db->slect('sum(price) as total')->where($where)->get('stats')->row()->total;
+                            $purchases = $this->db->select('sum(price) as total')->where($where)->get('stats')->row()->total;
                             if ($purchases == '') {
                                 echo '0';
                             } else {
