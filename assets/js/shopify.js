@@ -966,14 +966,14 @@ function display_offer(oid) {
             brgxczvy(oid, pid, document.querySelector('.v-' + pid).value, document.querySelector('.q-' + pid).value, datacell['variants'][0]['price'], 'add to cart', 'purchase');
 
             fetch('/cart/add.js', {
-                body: new FormData(document.querySelector('.sleek-form[data-product-product_id="' + pid + '"]')),
+                body: new FormData(document.querySelector('form[data-product-product_id="' + pid + '"]')),
                 credentials: "same-origin",
                 headers: {
                     'Content-Type': 'application/json',
                     'X-Requested-With': 'xmlhttprequest' /* XMLHttpRequest is ok too, it's case insensitive */
                 },
                 method: 'POST'
-            }).then(function () {
+            }).then(function (response) {
                 sessionStorage.setItem('sleek_shown_' + oid, 'y');
                 if (offers['offer'][oid]['offer'][0]['discount'] == 'y' && offers['offer'][oid]['offer'][0]['code'] != '') {
                     g_s_s_w('https://' + Shopify.shop + '/discount/' + offers['offer'][oid]['offer'][0]['code']);
@@ -1000,7 +1000,7 @@ function display_offer(oid) {
                 }
             }).catch(function (e) {
                 console.error(e);
-                document.querySelector('.sleek-form[data-product-product_id="' + pid + '"]').closest('button').innerHTML = 'Could not add product';
+                document.querySelector('form[data-product-product_id="' + pid + '"]').closest('button').innerHTML = 'Could not add product';
             });
         }
     }
