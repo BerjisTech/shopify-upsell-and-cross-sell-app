@@ -16,7 +16,7 @@
         // Sparkline Charts
         jQuery(".sales").sparkline([0,
             <?php
-            foreach ($this->db->select('count(stat_id) as stat, date_format(from_unixtime(date), "%m") as month, date_format(from_unixtime(date), "%Y %m %d") as year')->where('shop', $duka)->where('offer', $offer)->where('type', 'purchase')->group_by('month')->order_by('year', 'asc')->get('stats')->result_array() as $fetch) {
+            foreach ($this->db->select('sum(price) as stat, date_format(from_unixtime(date), "%m") as month, date_format(from_unixtime(date), "%Y %m %d") as year')->where('shop', $duka)->where('offer', $offer)->where('type', 'purchase')->group_by('month')->order_by('year', 'asc')->get('stats')->result_array() as $fetch) {
                 echo $fetch['stat'] . ',';
             }
             ?>
@@ -61,7 +61,7 @@
 
         $(".monthly-sales").sparkline([0,
             <?php
-            foreach ($this->db->select('count(stat_id) as stat, date_format(from_unixtime(date), "%m") as month, date_format(from_unixtime(date), "%Y %m %d") as year')->where('shop', $duka)->where('offer', $offer)->where('type', 'purchase')->group_by('month')->order_by('year', 'asc')->get('stats')->result_array() as $fetch) {
+            foreach ($this->db->select('sum(price) as stat, date_format(from_unixtime(date), "%m") as month, date_format(from_unixtime(date), "%Y %m %d") as year')->where('shop', $duka)->where('offer', $offer)->where('type', 'purchase')->group_by('month')->order_by('year', 'asc')->get('stats')->result_array() as $fetch) {
                 echo $fetch['stat'] . ',';
             }
             ?>
@@ -76,7 +76,7 @@
 
         jQuery(".all-time-sales").sparkline([0,
             <?php
-            foreach ($this->db->select('count(stat_id) as stat, date_format(from_unixtime(date), "%m") as month, date_format(from_unixtime(date), "%Y %m %d") as year')->where('shop', $duka)->where('offer', $offer)->where('type', 'checkout')->group_by('month')->order_by('year', 'asc')->get('stats')->result_array() as $fetch) {
+            foreach ($this->db->select('sum(price) as stat, date_format(from_unixtime(date), "%m") as month, date_format(from_unixtime(date), "%Y %m %d") as year')->where('shop', $duka)->where('offer', $offer)->where('type', 'checkout')->group_by('month')->order_by('year', 'asc')->get('stats')->result_array() as $fetch) {
                 echo $fetch['stat'] . ',';
             }
             ?>
@@ -170,7 +170,7 @@
                         y: '<?php echo date('Y'); ?>-<?php echo $month; ?>',
                         a: <?php
                             $where = "`shop` = '" . $duka . "' AND `offer` = '" . $offer . "' AND `type` = 'show' AND `date` BETWEEN '" . $nowmonth . "' AND '" . $newmonth . "'";
-                            $shown = $this->db->where($where)->get('stats')->num_rows();
+                            $shown = $this->db->select('sum(price) as tt')->where($where)->get('stats')->row()->tt;
                             if ($shown == '') {
                                 echo '0';
                             } else {
@@ -179,7 +179,7 @@
                             ?>,
                         b: <?php
                             $where = "`shop` = '" . $duka . "' AND `offer` = '" . $offer . "' AND `type` = 'purchase' AND `date` BETWEEN '" . $nowmonth . "' AND '" . $newmonth . "'";
-                            $purchases = $this->db->where($where)->get('stats')->num_rows();
+                            $purchases = $this->db->select('sum(price) as tt')->where($where)->get('stats')->row()->tt;
                             if ($purchases == '') {
                                 echo '0';
                             } else {
@@ -438,7 +438,7 @@
                                         echo $title;
                                     }
                                     ?></td>
-                                <td><?php echo number_format(($fetch['reach'] * 100) / $total_stats); ?>%</td>
+                                <td><?php echo number_format(($fetch['reach'] * 100) / $total_stats); ?>%<br />(<?php echo number_format($this->db->select('sum(price) as total')->where('shop', $duka)->where('type', 'purchase')->where('offer', $fetch['offer'])->get('stats')->row()->total); ?>)</td>
                             </tr>
                         <?php endforeach; ?>
                     </tbody>
