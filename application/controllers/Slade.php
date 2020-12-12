@@ -1075,6 +1075,8 @@ class Slade extends CI_Controller
                 `ab_test` text NOT NULL,
                 `ab_text` varchar(10000) NOT NULL,
                 `ab_atc` varchar(255) NOT NULL,
+                `rp` text NOT NULL,
+                `rv` text NOT NULL,
                 PRIMARY KEY (`product_id`)
             ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
         ';
