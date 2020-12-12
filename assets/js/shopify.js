@@ -798,11 +798,11 @@ function brgxczvy(oid, pid, vid, quantity, price, action, type) {
     http.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
 
     http.onreadystatechange = function () {//Call a function when the state changes.
-        if (oXHR.readyState === 4) {
-            if (oXHR.status === 200) {
-                console.log(oXHR.responseText)
+        if (http.readyState === 4) {
+            if (http.status === 200) {
+                console.log(http.responseText)
             } else {
-                console.log("Error", oXHR.statusText);
+                console.log("Error", http.statusText);
             }
         }
     }
