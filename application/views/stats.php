@@ -29,7 +29,7 @@
 
         jQuery(".customer-reach").sparkline([0,
             <?php
-            foreach ($this->db->select('count(stat_id) as stat, date_format(from_unixtime(date), "%m") as month, date_format(from_unixtime(date), "%Y %m %d") as year')->where('shop', $duka)->where('type', 'impression')->group_by('month')->order_by('year', 'asc')->get('stats')->result_array() as $fetch) {
+            foreach ($this->db->select('sum(price) as stat, date_format(from_unixtime(date), "%m") as month, date_format(from_unixtime(date), "%Y %m %d") as year')->where('shop', $duka)->where('type', 'impression')->group_by('month')->order_by('year', 'asc')->get('stats')->result_array() as $fetch) {
                 echo $fetch['stat'] . ',';
             }
             ?>
@@ -66,7 +66,7 @@
 
         jQuery(".all-time-sales").sparkline([0,
             <?php
-            foreach ($this->db->select('count(stat_id) as stat, date_format(from_unixtime(date), "%m") as month, date_format(from_unixtime(date), "%Y %m %d") as year')->where('shop', $duka)->where('type', 'checkout')->group_by('month')->order_by('year', 'asc')->get('stats')->result_array() as $fetch) {
+            foreach ($this->db->select('sum(price) as stat, date_format(from_unixtime(date), "%m") as month, date_format(from_unixtime(date), "%Y %m %d") as year')->where('shop', $duka)->where('type', 'checkout')->group_by('month')->order_by('year', 'asc')->get('stats')->result_array() as $fetch) {
                 echo $fetch['stat'] . ',';
             }
             ?>
@@ -203,11 +203,11 @@
         var donut_chart = Morris.Donut({
             element: 'donut-chart-demo',
             data: [{
-                    label: "Checkout",
+                    label: "Checkout $ <?php echo number_format($this->db->select('sum(price) as total')->where('shop', $duka)->where('type', 'checkout')->get('stats')->row()->total); ?>",
                     value: <?php echo number_format($this->db->where('shop', $duka)->where('type', 'checkout')->get('stats')->num_rows()); ?>
                 },
                 {
-                    label: "ATC",
+                    label: "ATC ($ <?php echo number_format($this->db->select('sum(price) as total')->where('shop', $duka)->where('type', 'purchase')->get('stats')->row()->total); ?>)",
                     value: <?php echo number_format($this->db->where('shop', $duka)->where('type', 'purchase')->get('stats')->num_rows()); ?>
                 },
                 {
@@ -285,7 +285,7 @@
                         y: '<?php echo date('Y'); ?>-<?php echo $month; ?>',
                         a: <?php
                             $where = "`shop` = '" . $duka . "' AND `type` = 'purchase' AND `date` BETWEEN '" . $nowmonth . "' AND '" . $newmonth . "'";
-                            $shown = $this->db->where($where)->get('stats')->num_rows();
+                            $shown = $this->db->slect('sum(price) as total')->where($where)->get('stats')->row()->total;
                             if ($shown == '') {
                                 echo '0';
                             } else {
@@ -294,7 +294,7 @@
                             ?>,
                         b: <?php
                             $where = "`shop` = '" . $duka . "' AND `type` = 'checkout' AND `date` BETWEEN '" . $nowmonth . "' AND '" . $newmonth . "'";
-                            $purchases = $this->db->where($where)->get('stats')->num_rows();
+                            $purchases = $this->db->slect('sum(price) as total')->where($where)->get('stats')->row()->total;
                             if ($purchases == '') {
                                 echo '0';
                             } else {
@@ -338,13 +338,13 @@
     </div>
     <div class="col-md-4 col-sm-6">
         <div class="tile-stats tile-white stat-tile">
-            <h3><?php echo $this->db->where('shop', $duka)->where('type', 'purchase')->get('stats')->num_rows(); ?></h3>
+            <h3>$ <?php echo number_format($this->db->select('sum(price) as total')->where('shop', $duka)->where('type', 'purchase')->get('stats')->row()->total); ?></h3>
             <p>ATC</p> <span class="sales"></span>
         </div>
     </div>
     <div class="col-md-4 col-sm-12">
         <div class="tile-stats tile-white stat-tile">
-            <h3><?php echo $this->db->where('shop', $duka)->where('type', 'checkout')->get('stats')->num_rows(); ?></h3>
+            <h3>$ <?php echo number_format($this->db->select('sum(price) as total')->where('shop', $duka)->where('type', 'checkout')->get('stats')->row()->total); ?></h3>
             <p>Checkouts</p> <span class="all-time-sales"></span>
         </div>
     </div>
