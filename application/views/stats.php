@@ -289,7 +289,7 @@
                             if ($shown == '') {
                                 echo '0';
                             } else {
-                                echo number_format($shown);
+                                echo $shown;
                             }
                             ?>,
                         b: <?php
@@ -298,7 +298,7 @@
                             if ($purchases == '') {
                                 echo '0';
                             } else {
-                                echo number_format($purchases);
+                                echo $purchases;
                             }
                             ?>
                     },
