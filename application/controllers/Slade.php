@@ -1209,7 +1209,15 @@ class Slade extends CI_Controller
 
     public function metadata()
     {
+        $data['shop'] = 'sleek-apps';
         $data['page_name'] = 'metadata';
+        $this->load->view('index', $data);
+    }
+
+    public function privacypolicy()
+    {
+        $data['shop'] = 'sleek-apps';
+        $data['page_name'] = 'privacy-policy';
         $this->load->view('index', $data);
     }
 
