@@ -966,7 +966,7 @@ function display_offer(oid) {
             brgxczvy(oid, pid, document.querySelector('.v-' + pid).value, document.querySelector('.q-' + pid).value, datacell['variants'][0]['price'], 'add to cart', 'purchase');
 
             fetch('/cart/add.js', {
-                body: new FormData(document.querySelector(this)),
+                body: new FormData(document.querySelector('.sleek-form[data-product-product_id="' + pid + '"]')),
                 credentials: "same-origin",
                 headers: {
                     'Content-Type': 'application/json',
