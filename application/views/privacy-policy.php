@@ -3,11 +3,11 @@
     <div class="col-md-8 col-offset-md-2" style="text-align: justify;">
         <h1>Privacy Policy for Sleek Apps</h1>
 
-        <p>At Sleek Upsell, accessible from https://sleek-upsell.com, one of our main priorities is the privacy of our visitors. This Privacy Policy document contains types of information that is collected and recorded by Sleek Upsell and how we use it.</p>
+        <p>At Sleek Upsell, accessible from <a href="https://sleek-upsell.com">https://sleek-upsell.com</a>, one of our main priorities is the privacy of our visitors. This Privacy Policy document contains types of information that is collected and recorded by Sleek Upsell and how we use it.</p>
 
         <p>If you have additional questions or require more information about our Privacy Policy, do not hesitate to contact us.</p>
 
-        <p>This Privacy Policy applies only to our online activities and is valid for visitors to our website with regards to the information that they shared and/or collect in Sleek Upsell. This policy is not applicable to any information collected offline or via channels other than this website. Our Privacy Policy was created with the help of the <a href="https://www.privacypolicygenerator.info">Privacy Policy Generator</a> and the <a href="https://www.privacypolicyonline.com">Free Privacy Policy Generator</a>.</p>
+        <p>This Privacy Policy applies only to our online activities and is valid for visitors to our website with regards to the information that they shared and/or collect in Sleek Upsell. This policy is not applicable to any information collected offline or via channels other than this website.</p>
 
         <h2>Consent</h2>
 
