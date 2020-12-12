@@ -1,4 +1,5 @@
 <div style="position: absolute; top: 0px; left: 0px; background: #fff; width: 100vw; height: auto;">
+    <div class="col-md-2"></div>
     <div class="col-md-8 col-offset-md-2">
         <h1>Privacy Policy for Sleek Apps</h1>
 
