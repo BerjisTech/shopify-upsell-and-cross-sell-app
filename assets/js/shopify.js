@@ -957,24 +957,22 @@ function display_offer(oid) {
         document.querySelector('.q-' + pid).onchange = function () {
             brgxczvy(oid, pid, document.querySelector('.v-' + pid).value, document.querySelector('.q-' + pid).value, datacell['variants'][0]['price'], 'quantity change', 'impression');
         }
-        document.querySelector('.sleek-form').onmouseover = function () {
+        document.querySelector('form[data-product-product_id="' + pid + '"]').onmouseover = function () {
             // brgxczvy(oid, pid, document.querySelector('.v-' + pid).value, document.querySelector('.q-' + pid).value, datacell['variants'][0]['price'], 'hover', 'impression');
         }
 
-        document.querySelector('.sleek-form').onsubmit = function (e) {
+        document.querySelector('form[data-product-product_id="' + pid + '"]').onsubmit = function (e) {
             e.preventDefault();
-            brgxczvy(oid, pid, document.querySelector('.v-' + pid).value, document.querySelector('.q-' + pid).value, datacell['variants'][0]['price'], 'add to cart', 'purchase');
+
+            let addToCartForm = document.querySelector('form[data-product-product_id="' + pid + '"]');
+            let formData = new FormData(addToCartForm);
 
             fetch('/cart/add.js', {
-                body: new FormData(document.querySelector('form[data-product-product_id="' + pid + '"]')),
-                credentials: "same-origin",
-                headers: {
-                    'Content-Type': 'application/json',
-                    'X-Requested-With': 'xmlhttprequest' /* XMLHttpRequest is ok too, it's case insensitive */
-                },
+                body: formData,
                 method: 'POST'
             }).then(function (response) {
                 sessionStorage.setItem('sleek_shown_' + oid, 'y');
+                brgxczvy(oid, pid, document.querySelector('.v-' + pid).value, document.querySelector('.q-' + pid).value, datacell['variants'][0]['price'], 'add to cart', 'purchase');
                 if (offers['offer'][oid]['offer'][0]['discount'] == 'y' && offers['offer'][oid]['offer'][0]['code'] != '') {
                     g_s_s_w('https://' + Shopify.shop + '/discount/' + offers['offer'][oid]['offer'][0]['code']);
                 }
