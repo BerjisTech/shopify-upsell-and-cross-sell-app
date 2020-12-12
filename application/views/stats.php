@@ -203,7 +203,7 @@
         var donut_chart = Morris.Donut({
             element: 'donut-chart-demo',
             data: [{
-                    label: "Checkout $ <?php echo number_format($this->db->select('sum(price) as total')->where('shop', $duka)->where('type', 'checkout')->get('stats')->row()->total); ?>",
+                    label: "Checkout ($ <?php echo number_format($this->db->select('sum(price) as total')->where('shop', $duka)->where('type', 'checkout')->get('stats')->row()->total); ?>)",
                     value: <?php echo number_format($this->db->where('shop', $duka)->where('type', 'checkout')->get('stats')->num_rows()); ?>
                 },
                 {
@@ -289,7 +289,7 @@
                             if ($shown == '') {
                                 echo '0';
                             } else {
-                                echo $shown;
+                                echo number_format($shown);
                             }
                             ?>,
                         b: <?php
@@ -298,7 +298,7 @@
                             if ($purchases == '') {
                                 echo '0';
                             } else {
-                                echo $purchases;
+                                echo number_format($purchases);
                             }
                             ?>
                     },
