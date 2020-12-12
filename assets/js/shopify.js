@@ -1000,7 +1000,7 @@ function display_offer(oid) {
                 }
             }).catch(function (e) {
                 console.error(e);
-                document.querySelector(this).closest('button').innerHTML = 'Could not add product';
+                document.querySelector('.sleek-form[data-product-product_id="' + pid + '"]').closest('button').innerHTML = 'Could not add product';
             });
         }
     }
