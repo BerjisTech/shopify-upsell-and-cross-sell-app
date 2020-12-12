@@ -124,14 +124,14 @@ function createSUW() {
 
 if (sessionStorage.getItem('s_u_w') == 'y') { createSUW(); }
 else {
-    console.log(sessionStorage.getItem('s_u_w'));
+    // console.log(sessionStorage.getItem('s_u_w'));
     if (page_ss.includes(s_s_w)) {
         sessionStorage.setItem('s_u_w', 'y');
         createSUW();
     }
     // else {
-    //     console.log(page_ss);
-    //     console.log(s_s_w);
+    //     // console.log(page_ss);
+    //     // console.log(s_s_w);
     // }
 }
 
@@ -142,12 +142,12 @@ var offers_url = 'https://sleek-upsell.herokuapp.com/offers/' + Shopify.shop;
 let offers = g_d(offers_url);
 let cart = g_d("https://" + Shopify.shop + "/cart.js");
 
-console.log(offers);
-console.log(offers['offer']);
-console.log(Object.keys(offers['offer']));
-console.log(Object.keys(offers));
-console.log(cart);
-console.log(Object.keys(cart));
+// console.log(offers);
+// console.log(offers['offer']);
+// console.log(Object.keys(offers['offer']));
+// console.log(Object.keys(offers));
+// console.log(cart);
+// console.log(Object.keys(cart));
 
 let settings = offers['settings'];
 let drawer_selector = 'form[action="/cart"]';
@@ -175,8 +175,8 @@ function openReplacement() {
             ].includes(this._url)
         ) {
             cart = g_d("https://" + Shopify.shop + "/cart.js");
-            console.log('Cart has changed: New item count - ' + cart["item_count"]);
-            console.log(this.response);
+            // console.log('Cart has changed: New item count - ' + cart["item_count"]);
+            // console.log(this.response);
             next_offer();
         }
     });
@@ -193,25 +193,25 @@ function next_offer() {
         let i = 0;
         let o_p = Object.keys(offers['offer']);
         let o_arr = offers['offer'];
-        console.log(o_p);
+        // console.log(o_p);
         for (i = 0; i <= o_p.length - 1; i++) {
             let pos = o_p[i];
             let v = o_arr[pos];
             if (check_offer(pos, v) == true) {
-                console.log('Showing this offer now');
-                console.log(i);
-                console.log(pos);
-                console.log(o_arr[pos]);
+                // console.log('Showing this offer now');
+                // console.log(i);
+                // console.log(pos);
+                // console.log(o_arr[pos]);
                 display_offer(pos)
                 break;
             } else {
-                console.log('Not showing this offer');
-                console.log(pos);
+                // console.log('Not showing this offer');
+                // console.log(pos);
             }
 
-            console.log(i);
-            console.log(pos);
-            console.log(o_arr[pos]);
+            // console.log(i);
+            // console.log(pos);
+            // console.log(o_arr[pos]);
         }
     }
 }
@@ -222,33 +222,33 @@ function collection_based() {
             let collects = offers['collects'];
             let items = cart['items'];
             let pid = '';
-            console.log('items');
-            console.log(items);
-            console.log('Looping through ' + items.length + ' items');
+            // console.log('items');
+            // console.log(items);
+            // console.log('Looping through ' + items.length + ' items');
             for (let i = 0; i < items.length; i++) {
                 pid = items[i]['product_id'];
-                console.log('Checking items ' + i + ' : ' + pid);
+                // console.log('Checking items ' + i + ' : ' + pid);
                 if (sessionStorage.getItem('c_upsold_' + pid) == 'y') {
-                    console.log('This has already been upsold');
+                    // console.log('This has already been upsold');
                     continue;
                 } else {
-                    console.log('Creating upsell for ' + pid);
+                    // console.log('Creating upsell for ' + pid);
                     if (collects.findIndex(x => x.product_id == pid) != -1) {
                         sessionStorage.setItem('c_upsold_' + pid, 'y');
                         let n = collects.filter(x => x.product_id == pid);
                         let cid = n[0]['collection_id'];
                         let cb = collects.filter(x => x.collection_id == cid);
 
-                        console.log('Needed object');
-                        console.log(n);
-                        console.log('Collection ID ' + cid);
-                        console.log(cb);
+                        // console.log('Needed object');
+                        // console.log(n);
+                        // console.log('Collection ID ' + cid);
+                        // console.log(cb);
 
-                        console.log('Looping through ' + cb.length + ' collection items');
+                        // console.log('Looping through ' + cb.length + ' collection items');
                         for (let c = 0; c < cb.length; c++) {
-                            console.log('Checking collection item ' + c);
+                            // console.log('Checking collection item ' + c);
                             if (sessionStorage.getItem('c_used_' + cb[c]['product_id']) == 'z') {
-                                console.log('This item was already an upsell ' + cb[c]['product_id']);
+                                // console.log('This item was already an upsell ' + cb[c]['product_id']);
                                 continue;
                             } else {
                                 if (items.findIndex(x => x.product_id == cb[c]['product_id']) != -1) {
@@ -256,7 +256,7 @@ function collection_based() {
                                     continue;
                                 } else {
                                     sessionStorage.setItem('c_used_' + cb[c]['product_id'], 'z');
-                                    console.log('Using ' + cb[c]['product_id'] + ' as an upsell for ' + pid);
+                                    // console.log('Using ' + cb[c]['product_id'] + ' as an upsell for ' + pid);
                                     // alert('Display '+cb[c]['product_id']);
                                     load_c_based(cb[c]['product_id']);
                                     break;
@@ -268,7 +268,7 @@ function collection_based() {
                     }
 
                     else {
-                        console.log('This product aint part of a collection');
+                        // console.log('This product aint part of a collection');
                         continue;
                     }
                 }
@@ -278,7 +278,7 @@ function collection_based() {
 }
 
 function check_offer(index, offer) {
-    console.log('Checking offer ' + index);
+    // console.log('Checking offer ' + index);
 
     let status = offer['offer'][0]['status'];
     let o_rule = offer['offer'][0]['rule'];
@@ -286,20 +286,20 @@ function check_offer(index, offer) {
     let bc = blocks.length;
 
     if (status == 1) {
-        console.log('Offer active');
+        // console.log('Offer active');
         if (sessionStorage.getItem('sleek_shown_' + index) == 'y') {
-            console.log('Offer already shown');
+            // console.log('Offer already shown');
             return false;
         } else {
             if (bc > 0) {
-                console.log('Offer has blocks');
+                // console.log('Offer has blocks');
                 let what = false;
                 for (let i = 0; i <= blocks.length - 1; i++) {
                     let v = blocks[i];
                     if (o_rule == 'ANY') {
-                        console.log('Checking if any block is met');
+                        // console.log('Checking if any block is met');
                         if (check_block(i, v) == true) {
-                            console.log('Block ' + i + ' return true');
+                            // console.log('Block ' + i + ' return true');
                             what = true;
                             break;
                         } else {
@@ -308,9 +308,9 @@ function check_offer(index, offer) {
                         }
                     }
                     if (o_rule == 'ALL') {
-                        console.log('Checking if all blocks are met');
+                        // console.log('Checking if all blocks are met');
                         if (check_block(i, v) == false) {
-                            console.log('Block ' + i + ' return false');
+                            // console.log('Block ' + i + ' return false');
                             what = false;
                             break;
                         } else {
@@ -322,13 +322,13 @@ function check_offer(index, offer) {
                 }
                 return what;
             } else {
-                console.log('Offer has no blocks');
+                // console.log('Offer has no blocks');
                 return true;
             }
         }
 
     } else {
-        console.log('Offer not active');
+        // console.log('Offer not active');
         return false;
     }
 }
@@ -338,24 +338,24 @@ function check_block(index, block) {
     let bid = block['bid'];
     let b_rule = block['rule'];
 
-    console.log('Checking block ' + bid + ' of offer ' + oid);
-    console.log(block);
+    // console.log('Checking block ' + bid + ' of offer ' + oid);
+    // console.log(block);
 
     let oc = offers['offer'][oid]['conditions'];
     let bc = oc.filter(e => e.bid == bid);
 
-    console.log(oc);
-    console.log(bc);
+    // console.log(oc);
+    // console.log(bc);
 
     if (bc.length > 0) {
-        console.log('This block has conditions');
+        // console.log('This block has conditions');
         let met = false;
         for (let i = 0; i <= bc.length - 1; i++) {
             let cond = bc[i];
             if (b_rule == 'ANY') {
-                console.log('Checking if any condition is met');
+                // console.log('Checking if any condition is met');
                 if (check_condition(i, cond) == true) {
-                    console.log('condition ' + cond['cid'] + ' met');
+                    // console.log('condition ' + cond['cid'] + ' met');
                     met = true;
                     break;
                 } else {
@@ -364,9 +364,9 @@ function check_block(index, block) {
                 }
             }
             if (b_rule == 'ALL') {
-                console.log('Checking if any condition is met');
+                // console.log('Checking if any condition is met');
                 if (check_condition(i, cond) == false) {
-                    console.log('condition ' + cond['cid'] + ' not met');
+                    // console.log('condition ' + cond['cid'] + ' not met');
                     met = false;
                     break;
                 } else {
@@ -394,51 +394,51 @@ function check_condition(index, condition) {
     let amount = condition["amount"];
     let country = condition["country"];
     let citems = cart["items"];
-    console.log('citems');
-    console.log(citems);
+    // console.log('citems');
+    // console.log(citems);
 
     let met = false;
 
     if (type == 'oc1') {
         // Cart has at least
         if (level == 'product') {
-            console.log('Now checking if cart has at least ' + quantity + ' ' + content + ' (' + pid + ')');
-            console.log('pitems');
+            // console.log('Now checking if cart has at least ' + quantity + ' ' + content + ' (' + pid + ')');
+            // console.log('pitems');
             let pitems = citems.filter(e => e.product_id == pid);
-            console.log(pitems)
+            // console.log(pitems)
             if (pitems.length >= quantity) {
-                console.log('found ' + pitems.length + ' ' + content + 's (' + pid + ')');
+                // console.log('found ' + pitems.length + ' ' + content + 's (' + pid + ')');
                 met = true;
-                console.log(met);
+                // console.log(met);
             } else {
-                console.log('found only ' + pitems.length + ' ' + content + 's (' + pid + ')');
+                // console.log('found only ' + pitems.length + ' ' + content + 's (' + pid + ')');
                 met = false;
             }
         }
         if (level == 'variant') {
-            console.log('Now checking if cart has at least ' + quantity + ' ' + content + ' (' + vid + ')');
+            // console.log('Now checking if cart has at least ' + quantity + ' ' + content + ' (' + vid + ')');
             let vitems = citems.filter(e => e.variant_id == vid);
             if (vitems.length >= quantity) {
-                console.log('found ' + vitems.length + ' ' + content + 's (' + vid + ')');
+                // console.log('found ' + vitems.length + ' ' + content + 's (' + vid + ')');
                 met = true;
             } else {
-                console.log('found only ' + vitems.length + ' ' + content + 's (' + vid + ')');
+                // console.log('found only ' + vitems.length + ' ' + content + 's (' + vid + ')');
                 met = false;
             }
         }
         if (level == 'collection') {
-            console.log('Checking if cart has at least ' + quantity + ' products from collections ' + content + '(' + pid + ')');
+            // console.log('Checking if cart has at least ' + quantity + ' products from collections ' + content + '(' + pid + ')');
             let collects = offers['collects'];
             let needed = collects.filter(e => e.collection_id == pid);
             let count = 0;
             for (let i = 0; i <= citems.length - 1; i++) {
-                console.log('citems at ' + i);
-                console.log('Now checking ' + citems[i]['product_id']);
+                // console.log('citems at ' + i);
+                // console.log('Now checking ' + citems[i]['product_id']);
                 if (needed.findIndex(x => x.product_id == citems[i]['product_id']) >= 0) {
                     count = count + 1;
-                    console.log('Found ' + count + ' so far');
+                    // console.log('Found ' + count + ' so far');
                     if (count >= quantity) {
-                        console.log('Breaking at ' + count);
+                        // console.log('Breaking at ' + count);
                         met = true;
                         break;
                     } else {
@@ -468,17 +468,17 @@ function check_condition(index, condition) {
             }
         }
         if (level == 'collection') {
-            console.log('Checking if cart has at most ' + quantity + ' products from collections ' + pid);
+            // console.log('Checking if cart has at most ' + quantity + ' products from collections ' + pid);
             let collects = offers['collects'];
             let needed = collects.filter(e => e.collection_id == pid);
             let count = 0;
             for (let i = 0; i <= citems.length - 1; i++) {
-                console.log('Now checking ' + citems[i]['product_id']);
+                // console.log('Now checking ' + citems[i]['product_id']);
                 if (needed.findIndex(x => x.product_id == citems[i]['product_id']) >= 0) {
                     count = count + 1;
-                    console.log('Found ' + count + ' so far');
+                    // console.log('Found ' + count + ' so far');
                     if (count > quantity) {
-                        console.log('Breaking at ' + count);
+                        // console.log('Breaking at ' + count);
                         met = false;
                         break;
                     } else {
@@ -509,17 +509,17 @@ function check_condition(index, condition) {
             }
         }
         if (level == 'collection') {
-            console.log('Checking if cart has at least ' + quantity + ' products from collections ' + pid);
+            // console.log('Checking if cart has at least ' + quantity + ' products from collections ' + pid);
             let collects = offers['collects'];
             let needed = collects.filter(e => e.collection_id == pid);
             let count = 0;
             for (let i = 0; i <= citems.length - 1; i++) {
-                console.log('Now checking ' + citems[i]['product_id']);
+                // console.log('Now checking ' + citems[i]['product_id']);
                 if (needed.findIndex(x => x.product_id == citems[i]['product_id']) >= 0) {
                     count = count + 1;
-                    console.log('Found ' + count + ' so far');
+                    // console.log('Found ' + count + ' so far');
                     if (count == quantity) {
-                        console.log('Breaking at ' + count);
+                        // console.log('Breaking at ' + count);
                         met = true;
                         break;
                     } else {
@@ -549,17 +549,17 @@ function check_condition(index, condition) {
             }
         }
         if (level == 'collection') {
-            console.log('Checking if cart has at least ' + quantity + ' products from collections ' + pid);
+            // console.log('Checking if cart has at least ' + quantity + ' products from collections ' + pid);
             let collects = offers['collects'];
             let needed = collects.filter(e => e.collection_id == pid);
             let count = 0;
             for (let i = 0; i <= citems.length - 1; i++) {
-                console.log('Now checking ' + citems[i]['product_id']);
+                // console.log('Now checking ' + citems[i]['product_id']);
                 if (needed.findIndex(x => x.product_id == citems[i]['product_id']) >= 0) {
                     count = count + 1;
-                    console.log('Found ' + count + ' so far');
+                    // console.log('Found ' + count + ' so far');
                     if (count > 0) {
-                        console.log('Breaking at ' + count);
+                        // console.log('Breaking at ' + count);
                         met = false;
                         break;
                     } else {
@@ -598,14 +598,14 @@ function check_condition(index, condition) {
 }
 
 function populateFields(oid, pid) {
-    console.log('Looking for fields');
+    // console.log('Looking for fields');
     let fields = offers['offer'][oid]['fields'];
     let choices = offers['offer'][oid]['choices'];
     if (fields.length > 0) {
-        console.log('Found ' + fields.length + ' fields');
-        console.log(fields);
+        // console.log('Found ' + fields.length + ' fields');
+        // console.log(fields);
         let o_fields = fields.filter(e => e.pid == pid);
-        console.log(o_fields);
+        // console.log(o_fields);
         if (o_fields.length > 0) {
             document.querySelector('.o_h_' + pid).innerHTML = '';
 
@@ -787,7 +787,7 @@ function brgxczvy(oid, pid, vid, quantity, price, action, type) {
         'price': price
     }
 
-    console.log(s);
+    // console.log(s);
 
     var http = new XMLHttpRequest();
     var url = 'https://sleek-upsell.herokuapp.com/brgxczvy';
@@ -800,9 +800,9 @@ function brgxczvy(oid, pid, vid, quantity, price, action, type) {
     http.onreadystatechange = function () {//Call a function when the state changes.
         if (http.readyState === 4) {
             if (http.status === 200) {
-                console.log(http.responseText)
+                // console.log(http.responseText)
             } else {
-                console.log("Error", http.statusText);
+                // console.log("Error", http.statusText);
             }
         }
     }
@@ -855,10 +855,10 @@ function display_offer(oid) {
 
     let products = offers['offer'][oid]['products'];
     let oprods = offers['products'];
-    console.log('Found products');
-    console.log(products);
-    console.log('Shop products');
-    console.log(oprods);
+    // console.log('Found products');
+    // console.log(products);
+    // console.log('Shop products');
+    // console.log(oprods);
 
     for (let i = 0; i < products.length; i++) {
         let v = products[i];
@@ -890,8 +890,8 @@ function display_offer(oid) {
             dtext = 'Would you like a ' + datacell['title'];
         }
 
-        console.log('Product ' + pid + ' found at position ' + index);
-        console.log(datacell);
+        // console.log('Product ' + pid + ' found at position ' + index);
+        // console.log(datacell);
 
         let o_ui = '<form class="sleek-form" data-product-index="' + i + '" data-product-product_id="' + pid + '"> <div class="sleek-image"> <img src="' + datacell['image']['src'] + '"/> </div><div class="sleek-offer"> <div class="sleek-text">' + dtext + '</div><div class="sleek-title">' + datacell['title'] + '</div><div class="sleek-selectors"> <div class="offer_fields_holder o_h_' + pid + '"></div> <select name="id" class="v-select v-' + pid + '"></select> <select name="quantity" class="q-select q-' + pid + '"></select> </div></div><div class="sleek-card-atc"> <div class="sleek-prices"> <span class="sleek-price money">' + curr + ' ' + datacell['variants'][0]['price'] + '</span> <span class="sleek-compare-price money">' + curr + ' ' + datacell['variants'][0]['price'] + '</span> </div><button class="sleek-atc" type="submit">' + atc + '</button> </div></form>';
 
@@ -941,7 +941,7 @@ function display_offer(oid) {
         populateFields(oid, pid);
 
         for (let i = 0; i < datacell['variants'].length; i++) {
-            console.log(datacell['variants'][i]['title']);
+            // console.log(datacell['variants'][i]['title']);
             document.querySelector('.v-' + pid).insertAdjacentHTML('beforeend', '<option value="' + datacell['variants'][i]['id'] +
                 '">' +
                 datacell['variants'][i]['title'] + ' (' + curr + ' ' +
@@ -982,14 +982,14 @@ function display_offer(oid) {
                     window.location.href = "/checkout";
                 } else {
                     if (page.includes('/cart')) {
-                        console.log(response);
+                        // console.log(response);
                         sessionStorage.setItem('sleek_shown_' + oid, 'y');
                         document.querySelector('.sleek-upsell').remove();
                         window.location.reload(false);
                     }
                     else {
                         document.querySelector('.sleek-upsell').remove();
-                        console.log(response);
+                        // console.log(response);
                         if (settings != null) {
                             if (settings['refresh_state'] == 'y') {
                                 settings['drawer_refresh'];
@@ -999,7 +999,7 @@ function display_offer(oid) {
                     }
                 }
             }).catch(function (e) {
-                console.error(e);
+                // console.error(e);
                 document.querySelector('form[data-product-product_id="' + pid + '"]').closest('button').innerHTML = 'Could not add product';
             });
         }

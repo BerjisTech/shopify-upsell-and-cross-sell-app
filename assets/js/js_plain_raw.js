@@ -798,8 +798,12 @@ function brgxczvy(oid, pid, vid, quantity, price, action, type) {
     http.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
 
     http.onreadystatechange = function () {//Call a function when the state changes.
-        if (http.readyState == 4 && http.status == 200) {
-            // console.log(http.responseText);
+        if (http.readyState === 4) {
+            if (http.status === 200) {
+                // console.log(http.responseText)
+            } else {
+                // console.log("Error", http.statusText);
+            }
         }
     }
     http.send(params);
@@ -908,7 +912,7 @@ function display_offer(oid) {
             o_ui = '<form class="sleek-form" action="/cart/add" enctype="multipart/form-data" data-product-index="' + i + '" data-product-product_id="' + pid + '"> <div class="sleek-compact"> <div class="sleek-image"> <img src="' + datacell['image']['src'] + '"/> </div><div class="sleek-offer"> <div class="sleek-text">' + dtext + '</div><div class="sleek-title">' + datacell['title'] + '</div><div class="sleek-prices"> <span class="sleek-price money">' + curr + ' ' + datacell['variants'][0]['price'] + '</span> <span class="sleek-compare-price money">' + curr + ' ' + datacell['variants'][0]['price'] + '</span> </div><div class="sleek-selectors"> <div class="offer_fields_holder o_h_' + pid + '"></div> <select name="id" class="v-select v-' + pid + '"></select> <select name="quantity" class="q-select q-' + pid + '"></select> </div><button class="sleek-atc" type="submit">' + atc + '</button> </div></div></form>'
         }
 
-        document.querySelector('.sleek-upsell').insertAdjacentHTML('beforeend', o_ui);
+        document.querySelector('.sleek-upsell').insertAdjacentHTML('beforeend', '<form></form>' + o_ui);
 
         if (v['show_title'] == 'n') {
             document.querySelector('.sleek-title').remove()
@@ -950,29 +954,27 @@ function display_offer(oid) {
         brgxczvy(oid, pid, document.querySelector('.v-' + pid).value, document.querySelector('.q-' + pid).value, datacell['variants'][0]['price'], 'show', 'show');
 
         document.querySelector('.v-' + pid).onchange = function () {
-            brgxczvy(oid, pid, document.querySelector(this).value, document.querySelector('.q-' + pid).value, datacell['variants'][0]['price'], 'variant change', 'impression');
+            brgxczvy(oid, pid, document.querySelector('.v-' + pid).value, document.querySelector('.q-' + pid).value, datacell['variants'][0]['price'], 'variant change', 'impression');
         }
         document.querySelector('.q-' + pid).onchange = function () {
-            brgxczvy(oid, pid, document.querySelector('.v-' + pid).value, document.querySelector(this).value, datacell['variants'][0]['price'], 'quantity change', 'impression');
+            brgxczvy(oid, pid, document.querySelector('.v-' + pid).value, document.querySelector('.q-' + pid).value, datacell['variants'][0]['price'], 'quantity change', 'impression');
         }
-        document.querySelector('.sleek-form').onmouseover = function () {
-            brgxczvy(oid, pid, document.querySelector('.v-' + pid).value, document.querySelector('.q-' + pid).value, datacell['variants'][0]['price'], 'hover', 'impression');
+        document.querySelector('form[data-product-product_id="' + pid + '"]').onmouseover = function () {
+            // brgxczvy(oid, pid, document.querySelector('.v-' + pid).value, document.querySelector('.q-' + pid).value, datacell['variants'][0]['price'], 'hover', 'impression');
         }
 
-        document.querySelector('.sleek-form').onsubmit = function (e) {
+        document.querySelector('form[data-product-product_id="' + pid + '"]').onsubmit = function (e) {
             e.preventDefault();
-            brgxczvy(oid, pid, document.querySelector('.v-' + pid).value, document.querySelector('.q-' + pid).value, datacell['variants'][0]['price'], 'add to cart', 'purchase');
+
+            let addToCartForm = document.querySelector('form[data-product-product_id="' + pid + '"]');
+            let formData = new FormData(addToCartForm);
 
             fetch('/cart/add.js', {
-                body: new FormData(document.querySelector(this)),
-                credentials: "same-origin",
-                headers: {
-                    'Content-Type': 'application/json',
-                    'X-Requested-With': 'xmlhttprequest' /* XMLHttpRequest is ok too, it's case insensitive */
-                },
+                body: formData,
                 method: 'POST'
-            }).then(function () {
+            }).then(function (response) {
                 sessionStorage.setItem('sleek_shown_' + oid, 'y');
+                brgxczvy(oid, pid, document.querySelector('.v-' + pid).value, document.querySelector('.q-' + pid).value, datacell['variants'][0]['price'], 'add to cart', 'purchase');
                 if (offers['offer'][oid]['offer'][0]['discount'] == 'y' && offers['offer'][oid]['offer'][0]['code'] != '') {
                     g_s_s_w('https://' + Shopify.shop + '/discount/' + offers['offer'][oid]['offer'][0]['code']);
                 }
@@ -997,8 +999,8 @@ function display_offer(oid) {
                     }
                 }
             }).catch(function (e) {
-                console.error(e);
-                document.querySelector(this).closest('button').innerHTML = 'Could not add product';
+                // console.error(e);
+                document.querySelector('form[data-product-product_id="' + pid + '"]').closest('button').innerHTML = 'Could not add product';
             });
         }
     }

@@ -106,7 +106,7 @@
                 <div class="row align-items-center">
                     <div class="col-12 col-md-5">
                         <h1 class="display-5">Upselling Reimagined</h1>
-                        <p class="text-muted mb-3">Holisticly syndicate unique technology after clicks and mortar growth strategies. Credibly expedite frictionless relationships after revolutionary.</p>
+                        <p class="text-muted mb-3">Boost your sales today by giving your customers more customized and eye-catching offers. Get that extra cent from your customers and count bigger profits.</p>
                         <p>
                             <a href="#signup" class="btn btn-xl btn-primary">Get started free</a>
                         </p>
@@ -210,7 +210,7 @@
                         <div class="media-body">
                             <div class="media-icon mb-3"> <i class="pe-7s-like2 pe-3x"></i> </div>
                             <h3 class="mt-0">Perfect Dashboard</h3>
-                            <p> Reprehenderit nemo quod tempore doloribus ratione distinctio quis quidem vitae sunt reiciendis, molestias omnis soluta?</p>
+                            <p> Manage your upsells and cross-sells with ease. Simple UI that covers all important aspects of your offers on the dashboard. Get the general insights on the fly.</p>
                         </div>
                     </div>
                 </div>
@@ -221,7 +221,7 @@
                         <div class="media-body">
                             <div class="media-icon mb-3"> <i class="pe-7s-graph1 pe-3x"></i> </div>
                             <h3 class="mt-0">Charts, Diagrams & more</h3>
-                            <p> Reprehenderit nemo quod tempore doloribus ratione distinctio quis quidem vitae sunt reiciendis, molestias omnis soluta?</p>
+                            <p>Stats mean everything. Get to know your customer impressions on each offer. See how many times the offer was shown, accepted and added to cart. Compare your ATC and actual Checkouts.</p>
                         </div>
                     </div>
                 </div>
