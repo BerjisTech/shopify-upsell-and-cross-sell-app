@@ -428,7 +428,7 @@
                                         echo $title;
                                     }
                                     ?></td>
-                                <td><?php echo number_format(($fetch['reach'] * 100) / $total_stats); ?>% <br /> (<?php echo number_format($this->db->select('sum(price) as total')->where('shop', $duka)->where('type', 'purchase')->where('offer', $fetch['offer'])->get('stats')->row()->total); ?>)</td>
+                                <td><?php echo number_format(($fetch['reach'] * 100) / $total_stats); ?>%  ($<?php echo number_format($this->db->select('sum(price) as total')->where('shop', $duka)->where('type', 'purchase')->where('offer', $fetch['offer'])->get('stats')->row()->total); ?>)</td>
                             </tr>
                         <?php endforeach; ?>
                     </tbody>
