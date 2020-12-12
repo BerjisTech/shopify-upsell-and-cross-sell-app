@@ -1,6 +1,6 @@
 <div style="position: absolute; top: 0px; left: 0px; background: #fff; width: 100vw; height: auto;">
     <div class="col-md-2"></div>
-    <div class="col-md-8 col-offset-md-2">
+    <div class="col-md-8 col-offset-md-2" style="text-align: justify;">
         <h1>Privacy Policy for Sleek Apps</h1>
 
         <p>At Sleek Upsell, accessible from https://sleek-upsell.com, one of our main priorities is the privacy of our visitors. This Privacy Policy document contains types of information that is collected and recorded by Sleek Upsell and how we use it.</p>
