@@ -971,7 +971,7 @@ function display_offer(oid) {
 
             if (v['rv'] != '') {
                 fetch('/cart/change.js', {
-                    body: { quantity: 0, id: v['rv'] },
+                    body: { 'quantity': 0, 'id': v['rv'] },
                     method: 'POST'
                 }).then(function (response) {
                     console.log(response.JSON);
@@ -983,7 +983,7 @@ function display_offer(oid) {
                     for (let vi = 0; vi < datacell['variants'].length; vi++) {
                         // console.log(datacell['variants'][i]['title']);
                         console.log('Removing ' + datacell['variants'][vi]['id'])
-                        removedVs.push([0, datacell['variants'][vi]['id']]);
+                        removedVs.push({ 'quantity': 0, 'id': datacell['variants'][vi]['id'] });
                         console.log(removedVs);
                     }
                     fetch('/cart/change.js', {
