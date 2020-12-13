@@ -977,13 +977,13 @@ function display_offer(oid) {
             }
             else {
                 if (v['rp'] != '') {
-                    let removedVs = [];
+                    let removedVs = {};
                     for (let vi = 0; vi < datacell['variants'].length; vi++) {
                         // console.log(datacell['variants'][i]['title']);
-                        removedVs.push(datacell['variants'][vi]['id']);
+                        removedVs.push([0, datacell['variants'][vi]['id']]);
                     }
                     fetch('/cart/update.js', {
-                        body: { quantity: 0, id: v['rp'] },
+                        body: removedVs,
                         method: 'POST'
                     });
                 }
