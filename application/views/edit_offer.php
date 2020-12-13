@@ -1098,6 +1098,8 @@ Not supports in Firefox and IE */
                     title.onload = function() {
                         var data = JSON.parse(title.responseText);
                         var datacell = data['product'];
+                        console.log("datacell")
+                        console.log(datacell)
                         $('.replace_this').val(datacell['title']);
                     };
                     title.send();
