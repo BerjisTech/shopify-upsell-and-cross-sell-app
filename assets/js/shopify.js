@@ -970,28 +970,13 @@ function display_offer(oid) {
             let formData = new FormData(addToCartForm);
 
             if (v['rv'] != '') {
-                fetch('/cart/update.js', {
-                    body: { 'quantity': 0, 'id': v['rv'] },
-                    method: 'POST'
-                }).then(function (response) {
-                    console.log(response);
-                });
+                g_s_s_w('/cart/change??line=' + cart['items'].findIndex(x => x.id == v['rv']) + '&quantity=0');
             }
             else {
                 if (v['rp'] != '') {
-                    let removedVs = [];
-                    for (let vi = 0; vi < datacell['variants'].length; vi++) {
-                        // console.log(datacell['variants'][i]['title']);
-                        console.log('Removing ' + datacell['variants'][vi]['id'])
-                        removedVs.push({ 'quantity': 0, 'id': datacell['variants'][vi]['id'] });
-                        console.log(removedVs);
+                    for (let u = 0; u < datacell['variants'].length; u++) {
+                        g_s_s_w('/cart/change??line=' + cart['items'].findIndex(x => x.id == datacell['variants'][u]['id']) + '&quantity=0');
                     }
-                    fetch('/cart/update.js', {
-                        body: removedVs,
-                        method: 'POST'
-                    }).then(function (response) {
-                        console.log(response);
-                    });
                 }
             }
 
