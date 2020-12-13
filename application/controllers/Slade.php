@@ -728,7 +728,7 @@ class Slade extends CI_Controller
         $offer_data = $_POST;
 
         foreach ($offer_data['offer'] as $o) {
-            $o['offer_id'] = $this->db->get('offers')->num_rows() + 1;
+            $o['offer_id'] = $this->db->limit('1')->order_by('offer_id', 'DESC')->get('offers')->row()->offer_id+1;
             $this->db->insert('offers', $o);
         }
 
