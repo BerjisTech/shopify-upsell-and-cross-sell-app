@@ -595,17 +595,60 @@ class Slade extends CI_Controller
 
                         $html .= '</div>';
                         $html .= '</div>';
-                        // print_r($value);
+                    }
+                }
+            }
+        }
 
-                        // foreach($value['variants'] as $variant){
-                        //         $html .= '
-                        //         <div class="col-xs-12" style="padding-top: 5px; paddign-bottom: 5px;">
-                        //                 <div class="col-xs-10">'.$value['title'] .'-'. $variant['title'].'</div>
-                        //                 <div class="col-xs-2">
-                        //                         <span class="btn btn-info btn-sm entypo-plus" style="color: #fff;" onclick="addVariant('.$variant['id'].')"></span>
-                        //                 </div>
-                        //         </div>';
-                        // }
+        echo $html;
+    }
+
+    public function replacers()
+    {
+        $html = '';
+        $search_term = $this->input->post('term');
+        $shop = $this->input->post('shop');
+        $token = $this->input->post('token'); //replace with your access token
+
+        if ($search_term == "") {
+            $products = $this->Shopify->shopify_call($token, $shop, '/admin/api/2020-10/products.json', array('limit' => '10'), 'GET');
+            $products = json_decode($products['response'], JSON_PRETTY_PRINT);
+        } else {
+            $array = array(
+                'limit' => '10',
+                'fields' => 'id,title,variants',
+            );
+            $products = $this->Shopify->shopify_call($token, $shop, "/admin/api/2020-10/products.json", $array, 'GET');
+            $products = json_decode($products['response'], JSON_PRETTY_PRINT);
+        }
+
+        if (empty($products)) {
+            $html = "<p>There's no product matching $search_term </p>";
+        } else {
+            foreach ($products as $product) {
+                foreach ($product as $key => $value) {
+                    if (stripos($value['title'], $search_term) !== false) {
+                        $images = $this->Shopify->shopify_call($token, $shop, "/admin/api/2020-10/products/" . $value['id'] . "/images.json", array(), 'GET');
+                        $images = json_decode($images['response'], JSON_PRETTY_PRINT);
+                        $item_default_image = $images['images'][0]['src'];
+
+                        $html .= '<div class="col-xs-12" style="margin-top: 10px; padding-bottom: 5px; border-bottom: 1px solid #C0C0C0;">';
+                        $html .= '<div class="col-xs-12"><span class="pull-left" style="font-weight: bold; font-size: 18px; color: #333333;">' . $value['title'] . '</span> <span class="pull-right btn btn-primary btn-sm btn-icon icon-right" onclick="addAll(\'' . $value['id'] . '\')"><i style="color: #fff;" class="entypo-plus"></i> Add All variants</span></div>';
+                        $html .= '<div class="col-xs-4" style="vertical-align: middle;"><img src="' . $item_default_image . '" class="img-rounded img-responsive" /></div>';
+                        $html .= '<div class="col-xs-8" style="vertical-align: middle;">';
+
+                        foreach ($value['variants'] as $variant) {
+                            $html .= '
+                                        <div class="col-xs-12" style="padding-top: 5px; paddign-bottom: 5px;">
+                                            <div class="col-xs-10">' . $value['title'] . '-' . $variant['title'] . '</div>
+                                            <div class="col-xs-2">
+                                                <span class="btn btn-info btn-xs entypo-plus" style="color: #fff;" onclick="addVariant(\'' . $value['id'] . '\', \'' . $variant['id'] . '\')"></span>
+                                            </div>
+                                        </div>';
+                        }
+
+                        $html .= '</div>';
+                        $html .= '</div>';
                     }
                 }
             }

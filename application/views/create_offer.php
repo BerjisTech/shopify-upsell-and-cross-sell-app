@@ -517,21 +517,17 @@ Not supports in Firefox and IE */
                 <div class="panel panel-default" style="display: none;">
                     <div class="panel-heading">
                         <h4 class="panel-title"> <a data-toggle="collapse" data-parent="#accordion-test-p2" href="#collapseThree-p2" class="collapsed">
-                                2: Product A/B Test
+                                2: Upgrade Settings
                             </a> </h4>
                     </div>
                     <div id="collapseThree-p2" class="panel-collapse collapse">
                         <div class="panel-body">
                             <label><input type="checkbox" class="offer_ab_test" value="1" />
-                                Create an A/B test for this offer?</label><br />
+                                Want this to be an upgrade?</label><br />
                             <div style="display: table; width: 100%; padding: 10px;">
-                                <h4>Test Offer Text <br /><small>eg Get 20% discount</small></h4>
-                                <textarea class="form-control offer_ab_text" placeholder="A/B text" style="margin: 5px auto; height: auto; min-height: 100px; width: 99%; border: 2px solid #666666;"></textarea>
-                            </div>
-                            <div style="display: table; width: 100%; padding: 10px;">
-                                <h4>Text Button Text <br /><small>eg Yes Please or Add To
-                                        Cart</small></h4>
-                                <input type="text" placeholder="ADD TO CART" class="form-control offer_ab_button" style="padding: 10px; border: 2px solid #666666; border-radius: 5px;" />
+                                <h4>Choose the product to be replaced once this offered product is accepted<br /><small>Search product or variant</small></h4>
+                                <input type="text" placeholder="ADD TO CART" class="form-control replace_this" style="padding: 10px; border: 2px solid #666666; border-radius: 5px;" />
+                                <div class="replacer"></div>
                             </div>
                         </div>
                     </div>
@@ -539,7 +535,7 @@ Not supports in Firefox and IE */
                 <div class="panel panel-default">
                     <div class="panel-heading">
                         <h4 class="panel-title"> <a data-toggle="collapse" data-parent="#accordion-test-p2" href="#collapseFour-p2" class="collapsed">
-                                2: Product Custom Fields
+                                3: Product Custom Fields
                             </a> </h4>
                     </div>
                     <div id="collapseFour-p2" class="panel-collapse collapse" style="margin: 0px; padding: 0px;">
@@ -1454,6 +1450,25 @@ Not supports in Firefox and IE */
             }
         });
     }
+
+    $('.replace_this').on('input', function() {
+        var term = $(this).val();
+        var call_url = base_url + 'replacers';
+
+        $.ajax({
+            type: "POST",
+            url: call_url,
+            data: {
+                term: term,
+                shop: '<?php echo $shop; ?>',
+                token: '<?php echo $token; ?>'
+            },
+            dataType: "html",
+            success: function(response) {
+                $('.replacer').html(response);
+            }
+        });
+    });
 
     function loadUIs() {
         $('.card').html('<div class="reject_offer" style="display: none; position: relative; width: 100%; text-align: right;"><span style="font-size: 15px; cursor: pointer;">x</span></div>');
