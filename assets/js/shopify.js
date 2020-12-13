@@ -980,6 +980,7 @@ function display_offer(oid) {
                     let removedVs = [];
                     for (let vi = 0; vi < datacell['variants'].length; vi++) {
                         // console.log(datacell['variants'][i]['title']);
+                        console.log('Removing ' + datacell['variants'][vi]['id'])
                         removedVs.push([0, datacell['variants'][vi]['id']]);
                     }
                     fetch('/cart/update.js', {
