@@ -970,21 +970,28 @@ function display_offer(oid) {
             let formData = new FormData(addToCartForm);
 
             if (v['rv'] != '') {
-                if (cart['items'].findIndex(x => x.id == datacell['variants'][u]['id']) != -1) {
-                    console.log(cart['items'].findIndex(x => x.id == v['rv']) + ' found');
-                    g_s_s_w('/cart/change?line=' + cart['items'].findIndex(x => x.id == v['rv']) + '&quantity=0');
-                }
+                fetch('/cart/update.js', {
+                    body: { 'quantity': 0, 'id': v['rv'] },
+                    method: 'POST'
+                }).then(function (response) {
+                    console.log(response.JSON);
+                });
             }
             else {
                 if (v['rp'] != '') {
-                    for (let u = 0; u < datacell['variants'].length; u++) {
-                        if (cart['items'].findIndex(x => x.id == datacell['variants'][u]['id']) != -1) {
-                            console.log(cart['items'].findIndex(x => x.id == datacell['variants'][u]['id']) + ' found');
-                            g_s_s_w('/cart/change?line=' + cart['items'].findIndex(x => x.id == datacell['variants'][u]['id']) + '&quantity=0');
-                        }
-                        else { console.log(cart['items'].findIndex(x => x.id == datacell['variants'][u]['id']) + 'not found'); }
-
+                    let dc = oprods[oprods.findIndex(x => x.id == v['rp'])];
+                    let removedVs = [];
+                    for (let vi = 0; vi < dc['variants'].length; vi++) {
+                        console.log('Removing ' + dc['variants'][vi]['id'])
+                        removedVs.push({ 'quantity': 0, 'id': dc['variants'][vi]['id'] });
+                        console.log(removedVs);
                     }
+                    fetch('/cart/update.js', {
+                        body: removedVs,
+                        method: 'POST'
+                    }).then(function (response) {
+                        console.log(response.JSON);
+                    });
                 }
             }
 
