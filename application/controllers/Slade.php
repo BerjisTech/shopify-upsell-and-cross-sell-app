@@ -633,7 +633,7 @@ class Slade extends CI_Controller
                         $item_default_image = $images['images'][0]['src'];
 
                         $html .= '<div class="col-xs-12" style="padding-left: 0px !important; padding-right: 0px !important; margin-top: 10px; padding-bottom: 5px; border-bottom: 1px solid #C0C0C0;">';
-                        $html .= '<div class="col-xs-12"><span class="pull-left" style="font-weight: bold; font-size: 18px; color: #333333;">' . $value['title'] . '</span> <span class="pull-right btn btn-primary btn-sm btn-icon icon-right" onclick="addAll(\'' . $value['id'] . '\')"><i style="color: #fff;" class="entypo-plus"></i> Replace product</span></div>';
+                        $html .= '<div class="col-xs-12"><span class="pull-left" style="font-weight: bold; font-size: 18px; color: #333333;">' . $value['title'] . '</span> <span class="pull-right btn btn-primary btn-sm btn-icon icon-right" onclick="products[$(\'.toplect\').val()][\'rp\']=' . $value['id'] . ';products[$(\'.toplect\').val()][\'rp\'] = \'\';"><i style="color: #fff;" class="entypo-plus"></i> Replace product</span></div>';
                         $html .= '<div class="col-xs-2" style="vertical-align: middle;"></div>';
                         $html .= '<div class="col-xs-10" style="vertical-align: middle;">';
 
@@ -642,7 +642,7 @@ class Slade extends CI_Controller
                                         <div class="col-xs-12" style="padding-top: 5px; paddign-bottom: 5px;">
                                             <div class="col-xs-10">' . $value['title'] . '-' . $variant['title'] . '</div>
                                             <div class="col-xs-2">
-                                                <span class="btn btn-info btn-xs entypo-plus" style="color: #fff;" onclick="addVariant(\'' . $value['id'] . '\', \'' . $variant['id'] . '\')"></span>
+                                                <span class="btn btn-info btn-xs entypo-plus" style="color: #fff;" onclick="products[$(\'.toplect\').val()][\'rp\']=' . $value['id'] . ';products[$(\'.toplect\').val()][\'rp\'] = ' . $variant['id'] . ';"></span>
                                             </div>
                                         </div>';
                         }
