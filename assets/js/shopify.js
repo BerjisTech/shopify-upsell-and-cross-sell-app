@@ -973,6 +973,8 @@ function display_offer(oid) {
                 fetch('/cart/change.js', {
                     body: { quantity: 0, id: v['rv'] },
                     method: 'POST'
+                }).then(function (response) {
+                    console.log(response.JSON);
                 });
             }
             else {
@@ -987,6 +989,8 @@ function display_offer(oid) {
                     fetch('/cart/change.js', {
                         body: removedVs,
                         method: 'POST'
+                    }).then(function (response) {
+                        console.log(response.JSON);
                     });
                 }
             }
