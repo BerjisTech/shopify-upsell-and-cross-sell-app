@@ -1098,12 +1098,6 @@ Not supports in Firefox and IE */
                     title.onload = function() {
                         var data = JSON.parse(title.responseText);
                         var datacell = data['product'];
-                        // console.log(datacell);
-                        var vcount = 0;
-                        for (var vci = 0; vci < variants.length; ++vci) {
-                            if (variants[vci]['pid'] == product_id)
-                                vcount++;
-                        }
                         $('.replace_this').val(datacell['title']);
                     };
                     title.send();
