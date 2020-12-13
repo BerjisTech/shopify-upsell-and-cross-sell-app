@@ -2022,7 +2022,7 @@ Not supports in Firefox and IE */
                     '<div id="collapse' + i + '" class="panel-collapse collapse" aria-expanded="false">' +
                     '<div class="panel-body">' +
                     '<label>' +
-                    '<input type="checkbox" class="form-control" id="properties[' + name + ']" name="' + name +
+                    '<input type="checkbox" id="properties[' + name + ']" name="' + name +
                     '" placeholder="' + placeholder + '" /> ' +
                     placeholder +
                     '</label>' +
@@ -2321,7 +2321,7 @@ Not supports in Firefox and IE */
                             $('.o_h_' + pid).append(
                                 '<div>' +
                                 '<label>' +
-                                '<input type="checkbox" class="form-control" id="properties[' + name + ']" name="properties[' + name +
+                                '<input type="checkbox" id="properties[' + name + ']" name="properties[' + name +
                                 ']" placeholder="' + placeholder + '" /> ' +
                                 placeholder +
                                 '</label>' +
