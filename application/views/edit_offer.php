@@ -1091,7 +1091,7 @@ Not supports in Firefox and IE */
 
             if (products[thing]['rp']) {
 
-                var title = createCORSRequest("GET", "<?php echo base_url(); ?>variants/" + products[thing]['rp'] +
+                var title = createCORSRequest("GET", "<?php echo base_url(); ?>product_details/" + products[thing]['rp'] +
                     "/<?php echo $token; ?>/<?php echo $shop; ?>");
 
                 if (title) {
