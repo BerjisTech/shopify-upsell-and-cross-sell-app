@@ -970,28 +970,19 @@ function display_offer(oid) {
             let formData = new FormData(addToCartForm);
 
             if (v['rv'] != '') {
-                fetch('/cart/update.js', {
-                    body: { 'quantity': 0, 'id': v['rv'] },
-                    method: 'POST'
-                }).then(function (response) {
-                    console.log(response.JSON);
-                });
+                if(cart['items'].findIndex(x => x.id == v['rv']) != -1){
+                    g_s_s_w('/cart/change?line=' + cart['items'].findIndex(x => x.id == v['rv']) + '&quantity=0')
+                }
             }
             else {
                 if (v['rp'] != '') {
                     let dc = oprods[oprods.findIndex(x => x.id == v['rp'])];
                     let removedVs = [];
                     for (let vi = 0; vi < dc['variants'].length; vi++) {
-                        console.log('Removing ' + dc['variants'][vi]['id'])
-                        removedVs.push({ 'quantity': 0, 'id': dc['variants'][vi]['id'] });
-                        console.log(removedVs);
+                        if(cart['items'].findIndex(x => x.id == dc['variants'][vi]['id']) != -1){
+                            g_s_s_w('/cart/change?line=' + cart['items'].findIndex(x => x.id == dc['variants'][vi]['id']) + '&quantity=0')
+                        }
                     }
-                    fetch('/cart/update.js', {
-                        body: removedVs,
-                        method: 'POST'
-                    }).then(function (response) {
-                        console.log(response.JSON);
-                    });
                 }
             }
 
