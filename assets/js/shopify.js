@@ -940,12 +940,12 @@ function display_offer(oid) {
 
         populateFields(oid, pid);
 
-        for (let i = 0; i < datacell['variants'].length; i++) {
+        for (let vi = 0; vi < datacell['variants'].length; vi++) {
             // console.log(datacell['variants'][i]['title']);
-            document.querySelector('.v-' + pid).insertAdjacentHTML('beforeend', '<option value="' + datacell['variants'][i]['id'] +
+            document.querySelector('.v-' + pid).insertAdjacentHTML('beforeend', '<option value="' + datacell['variants'][vi]['id'] +
                 '">' +
-                datacell['variants'][i]['title'] + ' (' + curr + ' ' +
-                datacell['variants'][i]['price'] + ')</option>');
+                datacell['variants'][vi]['title'] + ' (' + curr + ' ' +
+                datacell['variants'][vi]['price'] + ')</option>');
         }
         for (q = 1; q <= 10; q++) {
             document.querySelector('.q-' + pid).insertAdjacentHTML('beforeend', '<option value="' + q + '">' + q + '</option>')
@@ -968,6 +968,11 @@ function display_offer(oid) {
 
             let addToCartForm = document.querySelector('form[data-product-product_id="' + pid + '"]');
             let formData = new FormData(addToCartForm);
+
+            if (v['rv'] != '') { }
+            else {
+                if (v['rp'] != '') { }
+            }
 
             fetch('/cart/add.js', {
                 body: formData,
