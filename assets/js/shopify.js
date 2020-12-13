@@ -974,7 +974,7 @@ function display_offer(oid) {
                     body: { 'quantity': 0, 'id': v['rv'] },
                     method: 'POST'
                 }).then(function (response) {
-                    console.log(response.JSON);
+                    console.log(response);
                 });
             }
             else {
@@ -990,7 +990,7 @@ function display_offer(oid) {
                         body: removedVs,
                         method: 'POST'
                     }).then(function (response) {
-                        console.log(response.JSON);
+                        console.log(response);
                     });
                 }
             }
