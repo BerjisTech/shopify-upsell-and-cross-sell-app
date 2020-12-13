@@ -656,7 +656,7 @@ jQuery(document).ready(function () {
                         $('.o_h_' + pid).append(
                             '<div>' +
                             '<label>' + placeholder + '</label>' +
-                            '<input type="number" class="form-control" id="properties[' + name + ']" name="properties[' + name +
+                            '<input type="number" id="properties[' + name + ']" name="properties[' + name +
                             ']" placeholder="' + placeholder + '" />' +
                             '</div>');
                     }
@@ -664,7 +664,7 @@ jQuery(document).ready(function () {
                         $('.o_h_' + pid).append(
                             '<div>' +
                             '<label>' + placeholder + '</label>' +
-                            '<input type="text" class="form-control" id="properties[' + name + ']" name="properties[' + name +
+                            '<input type="text" id="properties[' + name + ']" name="properties[' + name +
                             ']" placeholder="' + placeholder + '" />' +
                             '</div>');
                     }
@@ -672,7 +672,7 @@ jQuery(document).ready(function () {
                         $('.o_h_' + pid).append(
                             '<div>' +
                             '<label>' + placeholder + '</label>' +
-                            '<textarea class="form-control" id="properties[' + name + ']" name="properties[' + name +
+                            '<textarea id="properties[' + name + ']" name="properties[' + name +
                             ']" placeholder="' + placeholder + '">' + placeholder + '</textarea>' +
                             '</div>');
                     }
@@ -680,7 +680,7 @@ jQuery(document).ready(function () {
                         $('.o_h_' + pid).append(
                             '<div>' +
                             '<label>' + placeholder + '</label>' +
-                            '<input type="file" class="form-control" id="properties[' + name + ']" name="properties[' + name +
+                            '<input type="file" id="properties[' + name + ']" name="properties[' + name +
                             ']" placeholder="' + placeholder + '" />' +
                             '</div>');
                     }
@@ -688,7 +688,7 @@ jQuery(document).ready(function () {
                         $('.o_h_' + pid).append(
                             '<div>' +
                             '<label>' +
-                            '<input type="checkbox" class="form-control" id="properties[' + name + ']" name="properties[' + name +
+                            '<input type="checkbox" id="properties[' + name + ']" name="properties[' + name +
                             ']" placeholder="' + placeholder + '" /> ' +
                             placeholder +
                             '</label>' +
@@ -698,7 +698,7 @@ jQuery(document).ready(function () {
                         $('.o_h_' + pid).append(
                             '<div>' +
                             '<label>' + placeholder + '</label>' +
-                            '<input type="text" class="form-control" id="properties[' + name + ']" name="properties[' + name +
+                            '<input type="text" id="properties[' + name + ']" name="properties[' + name +
                             ']" placeholder="' + placeholder + '" />' +
                             '</div>');
                     }
@@ -706,7 +706,7 @@ jQuery(document).ready(function () {
                         $('.o_h_' + pid).append(
                             '<div>' +
                             '<label>' +
-                            '<input type="radio" class="form-control" id="properties[' + name + ']" name="properties[' + name +
+                            '<input type="radio" id="properties[' + name + ']" name="properties[' + name +
                             ']" placeholder="' + placeholder + '" /> ' +
                             placeholder +
                             '</label>' +
@@ -716,7 +716,7 @@ jQuery(document).ready(function () {
                         $('.o_h_' + pid).append(
                             '<div>' +
                             '<label>' + placeholder + '</label>' +
-                            '<input type="date" class="form-control" id="properties[' + name + ']" name="properties[' + name +
+                            '<input type="date" id="properties[' + name + ']" name="properties[' + name +
                             ']" placeholder="' + placeholder + '" />' +
                             '</div>');
                     }
@@ -724,7 +724,7 @@ jQuery(document).ready(function () {
                         $('.o_h_' + pid).append(
                             '<div>' +
                             '<label>' + placeholder + '</label>' +
-                            '<input type="color" class="form-control" id="properties[' + name + ']" name="properties[' + name +
+                            '<input type="color" id="properties[' + name + ']" name="properties[' + name +
                             ']" placeholder="' + placeholder + '" />' +
                             '</div>');
                     }

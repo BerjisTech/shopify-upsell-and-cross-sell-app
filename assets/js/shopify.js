@@ -648,7 +648,7 @@ function populateFields(oid, pid) {
                     document.querySelector('.o_h_' + pid).insertAdjacentHTML('beforeend',
                         '<div>' +
                         '<label>' + placeholder + '</label>' +
-                        '<input type="number" class="form-control" id="properties[' + name + ']" name="properties[' + name +
+                        '<input type="number" id="properties[' + name + ']" name="properties[' + name +
                         ']" placeholder="' + placeholder + '" />' +
                         '</div>');
                 }
@@ -656,7 +656,7 @@ function populateFields(oid, pid) {
                     document.querySelector('.o_h_' + pid).insertAdjacentHTML('beforeend',
                         '<div>' +
                         '<label>' + placeholder + '</label>' +
-                        '<input type="text" class="form-control" id="properties[' + name + ']" name="properties[' + name +
+                        '<input type="text" id="properties[' + name + ']" name="properties[' + name +
                         ']" placeholder="' + placeholder + '" />' +
                         '</div>');
                 }
@@ -664,7 +664,7 @@ function populateFields(oid, pid) {
                     document.querySelector('.o_h_' + pid).insertAdjacentHTML('beforeend',
                         '<div>' +
                         '<label>' + placeholder + '</label>' +
-                        '<textarea class="form-control" id="properties[' + name + ']" name="properties[' + name +
+                        '<textarea id="properties[' + name + ']" name="properties[' + name +
                         ']" placeholder="' + placeholder + '">' + placeholder + '</textarea>' +
                         '</div>');
                 }
@@ -672,7 +672,7 @@ function populateFields(oid, pid) {
                     document.querySelector('.o_h_' + pid).insertAdjacentHTML('beforeend',
                         '<div>' +
                         '<label>' + placeholder + '</label>' +
-                        '<input type="file" class="form-control" id="properties[' + name + ']" name="properties[' + name +
+                        '<input type="file" id="properties[' + name + ']" name="properties[' + name +
                         ']" placeholder="' + placeholder + '" />' +
                         '</div>');
                 }
@@ -680,7 +680,7 @@ function populateFields(oid, pid) {
                     document.querySelector('.o_h_' + pid).insertAdjacentHTML('beforeend',
                         '<div>' +
                         '<label>' +
-                        '<input type="checkbox" class="form-control" id="properties[' + name + ']" name="properties[' + name +
+                        '<input type="checkbox" id="properties[' + name + ']" name="properties[' + name +
                         ']" placeholder="' + placeholder + '" /> ' +
                         placeholder +
                         '</label>' +
@@ -690,7 +690,7 @@ function populateFields(oid, pid) {
                     document.querySelector('.o_h_' + pid).insertAdjacentHTML('beforeend',
                         '<div>' +
                         '<label>' + placeholder + '</label>' +
-                        '<input type="checkbox" class="form-control" id="properties[' + name + ']" name="properties[' + name +
+                        '<input type="checkbox" id="properties[' + name + ']" name="properties[' + name +
                         ']" placeholder="' + placeholder + '" />' +
                         '</div>');
                 }
@@ -698,7 +698,7 @@ function populateFields(oid, pid) {
                     document.querySelector('.o_h_' + pid).insertAdjacentHTML('beforeend',
                         '<div>' +
                         '<label>' +
-                        '<input type="radio" class="form-control" id="properties[' + name + ']" name="properties[' + name +
+                        '<input type="radio" id="properties[' + name + ']" name="properties[' + name +
                         ']" placeholder="' + placeholder + '" /> ' +
                         placeholder +
                         '</label>' +
@@ -708,7 +708,7 @@ function populateFields(oid, pid) {
                     document.querySelector('.o_h_' + pid).insertAdjacentHTML('beforeend',
                         '<div>' +
                         '<label>' + placeholder + '</label>' +
-                        '<input type="date" class="form-control" id="properties[' + name + ']" name="properties[' + name +
+                        '<input type="date" id="properties[' + name + ']" name="properties[' + name +
                         ']" placeholder="' + placeholder + '" />' +
                         '</div>');
                 }
@@ -716,7 +716,7 @@ function populateFields(oid, pid) {
                     document.querySelector('.o_h_' + pid).insertAdjacentHTML('beforeend',
                         '<div>' +
                         '<label>' + placeholder + '</label>' +
-                        '<input style="min-width: 150px;" type="color" class="form-control" id="properties[' + name + ']" name="properties[' + name +
+                        '<input style="min-width: 150px;" type="color" id="properties[' + name + ']" name="properties[' + name +
                         ']" placeholder="' + placeholder + '" />' +
                         '</div>');
                 }
