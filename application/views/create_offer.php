@@ -522,8 +522,7 @@ Not supports in Firefox and IE */
                     </div>
                     <div id="collapseThree-p2" class="panel-collapse collapse">
                         <div class="panel-body">
-                            <label><input type="checkbox" class="offer_ab_test" value="1" />
-                                Want this to be an upgrade?</label><br />
+                            <h3>Want this to be an upgrade?</h3><br />
                             <div style="display: table; width: 100%; padding: 10px;">
                                 <h4>Choose the product to be replaced once this offered product is accepted<br /><small>Search product or variant</small></h4>
                                 <div class="input-group">
