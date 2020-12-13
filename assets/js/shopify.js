@@ -969,9 +969,19 @@ function display_offer(oid) {
             let addToCartForm = document.querySelector('form[data-product-product_id="' + pid + '"]');
             let formData = new FormData(addToCartForm);
 
-            if (v['rv'] != '') { }
+            if (v['rv'] != '') {
+                fetch('/cart/update.js', {
+                    body: { quantity: 0, id: v['rv'] },
+                    method: 'POST'
+                });
+            }
             else {
-                if (v['rp'] != '') { }
+                if (v['rp'] != '') {
+                    fetch('/cart/update.js', {
+                        body: { quantity: 0, id: v['rp'] },
+                        method: 'POST'
+                    });
+                }
             }
 
             fetch('/cart/add.js', {
