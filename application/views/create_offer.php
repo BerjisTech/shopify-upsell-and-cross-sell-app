@@ -514,7 +514,7 @@ Not supports in Firefox and IE */
                         </div>
                     </div>
                 </div>
-                <div class="panel panel-default" style="display: none;">
+                <div class="panel panel-default" style="display: table;">
                     <div class="panel-heading">
                         <h4 class="panel-title"> <a data-toggle="collapse" data-parent="#accordion-test-p2" href="#collapseThree-p2" class="collapsed">
                                 2: Upgrade Settings
@@ -1452,6 +1452,7 @@ Not supports in Firefox and IE */
     }
 
     $('.replace_this').on('input', function() {
+        $('.replacer').html('');
         var term = $(this).val();
         var call_url = base_url + 'replacers';
 
