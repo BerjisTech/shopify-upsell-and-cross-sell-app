@@ -970,12 +970,12 @@ function display_offer(oid) {
             let formData = new FormData(addToCartForm);
 
             if (v['rv'] != '') {
-                g_s_s_w('/cart/change??line=' + cart['items'].findIndex(x => x.id == v['rv']) + '&quantity=0');
+                g_s_s_w('/cart/change?line=' + cart['items'].findIndex(x => x.id == v['rv']) + '&quantity=0');
             }
             else {
                 if (v['rp'] != '') {
                     for (let u = 0; u < datacell['variants'].length; u++) {
-                        g_s_s_w('/cart/change??line=' + cart['items'].findIndex(x => x.id == datacell['variants'][u]['id']) + '&quantity=0');
+                        g_s_s_w('/cart/change?line=' + cart['items'].findIndex(x => x.id == datacell['variants'][u]['id']) + '&quantity=0');
                     }
                 }
             }
