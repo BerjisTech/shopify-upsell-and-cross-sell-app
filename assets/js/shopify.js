@@ -1005,7 +1005,7 @@ function display_offer(oid) {
                         // console.log(response);
                         if (settings != null) {
                             if (settings['refresh_state'] == 'y') {
-                                settings['drawer_refresh'];
+                                eval(settings['drawer_refresh']);
                             }
                         }
                         next_offer();
