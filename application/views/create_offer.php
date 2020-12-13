@@ -514,7 +514,7 @@ Not supports in Firefox and IE */
                         </div>
                     </div>
                 </div>
-                <div class="panel panel-default" style="display: table;">
+                <div class="panel panel-default">
                     <div class="panel-heading">
                         <h4 class="panel-title"> <a data-toggle="collapse" data-parent="#accordion-test-p2" href="#collapseThree-p2" class="collapsed">
                                 2: Upgrade Settings
