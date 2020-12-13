@@ -982,6 +982,7 @@ function display_offer(oid) {
                         // console.log(datacell['variants'][i]['title']);
                         console.log('Removing ' + datacell['variants'][vi]['id'])
                         removedVs.push([0, datacell['variants'][vi]['id']]);
+                        console.log(removedVs);
                     }
                     fetch('/cart/update.js', {
                         body: removedVs,
