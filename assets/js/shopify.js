@@ -970,7 +970,7 @@ function display_offer(oid) {
             let formData = new FormData(addToCartForm);
 
             if (v['rv'] != '') {
-                fetch('/cart/update.js', {
+                fetch('/cart/change.js', {
                     body: { quantity: 0, id: v['rv'] },
                     method: 'POST'
                 });
@@ -984,7 +984,7 @@ function display_offer(oid) {
                         removedVs.push([0, datacell['variants'][vi]['id']]);
                         console.log(removedVs);
                     }
-                    fetch('/cart/update.js', {
+                    fetch('/cart/change.js', {
                         body: removedVs,
                         method: 'POST'
                     });
