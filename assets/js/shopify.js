@@ -970,18 +970,14 @@ function display_offer(oid) {
             let formData = new FormData(addToCartForm);
 
             if (v['rv'] != '') {
-                if(cart['items'].findIndex(x => x.id == v['rv']) != -1){
-                    g_s_s_w('/cart/change?line=' + cart['items'].findIndex(x => x.id == v['rv']) + '&quantity=0')
-                }
+                g_s_s_w('/cart/change?id=' + v['rv'] + '&quantity=0');
             }
             else {
                 if (v['rp'] != '') {
                     let dc = oprods[oprods.findIndex(x => x.id == v['rp'])];
                     let removedVs = [];
                     for (let vi = 0; vi < dc['variants'].length; vi++) {
-                        if(cart['items'].findIndex(x => x.id == dc['variants'][vi]['id']) != -1){
-                            g_s_s_w('/cart/change?line=' + cart['items'].findIndex(x => x.id == dc['variants'][vi]['id']) + '&quantity=0')
-                        }
+                        g_s_s_w('/cart/change?id=' + dc['variants'][vi]['id'] + '&quantity=0');
                     }
                 }
             }
