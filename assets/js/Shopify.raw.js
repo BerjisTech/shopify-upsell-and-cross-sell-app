@@ -949,10 +949,9 @@ jQuery(document).ready(function () {
             populateFields(oid, pid)
             $(datacell['variants']).each(function (i) {
                 // console.log(datacell['variants'][i]['title']);
-                $('.v-' + pid).append('<option value="' + datacell['variants'][i]['id'] +
-                    '">' +
-                    datacell['variants'][i]['title'] + ' (' + curr + ' ' +
-                    datacell['variants'][i]['price'] + ')</option>');
+                if (datacell['variants'][vi]['inventory_quantity'] > 0) {
+                    $('.v-' + pid).append('<option value="' + datacell['variants'][i]['id'] + '">' + datacell['variants'][i]['title'] + ' (' + curr + ' ' + datacell['variants'][i]['price'] + ')</option>');
+                }
             });
             for (i = 1; i <= 10; i++) {
                 $('.q-' + pid).append('<option value="' + i + '">' +

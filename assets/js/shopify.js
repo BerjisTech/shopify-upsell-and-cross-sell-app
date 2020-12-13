@@ -942,10 +942,10 @@ function display_offer(oid) {
 
         for (let vi = 0; vi < datacell['variants'].length; vi++) {
             // console.log(datacell['variants'][i]['title']);
-            document.querySelector('.v-' + pid).insertAdjacentHTML('beforeend', '<option value="' + datacell['variants'][vi]['id'] +
-                '">' +
-                datacell['variants'][vi]['title'] + ' (' + curr + ' ' +
-                datacell['variants'][vi]['price'] + ')</option>');
+            if (datacell['variants'][vi]['inventory_quantity'] > 0) {
+                document.querySelector('.v-' + pid).insertAdjacentHTML('beforeend', '<option value="' + datacell['variants'][vi]['id'] +
+                    '">' + datacell['variants'][vi]['title'] + ' (' + curr + ' ' + datacell['variants'][vi]['price'] + ')</option>');
+            }
         }
         for (q = 1; q <= 10; q++) {
             document.querySelector('.q-' + pid).insertAdjacentHTML('beforeend', '<option value="' + q + '">' + q + '</option>')

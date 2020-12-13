@@ -1101,6 +1101,9 @@ Not supports in Firefox and IE */
                         console.log("datacell")
                         console.log(datacell)
                         $('.replace_this').val(datacell['title']);
+                        if (products[thing]['rv'] != '') {
+                            $('.replace_this').val('(' + datacell['variants'][datacell['variants'].findIndex(x => x.id == products[thing]['rv'])]['title'] + ')' + datacell['title']);
+                        }
                     };
                     title.send();
                 }
