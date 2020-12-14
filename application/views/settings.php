@@ -65,14 +65,25 @@
                 </div>
 
             </div>
-            <div style=" display: none; height: 100vh; background: #FAFAFA; align-items: center; justify-content: center;">
-                <div class="previewFrame" style="background: #eecf06; display: table; width: 1024; height: 768;"></div>
-                <div style="display: flex; position: absolute; bottom: 10px; right: 10px; background: #fff; padding: 20px; z-index: 3000000;">
-                    <img src="https://cdn4.iconfinder.com/data/icons/48-bubbles/48/29.Mac-512.png" style="height: 50px; cursor: pointer;" onclick="$('.previewFrame').width('100%');$('.previewFrame').height('100%');" />
-                    <img src="https://image.flaticon.com/icons/png/512/59/59505.png" style="height: 50px; cursor: pointer;" onclick="$('.previewFrame').width(1024);$('.previewFrame').height(768);" />
-                    <img src="https://static.thenounproject.com/png/35430-200.png" style="height: 50px; cursor: pointer;" onclick="$('.previewFrame').width(768);$('.previewFrame').height(800);" />
-                    <img src="https://image.flaticon.com/icons/png/512/65/65680.png" style="height: 50px; cursor: pointer;" onclick="$('.previewFrame').width(320);$('.previewFrame').height(568);" />
-                </div>
+            <div style=" display: table; height: 100vh; background: #FAFAFA; align-items: center; justify-content: center;">
+                <h1 style="width: 100%; text-align: center;">How to get the selectors</h1>
+                <hr />
+                <ul>
+                    <li>Open <a href="https://<?php echo $shop; ?>.myshopify.com" target="_BLANK">your store</a> in a new tab without closing this tab.</li>
+                    <li>Once you're on the page you'd like the offer to appear, choose a specific place you want the offer to appear</li>
+                    <li>Right click on the area</li>
+                    <li>Select "inspect"</li>
+                    <li>This will open a console. Don't worry. Everything done on this console is temporary and will not affect your store in any way</li>
+                    <li>On the console, before you scroll or hover, there'll be a highlighted section, which when you hover over, also highlights a section on your store.</li>
+                    <li>Hover around till you have the correct part highlighted</li>
+                    <li>The selected element should have attributes like class="" or id=""</li>
+                    <li>Copy the text inside the tags eg in class="class_name" copy class_name only</li>
+                    <li>Paste that in the selector area. If you copied it on the cart page, paste it on the cart selector section otherwise paste it on the cart drawer selector section</li>
+                    <li>When pasting, if you copied the selector from class="" add a . before pasting eg .class_name if you copied from class="class_name"</li>
+                    <li>if you copied the selector from class="" add a # before pasting eg #class_name if you copied from id="class_name"</li>
+                    <li>Don't hesitate to contact support if you have any problems with this.
+                    </li>
+                </ul>
             </div>
         </div>
         <div class="setting_tab s_d" style="display: none; background: #FFFFFF;">
