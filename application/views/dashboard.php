@@ -233,9 +233,9 @@
                     <thead style="border: none;">
                         <tr style="border: none;">
                             <th style="border: none;"></th>
-                            <th style="border: none;"></th>
-                            <th style="border: none; flex-grow: 4;"></th>
-                            <th style="border: none;"></th>
+                            <th style="border: none; flex-grow: 4;">Offer</th>
+                            <th style="border: none;">Status</th>
+                            <th style="border: none;">Action</th>
                         </tr>
                     </thead>
                     <tbody style="border: none;">
