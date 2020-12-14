@@ -819,7 +819,7 @@
         settings['drawer_refresh'] = $(this).val();
     });
     $('textarea[name="override"]').on('input', function() {
-        $('textarea[name="override"]').val(settings['override']);
+        settings['override'] = $(this).val();
     });
 
     $('.offer_bg').on('input', function() {
