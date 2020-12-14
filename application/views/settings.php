@@ -27,10 +27,10 @@
                                 <input type="text" name="cart_dom" class="form-control" placeholder="form[action='/cart/add']" />
                                 <h4>Position relative to selector</h4>
                                 <select type="text" name="cart_pos" class="form-control">
-                                    <option value="prepend">Top Of</option>
-                                    <option value="before">Before</option>
-                                    <option value="append">Bottom Of</option>
-                                    <option value="after">After</option>
+                                    <option value="prepend">Top Of (Prepend)</option>
+                                    <option value="before">Before (insertBefore)</option>
+                                    <option value="append">Bottom Of (Append)</option>
+                                    <option value="after">After (insertAfter)</option>
                                 </select>
                             </div>
                         </div>
