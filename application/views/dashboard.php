@@ -1,4 +1,72 @@
 <?php $duka = $shop . '.myshopify.com'; ?>
+<style>
+    pre {
+        padding: 10px;
+        border: 1px solid #3A3A3A;
+        border-radius: 10px;
+    }
+
+    .dataTables_wrapper {
+        background: #ffffff;
+        padding-left: 10px;
+        padding-right: 10px;
+        border-radius: 10px;
+    }
+
+    .datatable *,
+    .datatable,
+    .dataTables_wrapper {
+        border: none !important;
+    }
+
+    .datatable thead,
+    .datatable tbody {
+        display: table;
+        border: none;
+        width: 100%;
+    }
+
+    .datatable tr {
+        display: flex;
+        border: none;
+        width: 100%;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    .datatable tbody tr {
+        border-radius: 10px;
+        margin-top: 10px;
+        margin-bottom: 10px;
+        box-shadow: 0px 0px 10px rgba(6, 6, 6, 0.2);
+    }
+
+    .whats,
+    .whats span,
+    .whats a {
+        color: #ffffff;
+        width: 100%;
+        font-size: 18px;
+    }
+
+    .whole {
+        display: block;
+        width: 100vw;
+        height: 100vh;
+        position: fixed;
+        top: 0px;
+        left: 0px;
+    }
+
+    .mwili {
+        top: 0vh;
+        display: flex;
+        width: 100vw;
+        height: 100vh;
+        position: fixed;
+        background: #ffffff;
+    }
+</style>
 <div class="whole">
     <div class="mwili">
         <div style="width: 50px; height: 100vh; background: #003471; display: flex; flex-direction: column; justify-content: space-between; align-items: center; text-align: center;">
@@ -25,24 +93,12 @@
             </span>
         </div>
         <div style="height: 100vh; overflow-y: auto; flex-grow: 4; padding-top: 10px; padding-left: 10px; padding-right: 10px; padding-bottom: 0px; background: #F1F2F3;">
-
             <div class="row">
-                <div class="col-md-4 col-sm-6">
+                <div class="col-md-2"></div>
+                <div class="col-md-8">
                     <div class="tile-stats tile-white stat-tile" style="box-shadow: 0px 0px 5px rgba(2, 2, 2, 0.2);">
-                        <h3><?php echo $this->db->where('shop', $duka)->where('type', 'impression')->get('stats')->num_rows(); ?></h3>
-                        <p>Customer impression</p> <span class="customer-reach"></span>
-                    </div>
-                </div>
-                <div class="col-md-4 col-sm-6">
-                    <div class="tile-stats tile-white stat-tile" style="box-shadow: 0px 0px 5px rgba(2, 2, 2, 0.2);">
-                        <h3>$ <?php echo number_format($this->db->select('sum(price) as total')->where('shop', $duka)->where('type', 'purchase')->get('stats')->row()->total); ?></h3>
-                        <p>ATC</p> <span class="sales"></span>
-                    </div>
-                </div>
-                <div class="col-md-4 col-sm-12">
-                    <div class="tile-stats tile-white stat-tile" style="box-shadow: 0px 0px 5px rgba(2, 2, 2, 0.2);">
-                        <h3><?php echo $this->db->where('shop', $duka)->where('type', 'checkout')->get('stats')->num_rows(); ?></h3>
-                        <p>Checkouts</p> <span class="all-time-sales"></span>
+                        <h3 style="width: 100%; text-align: center;">Welcome</h3>
+
                     </div>
                 </div>
             </div>
@@ -363,76 +419,6 @@
                         </tr>
                     </table>
                 </div>
-
-                <style>
-                    pre {
-                        padding: 10px;
-                        border: 1px solid #3A3A3A;
-                        border-radius: 10px;
-                    }
-
-                    .dataTables_wrapper {
-                        background: #ffffff;
-                        padding-left: 10px;
-                        padding-right: 10px;
-                        border-radius: 10px;
-                    }
-
-                    .datatable *,
-                    .datatable,
-                    .dataTables_wrapper {
-                        border: none !important;
-                    }
-
-                    .datatable thead,
-                    .datatable tbody {
-                        display: table;
-                        border: none;
-                        width: 100%;
-                    }
-
-                    .datatable tr {
-                        display: flex;
-                        border: none;
-                        width: 100%;
-                        align-items: center;
-                        justify-content: space-between;
-                    }
-
-                    .datatable tbody tr {
-                        border-radius: 10px;
-                        margin-top: 10px;
-                        margin-bottom: 10px;
-                        box-shadow: 0px 0px 10px rgba(6, 6, 6, 0.2);
-                    }
-
-                    .whats,
-                    .whats span,
-                    .whats a {
-                        color: #ffffff;
-                        width: 100%;
-                        font-size: 18px;
-                    }
-
-                    .whole {
-                        display: block;
-                        width: 100vw;
-                        height: 100vh;
-                        position: fixed;
-                        top: 0px;
-                        left: 0px;
-                    }
-
-                    .mwili {
-                        top: 0vh;
-                        display: flex;
-                        width: 100vw;
-                        height: 100vh;
-                        position: fixed;
-                        background: #ffffff;
-                    }
-                </style>
-
                 <script>
                     $('.offer_status').change(function() {
                         let o = $(this).attr('data-oid');
