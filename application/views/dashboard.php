@@ -96,7 +96,7 @@
             <div class="row">
                 <div class="col-md-2"></div>
                 <div class="col-md-8">
-                    <div class="tile-stats tile-white stat-tile" style="box-shadow: 0px 0px 5px rgba(2, 2, 2, 0.2);">
+                    <div class="tile-stats tile-white stat-tile" style="box-shadow: 0px 0px 5px rgba(2, 2, 2, 0.2); height: auto !important;">
                         <h1 style="width: 100%; text-align: center;">
                             <img src="https://sleek-upsell.com/logo.png" style="width: 50px;">
                             Sleek Upsell

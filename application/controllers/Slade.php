@@ -112,6 +112,8 @@ class Slade extends CI_Controller
                 $s_mail = json_decode($s_mail['response'], true);
 
                 $data['email'] = $s_mail['shop']['email'];
+                if ($shop_data->created_at == '') {
+                }
             }
 
 
