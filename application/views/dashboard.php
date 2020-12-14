@@ -102,9 +102,7 @@
                             Sleek Upsell
                         </h1>
                         <hr />
-                        <h3>
-                            Welcome to the world of Sleek Upsell
-                        </h3>
+                        <h3>Welcome to the world of Sleek Upsell</h3>
                         <p>Thank you for choosing Sleek Upsell to boost your sales! the app has veerything in-built. No need for complex settings to get you started. Use the links below to create offers and adjust the visual design.</p>
                         <br />
                         <p>Need help? Be sure to drop an email and we will repsond in less than 20 minutes. Our support team thrives on customer happiness</p>

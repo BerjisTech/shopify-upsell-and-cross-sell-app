@@ -107,6 +107,11 @@ class Slade extends CI_Controller
                 }
             } else {
                 $data['offer'] = array();
+
+                $s_mail = $this->Shopify->shopify_call($token, $shop, '/admin/api/2020-10/shop.json', array('fields' => 'email'), 'GET');
+                $s_mail = json_decode($s_mail['response'], true);
+
+                $data['email'] = $s_mail['shop']['email'];
             }
 
 
@@ -728,7 +733,7 @@ class Slade extends CI_Controller
         $offer_data = $_POST;
 
         foreach ($offer_data['offer'] as $o) {
-            $o['offer_id'] = $this->db->limit('1')->order_by('offer_id', 'DESC')->get('offers')->row()->offer_id+1;
+            $o['offer_id'] = $this->db->limit('1')->order_by('offer_id', 'DESC')->get('offers')->row()->offer_id + 1;
             $this->db->insert('offers', $o);
         }
 
