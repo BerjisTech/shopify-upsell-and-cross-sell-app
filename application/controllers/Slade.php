@@ -895,6 +895,11 @@ class Slade extends CI_Controller
         $this->db->where('oid', $oid)->delete('ocs');
         $this->db->where('oid', $oid)->delete('cfs');
         $this->db->where('oid', $oid)->delete('choices');
+        $this->db->where('offer', $oid)->delete('stats');
+    }
+
+    public function delstats($oid){
+        $this->db->where('offer', $oid)->delete('stats');
     }
 
     public function brgxczvy()
