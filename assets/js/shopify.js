@@ -189,7 +189,7 @@ next_offer();
 // collection_based();
 
 function next_offer() {
-    if (document.querySelector('.sleek-upsell') != null || document.querySelector('.sleek-upsell').length == 0) {
+    if (document.querySelector('.sleek-upsell') != null) {
         document.querySelector('.sleek-upsell').remove();
     }
     if (cart["item_count"] > 0) {
