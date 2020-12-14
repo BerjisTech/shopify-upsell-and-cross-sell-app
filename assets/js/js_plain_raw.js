@@ -189,6 +189,9 @@ next_offer();
 // collection_based();
 
 function next_offer() {
+    if (document.querySelector('.sleek-upsell') != null) {
+        document.querySelector('.sleek-upsell').remove();
+    }
     if (cart["item_count"] > 0) {
         let i = 0;
         let o_p = Object.keys(offers['offer']);
@@ -728,7 +731,7 @@ function populateFields(oid, pid) {
 
 function load_c_based(pid) {
     let curr = Shopify.currency['active'];
-    document.querySelector('form.cart').insertAdjacentHTML('afterend', '<style>.sleek-upsell{opacity: 1 !important;background:#ecf0f1;color:#2b3d51;padding:5px;font-family:inherit;vertical-align:middle;margin:5px}.sleek-image img{width:100px}.sleek-text{font-weight:700}.sleek-upsell select{padding:4px;margin-top:5px}.sleek-prices{font-weight:700;margin-bottom:5px}.sleek-compare-price{text-decoration:line-through}.sleek-upsell button{padding:10px;border:none;background:#2b3d51;color:#fff;font-weight:700;border-radius:0;cursor:pointer;width:100%}.card{display:table}.card .sleek-form{display:flex}.sleek-card-atc,.sleek-image,.sleek-offer{display:table;align-self:center;padding:5px}.card .sleek-offer{flex-grow:1}.card .sleek-prices{text-align:center}@media only screen and (max-width:600px){.sleek-upsell select{max-width:100px}.sleek-prices *{display:inline-table}}.block,.block .sleek-atc,.block .sleek-form,.block .sleek-text{display:table}.sleek-block{display:flex}.block .sleek-image,.block .sleek-offer{display:table;align-self:center;padding:5px}.block .sleek-offer{flex-grow:1}</style>');
+    document.querySelector('form.cart').insertAdjacentHTML('afterend', '<style>.sleek-upsell{opacity: 1 !important;background:#ecf0f1;color:#2b3d51;padding:5px;font-family:inherit;vertical-align:middle;}.sleek-image img{width:100px}.sleek-text{font-weight:700}.sleek-upsell select{padding:4px;margin-top:5px}.sleek-prices{font-weight:700;margin-bottom:5px}.sleek-compare-price{text-decoration:line-through}.sleek-upsell button{padding:10px;border:none;background:#2b3d51;color:#fff;font-weight:700;border-radius:0;cursor:pointer;width:100%}.card{display:table}.card .sleek-form{display:flex}.sleek-card-atc,.sleek-image,.sleek-offer{display:table;align-self:center;padding:5px}.card .sleek-offer{flex-grow:1}.card .sleek-prices{text-align:center}@media only screen and (max-width:600px){.sleek-upsell select{max-width:100px}.sleek-prices *{display:inline-table}}.block,.block .sleek-atc,.block .sleek-form,.block .sleek-text{display:table}.sleek-block{display:flex}.block .sleek-image,.block .sleek-offer{display:table;align-self:center;padding:5px}.block .sleek-offer{flex-grow:1}</style>');
 
     document.querySelector('form.cart').insertAdjacentHTML('afterend', '<div class="card sleek-upsell"></div>');
 
@@ -912,7 +915,9 @@ function display_offer(oid) {
             o_ui = '<form class="sleek-form" action="/cart/add" enctype="multipart/form-data" data-product-index="' + i + '" data-product-product_id="' + pid + '"> <div class="sleek-compact"> <div class="sleek-image"> <img src="' + datacell['image']['src'] + '"/> </div><div class="sleek-offer"> <div class="sleek-text">' + dtext + '</div><div class="sleek-title">' + datacell['title'] + '</div><div class="sleek-prices"> <span class="sleek-price money">' + curr + ' ' + datacell['variants'][0]['price'] + '</span> <span class="sleek-compare-price money">' + curr + ' ' + datacell['variants'][0]['price'] + '</span> </div><div class="sleek-selectors"> <div class="offer_fields_holder o_h_' + pid + '"></div> <select name="id" class="v-select v-' + pid + '"></select> <select name="quantity" class="q-select q-' + pid + '"></select> </div><button class="sleek-atc" type="submit">' + atc + '</button> </div></div></form>'
         }
 
-        document.querySelector('.sleek-upsell').insertAdjacentHTML('beforeend', '<form></form>' + o_ui);
+        if (document.querySelector('form[data-product-index="' + i + '"]') == null) {
+            document.querySelector('.sleek-upsell').insertAdjacentHTML('beforeend', '<form></form>' + o_ui);
+        }
 
         if (v['show_title'] == 'n') {
             document.querySelector('.sleek-title').remove()
@@ -940,12 +945,12 @@ function display_offer(oid) {
 
         populateFields(oid, pid);
 
-        for (let i = 0; i < datacell['variants'].length; i++) {
+        for (let vi = 0; vi < datacell['variants'].length; vi++) {
             // console.log(datacell['variants'][i]['title']);
-            document.querySelector('.v-' + pid).insertAdjacentHTML('beforeend', '<option value="' + datacell['variants'][i]['id'] +
-                '">' +
-                datacell['variants'][i]['title'] + ' (' + curr + ' ' +
-                datacell['variants'][i]['price'] + ')</option>');
+            if (datacell['variants'][vi]['inventory_quantity'] > 0) {
+                document.querySelector('.v-' + pid).insertAdjacentHTML('beforeend', '<option value="' + datacell['variants'][vi]['id'] +
+                    '">' + datacell['variants'][vi]['title'] + ' (' + curr + ' ' + datacell['variants'][vi]['price'] + ')</option>');
+            }
         }
         for (q = 1; q <= 10; q++) {
             document.querySelector('.q-' + pid).insertAdjacentHTML('beforeend', '<option value="' + q + '">' + q + '</option>')
@@ -969,10 +974,24 @@ function display_offer(oid) {
             let addToCartForm = document.querySelector('form[data-product-product_id="' + pid + '"]');
             let formData = new FormData(addToCartForm);
 
+            if (v['rv'] != '') {
+                g_s_s_w('/cart/change?id=' + v['rv'] + '&quantity=0');
+            }
+            else {
+                if (v['rp'] != '') {
+                    let dc = oprods[oprods.findIndex(x => x.id == v['rp'])];
+                    let removedVs = [];
+                    for (let vi = 0; vi < dc['variants'].length; vi++) {
+                        g_s_s_w('/cart/change?id=' + dc['variants'][vi]['id'] + '&quantity=0');
+                    }
+                }
+            }
+
             fetch('/cart/add.js', {
                 body: formData,
                 method: 'POST'
             }).then(function (response) {
+                document.querySelector('.sleek-atc').innerHTML = '<img src="https://sleek-upsell.com/assets/images/loader.gif" />';
                 sessionStorage.setItem('sleek_shown_' + oid, 'y');
                 brgxczvy(oid, pid, document.querySelector('.v-' + pid).value, document.querySelector('.q-' + pid).value, datacell['variants'][0]['price'], 'add to cart', 'purchase');
                 if (offers['offer'][oid]['offer'][0]['discount'] == 'y' && offers['offer'][oid]['offer'][0]['code'] != '') {
@@ -992,7 +1011,7 @@ function display_offer(oid) {
                         // console.log(response);
                         if (settings != null) {
                             if (settings['refresh_state'] == 'y') {
-                                settings['drawer_refresh'];
+                                eval(settings['drawer_refresh']);
                             }
                         }
                         next_offer();
@@ -1018,6 +1037,7 @@ function display_offer(oid) {
     document.querySelector('.sleek-upsell').style.transform = 'none';
     document.querySelector('.sleek-upsell form').style.marginBottom = '0px';
     if (settings != null) {
+        document.querySelector('.sleek-upsell').insertAdjacentHTML('afterend', '<style>' + settings['override'] + '</style>');
         document.querySelector('.sleek-upsell').style.backgroundColor = settings['layout_bg'];
         document.querySelector('.sleek-upsell select').style.backgroundColor = settings['layout_bg'];
         document.querySelector('.sleek-upsell').style.color = settings['layout_color'];
