@@ -1012,13 +1012,11 @@ function display_offer(oid) {
                                 eval(settings['drawer_refresh']);
                             }
                         }
-                        next_offer();
                     }
                 }
             }).catch(function (e) {
                 // console.error(e);
                 document.querySelector('form[data-product-product_id="' + pid + '"]').closest('button').innerHTML = 'Could not add product';
-                setTimeout(function () { next_offer() }, 1000);
             });
         }
     }
