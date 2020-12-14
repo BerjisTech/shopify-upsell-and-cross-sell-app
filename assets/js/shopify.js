@@ -1012,6 +1012,7 @@ function display_offer(oid) {
                                 eval(settings['drawer_refresh']);
                             }
                         }
+                        next_offer();
                     }
                 }
             }).catch(function (e) {
