@@ -359,15 +359,15 @@
                     <div class="panel panel-default">
                         <div class="panel-heading">
                             <h4 class="panel-title"> <a data-toggle="collapse" data-parent="#accordion-test-2" href="#collapseSeven-2" class="collapsed">
-                                    6: Page Override
+                                    7: Page Override
                                 </a> </h4>
                         </div>
                         <div id="collapseSeven-2" class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div style="display: table; width: 100%; margin-bottom: 10px;">
                                     <h4>Use this section to add custom CSS rules to override the offer's or your theme's default CSS without tampering with your theme files.</h4>
-                                    <div class="input-group">
-                                        <textarea class="form-control col-xs-12 override" style="resize: vertical; min-height: 200px;"></textarea>
+                                    <div class="input-group col-xs-12">
+                                        <textarea class="form-control override" style="resize: vertical; min-height: 200px;"></textarea>
                                     </div>
                                 </div>
                             </div>
