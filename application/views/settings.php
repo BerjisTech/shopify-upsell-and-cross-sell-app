@@ -356,6 +356,23 @@
                             </div>
                         </div>
                     </div>
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h4 class="panel-title"> <a data-toggle="collapse" data-parent="#accordion-test-2" href="#collapseSeven-2" class="collapsed">
+                                    6: Page Override
+                                </a> </h4>
+                        </div>
+                        <div id="collapseSeven-2" class="panel-collapse collapse">
+                            <div class="panel-body">
+                                <div style="display: table; width: 100%; margin-bottom: 10px;">
+                                    <h4>Use this section to add custom CSS rules to override the offer's or your theme's default CSS without tampering with your theme files.</h4>
+                                    <div class="input-group">
+                                        <textarea class="form-control override"></textarea>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
 
                 </div>
             </div>
@@ -580,6 +597,7 @@
             $('input[name="cart_pos"]').val(settings['cart_position']);
             $('input[name="drawer_dom"]').val(settings['drawer_location']);
             $('input[name="drawer_pos"]').val(settings['drawer_position']);
+            $('textarea[name="override"]').val(settings['override']);
             if (settings['refresh_state'] = 'y') {
                 $('input[name="drawer_refresh"]').prop('checked', true);
             } else {
@@ -741,6 +759,7 @@
             'drawer_position': 'before',
             'refresh_state': 'n',
             'drawer_refresh': '',
+            'override': '',
             'layout_bg': 'inherit',
             'layout_color': 'inherit',
             'layout_font': 'inherit',
@@ -798,6 +817,9 @@
     });
     $('textarea[name="refresh_code"]').on('input', function() {
         settings['drawer_refresh'] = $(this).val();
+    });
+    $('textarea[name="override"]').on('input', function() {
+        $('textarea[name="override"]').val(settings['override']);
     });
 
     $('.offer_bg').on('input', function() {
