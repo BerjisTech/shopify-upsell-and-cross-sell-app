@@ -93,28 +93,31 @@
             </span>
         </div>
         <div style="height: 100vh; overflow-y: auto; flex-grow: 4; padding-top: 10px; padding-left: 10px; padding-right: 10px; padding-bottom: 0px; background: #F1F2F3;">
-            <div class="row">
-                <div class="col-md-2"></div>
-                <div class="col-md-8">
-                    <div class="tile-stats tile-white stat-tile" style="box-shadow: 0px 0px 5px rgba(2, 2, 2, 0.2); height: auto !important;">
-                        <h1 style="width: 100%; text-align: center;">
-                            <img src="https://sleek-upsell.com/logo.png" style="width: 50px;">
-                            Sleek Upsell
-                        </h1>
-                        <hr />
-                        <h3>Welcome to the world of Sleek Upsell</h3>
-                        <p style="font-size: 18px !important; color: #8797A8 !important; margin-bottom: 0px !important;">Thank you for choosing Sleek Upsell to boost your sales! the app has veerything in-built. No need for complex settings to get you started. Use the links below to create offers and adjust the visual design.</p>
 
-                        <p style="font-size: 18px !important; color: #8797A8 !important; margin-bottom: 0px !important;">Need help? Be sure to drop an email and we will repsond in less than 20 minutes. Our support team thrives on customer happiness</p>
+            <?php if ($this->db->where('shop', $shop)->get('offers')->num_rows() == 0) : ?>
+                <div class="row">
+                    <div class="col-md-2"></div>
+                    <div class="col-md-8">
+                        <div class="tile-stats tile-white stat-tile" style="box-shadow: 0px 0px 5px rgba(2, 2, 2, 0.2); height: auto !important;">
+                            <h1 style="width: 100%; text-align: center;">
+                                <img src="https://sleek-upsell.com/logo.png" style="width: 50px;">
+                                Sleek Upsell
+                            </h1>
+                            <hr />
+                            <h3>Welcome to the world of Sleek Upsell</h3>
+                            <p style="font-size: 18px !important; color: #8797A8 !important; margin-bottom: 0px !important;">Thank you for choosing Sleek Upsell to boost your sales! the app has veerything in-built. No need for complex settings to get you started. Use the links below to create offers and adjust the visual design.</p>
 
-                        <div style="display: flex; justify-content: space-between; align-items: center; padding: 20px 20px 50px 20px;">
-                            <a href="<?php echo base_url(); ?>new_offer/<?php echo $shop; ?>/<?php echo $token; ?>?<?php echo $_SERVER['QUERY_STRING']; ?>" class="btn btn-lg btn-primary btn-icon icon-right"><i class="entypo-plus"></i>CREATE AN OFFER</a>
-                            <a href="<?php echo base_url(); ?>settings/<?php echo $shop; ?>/<?php echo $token; ?>?<?php echo $_SERVER['QUERY_STRING']; ?>" class="btn btn-lg btn-primary btn-icon icon-right"><i class="entypo-cog"></i>GENERAL SETTINGS</a>
-                            <span class="btn btn-lg btn-danger btn-icon icon-right"><i class="entypo-help"></i>SUPPORT</span>
+                            <p style="font-size: 18px !important; color: #8797A8 !important; margin-bottom: 0px !important;">Need help? Be sure to drop an email and we will repsond in less than 20 minutes. Our support team thrives on customer happiness</p>
+
+                            <div style="display: flex; justify-content: space-between; align-items: center; padding: 20px 20px 50px 20px;">
+                                <a href="<?php echo base_url(); ?>new_offer/<?php echo $shop; ?>/<?php echo $token; ?>?<?php echo $_SERVER['QUERY_STRING']; ?>" class="btn btn-lg btn-primary btn-icon icon-right"><i class="entypo-plus"></i>CREATE AN OFFER</a>
+                                <a href="<?php echo base_url(); ?>settings/<?php echo $shop; ?>/<?php echo $token; ?>?<?php echo $_SERVER['QUERY_STRING']; ?>" class="btn btn-lg btn-primary btn-icon icon-right"><i class="entypo-cog"></i>GENERAL SETTINGS</a>
+                                <span class="btn btn-lg btn-danger btn-icon icon-right"><i class="entypo-help"></i>SUPPORT</span>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
+            <?php endif; ?>
             <?php if ($this->db->where('shop', $shop)->get('offers')->num_rows() > 0) : ?>
                 <script type="text/javascript">
                     jQuery(document).ready(function() {
