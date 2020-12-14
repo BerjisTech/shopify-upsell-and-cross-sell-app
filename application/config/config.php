@@ -525,3 +525,12 @@ $config['proxy_ips'] = '';
 $config['shopify_api_key'] = 'ad1d8c0159547e886af6d777c058e4d9';
 $config['shopify_secret'] = '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';
 $config['redirect_url'] = '/generate_token';
+
+$config['protocol']  = 'smtp';
+$config['smtp_host'] = 'ssl://smtp.googlemail.com';
+$config['smtp_user'] = 'your_email';
+$config['smtp_pass'] = 'your_password';
+$config['smtp_port'] = 465;
+$config['charset']   = 'utf-8';
+$config['mailtype']  = 'html';
+$config['newline']   = "\r\n"; 
