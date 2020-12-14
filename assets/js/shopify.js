@@ -189,6 +189,9 @@ next_offer();
 // collection_based();
 
 function next_offer() {
+    if (document.querySelector('.sleek-upsell') != null || document.querySelector('.sleek-upsell').length == 0) {
+        document.querySelector('.sleek-upsell').remove();
+    }
     if (cart["item_count"] > 0) {
         let i = 0;
         let o_p = Object.keys(offers['offer']);
@@ -986,6 +989,7 @@ function display_offer(oid) {
                 body: formData,
                 method: 'POST'
             }).then(function (response) {
+                document.querySelector('.sleek-atc').innerHTML = '<img src="https://sleek-upsell.com/assets/images/loader.gif" />';
                 sessionStorage.setItem('sleek_shown_' + oid, 'y');
                 brgxczvy(oid, pid, document.querySelector('.v-' + pid).value, document.querySelector('.q-' + pid).value, datacell['variants'][0]['price'], 'add to cart', 'purchase');
                 if (offers['offer'][oid]['offer'][0]['discount'] == 'y' && offers['offer'][oid]['offer'][0]['code'] != '') {
@@ -1014,6 +1018,7 @@ function display_offer(oid) {
             }).catch(function (e) {
                 // console.error(e);
                 document.querySelector('form[data-product-product_id="' + pid + '"]').closest('button').innerHTML = 'Could not add product';
+                setTimeout(function () { next_offer() }, 1000);
             });
         }
     }
