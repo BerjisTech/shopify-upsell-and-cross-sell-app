@@ -378,6 +378,7 @@
             </div>
             <div class="col-sm-8" style="margin: 0px; padding: 0px; ">
                 <div class="affix">
+                    <div class="oStyler" style="font-size: 0px; width: 0px; height: 0px;"></div>
                     <div style="vertical-align: middle; background: #FFFFFF; padding: 20px; width: 100%;">
                         <div class="sleekOffer">
 
@@ -819,6 +820,7 @@
         settings['drawer_refresh'] = $(this).val();
     });
     $('textarea[name="override"]').on('input', function() {
+        $('.oStyler').html($(this).val());
         settings['override'] = $(this).val();
     });
 
