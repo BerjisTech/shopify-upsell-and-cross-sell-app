@@ -366,7 +366,7 @@
                             <div class="panel-body">
                                 <div style="display: table; width: 100%; margin-bottom: 10px;">
                                     <h4>Use this section to add custom CSS rules to override the offer's or your theme's default CSS without tampering with your theme files.</h4>
-                                    <div class="input-group col-xs-12">
+                                    <div class="input-group col-xs-12" style="margin-bottom: 100px;">
                                         <textarea class="form-control override" style="resize: vertical; min-height: 200px;"></textarea>
                                     </div>
                                 </div>
