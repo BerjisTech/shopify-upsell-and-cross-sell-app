@@ -728,7 +728,7 @@ function populateFields(oid, pid) {
 
 function load_c_based(pid) {
     let curr = Shopify.currency['active'];
-    document.querySelector('form.cart').insertAdjacentHTML('afterend', '<style>.sleek-upsell{opacity: 1 !important;background:#ecf0f1;color:#2b3d51;padding:5px;font-family:inherit;vertical-align:middle;margin:5px}.sleek-image img{width:100px}.sleek-text{font-weight:700}.sleek-upsell select{padding:4px;margin-top:5px}.sleek-prices{font-weight:700;margin-bottom:5px}.sleek-compare-price{text-decoration:line-through}.sleek-upsell button{padding:10px;border:none;background:#2b3d51;color:#fff;font-weight:700;border-radius:0;cursor:pointer;width:100%}.card{display:table}.card .sleek-form{display:flex}.sleek-card-atc,.sleek-image,.sleek-offer{display:table;align-self:center;padding:5px}.card .sleek-offer{flex-grow:1}.card .sleek-prices{text-align:center}@media only screen and (max-width:600px){.sleek-upsell select{max-width:100px}.sleek-prices *{display:inline-table}}.block,.block .sleek-atc,.block .sleek-form,.block .sleek-text{display:table}.sleek-block{display:flex}.block .sleek-image,.block .sleek-offer{display:table;align-self:center;padding:5px}.block .sleek-offer{flex-grow:1}</style>');
+    document.querySelector('form.cart').insertAdjacentHTML('afterend', '<style>.sleek-upsell{opacity: 1 !important;background:#ecf0f1;color:#2b3d51;padding:5px;font-family:inherit;vertical-align:middle;}.sleek-image img{width:100px}.sleek-text{font-weight:700}.sleek-upsell select{padding:4px;margin-top:5px}.sleek-prices{font-weight:700;margin-bottom:5px}.sleek-compare-price{text-decoration:line-through}.sleek-upsell button{padding:10px;border:none;background:#2b3d51;color:#fff;font-weight:700;border-radius:0;cursor:pointer;width:100%}.card{display:table}.card .sleek-form{display:flex}.sleek-card-atc,.sleek-image,.sleek-offer{display:table;align-self:center;padding:5px}.card .sleek-offer{flex-grow:1}.card .sleek-prices{text-align:center}@media only screen and (max-width:600px){.sleek-upsell select{max-width:100px}.sleek-prices *{display:inline-table}}.block,.block .sleek-atc,.block .sleek-form,.block .sleek-text{display:table}.sleek-block{display:flex}.block .sleek-image,.block .sleek-offer{display:table;align-self:center;padding:5px}.block .sleek-offer{flex-grow:1}</style>');
 
     document.querySelector('form.cart').insertAdjacentHTML('afterend', '<div class="card sleek-upsell"></div>');
 
@@ -1031,6 +1031,7 @@ function display_offer(oid) {
     document.querySelector('.sleek-upsell').style.transform = 'none';
     document.querySelector('.sleek-upsell form').style.marginBottom = '0px';
     if (settings != null) {
+        document.querySelector('.sleek-upsell').insertAdjacentHTML('afterend', '<style>' + settings['override'] + '</style>');
         document.querySelector('.sleek-upsell').style.backgroundColor = settings['layout_bg'];
         document.querySelector('.sleek-upsell select').style.backgroundColor = settings['layout_bg'];
         document.querySelector('.sleek-upsell').style.color = settings['layout_color'];
