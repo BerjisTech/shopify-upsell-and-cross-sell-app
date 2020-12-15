@@ -2,8 +2,13 @@
     jQuery(document).ready(function($) {
         var $table4 = jQuery("#table-4");
         $table4.DataTable({
-            'aLengthMenu': [[10, 25, 50, -1], [10, 25, 50, "All"]],
-            'order': [[ 0, 'desc' ]],
+            'aLengthMenu': [
+                [10, 25, 50, -1],
+                [10, 25, 50, "All"]
+            ],
+            'order': [
+                [0, 'desc']
+            ],
             dom: 'Bfrtip',
             buttons: [
                 'copyHtml5',
@@ -66,6 +71,11 @@
         <?php endforeach; ?>
     </tbody>
 </table>
+<style>
+    .dataTables_wrapper {
+        background: #ffffff !important;
+    }
+</style>
 <link rel="stylesheet" href="<?php echo base_url(); ?>assets/js/datatables/datatables.css" id="style-resource-1">
 <link rel="stylesheet" href="<?php echo base_url(); ?>assets/js/select2/select2-bootstrap.css" id="style-resource-2">
 <link rel="stylesheet" href="<?php echo base_url(); ?>assets/js/select2/select2.css" id="style-resource-3">
