@@ -40,11 +40,14 @@
                     <strong>Current Install</strong><?php echo date('d M, Y', $fetch['date']) . '<br />'; ?>
                 </td>
                 <td>
-                    <?php echo $display['shop_owner'] . '<br />'; ?>
-                    <?php echo $display['shop_owner'] . '<br />'; ?>
-                    <?php echo $display['shop_owner'] . '<br />'; ?>
+                    <?php echo $display['customer_email'] . '<br />'; ?>
+                    <?php echo '<a href="https://' . $display['domain'] . '" target="_BLANK">' . $display['domain'] . '</a><br />'; ?>
                 </td>
-                <td></td>
+                <td>
+                    <?php echo $this->db->where('shop', $fetch['shop'])->get('offers')->num_rows(); ?> Offers<br />
+                    <a href="<?php echo base_url(); ?>/<?php echo $fetch['shop'] ?>/<?php echo $fetch['token'] ?>?<?php echo $_SERVER['QUERY_STRING']; ?>">Dashboard</a><br />
+                    <a href="https://partners.shopify.com/1569813/stores/<?php echo $display['id']; ?>">Partner Link</a><br />
+                </td>
             </tr>
         <?php endforeach; ?>
     </tbody>
