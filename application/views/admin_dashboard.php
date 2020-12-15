@@ -34,38 +34,22 @@
     </thead>
     <tbody>
         <?php foreach ($user as $key => $fetch) : ?>
-            <?php
-            $s_data = $this->Shopify->shopify_call($fetch['token'], $fetch['shop'], '/admin/api/2020-10/shop.json', array(), 'GET');
-            $s_data = json_decode($s_data['response'], true);
-            if (isset($s_data['errors'])) {
-                $display = array(
-                    'plan_name' => 'error',
-                    'shop_owner' => 'error',
-                    'plan_display_name' => 'error',
-                    'customer_email' => 'error',
-                    'domain' => 'error',
-                    'id' => 'error',
-                );
-            } else {
-                $display = $s_data['shop'];
-            }
-            ?>
             <tr>
                 <td><?php echo $fetch['shop_id']; ?></td>
                 <td>
-                    <?php echo $display['shop_owner'] . '<br />'; ?>
-                    <?php echo $display['plan_display_name'] . ' (' . $display['plan_name'] . ')<br />'; ?>
+                    <?php echo $fetch['shop_owner'] . '<br />'; ?>
+                    <?php echo $fetch['plan_display_name'] . ' (' . $fetch['plan_name'] . ')<br />'; ?>
                     <strong>First Install</strong> <?php echo date('d M, Y - h:m:a', $fetch['date']) . '<br />'; ?>
                     <strong>Current Install</strong> <?php echo date('d M, Y - h:m:a', $fetch['date']) . '<br />'; ?>
                 </td>
                 <td>
-                    <?php echo $display['customer_email'] . '<br />'; ?>
-                    <?php echo '<a href="https://' . $display['domain'] . '" target="_BLANK">' . $display['domain'] . '</a><br />'; ?>
+                    <?php echo $fetch['customer_email'] . '<br />'; ?>
+                    <?php echo '<a href="https://' . $fetch['domain'] . '" target="_BLANK">' . $fetch['domain'] . '</a><br />'; ?>
                 </td>
                 <td>
                     <strong><?php echo $this->db->where('shop', $fetch['shop'])->get('offers')->num_rows(); ?> Offers<br /></strong>
                     <a href="https://<?php echo $shop ?>.myshopify.com/admin/apps/sleek-upsell/sombo/<?php echo $fetch['shop'] ?>/<?php echo $fetch['token'] ?>?<?php echo $_SERVER['QUERY_STRING']; ?>" target="_BLANK">Dashboard</a><br />
-                    <a href="https://partners.shopify.com/1569813/stores/<?php echo $display['id']; ?>" target="_BLANK">Partner Link (<?php echo $display['id']; ?>)</a><br />
+                    <a href="https://partners.shopify.com/1569813/stores/<?php echo $fetch['id']; ?>" target="_BLANK">Partner Link (<?php echo $fetch['id']; ?>)</a><br />
                 </td>
             </tr>
         <?php endforeach; ?>
