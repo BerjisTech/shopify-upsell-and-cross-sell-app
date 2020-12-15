@@ -185,7 +185,7 @@ class Slade extends CI_Controller
                         'token' => $access_token,
                         'updated_at' => time(),
                     );
-                    $this->db->where('shop', $shop)->update('shops', array('token' => $access_token, 'date' => time()));
+                    $this->db->where('shop', $shop)->update('shops', array('token' => $access_token, 'updated_at' => time()));
                 }
             } else {
                 $shop_data = array(
@@ -302,10 +302,33 @@ class Slade extends CI_Controller
         $shop = str_replace(".myshopify.com", "", $_GET['shop']);
         $token = $this->db->where('shop', $shop)->get('shops')->row()->token;
 
-        $s_plan = $this->Shopify->shopify_call($token, $shop, '/admin/api/2020-10/shop.json', array('fields' => 'plan_display_name'), 'GET');
-        $s_plan = json_decode($s_plan['response'], true);
 
-        $plan = $s_plan['shop']['plan_display_name'];
+        $s_data = $this->Shopify->shopify_call($token, $shop, '/admin/api/2020-10/shop.json', array(), 'GET');
+        $s_data = json_decode($s_data['response'], true);
+        $s_data = $s_data['shop'];
+
+        $s_array = array(
+            'plan_name' => $s_data['plan_name'],
+            'shop_owner' => $s_data['shop_owner'],
+            'plan_display_name' => $s_data['plan_display_name'],
+            'customer_email' => $s_data['customer_email'],
+            'domain' => $s_data['domain'],
+            'partner' => $s_data['partner']
+        );
+
+        $this->db->where('shop', $shop)->set($s_array)->update('shops');
+
+        $now = time(); // or your date as well
+        $your_date = $this->db->where('shop', $shop)->get('shops')->row()->updated_at;
+        $datediff = $now - $your_date;
+
+        if (round($datediff / (60 * 60 * 24)) < 44) {
+            $trial = 0;
+        } else {
+            $trial = 14;
+        }
+
+        $plan = $s_data['plan_display_name'];
 
         if ($plan == 'Developer Preview') {
             $array = array(
@@ -313,7 +336,7 @@ class Slade extends CI_Controller
                     'name' => 'Sleek',
                     'test' => true,
                     'price' => 19.99,
-                    'trial_days' => 14,
+                    'trial_days' => $trial,
                     'return_url' => 'https://' . $_GET['shop'] . '/admin/apps/sleek-upsell/activate?t=true&hmac=' . $_GET['hmac'] . '&shop=' . $_GET['shop'],
                 ),
             );
@@ -323,7 +346,7 @@ class Slade extends CI_Controller
                     'name' => 'Sleek',
                     'test' => false,
                     'price' => 19.99,
-                    'trial_days' => 14,
+                    'trial_days' => $trial,
                     'return_url' => 'https://' . $_GET['shop'] . '/admin/apps/sleek-upsell/activate?t=false&hmac=' . $_GET['hmac'] . '&shop=' . $_GET['shop'],
                 ),
             );
@@ -371,9 +394,6 @@ class Slade extends CI_Controller
 
             $activate = $this->Shopify->shopify_call($token, $shop, "/admin/api/2020-10/recurring_application_charges/" . $charge_id . "/activate.json", $array, 'POST');
             $activate = json_decode($activate['response'], JSON_PRETTY_PRINT);
-            $s_data = $this->Shopify->shopify_call($token, $shop, '/admin/api/2020-10/shop.json', array(), 'GET');
-            $s_data = json_decode($s_data['response'], true);
-            $s_data = $s_data['shop'];
 
             // print_r($activate);
 
@@ -391,12 +411,7 @@ class Slade extends CI_Controller
                 'updated_at' => time(),
 
             );
-            // 'plan_name' => $s_data['plan_name'],
-            // 'shop_owner' => $s_data['shop_owner'],
-            // 'plan_display_name' => $s_data['plan_display_name'],
-            // 'customer_email' => $s_data['customer_email'],
-            // 'domain' => $s_data['domain'],
-            // 'partner' => $s_data['partner']
+
             $this->db->where('shop', str_replace(".myshopify.com", "", $_GET['shop']))->set($active_shop)->update('shops');
             echo '<script>top.window.location="https://' . $_GET['shop'] . '/admin/apps/sleek-upsell?' . $_SERVER['QUERY_STRING'] . '";</script>';
         }
