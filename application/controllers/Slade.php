@@ -1359,6 +1359,7 @@ class Slade extends CI_Controller
 
         $s_data = $this->Shopify->shopify_call($token, $shop, '/admin/api/2020-10/shop.json', array(), 'GET');
         $s_data = json_decode($s_data['response'], true);
+        print_r($s_data);
         $s_data = $s_data['shop'];
 
         $s_array = array(
