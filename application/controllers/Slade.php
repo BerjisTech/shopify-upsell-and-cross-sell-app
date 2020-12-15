@@ -1295,10 +1295,12 @@ class Slade extends CI_Controller
 
     public function users($shop, $token)
     {
-        if (
-            $shop == 'berjis-tech-ltd' || $token != $this->db->where('shop', 'berjis-tech-ltd')->get('shops')->row()->token
-        ) {
-            header('location: ' . $shop . '/admin/apps');
+        if ($shop == 'berjis-tech-ltd' || $shop == 'sleek-apps') {
+            if ($token != $this->db->where('shop', $shop)->get('shops')->row()->token) {
+                header('location: https://' . $shop . '/admin/apps');
+            }
+        } else {
+            header('location: https://' . $shop . '/admin/apps');
         }
 
         $data['user'] = $this->db->get('shops')->result_array();

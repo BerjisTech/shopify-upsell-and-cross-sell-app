@@ -34,9 +34,16 @@
             ?>
             <tr>
                 <td>
-                    <?php echo $display['']; ?>
+                    <?php echo $display['shop_owner'] . '<br />'; ?>
+                    <?php echo $display['plan_display_name'] . '(' . $display['plan_name'] . ')<br />'; ?>
+                    <strong>First Install</strong><?php echo date('d M, Y', $fetch['date']) . '<br />'; ?>
+                    <strong>Current Install</strong><?php echo date('d M, Y', $fetch['date']) . '<br />'; ?>
                 </td>
-                <td></td>
+                <td>
+                    <?php echo $display['shop_owner'] . '<br />'; ?>
+                    <?php echo $display['shop_owner'] . '<br />'; ?>
+                    <?php echo $display['shop_owner'] . '<br />'; ?>
+                </td>
                 <td></td>
             </tr>
         <?php endforeach; ?>
