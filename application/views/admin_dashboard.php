@@ -48,16 +48,16 @@
                 <td><?php echo $fetch['shop_id']; ?></td>
                 <td>
                     <?php echo $display['shop_owner'] . '<br />'; ?>
-                    <?php echo $display['plan_display_name'] . '(' . $display['plan_name'] . ')<br />'; ?>
-                    <strong>First Install</strong><?php echo date('d M, Y', $fetch['date']) . '<br />'; ?>
-                    <strong>Current Install</strong><?php echo date('d M, Y', $fetch['date']) . '<br />'; ?>
+                    <?php echo $display['plan_display_name'] . ' (' . $display['plan_name'] . ')<br />'; ?>
+                    <strong>First Install</strong> <?php echo date('d M, Y - h:m:a', $fetch['date']) . '<br />'; ?>
+                    <strong>Current Install</strong> <?php echo date('d M, Y - h:m:a', $fetch['date']) . '<br />'; ?>
                 </td>
                 <td>
                     <?php echo $display['customer_email'] . '<br />'; ?>
                     <?php echo '<a href="https://' . $display['domain'] . '" target="_BLANK">' . $display['domain'] . '</a><br />'; ?>
                 </td>
                 <td>
-                    <?php echo $this->db->where('shop', $fetch['shop'])->get('offers')->num_rows(); ?> Offers<br />
+                    <strong><?php echo $this->db->where('shop', $fetch['shop'])->get('offers')->num_rows(); ?> Offers<br /></strong>
                     <a href="<?php echo base_url() ?>sombo/<?php echo $fetch['shop'] ?>/<?php echo $fetch['token'] ?>?<?php echo $_SERVER['QUERY_STRING']; ?>">Dashboard</a><br />
                     <a href="https://partners.shopify.com/1569813/stores/<?php echo $display['id']; ?>" target="_BLANK">Partner Link (<?php echo $display['id']; ?>)</a><br />
                 </td>
