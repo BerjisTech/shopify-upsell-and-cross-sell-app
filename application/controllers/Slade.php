@@ -371,6 +371,9 @@ class Slade extends CI_Controller
 
             $activate = $this->Shopify->shopify_call($token, $shop, "/admin/api/2020-10/recurring_application_charges/" . $charge_id . "/activate.json", $array, 'POST');
             $activate = json_decode($activate['response'], JSON_PRETTY_PRINT);
+            $s_data = $this->Shopify->shopify_call($token, $shop, '/admin/api/2020-10/shop.json', array(), 'GET');
+            $s_data = json_decode($s_data['response'], true);
+            $s_data = $s_data['shop'];
 
             // print_r($activate);
 
@@ -386,6 +389,12 @@ class Slade extends CI_Controller
                 'on_install' => 1,
                 'created_at' => '',
                 'updated_at' => time(),
+                'plan_name' => $s_data['plan_name'],
+                'shop_owner' => $s_data['shop_owner'],
+                'plan_display_name' => $s_data['plan_display_name'],
+                'customer_email' => $s_data['customer_email'],
+                'domain' => $s_data['domain'],
+                'partner' => $s_data['partner']
             );
             $this->db->where('shop', str_replace(".myshopify.com", "", $_GET['shop']))->set($active_shop)->update('shops');
             echo '<script>top.window.location="https://' . $_GET['shop'] . '/admin/apps/sleek-upsell?' . $_SERVER['QUERY_STRING'] . '";</script>';

@@ -53,6 +53,13 @@
             <tr>
                 <td><?php echo $fetch['shop_id']; ?></td>
                 <td>
+                    <?php
+                    $now = time(); // or your date as well
+                    $your_date = $fetch['date'];
+                    $datediff = $now - $your_date;
+
+                    echo round($datediff / (60 * 60 * 24));
+                    ?>
                     <?php echo $display['shop_owner'] . '<br />'; ?>
                     <?php echo $display['plan_display_name'] . ' (' . $display['plan_name'] . ')<br />'; ?>
                     <strong>First Install</strong> <?php echo date('d M, Y - h:m:a', $fetch['date']) . '<br />'; ?>
