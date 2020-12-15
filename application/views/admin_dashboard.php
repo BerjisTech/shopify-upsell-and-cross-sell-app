@@ -31,6 +31,8 @@
             <?php
             $s_data = $this->Shopify->shopify_call($fetch['token'], $fetch['shop'], '/admin/api/2020-10/shop.json', array(), 'GET');
             $s_data = json_decode($s_data['response'], true);
+            print_r($s_data);
+            echo '<br /><br />';
             $display = $s_data['shop'];
             ?>
             <tr>
