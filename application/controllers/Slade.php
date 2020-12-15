@@ -389,13 +389,14 @@ class Slade extends CI_Controller
                 'on_install' => 1,
                 'created_at' => '',
                 'updated_at' => time(),
-                'plan_name' => $s_data['plan_name'],
-                'shop_owner' => $s_data['shop_owner'],
-                'plan_display_name' => $s_data['plan_display_name'],
-                'customer_email' => $s_data['customer_email'],
-                'domain' => $s_data['domain'],
-                'partner' => $s_data['partner']
+
             );
+            // 'plan_name' => $s_data['plan_name'],
+            // 'shop_owner' => $s_data['shop_owner'],
+            // 'plan_display_name' => $s_data['plan_display_name'],
+            // 'customer_email' => $s_data['customer_email'],
+            // 'domain' => $s_data['domain'],
+            // 'partner' => $s_data['partner']
             $this->db->where('shop', str_replace(".myshopify.com", "", $_GET['shop']))->set($active_shop)->update('shops');
             echo '<script>top.window.location="https://' . $_GET['shop'] . '/admin/apps/sleek-upsell?' . $_SERVER['QUERY_STRING'] . '";</script>';
         }
