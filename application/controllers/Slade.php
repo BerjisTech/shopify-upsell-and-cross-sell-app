@@ -313,7 +313,7 @@ class Slade extends CI_Controller
             'plan_display_name' => $s_data['plan_display_name'],
             'customer_email' => $s_data['customer_email'],
             'domain' => $s_data['domain'],
-            'partner' => $s_data['partner']
+            'partner' => $s_data['id']
         );
 
         $this->db->where('shop', $shop)->set($s_array)->update('shops');
@@ -321,12 +321,6 @@ class Slade extends CI_Controller
         $now = time(); // or your date as well
         $your_date = $this->db->where('shop', $shop)->get('shops')->row()->updated_at;
         $datediff = $now - $your_date;
-
-        if (round($datediff / (60 * 60 * 24)) < 44) {
-            $trial = 0;
-        } else {
-            $trial = 14;
-        }
 
         $plan = $s_data['plan_display_name'];
 
@@ -336,7 +330,7 @@ class Slade extends CI_Controller
                     'name' => 'Sleek',
                     'test' => true,
                     'price' => 19.99,
-                    'trial_days' => $trial,
+                    'trial_days' => 14,
                     'return_url' => 'https://' . $_GET['shop'] . '/admin/apps/sleek-upsell/activate?t=true&hmac=' . $_GET['hmac'] . '&shop=' . $_GET['shop'],
                 ),
             );
@@ -346,7 +340,7 @@ class Slade extends CI_Controller
                     'name' => 'Sleek',
                     'test' => false,
                     'price' => 19.99,
-                    'trial_days' => $trial,
+                    'trial_days' => 14,
                     'return_url' => 'https://' . $_GET['shop'] . '/admin/apps/sleek-upsell/activate?t=false&hmac=' . $_GET['hmac'] . '&shop=' . $_GET['shop'],
                 ),
             );
