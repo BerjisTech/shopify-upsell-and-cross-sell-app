@@ -1314,7 +1314,7 @@ class Slade extends CI_Controller
         $data['api_key'] = $this->config->item('shopify_api_key');
         $data['shop'] = $shop;
         $data['token'] = $token;
-        $data['page_name'] = 'ad_dashboard';
+        $data['page_name'] = 'admin_dashboard';
         $this->load->view('index', $data);
     }
 
