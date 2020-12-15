@@ -1304,13 +1304,7 @@ class Slade extends CI_Controller
             echo '<script>window.location.href = "https://' . $shop . '/admin/apps";</script>';
         }
 
-        $data['offer'] = array();
-
-        $s_mail = $this->Shopify->shopify_call($token, $shop, '/admin/api/2020-10/shop.json', array('fields' => 'email'), 'GET');
-        $s_mail = json_decode($s_mail['response'], true);
-
-        $data['email'] = $s_mail['shop']['email'];
-
+        $data['shops'] = $this->db->get('shops')->result_array();
         $data['api_key'] = $this->config->item('shopify_api_key');
         $data['shop'] = $shop;
         $data['token'] = $token;
