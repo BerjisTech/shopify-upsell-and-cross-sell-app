@@ -17,7 +17,7 @@
         });
     });
 </script>
-<table class="datatable" id="table-4">
+<table class="datatable table table-responsive" id="table-4">
     <thead>
         <tr>
             <th></th>
