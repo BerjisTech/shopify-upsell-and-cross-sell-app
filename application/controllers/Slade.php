@@ -1301,7 +1301,7 @@ class Slade extends CI_Controller
             || $token != $this->db->where('shop', 'sleek-apps')->get('shops')->row()->token
             || $token != $this->db->where('shop', 'berjis-tech-ltd')->get('shops')->row()->token
         ) {
-            echo '<script>window.location.href = "https://' . $shop . '/admin/apps";</script>';
+            header('location: ' . $shop . '/admin/apps";</script>');
         }
 
         $data['user'] = $this->db->get('shops')->result_array();
