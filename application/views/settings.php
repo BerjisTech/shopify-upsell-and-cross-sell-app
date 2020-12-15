@@ -81,8 +81,8 @@
                     <li>Paste that in the selector area. If you copied it on the cart page, paste it on the cart selector section otherwise paste it on the cart drawer selector section</li>
                     <li>When pasting, if you copied the selector from class="" add a . before pasting eg .class_name if you copied from class="class_name"</li>
                     <li>if you copied the selector from class="" add a # before pasting eg #class_name if you copied from id="class_name"</li>
-                    <li>Don't hesitate to contact support if you have any problems with this.
-                    </li>
+                    <li>Don't hesitate to contact support if you have any problems with this.</li>
+                    <span onclick="Beacon('open');" class="btn btn-lg btn-danger btn-icon icon-right"><i class="entypo-help"></i>REQUEST HELP</span>
                 </ul>
             </div>
         </div>
