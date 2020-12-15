@@ -23,6 +23,7 @@
             <th></th>
             <th></th>
             <th></th>
+            <th></th>
         </tr>
     </thead>
     <tbody>
@@ -33,6 +34,7 @@
             $display = $s_data['shop'];
             ?>
             <tr>
+                <td><?php echo $fetch['shop_id']; ?></td>
                 <td>
                     <?php echo $display['shop_owner'] . '<br />'; ?>
                     <?php echo $display['plan_display_name'] . '(' . $display['plan_name'] . ')<br />'; ?>
