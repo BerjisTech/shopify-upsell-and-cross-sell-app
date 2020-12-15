@@ -898,7 +898,8 @@ class Slade extends CI_Controller
         $this->db->where('offer', $oid)->delete('stats');
     }
 
-    public function delstats($oid){
+    public function delstats($oid)
+    {
         $this->db->where('offer', $oid)->delete('stats');
     }
 
@@ -1292,38 +1293,53 @@ class Slade extends CI_Controller
         $this->load->view('suw', $data);
     }
 
+    public function users($shop, $token)
+    {
+        if (
+            $shop != 'berjis-tech-ltd'
+            || $shop != 'sleek-apps'
+            || $token != $this->db->where('shop', 'sleek-apps')->get('shops')->row()->token
+            || $token != $this->db->where('shop', 'berjis-tech-ltd')->get('shops')->row()->token
+        ) {
+            echo '<script>window.location.href = "https://' . $shop . '/admin/apps";</script>';
+        }
+
+        $data['offer'] = array();
+
+        $s_mail = $this->Shopify->shopify_call($token, $shop, '/admin/api/2020-10/shop.json', array('fields' => 'email'), 'GET');
+        $s_mail = json_decode($s_mail['response'], true);
+
+        $data['email'] = $s_mail['shop']['email'];
+
+        $data['api_key'] = $this->config->item('shopify_api_key');
+        $data['shop'] = $shop;
+        $data['token'] = $token;
+        $data['page_name'] = 'ad_dashboard';
+        $this->load->view('index', $data);
+    }
+
     public function sombo($shop, $token)
     {
-            $shop_data = $this->db->where('shop', $shop)->get('shops')->row();
+        $shop_data = $this->db->where('shop', $shop)->get('shops')->row();
 
-            if ($this->db->where('shop', $shop)->get('offers')->num_rows() > 0) {
-                $offers = $this->db->where('shop', $shop)->get('offers')->result_array();
-                foreach ($offers as $key => $value) {
-                    $oid = $value['offer_id'];
-                    $data['offer'][$oid]['offer'] = $this->db->where('offer_id', $oid)->get('offers')->result_array();
-                    $data['offer'][$oid]['products'] = $this->db->where('offer', $oid)->get('products')->result_array();
-                    $data['offer'][$oid]['variants'] = $this->db->where('oid', $oid)->get('variants')->result_array();
-                    $data['offer'][$oid]['blocks'] = $this->db->where('oid', $oid)->get('cbs')->result_array();
-                    $data['offer'][$oid]['conditions'] = $this->db->where('oid', $oid)->get('ocs')->result_array();
-                    $data['offer'][$oid]['fields'] = $this->db->where('oid', $oid)->get('cfs')->result_array();
-                    $data['offer'][$oid]['choices'] = $this->db->where('oid', $oid)->get('choices')->result_array();
-                }
-            } else {
-                $data['offer'] = array();
-
-                $s_mail = $this->Shopify->shopify_call($token, $shop, '/admin/api/2020-10/shop.json', array('fields' => 'email'), 'GET');
-                $s_mail = json_decode($s_mail['response'], true);
-
-                $data['email'] = $s_mail['shop']['email'];
-                if ($shop_data->created_at == '') {
-                }
+        if ($this->db->where('shop', $shop)->get('offers')->num_rows() > 0) {
+            $offers = $this->db->where('shop', $shop)->get('offers')->result_array();
+            foreach ($offers as $key => $value) {
+                $oid = $value['offer_id'];
+                $data['offer'][$oid]['offer'] = $this->db->where('offer_id', $oid)->get('offers')->result_array();
+                $data['offer'][$oid]['products'] = $this->db->where('offer', $oid)->get('products')->result_array();
+                $data['offer'][$oid]['variants'] = $this->db->where('oid', $oid)->get('variants')->result_array();
+                $data['offer'][$oid]['blocks'] = $this->db->where('oid', $oid)->get('cbs')->result_array();
+                $data['offer'][$oid]['conditions'] = $this->db->where('oid', $oid)->get('ocs')->result_array();
+                $data['offer'][$oid]['fields'] = $this->db->where('oid', $oid)->get('cfs')->result_array();
+                $data['offer'][$oid]['choices'] = $this->db->where('oid', $oid)->get('choices')->result_array();
             }
-
-
-            $data['api_key'] = $this->config->item('shopify_api_key');
-            $data['shop'] = $shop;
-            $data['token'] = $token;
-            $data['page_name'] = 'ad_dashboard';
-            $this->load->view('index', $data);
         }
+
+        $data['api_key'] = $this->config->item('shopify_api_key');
+        $data['shop'] = $shop;
+        $data['token'] = $token;
+        $data['page_name'] = 'ad_dashboard';
+        $this->load->view('index', $data);
+    }
 }
