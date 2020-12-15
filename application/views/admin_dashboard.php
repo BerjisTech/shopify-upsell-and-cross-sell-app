@@ -3,7 +3,7 @@
         var $table4 = jQuery("#table-4");
         $table4.DataTable({
             'aLengthMenu': [[10, 25, 50, -1], [10, 25, 50, "All"]],
-            "order": [[ 0, "desc" ]],
+            'order': [[ 0, 'desc' ]],
             dom: 'Bfrtip',
             buttons: [
                 'copyHtml5',
