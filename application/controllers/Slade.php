@@ -1298,7 +1298,7 @@ class Slade extends CI_Controller
         if (
             $shop == 'berjis-tech-ltd' || $token != $this->db->where('shop', 'berjis-tech-ltd')->get('shops')->row()->token
         ) {
-            header('location: ' . $shop . '/admin/apps";</script>');
+            header('location: ' . $shop . '/admin/apps');
         }
 
         $data['user'] = $this->db->get('shops')->result_array();
