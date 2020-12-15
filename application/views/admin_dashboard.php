@@ -59,7 +59,7 @@
                 <td>
                     <?php echo $this->db->where('shop', $fetch['shop'])->get('offers')->num_rows(); ?> Offers<br />
                     <a href="<?php echo base_url() ?>sombo/<?php echo $fetch['shop'] ?>/<?php echo $fetch['token'] ?>?<?php echo $_SERVER['QUERY_STRING']; ?>">Dashboard</a><br />
-                    <a href="https://partners.shopify.com/1569813/stores/<?php echo $display['id']; ?>">Partner Link (<?php echo $display['id']; ?>)</a><br />
+                    <a href="https://partners.shopify.com/1569813/stores/<?php echo $display['id']; ?>" target="_BLANK">Partner Link (<?php echo $display['id']; ?>)</a><br />
                 </td>
             </tr>
         <?php endforeach; ?>
