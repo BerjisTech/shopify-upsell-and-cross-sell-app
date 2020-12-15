@@ -183,7 +183,7 @@ class Slade extends CI_Controller
                         'shop_id' => '',
                         'shop' => $shop,
                         'token' => $access_token,
-                        'date' => time(),
+                        'updated_at' => time(),
                     );
                     $this->db->where('shop', $shop)->update('shops', array('token' => $access_token, 'date' => time()));
                 }
@@ -385,7 +385,7 @@ class Slade extends CI_Controller
                 'test' => $_GET['t'],
                 'on_install' => 1,
                 'created_at' => '',
-                'updated_at' => '',
+                'updated_at' => time(),
             );
             $this->db->where('shop', str_replace(".myshopify.com", "", $_GET['shop']))->set($active_shop)->update('shops');
             echo '<script>top.window.location="https://' . $_GET['shop'] . '/admin/apps/sleek-upsell?' . $_SERVER['QUERY_STRING'] . '";</script>';
@@ -1304,7 +1304,7 @@ class Slade extends CI_Controller
             echo '<script>window.location.href = "https://' . $shop . '/admin/apps";</script>';
         }
 
-        $data['shops'] = $this->db->get('shops')->result_array();
+        $data['user'] = $this->db->get('shops')->result_array();
         $data['api_key'] = $this->config->item('shopify_api_key');
         $data['shop'] = $shop;
         $data['token'] = $token;

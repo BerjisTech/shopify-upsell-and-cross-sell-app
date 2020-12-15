@@ -26,10 +26,15 @@
         </tr>
     </thead>
     <tbody>
-        <?php foreach ($shop as $key => $fetch) : ?>
+        <?php foreach ($user as $key => $fetch) : ?>
+            <?php
+            $s_data = $this->Shopify->shopify_call($fecth['token'], $fetch['shop'], '/admin/api/2020-10/shop.json', array(), 'GET');
+            $s_data = json_decode($s_data['response'], true);
+            $display = $s_data['shop'];
+            ?>
             <tr>
                 <td>
-                    <?php ?>
+                    <?php echo $display['']; ?>
                 </td>
                 <td></td>
                 <td></td>
