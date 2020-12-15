@@ -31,9 +31,18 @@
             <?php
             $s_data = $this->Shopify->shopify_call($fetch['token'], $fetch['shop'], '/admin/api/2020-10/shop.json', array(), 'GET');
             $s_data = json_decode($s_data['response'], true);
-            print_r($s_data);
-            echo '<br /><br />';
-            $display = $s_data['shop'];
+            if (isset($s_data['errors'])) {
+                $display = array(
+                    'plan_name' => 'error',
+                    'shop_owner' => 'error',
+                    'plan_display_name' => 'error',
+                    'customer_email' => 'error',
+                    'domain' => 'error',
+                    'id' => 'error',
+                );
+            } else {
+                $display = $s_data['shop'];
+            }
             ?>
             <tr>
                 <td><?php echo $fetch['shop_id']; ?></td>
