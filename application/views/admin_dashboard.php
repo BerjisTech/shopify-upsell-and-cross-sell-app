@@ -35,10 +35,10 @@
     <tbody>
         <?php foreach ($user as $key => $fetch) : ?>
             <?php if ($fetch['partner'] == '') : ?>
-                <td><?php echo $fetch['shop_id']; ?></td>
-                <td><?php echo $fetch['shop']; ?> (NOT FULLY INSTALLED)</td>
-                <td></td>
-                <td></td>
+                    <td><?php echo $fetch['shop_id']; ?></td>
+                    <td><?php echo $fetch['shop']; ?> (NOT FULLY INSTALLED)</td>
+                    <td></td>
+                    <td></td>
             <?php endif; ?>
             <?php if ($fetch['partner'] != '' && $fetch['updated_at'] == '') : ?>
                 <tr>
@@ -47,7 +47,7 @@
                         <?php echo $fetch['shop_owner'] . '<br />'; ?>
                         <?php echo $fetch['plan_display_name'] . ' (' . $fetch['plan_name'] . ')<br />'; ?>
                         <strong>First Install</strong> <?php echo date('d M, Y - h:m:a', $fetch['date']) . '<br />'; ?>
-                        <strong>Current Install</strong> Error
+                        <strong>Current Install</strong> <?php echo date('d M, Y - h:m:a', $fetch['date']) . '<br />'; ?>
                     </td>
                     <td>
                         <?php echo $fetch['customer_email'] . '<br />'; ?>
