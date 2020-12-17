@@ -47,7 +47,8 @@
                     <td></td>
                     <td></td>
                 </tr>
-            <?php else : ?>
+            <?php endif; ?>
+            <?php if ($fetch['type'] != '' && $fetch['updated_at'] != '') : ?>
                 <tr>
                     <td><?php echo $fetch['shop_id']; ?></td>
                     <td>
