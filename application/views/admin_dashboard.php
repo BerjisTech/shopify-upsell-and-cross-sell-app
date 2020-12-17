@@ -40,7 +40,7 @@
                     <?php echo $fetch['shop_owner'] . '<br />'; ?>
                     <?php echo $fetch['plan_display_name'] . ' (' . $fetch['plan_name'] . ')<br />'; ?>
                     <strong>First Install</strong> <?php echo date('d M, Y - h:m:a', $fetch['date']) . '<br />'; ?>
-                    <strong>Current Install</strong> <?php echo date('d M, Y - h:m:a', $fetch['date']) . '<br />'; ?>
+                    <strong>Current Install</strong> <?php echo date('d M, Y - h:m:a', $fetch['updated_at']) . '<br />'; ?>
                 </td>
                 <td>
                     <?php echo $fetch['customer_email'] . '<br />'; ?>
