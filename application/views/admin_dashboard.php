@@ -34,13 +34,13 @@
     </thead>
     <tbody>
         <?php foreach ($user as $key => $fetch) : ?>
-            <?php if ($fetch['type'] == '') : ?>
+            <?php if ($fetch['partner'] == '') : ?>
                     <td><?php echo $fetch['shop_id']; ?></td>
                     <td><?php echo $fetch['shop']; ?> (NOT FULLY INSTALLED)</td>
                     <td></td>
                     <td></td>
             <?php endif; ?>
-            <?php if ($fetch['type'] != '' && $fetch['updated_at'] == '') : ?>
+            <?php if ($fetch['partner'] != '' && $fetch['updated_at'] == '') : ?>
                 <tr>
                     <td><?php echo $fetch['shop_id']; ?></td>
                     <td><?php echo $fetch['shop']; ?> (ERROR)</td>
@@ -48,7 +48,7 @@
                     <td></td>
                 </tr>
             <?php endif; ?>
-            <?php if ($fetch['type'] != '' && $fetch['updated_at'] != '') : ?>
+            <?php if ($fetch['partner'] != '' && $fetch['updated_at'] != '') : ?>
                 <tr>
                     <td><?php echo $fetch['shop_id']; ?></td>
                     <td>
