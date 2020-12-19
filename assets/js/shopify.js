@@ -13,6 +13,7 @@ if (page_ss.includes('?test_shop_')) {
 }
 
 let client_shop = sessionStorage.getItem('client_shop');
+console.log(client_shop);
 
 function get_this(request) {
     if (request) {
