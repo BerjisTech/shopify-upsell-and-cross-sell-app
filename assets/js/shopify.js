@@ -154,12 +154,12 @@ var offers_url = 'https://sleek-upsell.herokuapp.com/offers/' + client_shop;
 let offers = g_d(offers_url);
 let cart = g_d("https://" + client_shop + "/cart.js");
 
-console.log(offers);
-console.log(offers['offer']);
-console.log(Object.keys(offers['offer']));
-console.log(Object.keys(offers));
-console.log(cart);
-console.log(Object.keys(cart));
+// console.log(offers);
+// console.log(offers['offer']);
+// console.log(Object.keys(offers['offer']));
+// console.log(Object.keys(offers));
+// console.log(cart);
+// console.log(Object.keys(cart));
 
 let settings = offers['settings'];
 let drawer_selector = 'form[action="/cart"]';
