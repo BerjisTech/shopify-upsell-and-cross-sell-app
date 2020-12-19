@@ -76,8 +76,7 @@ let s_s_w = g_s_s_w('https://sleek-upsell.herokuapp.com/s_s_w/' + Shopify.shop);
 
 
 function createSUW() {
-    document.querySelector('body').insertAdjacentHTML('afterbegin', '<style>.suw{display: table; width: 300px; height: 500px; background: #ffffff; position: fixed; bottom: 0px; left: 0px; z-index: 3000000;}</style>');
-    document.querySelector('body').insertAdjacentHTML('afterbegin', '<div class="draggable suw"></div>');
+    document.querySelector('body').insertAdjacentHTML('afterbegin', '<div class="draggable suw" style="display: table; width: 300px; height: 500px; background: #ffffff; position: fixed; bottom: 0px; left: 0px; z-index: 3000000;"></div>');
     document.querySelector('.suw').innerHTML = '<object style="overflow-Y: auto; display: table; width: 100%; height: 400px;" type="text/html" data="https://sleek-upsell.herokuapp.com/suw/' + Shopify.shop + '" ></object>';
 
     var x, y, target = null;
