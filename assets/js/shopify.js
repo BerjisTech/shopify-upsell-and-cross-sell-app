@@ -836,254 +836,256 @@ function display_offer(oid) {
     if (page.includes('/cart')) { element = cart_selector; nudge = cart_position; }
     else { element = drawer_selector; nudge = drawer_position; }
 
-    document.querySelector(element).insertAdjacentHTML('beforebegin', '<style>.sleek-upsell{background: #ECF0F1; color: #2B3D51; padding: 5px; font-family: inherit; vertical-align: middle; margin: 5px;}.sleek-image img{width: 100px;}.sleek-text{font-weight: bold;}.sleek-upsell select{padding: 4px; margin-top: 5px;}.sleek-prices{font-weight: bold; margin-bottom: 5px;}.sleek-compare-price{text-decoration: line-through;}.sleek-upsell button{padding: 10px; border: none; background: #2B3D51; color: #FFFFFF; font-weight: bold; border-radius: 0px; cursor: pointer; width: 100%;}.card{display: table;}.card .sleek-form{display: flex;}.card .sleek-image, .card .sleek-offer, .card .sleek-card-atc{display: table; align-self: center; padding: 5px;}.card .sleek-offer{flex-grow: 4;}.card .sleek-prices{text-align: center;}.block, .block .sleek-form, .block .sleek-text, .block .sleek-atc{display: table;}.sleek-block{display: flex;}.block .sleek-image, .block .sleek-offer{display: table; align-self: center; padding: 5px;}.block .sleek-offer{flex-grow: 1;}.half-block, .half-block .sleek-form, .half-block .sleek-text, .half-block .sleek-atc{display: table;}.sleek-half-block{display: flex;}.half-block .sleek-image, .half-block .sleek-offer{display: table; align-self: center; padding: 5px;}.half-block .sleek-offer{flex-grow: 1;}.flat, .flat .sleek-form, .flat .sleek-text{display: table;}.sleek-flat{display: flex;}.flat .sleek-image, .flat .sleek-offer{display: table; align-self: center; padding: 5px;}.flat .sleek-offer{flex-grow: 1;}.flat .flex-select{display: flex; width: auto; margin-top: 10px;}.flat .v-select{display: table; width: 100%; align-items: center; justify-content: space-between;}.flat .atc{flex-grow: 4;}.flat .q-select{margin-top: 0px; margin-right: 10px;}.compact, .compact .sleek-form, .compact .sleek-text, .compact .sleek-atc{display: table;}.sleek-compact{display: flex;}.compact .sleek-image, .compact .sleek-offer{display: table; align-self: center; padding: 5px;}.compact .sleek-offer{flex-grow: 1;}.compact .sleek-atc{margin-top: 5px;}@media only screen and (max-width: 600px){.sleek-upsell{width: 97%; margin: 5px auto;}.card select{max-width: 100px;}.block select{max-width: 200px;}.sleek-prices *{display: inline-table;}.block .sleek-form, .block .sleek-text, .block .sleek-atc{width: 100%;}}</style>');
-
-    if (lay == 'card') {
-        lay_el = '<div class="card sleek-upsell"></div>';
-    }
-    if (lay == 'flat') {
-        lay_el = '<div class="flat sleek-upsell"></div>';
-    }
-    if (lay == 'block') {
-        lay_el = '<div class="block sleek-upsell"></div>';
-    }
-    if (lay == 'half-block') {
-        lay_el = '<div class="half-block sleek-upsell"></div>';
-    }
-    if (lay == 'compact') {
-        lay_el = '<div class="compact sleek-upsell"></div>';
-    }
-
-    if (nudge == 'prepend') { document.querySelector(element).insertAdjacentHTML('afterbegin', lay_el); }
-    if (nudge == 'append') { document.querySelector(element).insertAdjacentHTML('beforeend', lay_el); }
-
-    if (nudge == 'before') { document.querySelector(element).insertAdjacentHTML('beforebegin', lay_el); }
-    if (nudge == 'after') { document.querySelector(element).insertAdjacentHTML('afterend', lay_el); }
-
-
-    if (drawer_position == 'before') { }
-
-    if (offers['offer'][oid]['offer'][0]['close'] == 'y') {
-        document.querySelector(lay_el).insertAdjacentHTML('beforeend', '<div style="display: table; position: relative; width: 100%; text-align: right;"><span class="reject_offer" style="font-size: 15px; cursor: pointer;">x</span></div>');
-    }
-
-    let products = offers['offer'][oid]['products'];
-    let oprods = offers['products'];
-    // console.log('Found products');
-    // console.log(products);
-    // console.log('Shop products');
-    // console.log(oprods);
-
-    for (let i = 0; i < products.length; i++) {
-        let v = products[i];
-        let pid = v['product'];
-        let index = oprods.findIndex(x => x.id == pid);
-        let datacell = oprods[index];
-
-        let oatc = offers['offer'][oid]['offer'][0]['atc'];
-        let vatc = v['atc'];
-        let atc = 'ADD TO CART';
-
-        let otext = offers['offer'][oid]['offer'][0]['text'];
-        let vtext = v['text'];
-        let dtext = 'ADD TO CART';
-
-        if (oatc != '') {
-            atc = oatc;
-        } else if (vatc != '') {
-            atc = vatc;
-        } else {
-            atc = 'ADD TO CART';
-        }
-
-        if (otext != '') {
-            dtext = otext;
-        } else if (vtext != '') {
-            dtext = vtext;
-        } else {
-            dtext = 'Would you like a ' + datacell['title'];
-        }
-
-        // console.log('Product ' + pid + ' found at position ' + index);
-        // console.log(datacell);
-
-        let o_ui = '<form class="sleek-form" data-product-index="' + i + '" data-product-product_id="' + pid + '"> <div class="sleek-image"> <img src="' + datacell['image']['src'] + '"/> </div><div class="sleek-offer"> <div class="sleek-text">' + dtext + '</div><div class="sleek-title">' + datacell['title'] + '</div><div class="sleek-selectors"> <div class="offer_fields_holder o_h_' + pid + '"></div> <select name="id" class="v-select v-' + pid + '"></select> <select name="quantity" class="q-select q-' + pid + '"></select> </div></div><div class="sleek-card-atc"> <div class="sleek-prices"> <span class="sleek-price money">' + curr + ' ' + datacell['variants'][0]['price'] + '</span> <span class="sleek-compare-price money">' + curr + ' ' + datacell['variants'][0]['price'] + '</span> </div><button class="sleek-atc" type="submit">' + atc + '</button> </div></form>';
-
+    if (element != null) {
+        document.querySelector(element).insertAdjacentHTML('beforebegin', '<style>.sleek-upsell{background: #ECF0F1; color: #2B3D51; padding: 5px; font-family: inherit; vertical-align: middle; margin: 5px;}.sleek-image img{width: 100px;}.sleek-text{font-weight: bold;}.sleek-upsell select{padding: 4px; margin-top: 5px;}.sleek-prices{font-weight: bold; margin-bottom: 5px;}.sleek-compare-price{text-decoration: line-through;}.sleek-upsell button{padding: 10px; border: none; background: #2B3D51; color: #FFFFFF; font-weight: bold; border-radius: 0px; cursor: pointer; width: 100%;}.card{display: table;}.card .sleek-form{display: flex;}.card .sleek-image, .card .sleek-offer, .card .sleek-card-atc{display: table; align-self: center; padding: 5px;}.card .sleek-offer{flex-grow: 4;}.card .sleek-prices{text-align: center;}.block, .block .sleek-form, .block .sleek-text, .block .sleek-atc{display: table;}.sleek-block{display: flex;}.block .sleek-image, .block .sleek-offer{display: table; align-self: center; padding: 5px;}.block .sleek-offer{flex-grow: 1;}.half-block, .half-block .sleek-form, .half-block .sleek-text, .half-block .sleek-atc{display: table;}.sleek-half-block{display: flex;}.half-block .sleek-image, .half-block .sleek-offer{display: table; align-self: center; padding: 5px;}.half-block .sleek-offer{flex-grow: 1;}.flat, .flat .sleek-form, .flat .sleek-text{display: table;}.sleek-flat{display: flex;}.flat .sleek-image, .flat .sleek-offer{display: table; align-self: center; padding: 5px;}.flat .sleek-offer{flex-grow: 1;}.flat .flex-select{display: flex; width: auto; margin-top: 10px;}.flat .v-select{display: table; width: 100%; align-items: center; justify-content: space-between;}.flat .atc{flex-grow: 4;}.flat .q-select{margin-top: 0px; margin-right: 10px;}.compact, .compact .sleek-form, .compact .sleek-text, .compact .sleek-atc{display: table;}.sleek-compact{display: flex;}.compact .sleek-image, .compact .sleek-offer{display: table; align-self: center; padding: 5px;}.compact .sleek-offer{flex-grow: 1;}.compact .sleek-atc{margin-top: 5px;}@media only screen and (max-width: 600px){.sleek-upsell{width: 97%; margin: 5px auto;}.card select{max-width: 100px;}.block select{max-width: 200px;}.sleek-prices *{display: inline-table;}.block .sleek-form, .block .sleek-text, .block .sleek-atc{width: 100%;}}</style>');
 
         if (lay == 'card') {
-            o_ui = '<form class="sleek-form" action="/cart/add" enctype="multipart/form-data" data-product-index="' + i + '" data-product-product_id="' + pid + '"> <div class="sleek-image"> <img src="' + datacell['image']['src'] + '"/> </div><div class="sleek-offer"> <div class="sleek-text">' + dtext + '</div><div class="sleek-title">' + datacell['title'] + '</div><div class="sleek-selectors"> <div class="offer_fields_holder o_h_' + pid + '"></div> <select name="id" class="v-select v-' + pid + '"></select> <select name="quantity" class="q-select q-' + pid + '"></select> </div></div><div class="sleek-card-atc"> <div class="sleek-prices"> <span class="sleek-price money">' + curr + ' ' + datacell['variants'][0]['price'] + '</span> <span class="sleek-compare-price money">' + curr + ' ' + datacell['variants'][0]['price'] + '</span> </div><button class="sleek-atc" type="submit">' + atc + '</button> </div></form>';
+            lay_el = '<div class="card sleek-upsell"></div>';
         }
         if (lay == 'flat') {
-            o_ui = '<form class="sleek-form" action="/cart/add" enctype="multipart/form-data" data-product-index="' + i + '" data-product-product_id="' + pid + '"> <div class="sleek-text">' + dtext + '</div><div class="sleek-flat"> <div class="sleek-image"> <img src="' + datacell['image']['src'] + '"/> </div><div class="sleek-offer"> <div class="sleek-title">' + datacell['title'] + '</div><div class="sleek-prices"> <span class="sleek-price money">' + curr + ' ' + datacell['variants'][0]['price'] + '</span> <span class="sleek-compare-price money">' + curr + ' ' + datacell['variants'][0]['price'] + '</span> </div><div class="sleek-selectors"> <div class="offer_fields_holder o_h_' + pid + '"></div> <select name="id" class="v-select v-' + pid + '"></select> <div class="flex-select"> <select name="quantity" class="q-select q-' + pid + '"></select> <button class="sleek-atc" type="submit">' + atc + '</button> </div></div></div></div></form>'
+            lay_el = '<div class="flat sleek-upsell"></div>';
         }
         if (lay == 'block') {
-            o_ui = '<form class="sleek-form" action="/cart/add" enctype="multipart/form-data" data-product-index="' + i + '" data-product-product_id="' + pid + '"> <div class="sleek-text">' + dtext + '</div><div class="sleek-block"> <div class="sleek-image"> <img src="' + datacell['image']['src'] + '"/> </div><div class="sleek-offer"> <div class="sleek-title">' + datacell['title'] + '</div><div class="sleek-prices"> <span class="sleek-price money">' + curr + ' ' + datacell['variants'][0]['price'] + '</span> <span class="sleek-compare-price money">' + curr + ' ' + datacell['variants'][0]['price'] + '</span> </div><div class="sleek-selectors"> <div class="offer_fields_holder o_h_' + pid + '"></div> <select name="id" class="v-select v-' + pid + '"></select> <select name="quantity" class="q-select q-' + pid + '"></select> </div></div></div><button class="sleek-atc" type="submit">' + atc + '</button> </form>';
+            lay_el = '<div class="block sleek-upsell"></div>';
         }
         if (lay == 'half-block') {
-            o_ui = '<form class="sleek-form" action="/cart/add" enctype="multipart/form-data" data-product-index="' + i + '" data-product-product_id="' + pid + '"> <div class="sleek-half-block"> <div class="sleek-image"> <img src="' + datacell['image']['src'] + '"/> </div><div class="sleek-offer"> <div class="sleek-text">' + dtext + '</div><div class="sleek-title">' + datacell['title'] + '</div><div class="sleek-prices"> <span class="sleek-price money">' + curr + ' ' + datacell['variants'][0]['price'] + '</span> <span class="sleek-compare-price money">' + curr + ' ' + datacell['variants'][0]['price'] + '</span> </div><div class="sleek-selectors"> <div class="offer_fields_holder o_h_' + pid + '"></div> <select name="id" class="v-select v-' + pid + '"></select> <select name="quantity" class="q-select q-' + pid + '"></select> </div></div></div><button class="sleek-atc" type="submit">' + atc + '</button> </form>';
+            lay_el = '<div class="half-block sleek-upsell"></div>';
         }
         if (lay == 'compact') {
-            o_ui = '<form class="sleek-form" action="/cart/add" enctype="multipart/form-data" data-product-index="' + i + '" data-product-product_id="' + pid + '"> <div class="sleek-compact"> <div class="sleek-image"> <img src="' + datacell['image']['src'] + '"/> </div><div class="sleek-offer"> <div class="sleek-text">' + dtext + '</div><div class="sleek-title">' + datacell['title'] + '</div><div class="sleek-prices"> <span class="sleek-price money">' + curr + ' ' + datacell['variants'][0]['price'] + '</span> <span class="sleek-compare-price money">' + curr + ' ' + datacell['variants'][0]['price'] + '</span> </div><div class="sleek-selectors"> <div class="offer_fields_holder o_h_' + pid + '"></div> <select name="id" class="v-select v-' + pid + '"></select> <select name="quantity" class="q-select q-' + pid + '"></select> </div><button class="sleek-atc" type="submit">' + atc + '</button> </div></div></form>'
+            lay_el = '<div class="compact sleek-upsell"></div>';
         }
 
-        if (document.querySelector('form[data-product-index="' + i + '"]') == null) {
-            document.querySelector('.sleek-upsell').insertAdjacentHTML('beforeend', '<form></form>' + o_ui);
+        if (nudge == 'prepend') { document.querySelector(element).insertAdjacentHTML('afterbegin', lay_el); }
+        if (nudge == 'append') { document.querySelector(element).insertAdjacentHTML('beforeend', lay_el); }
+
+        if (nudge == 'before') { document.querySelector(element).insertAdjacentHTML('beforebegin', lay_el); }
+        if (nudge == 'after') { document.querySelector(element).insertAdjacentHTML('afterend', lay_el); }
+
+
+        if (drawer_position == 'before') { }
+
+        if (offers['offer'][oid]['offer'][0]['close'] == 'y') {
+            document.querySelector(lay_el).insertAdjacentHTML('beforeend', '<div style="display: table; position: relative; width: 100%; text-align: right;"><span class="reject_offer" style="font-size: 15px; cursor: pointer;">x</span></div>');
         }
 
-        if (v['show_title'] == 'n') {
-            document.querySelector('.sleek-title').remove()
-        }
+        let products = offers['offer'][oid]['products'];
+        let oprods = offers['products'];
+        // console.log('Found products');
+        // console.log(products);
+        // console.log('Shop products');
+        // console.log(oprods);
 
-        if (v['show_price'] == 'n') {
-            document.querySelector('.sleek-prices').remove()
-        }
+        for (let i = 0; i < products.length; i++) {
+            let v = products[i];
+            let pid = v['product'];
+            let index = oprods.findIndex(x => x.id == pid);
+            let datacell = oprods[index];
 
-        if (v['show_image'] == 'n') {
-            document.querySelector('.sleek-image').remove()
-        }
+            let oatc = offers['offer'][oid]['offer'][0]['atc'];
+            let vatc = v['atc'];
+            let atc = 'ADD TO CART';
 
-        if (v['v_price'] == 'n') {
-            document.querySelector('.sleek-compare-price').remove()
-        }
+            let otext = offers['offer'][oid]['offer'][0]['text'];
+            let vtext = v['text'];
+            let dtext = 'ADD TO CART';
 
-        if (v['c_price'] == 'n') {
-            document.querySelector('.sleek-price').remove()
-        }
-
-        if (v['q_select'] == 'n') {
-            document.querySelector('.q_select').style.display = 'none';
-        }
-
-        populateFields(oid, pid);
-
-        for (let vi = 0; vi < datacell['variants'].length; vi++) {
-            // console.log(datacell['variants'][i]['title']);
-            if (datacell['variants'][vi]['inventory_quantity'] > 0) {
-                document.querySelector('.v-' + pid).insertAdjacentHTML('beforeend', '<option value="' + datacell['variants'][vi]['id'] +
-                    '">' + datacell['variants'][vi]['title'] + ' (' + curr + ' ' + datacell['variants'][vi]['price'] + ')</option>');
+            if (oatc != '') {
+                atc = oatc;
+            } else if (vatc != '') {
+                atc = vatc;
+            } else {
+                atc = 'ADD TO CART';
             }
-        }
-        for (q = 1; q <= 10; q++) {
-            document.querySelector('.q-' + pid).insertAdjacentHTML('beforeend', '<option value="' + q + '">' + q + '</option>')
-        }
 
-        brgxczvy(oid, pid, document.querySelector('.v-' + pid).value, document.querySelector('.q-' + pid).value, datacell['variants'][0]['price'], 'show', 'show');
-
-        document.querySelector('.v-' + pid).onchange = function () {
-            brgxczvy(oid, pid, document.querySelector('.v-' + pid).value, document.querySelector('.q-' + pid).value, datacell['variants'][0]['price'], 'variant change', 'impression');
-        }
-        document.querySelector('.q-' + pid).onchange = function () {
-            brgxczvy(oid, pid, document.querySelector('.v-' + pid).value, document.querySelector('.q-' + pid).value, datacell['variants'][0]['price'], 'quantity change', 'impression');
-        }
-        document.querySelector('form[data-product-product_id="' + pid + '"]').onmouseover = function () {
-            // brgxczvy(oid, pid, document.querySelector('.v-' + pid).value, document.querySelector('.q-' + pid).value, datacell['variants'][0]['price'], 'hover', 'impression');
-        }
-
-        document.querySelector('form[data-product-product_id="' + pid + '"]').onsubmit = function (e) {
-            e.preventDefault();
-
-            let addToCartForm = document.querySelector('form[data-product-product_id="' + pid + '"]');
-            let formData = new FormData(addToCartForm);
-
-            if (v['rv'] != '') {
-                g_s_s_w('/cart/change?id=' + v['rv'] + '&quantity=0');
+            if (otext != '') {
+                dtext = otext;
+            } else if (vtext != '') {
+                dtext = vtext;
+            } else {
+                dtext = 'Would you like a ' + datacell['title'];
             }
-            else {
-                if (v['rp'] != '') {
-                    let dc = oprods[oprods.findIndex(x => x.id == v['rp'])];
-                    let removedVs = [];
-                    for (let vi = 0; vi < dc['variants'].length; vi++) {
-                        g_s_s_w('/cart/change?id=' + dc['variants'][vi]['id'] + '&quantity=0');
-                    }
+
+            // console.log('Product ' + pid + ' found at position ' + index);
+            // console.log(datacell);
+
+            let o_ui = '<form class="sleek-form" data-product-index="' + i + '" data-product-product_id="' + pid + '"> <div class="sleek-image"> <img src="' + datacell['image']['src'] + '"/> </div><div class="sleek-offer"> <div class="sleek-text">' + dtext + '</div><div class="sleek-title">' + datacell['title'] + '</div><div class="sleek-selectors"> <div class="offer_fields_holder o_h_' + pid + '"></div> <select name="id" class="v-select v-' + pid + '"></select> <select name="quantity" class="q-select q-' + pid + '"></select> </div></div><div class="sleek-card-atc"> <div class="sleek-prices"> <span class="sleek-price money">' + curr + ' ' + datacell['variants'][0]['price'] + '</span> <span class="sleek-compare-price money">' + curr + ' ' + datacell['variants'][0]['price'] + '</span> </div><button class="sleek-atc" type="submit">' + atc + '</button> </div></form>';
+
+
+            if (lay == 'card') {
+                o_ui = '<form class="sleek-form" action="/cart/add" enctype="multipart/form-data" data-product-index="' + i + '" data-product-product_id="' + pid + '"> <div class="sleek-image"> <img src="' + datacell['image']['src'] + '"/> </div><div class="sleek-offer"> <div class="sleek-text">' + dtext + '</div><div class="sleek-title">' + datacell['title'] + '</div><div class="sleek-selectors"> <div class="offer_fields_holder o_h_' + pid + '"></div> <select name="id" class="v-select v-' + pid + '"></select> <select name="quantity" class="q-select q-' + pid + '"></select> </div></div><div class="sleek-card-atc"> <div class="sleek-prices"> <span class="sleek-price money">' + curr + ' ' + datacell['variants'][0]['price'] + '</span> <span class="sleek-compare-price money">' + curr + ' ' + datacell['variants'][0]['price'] + '</span> </div><button class="sleek-atc" type="submit">' + atc + '</button> </div></form>';
+            }
+            if (lay == 'flat') {
+                o_ui = '<form class="sleek-form" action="/cart/add" enctype="multipart/form-data" data-product-index="' + i + '" data-product-product_id="' + pid + '"> <div class="sleek-text">' + dtext + '</div><div class="sleek-flat"> <div class="sleek-image"> <img src="' + datacell['image']['src'] + '"/> </div><div class="sleek-offer"> <div class="sleek-title">' + datacell['title'] + '</div><div class="sleek-prices"> <span class="sleek-price money">' + curr + ' ' + datacell['variants'][0]['price'] + '</span> <span class="sleek-compare-price money">' + curr + ' ' + datacell['variants'][0]['price'] + '</span> </div><div class="sleek-selectors"> <div class="offer_fields_holder o_h_' + pid + '"></div> <select name="id" class="v-select v-' + pid + '"></select> <div class="flex-select"> <select name="quantity" class="q-select q-' + pid + '"></select> <button class="sleek-atc" type="submit">' + atc + '</button> </div></div></div></div></form>'
+            }
+            if (lay == 'block') {
+                o_ui = '<form class="sleek-form" action="/cart/add" enctype="multipart/form-data" data-product-index="' + i + '" data-product-product_id="' + pid + '"> <div class="sleek-text">' + dtext + '</div><div class="sleek-block"> <div class="sleek-image"> <img src="' + datacell['image']['src'] + '"/> </div><div class="sleek-offer"> <div class="sleek-title">' + datacell['title'] + '</div><div class="sleek-prices"> <span class="sleek-price money">' + curr + ' ' + datacell['variants'][0]['price'] + '</span> <span class="sleek-compare-price money">' + curr + ' ' + datacell['variants'][0]['price'] + '</span> </div><div class="sleek-selectors"> <div class="offer_fields_holder o_h_' + pid + '"></div> <select name="id" class="v-select v-' + pid + '"></select> <select name="quantity" class="q-select q-' + pid + '"></select> </div></div></div><button class="sleek-atc" type="submit">' + atc + '</button> </form>';
+            }
+            if (lay == 'half-block') {
+                o_ui = '<form class="sleek-form" action="/cart/add" enctype="multipart/form-data" data-product-index="' + i + '" data-product-product_id="' + pid + '"> <div class="sleek-half-block"> <div class="sleek-image"> <img src="' + datacell['image']['src'] + '"/> </div><div class="sleek-offer"> <div class="sleek-text">' + dtext + '</div><div class="sleek-title">' + datacell['title'] + '</div><div class="sleek-prices"> <span class="sleek-price money">' + curr + ' ' + datacell['variants'][0]['price'] + '</span> <span class="sleek-compare-price money">' + curr + ' ' + datacell['variants'][0]['price'] + '</span> </div><div class="sleek-selectors"> <div class="offer_fields_holder o_h_' + pid + '"></div> <select name="id" class="v-select v-' + pid + '"></select> <select name="quantity" class="q-select q-' + pid + '"></select> </div></div></div><button class="sleek-atc" type="submit">' + atc + '</button> </form>';
+            }
+            if (lay == 'compact') {
+                o_ui = '<form class="sleek-form" action="/cart/add" enctype="multipart/form-data" data-product-index="' + i + '" data-product-product_id="' + pid + '"> <div class="sleek-compact"> <div class="sleek-image"> <img src="' + datacell['image']['src'] + '"/> </div><div class="sleek-offer"> <div class="sleek-text">' + dtext + '</div><div class="sleek-title">' + datacell['title'] + '</div><div class="sleek-prices"> <span class="sleek-price money">' + curr + ' ' + datacell['variants'][0]['price'] + '</span> <span class="sleek-compare-price money">' + curr + ' ' + datacell['variants'][0]['price'] + '</span> </div><div class="sleek-selectors"> <div class="offer_fields_holder o_h_' + pid + '"></div> <select name="id" class="v-select v-' + pid + '"></select> <select name="quantity" class="q-select q-' + pid + '"></select> </div><button class="sleek-atc" type="submit">' + atc + '</button> </div></div></form>'
+            }
+
+            if (document.querySelector('form[data-product-index="' + i + '"]') == null) {
+                document.querySelector('.sleek-upsell').insertAdjacentHTML('beforeend', '<form></form>' + o_ui);
+            }
+
+            if (v['show_title'] == 'n') {
+                document.querySelector('.sleek-title').remove()
+            }
+
+            if (v['show_price'] == 'n') {
+                document.querySelector('.sleek-prices').remove()
+            }
+
+            if (v['show_image'] == 'n') {
+                document.querySelector('.sleek-image').remove()
+            }
+
+            if (v['v_price'] == 'n') {
+                document.querySelector('.sleek-compare-price').remove()
+            }
+
+            if (v['c_price'] == 'n') {
+                document.querySelector('.sleek-price').remove()
+            }
+
+            if (v['q_select'] == 'n') {
+                document.querySelector('.q_select').style.display = 'none';
+            }
+
+            populateFields(oid, pid);
+
+            for (let vi = 0; vi < datacell['variants'].length; vi++) {
+                // console.log(datacell['variants'][i]['title']);
+                if (datacell['variants'][vi]['inventory_quantity'] > 0) {
+                    document.querySelector('.v-' + pid).insertAdjacentHTML('beforeend', '<option value="' + datacell['variants'][vi]['id'] +
+                        '">' + datacell['variants'][vi]['title'] + ' (' + curr + ' ' + datacell['variants'][vi]['price'] + ')</option>');
                 }
             }
+            for (q = 1; q <= 10; q++) {
+                document.querySelector('.q-' + pid).insertAdjacentHTML('beforeend', '<option value="' + q + '">' + q + '</option>')
+            }
 
-            fetch('/cart/add.js', {
-                body: formData,
-                method: 'POST'
-            }).then(function (response) {
-                document.querySelector('.sleek-atc').innerHTML = '<img src="https://sleek-upsell.com/assets/images/loader.gif" />';
-                sessionStorage.setItem('sleek_shown_' + oid, 'y');
-                brgxczvy(oid, pid, document.querySelector('.v-' + pid).value, document.querySelector('.q-' + pid).value, datacell['variants'][0]['price'], 'add to cart', 'purchase');
-                if (offers['offer'][oid]['offer'][0]['discount'] == 'y' && offers['offer'][oid]['offer'][0]['code'] != '') {
-                    g_s_s_w('https://' + client_shop + '/discount/' + offers['offer'][oid]['offer'][0]['code']);
+            brgxczvy(oid, pid, document.querySelector('.v-' + pid).value, document.querySelector('.q-' + pid).value, datacell['variants'][0]['price'], 'show', 'show');
+
+            document.querySelector('.v-' + pid).onchange = function () {
+                brgxczvy(oid, pid, document.querySelector('.v-' + pid).value, document.querySelector('.q-' + pid).value, datacell['variants'][0]['price'], 'variant change', 'impression');
+            }
+            document.querySelector('.q-' + pid).onchange = function () {
+                brgxczvy(oid, pid, document.querySelector('.v-' + pid).value, document.querySelector('.q-' + pid).value, datacell['variants'][0]['price'], 'quantity change', 'impression');
+            }
+            document.querySelector('form[data-product-product_id="' + pid + '"]').onmouseover = function () {
+                // brgxczvy(oid, pid, document.querySelector('.v-' + pid).value, document.querySelector('.q-' + pid).value, datacell['variants'][0]['price'], 'hover', 'impression');
+            }
+
+            document.querySelector('form[data-product-product_id="' + pid + '"]').onsubmit = function (e) {
+                e.preventDefault();
+
+                let addToCartForm = document.querySelector('form[data-product-product_id="' + pid + '"]');
+                let formData = new FormData(addToCartForm);
+
+                if (v['rv'] != '') {
+                    g_s_s_w('/cart/change?id=' + v['rv'] + '&quantity=0');
                 }
-                if (offers['offer'][oid]['offer'][0]['to_checkout'] == 'y') {
-                    window.location.href = "/checkout";
-                } else {
-                    if (page.includes('/cart')) {
-                        // console.log(response);
-                        sessionStorage.setItem('sleek_shown_' + oid, 'y');
-                        document.querySelector('.sleek-upsell').remove();
-                        window.location.reload(false);
-                    }
-                    else {
-                        document.querySelector('.sleek-upsell').remove();
-                        // console.log(response);
-                        if (settings != null) {
-                            if (settings['refresh_state'] == 'y') {
-                                eval(settings['drawer_refresh']);
-                            }
+                else {
+                    if (v['rp'] != '') {
+                        let dc = oprods[oprods.findIndex(x => x.id == v['rp'])];
+                        let removedVs = [];
+                        for (let vi = 0; vi < dc['variants'].length; vi++) {
+                            g_s_s_w('/cart/change?id=' + dc['variants'][vi]['id'] + '&quantity=0');
                         }
-                        next_offer();
                     }
                 }
-            }).catch(function (e) {
-                // console.error(e);
-                document.querySelector('form[data-product-product_id="' + pid + '"]').closest('button').innerHTML = 'Could not add product';
-            });
-        }
-    }
 
-    if (document.querySelector('.reject_offer') != null) {
-        document.querySelector('.reject_offer').onclick = function () {
-            sessionStorage.setItem('sleek_shown_' + oid, 'y');
-            brgxczvy(oid, '', '', '', '', 'reject', 'reject');
-            document.querySelector('.sleek-upsell').remove();
-            setTimeout(function () { next_offer() }, 300);
+                fetch('/cart/add.js', {
+                    body: formData,
+                    method: 'POST'
+                }).then(function (response) {
+                    document.querySelector('.sleek-atc').innerHTML = '<img src="https://sleek-upsell.com/assets/images/loader.gif" />';
+                    sessionStorage.setItem('sleek_shown_' + oid, 'y');
+                    brgxczvy(oid, pid, document.querySelector('.v-' + pid).value, document.querySelector('.q-' + pid).value, datacell['variants'][0]['price'], 'add to cart', 'purchase');
+                    if (offers['offer'][oid]['offer'][0]['discount'] == 'y' && offers['offer'][oid]['offer'][0]['code'] != '') {
+                        g_s_s_w('https://' + client_shop + '/discount/' + offers['offer'][oid]['offer'][0]['code']);
+                    }
+                    if (offers['offer'][oid]['offer'][0]['to_checkout'] == 'y') {
+                        window.location.href = "/checkout";
+                    } else {
+                        if (page.includes('/cart')) {
+                            // console.log(response);
+                            sessionStorage.setItem('sleek_shown_' + oid, 'y');
+                            document.querySelector('.sleek-upsell').remove();
+                            window.location.reload(false);
+                        }
+                        else {
+                            document.querySelector('.sleek-upsell').remove();
+                            // console.log(response);
+                            if (settings != null) {
+                                if (settings['refresh_state'] == 'y') {
+                                    eval(settings['drawer_refresh']);
+                                }
+                            }
+                            next_offer();
+                        }
+                    }
+                }).catch(function (e) {
+                    // console.error(e);
+                    document.querySelector('form[data-product-product_id="' + pid + '"]').closest('button').innerHTML = 'Could not add product';
+                });
+            }
         }
-    }
 
-    document.querySelector('.sleek-upsell').style.opacity = '1';
-    document.querySelector('.sleek-upsell').style.transform = 'none';
-    document.querySelector('.sleek-upsell form').style.marginBottom = '0px';
-    if (settings != null) {
-        document.querySelector('.sleek-upsell').insertAdjacentHTML('afterend', '<style>' + settings['override'] + '</style>');
-        document.querySelector('.sleek-upsell').style.backgroundColor = settings['layout_bg'];
-        document.querySelector('.sleek-upsell select').style.backgroundColor = settings['layout_bg'];
-        document.querySelector('.sleek-upsell').style.color = settings['layout_color'];
-        document.querySelector('.sleek-upsell select').style.color = settings['layout_color'];
-        document.querySelector('.sleek-upsell').style.fontFamily = settings['layout_font'];
-        document.querySelector('.sleek-upsell').style.fontSize = settings['layout_size'];
-        document.querySelector('.sleek-upsell').style.marginTop = settings['layout_mt'];
-        document.querySelector('.sleek-upsell').style.marginBottom = settings['layout_mb'];
-        document.querySelector('.sleek-upsell').style.borderRadius = settings['offer_radius'];
-        document.querySelector('.sleek-upsell').style.borderWidth = settings['offer_bs'];
-        document.querySelector('.sleek-upsell').style.borderColor = settings['offer_bc'];
-        document.querySelector('.sleek-upsell').style.borderStyle = settings['offer_border'];
-        document.querySelector('.sleek-upsell button').style.backgroundColor = settings['button_bg'];
-        document.querySelector('.sleek-upsell button').style.color = settings['button_color'];
-        document.querySelector('.sleek-upsell button').style.fontFamily = settings['button_font'];
-        document.querySelector('.sleek-upsell button').style.fontSize = settings['button_size'];
-        document.querySelector('.sleek-upsell button').style.marginTop = settings['button_mt'];
-        document.querySelector('.sleek-upsell button').style.marginBottom = settings['button_mb'];
-        document.querySelector('.sleek-upsell button').style.borderRadius = settings['button_radius'];
-        document.querySelector('.sleek-upsell button').style.borderWidth = settings['button_bs'];
-        document.querySelector('.sleek-upsell button').style.borderColor = settings['button_bc'];
-        document.querySelector('.sleek-upsell button').style.borderStyle = settings['button_border'];
-        document.querySelector('.sleek-upsell img').style.borderRadius = settings['image_radius'];
-        document.querySelector('.sleek-upsell img').style.borderWidth = settings['image_bs'];
-        document.querySelector('.sleek-upsell img').style.color = settings['image_bc'];
-        document.querySelector('.sleek-upsell img').style.borderStyle = settings['image_border'];
-        document.querySelector('.sleek-text').style.color = settings['text_color'];
-        document.querySelector('.sleek-text').style.fontFamily = settings['text_font'];
-        document.querySelector('.sleek-text').style.fontSize = settings['text_size'];
-        document.querySelector('.sleek-title').style.color = settings['title_color'];
-        document.querySelector('.sleek-title').style.fontFamily = settings['title_font'];
-        document.querySelector('.sleek-title').style.fontSize = settings['title_size'];
-        document.querySelector('.sleek-price').style.color = settings['price_color'];
-        document.querySelector('.sleek-price').style.fontFamily = settings['price_font'];
-        document.querySelector('.sleek-price').style.fontSize = settings['price_size'];
+        if (document.querySelector('.reject_offer') != null) {
+            document.querySelector('.reject_offer').onclick = function () {
+                sessionStorage.setItem('sleek_shown_' + oid, 'y');
+                brgxczvy(oid, '', '', '', '', 'reject', 'reject');
+                document.querySelector('.sleek-upsell').remove();
+                setTimeout(function () { next_offer() }, 300);
+            }
+        }
+
+        document.querySelector('.sleek-upsell').style.opacity = '1';
+        document.querySelector('.sleek-upsell').style.transform = 'none';
+        document.querySelector('.sleek-upsell form').style.marginBottom = '0px';
+        if (settings != null) {
+            document.querySelector('.sleek-upsell').insertAdjacentHTML('afterend', '<style>' + settings['override'] + '</style>');
+            document.querySelector('.sleek-upsell').style.backgroundColor = settings['layout_bg'];
+            document.querySelector('.sleek-upsell select').style.backgroundColor = settings['layout_bg'];
+            document.querySelector('.sleek-upsell').style.color = settings['layout_color'];
+            document.querySelector('.sleek-upsell select').style.color = settings['layout_color'];
+            document.querySelector('.sleek-upsell').style.fontFamily = settings['layout_font'];
+            document.querySelector('.sleek-upsell').style.fontSize = settings['layout_size'];
+            document.querySelector('.sleek-upsell').style.marginTop = settings['layout_mt'];
+            document.querySelector('.sleek-upsell').style.marginBottom = settings['layout_mb'];
+            document.querySelector('.sleek-upsell').style.borderRadius = settings['offer_radius'];
+            document.querySelector('.sleek-upsell').style.borderWidth = settings['offer_bs'];
+            document.querySelector('.sleek-upsell').style.borderColor = settings['offer_bc'];
+            document.querySelector('.sleek-upsell').style.borderStyle = settings['offer_border'];
+            document.querySelector('.sleek-upsell button').style.backgroundColor = settings['button_bg'];
+            document.querySelector('.sleek-upsell button').style.color = settings['button_color'];
+            document.querySelector('.sleek-upsell button').style.fontFamily = settings['button_font'];
+            document.querySelector('.sleek-upsell button').style.fontSize = settings['button_size'];
+            document.querySelector('.sleek-upsell button').style.marginTop = settings['button_mt'];
+            document.querySelector('.sleek-upsell button').style.marginBottom = settings['button_mb'];
+            document.querySelector('.sleek-upsell button').style.borderRadius = settings['button_radius'];
+            document.querySelector('.sleek-upsell button').style.borderWidth = settings['button_bs'];
+            document.querySelector('.sleek-upsell button').style.borderColor = settings['button_bc'];
+            document.querySelector('.sleek-upsell button').style.borderStyle = settings['button_border'];
+            document.querySelector('.sleek-upsell img').style.borderRadius = settings['image_radius'];
+            document.querySelector('.sleek-upsell img').style.borderWidth = settings['image_bs'];
+            document.querySelector('.sleek-upsell img').style.color = settings['image_bc'];
+            document.querySelector('.sleek-upsell img').style.borderStyle = settings['image_border'];
+            document.querySelector('.sleek-text').style.color = settings['text_color'];
+            document.querySelector('.sleek-text').style.fontFamily = settings['text_font'];
+            document.querySelector('.sleek-text').style.fontSize = settings['text_size'];
+            document.querySelector('.sleek-title').style.color = settings['title_color'];
+            document.querySelector('.sleek-title').style.fontFamily = settings['title_font'];
+            document.querySelector('.sleek-title').style.fontSize = settings['title_size'];
+            document.querySelector('.sleek-price').style.color = settings['price_color'];
+            document.querySelector('.sleek-price').style.fontFamily = settings['price_font'];
+            document.querySelector('.sleek-price').style.fontSize = settings['price_size'];
+        }
     }
 
 }
