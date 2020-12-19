@@ -1,3 +1,18 @@
+let c_shop = Shopify.sop;
+let page = window.location.pathname;
+let page_ss = window.location.href;
+let s_s_w = g_s_s_w('https://sleek-upsell.herokuapp.com/s_s_w/' + c_shop);
+
+sessionStorage.setItem('client_shop', c_shop);
+
+if (page_ss.includes('?test_shop_')) {
+    c_shop = page_ss.replace('https://' + c_shop + '?test_shop_', '');
+    sessionStorage.setItem('client_shop', c_shop);
+    console.log(c_shop);
+}
+
+let client_shop = sessionStorage.getItem('client_shop');
+
 function get_this(request) {
     if (request) {
         request.onload = function () {
@@ -70,11 +85,6 @@ const device = () => {
     return "desktop";
 };
 
-let page = window.location.pathname;
-let page_ss = window.location.href;
-let s_s_w = g_s_s_w('https://sleek-upsell.herokuapp.com/s_s_w/' + Shopify.shop);
-
-
 function createSUW() {
     document.querySelector('body').insertAdjacentHTML('afterbegin', '<style>.suw{display: table; width: 300px; height: 500px; background: #ffffff; position: fixed; bottom: 0px; left: 0px; z-index: 3000000;}.suw_head, .suw_footer{display: table; width: 100%; height: 50px !important; background: #981B1B !important; color: #ffffff;}.suw_body{overflow-Y: auto; display: table; width: 100%; height: 400px;}.suw_head:before{content: "SETUP WIZARD"; display: table; position: absolute; top: 10px; left: 10px; z-index: 2000000; color: #FFFFFF; font-size: 12px;}.suw_head{cursor:move; cursor:-webkit-grab; cursor:-moz-grab; cursor:grab;}</style>');
     document.querySelector('body').insertAdjacentHTML('afterbegin', '<div class="draggable suw">' +
@@ -82,7 +92,7 @@ function createSUW() {
         '<div class="suw_body"><select><option>2</option><option>2</option><option>2</option><option>2</option></select></div>' +
         '<div class="suw_footer"></div>' +
         '</div>');
-    document.querySelector('.suw_body').innerHTML = '<object style="overflow-Y: auto; display: table; width: 100%; height: 400px;" type="text/html" data="https://sleek-upsell.herokuapp.com/suw/' + Shopify.shop + '" ></object>';
+    document.querySelector('.suw_body').innerHTML = '<object style="overflow-Y: auto; display: table; width: 100%; height: 400px;" type="text/html" data="https://sleek-upsell.herokuapp.com/suw/' + client_shop + '" ></object>';
 
     var x, y, target = null;
 
@@ -137,10 +147,10 @@ else {
 
 
 
-var offers_url = 'https://sleek-upsell.herokuapp.com/offers/' + Shopify.shop;
+var offers_url = 'https://sleek-upsell.herokuapp.com/offers/' + client_shop;
 
 let offers = g_d(offers_url);
-let cart = g_d("https://" + Shopify.shop + "/cart.js");
+let cart = g_d("https://" + client_shop + "/cart.js");
 
 // console.log(offers);
 // console.log(offers['offer']);
@@ -164,7 +174,7 @@ if (settings != null) {
 
 const open = window.XMLHttpRequest.prototype.open;
 
-function openReplacement() {
+function cartChangeChecker() {
     this.addEventListener("load", function () {
         if (
             [
@@ -174,7 +184,7 @@ function openReplacement() {
                 "/cart/clear.js",
             ].includes(this._url)
         ) {
-            cart = g_d("https://" + Shopify.shop + "/cart.js");
+            cart = g_d("https://" + client_shop + "/cart.js");
             // console.log('Cart has changed: New item count - ' + cart["item_count"]);
             // console.log(this.response);
             next_offer();
@@ -183,7 +193,7 @@ function openReplacement() {
     return open.apply(this, arguments);
 }
 
-window.XMLHttpRequest.prototype.open = openReplacement;
+window.XMLHttpRequest.prototype.open = cartChangeChecker;
 
 next_offer();
 // collection_based();
@@ -774,7 +784,7 @@ function brgxczvy(oid, pid, vid, quantity, price, action, type) {
     let s = {
         'stat_id': '',
         'date': Math.floor(Date.now() / 1000),
-        'shop': Shopify.shop,
+        'shop': client_shop,
         'offer': oid,
         'product': pid,
         'variant': vid,
@@ -794,7 +804,7 @@ function brgxczvy(oid, pid, vid, quantity, price, action, type) {
 
     var http = new XMLHttpRequest();
     var url = 'https://sleek-upsell.herokuapp.com/brgxczvy';
-    var params = 'stat_id=""&date=' + Math.floor(Date.now() / 1000) + '&shop=' + Shopify.shop + '&offer=' + oid + '&product=' + pid + '&variant=' + vid + '&quantity=' + quantity + '&ip=""&country=""&type=' + type + '&action=' + action + '&page=' + page + '&device=' + device() + '&browser=' + user_browser() + '&citems=' + JSON.stringify(citems) + '&price=' + price;
+    var params = 'stat_id=""&date=' + Math.floor(Date.now() / 1000) + '&shop=' + client_shop + '&offer=' + oid + '&product=' + pid + '&variant=' + vid + '&quantity=' + quantity + '&ip=""&country=""&type=' + type + '&action=' + action + '&page=' + page + '&device=' + device() + '&browser=' + user_browser() + '&citems=' + JSON.stringify(citems) + '&price=' + price;
     http.open('POST', url, true);
 
     //Send the proper header information along with the request
@@ -995,7 +1005,7 @@ function display_offer(oid) {
                 sessionStorage.setItem('sleek_shown_' + oid, 'y');
                 brgxczvy(oid, pid, document.querySelector('.v-' + pid).value, document.querySelector('.q-' + pid).value, datacell['variants'][0]['price'], 'add to cart', 'purchase');
                 if (offers['offer'][oid]['offer'][0]['discount'] == 'y' && offers['offer'][oid]['offer'][0]['code'] != '') {
-                    g_s_s_w('https://' + Shopify.shop + '/discount/' + offers['offer'][oid]['offer'][0]['code']);
+                    g_s_s_w('https://' + client_shop + '/discount/' + offers['offer'][oid]['offer'][0]['code']);
                 }
                 if (offers['offer'][oid]['offer'][0]['to_checkout'] == 'y') {
                     window.location.href = "/checkout";
