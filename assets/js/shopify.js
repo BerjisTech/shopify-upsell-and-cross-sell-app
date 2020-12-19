@@ -6,18 +6,13 @@ let s_s_w = g_s_s_w('https://sleek-upsell.herokuapp.com/s_s_w/' + c_shop);
 sessionStorage.setItem('client_shop', c_shop);
 
 if (page_ss.includes('?test_shop_')) {
-    c_shop = page_ss.replace('https://' + window.location.hostname + '?test_shop_', '');
-    console.log('page: ' + page_ss);
-    console.log('hostname: ' + window.location.hostname);
-    console.log('To replace: https://' + window.location.hostname + '?test_shop_');
-    console.log('replaced: ' +page_ss.replace('https://' + window.location.hostname + '?test_shop_', ''));
-    console.log('c_shop: ' + c_shop);
+    c_shop = page_ss.replace('https://' + c_shop + '/?test_shop_', '');
     sessionStorage.setItem('client_shop', c_shop);
-    console.log('session: ' + sessionStorage.getItem('client_shop'));
 }
 
 let client_shop = sessionStorage.getItem('client_shop');
-console.log('client_shop: ' + client_shop);
+
+console.log(client_shop);
 
 function get_this(request) {
     if (request) {
