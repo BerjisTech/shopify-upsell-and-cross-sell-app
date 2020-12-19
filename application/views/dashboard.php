@@ -41,7 +41,7 @@
         box-shadow: 0px 0px 10px rgba(6, 6, 6, 0.2);
     }
 
-    .whats *{
+    .whats * {
         color: #ffffff;
         width: 100%;
         font-size: 18px;
@@ -74,24 +74,10 @@
                 <a style="display: none;" title="Subscription" href="<?php echo base_url(); ?>settings/<?php echo $shop; ?>/<?php echo $token; ?>?<?php echo $_SERVER['QUERY_STRING']; ?>"><span class="btn btn-primary entypo-credit-card"></span></a>
                 <span><a title="New Offer" href="<?php echo base_url(); ?>new_offer/<?php echo $shop; ?>/<?php echo $token; ?>?<?php echo $_SERVER['QUERY_STRING']; ?>"><span class="btn btn-primary btn-sm"><i class="entypo-plus"></i></span></a></span>
                 <span><a title="Stats" href="<?php echo base_url(); ?>stats/<?php echo $shop; ?>/<?php echo $token; ?>?<?php echo $_SERVER['QUERY_STRING']; ?>"><span class="btn btn-primary btn-sm"><i class="entypo-chart-line"></i></span></a></span>
-            </span>
-            <?php if ($shop == 'berjis-tech-ltd' || $shop == 'sleek-apps') : ?>
-                <span class="whats">
-                    <span class="dropdown language-selector">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" data-close-others="true" class="btn btn-primary"><img src="https://demo.neontheme.com/assets/images/flags/flag-uk.png" width="16" height="16" /></a>
-                        <ul class="dropdown-menu">
-                            <li><a href="#"><img src="https://demo.neontheme.com/assets/images/flags/flag-de.png" width="16" height="16" /><span>Deutsch</span></a></li>
-                            <li class="active"><a href="#"><img src="https://demo.neontheme.com/assets/images/flags/flag-uk.png" width="16" height="16" /><span>English</span></a></li>
-                            <li><a href="#"><img src="https://demo.neontheme.com/assets/images/flags/flag-fr.png" width="16" height="16" /><span>François</span></a></li>
-                            <li><a href="#"><img src="https://demo.neontheme.com/assets/images/flags/flag-al.png" width="16" height="16" /><span>Shqip</span></a></li>
-                            <li><a href="#"><img src="https://demo.neontheme.com/assets/images/flags/flag-es.png" width="16" height="16" /><span>Español</span></a></li>
-                        </ul>
-                    </span>
-                    <a href="#" data-toggle="chat" data-collapse-sidebar="1" class="btn btn-primary btn-sm"><i class="entypo-chat"></i><span class="badge badge-success chat-notifications-badge is-hidden">0</span></a>
-                    <span> <i class="btn btn-primary btn-sm entypo-help"></i></span>
+                <?php if ($shop == 'berjis-tech-ltd' || $shop == 'sleek-apps') : ?>
                     <span><a title="Users" href="<?php echo base_url(); ?>users/<?php echo $shop; ?>/<?php echo $token; ?>?<?php echo $_SERVER['QUERY_STRING']; ?>"><i class="btn btn-primary btn-sm entypo-users"></i></a></span>
-                </span>
-            <?php endif; ?>
+                <?php endif; ?>
+            </span>
         </div>
         <div style="height: 100vh; overflow-y: auto; flex-grow: 4; padding-top: 10px; padding-left: 10px; padding-right: 10px; padding-bottom: 0px; background: #F1F2F3;">
 
