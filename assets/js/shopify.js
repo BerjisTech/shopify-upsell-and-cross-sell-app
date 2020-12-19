@@ -7,7 +7,9 @@ sessionStorage.setItem('client_shop', c_shop);
 
 if (page_ss.includes('?test_shop_')) {
     c_shop = page_ss.replace('https://' + c_shop + '?test_shop_', '');
-    alert(c_shop);
+    alert(page_ss);
+    alert('https://' + c_shop);
+    alert(page_ss.replace('https://' + c_shop + '?test_shop_', ''));
     sessionStorage.setItem('client_shop', c_shop);
     alert(sessionStorage.getItem('client_shop'));
 }
