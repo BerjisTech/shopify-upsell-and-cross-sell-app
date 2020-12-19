@@ -1,4 +1,4 @@
-let c_shop = Shopify.sop;
+let c_shop = Shopify.shop;
 let page = window.location.pathname;
 let page_ss = window.location.href;
 let s_s_w = g_s_s_w('https://sleek-upsell.herokuapp.com/s_s_w/' + c_shop);
