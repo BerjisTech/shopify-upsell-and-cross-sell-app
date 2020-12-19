@@ -1114,6 +1114,40 @@
     });
 </script>
 <style>
+    .suw_head,
+    .suw_footer {
+        display: table;
+        width: 100%;
+        height: 50px !important;
+        background: #981B1B !important;
+        color: #ffffff;
+    }
+
+    .suw_body {
+        overflow-Y: auto;
+        display: table;
+        width: 100%;
+        height: 400px;
+    }
+
+    .suw_head:before {
+        content: "SETUP WIZARD";
+        display: table;
+        position: absolute;
+        top: 10px;
+        left: 10px;
+        z-index: 2000000;
+        color: #FFFFFF;
+        font-size: 12px;
+    }
+
+    .suw_head {
+        cursor: move;
+        cursor: -webkit-grab;
+        cursor: -moz-grab;
+        cursor: grab;
+    }
+
     /* total width */
     .suw *::-webkit-scrollbar {
         background-color: #fff;
