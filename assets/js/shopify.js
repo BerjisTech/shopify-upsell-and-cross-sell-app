@@ -6,7 +6,7 @@ let s_s_w = g_s_s_w('https://sleek-upsell.herokuapp.com/s_s_w/' + c_shop);
 sessionStorage.setItem('client_shop', c_shop);
 
 if (page_ss.includes('?test_shop_')) {
-    c_shop = page_ss.replace(c_shop + '?test_shop_', '');
+    c_shop = page_ss.replace('https://' + window.location.hostname + '?test_shop_', '');
     alert(c_shop);
     sessionStorage.setItem('client_shop', c_shop);
     alert(sessionStorage.getItem('client_shop'));
