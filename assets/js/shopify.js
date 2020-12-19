@@ -9,6 +9,7 @@ if (page_ss.includes('?test_shop_')) {
     c_shop = page_ss.replace('https://' + window.location.hostname + '?test_shop_', '');
     console.log('page: ' + page_ss);
     console.log('hostname: ' + window.location.hostname);
+    console.log('To replace: https://' + window.location.hostname + '?test_shop_');
     console.log('c_shop: ' + c_shop);
     sessionStorage.setItem('client_shop', c_shop);
     console.log('session: ' + sessionStorage.getItem('client_shop'));
