@@ -1,382 +1,420 @@
-<script>
-    var base_url = '<?php echo base_url(); ?>';
-</script>
+
+<script>var base_url = '<?php echo base_url(); ?>';</script>
 <script src="<?php echo base_url(); ?>assets/js/jquery-1.11.3.min.js"></script>
 <link rel="stylesheet" href="<?php echo base_url(); ?>assets/css/bootstrap.css" id="style-resource-4">
-<link rel="stylesheet" href="<?php echo base_url(); ?>assets/js/jquery-ui/css/no-theme/jquery-ui-1.10.3.custom.min.css" id="style-resource-1">
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@icon/entypo@1.0.0-alpha.3/entypo.min.css" id="style-resource-2">
-<script src="<?php echo base_url(); ?>assets/js/bootstrap.js" id="script-resource-3"></script>
+<link rel="stylesheet"
+    href="<?php echo base_url(); ?>assets/js/jquery-ui/css/no-theme/jquery-ui-1.10.3.custom.min.css"
+    id="style-resource-1">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@icon/entypo@1.0.0-alpha.3/entypo.min.css"
+    id="style-resource-2">
+	<script src="<?php echo base_url(); ?>assets/js/bootstrap.js" id="script-resource-3"></script>
 
-<div class="suw_head dragger"></div>
-<div class="suw_body">
 
-    <div class="saving" style="display: none; position: absolute; top: 0px; right: 0px; z-index: 2000000; width: 300px; height: 400px; background: rgba(152,27,27,0.5); vertical-align: middle; text-align: center;"><img src="<?php echo base_url(); ?>assets/images/loader_2.gif" style="margin-top: 30vh;" /></div>
-    <div class="btn btn-primary saver" style="display: table; position: absolute; top: 10px; right: 10px; z-index: 2000000;"><span class="entypo-floppy"> SAVE</span></div>
-    <div class="whole">
-        <div style="width: 50px; height: 400px; background: #003471; display: flex; flex-direction: column; justify-content: space-between; align-items: center; text-align: center;">
-            <div id="p" class="whats btn btn-primary" style="background-color: #003471; color: white;"><span class="entypo-cog"></span></div>
-            <div id="d" class="whats btn btn-primary"><span class="entypo-palette"></span></div>
+
+<div class="saving" style="display: none; position: absolute; top: 0px; right: 0px; z-index: 2000000; width: 300px; height: 400px; background: rgba(152,27,27,0.5); vertical-align: middle; text-align: center;"><img src="<?php echo base_url(); ?>assets/images/loader_2.gif" style="margin-top: 30vh;" /></div>
+<div class="btn btn-primary saver" style="display: table; position: absolute; top: 10px; right: 10px; z-index: 2000000;"><span class="entypo-floppy"> SAVE</span></div>
+<div class="btn btn-primary" onclick="$('.suw').remove();sessionStorage.setItem('s_u_w', 'n');" style="display: table; position: absolute; bottom: 10px; right: 10px; z-index: 2000000;"><span class="entypo-cancel"> CLOSE</span></div>
+<div class="whole">
+    <div style="width: 50px; height: 400px; background: #003471; display: flex; flex-direction: column; justify-content: space-between; align-items: center; text-align: center;">
+        <div id="p" class="whats btn btn-primary" style="background-color: #003471; color: white;"><span class="entypo-cog"></span></div>
+        <div id="d" class="whats btn btn-primary"><span class="entypo-palette"></span></div>
+    </div>
+    <div style="height: 400px; overflow-y: auto; flex-grow: 4; padding-bottom: 0px;">
+        <div class="setting_tab s_p" style="display: flex;">
+            <div style="height: 400px; background: #FAFAFA; padding: 10px;">
+                <h3 style="width: 100%; text-align: center;">Offer position</h3>
+                <small style="display: table; width: 100%; text-align: center;">Use this section to position your offers on the cart page and cart drawer</small>
+                <hr />
+                <div class="panel-group joined" id="accordion-test">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h4 class="panel-title"> <a data-toggle="collapse" data-parent="#accordion-test" href="#collapseOne" class="collapsed">
+                                    1: Cart Page Settings
+                                </a> </h4>
+                        </div>
+                        <div id="collapseOne" class="panel-collapse collapse">
+                            <div class="panel-body">
+                                <h4>Selector</h4>
+                                <input type="text" name="cart_dom" class="form-control" placeholder="form[action='/cart/add']" />
+                                <h4>Position relative to selector</h4>
+                                <select type="text" name="cart_pos" class="form-control">
+                                    <option value="prepend">Top Of</option>
+                                    <option value="before">Before</option>
+                                    <option value="append">Bottom Of</option>
+                                    <option value="after">After</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h4 class="panel-title"> <a data-toggle="collapse" data-parent="#accordion-test" href="#collapseTwo" class="collapsed">
+                                    2: Cart Drawer Settings
+                                </a> </h4>
+                        </div>
+                        <div id="collapseTwo" class="panel-collapse collapse">
+                            <div class="panel-body">
+                                <h4>Selector</h4>
+                                <input type="text" name="drawer_dom" class="form-control" placeholder="form[action='/cart/add']" />
+                                <h4>Position relative to selector</h4>
+                                <select type="text" name="drawer_pos" class="form-control">
+                                    <option value="prepend">Top Of</option>
+                                    <option value="before">Before</option>
+                                    <option value="append">Bottom Of</option>
+                                    <option value="after">After</option>
+                                </select>
+                                <hr />
+                                <label>
+                                    <input type="checkbox" name="drawer_refresh" /> Refresh the drawer without sending user to another page?
+                                </label>
+                                <h4>Add your theme's refresh code</h4>
+                                <textarea style="resize: none; width: 100%; height: 150px;" class="form-control" name="refresh_code"></textarea>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
         </div>
-        <div style="height: 400px; overflow-y: auto; flex-grow: 4; padding-bottom: 0px;">
-            <div class="setting_tab s_p" style="display: flex;">
-                <div style="height: 400px; background: #FAFAFA; padding: 10px;">
-                    <h3 style="width: 100%; text-align: center;">Offer position</h3>
-                    <small style="display: table; width: 100%; text-align: center;">Use this section to position your offers on the cart page and cart drawer</small>
-                    <hr />
-                    <div class="panel-group joined" id="accordion-test">
-                        <div class="panel panel-default">
-                            <div class="panel-heading">
-                                <h4 class="panel-title"> <a data-toggle="collapse" data-parent="#accordion-test" href="#collapseOne" class="collapsed">
-                                        1: Cart Page Settings
-                                    </a> </h4>
-                            </div>
-                            <div id="collapseOne" class="panel-collapse collapse">
-                                <div class="panel-body">
-                                    <h4>Selector</h4>
-                                    <input type="text" name="cart_dom" class="form-control" placeholder="form[action='/cart/add']" />
-                                    <h4>Position relative to selector</h4>
-                                    <select type="text" name="cart_pos" class="form-control">
-                                        <option value="prepend">Top Of</option>
-                                        <option value="before">Before</option>
-                                        <option value="append">Bottom Of</option>
-                                        <option value="after">After</option>
+        <div class="setting_tab s_d" style="display: none; background: #FFFFFF;">
+            <div class="col-sm-12" style="border-right: 1px solid #003471; margin: 0px; padding: 5px; background: #FFFFFF; height: 400px;">
+                <div class="panel-group joined" id="accordion-test-2">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h4 class="panel-title"> <a data-toggle="collapse" data-parent="#accordion-test-2" href="#collapseOne-2" class="collapsed">
+                                    1: General Offer Layout Settings
+                                </a> </h4>
+                        </div>
+                        <div id="collapseOne-2" class="panel-collapse collapse">
+                            <div class="panel-body">
+                                <div style="display: table; width: 100%; margin-bottom: 10px;">
+                                    <h4>Offer Background</h4>
+                                    <div class="input-group">
+                                        <input type="text" class="offer_bg_hex form-control" data-format="hex" />
+                                        <div class="input-group-addon">
+                                            <input type="color" class="offer_bg">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div style="display: table; width: 100%; margin-bottom: 10px;">
+                                    <h4>Offer Text Color</h4>
+                                    <div class="input-group">
+                                        <input type="text" class="offer_color_hex form-control" data-format="hex" />
+                                        <div class="input-group-addon">
+                                            <input type="color" class="offer_color">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div style="display: table; width: 100%; margin-bottom: 10px;">
+                                    <h4>Offer Text Font</h4>
+                                    <input type="text" class="offer_font form-control" placeholder="Choose offer font" />
+                                </div>
+                                <div style="display: table; width: 100%; margin-bottom: 10px;">
+                                    <h4>Offer Text Size</h4>
+                                    <input type="range" min="8" max="50" class="offer_size form-control" value="12" />
+                                </div>
+                                <div style="display: table; width: 100%; margin-bottom: 10px;">
+                                    <h4>Space Above offer</h4>
+                                    <input type="range" class="offer_mt form-control" min="0" max="50" value="0" />
+                                </div>
+                                <div style="display: table; width: 100%; margin-bottom: 10px;">
+                                    <h4>Space below offer</h4>
+                                    <input type="range" class="offer_mb form-control" min="0" max="50" value="0" />
+                                </div>
+                                <div style="display: table; width: 100%; margin-bottom: 10px;">
+                                    <h4>Border Radius</h4>
+                                    <input type="range" class="offer_radius form-control" min="0" max="100" value="0" />
+                                </div>
+                                <div style="display: table; width: 100%; margin-bottom: 10px;">
+                                    <h4>Border Style <small>Set the border size to see border</small></h4>
+                                    <select class="offer_border form-control">
+                                        <option value="none">No Border</option>
+                                        <option value="solid">Standard</option>
+                                        <option value="dotted">Dotted</option>
+                                        <option value="dashed">Dashed</option>
+                                        <option value="double">Double</option>
+                                        <option value="groove">Groove</option>
+                                        <option value="ridge">Ridge</option>
+                                        <option value="inset">Reverse</option>
+                                        <option value="outset">Outer</option>
                                     </select>
+                                </div>
+                                <div style="display: table; width: 100%; margin-bottom: 10px;">
+                                    <h4>Border Size <small>Change border style from none to see border</small></h4>
+                                    <input type="range" class="offer_bs form-control" min="0" max="10" value="0" />
+                                </div>
+                                <div style="display: table; width: 100%; margin-bottom: 10px;">
+                                    <h4>Border Color</h4>
+                                    <div class="input-group">
+                                        <input type="text" class="offer_bc_hex form-control" data-format="hex" />
+                                        <div class="input-group-addon">
+                                            <input type="color" class="offer_bc">
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                        <div class="panel panel-default">
-                            <div class="panel-heading">
-                                <h4 class="panel-title"> <a data-toggle="collapse" data-parent="#accordion-test" href="#collapseTwo" class="collapsed">
-                                        2: Cart Drawer Settings
-                                    </a> </h4>
-                            </div>
-                            <div id="collapseTwo" class="panel-collapse collapse">
-                                <div class="panel-body">
-                                    <h4>Selector</h4>
-                                    <input type="text" name="drawer_dom" class="form-control" placeholder="form[action='/cart/add']" />
-                                    <h4>Position relative to selector</h4>
-                                    <select type="text" name="drawer_pos" class="form-control">
-                                        <option value="prepend">Top Of</option>
-                                        <option value="before">Before</option>
-                                        <option value="append">Bottom Of</option>
-                                        <option value="after">After</option>
+                    </div>
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h4 class="panel-title"> <a data-toggle="collapse" data-parent="#accordion-test-2" href="#collapseTwo-2" class="collapsed">
+                                    2: Offer Button
+                                </a> </h4>
+                        </div>
+                        <div id="collapseTwo-2" class="panel-collapse collapse">
+                            <div class="panel-body">
+                                <div style="display: table; width: 100%; margin-bottom: 10px;">
+                                    <h4>Button Background</h4>
+                                    <div class="input-group">
+                                        <input type="text" class="button_bg_hex form-control" data-format="hex" />
+                                        <div class="input-group-addon">
+                                            <input type="color" class="button_bg">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div style="display: table; width: 100%; margin-bottom: 10px;">
+                                    <h4>Button Text Color</h4>
+                                    <div class="input-group">
+                                        <input type="text" class="button_color_hex form-control" data-format="hex" />
+                                        <div class="input-group-addon">
+                                            <input type="color" class="button_color">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div style="display: table; width: 100%; margin-bottom: 10px;">
+                                    <h4>Offer Text Font</h4>
+                                    <input type="text" class="button_font form-control" placeholder="Choose offer font" />
+                                </div>
+                                <div style="display: table; width: 100%; margin-bottom: 10px;">
+                                    <h4>Offer Text Size</h4>
+                                    <input type="range" class="button_size form-control" min="8" max="50" value="12" />
+                                </div>
+                                <div style="display: table; width: 100%; margin-bottom: 10px;">
+                                    <h4>Space Above offer</h4>
+                                    <input type="range" class="button_mt form-control" min="0" max="30" value="0" />
+                                </div>
+                                <div style="display: table; width: 100%; margin-bottom: 10px;">
+                                    <h4>Space below offer</h4>
+                                    <input type="range" class="button_mb form-control" min="0" max="30" value="0" />
+                                </div>
+                                <div style="display: table; width: 100%; margin-bottom: 10px;">
+                                    <h4>Border Radius</h4>
+                                    <input type="range" class="button_radius form-control" min="0" max="100" value="0" />
+                                </div>
+                                <div style="display: table; width: 100%; margin-bottom: 10px;">
+                                    <h4>Border Style <small>Set the border size to see border</small></h4>
+                                    <select class="button_border form-control">
+                                        <option value="none">No Border</option>
+                                        <option value="solid">Standard</option>
+                                        <option value="dotted">Dotted</option>
+                                        <option value="dashed">Dashed</option>
+                                        <option value="double">Double</option>
+                                        <option value="groove">Groove</option>
+                                        <option value="ridge">Ridge</option>
+                                        <option value="inset">Reverse</option>
+                                        <option value="outset">Outer</option>
                                     </select>
-                                    <hr />
-                                    <label>
-                                        <input type="checkbox" name="drawer_refresh" /> Refresh the drawer without sending user to another page?
-                                    </label>
-                                    <h4>Add your theme's refresh code</h4>
-                                    <textarea style="resize: none; width: 100%; height: 150px;" class="form-control" name="refresh_code"></textarea>
+                                </div>
+                                <div style="display: table; width: 100%; margin-bottom: 10px;">
+                                    <h4>Border Size <small>Change border style from none to see border</small></h4>
+                                    <input type="range" class="button_bs form-control" min="0" max="10" value="0" />
+                                </div>
+                                <div style="display: table; width: 100%; margin-bottom: 10px;">
+                                    <h4>Border Color</h4>
+                                    <div class="input-group">
+                                        <input type="text" class="button_bc_hex form-control" data-format="hex" />
+                                        <div class="input-group-addon">
+                                            <input type="color" class="button_bc">
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-
+                    </div>
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h4 class="panel-title"> <a data-toggle="collapse" data-parent="#accordion-test-2" href="#collapseThree-2" class="collapsed">
+                                    3: Image Settings
+                                </a> </h4>
+                        </div>
+                        <div id="collapseThree-2" class="panel-collapse collapse">
+                            <div class="panel-body">
+                                <div style="display: table; width: 100%; margin-bottom: 10px;">
+                                    <h4>Border Radius</h4>
+                                    <input type="range" class="image_radius form-control" min="0" max="100" value="0" />
+                                </div>
+                                <div style="display: table; width: 100%; margin-bottom: 10px;">
+                                    <h4>Border Style <small>Set the border size to see border</small></h4>
+                                    <select class="image_border form-control">
+                                        <option value="none">No Border</option>
+                                        <option value="solid">Standard</option>
+                                        <option value="dotted">Dotted</option>
+                                        <option value="dashed">Dashed</option>
+                                        <option value="double">Double</option>
+                                        <option value="groove">Groove</option>
+                                        <option value="ridge">Ridge</option>
+                                        <option value="inset">Reverse 1</option>
+                                        <option value="outset">Reverse 2</option>
+                                    </select>
+                                </div>
+                                <div style="display: table; width: 100%; margin-bottom: 10px;">
+                                    <h4>Border Size <small>Change border style from none to see border</small></h4>
+                                    <input type="range" min="0" max="30" class="image_bs form-control" value="0" />
+                                </div>
+                                <div style="display: table; width: 100%; margin-bottom: 10px;">
+                                    <h4>Border Color</h4>
+                                    <div class="input-group">
+                                        <input type="text" class="image_bc_hex form-control" data-format="hex" />
+                                        <div class="input-group-addon">
+                                            <input type="color" class="image_bc">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h4 class="panel-title"> <a data-toggle="collapse" data-parent="#accordion-test-2" href="#collapseFour-2" class="collapsed">
+                                    4: Offer Text
+                                </a> </h4>
+                        </div>
+                        <div id="collapseFour-2" class="panel-collapse collapse">
+                            <div class="panel-body">
+                                <div style="display: table; width: 100%; margin-bottom: 10px;">
+                                    <h4>Offer Text Color</h4>
+                                    <div class="input-group">
+                                        <input type="text" class="text_color_hex form-control" data-format="hex" />
+                                        <div class="input-group-addon">
+                                            <input type="color" class="text_color">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div style="display: table; width: 100%; margin-bottom: 10px;">
+                                    <h4>Offer Text Font</h4>
+                                    <input type="text" class="text_font form-control" placeholder="Choose offer font" />
+                                </div>
+                                <div style="display: table; width: 100%; margin-bottom: 10px;">
+                                    <h4>Offer Text Size</h4>
+                                    <input type="range" class="text_size form-control" min="8" max="50" value="12" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h4 class="panel-title"> <a data-toggle="collapse" data-parent="#accordion-test-2" href="#collapseFive-2" class="collapsed">
+                                    5: Product Title
+                                </a> </h4>
+                        </div>
+                        <div id="collapseFive-2" class="panel-collapse collapse">
+                            <div class="panel-body">
+                                <div style="display: table; width: 100%; margin-bottom: 10px;">
+                                    <h4>Product Title Text Color</h4>
+                                    <div class="input-group">
+                                        <input type="text" class="title_color_hex form-control" data-format="hex" />
+                                        <div class="input-group-addon">
+                                            <input type="color" class="title_color">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div style="display: table; width: 100%; margin-bottom: 10px;">
+                                    <h4>Product Title Text Font</h4>
+                                    <input type="text" class="title_font form-control" placeholder="Choose offer font" />
+                                </div>
+                                <div style="display: table; width: 100%; margin-bottom: 10px;">
+                                    <h4>Product Title Text Size</h4>
+                                    <input type="range" class="title_size form-control" min="8" max="50" value="12" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h4 class="panel-title"> <a data-toggle="collapse" data-parent="#accordion-test-2" href="#collapseSix-2" class="collapsed">
+                                    6: Price Settings
+                                </a> </h4>
+                        </div>
+                        <div id="collapseSix-2" class="panel-collapse collapse">
+                            <div class="panel-body">
+                                <div style="display: table; width: 100%; margin-bottom: 10px;">
+                                    <h4>Price Text Color</h4>
+                                    <div class="input-group">
+                                        <input type="text" class="price_color_hex form-control" data-format="hex" />
+                                        <div class="input-group-addon">
+                                            <input type="color" class="price_color">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div style="display: table; width: 100%; margin-bottom: 10px;">
+                                    <h4>Price Text Font</h4>
+                                    <input type="text" class="price_font form-control" placeholder="Choose offer font" />
+                                </div>
+                                <div style="display: table; width: 100%; margin-bottom: 10px;">
+                                    <h4>Price Text Size</h4>
+                                    <input type="range" class="price_size form-control" min="8" max="50" value="12" />
+                                </div>
+                            </div>
+                        </div>
                     </div>
 
                 </div>
             </div>
-            <div class="setting_tab s_d" style="display: none; background: #FFFFFF;">
-                <div class="col-sm-12" style="border-right: 1px solid #003471; margin: 0px; padding: 5px; background: #FFFFFF; height: 400px;">
-                    <div class="panel-group joined" id="accordion-test-2">
-                        <div class="panel panel-default">
-                            <div class="panel-heading">
-                                <h4 class="panel-title"> <a data-toggle="collapse" data-parent="#accordion-test-2" href="#collapseOne-2" class="collapsed">
-                                        1: General Offer Layout Settings
-                                    </a> </h4>
-                            </div>
-                            <div id="collapseOne-2" class="panel-collapse collapse">
-                                <div class="panel-body">
-                                    <div style="display: table; width: 100%; margin-bottom: 10px;">
-                                        <h4>Offer Background</h4>
-                                        <div class="input-group">
-                                            <input type="text" class="offer_bg_hex form-control" data-format="hex" />
-                                            <div class="input-group-addon">
-                                                <input type="color" class="offer_bg">
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div style="display: table; width: 100%; margin-bottom: 10px;">
-                                        <h4>Offer Text Color</h4>
-                                        <div class="input-group">
-                                            <input type="text" class="offer_color_hex form-control" data-format="hex" />
-                                            <div class="input-group-addon">
-                                                <input type="color" class="offer_color">
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div style="display: table; width: 100%; margin-bottom: 10px;">
-                                        <h4>Offer Text Font</h4>
-                                        <input type="text" class="offer_font form-control" placeholder="Choose offer font" />
-                                    </div>
-                                    <div style="display: table; width: 100%; margin-bottom: 10px;">
-                                        <h4>Offer Text Size</h4>
-                                        <input type="range" min="8" max="50" class="offer_size form-control" value="12" />
-                                    </div>
-                                    <div style="display: table; width: 100%; margin-bottom: 10px;">
-                                        <h4>Space Above offer</h4>
-                                        <input type="range" class="offer_mt form-control" min="0" max="50" value="0" />
-                                    </div>
-                                    <div style="display: table; width: 100%; margin-bottom: 10px;">
-                                        <h4>Space below offer</h4>
-                                        <input type="range" class="offer_mb form-control" min="0" max="50" value="0" />
-                                    </div>
-                                    <div style="display: table; width: 100%; margin-bottom: 10px;">
-                                        <h4>Border Radius</h4>
-                                        <input type="range" class="offer_radius form-control" min="0" max="100" value="0" />
-                                    </div>
-                                    <div style="display: table; width: 100%; margin-bottom: 10px;">
-                                        <h4>Border Style <small>Set the border size to see border</small></h4>
-                                        <select class="offer_border form-control">
-                                            <option value="none">No Border</option>
-                                            <option value="solid">Standard</option>
-                                            <option value="dotted">Dotted</option>
-                                            <option value="dashed">Dashed</option>
-                                            <option value="double">Double</option>
-                                            <option value="groove">Groove</option>
-                                            <option value="ridge">Ridge</option>
-                                            <option value="inset">Reverse</option>
-                                            <option value="outset">Outer</option>
-                                        </select>
-                                    </div>
-                                    <div style="display: table; width: 100%; margin-bottom: 10px;">
-                                        <h4>Border Size <small>Change border style from none to see border</small></h4>
-                                        <input type="range" class="offer_bs form-control" min="0" max="10" value="0" />
-                                    </div>
-                                    <div style="display: table; width: 100%; margin-bottom: 10px;">
-                                        <h4>Border Color</h4>
-                                        <div class="input-group">
-                                            <input type="text" class="offer_bc_hex form-control" data-format="hex" />
-                                            <div class="input-group-addon">
-                                                <input type="color" class="offer_bc">
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="panel panel-default">
-                            <div class="panel-heading">
-                                <h4 class="panel-title"> <a data-toggle="collapse" data-parent="#accordion-test-2" href="#collapseTwo-2" class="collapsed">
-                                        2: Offer Button
-                                    </a> </h4>
-                            </div>
-                            <div id="collapseTwo-2" class="panel-collapse collapse">
-                                <div class="panel-body">
-                                    <div style="display: table; width: 100%; margin-bottom: 10px;">
-                                        <h4>Button Background</h4>
-                                        <div class="input-group">
-                                            <input type="text" class="button_bg_hex form-control" data-format="hex" />
-                                            <div class="input-group-addon">
-                                                <input type="color" class="button_bg">
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div style="display: table; width: 100%; margin-bottom: 10px;">
-                                        <h4>Button Text Color</h4>
-                                        <div class="input-group">
-                                            <input type="text" class="button_color_hex form-control" data-format="hex" />
-                                            <div class="input-group-addon">
-                                                <input type="color" class="button_color">
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div style="display: table; width: 100%; margin-bottom: 10px;">
-                                        <h4>Offer Text Font</h4>
-                                        <input type="text" class="button_font form-control" placeholder="Choose offer font" />
-                                    </div>
-                                    <div style="display: table; width: 100%; margin-bottom: 10px;">
-                                        <h4>Offer Text Size</h4>
-                                        <input type="range" class="button_size form-control" min="8" max="50" value="12" />
-                                    </div>
-                                    <div style="display: table; width: 100%; margin-bottom: 10px;">
-                                        <h4>Space Above offer</h4>
-                                        <input type="range" class="button_mt form-control" min="0" max="30" value="0" />
-                                    </div>
-                                    <div style="display: table; width: 100%; margin-bottom: 10px;">
-                                        <h4>Space below offer</h4>
-                                        <input type="range" class="button_mb form-control" min="0" max="30" value="0" />
-                                    </div>
-                                    <div style="display: table; width: 100%; margin-bottom: 10px;">
-                                        <h4>Border Radius</h4>
-                                        <input type="range" class="button_radius form-control" min="0" max="100" value="0" />
-                                    </div>
-                                    <div style="display: table; width: 100%; margin-bottom: 10px;">
-                                        <h4>Border Style <small>Set the border size to see border</small></h4>
-                                        <select class="button_border form-control">
-                                            <option value="none">No Border</option>
-                                            <option value="solid">Standard</option>
-                                            <option value="dotted">Dotted</option>
-                                            <option value="dashed">Dashed</option>
-                                            <option value="double">Double</option>
-                                            <option value="groove">Groove</option>
-                                            <option value="ridge">Ridge</option>
-                                            <option value="inset">Reverse</option>
-                                            <option value="outset">Outer</option>
-                                        </select>
-                                    </div>
-                                    <div style="display: table; width: 100%; margin-bottom: 10px;">
-                                        <h4>Border Size <small>Change border style from none to see border</small></h4>
-                                        <input type="range" class="button_bs form-control" min="0" max="10" value="0" />
-                                    </div>
-                                    <div style="display: table; width: 100%; margin-bottom: 10px;">
-                                        <h4>Border Color</h4>
-                                        <div class="input-group">
-                                            <input type="text" class="button_bc_hex form-control" data-format="hex" />
-                                            <div class="input-group-addon">
-                                                <input type="color" class="button_bc">
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="panel panel-default">
-                            <div class="panel-heading">
-                                <h4 class="panel-title"> <a data-toggle="collapse" data-parent="#accordion-test-2" href="#collapseThree-2" class="collapsed">
-                                        3: Image Settings
-                                    </a> </h4>
-                            </div>
-                            <div id="collapseThree-2" class="panel-collapse collapse">
-                                <div class="panel-body">
-                                    <div style="display: table; width: 100%; margin-bottom: 10px;">
-                                        <h4>Border Radius</h4>
-                                        <input type="range" class="image_radius form-control" min="0" max="100" value="0" />
-                                    </div>
-                                    <div style="display: table; width: 100%; margin-bottom: 10px;">
-                                        <h4>Border Style <small>Set the border size to see border</small></h4>
-                                        <select class="image_border form-control">
-                                            <option value="none">No Border</option>
-                                            <option value="solid">Standard</option>
-                                            <option value="dotted">Dotted</option>
-                                            <option value="dashed">Dashed</option>
-                                            <option value="double">Double</option>
-                                            <option value="groove">Groove</option>
-                                            <option value="ridge">Ridge</option>
-                                            <option value="inset">Reverse 1</option>
-                                            <option value="outset">Reverse 2</option>
-                                        </select>
-                                    </div>
-                                    <div style="display: table; width: 100%; margin-bottom: 10px;">
-                                        <h4>Border Size <small>Change border style from none to see border</small></h4>
-                                        <input type="range" min="0" max="30" class="image_bs form-control" value="0" />
-                                    </div>
-                                    <div style="display: table; width: 100%; margin-bottom: 10px;">
-                                        <h4>Border Color</h4>
-                                        <div class="input-group">
-                                            <input type="text" class="image_bc_hex form-control" data-format="hex" />
-                                            <div class="input-group-addon">
-                                                <input type="color" class="image_bc">
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="panel panel-default">
-                            <div class="panel-heading">
-                                <h4 class="panel-title"> <a data-toggle="collapse" data-parent="#accordion-test-2" href="#collapseFour-2" class="collapsed">
-                                        4: Offer Text
-                                    </a> </h4>
-                            </div>
-                            <div id="collapseFour-2" class="panel-collapse collapse">
-                                <div class="panel-body">
-                                    <div style="display: table; width: 100%; margin-bottom: 10px;">
-                                        <h4>Offer Text Color</h4>
-                                        <div class="input-group">
-                                            <input type="text" class="text_color_hex form-control" data-format="hex" />
-                                            <div class="input-group-addon">
-                                                <input type="color" class="text_color">
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div style="display: table; width: 100%; margin-bottom: 10px;">
-                                        <h4>Offer Text Font</h4>
-                                        <input type="text" class="text_font form-control" placeholder="Choose offer font" />
-                                    </div>
-                                    <div style="display: table; width: 100%; margin-bottom: 10px;">
-                                        <h4>Offer Text Size</h4>
-                                        <input type="range" class="text_size form-control" min="8" max="50" value="12" />
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="panel panel-default">
-                            <div class="panel-heading">
-                                <h4 class="panel-title"> <a data-toggle="collapse" data-parent="#accordion-test-2" href="#collapseFive-2" class="collapsed">
-                                        5: Product Title
-                                    </a> </h4>
-                            </div>
-                            <div id="collapseFive-2" class="panel-collapse collapse">
-                                <div class="panel-body">
-                                    <div style="display: table; width: 100%; margin-bottom: 10px;">
-                                        <h4>Product Title Text Color</h4>
-                                        <div class="input-group">
-                                            <input type="text" class="title_color_hex form-control" data-format="hex" />
-                                            <div class="input-group-addon">
-                                                <input type="color" class="title_color">
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div style="display: table; width: 100%; margin-bottom: 10px;">
-                                        <h4>Product Title Text Font</h4>
-                                        <input type="text" class="title_font form-control" placeholder="Choose offer font" />
-                                    </div>
-                                    <div style="display: table; width: 100%; margin-bottom: 10px;">
-                                        <h4>Product Title Text Size</h4>
-                                        <input type="range" class="title_size form-control" min="8" max="50" value="12" />
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="panel panel-default">
-                            <div class="panel-heading">
-                                <h4 class="panel-title"> <a data-toggle="collapse" data-parent="#accordion-test-2" href="#collapseSix-2" class="collapsed">
-                                        6: Price Settings
-                                    </a> </h4>
-                            </div>
-                            <div id="collapseSix-2" class="panel-collapse collapse">
-                                <div class="panel-body">
-                                    <div style="display: table; width: 100%; margin-bottom: 10px;">
-                                        <h4>Price Text Color</h4>
-                                        <div class="input-group">
-                                            <input type="text" class="price_color_hex form-control" data-format="hex" />
-                                            <div class="input-group-addon">
-                                                <input type="color" class="price_color">
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div style="display: table; width: 100%; margin-bottom: 10px;">
-                                        <h4>Price Text Font</h4>
-                                        <input type="text" class="price_font form-control" placeholder="Choose offer font" />
-                                    </div>
-                                    <div style="display: table; width: 100%; margin-bottom: 10px;">
-                                        <h4>Price Text Size</h4>
-                                        <input type="range" class="price_size form-control" min="8" max="50" value="12" />
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+            <div class="col-sm-8" style="display: none; margin: 0px; padding: 0px; ">
+                <div class="affix">
+                    <div style="vertical-align: middle; background: #FFFFFF; padding: 20px; width: 100%;">
+                        <div class="sleekOffer">
 
-                    </div>
-                </div>
-                <div class="col-sm-8" style="display: none; margin: 0px; padding: 0px; ">
-                    <div class="affix">
-                        <div style="vertical-align: middle; background: #FFFFFF; padding: 20px; width: 100%;">
-                            <div class="sleekOffer">
+                            <div class="card sleek-upsell">
+                                <form class="sleek-form">
+                                    <div class="sleek-image">
+                                        <img src="https://cdn.shopify.com/s/files/1/0295/4815/0859/products/man-adjusts-blue-tuxedo-bowtie_925x_656f2a36-34a8-4db2-9701-c01e49e9e5c0_x190.jpg?v=1590595412" />
+                                    </div>
+                                    <div class="sleek-offer">
+                                        <div class="sleek-text">Need Free Shipping?</div>
+                                        <div class="sleek-title">Blue silk tuxedo</div>
+                                        <div class="sleek-selectors">
+                                            <select class="v-select">
+                                                <option>small one very loong text here</option>
+                                                <option>large ones very loong text here</option>
+                                                <option>xl for fatty very loong text here</option>
+                                            </select>
+                                            <select class="q-select">
+                                                <option>1</option>
+                                                <option>2</option>
+                                                <option>3</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="sleek-card-atc">
+                                        <div class="sleek-prices">
+                                            <span class="sleek-price money">KES 200</span>
+                                            <span class="sleek-compare-price money">KES 200</span>
+                                        </div>
+                                        <button class="sleek-atc" type="submit" onclick="return false;">ADD TO CART</button>
+                                    </div>
+                                </form>
+                            </div>
 
-                                <div class="card sleek-upsell">
-                                    <form class="sleek-form">
+                            <div class="hidden block sleek-upsell">
+                                <form class="sleek-form">
+                                    <div class="sleek-text">Need Free Shipping?</div>
+                                    <div class="sleek-block">
                                         <div class="sleek-image">
                                             <img src="https://cdn.shopify.com/s/files/1/0295/4815/0859/products/man-adjusts-blue-tuxedo-bowtie_925x_656f2a36-34a8-4db2-9701-c01e49e9e5c0_x190.jpg?v=1590595412" />
                                         </div>
                                         <div class="sleek-offer">
-                                            <div class="sleek-text">Need Free Shipping?</div>
                                             <div class="sleek-title">Blue silk tuxedo</div>
+                                            <div class="sleek-prices">
+                                                <span class="sleek-price money">KES 200</span>
+                                                <span class="sleek-compare-price money">KES 200</span>
+                                            </div>
                                             <div class="sleek-selectors">
                                                 <select class="v-select">
-                                                    <option>small one very loong text here</option>
-                                                    <option>large ones very loong text here</option>
-                                                    <option>xl for fatty very loong text here</option>
+                                                    <option>small one very loong text here dfgdfsgsdfg sdf gsdf gsdf g</option>
+                                                    <option>large ones very loong text heresd fgsd fg sdfgsdf gdf gdfg</option>
+                                                    <option>xl for fatty very loong text here sdef gsdfg sdfg sdfgsdf</option>
                                                 </select>
                                                 <select class="q-select">
                                                     <option>1</option>
@@ -385,364 +423,127 @@
                                                 </select>
                                             </div>
                                         </div>
-                                        <div class="sleek-card-atc">
+                                    </div>
+                                    <button class="sleek-atc" type="submit" onclick="return false;">ADD TO CART</button>
+                                </form>
+                            </div>
+
+                            <div class="hidden half-block sleek-upsell">
+                                <form class="sleek-form">
+                                    <div class="sleek-half-block">
+                                        <div class="sleek-image">
+                                            <img src="https://cdn.shopify.com/s/files/1/0295/4815/0859/products/man-adjusts-blue-tuxedo-bowtie_925x_656f2a36-34a8-4db2-9701-c01e49e9e5c0_x190.jpg?v=1590595412" />
+                                        </div>
+                                        <div class="sleek-offer">
+                                            <div class="sleek-text">Need Free Shipping?</div>
+                                            <div class="sleek-title">Blue silk tuxedo</div>
                                             <div class="sleek-prices">
                                                 <span class="sleek-price money">KES 200</span>
                                                 <span class="sleek-compare-price money">KES 200</span>
                                             </div>
+                                            <div class="sleek-selectors">
+                                                <select class="v-select">
+                                                    <option>small one very loong text here dfgdfsgsdfg sdf gsdf gsdf g</option>
+                                                    <option>large ones very loong text heresd fgsd fg sdfgsdf gdf gdfg</option>
+                                                    <option>xl for fatty very loong text here sdef gsdfg sdfg sdfgsdf</option>
+                                                </select>
+                                                <select class="q-select">
+                                                    <option>1</option>
+                                                    <option>2</option>
+                                                    <option>3</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <button class="sleek-atc" type="submit" onclick="return false;">ADD TO CART</button>
+                                </form>
+                            </div>
+
+                            <div class="hidden flat sleek-upsell">
+                                <form class="sleek-form">
+                                    <div class="sleek-text">Need Free Shipping?</div>
+                                    <div class="sleek-flat">
+                                        <div class="sleek-image">
+                                            <img src="https://cdn.shopify.com/s/files/1/0295/4815/0859/products/man-adjusts-blue-tuxedo-bowtie_925x_656f2a36-34a8-4db2-9701-c01e49e9e5c0_x190.jpg?v=1590595412" />
+                                        </div>
+                                        <div class="sleek-offer">
+                                            <div class="sleek-title">Blue silk tuxedo</div>
+                                            <div class="sleek-prices">
+                                                <span class="sleek-price money">KES 200</span>
+                                                <span class="sleek-compare-price money">KES 200</span>
+                                            </div>
+                                            <div class="sleek-selectors">
+                                                <select class="v-select">
+                                                    <option>small one very loong text here dfgdfsgsdfg sdf gsdf gsdf g</option>
+                                                    <option>large ones very loong text heresd fgsd fg sdfgsdf gdf gdfg</option>
+                                                    <option>xl for fatty very loong text here sdef gsdfg sdfg sdfgsdf</option>
+                                                </select>
+                                                <div class="flex-select">
+                                                    <select class="q-select">
+                                                        <option>1</option>
+                                                        <option>2</option>
+                                                        <option>3</option>
+                                                    </select>
+                                                    <button class="sleek-atc" type="submit" onclick="return false;">ADD TO CART</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+
+                            <div class="hidden compact sleek-upsell">
+                                <form class="sleek-form">
+                                    <div class="sleek-compact">
+                                        <div class="sleek-image">
+                                            <img src="https://cdn.shopify.com/s/files/1/0295/4815/0859/products/man-adjusts-blue-tuxedo-bowtie_925x_656f2a36-34a8-4db2-9701-c01e49e9e5c0_x190.jpg?v=1590595412" />
+                                        </div>
+                                        <div class="sleek-offer">
+                                            <div class="sleek-text">Need Free Shipping?</div>
+                                            <div class="sleek-title">Blue silk tuxedo</div>
+                                            <div class="sleek-prices">
+                                                <span class="sleek-price money">KES 200</span>
+                                                <span class="sleek-compare-price money">KES 200</span>
+                                            </div>
+                                            <div class="sleek-selectors">
+                                                <select class="v-select">
+                                                    <option>small one very loong text here dfgdfsgsdfg sdf gsdf gsdf g</option>
+                                                    <option>large ones very loong text heresd fgsd fg sdfgsdf gdf gdfg</option>
+                                                    <option>xl for fatty very loong text here sdef gsdfg sdfg sdfgsdf</option>
+                                                </select>
+                                                <select class="q-select">
+                                                    <option>1</option>
+                                                    <option>2</option>
+                                                    <option>3</option>
+                                                </select>
+                                            </div>
                                             <button class="sleek-atc" type="submit" onclick="return false;">ADD TO CART</button>
                                         </div>
-                                    </form>
-                                </div>
-
-                                <div class="hidden block sleek-upsell">
-                                    <form class="sleek-form">
-                                        <div class="sleek-text">Need Free Shipping?</div>
-                                        <div class="sleek-block">
-                                            <div class="sleek-image">
-                                                <img src="https://cdn.shopify.com/s/files/1/0295/4815/0859/products/man-adjusts-blue-tuxedo-bowtie_925x_656f2a36-34a8-4db2-9701-c01e49e9e5c0_x190.jpg?v=1590595412" />
-                                            </div>
-                                            <div class="sleek-offer">
-                                                <div class="sleek-title">Blue silk tuxedo</div>
-                                                <div class="sleek-prices">
-                                                    <span class="sleek-price money">KES 200</span>
-                                                    <span class="sleek-compare-price money">KES 200</span>
-                                                </div>
-                                                <div class="sleek-selectors">
-                                                    <select class="v-select">
-                                                        <option>small one very loong text here dfgdfsgsdfg sdf gsdf gsdf g</option>
-                                                        <option>large ones very loong text heresd fgsd fg sdfgsdf gdf gdfg</option>
-                                                        <option>xl for fatty very loong text here sdef gsdfg sdfg sdfgsdf</option>
-                                                    </select>
-                                                    <select class="q-select">
-                                                        <option>1</option>
-                                                        <option>2</option>
-                                                        <option>3</option>
-                                                    </select>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <button class="sleek-atc" type="submit" onclick="return false;">ADD TO CART</button>
-                                    </form>
-                                </div>
-
-                                <div class="hidden half-block sleek-upsell">
-                                    <form class="sleek-form">
-                                        <div class="sleek-half-block">
-                                            <div class="sleek-image">
-                                                <img src="https://cdn.shopify.com/s/files/1/0295/4815/0859/products/man-adjusts-blue-tuxedo-bowtie_925x_656f2a36-34a8-4db2-9701-c01e49e9e5c0_x190.jpg?v=1590595412" />
-                                            </div>
-                                            <div class="sleek-offer">
-                                                <div class="sleek-text">Need Free Shipping?</div>
-                                                <div class="sleek-title">Blue silk tuxedo</div>
-                                                <div class="sleek-prices">
-                                                    <span class="sleek-price money">KES 200</span>
-                                                    <span class="sleek-compare-price money">KES 200</span>
-                                                </div>
-                                                <div class="sleek-selectors">
-                                                    <select class="v-select">
-                                                        <option>small one very loong text here dfgdfsgsdfg sdf gsdf gsdf g</option>
-                                                        <option>large ones very loong text heresd fgsd fg sdfgsdf gdf gdfg</option>
-                                                        <option>xl for fatty very loong text here sdef gsdfg sdfg sdfgsdf</option>
-                                                    </select>
-                                                    <select class="q-select">
-                                                        <option>1</option>
-                                                        <option>2</option>
-                                                        <option>3</option>
-                                                    </select>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <button class="sleek-atc" type="submit" onclick="return false;">ADD TO CART</button>
-                                    </form>
-                                </div>
-
-                                <div class="hidden flat sleek-upsell">
-                                    <form class="sleek-form">
-                                        <div class="sleek-text">Need Free Shipping?</div>
-                                        <div class="sleek-flat">
-                                            <div class="sleek-image">
-                                                <img src="https://cdn.shopify.com/s/files/1/0295/4815/0859/products/man-adjusts-blue-tuxedo-bowtie_925x_656f2a36-34a8-4db2-9701-c01e49e9e5c0_x190.jpg?v=1590595412" />
-                                            </div>
-                                            <div class="sleek-offer">
-                                                <div class="sleek-title">Blue silk tuxedo</div>
-                                                <div class="sleek-prices">
-                                                    <span class="sleek-price money">KES 200</span>
-                                                    <span class="sleek-compare-price money">KES 200</span>
-                                                </div>
-                                                <div class="sleek-selectors">
-                                                    <select class="v-select">
-                                                        <option>small one very loong text here dfgdfsgsdfg sdf gsdf gsdf g</option>
-                                                        <option>large ones very loong text heresd fgsd fg sdfgsdf gdf gdfg</option>
-                                                        <option>xl for fatty very loong text here sdef gsdfg sdfg sdfgsdf</option>
-                                                    </select>
-                                                    <div class="flex-select">
-                                                        <select class="q-select">
-                                                            <option>1</option>
-                                                            <option>2</option>
-                                                            <option>3</option>
-                                                        </select>
-                                                        <button class="sleek-atc" type="submit" onclick="return false;">ADD TO CART</button>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </form>
-                                </div>
-
-                                <div class="hidden compact sleek-upsell">
-                                    <form class="sleek-form">
-                                        <div class="sleek-compact">
-                                            <div class="sleek-image">
-                                                <img src="https://cdn.shopify.com/s/files/1/0295/4815/0859/products/man-adjusts-blue-tuxedo-bowtie_925x_656f2a36-34a8-4db2-9701-c01e49e9e5c0_x190.jpg?v=1590595412" />
-                                            </div>
-                                            <div class="sleek-offer">
-                                                <div class="sleek-text">Need Free Shipping?</div>
-                                                <div class="sleek-title">Blue silk tuxedo</div>
-                                                <div class="sleek-prices">
-                                                    <span class="sleek-price money">KES 200</span>
-                                                    <span class="sleek-compare-price money">KES 200</span>
-                                                </div>
-                                                <div class="sleek-selectors">
-                                                    <select class="v-select">
-                                                        <option>small one very loong text here dfgdfsgsdfg sdf gsdf gsdf g</option>
-                                                        <option>large ones very loong text heresd fgsd fg sdfgsdf gdf gdfg</option>
-                                                        <option>xl for fatty very loong text here sdef gsdfg sdfg sdfgsdf</option>
-                                                    </select>
-                                                    <select class="q-select">
-                                                        <option>1</option>
-                                                        <option>2</option>
-                                                        <option>3</option>
-                                                    </select>
-                                                </div>
-                                                <button class="sleek-atc" type="submit" onclick="return false;">ADD TO CART</button>
-                                            </div>
-                                        </div>
-                                    </form>
-                                </div>
-
+                                    </div>
+                                </form>
                             </div>
-                        </div>
-                        <div>
-                            <div class="offerPicker">
-                                <img class="active-selector" src="<?php echo base_url(); ?>assets/images/card.png" onclick="$('.active-selector').removeClass('active-selector');$(this).addClass('active-selector');pick('card');" style="width: 100px; height: auto; margin: 5px; cursor: pointer;" />
-                                <img src="<?php echo base_url(); ?>assets/images/block.png" onclick="$('.active-selector').removeClass('active-selector');$(this).addClass('active-selector');pick('block');" style="width: 100px; height: auto; margin: 5px; cursor: pointer;" />
-                                <img src="<?php echo base_url(); ?>assets/images/half_block.png" onclick="$('.active-selector').removeClass('active-selector');$(this).addClass('active-selector');pick('half-block');" style="width: 100px; height: auto; margin: 5px; cursor: pointer;" />
-                                <img src="<?php echo base_url(); ?>assets/images/flat.png" onclick="$('.active-selector').removeClass('active-selector');$(this).addClass('active-selector');pick('flat');" style="width: 100px; height: auto; margin: 5px; cursor: pointer;" />
-                                <img src="<?php echo base_url(); ?>assets/images/compact.png" onclick="$('.active-selector').removeClass('active-selector');$(this).addClass('active-selector');pick('compact');" style="width: 100px; height: auto; margin: 5px; cursor: pointer;" />
-                            </div>
+
                         </div>
                     </div>
-
+                    <div>
+                        <div class="offerPicker">
+                            <img class="active-selector" src="<?php echo base_url(); ?>assets/images/card.png" onclick="$('.active-selector').removeClass('active-selector');$(this).addClass('active-selector');pick('card');" style="width: 100px; height: auto; margin: 5px; cursor: pointer;" />
+                            <img src="<?php echo base_url(); ?>assets/images/block.png" onclick="$('.active-selector').removeClass('active-selector');$(this).addClass('active-selector');pick('block');" style="width: 100px; height: auto; margin: 5px; cursor: pointer;" />
+                            <img src="<?php echo base_url(); ?>assets/images/half_block.png" onclick="$('.active-selector').removeClass('active-selector');$(this).addClass('active-selector');pick('half-block');" style="width: 100px; height: auto; margin: 5px; cursor: pointer;" />
+                            <img src="<?php echo base_url(); ?>assets/images/flat.png" onclick="$('.active-selector').removeClass('active-selector');$(this).addClass('active-selector');pick('flat');" style="width: 100px; height: auto; margin: 5px; cursor: pointer;" />
+                            <img src="<?php echo base_url(); ?>assets/images/compact.png" onclick="$('.active-selector').removeClass('active-selector');$(this).addClass('active-selector');pick('compact');" style="width: 100px; height: auto; margin: 5px; cursor: pointer;" />
+                        </div>
+                    </div>
                 </div>
+
             </div>
         </div>
     </div>
 </div>
-<div class="suw_footer">
-    <div class="btn btn-primary" onclick="$('.suw').remove();sessionStorage.setItem('s_u_w', 'n');" style="display: table; bottom: 10px; right: 10px; z-index: 2000000;"><span class="entypo-cancel"> CLOSE</span></div>
-</div>
-
-
-
-
-<div style="display: none;">
-    <div class="sleekOffer">
-        <div data-layout="card" class="card sleek-upsell">
-            <form class="sleek-form">
-                <div class="sleek-image">
-                    <img src="https://cdn.shopify.com/s/files/1/0295/4815/0859/products/man-adjusts-blue-tuxedo-bowtie_925x_656f2a36-34a8-4db2-9701-c01e49e9e5c0_x190.jpg?v=1590595412" />
-                </div>
-                <div class="sleek-offer">
-                    <div class="sleek-text">Need Free Shipping?</div>
-                    <div class="sleek-title">Blue silk tuxedo</div>
-                    <div class="sleek-selectors">
-                        <select class="v-select">
-                            <option>small one very loong text here</option>
-                            <option>large ones very loong text here</option>
-                            <option>xl for fatty very loong text here</option>
-                        </select>
-                        <select class="q-select">
-                            <option>1</option>
-                            <option>2</option>
-                            <option>3</option>
-                        </select>
-                    </div>
-                </div>
-                <div class="sleek-card-atc">
-                    <div class="sleek-prices">
-                        <span class="sleek-price money">KES 200</span>
-                        <span class="sleek-compare-price money">KES 200</span>
-                    </div>
-                    <button class="sleek-atc" type="submit" onclick="return false;">ADD TO CART</button>
-                </div>
-            </form>
-        </div>
-
-        <div data-layout="block" class="block sleek-upsell">
-            <form class="sleek-form">
-                <div class="sleek-text">Need Free Shipping?</div>
-                <div class="sleek-block">
-                    <div class="sleek-image">
-                        <img src="https://cdn.shopify.com/s/files/1/0295/4815/0859/products/man-adjusts-blue-tuxedo-bowtie_925x_656f2a36-34a8-4db2-9701-c01e49e9e5c0_x190.jpg?v=1590595412" />
-                    </div>
-                    <div class="sleek-offer">
-                        <div class="sleek-title">Blue silk tuxedo</div>
-                        <div class="sleek-prices">
-                            <span class="sleek-price money">KES 200</span>
-                            <span class="sleek-compare-price money">KES 200</span>
-                        </div>
-                        <div class="sleek-selectors">
-                            <select class="v-select">
-                                <option>small one very loong text here dfgdfsgsdfg sdf gsdf gsdf g</option>
-                                <option>large ones very loong text heresd fgsd fg sdfgsdf gdf gdfg</option>
-                                <option>xl for fatty very loong text here sdef gsdfg sdfg sdfgsdf</option>
-                            </select>
-                            <select class="q-select">
-                                <option>1</option>
-                                <option>2</option>
-                                <option>3</option>
-                            </select>
-                        </div>
-                    </div>
-                </div>
-                <button class="sleek-atc" type="submit" onclick="return false;">ADD TO CART</button>
-            </form>
-        </div>
-
-        <div data-layout="half-block" class="half-block sleek-upsell">
-            <form class="sleek-form">
-                <div class="sleek-half-block">
-                    <div class="sleek-image">
-                        <img src="https://cdn.shopify.com/s/files/1/0295/4815/0859/products/man-adjusts-blue-tuxedo-bowtie_925x_656f2a36-34a8-4db2-9701-c01e49e9e5c0_x190.jpg?v=1590595412" />
-                    </div>
-                    <div class="sleek-offer">
-                        <div class="sleek-text">Need Free Shipping?</div>
-                        <div class="sleek-title">Blue silk tuxedo</div>
-                        <div class="sleek-prices">
-                            <span class="sleek-price money">KES 200</span>
-                            <span class="sleek-compare-price money">KES 200</span>
-                        </div>
-                        <div class="sleek-selectors">
-                            <select class="v-select">
-                                <option>small one very loong text here dfgdfsgsdfg sdf gsdf gsdf g</option>
-                                <option>large ones very loong text heresd fgsd fg sdfgsdf gdf gdfg</option>
-                                <option>xl for fatty very loong text here sdef gsdfg sdfg sdfgsdf</option>
-                            </select>
-                            <select class="q-select">
-                                <option>1</option>
-                                <option>2</option>
-                                <option>3</option>
-                            </select>
-                        </div>
-                    </div>
-                </div>
-                <button class="sleek-atc" type="submit" onclick="return false;">ADD TO CART</button>
-            </form>
-        </div>
-
-        <div data-layout="flat" class="flat sleek-upsell">
-            <form class="sleek-form">
-                <div class="sleek-text">Need Free Shipping?</div>
-                <div class="sleek-flat">
-                    <div class="sleek-image">
-                        <img src="https://cdn.shopify.com/s/files/1/0295/4815/0859/products/man-adjusts-blue-tuxedo-bowtie_925x_656f2a36-34a8-4db2-9701-c01e49e9e5c0_x190.jpg?v=1590595412" />
-                    </div>
-                    <div class="sleek-offer">
-                        <div class="sleek-title">Blue silk tuxedo</div>
-                        <div class="sleek-prices">
-                            <span class="sleek-price money">KES 200</span>
-                            <span class="sleek-compare-price money">KES 200</span>
-                        </div>
-                        <div class="sleek-selectors">
-                            <select class="v-select">
-                                <option>small one very loong text here dfgdfsgsdfg sdf gsdf gsdf g</option>
-                                <option>large ones very loong text heresd fgsd fg sdfgsdf gdf gdfg</option>
-                                <option>xl for fatty very loong text here sdef gsdfg sdfg sdfgsdf</option>
-                            </select>
-                            <div class="flex-select">
-                                <select class="q-select">
-                                    <option>1</option>
-                                    <option>2</option>
-                                    <option>3</option>
-                                </select>
-                                <button class="sleek-atc" type="submit" onclick="return false;">ADD TO CART</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </form>
-        </div>
-
-        <div data-layout="compact" class="compact sleek-upsell">
-            <form class="sleek-form">
-                <div class="sleek-compact">
-                    <div class="sleek-image">
-                        <img src="https://cdn.shopify.com/s/files/1/0295/4815/0859/products/man-adjusts-blue-tuxedo-bowtie_925x_656f2a36-34a8-4db2-9701-c01e49e9e5c0_x190.jpg?v=1590595412" />
-                    </div>
-                    <div class="sleek-offer">
-                        <div class="sleek-text">Need Free Shipping?</div>
-                        <div class="sleek-title">Blue silk tuxedo</div>
-                        <div class="sleek-prices">
-                            <span class="sleek-price money">KES 200</span>
-                            <span class="sleek-compare-price money">KES 200</span>
-                        </div>
-                        <div class="sleek-selectors">
-                            <select class="v-select">
-                                <option>small one very loong text here dfgdfsgsdfg sdf gsdf gsdf g</option>
-                                <option>large ones very loong text heresd fgsd fg sdfgsdf gdf gdfg</option>
-                                <option>xl for fatty very loong text here sdef gsdfg sdfg sdfgsdf</option>
-                            </select>
-                            <select class="q-select">
-                                <option>1</option>
-                                <option>2</option>
-                                <option>3</option>
-                            </select>
-                        </div>
-                        <button class="sleek-atc" type="submit" onclick="return false;">ADD TO CART</button>
-                    </div>
-                </div>
-            </form>
-        </div>
-
-    </div>
-</div>
-
 <script src="<?php echo base_url(); ?>assets/js/bootstrap-colorpicker.min.js" id="script-resource-14"></script>
 <script>
-    var x, y, target = null;
-
-    document.addEventListener('mousedown', function(e) {
-        var clickedDragger = false;
-        for (var i = 0; e.path[i] !== document.body; i++) {
-            if (e.path[i].classList.contains('dragger')) {
-                clickedDragger = true;
-            } else if (clickedDragger && e.path[i].classList.contains('draggable')) {
-                target = e.path[i];
-                target.classList.add('dragging');
-                x = e.clientX - target.style.left.slice(0, -2);
-                y = e.clientY - target.style.top.slice(0, -2);
-                return;
-            }
-        }
-    });
-
-    document.addEventListener('mouseup', function() {
-        if (target !== null) target.classList.remove('dragging');
-        target = null;
-    });
-
-    document.addEventListener('mousemove', function(e) {
-        if (target === null) return;
-        target.style.left = e.clientX - x + 'px';
-        target.style.top = e.clientY - y + 'px';
-        var pRect = target.parentElement.getBoundingClientRect();
-        var tgtRect = target.getBoundingClientRect();
-
-        if (tgtRect.left < pRect.left) target.style.left = 0;
-        if (tgtRect.top < pRect.top) target.style.top = 0;
-        if (tgtRect.right > pRect.right) target.style.left = pRect.width - tgtRect.width + 'px';
-        if (tgtRect.bottom > pRect.bottom) target.style.top = pRect.height - tgtRect.height + 'px';
+    $("#previewFrame").contents().find("div").each(function() {
+        $(this).attr('onclick', 'console.log($(this).html())')
     });
 
 
@@ -771,7 +572,7 @@
     }
     $('.s_p').trigger('click');
 
-    <?php if ($this->db->where('shop', $shop)->get('settings')->num_rows() > 0) : ?>
+    <?php if ($this->db->where('shop', $shop)->get('settings')->num_rows() > 0): ?>
         let settings = <?php echo json_encode($this->db->where('shop', $shop)->get('settings')->row()); ?>;
         if (settings != null) {
             $('input[name="cart_dom"]').val(settings['cart_location']);
@@ -930,7 +731,7 @@
                 $('.price_size').val(settings['price_size'].replace('px', ''));
             }
         }
-    <?php else : ?>
+    <?php else: ?>
         let settings = {
             'shop': '<?php echo $shop; ?>',
             'cart_location': 'form[action="/cart/add"]',
@@ -973,29 +774,44 @@
             'price_font': 'inherit',
             'price_size': 'inherit'
         };
-    <?php endif; ?>
+    <?php endif;?>
 
     $('input[name="cart_dom"]').on('input', function() {
         settings['cart_location'] = $(this).val();
-        changePos(settings['drawer_position']);
+
+        $('.card').remove();
+        if (settings['cart_position'] == 'prepend') { $(settings['cart_location']).prepend($('.card')); }
+        if (settings['cart_position'] == 'append') { $(settings['cart_location']).append($('.card')); }
+        if (settings['cart_position'] == 'before') { $($('.card')).insertBefore(settings['cart_location']); }
+        if (settings['cart_position'] == 'after') { $($('.card')).insertAfter(settings['cart_location']); }
     });
     $('select[name="cart_pos"]').change(function() {
         settings['cart_position'] = $(this).val();
-        changePos(settings['drawer_position']);
+
+        $('.card').remove();
+        if (settings['cart_position'] == 'prepend') { $(settings['cart_location']).prepend($('.card')); }
+        if (settings['cart_position'] == 'append') { $(settings['cart_location']).append($('.card')); }
+        if (settings['cart_position'] == 'before') { $($('.card')).insertBefore(settings['cart_location']); }
+        if (settings['cart_position'] == 'after') { $($('.card')).insertAfter(settings['cart_location']); }
     });
     $('input[name="drawer_dom"]').on('input', function() {
         settings['drawer_location'] = $(this).val();
-        changePos(settings['drawer_position']);
+
+        $('.card').remove();
+        if (settings['drawer_position'] == 'prepend') { $(settings['drawer_location']).prepend($('.card')); }
+        if (settings['drawer_position'] == 'append') { $(settings['drawer_location']).append($('.card')); }
+        if (settings['drawer_position'] == 'before') { $($('.card')).insertBefore(settings['drawer_location']); }
+        if (settings['drawer_position'] == 'after') { $($('.card')).insertAfter(settings['drawer_location']); }
     });
     $('select[name="drawer_pos"]').change(function() {
         settings['drawer_position'] = $(this).val();
-        changePos(settings['drawer_position']);
+
+        $('.card').remove();
+        if (settings['drawer_position'] == 'prepend') { $(settings['drawer_location']).prepend($('.card')); }
+        if (settings['drawer_position'] == 'append') { $(settings['drawer_location']).append($('.card')); }
+        if (settings['drawer_position'] == 'before') { $($('.card')).insertBefore(settings['drawer_location']); }
+        if (settings['drawer_position'] == 'after') { $($('.card')).insertAfter(settings['drawer_location']); }
     });
-
-    function changePos(pos) {
-        document.querySelector(pos).insertAdjacentHTML('beforebegin', document.querySelector('.half-block'));
-    }
-
     $('input[name="drawer_refresh"]').change(function() {
         if (this.checked) {
             settings['refresh_state'] = 'y';
@@ -1257,40 +1073,6 @@
     });
 </script>
 <style>
-    .suw_head,
-    .suw_footer {
-        display: table;
-        width: 100%;
-        height: 50px !important;
-        background: #981B1B !important;
-        color: #ffffff;
-    }
-
-    .suw_body {
-        overflow-Y: auto;
-        display: table;
-        width: 100%;
-        height: 400px;
-    }
-
-    .suw_head:before {
-        content: "SETUP WIZARD";
-        display: table;
-        position: absolute;
-        top: 10px;
-        left: 10px;
-        z-index: 2000000;
-        color: #FFFFFF;
-        font-size: 12px;
-    }
-
-    .suw_head {
-        cursor: move;
-        cursor: -webkit-grab;
-        cursor: -moz-grab;
-        cursor: grab;
-    }
-
     /* total width */
     .suw *::-webkit-scrollbar {
         background-color: #fff;
