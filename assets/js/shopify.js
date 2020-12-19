@@ -7,14 +7,12 @@ sessionStorage.setItem('client_shop', c_shop);
 
 if (page_ss.includes('?test_shop_')) {
     c_shop = page_ss.replace('https://' + c_shop + '?test_shop_', '');
+    alert(c_shop);
     sessionStorage.setItem('client_shop', c_shop);
+    alert(sessionStorage.setItem('client_shop', c_shop));
 }
 
-console.log(c_shop);
-
 let client_shop = sessionStorage.getItem('client_shop');
-
-console.log(client_shop);
 
 function get_this(request) {
     if (request) {
