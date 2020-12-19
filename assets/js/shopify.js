@@ -7,6 +7,7 @@ sessionStorage.setItem('client_shop', c_shop);
 
 if (page_ss.includes('?test_shop_')) {
     c_shop = page_ss.replace('https://' + window.location.hostname + '?test_shop_', '');
+    console.log(page_ss);
     alert(c_shop);
     sessionStorage.setItem('client_shop', c_shop);
     alert(sessionStorage.getItem('client_shop'));
