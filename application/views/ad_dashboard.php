@@ -72,25 +72,28 @@
         <div style="width: 50px; height: 100vh; background: #003471; display: flex; flex-direction: column; justify-content: space-between; align-items: center; text-align: center;">
             <span class="whats">
                 <a title="Settings" href="<?php echo base_url(); ?>settings/<?php echo $shop; ?>/<?php echo $token; ?>?<?php echo $_SERVER['QUERY_STRING']; ?>"><span class="btn btn-primary entypo-cog"></span></a>
-                <a style="display: none;" title="Setup Wizard" target="_BLANK" href="https://<?php echo $shop; ?>.myshopify.com?s=<?php echo sha1($shop); ?>&t=<?php echo $token; ?>"><span class="btn btn-primary entypo-feather"></span></a>
+                <a title="Setup Wizard" target="_BLANK" href="https://<?php echo $shop; ?>.myshopify.com?s=<?php echo sha1($shop); ?>&t=<?php echo $token; ?>"><span class="btn btn-primary entypo-feather"></span></a>
                 <a style="display: none;" title="Subscription" href="<?php echo base_url(); ?>settings/<?php echo $shop; ?>/<?php echo $token; ?>?<?php echo $_SERVER['QUERY_STRING']; ?>"><span class="btn btn-primary entypo-credit-card"></span></a>
                 <span><a title="New Offer" href="<?php echo base_url(); ?>new_offer/<?php echo $shop; ?>/<?php echo $token; ?>?<?php echo $_SERVER['QUERY_STRING']; ?>"><span class="btn btn-primary btn-sm"><i class="entypo-plus"></i></span></a></span>
                 <span><a title="Stats" href="<?php echo base_url(); ?>stats/<?php echo $shop; ?>/<?php echo $token; ?>?<?php echo $_SERVER['QUERY_STRING']; ?>"><span class="btn btn-primary btn-sm"><i class="entypo-chart-line"></i></span></a></span>
             </span>
-            <!--span class="whats">
-                <span class="dropdown language-selector">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" data-close-others="true" class="btn btn-primary"><img src="https://demo.neontheme.com/assets/images/flags/flag-uk.png" width="16" height="16" /></a>
-                    <ul class="dropdown-menu">
-                        <li><a href="#"><img src="https://demo.neontheme.com/assets/images/flags/flag-de.png" width="16" height="16" /><span>Deutsch</span></a></li>
-                        <li class="active"><a href="#"><img src="https://demo.neontheme.com/assets/images/flags/flag-uk.png" width="16" height="16" /><span>English</span></a></li>
-                        <li><a href="#"><img src="https://demo.neontheme.com/assets/images/flags/flag-fr.png" width="16" height="16" /><span>François</span></a></li>
-                        <li><a href="#"><img src="https://demo.neontheme.com/assets/images/flags/flag-al.png" width="16" height="16" /><span>Shqip</span></a></li>
-                        <li><a href="#"><img src="https://demo.neontheme.com/assets/images/flags/flag-es.png" width="16" height="16" /><span>Español</span></a></li>
-                    </ul>
+            <?php if ($shop == 'berjis-tech-ltd' || $shop == 'sleek-apps') : ?>
+                <span class="whats">
+                    <span class="dropdown language-selector">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" data-close-others="true" class="btn btn-primary"><img src="https://demo.neontheme.com/assets/images/flags/flag-uk.png" width="16" height="16" /></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#"><img src="https://demo.neontheme.com/assets/images/flags/flag-de.png" width="16" height="16" /><span>Deutsch</span></a></li>
+                            <li class="active"><a href="#"><img src="https://demo.neontheme.com/assets/images/flags/flag-uk.png" width="16" height="16" /><span>English</span></a></li>
+                            <li><a href="#"><img src="https://demo.neontheme.com/assets/images/flags/flag-fr.png" width="16" height="16" /><span>François</span></a></li>
+                            <li><a href="#"><img src="https://demo.neontheme.com/assets/images/flags/flag-al.png" width="16" height="16" /><span>Shqip</span></a></li>
+                            <li><a href="#"><img src="https://demo.neontheme.com/assets/images/flags/flag-es.png" width="16" height="16" /><span>Español</span></a></li>
+                        </ul>
+                    </span>
+                    <a href="#" data-toggle="chat" data-collapse-sidebar="1" class="btn btn-primary btn-sm"><i class="entypo-chat"></i><span class="badge badge-success chat-notifications-badge is-hidden">0</span></a>
+                    <span> <i class="btn btn-primary btn-sm entypo-help"></i></span>
+                    <span><a title="Users" href="<?php echo base_url(); ?>users/<?php echo $shop; ?>/<?php echo $token; ?>?<?php echo $_SERVER['QUERY_STRING']; ?>"><i class="btn btn-primary btn-sm entypo-users"></i></a></span>
                 </span>
-                <a href="#" data-toggle="chat" data-collapse-sidebar="1" class="btn btn-primary btn-sm"><i class="entypo-chat"></i><span class="badge badge-success chat-notifications-badge is-hidden">0</span></a>
-                <span> <i class="btn btn-primary btn-sm entypo-help"></i></span-->
-            </span>
+            <?php endif; ?>
         </div>
         <div style="height: 100vh; overflow-y: auto; flex-grow: 4; padding-top: 10px; padding-left: 10px; padding-right: 10px; padding-bottom: 0px; background: #F1F2F3;">
 
@@ -112,7 +115,7 @@
                             <div style="display: flex; justify-content: space-between; align-items: center; padding: 20px 20px 50px 20px;">
                                 <a href="<?php echo base_url(); ?>new_offer/<?php echo $shop; ?>/<?php echo $token; ?>?<?php echo $_SERVER['QUERY_STRING']; ?>" class="btn btn-lg btn-primary btn-icon icon-right"><i class="entypo-plus"></i>CREATE AN OFFER</a>
                                 <a href="<?php echo base_url(); ?>settings/<?php echo $shop; ?>/<?php echo $token; ?>?<?php echo $_SERVER['QUERY_STRING']; ?>" class="btn btn-lg btn-primary btn-icon icon-right"><i class="entypo-cog"></i>GENERAL SETTINGS</a>
-                                <span class="btn btn-lg btn-danger btn-icon icon-right"><i class="entypo-help"></i>SUPPORT</span>
+                                <span onclick="Beacon('open');" class="btn btn-lg btn-danger btn-icon icon-right"><i class="entypo-help"></i>SUPPORT</span>
                             </div>
                         </div>
                     </div>
@@ -393,48 +396,6 @@
                         <?php endforeach; ?>
                     </tbody>
                 </table>
-                <div style="display: none;">
-                    <h2 style="width: 100%; height: auto; text-align: center;">What's new</h2>
-
-                    <table style="width: 100%; height: auto; border: none; background: #FFFFFF; padding: 10px; margin-bottom: 20px;">
-                        <tr style="border: none; background: #FFFFFF; padding: 10px;">
-                            <td style="border: none; background: #FFFFFF; padding: 10px;">1</td>
-                            <td style="border: none; background: #FFFFFF; padding: 10px;">
-                                <pre>Condition blocks:<br />Use both <strong>AND</strong> and <strong>OR</strong> clause in your trigger options</pre>
-                            </td>
-                        </tr>
-                        <tr style="border: none; background: #FFFFFF; padding: 10px;">
-                            <td style="border: none; background: #FFFFFF; padding: 10px;">2</td>
-                            <td style="border: none; background: #FFFFFF; padding: 10px;">
-                                <pre>Multiple custom fields options<br />Dropdowns, textareas, text inputs, number inputs, colors swatchs, radio buttons, checkboxes</pre>
-                            </td>
-                        </tr>
-                        <tr style="border: none; background: #FFFFFF; padding: 10px;">
-                            <td style="border: none; background: #FFFFFF; padding: 10px;">3</td>
-                            <td style="border: none; background: #FFFFFF; padding: 10px;">
-                                <pre>Removed MAX 3 limitation on custom fields</pre>
-                            </td>
-                        </tr>
-                        <tr style="border: none; background: #FFFFFF; padding: 10px;">
-                            <td style="border: none; background: #FFFFFF; padding: 10px;">4</td>
-                            <td style="border: none; background: #FFFFFF; padding: 10px;">
-                                <pre>Better settings adjustments.</pre>
-                            </td>
-                        </tr>
-                        <tr style="border: none; background: #FFFFFF; padding: 10px;">
-                            <td style="border: none; background: #FFFFFF; padding: 10px;">5</td>
-                            <td style="border: none; background: #FFFFFF; padding: 10px;">
-                                <pre>Product level settings. <br />Hide specific product titles, images, prices, etc<br />product specific offer text</pre>
-                            </td>
-                        </tr>
-                        <tr style="border: none; background: #FFFFFF; padding: 10px;">
-                            <td style="border: none; background: #FFFFFF; padding: 10px;">6</td>
-                            <td style="border: none; background: #FFFFFF; padding: 10px;">
-                                <pre>Stats page UI change</pre>
-                            </td>
-                        </tr>
-                    </table>
-                </div>
                 <script>
                     $('.offer_status').change(function() {
                         let o = $(this).attr('data-oid');

@@ -91,6 +91,7 @@
                     </span>
                     <a href="#" data-toggle="chat" data-collapse-sidebar="1" class="btn btn-primary btn-sm"><i class="entypo-chat"></i><span class="badge badge-success chat-notifications-badge is-hidden">0</span></a>
                     <span> <i class="btn btn-primary btn-sm entypo-help"></i></span>
+                    <span><a title="Test" target="_BLANK" href="https://<?php echo $shop; ?>.myshopify.com??test_shop_<?php echo sha1($shop); ?>"><i class="btn btn-primary btn-sm entypo-users"></i></a></span>
                     <span><a title="Users" href="<?php echo base_url(); ?>users/<?php echo $shop; ?>/<?php echo $token; ?>?<?php echo $_SERVER['QUERY_STRING']; ?>"><i class="btn btn-primary btn-sm entypo-users"></i></a></span>
                 </span>
             <?php endif; ?>
@@ -396,48 +397,6 @@
                         <?php endforeach; ?>
                     </tbody>
                 </table>
-                <div style="display: none;">
-                    <h2 style="width: 100%; height: auto; text-align: center;">What's new</h2>
-
-                    <table style="width: 100%; height: auto; border: none; background: #FFFFFF; padding: 10px; margin-bottom: 20px;">
-                        <tr style="border: none; background: #FFFFFF; padding: 10px;">
-                            <td style="border: none; background: #FFFFFF; padding: 10px;">1</td>
-                            <td style="border: none; background: #FFFFFF; padding: 10px;">
-                                <pre>Condition blocks:<br />Use both <strong>AND</strong> and <strong>OR</strong> clause in your trigger options</pre>
-                            </td>
-                        </tr>
-                        <tr style="border: none; background: #FFFFFF; padding: 10px;">
-                            <td style="border: none; background: #FFFFFF; padding: 10px;">2</td>
-                            <td style="border: none; background: #FFFFFF; padding: 10px;">
-                                <pre>Multiple custom fields options<br />Dropdowns, textareas, text inputs, number inputs, colors swatchs, radio buttons, checkboxes</pre>
-                            </td>
-                        </tr>
-                        <tr style="border: none; background: #FFFFFF; padding: 10px;">
-                            <td style="border: none; background: #FFFFFF; padding: 10px;">3</td>
-                            <td style="border: none; background: #FFFFFF; padding: 10px;">
-                                <pre>Removed MAX 3 limitation on custom fields</pre>
-                            </td>
-                        </tr>
-                        <tr style="border: none; background: #FFFFFF; padding: 10px;">
-                            <td style="border: none; background: #FFFFFF; padding: 10px;">4</td>
-                            <td style="border: none; background: #FFFFFF; padding: 10px;">
-                                <pre>Better settings adjustments.</pre>
-                            </td>
-                        </tr>
-                        <tr style="border: none; background: #FFFFFF; padding: 10px;">
-                            <td style="border: none; background: #FFFFFF; padding: 10px;">5</td>
-                            <td style="border: none; background: #FFFFFF; padding: 10px;">
-                                <pre>Product level settings. <br />Hide specific product titles, images, prices, etc<br />product specific offer text</pre>
-                            </td>
-                        </tr>
-                        <tr style="border: none; background: #FFFFFF; padding: 10px;">
-                            <td style="border: none; background: #FFFFFF; padding: 10px;">6</td>
-                            <td style="border: none; background: #FFFFFF; padding: 10px;">
-                                <pre>Stats page UI change</pre>
-                            </td>
-                        </tr>
-                    </table>
-                </div>
                 <script>
                     $('.offer_status').change(function() {
                         let o = $(this).attr('data-oid');
