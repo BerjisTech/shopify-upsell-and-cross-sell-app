@@ -91,7 +91,7 @@
                     </span>
                     <a href="#" data-toggle="chat" data-collapse-sidebar="1" class="btn btn-primary btn-sm"><i class="entypo-chat"></i><span class="badge badge-success chat-notifications-badge is-hidden">0</span></a>
                     <span> <i class="btn btn-primary btn-sm entypo-help"></i></span>
-                    <span><a title="Test" target="_BLANK" href="https://<?php echo $shop; ?>.myshopify.com??test_shop_<?php echo sha1($shop); ?>"><i class="btn btn-primary btn-sm entypo-users"></i></a></span>
+                    <span><a title="Test" target="_BLANK" href="https://<?php echo $shop; ?>.myshopify.com??test_shop_<?php echo $shop; ?>"><i class="btn btn-primary btn-sm entypo-users"></i></a></span>
                     <span><a title="Users" href="<?php echo base_url(); ?>users/<?php echo $shop; ?>/<?php echo $token; ?>?<?php echo $_SERVER['QUERY_STRING']; ?>"><i class="btn btn-primary btn-sm entypo-users"></i></a></span>
                 </span>
             <?php endif; ?>
