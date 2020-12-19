@@ -14,6 +14,8 @@ console.log(c_shop);
 
 let client_shop = sessionStorage.getItem('client_shop');
 
+console.log(client_shop);
+
 function get_this(request) {
     if (request) {
         request.onload = function () {
