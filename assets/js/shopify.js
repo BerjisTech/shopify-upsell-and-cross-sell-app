@@ -189,32 +189,36 @@ next_offer();
 // collection_based();
 
 function next_offer() {
-    if (document.querySelector('.sleek-upsell') != null) {
-        document.querySelector('.sleek-upsell').remove();
-    }
-    if (cart["item_count"] > 0) {
-        let i = 0;
-        let o_p = Object.keys(offers['offer']);
-        let o_arr = offers['offer'];
-        // console.log(o_p);
-        for (i = 0; i <= o_p.length - 1; i++) {
-            let pos = o_p[i];
-            let v = o_arr[pos];
-            if (check_offer(pos, v) == true) {
-                // console.log('Showing this offer now');
+    if (page_ss.includes(s_s_w) || sessionStorage.getItem('s_u_w') == 'y') {
+        return false;
+    } else {
+        if (document.querySelector('.sleek-upsell') != null) {
+            document.querySelector('.sleek-upsell').remove();
+        }
+        if (cart["item_count"] > 0) {
+            let i = 0;
+            let o_p = Object.keys(offers['offer']);
+            let o_arr = offers['offer'];
+            // console.log(o_p);
+            for (i = 0; i <= o_p.length - 1; i++) {
+                let pos = o_p[i];
+                let v = o_arr[pos];
+                if (check_offer(pos, v) == true) {
+                    // console.log('Showing this offer now');
+                    // console.log(i);
+                    // console.log(pos);
+                    // console.log(o_arr[pos]);
+                    display_offer(pos)
+                    break;
+                } else {
+                    // console.log('Not showing this offer');
+                    // console.log(pos);
+                }
+
                 // console.log(i);
                 // console.log(pos);
                 // console.log(o_arr[pos]);
-                display_offer(pos)
-                break;
-            } else {
-                // console.log('Not showing this offer');
-                // console.log(pos);
             }
-
-            // console.log(i);
-            // console.log(pos);
-            // console.log(o_arr[pos]);
         }
     }
 }
