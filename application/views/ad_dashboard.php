@@ -41,12 +41,10 @@
         box-shadow: 0px 0px 10px rgba(6, 6, 6, 0.2);
     }
 
-    .whats,
-    .whats span,
-    .whats a {
+    .whats *{
         color: #ffffff;
         width: 100%;
-        font-size: 18px;
+        font-size: 20px !important;
     }
 
     .whole {
@@ -91,7 +89,6 @@
                     </span>
                     <a href="#" data-toggle="chat" data-collapse-sidebar="1" class="btn btn-primary btn-sm"><i class="entypo-chat"></i><span class="badge badge-success chat-notifications-badge is-hidden">0</span></a>
                     <span> <i class="btn btn-primary btn-sm entypo-help"></i></span>
-                    <span><a title="Test" target="_BLANK" href="https://<?php echo $shop; ?>.myshopify.com?test_shop_<?php echo $shop; ?>"><i class="btn btn-primary btn-sm entypo-users"></i></a></span>
                     <span><a title="Users" href="<?php echo base_url(); ?>users/<?php echo $shop; ?>/<?php echo $token; ?>?<?php echo $_SERVER['QUERY_STRING']; ?>"><i class="btn btn-primary btn-sm entypo-users"></i></a></span>
                 </span>
             <?php endif; ?>
