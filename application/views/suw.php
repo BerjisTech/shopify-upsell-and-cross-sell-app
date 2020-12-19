@@ -538,8 +538,6 @@
             </div>
         </div>
     </div>
-
-
 </div>
 <div class="suw_footer">
     <div class="btn btn-primary" onclick="$('.suw').remove();sessionStorage.setItem('s_u_w', 'n');" style="display: table; bottom: 10px; right: 10px; z-index: 2000000;"><span class="entypo-cancel"> CLOSE</span></div>
@@ -548,7 +546,167 @@
 
 
 
+<div style="display: none;">
+    <div class="sleekOffer">
+        <div data-layout="card" class="card sleek-upsell">
+            <form class="sleek-form">
+                <div class="sleek-image">
+                    <img src="https://cdn.shopify.com/s/files/1/0295/4815/0859/products/man-adjusts-blue-tuxedo-bowtie_925x_656f2a36-34a8-4db2-9701-c01e49e9e5c0_x190.jpg?v=1590595412" />
+                </div>
+                <div class="sleek-offer">
+                    <div class="sleek-text">Need Free Shipping?</div>
+                    <div class="sleek-title">Blue silk tuxedo</div>
+                    <div class="sleek-selectors">
+                        <select class="v-select">
+                            <option>small one very loong text here</option>
+                            <option>large ones very loong text here</option>
+                            <option>xl for fatty very loong text here</option>
+                        </select>
+                        <select class="q-select">
+                            <option>1</option>
+                            <option>2</option>
+                            <option>3</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="sleek-card-atc">
+                    <div class="sleek-prices">
+                        <span class="sleek-price money">KES 200</span>
+                        <span class="sleek-compare-price money">KES 200</span>
+                    </div>
+                    <button class="sleek-atc" type="submit" onclick="return false;">ADD TO CART</button>
+                </div>
+            </form>
+        </div>
 
+        <div data-layout="block" class="block sleek-upsell">
+            <form class="sleek-form">
+                <div class="sleek-text">Need Free Shipping?</div>
+                <div class="sleek-block">
+                    <div class="sleek-image">
+                        <img src="https://cdn.shopify.com/s/files/1/0295/4815/0859/products/man-adjusts-blue-tuxedo-bowtie_925x_656f2a36-34a8-4db2-9701-c01e49e9e5c0_x190.jpg?v=1590595412" />
+                    </div>
+                    <div class="sleek-offer">
+                        <div class="sleek-title">Blue silk tuxedo</div>
+                        <div class="sleek-prices">
+                            <span class="sleek-price money">KES 200</span>
+                            <span class="sleek-compare-price money">KES 200</span>
+                        </div>
+                        <div class="sleek-selectors">
+                            <select class="v-select">
+                                <option>small one very loong text here dfgdfsgsdfg sdf gsdf gsdf g</option>
+                                <option>large ones very loong text heresd fgsd fg sdfgsdf gdf gdfg</option>
+                                <option>xl for fatty very loong text here sdef gsdfg sdfg sdfgsdf</option>
+                            </select>
+                            <select class="q-select">
+                                <option>1</option>
+                                <option>2</option>
+                                <option>3</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <button class="sleek-atc" type="submit" onclick="return false;">ADD TO CART</button>
+            </form>
+        </div>
+
+        <div data-layout="half-block" class="half-block sleek-upsell">
+            <form class="sleek-form">
+                <div class="sleek-half-block">
+                    <div class="sleek-image">
+                        <img src="https://cdn.shopify.com/s/files/1/0295/4815/0859/products/man-adjusts-blue-tuxedo-bowtie_925x_656f2a36-34a8-4db2-9701-c01e49e9e5c0_x190.jpg?v=1590595412" />
+                    </div>
+                    <div class="sleek-offer">
+                        <div class="sleek-text">Need Free Shipping?</div>
+                        <div class="sleek-title">Blue silk tuxedo</div>
+                        <div class="sleek-prices">
+                            <span class="sleek-price money">KES 200</span>
+                            <span class="sleek-compare-price money">KES 200</span>
+                        </div>
+                        <div class="sleek-selectors">
+                            <select class="v-select">
+                                <option>small one very loong text here dfgdfsgsdfg sdf gsdf gsdf g</option>
+                                <option>large ones very loong text heresd fgsd fg sdfgsdf gdf gdfg</option>
+                                <option>xl for fatty very loong text here sdef gsdfg sdfg sdfgsdf</option>
+                            </select>
+                            <select class="q-select">
+                                <option>1</option>
+                                <option>2</option>
+                                <option>3</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <button class="sleek-atc" type="submit" onclick="return false;">ADD TO CART</button>
+            </form>
+        </div>
+
+        <div data-layout="flat" class="flat sleek-upsell">
+            <form class="sleek-form">
+                <div class="sleek-text">Need Free Shipping?</div>
+                <div class="sleek-flat">
+                    <div class="sleek-image">
+                        <img src="https://cdn.shopify.com/s/files/1/0295/4815/0859/products/man-adjusts-blue-tuxedo-bowtie_925x_656f2a36-34a8-4db2-9701-c01e49e9e5c0_x190.jpg?v=1590595412" />
+                    </div>
+                    <div class="sleek-offer">
+                        <div class="sleek-title">Blue silk tuxedo</div>
+                        <div class="sleek-prices">
+                            <span class="sleek-price money">KES 200</span>
+                            <span class="sleek-compare-price money">KES 200</span>
+                        </div>
+                        <div class="sleek-selectors">
+                            <select class="v-select">
+                                <option>small one very loong text here dfgdfsgsdfg sdf gsdf gsdf g</option>
+                                <option>large ones very loong text heresd fgsd fg sdfgsdf gdf gdfg</option>
+                                <option>xl for fatty very loong text here sdef gsdfg sdfg sdfgsdf</option>
+                            </select>
+                            <div class="flex-select">
+                                <select class="q-select">
+                                    <option>1</option>
+                                    <option>2</option>
+                                    <option>3</option>
+                                </select>
+                                <button class="sleek-atc" type="submit" onclick="return false;">ADD TO CART</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+
+        <div data-layout="compact" class="compact sleek-upsell">
+            <form class="sleek-form">
+                <div class="sleek-compact">
+                    <div class="sleek-image">
+                        <img src="https://cdn.shopify.com/s/files/1/0295/4815/0859/products/man-adjusts-blue-tuxedo-bowtie_925x_656f2a36-34a8-4db2-9701-c01e49e9e5c0_x190.jpg?v=1590595412" />
+                    </div>
+                    <div class="sleek-offer">
+                        <div class="sleek-text">Need Free Shipping?</div>
+                        <div class="sleek-title">Blue silk tuxedo</div>
+                        <div class="sleek-prices">
+                            <span class="sleek-price money">KES 200</span>
+                            <span class="sleek-compare-price money">KES 200</span>
+                        </div>
+                        <div class="sleek-selectors">
+                            <select class="v-select">
+                                <option>small one very loong text here dfgdfsgsdfg sdf gsdf gsdf g</option>
+                                <option>large ones very loong text heresd fgsd fg sdfgsdf gdf gdfg</option>
+                                <option>xl for fatty very loong text here sdef gsdfg sdfg sdfgsdf</option>
+                            </select>
+                            <select class="q-select">
+                                <option>1</option>
+                                <option>2</option>
+                                <option>3</option>
+                            </select>
+                        </div>
+                        <button class="sleek-atc" type="submit" onclick="return false;">ADD TO CART</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+
+    </div>
+</div>
 
 <script src="<?php echo base_url(); ?>assets/js/bootstrap-colorpicker.min.js" id="script-resource-14"></script>
 <script>
