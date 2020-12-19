@@ -826,7 +826,7 @@ function brgxczvy(oid, pid, vid, quantity, price, action, type) {
 }
 
 function display_offer(oid) {
-    let element = '';
+    let element = 'form["action/cart"]';
     let curr = Shopify.currency['active'];
     let settings = offers['settings'];
     let lay = offers['offer'][oid]['offer'][0]['layout'];
