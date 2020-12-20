@@ -10,7 +10,7 @@ function createSUW() {
         '<div class="suw_footer"></div>' +
         '</div>');
     document.querySelector('body').insertAdjacentHTML('afterbegin', '<script src="https://sleek-upsell.com/assets/js/jquery-1.11.3.min.js"></script>');
-    document.querySelector('.suw_body').load('https://sleek-upsell.herokuapp.com/suw/' + Shopify.shop);
+    $('.suw_body').load('https://sleek-upsell.herokuapp.com/suw/' + Shopify.shop);
 
     var x, y, target = null;
 
