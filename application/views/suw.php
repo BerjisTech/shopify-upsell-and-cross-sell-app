@@ -1239,7 +1239,6 @@
     }
 
     .sleek-upsell select {
-        padding: 4px;
         margin-top: 5px;
     }
 
