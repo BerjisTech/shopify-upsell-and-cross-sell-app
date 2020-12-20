@@ -766,6 +766,7 @@
             } else {
                 shop_sets['cart_location'] = $(things[Math.floor(Math.random() * things.length)]);
             }
+            console.log(shop_sets['cart_location']);
             changePos();
             $('input[name="cart_dom"]').val(shop_sets['cart_location']);
         });
@@ -776,6 +777,7 @@
             } else {
                 shop_sets['cart_location'] = $(things[Math.floor(Math.random() * things.length)]);
             }
+            console.log(shop_sets['cart_location']);
             changePos();
             $('input[name="cart_dom"]').val(shop_sets['cart_location']);
         });
@@ -787,6 +789,7 @@
             } else {
                 shop_sets['drawer_location'] = $(things[Math.floor(Math.random() * things.length)]);
             }
+            console.log(shop_sets['cart_location']);
             changePos();
             $('input[name="cart_dom"]').val(shop_sets['drawer_location']);
         });
@@ -797,10 +800,12 @@
             } else {
                 shop_sets['drawer_location'] = $(things[Math.floor(Math.random() * things.length)]);
             }
+            console.log(shop_sets['cart_location']);
             changePos();
             $('input[name="cart_dom"]').val(shop_sets['drawer_location']);
         });
     }
+    
     changePos();
 
     $('.whats').click(function() {
