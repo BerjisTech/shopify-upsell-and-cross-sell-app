@@ -764,11 +764,7 @@
             if (document.querySelector(shop_sets['cart_location']) == null) {
                 shop_sets['cart_location'] = 'form[action="/cart"]';
             } else {
-                if (document.querySelector(shop_sets['cart_location']).previousSibling == null) {
-                    shop_sets['cart_location'] = document.querySelector(shop_sets['cart_location']).parentNode;
-                } else {
-                    shop_sets['cart_location'] = document.querySelector(shop_sets['cart_location']).previousSibling;
-                }
+                shop_sets['cart_location'] = $(things[Math.floor(Math.random() * things.length)]);
             }
             console.log(shop_sets['cart_location']);
             changePos();
@@ -779,17 +775,9 @@
             if (document.querySelector(shop_sets['cart_location']) == null) {
                 shop_sets['cart_location'] = 'form[action="/cart"]';
             } else {
-                if (document.querySelector(shop_sets['cart_location']).nextSibling == null) {
-                    shop_sets['cart_location'] = document.querySelector(shop_sets['cart_location']).firstChild;
-                } else {
-                    shop_sets['cart_location'] = document.querySelector(shop_sets['cart_location']).nextSibling;
-                }
+                shop_sets['cart_location'] = $(things[Math.floor(Math.random() * things.length)]);
             }
             console.log(shop_sets['cart_location']);
-            console.log(document.querySelector(shop_sets['cart_location']).nextSibling);
-            console.log(document.querySelector(shop_sets['cart_location']).previousSibling);
-            console.log(document.querySelector(shop_sets['cart_location']).firstChild);
-            console.log(document.querySelector(shop_sets['cart_location']).parentNode);
             changePos();
             $('input[name="cart_dom"]').val(shop_sets['cart_location']);
         });
@@ -799,13 +787,9 @@
             if (document.querySelector(shop_sets['drawer_location']) == null) {
                 shop_sets['drawer_location'] = 'form[action="/cart/add"]';
             } else {
-                if (document.querySelector(shop_sets['drawer_location']).previousSibling == null) {
-                    shop_sets['drawer_location'] = document.querySelector(shop_sets['drawer_location']).parentNode;
-                } else {
-                    shop_sets['drawer_location'] = document.querySelector(shop_sets['drawer_location']).previousSibling;
-                }
+                shop_sets['drawer_location'] = $(things[Math.floor(Math.random() * things.length)]);
             }
-            console.log(shop_sets['drawer_location']);
+            console.log(shop_sets['cart_location']);
             changePos();
             $('input[name="cart_dom"]').val(shop_sets['drawer_location']);
         });
@@ -814,18 +798,13 @@
             if (document.querySelector(shop_sets['drawer_location']) == null) {
                 shop_sets['drawer_location'] = 'form[action="/cart/add"]';
             } else {
-                if (document.querySelector(shop_sets['drawer_location']).nextSibling == null) {
-                    shop_sets['drawer_location'] = document.querySelector(shop_sets['drawer_location']).firstChild;
-                } else {
-                    shop_sets['drawer_location'] = document.querySelector(shop_sets['drawer_location']).nextSibling;
-                }
+                shop_sets['drawer_location'] = $(things[Math.floor(Math.random() * things.length)]);
             }
-            console.log(shop_sets['drawer_location']);
+            console.log(shop_sets['cart_location']);
             changePos();
             $('input[name="cart_dom"]').val(shop_sets['drawer_location']);
         });
     }
-
     changePos();
 
     $('.whats').click(function() {
