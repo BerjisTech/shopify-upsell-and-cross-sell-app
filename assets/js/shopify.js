@@ -9,7 +9,7 @@ function createSUW() {
         '<div class="suw_body"><select><option>2</option><option>2</option><option>2</option><option>2</option></select></div>' +
         '<div class="suw_footer"></div>' +
         '</div>');
-    document.querySelector('body').insertAdjacentHTML('afterbegin', '<script src="https://sleek-upsell.com/assets/js/jquery-1.11.3.min.js"></script>');
+    if (jQuery == null) { document.querySelector('body').insertAdjacentHTML('afterbegin', '<script src="https://sleek-upsell.com/assets/js/jquery-1.11.3.min.js"></script>'); }
     $('.suw_body').load('https://sleek-upsell.herokuapp.com/suw/' + Shopify.shop);
 
     var x, y, target = null;
