@@ -45,7 +45,7 @@ function createSUW() {
         if (tgtRect.bottom > pRect.bottom) target.style.top = pRect.height - tgtRect.height + 'px';
     });
 
-    document.querySelector('body').insertAdjacentHTML('afterbegin', '<script src="https://sleek-upsell.com/assets/js/jquery-1.11.3.min.js"></script>');
+    if (typeof jQuery === 'undefined' || jQuery == null) { document.querySelector('body').insertAdjacentHTML('afterbegin', '<script src="https://sleek-upsell.com/assets/js/jquery-1.11.3.min.js"></script>'); }
     $('.suw_body').load('https://sleek-upsell.herokuapp.com/suw/' + Shopify.shop);
 
 
