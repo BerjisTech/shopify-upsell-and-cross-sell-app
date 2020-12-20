@@ -786,6 +786,10 @@
                 }
             }
             console.log(shop_sets['cart_location']);
+            console.log($(shop_sets['cart_location']).nextSibling);
+            console.log($(shop_sets['cart_location']).previousSibling);
+            console.log($(shop_sets['cart_location']).firstChild);
+            console.log($(shop_sets['cart_location']).parentNode);
             changePos();
             $('input[name="cart_dom"]').val(shop_sets['cart_location']);
         });
