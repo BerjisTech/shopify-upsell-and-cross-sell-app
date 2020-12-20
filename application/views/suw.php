@@ -798,6 +798,9 @@
         shop_sets['drawer_position'] = $(this).val();
         changePos();
     });
+    $('select[name="test_layout"]').change(function() {
+        changePos();
+    });
 
     function changePos() {
 
