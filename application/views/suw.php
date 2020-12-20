@@ -34,7 +34,7 @@
                 <hr>
                 <div class="input-group">
                     <span class="layout_previous input-group-addon btn btn-primary entypo-left-open"></span>
-                    <input type="text" class="form-control" value="Change position" disabled style="background: #ffffff !important; border: none !important; color: #000000 !important" />
+                    <input type="text" class="form-control" value="Change position" disabled style="cursor: none; background: #ffffff !important; border: none !important; color: #000000 !important" />
                     <span class="layout_next input-group-addon btn btn-primary entypo-right-open"></span>
                 </div>
                 <br />
