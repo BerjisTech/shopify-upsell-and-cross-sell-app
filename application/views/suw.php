@@ -761,44 +761,44 @@
     if (window.location.pathname.includes('/cart')) {
         $('.drawerP').remove();
         $('.layout_previous').click(function() {
-            if (document.querySelector(settings['cart_location']) == null) {
-                settings['cart_location'] = 'form[action="/cart"]';
+            if (document.querySelector(shop_sets['cart_location']) == null) {
+                shop_sets['cart_location'] = 'form[action="/cart"]';
             } else {
-                settings['cart_location'] = $(things[Math.floor(Math.random() * things.length)]);
+                shop_sets['cart_location'] = $(things[Math.floor(Math.random() * things.length)]);
             }
             changePos();
-            $('input[name="cart_dom"]').val(settings['cart_location']);
+            $('input[name="cart_dom"]').val(shop_sets['cart_location']);
         });
 
         $('.layout_next').click(function() {
-            if (document.querySelector(settings['cart_location']) == null) {
-                settings['cart_location'] = 'form[action="/cart"]';
+            if (document.querySelector(shop_sets['cart_location']) == null) {
+                shop_sets['cart_location'] = 'form[action="/cart"]';
             } else {
-                settings['cart_location'] = $(things[Math.floor(Math.random() * things.length)]);
+                shop_sets['cart_location'] = $(things[Math.floor(Math.random() * things.length)]);
             }
             changePos();
-            $('input[name="cart_dom"]').val(settings['cart_location']);
+            $('input[name="cart_dom"]').val(shop_sets['cart_location']);
         });
     } else {
         $('.cartP').remove();
         $('.layout_previous').click(function() {
-            if (document.querySelector(settings['drawer_location']) == null) {
-                settings['drawer_location'] = 'form[action="/cart/add"]';
+            if (document.querySelector(shop_sets['drawer_location']) == null) {
+                shop_sets['drawer_location'] = 'form[action="/cart/add"]';
             } else {
-                settings['drawer_location'] = $(things[Math.floor(Math.random() * things.length)]);
+                shop_sets['drawer_location'] = $(things[Math.floor(Math.random() * things.length)]);
             }
             changePos();
-            $('input[name="cart_dom"]').val(settings['drawer_location']);
+            $('input[name="cart_dom"]').val(shop_sets['drawer_location']);
         });
 
         $('.layout_next').click(function() {
-            if (document.querySelector(settings['drawer_location']) == null) {
-                settings['drawer_location'] = 'form[action="/cart/add"]';
+            if (document.querySelector(shop_sets['drawer_location']) == null) {
+                shop_sets['drawer_location'] = 'form[action="/cart/add"]';
             } else {
-                settings['drawer_location'] = $(things[Math.floor(Math.random() * things.length)]);
+                shop_sets['drawer_location'] = $(things[Math.floor(Math.random() * things.length)]);
             }
             changePos();
-            $('input[name="cart_dom"]').val(settings['drawer_location']);
+            $('input[name="cart_dom"]').val(shop_sets['drawer_location']);
         });
     }
     changePos();
