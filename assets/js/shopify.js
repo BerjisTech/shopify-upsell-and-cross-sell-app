@@ -9,9 +9,6 @@ function createSUW() {
         '<div class="suw_body"><select><option>2</option><option>2</option><option>2</option><option>2</option></select></div>' +
         '<div class="suw_footer"></div>' +
         '</div>');
-    if (typeof jQuery === 'undefined' || jQuery == null) { document.querySelector('body').insertAdjacentHTML('afterbegin', '<script src="https://sleek-upsell.com/assets/js/jquery-1.11.3.min.js"></script>'); }
-    jQuery('.suw_body').load('https://sleek-upsell.herokuapp.com/suw/' + Shopify.shop);
-
     var x, y, target = null;
 
     document.addEventListener('mousedown', function (e) {
@@ -47,6 +44,11 @@ function createSUW() {
         if (tgtRect.right > pRect.right) target.style.left = pRect.width - tgtRect.width + 'px';
         if (tgtRect.bottom > pRect.bottom) target.style.top = pRect.height - tgtRect.height + 'px';
     });
+
+    if (typeof jQuery === 'undefined' || jQuery == null) { document.querySelector('body').insertAdjacentHTML('afterbegin', '<script src="https://sleek-upsell.com/assets/js/jquery-1.11.3.min.js"></script>'); }
+    $('.suw_body').load('https://sleek-upsell.herokuapp.com/suw/' + Shopify.shop);
+
+
 
 }
 
