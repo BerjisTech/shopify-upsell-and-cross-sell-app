@@ -1111,6 +1111,10 @@
     });
 </script>
 <style>
+    .panel-default>.panel-heading {
+        background: #ffffff !important;
+    }
+
     /* total width */
     .suw *::-webkit-scrollbar {
         background-color: #fff;
