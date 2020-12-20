@@ -571,166 +571,166 @@
     $('.s_p').trigger('click');
 
     <?php if ($this->db->where('shop', $shop)->get('settings')->num_rows() > 0) : ?>
-        let settings = <?php echo json_encode($this->db->where('shop', $shop)->get('settings')->row()); ?>;
-        if (settings != null) {
-            $('input[name="cart_dom"]').val(settings['cart_location']);
-            $('input[name="cart_pos"]').val(settings['cart_position']);
-            $('input[name="drawer_dom"]').val(settings['drawer_location']);
-            $('input[name="drawer_pos"]').val(settings['drawer_position']);
-            if (settings['refresh_state'] = 'y') {
+        let shop_sets = <?php echo json_encode($this->db->where('shop', $shop)->get('settings')->row()); ?>;
+        if (shop_sets != null) {
+            $('input[name="cart_dom"]').val(shop_sets['cart_location']);
+            $('input[name="cart_pos"]').val(shop_sets['cart_position']);
+            $('input[name="drawer_dom"]').val(shop_sets['drawer_location']);
+            $('input[name="drawer_pos"]').val(shop_sets['drawer_position']);
+            if (shop_sets['refresh_state'] = 'y') {
                 $('input[name="drawer_refresh"]').prop('checked', true);
             } else {
                 $('input[name="drawer_refresh"]').prop('checked', true);
             }
-            $('textarea[name="refresh_code"]').val(settings['drawer_refresh']);
+            $('textarea[name="refresh_code"]').val(shop_sets['drawer_refresh']);
 
-            if (settings['layout_bg']) {
-                $('.sleek-upsell').css('background', settings['layout_bg']);
-                $('.sleek-upsell select').css('background', settings['layout_bg']);
-                $('.offer_bg_hex').val(settings['layout_bg']);
-                $('.offer_bg').val(settings['layout_bg']);
+            if (shop_sets['layout_bg']) {
+                $('.sleek-upsell').css('background', shop_sets['layout_bg']);
+                $('.sleek-upsell select').css('background', shop_sets['layout_bg']);
+                $('.offer_bg_hex').val(shop_sets['layout_bg']);
+                $('.offer_bg').val(shop_sets['layout_bg']);
             }
-            if (settings['layout_color']) {
-                $('.sleek-upsell').css('color', settings['layout_color']);
-                $('.sleek-upsell select').css('color', settings['layout_color']);
-                $('.offer_color_hex').val(settings['layout_color']);
-                $('.offer_color').val(settings['layout_color']);
+            if (shop_sets['layout_color']) {
+                $('.sleek-upsell').css('color', shop_sets['layout_color']);
+                $('.sleek-upsell select').css('color', shop_sets['layout_color']);
+                $('.offer_color_hex').val(shop_sets['layout_color']);
+                $('.offer_color').val(shop_sets['layout_color']);
             }
-            if (settings['layout_font']) {
-                $('.sleek-upsell').css('font-family', settings['layout_font']);
-                $('.offer_font').val(settings['layout_font']);
+            if (shop_sets['layout_font']) {
+                $('.sleek-upsell').css('font-family', shop_sets['layout_font']);
+                $('.offer_font').val(shop_sets['layout_font']);
             }
-            if (settings['layout_size']) {
-                $('.sleek-upsell').css('font-size', settings['layout_size']);
-                $('.offer_size').val(settings['layout_size'].replace('px', ''));
+            if (shop_sets['layout_size']) {
+                $('.sleek-upsell').css('font-size', shop_sets['layout_size']);
+                $('.offer_size').val(shop_sets['layout_size'].replace('px', ''));
             }
-            if (settings['layout_mt']) {
-                $('.sleek-upsell').css('margin-top', settings['layout_mt']);
-                $('.offer_mt').val(settings['layout_mt'].replace('px', ''));
+            if (shop_sets['layout_mt']) {
+                $('.sleek-upsell').css('margin-top', shop_sets['layout_mt']);
+                $('.offer_mt').val(shop_sets['layout_mt'].replace('px', ''));
             }
-            if (settings['layout_mb']) {
-                $('.sleek-upsell').css('margin-bottom', settings['layout_mb']);
-                $('.offer_mb').val(settings['layout_mb'].replace('px', ''));
+            if (shop_sets['layout_mb']) {
+                $('.sleek-upsell').css('margin-bottom', shop_sets['layout_mb']);
+                $('.offer_mb').val(shop_sets['layout_mb'].replace('px', ''));
             }
-            if (settings['offer_radius']) {
-                $('.sleek-upsell').css('border-radius', settings['offer_radius']);
-                $('.offer_radius').val(settings['offer_radius'].replace('px', ''));
+            if (shop_sets['offer_radius']) {
+                $('.sleek-upsell').css('border-radius', shop_sets['offer_radius']);
+                $('.offer_radius').val(shop_sets['offer_radius'].replace('px', ''));
             }
-            if (settings['offer_bs']) {
-                $('.sleek-upsell').css('border-width', settings['offer_bs']);
-                $('.offer_bs').val(settings['offer_bs'].replace('px', ''));
+            if (shop_sets['offer_bs']) {
+                $('.sleek-upsell').css('border-width', shop_sets['offer_bs']);
+                $('.offer_bs').val(shop_sets['offer_bs'].replace('px', ''));
             }
-            if (settings['offer_bc']) {
-                $('.sleek-upsell').css('border-color', settings['offer_bc']);
-                $('.offer_bc').val(settings['offer_bc']);
-                $('.offer_bc_hex').val(settings['offer_bc']);
+            if (shop_sets['offer_bc']) {
+                $('.sleek-upsell').css('border-color', shop_sets['offer_bc']);
+                $('.offer_bc').val(shop_sets['offer_bc']);
+                $('.offer_bc_hex').val(shop_sets['offer_bc']);
             }
-            if (settings['offer_border']) {
-                $('.sleek-upsell .sleek-upsell').css('border-style', settings['offer_border']);
-                $('.offer_border').val(settings['offer_border']);
+            if (shop_sets['offer_border']) {
+                $('.sleek-upsell .sleek-upsell').css('border-style', shop_sets['offer_border']);
+                $('.offer_border').val(shop_sets['offer_border']);
             }
-            if (settings['button_bg']) {
-                $('.sleek-upsell button').css('background', settings['button_bg']);
-                $('.button_bg_hex').val(settings['button_bg']);
-                $('.button_bg').val(settings['button_bg']);
+            if (shop_sets['button_bg']) {
+                $('.sleek-upsell button').css('background', shop_sets['button_bg']);
+                $('.button_bg_hex').val(shop_sets['button_bg']);
+                $('.button_bg').val(shop_sets['button_bg']);
             }
-            if (settings['button_color']) {
-                $('.sleek-upsell button').css('color', settings['button_color']);
-                $('.button_color').val(settings['button_color']);
-                $('.button_color_hex').val(settings['button_color']);
+            if (shop_sets['button_color']) {
+                $('.sleek-upsell button').css('color', shop_sets['button_color']);
+                $('.button_color').val(shop_sets['button_color']);
+                $('.button_color_hex').val(shop_sets['button_color']);
             }
-            if (settings['button_font']) {
-                $('.sleek-upsell button').css('font-family', settings['button_font']);
-                $('.button_font').val(settings['button_font']);
+            if (shop_sets['button_font']) {
+                $('.sleek-upsell button').css('font-family', shop_sets['button_font']);
+                $('.button_font').val(shop_sets['button_font']);
             }
-            if (settings['button_size']) {
-                $('.sleek-upsell button').css('font-size', settings['button_size']);
-                $('.button_size').val(settings['button_size'].replace('px', ''));
+            if (shop_sets['button_size']) {
+                $('.sleek-upsell button').css('font-size', shop_sets['button_size']);
+                $('.button_size').val(shop_sets['button_size'].replace('px', ''));
             }
-            if (settings['button_mt']) {
-                $('.sleek-upsell button').css('margin-top', settings['button_mt']);
-                $('.button_mt').val(settings['button_mt'].replace('px', ''));
+            if (shop_sets['button_mt']) {
+                $('.sleek-upsell button').css('margin-top', shop_sets['button_mt']);
+                $('.button_mt').val(shop_sets['button_mt'].replace('px', ''));
             }
-            if (settings['button_mb']) {
-                $('.sleek-upsell button').css('margin-bottom', settings['button_mb']);
-                $('.button_mb').val(settings['button_mb'].replace('px', ''));
+            if (shop_sets['button_mb']) {
+                $('.sleek-upsell button').css('margin-bottom', shop_sets['button_mb']);
+                $('.button_mb').val(shop_sets['button_mb'].replace('px', ''));
             }
-            if (settings['button_radius']) {
-                $('.sleek-upsell button').css('border-radius', settings['button_radius']);
-                $('.button_radius').val(settings['button_radius'].replace('px', ''));
+            if (shop_sets['button_radius']) {
+                $('.sleek-upsell button').css('border-radius', shop_sets['button_radius']);
+                $('.button_radius').val(shop_sets['button_radius'].replace('px', ''));
             }
-            if (settings['button_bs']) {
-                $('.sleek-upsell button').css('border-width', settings['button_bs']);
-                $('.button_bs').val(settings['button_bs'].replace('px', ''));
+            if (shop_sets['button_bs']) {
+                $('.sleek-upsell button').css('border-width', shop_sets['button_bs']);
+                $('.button_bs').val(shop_sets['button_bs'].replace('px', ''));
             }
-            if (settings['button_bc']) {
-                $('.sleek-upsell button').css('border-color', settings['button_bc']);
-                $('.button_bc_hex').val(settings['button_bc']);
-                $('.button_bc').val(settings['button_bc']);
+            if (shop_sets['button_bc']) {
+                $('.sleek-upsell button').css('border-color', shop_sets['button_bc']);
+                $('.button_bc_hex').val(shop_sets['button_bc']);
+                $('.button_bc').val(shop_sets['button_bc']);
             }
-            if (settings['button_border']) {
-                $('.sleek-upsell button').css('border-style', settings['button_border']);
-                $('.button_border').val(settings['button_border']);
+            if (shop_sets['button_border']) {
+                $('.sleek-upsell button').css('border-style', shop_sets['button_border']);
+                $('.button_border').val(shop_sets['button_border']);
             }
-            if (settings['image_radius']) {
-                $('.sleek-upsell img').css('border-radius', settings['image_radius']);
-                $('.image_radius').val(settings['image_radius'].replace('px', ''));
+            if (shop_sets['image_radius']) {
+                $('.sleek-upsell img').css('border-radius', shop_sets['image_radius']);
+                $('.image_radius').val(shop_sets['image_radius'].replace('px', ''));
             }
-            if (settings['image_bs']) {
-                $('.sleek-upsell img').css('border-width', settings['image_bs']);
-                $('.image_bs').val(settings['image_bs'].replace('px', ''));
+            if (shop_sets['image_bs']) {
+                $('.sleek-upsell img').css('border-width', shop_sets['image_bs']);
+                $('.image_bs').val(shop_sets['image_bs'].replace('px', ''));
             }
-            if (settings['image_bc']) {
-                $('.sleek-upsell img').css('color', settings['image_bc']);
-                $('.image_bc_hex').val(settings['image_bc']);
-                $('.image_bc').val(settings['image_bc']);
+            if (shop_sets['image_bc']) {
+                $('.sleek-upsell img').css('color', shop_sets['image_bc']);
+                $('.image_bc_hex').val(shop_sets['image_bc']);
+                $('.image_bc').val(shop_sets['image_bc']);
             }
-            if (settings['image_border']) {
-                $('.sleek-upsell img').css('border-style', settings['image_border']);
-                $('.image_border').val(settings['image_border']);
+            if (shop_sets['image_border']) {
+                $('.sleek-upsell img').css('border-style', shop_sets['image_border']);
+                $('.image_border').val(shop_sets['image_border']);
             }
-            if (settings['text_color']) {
-                $('.sleek-text').css('color', settings['text_color']);
-                $('.text_color_hex').val(settings['text_color']);
-                $('.text_color').val(settings['text_color']);
+            if (shop_sets['text_color']) {
+                $('.sleek-text').css('color', shop_sets['text_color']);
+                $('.text_color_hex').val(shop_sets['text_color']);
+                $('.text_color').val(shop_sets['text_color']);
             }
-            if (settings['text_font']) {
-                $('.sleek-text').css('font-family', settings['text_font']);
-                $('.text_font').val(settings['text_font']);
+            if (shop_sets['text_font']) {
+                $('.sleek-text').css('font-family', shop_sets['text_font']);
+                $('.text_font').val(shop_sets['text_font']);
             }
-            if (settings['text_size']) {
-                $('.sleek-text').css('font-size', settings['text_size']);
-                $('.text_size').val(settings['text_size'].replace('px', ''));
+            if (shop_sets['text_size']) {
+                $('.sleek-text').css('font-size', shop_sets['text_size']);
+                $('.text_size').val(shop_sets['text_size'].replace('px', ''));
             }
-            if (settings['title_color']) {
-                $('.sleek-title').css('color', settings['title_color']);
-                $('.title_color_hex').val(settings['title_color']);
-                $('.title_color').val(settings['title_color']);
+            if (shop_sets['title_color']) {
+                $('.sleek-title').css('color', shop_sets['title_color']);
+                $('.title_color_hex').val(shop_sets['title_color']);
+                $('.title_color').val(shop_sets['title_color']);
             }
-            if (settings['title_font']) {
-                $('.sleek-title').css('font-family', settings['title_font']);
-                $('.title_font').val(settings['title_font']);
+            if (shop_sets['title_font']) {
+                $('.sleek-title').css('font-family', shop_sets['title_font']);
+                $('.title_font').val(shop_sets['title_font']);
             }
-            if (settings['title_size']) {
-                $('.sleek-title').css('font-size', settings['title_size']);
-                $('.title_size').val(settings['title_size'].replace('px', ''));
+            if (shop_sets['title_size']) {
+                $('.sleek-title').css('font-size', shop_sets['title_size']);
+                $('.title_size').val(shop_sets['title_size'].replace('px', ''));
             }
-            if (settings['price_color']) {
-                $('.sleek-price').css('color', settings['price_color']);
-                $('.price_color_hex').val(settings['price_color']);
-                $('.price_color').val(settings['price_color']);
+            if (shop_sets['price_color']) {
+                $('.sleek-price').css('color', shop_sets['price_color']);
+                $('.price_color_hex').val(shop_sets['price_color']);
+                $('.price_color').val(shop_sets['price_color']);
             }
-            if (settings['price_font']) {
-                $('.sleek-price').css('font-family', settings['price_font']);
-                $('.price_font').val(settings['price_font']);
+            if (shop_sets['price_font']) {
+                $('.sleek-price').css('font-family', shop_sets['price_font']);
+                $('.price_font').val(shop_sets['price_font']);
             }
-            if (settings['price_size']) {
-                $('.sleek-price').css('font-size', settings['price_size']);
-                $('.price_size').val(settings['price_size'].replace('px', ''));
+            if (shop_sets['price_size']) {
+                $('.sleek-price').css('font-size', shop_sets['price_size']);
+                $('.price_size').val(shop_sets['price_size'].replace('px', ''));
             }
         }
     <?php else : ?>
-        let settings = {
+        let shop_sets = {
             'shop': '<?php echo $shop; ?>',
             'cart_location': 'form[action="/cart/add"]',
             'cart_position': 'before',
@@ -775,301 +775,301 @@
     <?php endif; ?>
 
     $('input[name="cart_dom"]').on('input', function() {
-        settings['cart_location'] = $(this).val();
+        shop_sets['cart_location'] = $(this).val();
         changePos();
     });
     $('select[name="cart_pos"]').change(function() {
-        settings['cart_position'] = $(this).val();
+        shop_sets['cart_position'] = $(this).val();
         changePos();
     });
     $('input[name="drawer_dom"]').on('input', function() {
-        settings['drawer_location'] = $(this).val();
+        shop_sets['drawer_location'] = $(this).val();
         changePos();
     });
     $('select[name="drawer_pos"]').change(function() {
-        settings['drawer_position'] = $(this).val();
+        shop_sets['drawer_position'] = $(this).val();
         changePos();
     });
 
     function changePos() {
         $('.card').remove();
         if (window.location.pathname.includes('/cart')) {
-            if (settings['cart_position'] == 'prepend') {
-                $(settings['cart_location']).prepend('<div class="card sleek-upsell"> <form class="sleek-form"> <div class="sleek-image"> <img src="https://cdn.shopify.com/s/files/1/0295/4815/0859/products/man-adjusts-blue-tuxedo-bowtie_925x_656f2a36-34a8-4db2-9701-c01e49e9e5c0_x190.jpg?v=1590595412"/> </div><div class="sleek-offer"> <div class="sleek-text">Need Free Shipping?</div><div class="sleek-title">Blue silk tuxedo</div><div class="sleek-selectors"> <select class="v-select"> <option>small one very loong text here</option> <option>large ones very loong text here</option> <option>xl for fatty very loong text here</option> </select> <select class="q-select"> <option>1</option> <option>2</option> <option>3</option> </select> </div></div><div class="sleek-card-atc"> <div class="sleek-prices"> <span class="sleek-price money">KES 200</span> <span class="sleek-compare-price money">KES 200</span> </div><button class="sleek-atc" type="submit" onclick="return false;">ADD TO CART</button> </div></form> </div>');
+            if (shop_sets['cart_position'] == 'prepend') {
+                $(shop_sets['cart_location']).prepend('<div class="card sleek-upsell"> <form class="sleek-form"> <div class="sleek-image"> <img src="https://cdn.shopify.com/s/files/1/0295/4815/0859/products/man-adjusts-blue-tuxedo-bowtie_925x_656f2a36-34a8-4db2-9701-c01e49e9e5c0_x190.jpg?v=1590595412"/> </div><div class="sleek-offer"> <div class="sleek-text">Need Free Shipping?</div><div class="sleek-title">Blue silk tuxedo</div><div class="sleek-selectors"> <select class="v-select"> <option>small one very loong text here</option> <option>large ones very loong text here</option> <option>xl for fatty very loong text here</option> </select> <select class="q-select"> <option>1</option> <option>2</option> <option>3</option> </select> </div></div><div class="sleek-card-atc"> <div class="sleek-prices"> <span class="sleek-price money">KES 200</span> <span class="sleek-compare-price money">KES 200</span> </div><button class="sleek-atc" type="submit" onclick="return false;">ADD TO CART</button> </div></form> </div>');
             }
-            if (settings['cart_position'] == 'append') {
-                $(settings['cart_location']).append('<div class="card sleek-upsell"> <form class="sleek-form"> <div class="sleek-image"> <img src="https://cdn.shopify.com/s/files/1/0295/4815/0859/products/man-adjusts-blue-tuxedo-bowtie_925x_656f2a36-34a8-4db2-9701-c01e49e9e5c0_x190.jpg?v=1590595412"/> </div><div class="sleek-offer"> <div class="sleek-text">Need Free Shipping?</div><div class="sleek-title">Blue silk tuxedo</div><div class="sleek-selectors"> <select class="v-select"> <option>small one very loong text here</option> <option>large ones very loong text here</option> <option>xl for fatty very loong text here</option> </select> <select class="q-select"> <option>1</option> <option>2</option> <option>3</option> </select> </div></div><div class="sleek-card-atc"> <div class="sleek-prices"> <span class="sleek-price money">KES 200</span> <span class="sleek-compare-price money">KES 200</span> </div><button class="sleek-atc" type="submit" onclick="return false;">ADD TO CART</button> </div></form> </div>');
+            if (shop_sets['cart_position'] == 'append') {
+                $(shop_sets['cart_location']).append('<div class="card sleek-upsell"> <form class="sleek-form"> <div class="sleek-image"> <img src="https://cdn.shopify.com/s/files/1/0295/4815/0859/products/man-adjusts-blue-tuxedo-bowtie_925x_656f2a36-34a8-4db2-9701-c01e49e9e5c0_x190.jpg?v=1590595412"/> </div><div class="sleek-offer"> <div class="sleek-text">Need Free Shipping?</div><div class="sleek-title">Blue silk tuxedo</div><div class="sleek-selectors"> <select class="v-select"> <option>small one very loong text here</option> <option>large ones very loong text here</option> <option>xl for fatty very loong text here</option> </select> <select class="q-select"> <option>1</option> <option>2</option> <option>3</option> </select> </div></div><div class="sleek-card-atc"> <div class="sleek-prices"> <span class="sleek-price money">KES 200</span> <span class="sleek-compare-price money">KES 200</span> </div><button class="sleek-atc" type="submit" onclick="return false;">ADD TO CART</button> </div></form> </div>');
             }
-            if (settings['cart_position'] == 'before') {
-                $('<div class="card sleek-upsell"> <form class="sleek-form"> <div class="sleek-image"> <img src="https://cdn.shopify.com/s/files/1/0295/4815/0859/products/man-adjusts-blue-tuxedo-bowtie_925x_656f2a36-34a8-4db2-9701-c01e49e9e5c0_x190.jpg?v=1590595412"/> </div><div class="sleek-offer"> <div class="sleek-text">Need Free Shipping?</div><div class="sleek-title">Blue silk tuxedo</div><div class="sleek-selectors"> <select class="v-select"> <option>small one very loong text here</option> <option>large ones very loong text here</option> <option>xl for fatty very loong text here</option> </select> <select class="q-select"> <option>1</option> <option>2</option> <option>3</option> </select> </div></div><div class="sleek-card-atc"> <div class="sleek-prices"> <span class="sleek-price money">KES 200</span> <span class="sleek-compare-price money">KES 200</span> </div><button class="sleek-atc" type="submit" onclick="return false;">ADD TO CART</button> </div></form> </div>').insertBefore(settings['cart_location']);
+            if (shop_sets['cart_position'] == 'before') {
+                $('<div class="card sleek-upsell"> <form class="sleek-form"> <div class="sleek-image"> <img src="https://cdn.shopify.com/s/files/1/0295/4815/0859/products/man-adjusts-blue-tuxedo-bowtie_925x_656f2a36-34a8-4db2-9701-c01e49e9e5c0_x190.jpg?v=1590595412"/> </div><div class="sleek-offer"> <div class="sleek-text">Need Free Shipping?</div><div class="sleek-title">Blue silk tuxedo</div><div class="sleek-selectors"> <select class="v-select"> <option>small one very loong text here</option> <option>large ones very loong text here</option> <option>xl for fatty very loong text here</option> </select> <select class="q-select"> <option>1</option> <option>2</option> <option>3</option> </select> </div></div><div class="sleek-card-atc"> <div class="sleek-prices"> <span class="sleek-price money">KES 200</span> <span class="sleek-compare-price money">KES 200</span> </div><button class="sleek-atc" type="submit" onclick="return false;">ADD TO CART</button> </div></form> </div>').insertBefore(shop_sets['cart_location']);
             }
-            if (settings['cart_position'] == 'after') {
-                $('<div class="card sleek-upsell"> <form class="sleek-form"> <div class="sleek-image"> <img src="https://cdn.shopify.com/s/files/1/0295/4815/0859/products/man-adjusts-blue-tuxedo-bowtie_925x_656f2a36-34a8-4db2-9701-c01e49e9e5c0_x190.jpg?v=1590595412"/> </div><div class="sleek-offer"> <div class="sleek-text">Need Free Shipping?</div><div class="sleek-title">Blue silk tuxedo</div><div class="sleek-selectors"> <select class="v-select"> <option>small one very loong text here</option> <option>large ones very loong text here</option> <option>xl for fatty very loong text here</option> </select> <select class="q-select"> <option>1</option> <option>2</option> <option>3</option> </select> </div></div><div class="sleek-card-atc"> <div class="sleek-prices"> <span class="sleek-price money">KES 200</span> <span class="sleek-compare-price money">KES 200</span> </div><button class="sleek-atc" type="submit" onclick="return false;">ADD TO CART</button> </div></form> </div>').insertAfter(settings['cart_location']);
+            if (shop_sets['cart_position'] == 'after') {
+                $('<div class="card sleek-upsell"> <form class="sleek-form"> <div class="sleek-image"> <img src="https://cdn.shopify.com/s/files/1/0295/4815/0859/products/man-adjusts-blue-tuxedo-bowtie_925x_656f2a36-34a8-4db2-9701-c01e49e9e5c0_x190.jpg?v=1590595412"/> </div><div class="sleek-offer"> <div class="sleek-text">Need Free Shipping?</div><div class="sleek-title">Blue silk tuxedo</div><div class="sleek-selectors"> <select class="v-select"> <option>small one very loong text here</option> <option>large ones very loong text here</option> <option>xl for fatty very loong text here</option> </select> <select class="q-select"> <option>1</option> <option>2</option> <option>3</option> </select> </div></div><div class="sleek-card-atc"> <div class="sleek-prices"> <span class="sleek-price money">KES 200</span> <span class="sleek-compare-price money">KES 200</span> </div><button class="sleek-atc" type="submit" onclick="return false;">ADD TO CART</button> </div></form> </div>').insertAfter(shop_sets['cart_location']);
             }
         } else {
-            if (settings['drawer_position'] == 'prepend') {
-                $(settings['drawer_location']).prepend('<div class="card sleek-upsell"> <form class="sleek-form"> <div class="sleek-image"> <img src="https://cdn.shopify.com/s/files/1/0295/4815/0859/products/man-adjusts-blue-tuxedo-bowtie_925x_656f2a36-34a8-4db2-9701-c01e49e9e5c0_x190.jpg?v=1590595412"/> </div><div class="sleek-offer"> <div class="sleek-text">Need Free Shipping?</div><div class="sleek-title">Blue silk tuxedo</div><div class="sleek-selectors"> <select class="v-select"> <option>small one very loong text here</option> <option>large ones very loong text here</option> <option>xl for fatty very loong text here</option> </select> <select class="q-select"> <option>1</option> <option>2</option> <option>3</option> </select> </div></div><div class="sleek-card-atc"> <div class="sleek-prices"> <span class="sleek-price money">KES 200</span> <span class="sleek-compare-price money">KES 200</span> </div><button class="sleek-atc" type="submit" onclick="return false;">ADD TO CART</button> </div></form> </div>');
+            if (shop_sets['drawer_position'] == 'prepend') {
+                $(shop_sets['drawer_location']).prepend('<div class="card sleek-upsell"> <form class="sleek-form"> <div class="sleek-image"> <img src="https://cdn.shopify.com/s/files/1/0295/4815/0859/products/man-adjusts-blue-tuxedo-bowtie_925x_656f2a36-34a8-4db2-9701-c01e49e9e5c0_x190.jpg?v=1590595412"/> </div><div class="sleek-offer"> <div class="sleek-text">Need Free Shipping?</div><div class="sleek-title">Blue silk tuxedo</div><div class="sleek-selectors"> <select class="v-select"> <option>small one very loong text here</option> <option>large ones very loong text here</option> <option>xl for fatty very loong text here</option> </select> <select class="q-select"> <option>1</option> <option>2</option> <option>3</option> </select> </div></div><div class="sleek-card-atc"> <div class="sleek-prices"> <span class="sleek-price money">KES 200</span> <span class="sleek-compare-price money">KES 200</span> </div><button class="sleek-atc" type="submit" onclick="return false;">ADD TO CART</button> </div></form> </div>');
             }
-            if (settings['drawer_position'] == 'append') {
-                $(settings['drawer_location']).append('<div class="card sleek-upsell"> <form class="sleek-form"> <div class="sleek-image"> <img src="https://cdn.shopify.com/s/files/1/0295/4815/0859/products/man-adjusts-blue-tuxedo-bowtie_925x_656f2a36-34a8-4db2-9701-c01e49e9e5c0_x190.jpg?v=1590595412"/> </div><div class="sleek-offer"> <div class="sleek-text">Need Free Shipping?</div><div class="sleek-title">Blue silk tuxedo</div><div class="sleek-selectors"> <select class="v-select"> <option>small one very loong text here</option> <option>large ones very loong text here</option> <option>xl for fatty very loong text here</option> </select> <select class="q-select"> <option>1</option> <option>2</option> <option>3</option> </select> </div></div><div class="sleek-card-atc"> <div class="sleek-prices"> <span class="sleek-price money">KES 200</span> <span class="sleek-compare-price money">KES 200</span> </div><button class="sleek-atc" type="submit" onclick="return false;">ADD TO CART</button> </div></form> </div>');
+            if (shop_sets['drawer_position'] == 'append') {
+                $(shop_sets['drawer_location']).append('<div class="card sleek-upsell"> <form class="sleek-form"> <div class="sleek-image"> <img src="https://cdn.shopify.com/s/files/1/0295/4815/0859/products/man-adjusts-blue-tuxedo-bowtie_925x_656f2a36-34a8-4db2-9701-c01e49e9e5c0_x190.jpg?v=1590595412"/> </div><div class="sleek-offer"> <div class="sleek-text">Need Free Shipping?</div><div class="sleek-title">Blue silk tuxedo</div><div class="sleek-selectors"> <select class="v-select"> <option>small one very loong text here</option> <option>large ones very loong text here</option> <option>xl for fatty very loong text here</option> </select> <select class="q-select"> <option>1</option> <option>2</option> <option>3</option> </select> </div></div><div class="sleek-card-atc"> <div class="sleek-prices"> <span class="sleek-price money">KES 200</span> <span class="sleek-compare-price money">KES 200</span> </div><button class="sleek-atc" type="submit" onclick="return false;">ADD TO CART</button> </div></form> </div>');
             }
-            if (settings['drawer_position'] == 'before') {
-                $('<div class="card sleek-upsell"> <form class="sleek-form"> <div class="sleek-image"> <img src="https://cdn.shopify.com/s/files/1/0295/4815/0859/products/man-adjusts-blue-tuxedo-bowtie_925x_656f2a36-34a8-4db2-9701-c01e49e9e5c0_x190.jpg?v=1590595412"/> </div><div class="sleek-offer"> <div class="sleek-text">Need Free Shipping?</div><div class="sleek-title">Blue silk tuxedo</div><div class="sleek-selectors"> <select class="v-select"> <option>small one very loong text here</option> <option>large ones very loong text here</option> <option>xl for fatty very loong text here</option> </select> <select class="q-select"> <option>1</option> <option>2</option> <option>3</option> </select> </div></div><div class="sleek-card-atc"> <div class="sleek-prices"> <span class="sleek-price money">KES 200</span> <span class="sleek-compare-price money">KES 200</span> </div><button class="sleek-atc" type="submit" onclick="return false;">ADD TO CART</button> </div></form> </div>').insertBefore(settings['drawer_location']);
+            if (shop_sets['drawer_position'] == 'before') {
+                $('<div class="card sleek-upsell"> <form class="sleek-form"> <div class="sleek-image"> <img src="https://cdn.shopify.com/s/files/1/0295/4815/0859/products/man-adjusts-blue-tuxedo-bowtie_925x_656f2a36-34a8-4db2-9701-c01e49e9e5c0_x190.jpg?v=1590595412"/> </div><div class="sleek-offer"> <div class="sleek-text">Need Free Shipping?</div><div class="sleek-title">Blue silk tuxedo</div><div class="sleek-selectors"> <select class="v-select"> <option>small one very loong text here</option> <option>large ones very loong text here</option> <option>xl for fatty very loong text here</option> </select> <select class="q-select"> <option>1</option> <option>2</option> <option>3</option> </select> </div></div><div class="sleek-card-atc"> <div class="sleek-prices"> <span class="sleek-price money">KES 200</span> <span class="sleek-compare-price money">KES 200</span> </div><button class="sleek-atc" type="submit" onclick="return false;">ADD TO CART</button> </div></form> </div>').insertBefore(shop_sets['drawer_location']);
             }
-            if (settings['drawer_position'] == 'after') {
-                $('<div class="card sleek-upsell"> <form class="sleek-form"> <div class="sleek-image"> <img src="https://cdn.shopify.com/s/files/1/0295/4815/0859/products/man-adjusts-blue-tuxedo-bowtie_925x_656f2a36-34a8-4db2-9701-c01e49e9e5c0_x190.jpg?v=1590595412"/> </div><div class="sleek-offer"> <div class="sleek-text">Need Free Shipping?</div><div class="sleek-title">Blue silk tuxedo</div><div class="sleek-selectors"> <select class="v-select"> <option>small one very loong text here</option> <option>large ones very loong text here</option> <option>xl for fatty very loong text here</option> </select> <select class="q-select"> <option>1</option> <option>2</option> <option>3</option> </select> </div></div><div class="sleek-card-atc"> <div class="sleek-prices"> <span class="sleek-price money">KES 200</span> <span class="sleek-compare-price money">KES 200</span> </div><button class="sleek-atc" type="submit" onclick="return false;">ADD TO CART</button> </div></form> </div>').insertAfter(settings['drawer_location']);
+            if (shop_sets['drawer_position'] == 'after') {
+                $('<div class="card sleek-upsell"> <form class="sleek-form"> <div class="sleek-image"> <img src="https://cdn.shopify.com/s/files/1/0295/4815/0859/products/man-adjusts-blue-tuxedo-bowtie_925x_656f2a36-34a8-4db2-9701-c01e49e9e5c0_x190.jpg?v=1590595412"/> </div><div class="sleek-offer"> <div class="sleek-text">Need Free Shipping?</div><div class="sleek-title">Blue silk tuxedo</div><div class="sleek-selectors"> <select class="v-select"> <option>small one very loong text here</option> <option>large ones very loong text here</option> <option>xl for fatty very loong text here</option> </select> <select class="q-select"> <option>1</option> <option>2</option> <option>3</option> </select> </div></div><div class="sleek-card-atc"> <div class="sleek-prices"> <span class="sleek-price money">KES 200</span> <span class="sleek-compare-price money">KES 200</span> </div><button class="sleek-atc" type="submit" onclick="return false;">ADD TO CART</button> </div></form> </div>').insertAfter(shop_sets['drawer_location']);
             }
         }
     }
     $('input[name="drawer_refresh"]').change(function() {
         if (this.checked) {
-            settings['refresh_state'] = 'y';
+            shop_sets['refresh_state'] = 'y';
         } else {
-            settings['refresh_state'] = 'n';
+            shop_sets['refresh_state'] = 'n';
         }
     });
     $('textarea[name="refresh_code"]').on('input', function() {
-        settings['drawer_refresh'] = $(this).val();
+        shop_sets['drawer_refresh'] = $(this).val();
     });
 
     $('.offer_bg').on('input', function() {
         $('.sleek-upsell').css('background', $(this).val());
         $('.sleek-upsell select').css('background', $(this).val());
         $('.offer_bg_hex').val($(this).val());
-        settings['layout_bg'] = $(this).val();
+        shop_sets['layout_bg'] = $(this).val();
     });
     $('.offer_bg_hex').on('input', function() {
         $('.sleek-upsell').css('background', $(this).val());
         $('.offer_bg').val($(this).val());
-        settings['layout_bg'] = $(this).val();
+        shop_sets['layout_bg'] = $(this).val();
     });
 
     $('.offer_color').on('input', function() {
         $('.sleek-upsell').css('color', $(this).val());
         $('.sleek-upsell select').css('color', $(this).val());
         $('.offer_color_hex').val($(this).val());
-        settings['layout_color'] = $(this).val();
+        shop_sets['layout_color'] = $(this).val();
     });
     $('.offer_color_hex').on('input', function() {
         $('.sleek-upsell').css('color', $(this).val());
         $('.sleek-upsell select').css('color', $(this).val());
         $('.offer_color').val($(this).val());
-        settings['layout_color'] = $(this).val();
+        shop_sets['layout_color'] = $(this).val();
     });
 
     $('.offer_font').on('input', function() {
         $('.sleek-upsell').css('font-family', $(this).val());
-        settings['layout_font'] = $(this).val();
+        shop_sets['layout_font'] = $(this).val();
     });
 
     $('.offer_size').on('input', function() {
         $('.sleek-upsell').css('font-size', $(this).val() + 'px');
-        settings['layout_size'] = $(this).val() + 'px';
+        shop_sets['layout_size'] = $(this).val() + 'px';
     });
 
     $('.offer_mt').on('input', function() {
         $('.sleek-upsell').css('margin-top', $(this).val() + 'px');
-        settings['layout_mt'] = $(this).val() + 'px';
+        shop_sets['layout_mt'] = $(this).val() + 'px';
     });
 
     $('.offer_mb').on('input', function() {
         $('.sleek-upsell').css('margin-bottom', $(this).val() + 'px');
-        settings['layout_mb'] = $(this).val() + 'px';
+        shop_sets['layout_mb'] = $(this).val() + 'px';
     });
 
     $('.offer_radius').on('input', function() {
         $('.sleek-upsell').css('border-radius', $(this).val() + 'px');
-        settings['offer_radius'] = $(this).val() + 'px';
+        shop_sets['offer_radius'] = $(this).val() + 'px';
     });
 
     $('.offer_bs').on('input', function() {
         $('.sleek-upsell').css('border-width', $(this).val() + 'px');
-        settings['offer_bs'] = $(this).val() + 'px';
+        shop_sets['offer_bs'] = $(this).val() + 'px';
     });
 
 
     $('.offer_bc').on('input', function() {
         $('.sleek-upsell').css('border-color', $(this).val());
         $('.offer_bc_hex').val($(this).val());
-        settings['offer_bc'] = $(this).val();
+        shop_sets['offer_bc'] = $(this).val();
     });
     $('.offer_bc_hex').on('input', function() {
         $('.sleek-upsell').css('border-color', $(this).val());
         $('.offer_bc').val($(this).val());
-        settings['offer_bc'] = $(this).val();
+        shop_sets['offer_bc'] = $(this).val();
     });
 
     $('.offer_border').on('change', function() {
         $('.sleek-upsell').css('border-style', $(this).val());
-        settings['offer_border'] = $(this).val();
+        shop_sets['offer_border'] = $(this).val();
     });
 
     $('.button_bg').on('input', function() {
         $('button').css('background', $(this).val());
         $('.button_bg_hex').val($(this).val());
-        settings['button_bg'] = $(this).val();
+        shop_sets['button_bg'] = $(this).val();
     });
     $('.button_bg_hex').on('input', function() {
         $('button').css('background', $(this).val());
         $('.button_bg').val($(this).val());
-        settings['button_bg'] = $(this).val();
+        shop_sets['button_bg'] = $(this).val();
     });
 
     $('.button_color').on('input', function() {
         $('button').css('color', $(this).val());
         $('.button_color_hex').val($(this).val());
-        settings['button_color'] = $(this).val();
+        shop_sets['button_color'] = $(this).val();
     });
     $('.button_color_hex').on('input', function() {
         $('button').css('color', $(this).val());
         $('.button_color').val($(this).val());
-        settings['button_color'] = $(this).val();
+        shop_sets['button_color'] = $(this).val();
     });
 
     $('.button_font').on('input', function() {
         $('button').css('font-family', $(this).val());
-        settings['button_font'] = $(this).val();
+        shop_sets['button_font'] = $(this).val();
     });
 
     $('.button_size').on('input', function() {
         $('button').css('font-size', $(this).val() + 'px');
-        settings['button_size'] = $(this).val() + 'px';
+        shop_sets['button_size'] = $(this).val() + 'px';
     });
 
     $('.button_mt').on('input', function() {
         $('button').css('margin-top', $(this).val() + 'px');
-        settings['button_mt'] = $(this).val() + 'px';
+        shop_sets['button_mt'] = $(this).val() + 'px';
     });
 
     $('.button_mb').on('input', function() {
         $('button').css('margin-bottom', $(this).val() + 'px');
-        settings['button_mb'] = $(this).val() + 'px';
+        shop_sets['button_mb'] = $(this).val() + 'px';
     });
 
 
     $('.button_radius').on('input', function() {
         $('.sleek-upsell button').css('border-radius', $(this).val() + 'px');
-        settings['button_radius'] = $(this).val() + 'px';
+        shop_sets['button_radius'] = $(this).val() + 'px';
     });
 
     $('.button_bs').on('input', function() {
         $('.sleek-upsell button').css('border-width', $(this).val() + 'px');
-        settings['button_bs'] = $(this).val() + 'px';
+        shop_sets['button_bs'] = $(this).val() + 'px';
     });
 
 
     $('.button_bc').on('input', function() {
         $('.sleek-upsell button').css('border-color', $(this).val());
         $('.button_bc_hex').val($(this).val());
-        settings['button_bc'] = $(this).val();
+        shop_sets['button_bc'] = $(this).val();
     });
     $('.button_bc_hex').on('input', function() {
         $('.sleek-upsell').css('border-color', $(this).val());
         $('.button_bc').val($(this).val());
-        settings['button_bc'] = $(this).val();
+        shop_sets['button_bc'] = $(this).val();
     });
 
     $('.button_border').on('change', function() {
         $('.sleek-upsell button').css('border-style', $(this).val());
-        settings['button_border'] = $(this).val();
+        shop_sets['button_border'] = $(this).val();
     });
 
     $('.image_radius').on('input', function() {
         $('.sleek-upsell img').css('border-radius', $(this).val() + 'px');
-        settings['image_radius'] = $(this).val() + 'px';
+        shop_sets['image_radius'] = $(this).val() + 'px';
     });
 
     $('.image_bs').on('input', function() {
         $('.sleek-upsell img').css('border-width', $(this).val() + 'px');
-        settings['image_bs'] = $(this).val() + 'px';
+        shop_sets['image_bs'] = $(this).val() + 'px';
     });
 
     $('.image_bc').on('input', function() {
         $('.sleek-upsell img').css('color', $(this).val());
         $('.image_bc_hex').val($(this).val());
-        settings['image_bc'] = $(this).val();
+        shop_sets['image_bc'] = $(this).val();
     });
     $('.image_bc_hex').on('input', function() {
         $('.sleek-upsell img').css('color', $(this).val());
         $('.image_bc').val($(this).val());
-        settings['image_bc'] = $(this).val();
+        shop_sets['image_bc'] = $(this).val();
     });
 
     $('.image_border').on('change', function() {
         $('.sleek-upsell img').css('border-style', $(this).val());
-        settings['image_border'] = $(this).val();
+        shop_sets['image_border'] = $(this).val();
     });
 
     $('.text_color').on('input', function() {
         $('.sleek-text').css('color', $(this).val());
         $('.text_color_hex').val($(this).val());
-        settings['text_color'] = $(this).val();
+        shop_sets['text_color'] = $(this).val();
     });
     $('.text_color_hex').on('input', function() {
         $('.sleek-text').css('color', $(this).val());
         $('.text_color').val($(this).val());
-        settings['text_color'] = $(this).val();
+        shop_sets['text_color'] = $(this).val();
     });
 
     $('.text_font').on('input', function() {
         $('.sleek-text').css('font-family', $(this).val());
-        settings['text_font'] = $(this).val();
+        shop_sets['text_font'] = $(this).val();
     });
 
     $('.text_size').on('input', function() {
         $('.sleek-text').css('font-size', $(this).val() + 'px');
-        settings['text_size'] = $(this).val() + 'px';
+        shop_sets['text_size'] = $(this).val() + 'px';
     });
 
     $('.title_color').on('input', function() {
         $('.sleek-title').css('color', $(this).val());
         $('.title_color_hex').val($(this).val());
-        settings['title_color'] = $(this).val();
+        shop_sets['title_color'] = $(this).val();
     });
     $('.title_color_hex').on('input', function() {
         $('.sleek-title').css('color', $(this).val());
         $('.title_color').val($(this).val());
-        settings['title_color'] = $(this).val();
+        shop_sets['title_color'] = $(this).val();
     });
 
     $('.title_font').on('input', function() {
         $('.sleek-title').css('font-family', $(this).val());
-        settings['title_font'] = $(this).val();
+        shop_sets['title_font'] = $(this).val();
     });
 
     $('.title_size').on('input', function() {
         $('.sleek-title').css('font-size', $(this).val() + 'px');
-        settings['title_size'] = $(this).val() + 'px';
+        shop_sets['title_size'] = $(this).val() + 'px';
     });
 
     $('.price_color').on('input', function() {
         $('.sleek-price').css('color', $(this).val());
         $('.price_color_hex').val($(this).val());
-        settings['price_color'] = $(this).val();
+        shop_sets['price_color'] = $(this).val();
     });
     $('.price_color_hex').on('input', function() {
         $('.sleek-price').css('color', $(this).val());
         $('.price_color').val($(this).val());
-        settings['price_color'] = $(this).val();
+        shop_sets['price_color'] = $(this).val();
     });
 
     $('.price_font').on('input', function() {
         $('.sleek-price').css('font-family', $(this).val());
-        settings['price_font'] = $(this).val();
+        shop_sets['price_font'] = $(this).val();
     });
 
     $('.price_size').on('input', function() {
         $('.sleek-price').css('font-size', $(this).val() + 'px');
-        settings['price_size'] = $(this).val() + 'px';
+        shop_sets['price_size'] = $(this).val() + 'px';
     });
     $('.saver').click(function() {
-        console.log(settings);
+        console.log(shop_sets);
         $('.saver').hide();
         $('.saving').show();
         $.ajax({
             type: "POST",
             url: base_url + 'update_settings?<?php echo $_SERVER['QUERY_STRING']; ?>',
-            data: settings,
+            data: shop_sets,
             success: function(response) {
                 console.log(response);
                 $('.saving').html('<span class="entypo-thumbs-up btn btn-sucess btn-lg" style="margin-top: 30vh; font-weight: bold; color: #ffffff; background: #000000;">SUCCESFULLY SAVED</span>');
