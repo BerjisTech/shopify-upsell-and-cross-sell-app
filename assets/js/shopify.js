@@ -45,8 +45,17 @@ function createSUW() {
         if (tgtRect.bottom > pRect.bottom) target.style.top = pRect.height - tgtRect.height + 'px';
     });
 
-    if (typeof jQuery === 'undefined' || jQuery == null) { document.querySelector('body').insertAdjacentHTML('afterbegin', '<script src="https://sleek-upsell.com/assets/js/jquery-1.11.3.min.js"></script>'); }
-    $('.suw_body').load('https://sleek-upsell.herokuapp.com/suw/' + Shopify.shop);
+    // if (typeof jQuery === 'undefined' || jQuery == null) { document.querySelector('body').insertAdjacentHTML('afterbegin', '<script src="https://sleek-upsell.com/assets/js/jquery-1.11.3.min.js"></script>'); }
+    // $('.suw_body').load('https://sleek-upsell.herokuapp.com/suw/' + Shopify.shop);
+
+    fetch('https://sleek-upsell.herokuapp.com/suw/' + Shopify.shop, {
+        credentials: 'same-origin',
+        method: 'GET'
+    }).then(function (content) {
+        content.text().then(function (html) {
+            document.querySelector(".suw_body").innerHTML = html;
+        })
+    })
 
 
 
