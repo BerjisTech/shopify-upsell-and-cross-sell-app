@@ -37,6 +37,7 @@
                     <input type="text" class="form-control" value="Change position" disabled style="background: #ffffff !important; border: none !important; color: #000000 !important" />
                     <span class="layout_next input-group-addon btn btn-primary entypo-right-open"></span>
                 </div>
+                <br />
                 <div class="panel-group joined" id="accordion-test">
                     <div class="panel panel-default cartP">
                         <div class="panel-heading">
