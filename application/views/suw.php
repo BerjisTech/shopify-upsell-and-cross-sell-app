@@ -757,14 +757,13 @@
             'price_size': 'inherit'
         };
     <?php endif; ?>
-
+    let things = $('div');
     if (window.location.pathname.includes('/cart')) {
         $('.drawerP').remove();
         $('.layout_previous').click(function() {
             if (document.querySelector(settings['cart_location']) == null) {
                 settings['cart_location'] = 'form[action="/cart"]';
             } else {
-                things = $('.class');
                 settings['cart_location'] = $(things[Math.floor(Math.random() * things.length)]);
             }
             changePos();
@@ -775,7 +774,6 @@
             if (document.querySelector(settings['cart_location']) == null) {
                 settings['cart_location'] = 'form[action="/cart"]';
             } else {
-                things = $('.class');
                 settings['cart_location'] = $(things[Math.floor(Math.random() * things.length)]);
             }
             changePos();
@@ -787,7 +785,6 @@
             if (document.querySelector(settings['drawer_location']) == null) {
                 settings['drawer_location'] = 'form[action="/cart/add"]';
             } else {
-                things = $('.class');
                 settings['drawer_location'] = $(things[Math.floor(Math.random() * things.length)]);
             }
             changePos();
@@ -798,7 +795,6 @@
             if (document.querySelector(settings['drawer_location']) == null) {
                 settings['drawer_location'] = 'form[action="/cart/add"]';
             } else {
-                things = $('.class');
                 settings['drawer_location'] = $(things[Math.floor(Math.random() * things.length)]);
             }
             changePos();
