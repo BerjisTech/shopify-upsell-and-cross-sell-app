@@ -549,9 +549,9 @@
 <script src="<?php echo base_url(); ?>assets/js/bootstrap-colorpicker.min.js" id="script-resource-14"></script>
 <script>
     if (window.location.pathname.includes('/cart')) {
-        $('.cartP').remove();
-    } else {
         $('.drawerP').remove();
+    } else {
+        $('.cartP').remove();
     }
     $('.whats').click(function() {
         let hii = $(this).attr('id');
