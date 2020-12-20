@@ -318,9 +318,9 @@ class Slade extends CI_Controller
 
         $this->db->where('shop', $shop)->set($s_array)->update('shops');
 
-        $now = time(); // or your date as well
-        $your_date = $this->db->where('shop', $shop)->get('shops')->row()->updated_at;
-        $datediff = $now - $your_date;
+        // $now = time(); // or your date as well
+        // $your_date = $this->db->where('shop', $shop)->get('shops')->row()->updated_at;
+        // $datediff = $now - $your_date;
 
         $plan = $s_data['plan_display_name'];
 
