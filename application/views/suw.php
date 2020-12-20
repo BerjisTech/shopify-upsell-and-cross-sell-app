@@ -554,36 +554,6 @@
 </div>
 <script src="<?php echo base_url(); ?>assets/js/bootstrap-colorpicker.min.js" id="script-resource-14"></script>
 <script>
-    if (window.location.pathname.includes('/cart')) {
-        $('.drawerP').remove();
-    } else {
-        $('.cartP').remove();
-    }
-    $('.whats').click(function() {
-        let hii = $(this).attr('id');
-        $('.whats').attr('style', '');
-        $(this).attr('style', 'background-color: #003471; color: white;');
-        $('.setting_tab').hide(200);
-        setTimeout(function() {
-            $('.s_' + hii).show(200);
-        }, 250);
-    });
-
-    function hideAll() {
-        $('.card').addClass('hidden');
-        $('.half-block').addClass('hidden');
-        $('.block').addClass('hidden');
-        $('.flat').addClass('hidden');
-        $('.compact').addClass('hidden');
-    }
-
-    function pick(offerLayout) {
-        hideAll();
-        $('.' + offerLayout).removeClass('hidden');
-        $('.offer_layout').val(offerLayout);
-    }
-    $('.s_p').trigger('click');
-
     <?php if ($this->db->where('shop', $shop)->get('settings')->num_rows() > 0) : ?>
         let shop_sets = <?php echo json_encode($this->db->where('shop', $shop)->get('settings')->row()); ?>;
         if (shop_sets != null) {
@@ -787,6 +757,84 @@
             'price_size': 'inherit'
         };
     <?php endif; ?>
+
+    if (window.location.pathname.includes('/cart')) {
+        $('.drawerP').remove();
+        $('.layout_previous').click(function() {
+            if (document.querySelector(settings['cart_location']) == null) {
+                settings['cart_location'] = 'form[action="/cart"]';
+                changePos();
+            } else {
+                things = $('.class');
+                settings['cart_location'] = $(things[Math.floor(Math.random() * things.length)]);
+                changePos();
+            }
+            $('input[name="cart_dom"]').val(settings['cart_location']);
+        });
+
+        $('.layout_next').click(function() {
+            if (document.querySelector(settings['cart_location']) == null) {
+                settings['cart_location'] = 'form[action="/cart"]';
+                changePos();
+            } else {
+                things = $('.class');
+                settings['cart_location'] = $(things[Math.floor(Math.random() * things.length)]);
+                changePos();
+            }
+            $('input[name="cart_dom"]').val(settings['cart_location']);
+        });
+    } else {
+        $('.cartP').remove();
+        $('.layout_previous').click(function() {
+            if (document.querySelector(settings['drawer_location']) == null) {
+                settings['drawer_location'] = 'form[action="/cart/add"]';
+                changePos();
+            } else {
+                things = $('.class');
+                settings['drawer_location'] = $(things[Math.floor(Math.random() * things.length)]);
+                changePos();
+            }
+            $('input[name="cart_dom"]').val(settings['drawer_location']);
+        });
+
+        $('.layout_next').click(function() {
+            if (document.querySelector(settings['drawer_location']) == null) {
+                settings['drawer_location'] = 'form[action="/cart/add"]';
+                changePos();
+            } else {
+                things = $('.class');
+                settings['drawer_location'] = $(things[Math.floor(Math.random() * things.length)]);
+                changePos();
+            }
+            $('input[name="cart_dom"]').val(settings['drawer_location']);
+        });
+    }
+    changePos();
+
+    $('.whats').click(function() {
+        let hii = $(this).attr('id');
+        $('.whats').attr('style', '');
+        $(this).attr('style', 'background-color: #003471; color: white;');
+        $('.setting_tab').hide(200);
+        setTimeout(function() {
+            $('.s_' + hii).show(200);
+        }, 250);
+    });
+
+    function hideAll() {
+        $('.card').addClass('hidden');
+        $('.half-block').addClass('hidden');
+        $('.block').addClass('hidden');
+        $('.flat').addClass('hidden');
+        $('.compact').addClass('hidden');
+    }
+
+    function pick(offerLayout) {
+        hideAll();
+        $('.' + offerLayout).removeClass('hidden');
+        $('.offer_layout').val(offerLayout);
+    }
+    $('.s_p').trigger('click');
 
     $('input[name="cart_dom"]').on('input', function() {
         shop_sets['cart_location'] = $(this).val();
