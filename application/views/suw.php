@@ -31,6 +31,12 @@
                 <h3 style="width: 100%; text-align: center;">Offer position</h3>
                 <small style="display: table; width: 100%; text-align: center;">Use this section to position your offers on the cart page and cart drawer</small>
                 <hr />
+                <hr>
+                <div class="input-group">
+                    <span class="layout_previous input-group-addon btn btn-primary entypo-left-open"></span>
+                    <input type="text" class="form-control" value="Change position" disabled style="background: #ffffff !important; border: none !important; color: #000000 !important" />
+                    <span class="layout_next input-group-addon btn btn-primary entypo-right-open"></span>
+                </div>
                 <div class="panel-group joined" id="accordion-test">
                     <div class="panel panel-default cartP">
                         <div class="panel-heading">
