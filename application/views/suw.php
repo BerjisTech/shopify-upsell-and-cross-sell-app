@@ -20,11 +20,18 @@
     <div style="height: 400px; overflow-y: auto; flex-grow: 4; padding-bottom: 0px;">
         <div class="setting_tab s_p" style="display: flex;">
             <div style="height: 400px; background: #FAFAFA; padding: 10px;">
+                <h4>Test different layouts</h4>
+                <select type="text" name="cart_pos" class="form-control">
+                    <option value="prepend">Top Of</option>
+                    <option value="before">Before</option>
+                    <option value="append">Bottom Of</option>
+                    <option value="after">After</option>
+                </select>
                 <h3 style="width: 100%; text-align: center;">Offer position</h3>
                 <small style="display: table; width: 100%; text-align: center;">Use this section to position your offers on the cart page and cart drawer</small>
                 <hr />
                 <div class="panel-group joined" id="accordion-test">
-                    <div class="panel panel-default">
+                    <div class="panel panel-default cartP">
                         <div class="panel-heading">
                             <h4 class="panel-title"> <a data-toggle="collapse" data-parent="#accordion-test" href="#collapseOne" class="collapsed">
                                     1: Cart Page Settings
@@ -44,7 +51,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="panel panel-default">
+                    <div class="panel panel-default drawerP">
                         <div class="panel-heading">
                             <h4 class="panel-title"> <a data-toggle="collapse" data-parent="#accordion-test" href="#collapseTwo" class="collapsed">
                                     2: Cart Drawer Settings
@@ -540,11 +547,11 @@
 </div>
 <script src="<?php echo base_url(); ?>assets/js/bootstrap-colorpicker.min.js" id="script-resource-14"></script>
 <script>
-    $("#previewFrame").contents().find("div").each(function() {
-        $(this).attr('onclick', 'console.log($(this).html())')
-    });
-
-
+    if (window.location.pathname.includes('/cart')) {
+        $('.cartP').remove();
+    }else{
+        $('.drawerP').remove();
+    }
     $('.whats').click(function() {
         let hii = $(this).attr('id');
         $('.whats').attr('style', '');
