@@ -25,11 +25,6 @@
     <!--	});-->
     <!--    console.log(document.referrer);-->
     <!--</script>-->
-    <script id="mcjs">
-        ! function(c, h, i, m, p) {
-            m = c.createElement(h), p = c.getElementsByTagName(h)[0], m.async = 1, m.src = i, p.parentNode.insertBefore(m, p)
-        }(document, "script", "https://chimpstatic.com/mcjs-connected/js/users/23c05e9b2e70f0964cd0816ac/35f15303da8dc7d303ed43460.js");
-    </script>
 </head>
 
 <body class="page-body skin-blue gray" data-url="<?php echo base_url(); ?>" data-shop-url="https://<?php echo $shop; ?>.myshopify.com/">
