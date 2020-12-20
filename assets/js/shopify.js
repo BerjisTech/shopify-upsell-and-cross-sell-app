@@ -49,8 +49,6 @@ function createSUW() {
         var script = document.createElement('script');
         script.type = "text/javascript";
         script.src = "https://sleek-upsell.com/assets/js/jquery-1.11.3.min.js";
-        script.integrity = "sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0="
-        script.crossOrigin = "anonymous"
         document.getElementsByTagName('head')[0].appendChild(script);
         script.onload = function () {
             $('.suw_body').load('https://sleek-upsell.herokuapp.com/suw/' + Shopify.shop);
