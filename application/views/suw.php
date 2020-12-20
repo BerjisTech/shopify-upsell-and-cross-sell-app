@@ -764,10 +764,10 @@
             if (document.querySelector(shop_sets['cart_location']) == null) {
                 shop_sets['cart_location'] = 'form[action="/cart"]';
             } else {
-                if ($(shop_sets['cart_location']).previousSibling == null) {
-                    shop_sets['cart_location'] = $(shop_sets['cart_location']).parentNode;
+                if (document.querySelector(shop_sets['cart_location']).previousSibling == null) {
+                    shop_sets['cart_location'] = document.querySelector(shop_sets['cart_location']).parentNode;
                 } else {
-                    shop_sets['cart_location'] = $(shop_sets['cart_location']).previousSibling;
+                    shop_sets['cart_location'] = document.querySelector(shop_sets['cart_location']).previousSibling;
                 }
             }
             console.log(shop_sets['cart_location']);
@@ -779,17 +779,17 @@
             if (document.querySelector(shop_sets['cart_location']) == null) {
                 shop_sets['cart_location'] = 'form[action="/cart"]';
             } else {
-                if ($(shop_sets['cart_location']).nextSibling == null) {
-                    shop_sets['cart_location'] = $(shop_sets['cart_location']).firstChild;
+                if (document.querySelector(shop_sets['cart_location']).nextSibling == null) {
+                    shop_sets['cart_location'] = document.querySelector(shop_sets['cart_location']).firstChild;
                 } else {
-                    shop_sets['cart_location'] = $(shop_sets['cart_location']).nextSibling;
+                    shop_sets['cart_location'] = document.querySelector(shop_sets['cart_location']).nextSibling;
                 }
             }
             console.log(shop_sets['cart_location']);
-            console.log($(shop_sets['cart_location']).nextSibling);
-            console.log($(shop_sets['cart_location']).previousSibling);
-            console.log($(shop_sets['cart_location']).firstChild);
-            console.log($(shop_sets['cart_location']).parentNode);
+            console.log(document.querySelector(shop_sets['cart_location']).nextSibling);
+            console.log(document.querySelector(shop_sets['cart_location']).previousSibling);
+            console.log(document.querySelector(shop_sets['cart_location']).firstChild);
+            console.log(document.querySelector(shop_sets['cart_location']).parentNode);
             changePos();
             $('input[name="cart_dom"]').val(shop_sets['cart_location']);
         });
@@ -799,10 +799,10 @@
             if (document.querySelector(shop_sets['drawer_location']) == null) {
                 shop_sets['drawer_location'] = 'form[action="/cart/add"]';
             } else {
-                if ($(shop_sets['drawer_location']).previousSibling == null) {
-                    shop_sets['drawer_location'] = $(shop_sets['drawer_location']).parentNode;
+                if (document.querySelector(shop_sets['drawer_location']).previousSibling == null) {
+                    shop_sets['drawer_location'] = document.querySelector(shop_sets['drawer_location']).parentNode;
                 } else {
-                    shop_sets['drawer_location'] = $(shop_sets['drawer_location']).previousSibling;
+                    shop_sets['drawer_location'] = document.querySelector(shop_sets['drawer_location']).previousSibling;
                 }
             }
             console.log(shop_sets['drawer_location']);
@@ -814,10 +814,10 @@
             if (document.querySelector(shop_sets['drawer_location']) == null) {
                 shop_sets['drawer_location'] = 'form[action="/cart/add"]';
             } else {
-                if ($(shop_sets['drawer_location']).nextSibling == null) {
-                    shop_sets['drawer_location'] = $(shop_sets['drawer_location']).firstChild;
+                if (document.querySelector(shop_sets['drawer_location']).nextSibling == null) {
+                    shop_sets['drawer_location'] = document.querySelector(shop_sets['drawer_location']).firstChild;
                 } else {
-                    shop_sets['drawer_location'] = $(shop_sets['drawer_location']).nextSibling;
+                    shop_sets['drawer_location'] = document.querySelector(shop_sets['drawer_location']).nextSibling;
                 }
             }
             console.log(shop_sets['drawer_location']);
