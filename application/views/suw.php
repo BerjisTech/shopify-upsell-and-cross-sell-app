@@ -763,24 +763,22 @@
         $('.layout_previous').click(function() {
             if (document.querySelector(settings['cart_location']) == null) {
                 settings['cart_location'] = 'form[action="/cart"]';
-                changePos();
             } else {
                 things = $('.class');
                 settings['cart_location'] = $(things[Math.floor(Math.random() * things.length)]);
-                changePos();
             }
+            changePos();
             $('input[name="cart_dom"]').val(settings['cart_location']);
         });
 
         $('.layout_next').click(function() {
             if (document.querySelector(settings['cart_location']) == null) {
                 settings['cart_location'] = 'form[action="/cart"]';
-                changePos();
             } else {
                 things = $('.class');
                 settings['cart_location'] = $(things[Math.floor(Math.random() * things.length)]);
-                changePos();
             }
+            changePos();
             $('input[name="cart_dom"]').val(settings['cart_location']);
         });
     } else {
@@ -788,24 +786,22 @@
         $('.layout_previous').click(function() {
             if (document.querySelector(settings['drawer_location']) == null) {
                 settings['drawer_location'] = 'form[action="/cart/add"]';
-                changePos();
             } else {
                 things = $('.class');
                 settings['drawer_location'] = $(things[Math.floor(Math.random() * things.length)]);
-                changePos();
             }
+            changePos();
             $('input[name="cart_dom"]').val(settings['drawer_location']);
         });
 
         $('.layout_next').click(function() {
             if (document.querySelector(settings['drawer_location']) == null) {
                 settings['drawer_location'] = 'form[action="/cart/add"]';
-                changePos();
             } else {
                 things = $('.class');
                 settings['drawer_location'] = $(things[Math.floor(Math.random() * things.length)]);
-                changePos();
             }
+            changePos();
             $('input[name="cart_dom"]').val(settings['drawer_location']);
         });
     }
