@@ -1,3 +1,70 @@
+let page_ss = window.location.href;
+let s_s_w = g_s_s_w('https://sleek-upsell.herokuapp.com/s_s_w/' + Shopify.shop);
+
+
+function createSUW() {
+    document.querySelector('body').insertAdjacentHTML('afterbegin', '<style>.suw{display: table; width: 300px; height: 500px; background: #ffffff; position: fixed; bottom: 0px; left: 0px; z-index: 3000000;}.suw_head, .suw_footer{display: table; width: 100%; height: 50px !important; background: #981B1B !important; color: #ffffff;}.suw_body{overflow-Y: auto; display: table; width: 100%; height: 400px;}.suw_head:before{content: "SETUP WIZARD"; display: table; position: absolute; top: 10px; left: 10px; z-index: 2000000; color: #FFFFFF; font-size: 12px;}.suw_head{cursor:move; cursor:-webkit-grab; cursor:-moz-grab; cursor:grab;}</style>');
+    document.querySelector('body').insertAdjacentHTML('afterbegin', '<div class="draggable suw">' +
+        '<div class="suw_head dragger"></div>' +
+        '<div class="suw_body"><img src="https://sleek-upsell.com/assets/images/loader.gif" style="margin: 250px auto;"/></div>' +
+        '<div class="suw_footer"></div>' +
+        '</div>');
+    var x, y, target = null;
+
+    document.addEventListener('mousedown', function (e) {
+        var clickedDragger = false;
+        for (var i = 0; e.path[i] !== document.body; i++) {
+            if (e.path[i].classList.contains('dragger')) {
+                clickedDragger = true;
+            }
+            else if (clickedDragger && e.path[i].classList.contains('draggable')) {
+                target = e.path[i];
+                target.classList.add('dragging');
+                x = e.clientX - target.style.left.slice(0, -2);
+                y = e.clientY - target.style.top.slice(0, -2);
+                return;
+            }
+        }
+    });
+
+    document.addEventListener('mouseup', function () {
+        if (target !== null) target.classList.remove('dragging');
+        target = null;
+    });
+
+    document.addEventListener('mousemove', function (e) {
+        if (target === null) return;
+        target.style.left = e.clientX - x + 'px';
+        target.style.top = e.clientY - y + 'px';
+        var pRect = target.parentElement.getBoundingClientRect();
+        var tgtRect = target.getBoundingClientRect();
+
+        if (tgtRect.left < pRect.left) target.style.left = 0;
+        if (tgtRect.top < pRect.top) target.style.top = 0;
+        if (tgtRect.right > pRect.right) target.style.left = pRect.width - tgtRect.width + 'px';
+        if (tgtRect.bottom > pRect.bottom) target.style.top = pRect.height - tgtRect.height + 'px';
+    });
+
+    if (typeof jQuery === 'undefined' || jQuery == null) { document.querySelector('body').insertAdjacentHTML('afterbegin', '<script src="https://sleek-upsell.com/assets/js/jquery-1.11.3.min.js"></script>'); }
+    $('.suw_body').load('https://sleek-upsell.herokuapp.com/suw/' + Shopify.shop);
+
+
+
+}
+
+if (sessionStorage.getItem('s_u_w') == 'y') { createSUW(); }
+else {
+    // console.log(sessionStorage.getItem('s_u_w'));
+    if (page_ss.includes(s_s_w)) {
+        sessionStorage.setItem('s_u_w', 'y');
+        createSUW();
+    }
+    // else {
+    //     // console.log(page_ss);
+    //     // console.log(s_s_w);
+    // }
+}
+
 function get_this(request) {
     if (request) {
         request.onload = function () {
@@ -8,7 +75,7 @@ function get_this(request) {
 }
 
 function createCORSRequest(method, url) {
-    var xhr = new XMLHttpRequest();
+    let xhr = new XMLHttpRequest();
     if ("withCredentials" in xhr) {
         xhr.open(method, url, true);
     } else if (typeof XDomainRequest != "undefined") {
@@ -21,14 +88,14 @@ function createCORSRequest(method, url) {
 }
 
 function g_d(g_url) {
-    var xmlHttp = new XMLHttpRequest();
+    let xmlHttp = new XMLHttpRequest();
     xmlHttp.open("GET", g_url, false); // false for synchronous request
     xmlHttp.send(null);
     return JSON.parse(xmlHttp.responseText);
 }
 
 function g_s_s_w(g_url) {
-    var xmlHttp = new XMLHttpRequest();
+    let xmlHttp = new XMLHttpRequest();
     xmlHttp.open("GET", g_url, false); // false for synchronous request
     xmlHttp.send(null);
     return xmlHttp.responseText;
@@ -71,73 +138,8 @@ const device = () => {
 };
 
 let page = window.location.pathname;
-let page_ss = window.location.href;
-let s_s_w = g_s_s_w('https://sleek-upsell.herokuapp.com/s_s_w/' + Shopify.shop);
 
-
-function createSUW() {
-    document.querySelector('body').insertAdjacentHTML('afterbegin', '<style>.suw{display: table; width: 300px; height: 500px; background: #ffffff; position: fixed; bottom: 0px; left: 0px; z-index: 3000000;}.suw_head, .suw_footer{display: table; width: 100%; height: 50px !important; background: #981B1B !important; color: #ffffff;}.suw_body{overflow-Y: auto; display: table; width: 100%; height: 400px;}.suw_head:before{content: "SETUP WIZARD"; display: table; position: absolute; top: 10px; left: 10px; z-index: 2000000; color: #FFFFFF; font-size: 12px;}.suw_head{cursor:move; cursor:-webkit-grab; cursor:-moz-grab; cursor:grab;}</style>');
-    document.querySelector('body').insertAdjacentHTML('afterbegin', '<div class="draggable suw">' +
-        '<div class="suw_head dragger"></div>' +
-        '<div class="suw_body"><select><option>2</option><option>2</option><option>2</option><option>2</option></select></div>' +
-        '<div class="suw_footer"></div>' +
-        '</div>');
-    document.querySelector('.suw_body').innerHTML = '<object style="overflow-Y: auto; display: table; width: 100%; height: 400px;" type="text/html" data="https://sleek-upsell.herokuapp.com/suw/' + Shopify.shop + '" ></object>';
-
-    var x, y, target = null;
-
-    document.addEventListener('mousedown', function (e) {
-        var clickedDragger = false;
-        for (var i = 0; e.path[i] !== document.body; i++) {
-            if (e.path[i].classList.contains('dragger')) {
-                clickedDragger = true;
-            }
-            else if (clickedDragger && e.path[i].classList.contains('draggable')) {
-                target = e.path[i];
-                target.classList.add('dragging');
-                x = e.clientX - target.style.left.slice(0, -2);
-                y = e.clientY - target.style.top.slice(0, -2);
-                return;
-            }
-        }
-    });
-
-    document.addEventListener('mouseup', function () {
-        if (target !== null) target.classList.remove('dragging');
-        target = null;
-    });
-
-    document.addEventListener('mousemove', function (e) {
-        if (target === null) return;
-        target.style.left = e.clientX - x + 'px';
-        target.style.top = e.clientY - y + 'px';
-        var pRect = target.parentElement.getBoundingClientRect();
-        var tgtRect = target.getBoundingClientRect();
-
-        if (tgtRect.left < pRect.left) target.style.left = 0;
-        if (tgtRect.top < pRect.top) target.style.top = 0;
-        if (tgtRect.right > pRect.right) target.style.left = pRect.width - tgtRect.width + 'px';
-        if (tgtRect.bottom > pRect.bottom) target.style.top = pRect.height - tgtRect.height + 'px';
-    });
-
-}
-
-if (sessionStorage.getItem('s_u_w') == 'y') { createSUW(); }
-else {
-    // console.log(sessionStorage.getItem('s_u_w'));
-    if (page_ss.includes(s_s_w)) {
-        sessionStorage.setItem('s_u_w', 'y');
-        createSUW();
-    }
-    // else {
-    //     // console.log(page_ss);
-    //     // console.log(s_s_w);
-    // }
-}
-
-
-
-var offers_url = 'https://sleek-upsell.herokuapp.com/offers/' + Shopify.shop;
+let offers_url = 'https://sleek-upsell.herokuapp.com/offers/' + Shopify.shop;
 
 let offers = g_d(offers_url);
 let cart = g_d("https://" + Shopify.shop + "/cart.js");
@@ -189,32 +191,36 @@ next_offer();
 // collection_based();
 
 function next_offer() {
-    if (document.querySelector('.sleek-upsell') != null) {
-        document.querySelector('.sleek-upsell').remove();
-    }
-    if (cart["item_count"] > 0) {
-        let i = 0;
-        let o_p = Object.keys(offers['offer']);
-        let o_arr = offers['offer'];
-        // console.log(o_p);
-        for (i = 0; i <= o_p.length - 1; i++) {
-            let pos = o_p[i];
-            let v = o_arr[pos];
-            if (check_offer(pos, v) == true) {
-                // console.log('Showing this offer now');
+    if (page_ss.includes(s_s_w) || sessionStorage.getItem('s_u_w') == 'y') {
+        return false;
+    } else {
+        if (document.querySelector('.sleek-upsell') != null) {
+            document.querySelector('.sleek-upsell').remove();
+        }
+        if (cart["item_count"] > 0) {
+            let i = 0;
+            let o_p = Object.keys(offers['offer']);
+            let o_arr = offers['offer'];
+            // console.log(o_p);
+            for (i = 0; i <= o_p.length - 1; i++) {
+                let pos = o_p[i];
+                let v = o_arr[pos];
+                if (check_offer(pos, v) == true) {
+                    // console.log('Showing this offer now');
+                    // console.log(i);
+                    // console.log(pos);
+                    // console.log(o_arr[pos]);
+                    display_offer(pos)
+                    break;
+                } else {
+                    // console.log('Not showing this offer');
+                    // console.log(pos);
+                }
+
                 // console.log(i);
                 // console.log(pos);
                 // console.log(o_arr[pos]);
-                display_offer(pos)
-                break;
-            } else {
-                // console.log('Not showing this offer');
-                // console.log(pos);
             }
-
-            // console.log(i);
-            // console.log(pos);
-            // console.log(o_arr[pos]);
         }
     }
 }
@@ -613,14 +619,14 @@ function populateFields(oid, pid) {
             document.querySelector('.o_h_' + pid).innerHTML = '';
 
             for (let i = 0; i < o_fields.length; i++) {
-                var fid = o_fields[i]['fid'];
-                var type = o_fields[i]['type'];
-                var name = o_fields[i]['name'];
-                var placeholder = o_fields[i]['placeholder'];
-                var price = o_fields[i]['price'];
-                var required = o_fields[i]['required'];
-                var el_type = '';
-                var m_c = choices.filter(e => e.fid == fid);
+                let fid = o_fields[i]['fid'];
+                let type = o_fields[i]['type'];
+                let name = o_fields[i]['name'];
+                let placeholder = o_fields[i]['placeholder'];
+                let price = o_fields[i]['price'];
+                let required = o_fields[i]['required'];
+                let el_type = '';
+                let m_c = choices.filter(e => e.fid == fid);
 
                 if (type == "select") {
                     document.querySelector('.o_h_' + pid).insertAdjacentHTML('beforeend',
@@ -635,10 +641,10 @@ function populateFields(oid, pid) {
                             document
                                 .querySelector('<option value="">' + placeholder + '</option>'));
 
-                    // var value_arr = value.split(',');
+                    // let value_arr = value.split(',');
                     for (let key = 0; key < m_c.length; key++) {
                         let c_v = m_c[key]['value'];
-                        var c_p = m_c[key]['price'];
+                        let c_p = m_c[key]['price'];
                         document
                             .querySelector('.sleek_fields_' + fid + '')
                             .insertAdjacentHTML('beforeend',
@@ -792,9 +798,9 @@ function brgxczvy(oid, pid, vid, quantity, price, action, type) {
 
     // console.log(s);
 
-    var http = new XMLHttpRequest();
-    var url = 'https://sleek-upsell.herokuapp.com/brgxczvy';
-    var params = 'stat_id=""&date=' + Math.floor(Date.now() / 1000) + '&shop=' + Shopify.shop + '&offer=' + oid + '&product=' + pid + '&variant=' + vid + '&quantity=' + quantity + '&ip=""&country=""&type=' + type + '&action=' + action + '&page=' + page + '&device=' + device() + '&browser=' + user_browser() + '&citems=' + JSON.stringify(citems) + '&price=' + price;
+    let http = new XMLHttpRequest();
+    let url = 'https://sleek-upsell.herokuapp.com/brgxczvy';
+    let params = 'stat_id=""&date=' + Math.floor(Date.now() / 1000) + '&shop=' + Shopify.shop + '&offer=' + oid + '&product=' + pid + '&variant=' + vid + '&quantity=' + quantity + '&ip=""&country=""&type=' + type + '&action=' + action + '&page=' + page + '&device=' + device() + '&browser=' + user_browser() + '&citems=' + JSON.stringify(citems) + '&price=' + price;
     http.open('POST', url, true);
 
     //Send the proper header information along with the request
