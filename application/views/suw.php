@@ -764,7 +764,7 @@
             if (document.querySelector(shop_sets['cart_location']) == null) {
                 shop_sets['cart_location'] = 'form[action="/cart"]';
             } else {
-                shop_sets['cart_location'] = $(things[Math.floor(Math.random() * things.length)]);
+                shop_sets['cart_location'] = $(things[Math.floor(Math.random() * things.length)]).context;
             }
             console.log(shop_sets['cart_location']);
             changePos();
@@ -775,7 +775,7 @@
             if (document.querySelector(shop_sets['cart_location']) == null) {
                 shop_sets['cart_location'] = 'form[action="/cart"]';
             } else {
-                shop_sets['cart_location'] = $(things[Math.floor(Math.random() * things.length)]);
+                shop_sets['cart_location'] = $(things[Math.floor(Math.random() * things.length)]).context;
             }
             console.log(shop_sets['cart_location']);
             changePos();
@@ -787,7 +787,7 @@
             if (document.querySelector(shop_sets['drawer_location']) == null) {
                 shop_sets['drawer_location'] = 'form[action="/cart/add"]';
             } else {
-                shop_sets['drawer_location'] = $(things[Math.floor(Math.random() * things.length)]);
+                shop_sets['drawer_location'] = $(things[Math.floor(Math.random() * things.length)]).context;
             }
             console.log(shop_sets['cart_location']);
             changePos();
@@ -798,14 +798,14 @@
             if (document.querySelector(shop_sets['drawer_location']) == null) {
                 shop_sets['drawer_location'] = 'form[action="/cart/add"]';
             } else {
-                shop_sets['drawer_location'] = $(things[Math.floor(Math.random() * things.length)]);
+                shop_sets['drawer_location'] = $(things[Math.floor(Math.random() * things.length)]).context;
             }
             console.log(shop_sets['cart_location']);
             changePos();
             $('input[name="cart_dom"]').val(shop_sets['drawer_location']);
         });
     }
-    
+
     changePos();
 
     $('.whats').click(function() {
