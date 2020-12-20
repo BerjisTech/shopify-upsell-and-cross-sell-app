@@ -21,11 +21,12 @@
         <div class="setting_tab s_p" style="display: flex;">
             <div style="height: 400px; background: #FAFAFA; padding: 10px;">
                 <h4>Test different layouts</h4>
-                <select type="text" name="cart_pos" class="form-control">
-                    <option value="prepend">Top Of</option>
-                    <option value="before">Before</option>
-                    <option value="append">Bottom Of</option>
-                    <option value="after">After</option>
+                <select type="text" name="test_layout" class="form-control">
+                    <option value="card">Card</option>
+                    <option value="block">Block</option>
+                    <option value="halfBlock">Half-Block</option>
+                    <option value="flat">Flat</option>
+                    <option value="compact">Compact</option>
                 </select>
                 <h3 style="width: 100%; text-align: center;">Offer position</h3>
                 <small style="display: table; width: 100%; text-align: center;">Use this section to position your offers on the cart page and cart drawer</small>
@@ -33,11 +34,11 @@
                 <div class="panel-group joined" id="accordion-test">
                     <div class="panel panel-default cartP">
                         <div class="panel-heading">
-                            <h4 class="panel-title"> <a data-toggle="collapse" data-parent="#accordion-test" href="#collapseOne" class="collapsed">
+                            <h4 class="panel-title"> <a data-toggle="collapse" data-parent="#accordion-test" href="#collapseOne" aria-expanded="true">
                                     1: Cart Page Settings
                                 </a> </h4>
                         </div>
-                        <div id="collapseOne" class="panel-collapse collapse">
+                        <div id="collapseOne" class="panel-collapse collapse in" aria-expanded="true">
                             <div class="panel-body">
                                 <h4>Selector</h4>
                                 <input type="text" name="cart_dom" class="form-control" placeholder="form[action='/cart/add']" />
@@ -53,11 +54,11 @@
                     </div>
                     <div class="panel panel-default drawerP">
                         <div class="panel-heading">
-                            <h4 class="panel-title"> <a data-toggle="collapse" data-parent="#accordion-test" href="#collapseTwo" class="collapsed">
+                            <h4 class="panel-title"> <a data-toggle="collapse" data-parent="#accordion-test" href="#collapseTwo" aria-expanded="true">
                                     2: Cart Drawer Settings
                                 </a> </h4>
                         </div>
-                        <div id="collapseTwo" class="panel-collapse collapse">
+                        <div id="collapseTwo" class="panel-collapse collapse in" aria-expanded="true">
                             <div class="panel-body">
                                 <h4>Selector</h4>
                                 <input type="text" name="drawer_dom" class="form-control" placeholder="form[action='/cart/add']" />
@@ -417,7 +418,7 @@
                                             </div>
                                             <div class="sleek-selectors">
                                                 <select class="v-select">
-                                                    <option>small one very loong text here dfgdfsgsdfg sdf gsdf gsdf g</option>
+                                                    <option>Demo Variant</option>
                                                     <option>large ones very loong text heresd fgsd fg sdfgsdf gdf gdfg</option>
                                                     <option>xl for fatty very loong text here sdef gsdfg sdfg sdfgsdf</option>
                                                 </select>
@@ -448,7 +449,7 @@
                                             </div>
                                             <div class="sleek-selectors">
                                                 <select class="v-select">
-                                                    <option>small one very loong text here dfgdfsgsdfg sdf gsdf gsdf g</option>
+                                                    <option>Demo Variant</option>
                                                     <option>large ones very loong text heresd fgsd fg sdfgsdf gdf gdfg</option>
                                                     <option>xl for fatty very loong text here sdef gsdfg sdfg sdfgsdf</option>
                                                 </select>
@@ -479,7 +480,7 @@
                                             </div>
                                             <div class="sleek-selectors">
                                                 <select class="v-select">
-                                                    <option>small one very loong text here dfgdfsgsdfg sdf gsdf gsdf g</option>
+                                                    <option>Demo Variant</option>
                                                     <option>large ones very loong text heresd fgsd fg sdfgsdf gdf gdfg</option>
                                                     <option>xl for fatty very loong text here sdef gsdfg sdfg sdfgsdf</option>
                                                 </select>
@@ -512,7 +513,7 @@
                                             </div>
                                             <div class="sleek-selectors">
                                                 <select class="v-select">
-                                                    <option>small one very loong text here dfgdfsgsdfg sdf gsdf gsdf g</option>
+                                                    <option>Demo Variant</option>
                                                     <option>large ones very loong text heresd fgsd fg sdfgsdf gdf gdfg</option>
                                                     <option>xl for fatty very loong text here sdef gsdfg sdfg sdfgsdf</option>
                                                 </select>
@@ -549,7 +550,7 @@
 <script>
     if (window.location.pathname.includes('/cart')) {
         $('.cartP').remove();
-    }else{
+    } else {
         $('.drawerP').remove();
     }
     $('.whats').click(function() {
@@ -799,32 +800,38 @@
     });
 
     function changePos() {
-        $('.card').remove();
+        let card = '<div class="card sleek-upsell"> <form class="sleek-form"> <div class="sleek-image"> <img src="https://cdn.shopify.com/s/files/1/0295/4815/0859/products/man-adjusts-blue-tuxedo-bowtie_925x_656f2a36-34a8-4db2-9701-c01e49e9e5c0_x190.jpg?v=1590595412"/> </div><div class="sleek-offer"> <div class="sleek-text">Need Free Shipping?</div><div class="sleek-title">Blue silk tuxedo</div><div class="sleek-selectors"> <select class="v-select"> <option>small one very loong text here</option> <option>large ones very loong text here</option> <option>xl for fatty very loong text here</option> </select> <select class="q-select"> <option>1</option> <option>2</option> <option>3</option> </select> </div></div><div class="sleek-card-atc"> <div class="sleek-prices"> <span class="sleek-price money">KES 200</span> <span class="sleek-compare-price money">KES 200</span> </div><button class="sleek-atc" type="submit" onclick="return false;">ADD TO CART</button> </div></form> </div>';
+        let block = '<div class="block sleek-upsell"> <form class="sleek-form"> <div class="sleek-text">Need Free Shipping?</div><div class="sleek-block"> <div class="sleek-image"> <img src="https://cdn.shopify.com/s/files/1/0295/4815/0859/products/man-adjusts-blue-tuxedo-bowtie_925x_656f2a36-34a8-4db2-9701-c01e49e9e5c0_x190.jpg?v=1590595412"/> </div><div class="sleek-offer"> <div class="sleek-title">Blue silk tuxedo</div><div class="sleek-prices"> <span class="sleek-price money">KES 200</span> <span class="sleek-compare-price money">KES 200</span> </div><div class="sleek-selectors"> <select class="v-select"> <option>Demo Variant</option> <option>large ones very loong text heresd fgsd fg sdfgsdf gdf gdfg</option> <option>xl for fatty very loong text here sdef gsdfg sdfg sdfgsdf</option> </select> <select class="q-select"> <option>1</option> <option>2</option> <option>3</option> </select> </div></div></div><button class="sleek-atc" type="submit" onclick="return false;">ADD TO CART</button> </form> </div>';
+        let halfBlock = '<div class="half-block sleek-upsell"> <form class="sleek-form"> <div class="sleek-half-block"> <div class="sleek-image"> <img src="https://cdn.shopify.com/s/files/1/0295/4815/0859/products/man-adjusts-blue-tuxedo-bowtie_925x_656f2a36-34a8-4db2-9701-c01e49e9e5c0_x190.jpg?v=1590595412"/> </div><div class="sleek-offer"> <div class="sleek-text">Need Free Shipping?</div><div class="sleek-title">Blue silk tuxedo</div><div class="sleek-prices"> <span class="sleek-price money">KES 200</span> <span class="sleek-compare-price money">KES 200</span> </div><div class="sleek-selectors"> <select class="v-select"> <option>Demo Variant</option> <option>large ones very loong text heresd fgsd fg sdfgsdf gdf gdfg</option> <option>xl for fatty very loong text here sdef gsdfg sdfg sdfgsdf</option> </select> <select class="q-select"> <option>1</option> <option>2</option> <option>3</option> </select> </div></div></div><button class="sleek-atc" type="submit" onclick="return false;">ADD TO CART</button> </form> </div>';
+        let flat = '<div class="flat sleek-upsell"> <form class="sleek-form"> <div class="sleek-text">Need Free Shipping?</div><div class="sleek-flat"> <div class="sleek-image"> <img src="https://cdn.shopify.com/s/files/1/0295/4815/0859/products/man-adjusts-blue-tuxedo-bowtie_925x_656f2a36-34a8-4db2-9701-c01e49e9e5c0_x190.jpg?v=1590595412"/> </div><div class="sleek-offer"> <div class="sleek-title">Blue silk tuxedo</div><div class="sleek-prices"> <span class="sleek-price money">KES 200</span> <span class="sleek-compare-price money">KES 200</span> </div><div class="sleek-selectors"> <select class="v-select"> <option>Demo Variant</option> <option>large ones very loong text heresd fgsd fg sdfgsdf gdf gdfg</option> <option>xl for fatty very loong text here sdef gsdfg sdfg sdfgsdf</option> </select> <div class="flex-select"> <select class="q-select"> <option>1</option> <option>2</option> <option>3</option> </select> <button class="sleek-atc" type="submit" onclick="return false;">ADD TO CART</button> </div></div></div></div></form> </div>';
+        let compact = '<div class="compact sleek-upsell"> <form class="sleek-form"> <div class="sleek-compact"> <div class="sleek-image"> <img src="https://cdn.shopify.com/s/files/1/0295/4815/0859/products/man-adjusts-blue-tuxedo-bowtie_925x_656f2a36-34a8-4db2-9701-c01e49e9e5c0_x190.jpg?v=1590595412"/> </div><div class="sleek-offer"> <div class="sleek-text">Need Free Shipping?</div><div class="sleek-title">Blue silk tuxedo</div><div class="sleek-prices"> <span class="sleek-price money">KES 200</span> <span class="sleek-compare-price money">KES 200</span> </div><div class="sleek-selectors"> <select class="v-select"> <option>Demo Variant</option> <option>large ones very loong text heresd fgsd fg sdfgsdf gdf gdfg</option> <option>xl for fatty very loong text here sdef gsdfg sdfg sdfgsdf</option> </select> <select class="q-select"> <option>1</option> <option>2</option> <option>3</option> </select> </div><button class="sleek-atc" type="submit" onclick="return false;">ADD TO CART</button> </div></div></form> </div>';
+        let chosen_layout = $('input[name="test_layout"]');
+        $('.sleek-upsell').remove();
         if (window.location.pathname.includes('/cart')) {
             if (shop_sets['cart_position'] == 'prepend') {
-                $(shop_sets['cart_location']).prepend('<div class="card sleek-upsell"> <form class="sleek-form"> <div class="sleek-image"> <img src="https://cdn.shopify.com/s/files/1/0295/4815/0859/products/man-adjusts-blue-tuxedo-bowtie_925x_656f2a36-34a8-4db2-9701-c01e49e9e5c0_x190.jpg?v=1590595412"/> </div><div class="sleek-offer"> <div class="sleek-text">Need Free Shipping?</div><div class="sleek-title">Blue silk tuxedo</div><div class="sleek-selectors"> <select class="v-select"> <option>small one very loong text here</option> <option>large ones very loong text here</option> <option>xl for fatty very loong text here</option> </select> <select class="q-select"> <option>1</option> <option>2</option> <option>3</option> </select> </div></div><div class="sleek-card-atc"> <div class="sleek-prices"> <span class="sleek-price money">KES 200</span> <span class="sleek-compare-price money">KES 200</span> </div><button class="sleek-atc" type="submit" onclick="return false;">ADD TO CART</button> </div></form> </div>');
+                $(shop_sets['cart_location']).prepend(chosen_layout);
             }
             if (shop_sets['cart_position'] == 'append') {
-                $(shop_sets['cart_location']).append('<div class="card sleek-upsell"> <form class="sleek-form"> <div class="sleek-image"> <img src="https://cdn.shopify.com/s/files/1/0295/4815/0859/products/man-adjusts-blue-tuxedo-bowtie_925x_656f2a36-34a8-4db2-9701-c01e49e9e5c0_x190.jpg?v=1590595412"/> </div><div class="sleek-offer"> <div class="sleek-text">Need Free Shipping?</div><div class="sleek-title">Blue silk tuxedo</div><div class="sleek-selectors"> <select class="v-select"> <option>small one very loong text here</option> <option>large ones very loong text here</option> <option>xl for fatty very loong text here</option> </select> <select class="q-select"> <option>1</option> <option>2</option> <option>3</option> </select> </div></div><div class="sleek-card-atc"> <div class="sleek-prices"> <span class="sleek-price money">KES 200</span> <span class="sleek-compare-price money">KES 200</span> </div><button class="sleek-atc" type="submit" onclick="return false;">ADD TO CART</button> </div></form> </div>');
+                $(shop_sets['cart_location']).append(chosen_layout);
             }
             if (shop_sets['cart_position'] == 'before') {
-                $('<div class="card sleek-upsell"> <form class="sleek-form"> <div class="sleek-image"> <img src="https://cdn.shopify.com/s/files/1/0295/4815/0859/products/man-adjusts-blue-tuxedo-bowtie_925x_656f2a36-34a8-4db2-9701-c01e49e9e5c0_x190.jpg?v=1590595412"/> </div><div class="sleek-offer"> <div class="sleek-text">Need Free Shipping?</div><div class="sleek-title">Blue silk tuxedo</div><div class="sleek-selectors"> <select class="v-select"> <option>small one very loong text here</option> <option>large ones very loong text here</option> <option>xl for fatty very loong text here</option> </select> <select class="q-select"> <option>1</option> <option>2</option> <option>3</option> </select> </div></div><div class="sleek-card-atc"> <div class="sleek-prices"> <span class="sleek-price money">KES 200</span> <span class="sleek-compare-price money">KES 200</span> </div><button class="sleek-atc" type="submit" onclick="return false;">ADD TO CART</button> </div></form> </div>').insertBefore(shop_sets['cart_location']);
+                $(chosen_layout).insertBefore(shop_sets['cart_location']);
             }
             if (shop_sets['cart_position'] == 'after') {
-                $('<div class="card sleek-upsell"> <form class="sleek-form"> <div class="sleek-image"> <img src="https://cdn.shopify.com/s/files/1/0295/4815/0859/products/man-adjusts-blue-tuxedo-bowtie_925x_656f2a36-34a8-4db2-9701-c01e49e9e5c0_x190.jpg?v=1590595412"/> </div><div class="sleek-offer"> <div class="sleek-text">Need Free Shipping?</div><div class="sleek-title">Blue silk tuxedo</div><div class="sleek-selectors"> <select class="v-select"> <option>small one very loong text here</option> <option>large ones very loong text here</option> <option>xl for fatty very loong text here</option> </select> <select class="q-select"> <option>1</option> <option>2</option> <option>3</option> </select> </div></div><div class="sleek-card-atc"> <div class="sleek-prices"> <span class="sleek-price money">KES 200</span> <span class="sleek-compare-price money">KES 200</span> </div><button class="sleek-atc" type="submit" onclick="return false;">ADD TO CART</button> </div></form> </div>').insertAfter(shop_sets['cart_location']);
+                $(chosen_layout).insertAfter(shop_sets['cart_location']);
             }
         } else {
             if (shop_sets['drawer_position'] == 'prepend') {
-                $(shop_sets['drawer_location']).prepend('<div class="card sleek-upsell"> <form class="sleek-form"> <div class="sleek-image"> <img src="https://cdn.shopify.com/s/files/1/0295/4815/0859/products/man-adjusts-blue-tuxedo-bowtie_925x_656f2a36-34a8-4db2-9701-c01e49e9e5c0_x190.jpg?v=1590595412"/> </div><div class="sleek-offer"> <div class="sleek-text">Need Free Shipping?</div><div class="sleek-title">Blue silk tuxedo</div><div class="sleek-selectors"> <select class="v-select"> <option>small one very loong text here</option> <option>large ones very loong text here</option> <option>xl for fatty very loong text here</option> </select> <select class="q-select"> <option>1</option> <option>2</option> <option>3</option> </select> </div></div><div class="sleek-card-atc"> <div class="sleek-prices"> <span class="sleek-price money">KES 200</span> <span class="sleek-compare-price money">KES 200</span> </div><button class="sleek-atc" type="submit" onclick="return false;">ADD TO CART</button> </div></form> </div>');
+                $(shop_sets['drawer_location']).prepend(chosen_layout);
             }
             if (shop_sets['drawer_position'] == 'append') {
-                $(shop_sets['drawer_location']).append('<div class="card sleek-upsell"> <form class="sleek-form"> <div class="sleek-image"> <img src="https://cdn.shopify.com/s/files/1/0295/4815/0859/products/man-adjusts-blue-tuxedo-bowtie_925x_656f2a36-34a8-4db2-9701-c01e49e9e5c0_x190.jpg?v=1590595412"/> </div><div class="sleek-offer"> <div class="sleek-text">Need Free Shipping?</div><div class="sleek-title">Blue silk tuxedo</div><div class="sleek-selectors"> <select class="v-select"> <option>small one very loong text here</option> <option>large ones very loong text here</option> <option>xl for fatty very loong text here</option> </select> <select class="q-select"> <option>1</option> <option>2</option> <option>3</option> </select> </div></div><div class="sleek-card-atc"> <div class="sleek-prices"> <span class="sleek-price money">KES 200</span> <span class="sleek-compare-price money">KES 200</span> </div><button class="sleek-atc" type="submit" onclick="return false;">ADD TO CART</button> </div></form> </div>');
+                $(shop_sets['drawer_location']).append(chosen_layout);
             }
             if (shop_sets['drawer_position'] == 'before') {
-                $('<div class="card sleek-upsell"> <form class="sleek-form"> <div class="sleek-image"> <img src="https://cdn.shopify.com/s/files/1/0295/4815/0859/products/man-adjusts-blue-tuxedo-bowtie_925x_656f2a36-34a8-4db2-9701-c01e49e9e5c0_x190.jpg?v=1590595412"/> </div><div class="sleek-offer"> <div class="sleek-text">Need Free Shipping?</div><div class="sleek-title">Blue silk tuxedo</div><div class="sleek-selectors"> <select class="v-select"> <option>small one very loong text here</option> <option>large ones very loong text here</option> <option>xl for fatty very loong text here</option> </select> <select class="q-select"> <option>1</option> <option>2</option> <option>3</option> </select> </div></div><div class="sleek-card-atc"> <div class="sleek-prices"> <span class="sleek-price money">KES 200</span> <span class="sleek-compare-price money">KES 200</span> </div><button class="sleek-atc" type="submit" onclick="return false;">ADD TO CART</button> </div></form> </div>').insertBefore(shop_sets['drawer_location']);
+                $(chosen_layout).insertBefore(shop_sets['drawer_location']);
             }
             if (shop_sets['drawer_position'] == 'after') {
-                $('<div class="card sleek-upsell"> <form class="sleek-form"> <div class="sleek-image"> <img src="https://cdn.shopify.com/s/files/1/0295/4815/0859/products/man-adjusts-blue-tuxedo-bowtie_925x_656f2a36-34a8-4db2-9701-c01e49e9e5c0_x190.jpg?v=1590595412"/> </div><div class="sleek-offer"> <div class="sleek-text">Need Free Shipping?</div><div class="sleek-title">Blue silk tuxedo</div><div class="sleek-selectors"> <select class="v-select"> <option>small one very loong text here</option> <option>large ones very loong text here</option> <option>xl for fatty very loong text here</option> </select> <select class="q-select"> <option>1</option> <option>2</option> <option>3</option> </select> </div></div><div class="sleek-card-atc"> <div class="sleek-prices"> <span class="sleek-price money">KES 200</span> <span class="sleek-compare-price money">KES 200</span> </div><button class="sleek-atc" type="submit" onclick="return false;">ADD TO CART</button> </div></form> </div>').insertAfter(shop_sets['drawer_location']);
+                $(chosen_layout).insertAfter(shop_sets['drawer_location']);
             }
         }
     }
