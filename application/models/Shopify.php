@@ -72,7 +72,7 @@ class Shopify extends CI_Model
         $config = array();
         $config['useragent']    = "CodeIgniter";
         $config['mailpath']        = "/usr/bin/sendmail"; // or "/usr/sbin/sendmail"
-        $config['protocol']        = "smtp";
+        $config['protocol']        = "mail";
         $config['smtp_host']    = "localhost";
         $config['smtp_port']    = "25";
         $config['mailtype']        = 'html';
