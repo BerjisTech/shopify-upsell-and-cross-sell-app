@@ -763,12 +763,14 @@
         $('.drawerP').remove();
         $('.layout_previous').click(function() {
             shop_sets['cart_location'] = prevElement(shop_sets['cart_location']);
+            console.log('cl ' + shop_sets['cart_location']);
             changePos();
             $('input[name="cart_dom"]').val(shop_sets['cart_location']);
         });
 
         $('.layout_next').click(function() {
             shop_sets['cart_location'] = nextElement(shop_sets['cart_location']);
+            console.log('cl ' + shop_sets['cart_location']);
             changePos();
             $('input[name="cart_dom"]').val(shop_sets['cart_location']);
         });
@@ -776,13 +778,14 @@
         $('.cartP').remove();
         $('.layout_previous').click(function() {
             shop_sets['drawer_location'] = prevElement(shop_sets['drawer_location']);
+            console.log('dl ' + shop_sets['drawer_location']);
             changePos();
             $('input[name="cart_dom"]').val(shop_sets['drawer_location']);
         });
 
         $('.layout_next').click(function() {
             shop_sets['drawer_location'] = nextElement(shop_sets['drawer_location']);
-            console.log(shop_sets['cart_location']);
+            console.log('dl ' + shop_sets['drawer_location']);
             changePos();
             $('input[name="cart_dom"]').val(shop_sets['drawer_location']);
         });
@@ -807,7 +810,7 @@
             }
         }
         sessionStorage.setItem('elp', okElem);
-        console.log(okElem);
+        console.log('okelem ' + okElem);
         return okElem;
     }
 
@@ -819,7 +822,7 @@
             okElem = sessionStorage.getItem('elp');
         }
         sessionStorage.setItem('elp', okElem);
-        console.log(okElem);
+        console.log('okelem ' + okElem);
         return okElem;
     }
 
