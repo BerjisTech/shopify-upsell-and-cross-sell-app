@@ -802,11 +802,11 @@
             let ps = $(currElem).prev();
 
             if (fc != null) {
-                okElem = fc;
+                okElem = fc.nodeName;
             } else if (ns != null) {
-                okElem = ns;
+                okElem = ns.nodeName;
             } else {
-                okElem = pn;
+                okElem = pn.nodeName;
             }
         }
         sessionStorage.setItem('elp', okElem);
