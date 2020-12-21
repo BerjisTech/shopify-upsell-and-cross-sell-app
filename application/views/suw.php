@@ -814,7 +814,7 @@
     function prevElement(currElem) {
         let okElem = '';
         if (sessionStorage.getItem('elp') == null) {
-            okElem = 'form';
+            okElem = currElem;
         } else {
             okElem = sessionStorage.getItem('elp');
         }
