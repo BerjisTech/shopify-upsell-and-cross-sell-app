@@ -758,53 +758,71 @@
         };
     <?php endif; ?>
     let things = $('div');
+
     if (window.location.pathname.includes('/cart')) {
         $('.drawerP').remove();
         $('.layout_previous').click(function() {
-            if (document.querySelector(shop_sets['cart_location']) == null) {
-                shop_sets['cart_location'] = 'form[action="/cart"]';
-            } else {
-                shop_sets['cart_location'] = $(things[Math.floor(Math.random() * things.length)]);
-            }
-            console.log(shop_sets['cart_location']);
+            shop_sets['cart_location'] = prevElement(shop_sets['cart_location']);
             changePos();
             $('input[name="cart_dom"]').val(shop_sets['cart_location']);
         });
 
         $('.layout_next').click(function() {
-            if (document.querySelector(shop_sets['cart_location']) == null) {
-                shop_sets['cart_location'] = 'form[action="/cart"]';
-            } else {
-                shop_sets['cart_location'] = $(things[Math.floor(Math.random() * things.length)]);
-            }
-            console.log(shop_sets['cart_location']);
+            shop_sets['cart_location'] = nextElement(shop_sets['cart_location']);
             changePos();
             $('input[name="cart_dom"]').val(shop_sets['cart_location']);
         });
     } else {
         $('.cartP').remove();
         $('.layout_previous').click(function() {
-            if (document.querySelector(shop_sets['drawer_location']) == null) {
-                shop_sets['drawer_location'] = 'form[action="/cart/add"]';
-            } else {
-                shop_sets['drawer_location'] = $(things[Math.floor(Math.random() * things.length)]);
-            }
-            console.log(shop_sets['cart_location']);
+            shop_sets['drawer_location'] = prevElement(shop_sets['drawer_location']);
             changePos();
             $('input[name="cart_dom"]').val(shop_sets['drawer_location']);
         });
 
         $('.layout_next').click(function() {
-            if (document.querySelector(shop_sets['drawer_location']) == null) {
-                shop_sets['drawer_location'] = 'form[action="/cart/add"]';
-            } else {
-                shop_sets['drawer_location'] = $(things[Math.floor(Math.random() * things.length)]);
-            }
+            shop_sets['drawer_location'] = nextElement(shop_sets['drawer_location']);
             console.log(shop_sets['cart_location']);
             changePos();
             $('input[name="cart_dom"]').val(shop_sets['drawer_location']);
         });
     }
+
+    function nextElement(currElem) {
+        let okElem = '';
+        if (document.querySelector(currElem) == null) {
+            okElem = 'form';
+        } else {
+            let pn = document.querySelector(currElem).parentNode;
+            let fc = document.querySelector(currElem).firstChild;
+            let ns = document.querySelector(currElem).nextSibling;
+            let ps = document.querySelector(currElem).previousSibling;
+
+            if (fc != null) {
+                okElem = fc;
+            } else if (ns != null) {
+                okElem = ns;
+            } else {
+                okElem = pn;
+            }
+        }
+        sessionStorage.setItem('elp', okElem);
+        console.log(okElem);
+        return okElem;
+    }
+
+    function prevElement(currElem) {
+        let okElem = '';
+        if (sessionStorage.getItem('elp') == null) {
+            okElem = 'form';
+        } else {
+            okElem = sessionStorage.getItem('elp');
+        }
+        sessionStorage.setItem('elp', okElem);
+        console.log(okElem);
+        return okElem;
+    }
+
     changePos();
 
     $('.whats').click(function() {
