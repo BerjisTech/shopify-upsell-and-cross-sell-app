@@ -796,10 +796,10 @@
         if (document.querySelector(currElem) == null) {
             okElem = 'form';
         } else {
-            let pn = $(currElem).parent();
-            let fc = $(currElem).children(":first");
-            let ns = $(currElem).next();
-            let ps = $(currElem).prev();
+            let pn = document.querySelector(currElem).parentNode;
+            let fc = document.querySelector(currElem).firstChild;
+            let ns = document.querySelector(currElem).nextSibling;
+            let ps = document.querySelector(currElem).previousSibling;
 
             if (fc != null) {
                 okElem = fc.nodeName;
