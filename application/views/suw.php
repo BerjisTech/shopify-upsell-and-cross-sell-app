@@ -806,7 +806,7 @@
             } else if (ns != null) {
                 okElem = ns[0].nodeName + '.' + ns[0].className;
             } else {
-                okElem = pn[0].nodeName + '.' + pn[0].className;
+                okElem = pn.parent()[0].nodeName + '.' + pn.parent()[0].className;
             }
         }
         sessionStorage.setItem('elp', okElem);
