@@ -820,22 +820,64 @@
 
 
                 if ($(currElem).is(':parent') || fc != null) {
-                    if (fc[0].className == '' || fc[0].className == null) {
-                        okElem = fc[0].nodeName;
+                    if (fc.nodeName == '' ||
+                        fc.nodeName == null ||
+                        fc.nodeName == 'STYLE' ||
+                        fc.nodeName == 'SCRIPT' ||
+                        fc.nodeName == 'SVG' ||
+                        fc.className == 'draggable suw' ||
+                        fc.className == 'card sleek-upsell' ||
+                        fc.className == 'compact sleek-upsell' ||
+                        fc.className == 'half-block sleek-upsell' ||
+                        fc.className == 'block sleek-upsell' ||
+                        fc.className == 'flat sleek-upsell') {
+                        randomizeElem();
                     } else {
-                        okElem = fc[0].nodeName + '.' + fc[0].className.replace(' ', '.');
+                        if (fc[0].className == '' || fc[0].className == null) {
+                            okElem = fc[0].nodeName;
+                        } else {
+                            okElem = fc[0].nodeName + '.' + fc[0].className.replace(' ', '.');
+                        }
                     }
                 } else if (ns != null) {
-                    if (ns[0].className == '' || ns[0].className == null) {
-                        okElem = ns[0].nodeName;
+                    if (ns.nodeName == '' ||
+                        ns.nodeName == null ||
+                        ns.nodeName == 'STYLE' ||
+                        ns.nodeName == 'SCRIPT' ||
+                        ns.nodeName == 'SVG' ||
+                        ns.className == 'draggable suw' ||
+                        ns.className == 'card sleek-upsell' ||
+                        ns.className == 'compact sleek-upsell' ||
+                        ns.className == 'half-block sleek-upsell' ||
+                        ns.className == 'block sleek-upsell' ||
+                        ns.className == 'flat sleek-upsell') {
+                        randomizeElem();
                     } else {
-                        okElem = ns[0].nodeName + '.' + ns[0].className.replace(' ', '.');
+                        if (ns[0].className == '' || ns[0].className == null) {
+                            okElem = ns[0].nodeName;
+                        } else {
+                            okElem = ns[0].nodeName + '.' + ns[0].className.replace(' ', '.');
+                        }
                     }
                 } else {
-                    if (pn.parent()[0].className == '' || pn.parent()[0].className == null) {
-                        okElem = pn[0].nodeName;
+                    if (pn.nodeName == '' ||
+                        pn.nodeName == null ||
+                        pn.nodeName == 'STYLE' ||
+                        pn.nodeName == 'SCRIPT' ||
+                        pn.nodeName == 'SVG' ||
+                        pn.className == 'draggable suw' ||
+                        pn.className == 'card sleek-upsell' ||
+                        pn.className == 'compact sleek-upsell' ||
+                        pn.className == 'half-block sleek-upsell' ||
+                        pn.className == 'block sleek-upsell' ||
+                        pn.className == 'flat sleek-upsell') {
+                        randomizeElem();
                     } else {
-                        okElem = pn.parent()[0].nodeName + '.' + pn.parent()[0].className.replace(' ', '.');
+                        if (pn.parent()[0].className == '' || pn.parent()[0].className == null) {
+                            okElem = pn[0].nodeName;
+                        } else {
+                            okElem = pn.parent()[0].nodeName + '.' + pn.parent()[0].className.replace(' ', '.');
+                        }
                     }
 
                 }
@@ -855,16 +897,44 @@
 
         try {
             if (ps != null) {
-                if (ps[0].className == '' || ps[0].className == null) {
-                    okElem = ps[0].nodeName;
+                if (ps.nodeName == '' ||
+                    ps.nodeName == null ||
+                    ps.nodeName == 'STYLE' ||
+                    ps.nodeName == 'SCRIPT' ||
+                    ps.nodeName == 'SVG' ||
+                    ps.className == 'draggable suw' ||
+                    ps.className == 'card sleek-upsell' ||
+                    ps.className == 'compact sleek-upsell' ||
+                    ps.className == 'half-block sleek-upsell' ||
+                    ps.className == 'block sleek-upsell' ||
+                    ps.className == 'flat sleek-upsell') {
+                    randomizeElem();
                 } else {
-                    okElem = ps[0].nodeName + '.' + ps[0].className.replace(' ', '.');
+                    if (ps[0].className == '' || ps[0].className == null) {
+                        okElem = ps[0].nodeName;
+                    } else {
+                        okElem = ps[0].nodeName + '.' + ps[0].className.replace(' ', '.');
+                    }
                 }
             } else {
-                if (pn[0].className == '' || pn[0].className == null) {
-                    okElem = pn[0].nodeName;
+                if (pn.nodeName == '' ||
+                    pn.nodeName == null ||
+                    pn.nodeName == 'STYLE' ||
+                    pn.nodeName == 'SCRIPT' ||
+                    pn.nodeName == 'SVG' ||
+                    pn.className == 'draggable suw' ||
+                    pn.className == 'card sleek-upsell' ||
+                    pn.className == 'compact sleek-upsell' ||
+                    pn.className == 'half-block sleek-upsell' ||
+                    pn.className == 'block sleek-upsell' ||
+                    pn.className == 'flat sleek-upsell') {
+                    randomizeElem();
                 } else {
-                    okElem = pn[0].nodeName + '.' + pn[0].className.replace(' ', '.');
+                    if (pn[0].className == '' || pn[0].className == null) {
+                        okElem = pn[0].nodeName;
+                    } else {
+                        okElem = pn[0].nodeName + '.' + pn[0].className.replace(' ', '.');
+                    }
                 }
 
             }
@@ -885,10 +955,10 @@
             randElem.nodeName == 'SCRIPT' ||
             randElem.nodeName == 'SVG' ||
             randElem.className == 'draggable suw' ||
-            randElem.className == 'card sleek-upsell'||
-            randElem.className == 'compact sleek-upsell'||
-            randElem.className == 'half-block sleek-upsell'||
-            randElem.className == 'block sleek-upsell'||
+            randElem.className == 'card sleek-upsell' ||
+            randElem.className == 'compact sleek-upsell' ||
+            randElem.className == 'half-block sleek-upsell' ||
+            randElem.className == 'block sleek-upsell' ||
             randElem.className == 'flat sleek-upsell') {
             randomizeElem();
         } else {
