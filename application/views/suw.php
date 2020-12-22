@@ -841,12 +841,7 @@
                 }
             }
         } catch (error) {
-            let randElem = $('body').children()[Math.floor(Math.random(0, $('body').children().length) * 10)];
-            if (randElem.className == '' || randElem.className == null) {
-                okElem = randElem.nodeName;
-            } else {
-                okElem = randElem.nodeName + '.' + randElem.className.replace(' ', '.');
-            }
+            okElem = randomizeElem();
         }
 
         console.log('okelem ' + okElem);
@@ -874,12 +869,7 @@
 
             }
         } catch (error) {
-            let randElem = $('body').children()[Math.floor(Math.random(0, $('body').children().length) * 10)];
-            if (randElem.className == '' || randElem.className == null) {
-                okElem = randElem.nodeName;
-            } else {
-                okElem = randElem.nodeName + '.' + randElem.className.replace(' ', '.');
-            }
+            okElem = randomizeElem();
         }
 
         console.log('okelem ' + okElem);
@@ -889,10 +879,14 @@
     function randomizeElem() {
         let okElem = '';
         let randElem = $('body').children()[Math.floor(Math.random(0, $('body').children().length) * 10)];
-        if (randElem.className == '' || randElem.className == null) {
-            okElem = randElem.nodeName;
+        if (randElem.nodeName == '' || randElem.nodeName == null || randElem.nodeName == 'STYLE' || randElem.nodeName == 'SCRIPT' || randElem.nodeName == 'SVG') {
+            randomizeElem();
         } else {
-            okElem = randElem.nodeName + '.' + randElem.className.replace(' ', '.');
+            if (randElem.className == '' || randElem.className == null) {
+                okElem = randElem.nodeName;
+            } else {
+                okElem = randElem.nodeName + '.' + randElem.className.replace(' ', '.');
+            }
         }
         console.log('okelem ' + okElem);
         return okElem;
