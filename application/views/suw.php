@@ -32,9 +32,10 @@
                 <small style="display: table; width: 100%; text-align: center;">Use this section to position your offers on the cart page and cart drawer</small>
                 <hr />
                 <div class="input-group">
-                    <span class="layout_previous input-group-addon btn btn-primary entypo-left"></span>
+                    <span class="layout_previous input-group-addon btn btn-danger entypo-left"></span>
                     <input type="text" class="form-control" value="Change position" disabled style="cursor: none; background: #ffffff !important; border: none !important; color: #000000 !important" />
-                    <span class="layout_next input-group-addon btn btn-primary entypo-right"></span>
+                    <span class="layout_next input-group-addon btn btn-danger entypo-right"></span>
+                    <span class="randomizeElem input-group-addon btn btn-success entypo-shuffle"></span>
                 </div>
                 <br />
                 <div class="panel-group joined" id="accordion-test">
@@ -774,20 +775,34 @@
             changePos();
             $('input[name="cart_dom"]').val(shop_sets['cart_location']);
         });
+
+        $('.randomizeElem').click(function() {
+            shop_sets['cart_location'] = randomizeElem();
+            console.log('dl ' + shop_sets['cart_location']);
+            changePos();
+            $('input[name="cart_dom"]').val(shop_sets['cart_location']);
+        });
     } else {
         $('.cartP').remove();
         $('.layout_previous').click(function() {
             shop_sets['drawer_location'] = prevElement(shop_sets['drawer_location']);
             console.log('dl ' + shop_sets['drawer_location']);
             changePos();
-            $('input[name="cart_dom"]').val(shop_sets['drawer_location']);
+            $('input[name="drawer_dom"]').val(shop_sets['drawer_location']);
         });
 
         $('.layout_next').click(function() {
             shop_sets['drawer_location'] = nextElement(shop_sets['drawer_location']);
             console.log('dl ' + shop_sets['drawer_location']);
             changePos();
-            $('input[name="cart_dom"]').val(shop_sets['drawer_location']);
+            $('input[name="drawer_dom"]').val(shop_sets['drawer_location']);
+        });
+
+        $('.randomizeElem').click(function() {
+            shop_sets['drawer_location'] = randomizeElem();
+            console.log('dl ' + shop_sets['drawer_location']);
+            changePos();
+            $('input[name="drawer_dom"]').val(shop_sets['drawer_location']);
         });
     }
 
@@ -867,6 +882,18 @@
             }
         }
 
+        console.log('okelem ' + okElem);
+        return okElem;
+    }
+
+    function randomizeElem() {
+        let okElem = '';
+        let randElem = $('body').children()[Math.floor(Math.random(0, $('body').children().length) * 10)];
+        if (randElem.className == '' || randElem.className == null) {
+            okElem = randElem.nodeName;
+        } else {
+            okElem = randElem.nodeName + '.' + randElem.className.replace(' ', '.');
+        }
         console.log('okelem ' + okElem);
         return okElem;
     }
