@@ -844,9 +844,6 @@
             okElem = randomizeElem();
         }
 
-        if (okElem == '' || okElem == null || okElem.includes('hidden') || okElem.includes('STYLE') || okElem.includes('SCRIPT') || okElem.includes('SVG') || okElem.includes('draggable.suw') || okElem.includes('card.sleek-upsell') || okElem.includes('compact.sleek-upsell') || okElem.includes('half-block.sleek-upsell') || okElem.includes('block.sleek-upsell') || okElem.includes('flat.sleek-upsell')) {
-            okElem = randomizeElem();
-        }
         console.log('okelem ' + okElem);
         return okElem;
     }
@@ -875,10 +872,6 @@
             okElem = randomizeElem();
         }
 
-
-        if (okElem == '' || okElem == null || okElem.includes('hidden') || okElem.includes('STYLE') || okElem.includes('SCRIPT') || okElem.includes('SVG') || okElem.includes('draggable.suw') || okElem.includes('card.sleek-upsell') || okElem.includes('compact.sleek-upsell') || okElem.includes('half-block.sleek-upsell') || okElem.includes('block.sleek-upsell') || okElem.includes('flat.sleek-upsell')) {
-            okElem = randomizeElem();
-        }
         console.log('okelem ' + okElem);
         return okElem;
     }
@@ -886,7 +879,7 @@
     function randomizeElem() {
         let okElem = '';
         let randElem = $('body').children()[Math.floor(Math.random(0, $('body').children().length) * 10)];
-        if (randElem.nodeName == '' || randElem.nodeName == null || randElem.nodeName == 'STYLE' || randElem.nodeName == 'SCRIPT' || randElem.nodeName == 'SVG' || randElem.className == 'draggable suw' || randElem.className == 'card sleek-upsell' || randElem.className == 'compact sleek-upsell' || randElem.className == 'half-block sleek-upsell' || randElem.className == 'block sleek-upsell' || randElem.className == 'flat sleek-upsell') {
+        if (randElem.nodeName == '' || randElem.nodeName == null || randElem.nodeName == 'STYLE' || randElem.nodeName == 'SCRIPT' || randElem.nodeName == 'SVG' || randElem.className == 'draggable suw' || randElem.className == 'card sleek-upsell' || randElem.className == 'compact sleek-upsell' || randElem.className == 'half-block sleek-upsell' || randElem.className == 'block sleek-upsell' || randElem.className == 'flat sleek-upsell' || randElem.className.includes('hidden')) {
             randomizeElem();
         } else {
             if (randElem.className == '' || randElem.className == null) {
@@ -895,9 +888,7 @@
                 okElem = randElem.nodeName + '.' + randElem.className.replace(' ', '.');
             }
         }
-        if (okElem == '' || okElem == null || okElem.includes('hidden') || okElem.includes('STYLE') || okElem.includes('SCRIPT') || okElem.includes('SVG') || okElem.includes('draggable.suw') || okElem.includes('card.sleek-upsell') || okElem.includes('compact.sleek-upsell') || okElem.includes('half-block.sleek-upsell') || okElem.includes('block.sleek-upsell') || okElem.includes('flat.sleek-upsell')) {
-            okElem = randomizeElem();
-        }
+
         console.log('randElem ' + okElem);
         return okElem;
     }
