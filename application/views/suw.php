@@ -895,6 +895,9 @@
                 okElem = randElem.nodeName + '.' + randElem.className.replace(' ', '.');
             }
         }
+        if (okElem == '' || okElem == null || okElem.includes('STYLE') || okElem.includes('SCRIPT') || okElem.includes('SVG') || okElem.includes('draggable.suw') || okElem.includes('card.sleek-upsell') || okElem.includes('compact.sleek-upsell') || okElem.includes('half-block.sleek-upsell') || okElem.includes('block.sleek-upsell') || okElem.includes('flat.sleek-upsell')) {
+            okElem = randomizeElem();
+        }
         console.log('randElem ' + okElem);
         return okElem;
     }
