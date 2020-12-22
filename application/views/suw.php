@@ -839,6 +839,9 @@
                     }
 
                 }
+                if (okElem.includes('sleek-upsell')) {
+                    okElem = randomizeElem();
+                }
             }
         } catch (error) {
             console.log(error);
@@ -868,6 +871,9 @@
                     okElem = pn[0].nodeName + '.' + pn[0].className.replace(' ', '.');
                 }
 
+            }
+            if (okElem.includes('sleek-upsell')) {
+                okElem = randomizeElem();
             }
         } catch (error) {
             console.log(error);
