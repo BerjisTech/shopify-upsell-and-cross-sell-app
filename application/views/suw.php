@@ -816,7 +816,7 @@
                     okElem = ns[0].nodeName;
                 }
             } else {
-                if (pn[0].className != '' || pn[0].className != null) {
+                if (pn.parent()[0].className != '' || pn.parent()[0].className != null) {
                     okElem = pn.parent()[0].nodeName + '.' + pn.parent()[0].className.replace(' ', '.');
                 } else {
                     okElem = pn[0].nodeName;
