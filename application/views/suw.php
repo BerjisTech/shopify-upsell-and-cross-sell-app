@@ -804,22 +804,22 @@
 
 
             if (fc != null) {
-                if (fc[0].className != '' || fc[0].className != null) {
-                    okElem = fc[0].nodeName + '.' + fc[0].className.replace(' ', '.');
-                } else {
+                if (fc[0].className == '' || fc[0].className == null) {
                     okElem = fc[0].nodeName;
+                } else {
+                    okElem = fc[0].nodeName + '.' + fc[0].className.replace(' ', '.');
                 }
             } else if (ns != null) {
-                if (ns[0].className != '' || ns[0].className != null) {
-                    okElem = ns[0].nodeName + '.' + ns[0].className.replace(' ', '.');
-                } else {
+                if (ns[0].className == '' || ns[0].className == null) {
                     okElem = ns[0].nodeName;
+                } else {
+                    okElem = ns[0].nodeName + '.' + ns[0].className.replace(' ', '.');
                 }
             } else {
-                if (pn.parent()[0].className != '' || pn.parent()[0].className != null) {
-                    okElem = pn.parent()[0].nodeName + '.' + pn.parent()[0].className.replace(' ', '.');
-                } else {
+                if (pn.parent()[0].className == '' || pn.parent()[0].className == null) {
                     okElem = pn[0].nodeName;
+                } else {
+                    okElem = pn.parent()[0].nodeName + '.' + pn.parent()[0].className.replace(' ', '.');
                 }
 
             }
