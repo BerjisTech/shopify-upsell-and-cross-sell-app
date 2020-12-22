@@ -825,6 +825,11 @@
             }
         }
 
+        if (okElem == null) {
+            let randElem = $('body').children()[Math.floor(Math.random(0, $('body').children().length) * 10)];
+            okElem = randElem + '.'.randElem.className.replace(' ', '.');
+        }
+
         console.log('okelem ' + okElem);
         return okElem;
     }
@@ -846,6 +851,11 @@
                 okElem = pn[0].nodeName + '.' + pn[0].className.replace(' ', '.');
             }
 
+        }
+
+        if (okElem == null) {
+            let randElem = $('body').children()[Math.floor(Math.random(0, $('body').children().length) * 10)];
+            okElem = randElem + '.'.randElem.className.replace(' ', '.');
         }
 
         console.log('okelem ' + okElem);
