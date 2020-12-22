@@ -21,7 +21,7 @@
         <div class="setting_tab s_p" style="display: flex;">
             <div style="height: 400px; background: #FAFAFA; padding: 10px;">
                 <h4>Test different layouts</h4>
-                <select style="appearance: menulist;"  type="text" name="test_layout" class="form-control">
+                <select style="appearance: menulist;" type="text" name="test_layout" class="form-control">
                     <option value="card">Card</option>
                     <option value="block">Block</option>
                     <option value="halfBlock">Half-Block</option>
@@ -49,7 +49,7 @@
                                 <h4>Selector</h4>
                                 <input type="text" name="cart_dom" class="form-control" placeholder="form[action='/cart/add']" />
                                 <h4>Position relative to selector</h4>
-                                <select style="appearance: menulist;"  type="text" name="cart_pos" class="form-control">
+                                <select style="appearance: menulist;" type="text" name="cart_pos" class="form-control">
                                     <option value="prepend">Top Of</option>
                                     <option value="before">Before</option>
                                     <option value="append">Bottom Of</option>
@@ -69,7 +69,7 @@
                                 <h4>Selector</h4>
                                 <input type="text" name="drawer_dom" class="form-control" placeholder="form[action='/cart/add']" />
                                 <h4>Position relative to selector</h4>
-                                <select style="appearance: menulist;"  type="text" name="drawer_pos" class="form-control">
+                                <select style="appearance: menulist;" type="text" name="drawer_pos" class="form-control">
                                     <option value="prepend">Top Of</option>
                                     <option value="before">Before</option>
                                     <option value="append">Bottom Of</option>
@@ -140,7 +140,7 @@
                                 </div>
                                 <div style="display: table; width: 100%; margin-bottom: 10px;">
                                     <h4>Border Style <small>Set the border size to see border</small></h4>
-                                    <select style="appearance: menulist;"  class="offer_border form-control">
+                                    <select style="appearance: menulist;" class="offer_border form-control">
                                         <option value="none">No Border</option>
                                         <option value="solid">Standard</option>
                                         <option value="dotted">Dotted</option>
@@ -216,7 +216,7 @@
                                 </div>
                                 <div style="display: table; width: 100%; margin-bottom: 10px;">
                                     <h4>Border Style <small>Set the border size to see border</small></h4>
-                                    <select style="appearance: menulist;"  class="button_border form-control">
+                                    <select style="appearance: menulist;" class="button_border form-control">
                                         <option value="none">No Border</option>
                                         <option value="solid">Standard</option>
                                         <option value="dotted">Dotted</option>
@@ -258,7 +258,7 @@
                                 </div>
                                 <div style="display: table; width: 100%; margin-bottom: 10px;">
                                     <h4>Border Style <small>Set the border size to see border</small></h4>
-                                    <select style="appearance: menulist;"  class="image_border form-control">
+                                    <select style="appearance: menulist;" class="image_border form-control">
                                         <option value="none">No Border</option>
                                         <option value="solid">Standard</option>
                                         <option value="dotted">Dotted</option>
@@ -387,12 +387,12 @@
                                         <div class="sleek-text">Need Free Shipping?</div>
                                         <div class="sleek-title">Blue silk tuxedo</div>
                                         <div class="sleek-selectors">
-                                            <select style="appearance: menulist;"  class="v-select">
+                                            <select style="appearance: menulist;" class="v-select">
                                                 <option>Demo Variant</option>
                                                 <option>Demo Variant</option>
                                                 <option>Demo Variant</option>
                                             </select>
-                                            <select style="appearance: menulist;"  class="q-select">
+                                            <select style="appearance: menulist;" class="q-select">
                                                 <option>1</option>
                                                 <option>2</option>
                                                 <option>3</option>
@@ -423,12 +423,12 @@
                                                 <span class="sleek-compare-price money">KES 200</span>
                                             </div>
                                             <div class="sleek-selectors">
-                                                <select style="appearance: menulist;"  class="v-select">
+                                                <select style="appearance: menulist;" class="v-select">
                                                     <option>Demo Variant</option>
                                                     <option>Demo Variant</option>
                                                     <option>Demo Variant</option>
                                                 </select>
-                                                <select style="appearance: menulist;"  class="q-select">
+                                                <select style="appearance: menulist;" class="q-select">
                                                     <option>1</option>
                                                     <option>2</option>
                                                     <option>3</option>
@@ -454,12 +454,12 @@
                                                 <span class="sleek-compare-price money">KES 200</span>
                                             </div>
                                             <div class="sleek-selectors">
-                                                <select style="appearance: menulist;"  class="v-select">
+                                                <select style="appearance: menulist;" class="v-select">
                                                     <option>Demo Variant</option>
                                                     <option>Demo Variant</option>
                                                     <option>Demo Variant</option>
                                                 </select>
-                                                <select style="appearance: menulist;"  class="q-select">
+                                                <select style="appearance: menulist;" class="q-select">
                                                     <option>1</option>
                                                     <option>2</option>
                                                     <option>3</option>
@@ -485,13 +485,13 @@
                                                 <span class="sleek-compare-price money">KES 200</span>
                                             </div>
                                             <div class="sleek-selectors">
-                                                <select style="appearance: menulist;"  class="v-select">
+                                                <select style="appearance: menulist;" class="v-select">
                                                     <option>Demo Variant</option>
                                                     <option>Demo Variant</option>
                                                     <option>Demo Variant</option>
                                                 </select>
                                                 <div class="flex-select">
-                                                    <select style="appearance: menulist;"  class="q-select">
+                                                    <select style="appearance: menulist;" class="q-select">
                                                         <option>1</option>
                                                         <option>2</option>
                                                         <option>3</option>
@@ -518,12 +518,12 @@
                                                 <span class="sleek-compare-price money">KES 200</span>
                                             </div>
                                             <div class="sleek-selectors">
-                                                <select style="appearance: menulist;"  class="v-select">
+                                                <select style="appearance: menulist;" class="v-select">
                                                     <option>Demo Variant</option>
                                                     <option>Demo Variant</option>
                                                     <option>Demo Variant</option>
                                                 </select>
-                                                <select style="appearance: menulist;"  class="q-select">
+                                                <select style="appearance: menulist;" class="q-select">
                                                     <option>1</option>
                                                     <option>2</option>
                                                     <option>3</option>
@@ -801,12 +801,27 @@
             let ns = $(currElem).next();
             let ps = $(currElem).prev();
 
+
+
             if (fc != null) {
-                okElem = fc[0].nodeName + '.' + fc[0].className;
+                if (fc[0].className != '' || fc[0].className != null) {
+                    okElem = fc[0].nodeName + '.' + fc[0].className.replace(' ', '.');
+                } else {
+                    okElem = fc[0].nodeName;
+                }
             } else if (ns != null) {
-                okElem = ns[0].nodeName + '.' + ns[0].className;
+                if (ns[0].className != '' || ns[0].className != null) {
+                    okElem = ns[0].nodeName + '.' + ns[0].className.replace(' ', '.');
+                } else {
+                    okElem = ns[0].nodeName;
+                }
             } else {
-                okElem = pn.parent()[0].nodeName + '.' + pn.parent()[0].className;
+                if (pn[0].className != '' || pn[0].className != null) {
+                    okElem = pn.parent()[0].nodeName + '.' + pn.parent()[0].className.replace(' ', '.');
+                } else {
+                    okElem = pn[0].nodeName;
+                }
+
             }
         }
         sessionStorage.setItem('elp', okElem);
