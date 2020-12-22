@@ -824,24 +824,30 @@
 
             }
         }
-        sessionStorage.setItem('elp', okElem);
+
         console.log('okelem ' + okElem);
         return okElem;
     }
 
     function prevElement(currElem) {
         let okElem = '';
-        if (sessionStorage.getItem('elp') == null) {
-            let pn = $(currElem).parent();
-            if (pn[0].className != '' || pn[0].className != null) {
-                okElem = pn.parent()[0].nodeName + '.' + pn.parent()[0].className.replace(' ', '.');
+        let pn = $(currElem).parent();
+        let ps = $(currElem).prev();
+        if (ps != null) {
+            if (ps[0].className == '' || ps[0].className == null) {
+                okElem = ps[0].nodeName;
             } else {
-                okElem = pn[0].nodeName;
+                okElem = ps[0].nodeName + '.' + ps[0].className.replace(' ', '.');
             }
         } else {
-            okElem = sessionStorage.getItem('elp');
+            if (pn[0].className == '' || pn[0].className == null) {
+                okElem = pn[0].nodeName;
+            } else {
+                okElem = pn[0].nodeName + '.' + pn[0].className.replace(' ', '.');
+            }
+
         }
-        sessionStorage.setItem('elp', okElem);
+
         console.log('okelem ' + okElem);
         return okElem;
     }
