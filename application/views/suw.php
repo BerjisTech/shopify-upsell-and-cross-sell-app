@@ -803,7 +803,7 @@
 
 
 
-            if (fc != null) {
+            if ($(currElem).is(':parent') || fc != null) {
                 if (fc[0].className == '' || fc[0].className == null) {
                     okElem = fc[0].nodeName;
                 } else {
