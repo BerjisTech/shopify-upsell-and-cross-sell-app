@@ -21,7 +21,7 @@
         <div class="setting_tab s_p" style="display: flex;">
             <div style="height: 400px; background: #FAFAFA; padding: 10px;">
                 <h4>Test different layouts</h4>
-                <select type="text" name="test_layout" class="form-control">
+                <select style="appearance: menulist;"  type="text" name="test_layout" class="form-control">
                     <option value="card">Card</option>
                     <option value="block">Block</option>
                     <option value="halfBlock">Half-Block</option>
@@ -49,7 +49,7 @@
                                 <h4>Selector</h4>
                                 <input type="text" name="cart_dom" class="form-control" placeholder="form[action='/cart/add']" />
                                 <h4>Position relative to selector</h4>
-                                <select type="text" name="cart_pos" class="form-control">
+                                <select style="appearance: menulist;"  type="text" name="cart_pos" class="form-control">
                                     <option value="prepend">Top Of</option>
                                     <option value="before">Before</option>
                                     <option value="append">Bottom Of</option>
@@ -69,7 +69,7 @@
                                 <h4>Selector</h4>
                                 <input type="text" name="drawer_dom" class="form-control" placeholder="form[action='/cart/add']" />
                                 <h4>Position relative to selector</h4>
-                                <select type="text" name="drawer_pos" class="form-control">
+                                <select style="appearance: menulist;"  type="text" name="drawer_pos" class="form-control">
                                     <option value="prepend">Top Of</option>
                                     <option value="before">Before</option>
                                     <option value="append">Bottom Of</option>
@@ -140,7 +140,7 @@
                                 </div>
                                 <div style="display: table; width: 100%; margin-bottom: 10px;">
                                     <h4>Border Style <small>Set the border size to see border</small></h4>
-                                    <select class="offer_border form-control">
+                                    <select style="appearance: menulist;"  class="offer_border form-control">
                                         <option value="none">No Border</option>
                                         <option value="solid">Standard</option>
                                         <option value="dotted">Dotted</option>
@@ -216,7 +216,7 @@
                                 </div>
                                 <div style="display: table; width: 100%; margin-bottom: 10px;">
                                     <h4>Border Style <small>Set the border size to see border</small></h4>
-                                    <select class="button_border form-control">
+                                    <select style="appearance: menulist;"  class="button_border form-control">
                                         <option value="none">No Border</option>
                                         <option value="solid">Standard</option>
                                         <option value="dotted">Dotted</option>
@@ -258,7 +258,7 @@
                                 </div>
                                 <div style="display: table; width: 100%; margin-bottom: 10px;">
                                     <h4>Border Style <small>Set the border size to see border</small></h4>
-                                    <select class="image_border form-control">
+                                    <select style="appearance: menulist;"  class="image_border form-control">
                                         <option value="none">No Border</option>
                                         <option value="solid">Standard</option>
                                         <option value="dotted">Dotted</option>
@@ -387,12 +387,12 @@
                                         <div class="sleek-text">Need Free Shipping?</div>
                                         <div class="sleek-title">Blue silk tuxedo</div>
                                         <div class="sleek-selectors">
-                                            <select class="v-select">
+                                            <select style="appearance: menulist;"  class="v-select">
                                                 <option>Demo Variant</option>
                                                 <option>Demo Variant</option>
                                                 <option>Demo Variant</option>
                                             </select>
-                                            <select class="q-select">
+                                            <select style="appearance: menulist;"  class="q-select">
                                                 <option>1</option>
                                                 <option>2</option>
                                                 <option>3</option>
@@ -423,12 +423,12 @@
                                                 <span class="sleek-compare-price money">KES 200</span>
                                             </div>
                                             <div class="sleek-selectors">
-                                                <select class="v-select">
+                                                <select style="appearance: menulist;"  class="v-select">
                                                     <option>Demo Variant</option>
                                                     <option>Demo Variant</option>
                                                     <option>Demo Variant</option>
                                                 </select>
-                                                <select class="q-select">
+                                                <select style="appearance: menulist;"  class="q-select">
                                                     <option>1</option>
                                                     <option>2</option>
                                                     <option>3</option>
@@ -454,12 +454,12 @@
                                                 <span class="sleek-compare-price money">KES 200</span>
                                             </div>
                                             <div class="sleek-selectors">
-                                                <select class="v-select">
+                                                <select style="appearance: menulist;"  class="v-select">
                                                     <option>Demo Variant</option>
                                                     <option>Demo Variant</option>
                                                     <option>Demo Variant</option>
                                                 </select>
-                                                <select class="q-select">
+                                                <select style="appearance: menulist;"  class="q-select">
                                                     <option>1</option>
                                                     <option>2</option>
                                                     <option>3</option>
@@ -485,13 +485,13 @@
                                                 <span class="sleek-compare-price money">KES 200</span>
                                             </div>
                                             <div class="sleek-selectors">
-                                                <select class="v-select">
+                                                <select style="appearance: menulist;"  class="v-select">
                                                     <option>Demo Variant</option>
                                                     <option>Demo Variant</option>
                                                     <option>Demo Variant</option>
                                                 </select>
                                                 <div class="flex-select">
-                                                    <select class="q-select">
+                                                    <select style="appearance: menulist;"  class="q-select">
                                                         <option>1</option>
                                                         <option>2</option>
                                                         <option>3</option>
@@ -518,12 +518,12 @@
                                                 <span class="sleek-compare-price money">KES 200</span>
                                             </div>
                                             <div class="sleek-selectors">
-                                                <select class="v-select">
+                                                <select style="appearance: menulist;"  class="v-select">
                                                     <option>Demo Variant</option>
                                                     <option>Demo Variant</option>
                                                     <option>Demo Variant</option>
                                                 </select>
-                                                <select class="q-select">
+                                                <select style="appearance: menulist;"  class="q-select">
                                                     <option>1</option>
                                                     <option>2</option>
                                                     <option>3</option>
@@ -875,21 +875,21 @@
 
     function changePos() {
 
-        let chosen_layout = '<div class="card sleek-upsell"> <form class="sleek-form"> <div class="sleek-image"> <img src="https://cdn.shopify.com/s/files/1/0295/4815/0859/products/man-adjusts-blue-tuxedo-bowtie_925x_656f2a36-34a8-4db2-9701-c01e49e9e5c0_x190.jpg?v=1590595412"/> </div><div class="sleek-offer"> <div class="sleek-text">Need Free Shipping?</div><div class="sleek-title">Blue silk tuxedo</div><div class="sleek-selectors"> <select class="v-select"> <option>Demo Variant</option> <option>Demo Variant</option> <option>Demo Variant</option> </select> <select class="q-select"> <option>1</option> <option>2</option> <option>3</option> </select> </div></div><div class="sleek-card-atc"> <div class="sleek-prices"> <span class="sleek-price money">KES 200</span> <span class="sleek-compare-price money">KES 200</span> </div><button class="sleek-atc" type="submit" onclick="return false;">ADD TO CART</button> </div></form> </div>';
+        let chosen_layout = '<div class="card sleek-upsell"> <form class="sleek-form"> <div class="sleek-image"> <img src="https://cdn.shopify.com/s/files/1/0295/4815/0859/products/man-adjusts-blue-tuxedo-bowtie_925x_656f2a36-34a8-4db2-9701-c01e49e9e5c0_x190.jpg?v=1590595412"/> </div><div class="sleek-offer"> <div class="sleek-text">Need Free Shipping?</div><div class="sleek-title">Blue silk tuxedo</div><div class="sleek-selectors"> <select style="appearance: menulist;"  class="v-select"> <option>Demo Variant</option> <option>Demo Variant</option> <option>Demo Variant</option> </select> <select style="appearance: menulist;"  class="q-select"> <option>1</option> <option>2</option> <option>3</option> </select> </div></div><div class="sleek-card-atc"> <div class="sleek-prices"> <span class="sleek-price money">KES 200</span> <span class="sleek-compare-price money">KES 200</span> </div><button class="sleek-atc" type="submit" onclick="return false;">ADD TO CART</button> </div></form> </div>';
         if ($('select[name="test_layout"]').val() == 'card') {
-            chosen_layout = '<div class="card sleek-upsell"> <form class="sleek-form"> <div class="sleek-image"> <img src="https://cdn.shopify.com/s/files/1/0295/4815/0859/products/man-adjusts-blue-tuxedo-bowtie_925x_656f2a36-34a8-4db2-9701-c01e49e9e5c0_x190.jpg?v=1590595412"/> </div><div class="sleek-offer"> <div class="sleek-text">Need Free Shipping?</div><div class="sleek-title">Blue silk tuxedo</div><div class="sleek-selectors"> <select class="v-select"> <option>Demo Variant</option> <option>Demo Variant</option> <option>Demo Variant</option> </select> <select class="q-select"> <option>1</option> <option>2</option> <option>3</option> </select> </div></div><div class="sleek-card-atc"> <div class="sleek-prices"> <span class="sleek-price money">KES 200</span> <span class="sleek-compare-price money">KES 200</span> </div><button class="sleek-atc" type="submit" onclick="return false;">ADD TO CART</button> </div></form> </div>';
+            chosen_layout = '<div class="card sleek-upsell"> <form class="sleek-form"> <div class="sleek-image"> <img src="https://cdn.shopify.com/s/files/1/0295/4815/0859/products/man-adjusts-blue-tuxedo-bowtie_925x_656f2a36-34a8-4db2-9701-c01e49e9e5c0_x190.jpg?v=1590595412"/> </div><div class="sleek-offer"> <div class="sleek-text">Need Free Shipping?</div><div class="sleek-title">Blue silk tuxedo</div><div class="sleek-selectors"> <select style="appearance: menulist;"  class="v-select"> <option>Demo Variant</option> <option>Demo Variant</option> <option>Demo Variant</option> </select> <select style="appearance: menulist;"  class="q-select"> <option>1</option> <option>2</option> <option>3</option> </select> </div></div><div class="sleek-card-atc"> <div class="sleek-prices"> <span class="sleek-price money">KES 200</span> <span class="sleek-compare-price money">KES 200</span> </div><button class="sleek-atc" type="submit" onclick="return false;">ADD TO CART</button> </div></form> </div>';
         }
         if ($('select[name="test_layout"]').val() == 'block') {
-            chosen_layout = '<div class="block sleek-upsell"> <form class="sleek-form"> <div class="sleek-text">Need Free Shipping?</div><div class="sleek-block"> <div class="sleek-image"> <img src="https://cdn.shopify.com/s/files/1/0295/4815/0859/products/man-adjusts-blue-tuxedo-bowtie_925x_656f2a36-34a8-4db2-9701-c01e49e9e5c0_x190.jpg?v=1590595412"/> </div><div class="sleek-offer"> <div class="sleek-title">Blue silk tuxedo</div><div class="sleek-prices"> <span class="sleek-price money">KES 200</span> <span class="sleek-compare-price money">KES 200</span> </div><div class="sleek-selectors"> <select class="v-select"> <option>Demo Variant</option> <option>Demo Variant</option> <option>Demo Variant</option> </select> <select class="q-select"> <option>1</option> <option>2</option> <option>3</option> </select> </div></div></div><button class="sleek-atc" type="submit" onclick="return false;">ADD TO CART</button> </form> </div>';
+            chosen_layout = '<div class="block sleek-upsell"> <form class="sleek-form"> <div class="sleek-text">Need Free Shipping?</div><div class="sleek-block"> <div class="sleek-image"> <img src="https://cdn.shopify.com/s/files/1/0295/4815/0859/products/man-adjusts-blue-tuxedo-bowtie_925x_656f2a36-34a8-4db2-9701-c01e49e9e5c0_x190.jpg?v=1590595412"/> </div><div class="sleek-offer"> <div class="sleek-title">Blue silk tuxedo</div><div class="sleek-prices"> <span class="sleek-price money">KES 200</span> <span class="sleek-compare-price money">KES 200</span> </div><div class="sleek-selectors"> <select style="appearance: menulist;"  class="v-select"> <option>Demo Variant</option> <option>Demo Variant</option> <option>Demo Variant</option> </select> <select style="appearance: menulist;"  class="q-select"> <option>1</option> <option>2</option> <option>3</option> </select> </div></div></div><button class="sleek-atc" type="submit" onclick="return false;">ADD TO CART</button> </form> </div>';
         }
         if ($('select[name="test_layout"]').val() == 'halfBlock') {
-            chosen_layout = '<div class="half-block sleek-upsell"> <form class="sleek-form"> <div class="sleek-half-block"> <div class="sleek-image"> <img src="https://cdn.shopify.com/s/files/1/0295/4815/0859/products/man-adjusts-blue-tuxedo-bowtie_925x_656f2a36-34a8-4db2-9701-c01e49e9e5c0_x190.jpg?v=1590595412"/> </div><div class="sleek-offer"> <div class="sleek-text">Need Free Shipping?</div><div class="sleek-title">Blue silk tuxedo</div><div class="sleek-prices"> <span class="sleek-price money">KES 200</span> <span class="sleek-compare-price money">KES 200</span> </div><div class="sleek-selectors"> <select class="v-select"> <option>Demo Variant</option> <option>Demo Variant</option> <option>Demo Variant</option> </select> <select class="q-select"> <option>1</option> <option>2</option> <option>3</option> </select> </div></div></div><button class="sleek-atc" type="submit" onclick="return false;">ADD TO CART</button> </form> </div>';
+            chosen_layout = '<div class="half-block sleek-upsell"> <form class="sleek-form"> <div class="sleek-half-block"> <div class="sleek-image"> <img src="https://cdn.shopify.com/s/files/1/0295/4815/0859/products/man-adjusts-blue-tuxedo-bowtie_925x_656f2a36-34a8-4db2-9701-c01e49e9e5c0_x190.jpg?v=1590595412"/> </div><div class="sleek-offer"> <div class="sleek-text">Need Free Shipping?</div><div class="sleek-title">Blue silk tuxedo</div><div class="sleek-prices"> <span class="sleek-price money">KES 200</span> <span class="sleek-compare-price money">KES 200</span> </div><div class="sleek-selectors"> <select style="appearance: menulist;"  class="v-select"> <option>Demo Variant</option> <option>Demo Variant</option> <option>Demo Variant</option> </select> <select style="appearance: menulist;"  class="q-select"> <option>1</option> <option>2</option> <option>3</option> </select> </div></div></div><button class="sleek-atc" type="submit" onclick="return false;">ADD TO CART</button> </form> </div>';
         }
         if ($('select[name="test_layout"]').val() == 'flat') {
-            chosen_layout = '<div class="flat sleek-upsell"> <form class="sleek-form"> <div class="sleek-text">Need Free Shipping?</div><div class="sleek-flat"> <div class="sleek-image"> <img src="https://cdn.shopify.com/s/files/1/0295/4815/0859/products/man-adjusts-blue-tuxedo-bowtie_925x_656f2a36-34a8-4db2-9701-c01e49e9e5c0_x190.jpg?v=1590595412"/> </div><div class="sleek-offer"> <div class="sleek-title">Blue silk tuxedo</div><div class="sleek-prices"> <span class="sleek-price money">KES 200</span> <span class="sleek-compare-price money">KES 200</span> </div><div class="sleek-selectors"> <select class="v-select"> <option>Demo Variant</option> <option>Demo Variant</option> <option>Demo Variant</option> </select> <div class="flex-select"> <select class="q-select"> <option>1</option> <option>2</option> <option>3</option> </select> <button class="sleek-atc" type="submit" onclick="return false;">ADD TO CART</button> </div></div></div></div></form> </div>';
+            chosen_layout = '<div class="flat sleek-upsell"> <form class="sleek-form"> <div class="sleek-text">Need Free Shipping?</div><div class="sleek-flat"> <div class="sleek-image"> <img src="https://cdn.shopify.com/s/files/1/0295/4815/0859/products/man-adjusts-blue-tuxedo-bowtie_925x_656f2a36-34a8-4db2-9701-c01e49e9e5c0_x190.jpg?v=1590595412"/> </div><div class="sleek-offer"> <div class="sleek-title">Blue silk tuxedo</div><div class="sleek-prices"> <span class="sleek-price money">KES 200</span> <span class="sleek-compare-price money">KES 200</span> </div><div class="sleek-selectors"> <select style="appearance: menulist;"  class="v-select"> <option>Demo Variant</option> <option>Demo Variant</option> <option>Demo Variant</option> </select> <div class="flex-select"> <select style="appearance: menulist;"  class="q-select"> <option>1</option> <option>2</option> <option>3</option> </select> <button class="sleek-atc" type="submit" onclick="return false;">ADD TO CART</button> </div></div></div></div></form> </div>';
         }
         if ($('select[name="test_layout"]').val() == 'compact') {
-            chosen_layout = '<div class="compact sleek-upsell"> <form class="sleek-form"> <div class="sleek-compact"> <div class="sleek-image"> <img src="https://cdn.shopify.com/s/files/1/0295/4815/0859/products/man-adjusts-blue-tuxedo-bowtie_925x_656f2a36-34a8-4db2-9701-c01e49e9e5c0_x190.jpg?v=1590595412"/> </div><div class="sleek-offer"> <div class="sleek-text">Need Free Shipping?</div><div class="sleek-title">Blue silk tuxedo</div><div class="sleek-prices"> <span class="sleek-price money">KES 200</span> <span class="sleek-compare-price money">KES 200</span> </div><div class="sleek-selectors"> <select class="v-select"> <option>Demo Variant</option> <option>Demo Variant</option> <option>Demo Variant</option> </select> <select class="q-select"> <option>1</option> <option>2</option> <option>3</option> </select> </div><button class="sleek-atc" type="submit" onclick="return false;">ADD TO CART</button> </div></div></form> </div>';
+            chosen_layout = '<div class="compact sleek-upsell"> <form class="sleek-form"> <div class="sleek-compact"> <div class="sleek-image"> <img src="https://cdn.shopify.com/s/files/1/0295/4815/0859/products/man-adjusts-blue-tuxedo-bowtie_925x_656f2a36-34a8-4db2-9701-c01e49e9e5c0_x190.jpg?v=1590595412"/> </div><div class="sleek-offer"> <div class="sleek-text">Need Free Shipping?</div><div class="sleek-title">Blue silk tuxedo</div><div class="sleek-prices"> <span class="sleek-price money">KES 200</span> <span class="sleek-compare-price money">KES 200</span> </div><div class="sleek-selectors"> <select style="appearance: menulist;"  class="v-select"> <option>Demo Variant</option> <option>Demo Variant</option> <option>Demo Variant</option> </select> <select style="appearance: menulist;"  class="q-select"> <option>1</option> <option>2</option> <option>3</option> </select> </div><button class="sleek-atc" type="submit" onclick="return false;">ADD TO CART</button> </div></div></form> </div>';
         }
 
         $('.sleek-upsell').remove();
