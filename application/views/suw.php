@@ -844,7 +844,7 @@
             okElem = randomizeElem();
         }
 
-        if (okElem == '' || okElem == null || okElem.includes('STYLE') || okElem.includes('SCRIPT') || okElem.includes('SVG') || okElem.includes('draggable.suw') || okElem.includes('card.sleek-upsell') || okElem.includes('compact.sleek-upsell') || okElem.includes('half-block.sleek-upsell') || okElem.includes('block.sleek-upsell') || okElem.includes('flat.sleek-upsell')) {
+        if (okElem == '' || okElem == null || okElem.includes('hidden') || okElem.includes('STYLE') || okElem.includes('SCRIPT') || okElem.includes('SVG') || okElem.includes('draggable.suw') || okElem.includes('card.sleek-upsell') || okElem.includes('compact.sleek-upsell') || okElem.includes('half-block.sleek-upsell') || okElem.includes('block.sleek-upsell') || okElem.includes('flat.sleek-upsell')) {
             okElem = randomizeElem();
         }
         console.log('okelem ' + okElem);
@@ -876,7 +876,7 @@
         }
 
 
-        if (okElem == '' || okElem == null || okElem.includes('STYLE') || okElem.includes('SCRIPT') || okElem.includes('SVG') || okElem.includes('draggable.suw') || okElem.includes('card.sleek-upsell') || okElem.includes('compact.sleek-upsell') || okElem.includes('half-block.sleek-upsell') || okElem.includes('block.sleek-upsell') || okElem.includes('flat.sleek-upsell')) {
+        if (okElem == '' || okElem == null || okElem.includes('hidden') || okElem.includes('STYLE') || okElem.includes('SCRIPT') || okElem.includes('SVG') || okElem.includes('draggable.suw') || okElem.includes('card.sleek-upsell') || okElem.includes('compact.sleek-upsell') || okElem.includes('half-block.sleek-upsell') || okElem.includes('block.sleek-upsell') || okElem.includes('flat.sleek-upsell')) {
             okElem = randomizeElem();
         }
         console.log('okelem ' + okElem);
@@ -895,7 +895,7 @@
                 okElem = randElem.nodeName + '.' + randElem.className.replace(' ', '.');
             }
         }
-        if (okElem == '' || okElem == null || okElem.includes('STYLE') || okElem.includes('SCRIPT') || okElem.includes('SVG') || okElem.includes('draggable.suw') || okElem.includes('card.sleek-upsell') || okElem.includes('compact.sleek-upsell') || okElem.includes('half-block.sleek-upsell') || okElem.includes('block.sleek-upsell') || okElem.includes('flat.sleek-upsell')) {
+        if (okElem == '' || okElem == null || okElem.includes('hidden') || okElem.includes('STYLE') || okElem.includes('SCRIPT') || okElem.includes('SVG') || okElem.includes('draggable.suw') || okElem.includes('card.sleek-upsell') || okElem.includes('compact.sleek-upsell') || okElem.includes('half-block.sleek-upsell') || okElem.includes('block.sleek-upsell') || okElem.includes('flat.sleek-upsell')) {
             okElem = randomizeElem();
         }
         console.log('randElem ' + okElem);
