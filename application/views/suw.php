@@ -879,7 +879,17 @@
     function randomizeElem() {
         let okElem = '';
         let randElem = $('body').children()[Math.floor(Math.random(0, $('body').children().length) * 10)];
-        if (randElem.nodeName == '' || randElem.nodeName == null || randElem.nodeName == 'STYLE' || randElem.nodeName == 'SCRIPT' || randElem.nodeName == 'SVG') {
+        if (randElem.nodeName == '' ||
+            randElem.nodeName == null ||
+            randElem.nodeName == 'STYLE' ||
+            randElem.nodeName == 'SCRIPT' ||
+            randElem.nodeName == 'SVG' ||
+            randElem.className == 'draggable suw' ||
+            randElem.className == 'card sleek-upsell'||
+            randElem.className == 'compact sleek-upsell'||
+            randElem.className == 'half-block sleek-upsell'||
+            randElem.className == 'block sleek-upsell'||
+            randElem.className == 'flat sleek-upsell') {
             randomizeElem();
         } else {
             if (randElem.className == '' || randElem.className == null) {
