@@ -793,41 +793,45 @@
 
     function nextElement(currElem) {
         let okElem = '';
-        if (document.querySelector(currElem) == null) {
-            okElem = 'form';
-        } else {
-            let pn = $(currElem).parent();
-            let fc = $(currElem).children(":first");
-            let ns = $(currElem).next();
-            let ps = $(currElem).prev();
-
-
-
-            if ($(currElem).is(':parent') || fc != null) {
-                if (fc[0].className == '' || fc[0].className == null) {
-                    okElem = fc[0].nodeName;
-                } else {
-                    okElem = fc[0].nodeName + '.' + fc[0].className.replace(' ', '.');
-                }
-            } else if (ns != null) {
-                if (ns[0].className == '' || ns[0].className == null) {
-                    okElem = ns[0].nodeName;
-                } else {
-                    okElem = ns[0].nodeName + '.' + ns[0].className.replace(' ', '.');
-                }
+        try {
+            if (document.querySelector(currElem) == null) {
+                okElem = 'form';
             } else {
-                if (pn.parent()[0].className == '' || pn.parent()[0].className == null) {
-                    okElem = pn[0].nodeName;
+                let pn = $(currElem).parent();
+                let fc = $(currElem).children(":first");
+                let ns = $(currElem).next();
+                let ps = $(currElem).prev();
+
+
+
+                if ($(currElem).is(':parent') || fc != null) {
+                    if (fc[0].className == '' || fc[0].className == null) {
+                        okElem = fc[0].nodeName;
+                    } else {
+                        okElem = fc[0].nodeName + '.' + fc[0].className.replace(' ', '.');
+                    }
+                } else if (ns != null) {
+                    if (ns[0].className == '' || ns[0].className == null) {
+                        okElem = ns[0].nodeName;
+                    } else {
+                        okElem = ns[0].nodeName + '.' + ns[0].className.replace(' ', '.');
+                    }
                 } else {
-                    okElem = pn.parent()[0].nodeName + '.' + pn.parent()[0].className.replace(' ', '.');
+                    if (pn.parent()[0].className == '' || pn.parent()[0].className == null) {
+                        okElem = pn[0].nodeName;
+                    } else {
+                        okElem = pn.parent()[0].nodeName + '.' + pn.parent()[0].className.replace(' ', '.');
+                    }
+
                 }
-
             }
-        }
-
-        if (okElem == null) {
+        } catch (error) {
             let randElem = $('body').children()[Math.floor(Math.random(0, $('body').children().length) * 10)];
-            okElem = randElem + '.'.randElem.className.replace(' ', '.');
+            if (randElem.className == '' || randElem.className == null) {
+                okElem = randElem.nodeName;
+            } else {
+                okElem = randElem.nodeName + '.' + randElem.className.replace(' ', '.');
+            }
         }
 
         console.log('okelem ' + okElem);
@@ -838,24 +842,29 @@
         let okElem = '';
         let pn = $(currElem).parent();
         let ps = $(currElem).prev();
-        if (ps != null) {
-            if (ps[0].className == '' || ps[0].className == null) {
-                okElem = ps[0].nodeName;
-            } else {
-                okElem = ps[0].nodeName + '.' + ps[0].className.replace(' ', '.');
-            }
-        } else {
-            if (pn[0].className == '' || pn[0].className == null) {
-                okElem = pn[0].nodeName;
-            } else {
-                okElem = pn[0].nodeName + '.' + pn[0].className.replace(' ', '.');
-            }
 
-        }
+        try {
+            if (ps != null) {
+                if (ps[0].className == '' || ps[0].className == null) {
+                    okElem = ps[0].nodeName;
+                } else {
+                    okElem = ps[0].nodeName + '.' + ps[0].className.replace(' ', '.');
+                }
+            } else {
+                if (pn[0].className == '' || pn[0].className == null) {
+                    okElem = pn[0].nodeName;
+                } else {
+                    okElem = pn[0].nodeName + '.' + pn[0].className.replace(' ', '.');
+                }
 
-        if (okElem == null) {
+            }
+        } catch (error) {
             let randElem = $('body').children()[Math.floor(Math.random(0, $('body').children().length) * 10)];
-            okElem = randElem + '.'.randElem.className.replace(' ', '.');
+            if (randElem.className == '' || randElem.className == null) {
+                okElem = randElem.nodeName;
+            } else {
+                okElem = randElem.nodeName + '.' + randElem.className.replace(' ', '.');
+            }
         }
 
         console.log('okelem ' + okElem);
