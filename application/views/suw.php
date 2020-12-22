@@ -888,7 +888,7 @@
                 okElem = randElem.nodeName + '.' + randElem.className.replace(' ', '.');
             }
         }
-        console.log('okelem ' + okElem);
+        console.log('randElem ' + okElem);
         return okElem;
     }
 
