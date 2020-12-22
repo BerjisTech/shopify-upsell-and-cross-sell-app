@@ -842,6 +842,7 @@
             }
         } catch (error) {
             console.log(error);
+            okElem = randomizeElem();
         }
 
         console.log('okelem ' + okElem);
@@ -870,6 +871,7 @@
             }
         } catch (error) {
             console.log(error);
+            okElem = randomizeElem();
         }
 
         console.log('okelem ' + okElem);
