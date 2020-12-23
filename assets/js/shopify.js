@@ -199,6 +199,9 @@ function sleekUpsell() {
     // collection_based();
 
     function next_offer() {
+        if (document.querySelector('.sleek-upsell') != null) {
+            $('.sleek-upsell').remove();
+        }
         if (page_ss.includes(s_s_w) || sessionStorage.getItem('s_u_w') == 'y') {
             return false;
         } else {
