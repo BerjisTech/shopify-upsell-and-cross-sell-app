@@ -197,7 +197,7 @@ function openReplacement() {
 window.XMLHttpRequest.prototype.open = openReplacement;
 function setStyle(selector, s1, ss) {
     for (let si = 0; si < document.querySelectorAll(selector).length; si++) {
-        console.log('Setting ' + s1 + ' of ' + selector + ' nodePosition ' + si);
+        console.log('Setting ' + s1 + ' of ' + selector + ' nodePosition ' + si + ' to ' + ss);
         document.querySelectorAll(selector)[si].style.s1 = ss;
     }
 }
