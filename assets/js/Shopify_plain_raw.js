@@ -829,50 +829,6 @@ function brgxczvy(oid, pid, vid, quantity, price, action, type) {
 
 }
 
-function setStyles() {
-    $('.sleek-upsell').css('opacity', '1');
-    $('.sleek-upsell').css('transform', 'none');
-    $('.sleek-upsell form').css('margin-bottom', '0px');
-    if (settings != null) {
-        $('<style>' + settings['override'] + '</style>').insertAfter('.sleek-upsell');
-        $('.sleek-upsell').css('background-color', settings['layout_bg']);
-        $('.sleek-upsell select').css('background-color', settings['layout_bg']);
-        $('.sleek-upsell').css('color', settings['layout_color']);
-        $('.sleek-upsell select').css('color', settings['layout_color']);
-        $('.sleek-upsell').css('font-family', settings['layout_font']);
-        $('.sleek-upsell').css('font-size', settings['layout_size']);
-        $('.sleek-upsell').css('margin-top', settings['layout_mt']);
-        $('.sleek-upsell').css('margin-bottom', settings['layout_mb']);
-        $('.sleek-upsell').css('border-radius', settings['offer_radius']);
-        $('.sleek-upsell').css('border-width', settings['offer_bs']);
-        $('.sleek-upsell').css('border-color', settings['offer_bc']);
-        $('.sleek-upsell').css('border-style', settings['offer_border']);
-        $('.sleek-upsell button').css('background-color', settings['button_bg']);
-        $('.sleek-upsell button').css('color', settings['button_color']);
-        $('.sleek-upsell button').css('font-family', settings['button_font']);
-        $('.sleek-upsell button').css('font-size', settings['button_size']);
-        $('.sleek-upsell button').css('margin-top', settings['button_mt']);
-        $('.sleek-upsell button').css('margin-bottom', settings['button_mb']);
-        $('.sleek-upsell button').css('border-radius', settings['button_radius']);
-        $('.sleek-upsell button').css('border-width', settings['button_bs']);
-        $('.sleek-upsell button').css('border-color', settings['button_bc']);
-        $('.sleek-upsell button').css('border-style', settings['button_border']);
-        $('.sleek-upsell img').css('border-radius', settings['image_radius']);
-        $('.sleek-upsell img').css('border-width', settings['image_bs']);
-        $('.sleek-upsell img').css('color', settings['image_bc']);
-        $('.sleek-upsell img').css('border-style', settings['image_border']);
-        $('.sleek-text').css('color', settings['text_color']);
-        $('.sleek-text').css('font-family', settings['text_font']);
-        $('.sleek-text').css('font-size', settings['text_size']);
-        $('.sleek-title').css('color', settings['title_color']);
-        $('.sleek-title').css('font-family', settings['title_font']);
-        $('.sleek-title').css('font-size', settings['title_size']);
-        $('.sleek-price').css('color', settings['price_color']);
-        $('.sleek-price').css('font-family', settings['price_font']);
-        $('.sleek-price').css('font-size', settings['price_size']);
-    }
-}
-
 function display_offer(oid) {
     let element = '';
     let curr = Shopify.currency['active'];
@@ -1092,16 +1048,46 @@ function display_offer(oid) {
         }
     }
 
-    if (typeof jQuery === 'undefined' || jQuery == null) {
-        var script = document.createElement('script');
-        script.type = "text/javascript";
-        script.src = "https://sleek-upsell.com/assets/js/jquery-1.11.3.min.js";
-        document.getElementsByTagName('head')[0].appendChild(script);
-        script.onload = function () {
-            setStyles();
-        };
-    } else {
-        setStyles();
+    document.querySelector('.sleek-upsell').style.opacity = '1';
+    document.querySelector('.sleek-upsell').style.transform = 'none';
+    document.querySelector('.sleek-upsell form').style.marginBottom = '0px';
+    if (settings != null) {
+        document.querySelector('.sleek-upsell').insertAdjacentHTML('afterend', '<style>' + settings['override'] + '</style>');
+        document.querySelector('.sleek-upsell').style.backgroundColor = settings['layout_bg'];
+        document.querySelector('.sleek-upsell select').style.backgroundColor = settings['layout_bg'];
+        document.querySelector('.sleek-upsell').style.color = settings['layout_color'];
+        document.querySelector('.sleek-upsell select').style.color = settings['layout_color'];
+        document.querySelector('.sleek-upsell').style.fontFamily = settings['layout_font'];
+        document.querySelector('.sleek-upsell').style.fontSize = settings['layout_size'];
+        document.querySelector('.sleek-upsell').style.marginTop = settings['layout_mt'];
+        document.querySelector('.sleek-upsell').style.marginBottom = settings['layout_mb'];
+        document.querySelector('.sleek-upsell').style.borderRadius = settings['offer_radius'];
+        document.querySelector('.sleek-upsell').style.borderWidth = settings['offer_bs'];
+        document.querySelector('.sleek-upsell').style.borderColor = settings['offer_bc'];
+        document.querySelector('.sleek-upsell').style.borderStyle = settings['offer_border'];
+        document.querySelector('.sleek-upsell button').style.backgroundColor = settings['button_bg'];
+        document.querySelector('.sleek-upsell button').style.color = settings['button_color'];
+        document.querySelector('.sleek-upsell button').style.fontFamily = settings['button_font'];
+        document.querySelector('.sleek-upsell button').style.fontSize = settings['button_size'];
+        document.querySelector('.sleek-upsell button').style.marginTop = settings['button_mt'];
+        document.querySelector('.sleek-upsell button').style.marginBottom = settings['button_mb'];
+        document.querySelector('.sleek-upsell button').style.borderRadius = settings['button_radius'];
+        document.querySelector('.sleek-upsell button').style.borderWidth = settings['button_bs'];
+        document.querySelector('.sleek-upsell button').style.borderColor = settings['button_bc'];
+        document.querySelector('.sleek-upsell button').style.borderStyle = settings['button_border'];
+        document.querySelector('.sleek-upsell img').style.borderRadius = settings['image_radius'];
+        document.querySelector('.sleek-upsell img').style.borderWidth = settings['image_bs'];
+        document.querySelector('.sleek-upsell img').style.color = settings['image_bc'];
+        document.querySelector('.sleek-upsell img').style.borderStyle = settings['image_border'];
+        document.querySelector('.sleek-text').style.color = settings['text_color'];
+        document.querySelector('.sleek-text').style.fontFamily = settings['text_font'];
+        document.querySelector('.sleek-text').style.fontSize = settings['text_size'];
+        document.querySelector('.sleek-title').style.color = settings['title_color'];
+        document.querySelector('.sleek-title').style.fontFamily = settings['title_font'];
+        document.querySelector('.sleek-title').style.fontSize = settings['title_size'];
+        document.querySelector('.sleek-price').style.color = settings['price_color'];
+        document.querySelector('.sleek-price').style.fontFamily = settings['price_font'];
+        document.querySelector('.sleek-price').style.fontSize = settings['price_size'];
     }
 
 }
