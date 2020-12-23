@@ -974,7 +974,10 @@ function sleekUpsell() {
             $('.sleek-upsell').append(o_ui);
             console.log('Adding ' + pid + ' for ' + i);
             if ($('.sleek-form[data-product-index="' + i + '"]').length > 1) {
-                $('.sleek-form[data-product-index="' + i + '"]').first().remove();
+                for (let sf = 1; sf <= $('.sleek-form[data-product-index="' + i + '"]').length; sf++) {
+                    console.log('removing ' + sf);
+                    $('.sleek-form[data-product-index="' + i + '"]')[sf].remove();
+                }
             }
 
             if (v['show_title'] == 'n') {
