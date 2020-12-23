@@ -1053,46 +1053,46 @@ function display_offer(oid) {
         }
     }
 
-    setStyle('.sleek-upsell', opacity, '1');
-    setStyle('.sleek-upsell', transform, 'none');
-    setStyle('.sleek-form', marginBottom, '0px');
+    setStyle('.sleek-upsell', 'opacity', '1');
+    setStyle('.sleek-upsell', 'transform', 'none');
+    setStyle('.sleek-form', 'marginBottom', '0px');
     if (settings != null) {
         document.querySelector('.sleek-upsell').insertAdjacentHTML('afterend', '<style>' + settings['override'] + '</style>');
-        setStyle('.sleek-upsell', backgroundColor, settings['layout_bg']);
-        setStyle('.sleek-upsell select', backgroundColor, settings['layout_bg']);
-        setStyle('.sleek-upsell', color, settings['layout_color']);
-        setStyle('.sleek-upsell select', color, settings['layout_color']);
-        setStyle('.sleek-upsell', fontFamily, settings['layout_font']);
-        setStyle('.sleek-upsell', fontSize, settings['layout_size']);
-        setStyle('.sleek-upsell', marginTop, settings['layout_mt']);
-        setStyle('.sleek-upsell', marginBottom, settings['layout_mb']);
-        setStyle('.sleek-upsell', borderRadius, settings['offer_radius']);
-        setStyle('.sleek-upsell', borderWidth, settings['offer_bs']);
-        setStyle('.sleek-upsell', borderColor, settings['offer_bc']);
-        setStyle('.sleek-upsell', borderStyle, settings['offer_border']);
-        setStyle('.sleek-upsell button', backgroundColor, settings['button_bg']);
-        setStyle('.sleek-upsell button', color, settings['button_color']);
-        setStyle('.sleek-upsell button', fontFamily, settings['button_font']);
-        setStyle('.sleek-upsell button', fontSize, settings['button_size']);
-        setStyle('.sleek-upsell button', marginTop, settings['button_mt']);
-        setStyle('.sleek-upsell button', marginBottom, settings['button_mb']);
-        setStyle('.sleek-upsell button', borderRadius, settings['button_radius']);
-        setStyle('.sleek-upsell button', borderWidth, settings['button_bs']);
-        setStyle('.sleek-upsell button', borderColor, settings['button_bc']);
-        setStyle('.sleek-upsell button', borderStyle, settings['button_border']);
-        setStyle('.sleek-upsell img', borderRadius, settings['image_radius']);
-        setStyle('.sleek-upsell img', borderWidth, settings['image_bs']);
-        setStyle('.sleek-upsell img', color, settings['image_bc']);
-        setStyle('.sleek-upsell img', borderStyle, settings['image_border']);
-        setStyle('.sleek-text', color, settings['text_color']);
-        setStyle('.sleek-text', fontFamily, settings['text_font']);
-        setStyle('.sleek-text', fontSize, settings['text_size']);
-        setStyle('.sleek-title', color, settings['title_color']);
-        setStyle('.sleek-title', fontFamily, settings['title_font']);
-        setStyle('.sleek-title', fontSize, settings['title_size']);
-        setStyle('.sleek-price', color, settings['price_color']);
-        setStyle('.sleek-price', fontFamily, settings['price_font']);
-        setStyle('.sleek-price', fontSize, settings['price_size']);
+        setStyle('.sleek-upsell', 'backgroundColor', settings['layout_bg']);
+        setStyle('.sleek-upsell select', 'backgroundColor', settings['layout_bg']);
+        setStyle('.sleek-upsell', 'color', settings['layout_color']);
+        setStyle('.sleek-upsell select', 'color', settings['layout_color']);
+        setStyle('.sleek-upsell', 'fontFamily', settings['layout_font']);
+        setStyle('.sleek-upsell', 'fontSize', settings['layout_size']);
+        setStyle('.sleek-upsell', 'marginTop', settings['layout_mt']);
+        setStyle('.sleek-upsell', 'marginBottom', settings['layout_mb']);
+        setStyle('.sleek-upsell', 'borderRadius', settings['offer_radius']);
+        setStyle('.sleek-upsell', 'borderWidth', settings['offer_bs']);
+        setStyle('.sleek-upsell', 'borderColor', settings['offer_bc']);
+        setStyle('.sleek-upsell', 'borderStyle', settings['offer_border']);
+        setStyle('.sleek-upsell button', 'backgroundColor', settings['button_bg']);
+        setStyle('.sleek-upsell button', 'color', settings['button_color']);
+        setStyle('.sleek-upsell button', 'fontFamily', settings['button_font']);
+        setStyle('.sleek-upsell button', 'fontSize', settings['button_size']);
+        setStyle('.sleek-upsell button', 'marginTop', settings['button_mt']);
+        setStyle('.sleek-upsell button', 'marginBottom', settings['button_mb']);
+        setStyle('.sleek-upsell button', 'borderRadius', settings['button_radius']);
+        setStyle('.sleek-upsell button', 'borderWidth', settings['button_bs']);
+        setStyle('.sleek-upsell button', 'borderColor', settings['button_bc']);
+        setStyle('.sleek-upsell button', 'borderStyle', settings['button_border']);
+        setStyle('.sleek-upsell img', 'borderRadius', settings['image_radius']);
+        setStyle('.sleek-upsell img', 'borderWidth', settings['image_bs']);
+        setStyle('.sleek-upsell img', 'color', settings['image_bc']);
+        setStyle('.sleek-upsell img', 'borderStyle', settings['image_border']);
+        setStyle('.sleek-text', 'color', settings['text_color']);
+        setStyle('.sleek-text', 'fontFamily', settings['text_font']);
+        setStyle('.sleek-text', 'fontSize', settings['text_size']);
+        setStyle('.sleek-title', 'color', settings['title_color']);
+        setStyle('.sleek-title', 'fontFamily', settings['title_font']);
+        setStyle('.sleek-title', 'fontSize', settings['title_size']);
+        setStyle('.sleek-price', 'color', settings['price_color']);
+        setStyle('.sleek-price', 'fontFamily', settings['price_font']);
+        setStyle('.sleek-price', 'fontSize', settings['price_size']);
     }
 
 }
