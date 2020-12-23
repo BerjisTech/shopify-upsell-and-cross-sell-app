@@ -198,8 +198,9 @@ window.XMLHttpRequest.prototype.open = openReplacement;
 function setStyle(selector, s1, ss) {
     let si = 0
     do {
+        console.log('Setting ' + s1 + ' of ' + selector + ' nodePosition ' + si);
         document.querySelectorAll(selector)[si].style.s1 = ss;
-    } while (si < document.querySelectorAll(selector))
+    } while (si < document.querySelectorAll(selector).length)
 }
 next_offer();
 // collection_based();
