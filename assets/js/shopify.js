@@ -184,10 +184,14 @@ function sleekUpsell() {
                     "/cart/clear.js",
                 ].includes(this._url)
             ) {
-                cart = g_d("https://" + Shopify.shop + "/cart.js");
-                // console.log('Cart has changed: New item count - ' + cart["item_count"]);
-                // console.log(this.response);
-                next_offer();
+                if (page.includes('/cart')) {
+
+                } else {
+                    cart = g_d("https://" + Shopify.shop + "/cart.js");
+                    // console.log('Cart has changed: New item count - ' + cart["item_count"]);
+                    // console.log(this.response);
+                    next_offer();
+                }
             }
         });
         return open.apply(this, arguments);
