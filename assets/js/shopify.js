@@ -637,40 +637,31 @@ function sleekUpsell() {
                     let m_c = choices.filter(e => e.fid == fid);
 
                     if (type == "select") {
-                        $('.o_h_' + pid).insertAdjacentHTML('beforeend',
+                        $('.o_h_' + pid).append(
                             '<div>' +
                             '<label>' + placeholder + '</label>' +
                             '<select class="form-control select sleek_fields_' + fid + '" id="properties[' + name +
                             ']" name="properties[' + name + ']"></select>' +
                             '</div>');
-                        document
-                            .querySelector('.sleek_fields_' + name + '')
-                            .insertAdjacentHTML('beforeend',
-                                document
-                                    .querySelector('<option value="">' + placeholder + '</option>'));
+                        $('.sleek_fields_' + name + '').append($('<option value="">' + placeholder + '</option>'));
 
                         // let value_arr = value.split(',');
                         for (let key = 0; key < m_c.length; key++) {
                             let c_v = m_c[key]['value'];
                             let c_p = m_c[key]['price'];
-                            document
-                                .querySelector('.sleek_fields_' + fid + '')
-                                .insertAdjacentHTML('beforeend',
-                                    document
-                                        .querySelector('<option value="' + c_v + '">' + c_v + ' (' + c_p + ')</option>'));
+                            $('.sleek_fields_' + fid + '').append($('<option value="' + c_v + '">' + c_v + ' (' + c_p + ')</option>'));
                         }
                     }
 
                     if (type == "number") {
-                        $('.o_h_' + pid).insertAdjacentHTML('beforeend',
-                            '<div>' +
+                        $('.o_h_' + pid).append('<div>' +
                             '<label>' + placeholder + '</label>' +
                             '<input type="number" id="properties[' + name + ']" name="properties[' + name +
                             ']" placeholder="' + placeholder + '" />' +
                             '</div>');
                     }
                     if (type == "text") {
-                        $('.o_h_' + pid).insertAdjacentHTML('beforeend',
+                        $('.o_h_' + pid).append(
                             '<div>' +
                             '<label>' + placeholder + '</label>' +
                             '<input type="text" id="properties[' + name + ']" name="properties[' + name +
@@ -678,7 +669,7 @@ function sleekUpsell() {
                             '</div>');
                     }
                     if (type == "textarea") {
-                        $('.o_h_' + pid).insertAdjacentHTML('beforeend',
+                        $('.o_h_' + pid).append(
                             '<div>' +
                             '<label>' + placeholder + '</label>' +
                             '<textarea id="properties[' + name + ']" name="properties[' + name +
@@ -686,7 +677,7 @@ function sleekUpsell() {
                             '</div>');
                     }
                     if (type == "file") {
-                        $('.o_h_' + pid).insertAdjacentHTML('beforeend',
+                        $('.o_h_' + pid).append(
                             '<div>' +
                             '<label>' + placeholder + '</label>' +
                             '<input type="file" id="properties[' + name + ']" name="properties[' + name +
@@ -694,7 +685,7 @@ function sleekUpsell() {
                             '</div>');
                     }
                     if (type == "checkbox") {
-                        $('.o_h_' + pid).insertAdjacentHTML('beforeend',
+                        $('.o_h_' + pid).append(
                             '<div>' +
                             '<label>' +
                             '<input type="checkbox" id="properties[' + name + ']" name="properties[' + name +
@@ -704,7 +695,7 @@ function sleekUpsell() {
                             '</div>');
                     }
                     if (type == "checkbox_group") {
-                        $('.o_h_' + pid).insertAdjacentHTML('beforeend',
+                        $('.o_h_' + pid).append(
                             '<div>' +
                             '<label>' + placeholder + '</label>' +
                             '<input type="checkbox" id="properties[' + name + ']" name="properties[' + name +
@@ -712,7 +703,7 @@ function sleekUpsell() {
                             '</div>');
                     }
                     if (type == "radio") {
-                        $('.o_h_' + pid).insertAdjacentHTML('beforeend',
+                        $('.o_h_' + pid).append(
                             '<div>' +
                             '<label>' +
                             '<input type="radio" id="properties[' + name + ']" name="properties[' + name +
@@ -722,7 +713,7 @@ function sleekUpsell() {
                             '</div>');
                     }
                     if (type == "date") {
-                        $('.o_h_' + pid).insertAdjacentHTML('beforeend',
+                        $('.o_h_' + pid).append(
                             '<div>' +
                             '<label>' + placeholder + '</label>' +
                             '<input type="date" id="properties[' + name + ']" name="properties[' + name +
@@ -730,7 +721,7 @@ function sleekUpsell() {
                             '</div>');
                     }
                     if (type == "swatch") {
-                        $('.o_h_' + pid).insertAdjacentHTML('beforeend',
+                        $('.o_h_' + pid).append(
                             '<div>' +
                             '<label>' + placeholder + '</label>' +
                             '<input style="min-width: 150px;" type="color" id="properties[' + name + ']" name="properties[' + name +
