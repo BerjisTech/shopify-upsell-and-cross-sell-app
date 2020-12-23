@@ -1048,46 +1048,46 @@ function display_offer(oid) {
         }
     }
 
-    document.querySelector('.sleek-upsell').style.opacity = '1';
-    document.querySelector('.sleek-upsell').style.transform = 'none';
-    document.querySelector('.sleek-upsell form').style.marginBottom = '0px';
+    document.querySelectorAll('.sleek-upsell').style.opacity = '1';
+    document.querySelectorAll('.sleek-upsell').style.transform = 'none';
+    document.querySelectorAll('.sleek-upsell form').style.marginBottom = '0px';
     if (settings != null) {
-        document.querySelector('.sleek-upsell').insertAdjacentHTML('afterend', '<style>' + settings['override'] + '</style>');
-        document.querySelector('.sleek-upsell').style.backgroundColor = settings['layout_bg'];
-        document.querySelector('.sleek-upsell select').style.backgroundColor = settings['layout_bg'];
-        document.querySelector('.sleek-upsell').style.color = settings['layout_color'];
-        document.querySelector('.sleek-upsell select').style.color = settings['layout_color'];
-        document.querySelector('.sleek-upsell').style.fontFamily = settings['layout_font'];
-        document.querySelector('.sleek-upsell').style.fontSize = settings['layout_size'];
-        document.querySelector('.sleek-upsell').style.marginTop = settings['layout_mt'];
-        document.querySelector('.sleek-upsell').style.marginBottom = settings['layout_mb'];
-        document.querySelector('.sleek-upsell').style.borderRadius = settings['offer_radius'];
-        document.querySelector('.sleek-upsell').style.borderWidth = settings['offer_bs'];
-        document.querySelector('.sleek-upsell').style.borderColor = settings['offer_bc'];
-        document.querySelector('.sleek-upsell').style.borderStyle = settings['offer_border'];
-        document.querySelector('.sleek-upsell button').style.backgroundColor = settings['button_bg'];
-        document.querySelector('.sleek-upsell button').style.color = settings['button_color'];
-        document.querySelector('.sleek-upsell button').style.fontFamily = settings['button_font'];
-        document.querySelector('.sleek-upsell button').style.fontSize = settings['button_size'];
-        document.querySelector('.sleek-upsell button').style.marginTop = settings['button_mt'];
-        document.querySelector('.sleek-upsell button').style.marginBottom = settings['button_mb'];
-        document.querySelector('.sleek-upsell button').style.borderRadius = settings['button_radius'];
-        document.querySelector('.sleek-upsell button').style.borderWidth = settings['button_bs'];
-        document.querySelector('.sleek-upsell button').style.borderColor = settings['button_bc'];
-        document.querySelector('.sleek-upsell button').style.borderStyle = settings['button_border'];
-        document.querySelector('.sleek-upsell img').style.borderRadius = settings['image_radius'];
-        document.querySelector('.sleek-upsell img').style.borderWidth = settings['image_bs'];
-        document.querySelector('.sleek-upsell img').style.color = settings['image_bc'];
-        document.querySelector('.sleek-upsell img').style.borderStyle = settings['image_border'];
-        document.querySelector('.sleek-text').style.color = settings['text_color'];
-        document.querySelector('.sleek-text').style.fontFamily = settings['text_font'];
-        document.querySelector('.sleek-text').style.fontSize = settings['text_size'];
-        document.querySelector('.sleek-title').style.color = settings['title_color'];
-        document.querySelector('.sleek-title').style.fontFamily = settings['title_font'];
-        document.querySelector('.sleek-title').style.fontSize = settings['title_size'];
-        document.querySelector('.sleek-price').style.color = settings['price_color'];
-        document.querySelector('.sleek-price').style.fontFamily = settings['price_font'];
-        document.querySelector('.sleek-price').style.fontSize = settings['price_size'];
+        document.querySelectorAll('.sleek-upsell').insertAdjacentHTML('afterend', '<style>' + settings['override'] + '</style>');
+        document.querySelectorAll('.sleek-upsell').style.backgroundColor = settings['layout_bg'];
+        document.querySelectorAll('.sleek-upsell select').style.backgroundColor = settings['layout_bg'];
+        document.querySelectorAll('.sleek-upsell').style.color = settings['layout_color'];
+        document.querySelectorAll('.sleek-upsell select').style.color = settings['layout_color'];
+        document.querySelectorAll('.sleek-upsell').style.fontFamily = settings['layout_font'];
+        document.querySelectorAll('.sleek-upsell').style.fontSize = settings['layout_size'];
+        document.querySelectorAll('.sleek-upsell').style.marginTop = settings['layout_mt'];
+        document.querySelectorAll('.sleek-upsell').style.marginBottom = settings['layout_mb'];
+        document.querySelectorAll('.sleek-upsell').style.borderRadius = settings['offer_radius'];
+        document.querySelectorAll('.sleek-upsell').style.borderWidth = settings['offer_bs'];
+        document.querySelectorAll('.sleek-upsell').style.borderColor = settings['offer_bc'];
+        document.querySelectorAll('.sleek-upsell').style.borderStyle = settings['offer_border'];
+        document.querySelectorAll('.sleek-upsell button').style.backgroundColor = settings['button_bg'];
+        document.querySelectorAll('.sleek-upsell button').style.color = settings['button_color'];
+        document.querySelectorAll('.sleek-upsell button').style.fontFamily = settings['button_font'];
+        document.querySelectorAll('.sleek-upsell button').style.fontSize = settings['button_size'];
+        document.querySelectorAll('.sleek-upsell button').style.marginTop = settings['button_mt'];
+        document.querySelectorAll('.sleek-upsell button').style.marginBottom = settings['button_mb'];
+        document.querySelectorAll('.sleek-upsell button').style.borderRadius = settings['button_radius'];
+        document.querySelectorAll('.sleek-upsell button').style.borderWidth = settings['button_bs'];
+        document.querySelectorAll('.sleek-upsell button').style.borderColor = settings['button_bc'];
+        document.querySelectorAll('.sleek-upsell button').style.borderStyle = settings['button_border'];
+        document.querySelectorAll('.sleek-upsell img').style.borderRadius = settings['image_radius'];
+        document.querySelectorAll('.sleek-upsell img').style.borderWidth = settings['image_bs'];
+        document.querySelectorAll('.sleek-upsell img').style.color = settings['image_bc'];
+        document.querySelectorAll('.sleek-upsell img').style.borderStyle = settings['image_border'];
+        document.querySelectorAll('.sleek-text').style.color = settings['text_color'];
+        document.querySelectorAll('.sleek-text').style.fontFamily = settings['text_font'];
+        document.querySelectorAll('.sleek-text').style.fontSize = settings['text_size'];
+        document.querySelectorAll('.sleek-title').style.color = settings['title_color'];
+        document.querySelectorAll('.sleek-title').style.fontFamily = settings['title_font'];
+        document.querySelectorAll('.sleek-title').style.fontSize = settings['title_size'];
+        document.querySelectorAll('.sleek-price').style.color = settings['price_color'];
+        document.querySelectorAll('.sleek-price').style.fontFamily = settings['price_font'];
+        document.querySelectorAll('.sleek-price').style.fontSize = settings['price_size'];
     }
 
 }
