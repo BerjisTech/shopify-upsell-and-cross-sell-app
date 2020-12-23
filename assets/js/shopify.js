@@ -1024,7 +1024,7 @@ function display_offer(oid) {
             brgxczvy(oid, pid, document.querySelector('.v-' + pid).value, document.querySelector('.q-' + pid).value, datacell['variants'][0]['price'], 'quantity change', 'impression');
         }
         document.querySelector('form[data-product-product_id="' + pid + '"]').onmouseover = function () {
-            // brgxczvy(oid, pid, document.querySelector('.v-' + pid).value, document.querySelector('.q-' + pid).value, datacell['variants'][0]['price'], 'hover', 'impression');
+            brgxczvy(oid, pid, document.querySelector('.v-' + pid).value, document.querySelector('.q-' + pid).value, datacell['variants'][0]['price'], 'hover', 'impression');
         }
 
         document.querySelector('form[data-product-product_id="' + pid + '"]').onsubmit = function (e) {
