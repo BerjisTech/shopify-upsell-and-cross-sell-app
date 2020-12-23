@@ -2260,6 +2260,7 @@ Not supports in Firefox and IE */
     };
 
     $('.saveOffer').click(function() {
+        $('.saveOffer').attr("disabled", true);
         console.log(base_url + 'update_offers/' + updating_offer + '?<?php echo $_SERVER['QUERY_STRING']; ?>');
         $.ajax({
             type: "POST",
@@ -2274,12 +2275,14 @@ Not supports in Firefox and IE */
                 choices
             },
             success: function(response) {
+                $('.saveOffer').removeAttr("disabled");
                 alert('Succesfully updated offer ' + response);
                 // console.log(response);
                 window.location.reload(false);
                 //$('.data').html(response);
             },
             error: function(response) {
+                $('.saveOffer').removeAttr("disabled");
                 alert('An error occured');
                 console.log(response);
                 console.log(response.responseText);

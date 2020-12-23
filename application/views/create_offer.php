@@ -2221,6 +2221,7 @@ Not supports in Firefox and IE */
     };
 
     $('.saveOffer').click(function() {
+        $('.saveOffer').attr("disabled", true);
         $.ajax({
             type: "POST",
             url: base_url + 'create_offers?<?php echo $_SERVER['QUERY_STRING']; ?>',
