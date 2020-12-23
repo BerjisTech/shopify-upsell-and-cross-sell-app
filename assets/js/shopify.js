@@ -965,7 +965,7 @@ function sleekUpsell() {
             }
 
             if ($('form[data-product-index="' + i + '"]') == null) {
-                $('.sleek-upsell').append('<form></form>' + o_ui);
+                $('.sleek-upsell').append(+ o_ui);
             }
 
             if (v['show_title'] == 'n') {
