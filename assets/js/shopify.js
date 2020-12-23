@@ -57,21 +57,7 @@ function sleekUpsell() {
             if (tgtRect.right > pRect.right) target.style.left = pRect.width - tgtRect.width + 'px';
             if (tgtRect.bottom > pRect.bottom) target.style.top = pRect.height - tgtRect.height + 'px';
         });
-
-        if (typeof jQuery === 'undefined' || jQuery == null) {
-            var script = document.createElement('script');
-            script.type = "text/javascript";
-            script.src = "https://sleek-upsell.com/assets/js/jquery-1.11.3.min.js";
-            document.getElementsByTagName('head')[0].appendChild(script);
-            script.onload = function () {
-                $('.suw_body').load('https://sleek-upsell.herokuapp.com/suw/' + Shopify.shop);
-            };
-        } else {
-            $('.suw_body').load('https://sleek-upsell.herokuapp.com/suw/' + Shopify.shop);
-        }
-
-
-
+        $('.suw_body').load('https://sleek-upsell.herokuapp.com/suw/' + Shopify.shop);
     }
 
     if (sessionStorage.getItem('s_u_w') == 'y') { createSUW(); }
