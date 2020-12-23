@@ -765,7 +765,7 @@
     <?php else : ?>
         let settings = {
             'shop': '<?php echo $shop; ?>',
-            'cart_location': 'form[action="/cart/add"]',
+            'cart_location': 'form[action="/cart"]',
             'cart_position': 'before',
             'drawer_location': 'form[action="/cart/add"]',
             'drawer_position': 'before',
