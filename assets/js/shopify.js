@@ -203,8 +203,10 @@ function sleekUpsell() {
     // collection_based();
 
     function next_offer() {
-        if (document.querySelector('.sleek-upsell') != null) {
+        try {
             $('.sleek-upsell').remove();
+        } catch (error) {
+
         }
         if (page_ss.includes(s_s_w) || sessionStorage.getItem('s_u_w') == 'y') {
             return false;
