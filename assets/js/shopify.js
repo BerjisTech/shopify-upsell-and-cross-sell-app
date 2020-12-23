@@ -197,7 +197,7 @@ function sleekUpsell() {
         return open.apply(this, arguments);
     }
 
-    window.XMLHttpRequest.prototype.open = openReplacement;
+    if (!page.includes('/cart')) {window.XMLHttpRequest.prototype.open = openReplacement;}
 
     next_offer();
     // collection_based();
