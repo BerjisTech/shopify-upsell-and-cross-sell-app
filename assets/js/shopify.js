@@ -1050,7 +1050,7 @@ function display_offer(oid) {
 
     document.querySelector('.sleek-upsell').style.opacity = '1';
     document.querySelector('.sleek-upsell').style.transform = 'none';
-    document.querySelectorAll('.sleek-upsell form').style.marginBottom = '0px';
+    document.querySelectorAll('.sleek-form').style.marginBottom = '0px';
     if (settings != null) {
         document.querySelector('.sleek-upsell').insertAdjacentHTML('afterend', '<style>' + settings['override'] + '</style>');
         document.querySelector('.sleek-upsell').style.backgroundColor = settings['layout_bg'];
