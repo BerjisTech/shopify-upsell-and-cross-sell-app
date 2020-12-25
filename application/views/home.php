@@ -3,7 +3,7 @@
 
 <head>
     <!-- Global site tag (gtag.js) - Google Analytics -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-3416DX49FZ"></script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-186039528-1"></script>
     <script>
         window.dataLayer = window.dataLayer || [];
 
@@ -12,8 +12,9 @@
         }
         gtag('js', new Date());
 
-        gtag('config', 'G-3416DX49FZ');
+        gtag('config', 'UA-186039528-1');
     </script>
+
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>Sleek Upsell — Upselling Reimagined</title>
