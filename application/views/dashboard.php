@@ -156,18 +156,20 @@
                     });
                 </script>
                 <div class="row">
-                    <div class="col-sm-6">
+                    <div class="col-md-2"></div>
+                    <div class="col-md-4 col-sm-6">
                         <div class="tile-stats tile-white stat-tile" style="box-shadow: 0px 0px 5px rgba(2, 2, 2, 0.2);">
                             <h3><?php echo $this->db->where('shop', $duka)->where('type', 'impression')->get('stats')->num_rows(); ?></h3>
                             <p>Customer impression</p> <span class="customer-reach"></span>
                         </div>
                     </div>
-                    <div class="col-sm-6">
+                    <div class="col-md-4 col-sm-6">
                         <div class="tile-stats tile-white stat-tile" style="box-shadow: 0px 0px 5px rgba(2, 2, 2, 0.2);">
                             <h3>$ <?php echo number_format($this->db->select('sum(price) as total')->where('shop', $duka)->where('type', 'purchase')->get('stats')->row()->total); ?></h3>
                             <p>ATC</p> <span class="sales"></span>
                         </div>
                     </div>
+                    <div class="col-md-2"></div>
                 </div>
                 <script type="text/javascript">
                     jQuery(document).ready(function($) {
@@ -188,7 +190,8 @@
                         });
                     });
                 </script>
-                <table class="datatable" id="table-4" style="border: none;">
+                <div class="col-md-2"></div>
+                <table class="datatable col-md-8" id="table-4" style="border: none;">
                     <thead style="border: none;">
                         <tr style="border: none;">
                             <th style="border: none;"></th>
@@ -352,6 +355,7 @@
                         <?php endforeach; ?>
                     </tbody>
                 </table>
+                <div class="col-md-2"></div>
                 <script>
                     $('.offer_status').change(function() {
                         let o = $(this).attr('data-oid');
