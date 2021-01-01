@@ -242,19 +242,19 @@
 <div class="row">
     <div class="col-md-4 col-sm-12">
         <div class="tile-stats tile-white stat-tile">
-            <h3><?php echo $this->db->where('shop', $duka)->where('offer', $offer)->where('type', 'show')->get('stats')->num_rows(); ?></h3>
+            <h3><?php echo number_format($this->db->where('shop', $duka)->where('offer', $offer)->where('type', 'show')->get('stats')->num_rows()); ?></h3>
             <p>Shown</p> <span class="all-time-sales"></span>
         </div>
     </div>
     <div class="col-md-4 col-sm-6">
         <div class="tile-stats tile-white stat-tile">
-            <h3><?php echo $this->db->where('shop', $duka)->where('offer', $offer)->where('type', 'impression')->get('stats')->num_rows(); ?></h3>
+            <h3><?php echo number_format($this->db->where('shop', $duka)->where('offer', $offer)->where('type', 'impression')->get('stats')->num_rows()); ?></h3>
             <p>Customer impression</p> <span class="customer-reach"></span>
         </div>
     </div>
     <div class="col-md-4 col-sm-6">
         <div class="tile-stats tile-white stat-tile">
-            <h3><?php echo $this->db->where('shop', $duka)->where('offer', $offer)->where('type', 'purchase')->get('stats')->num_rows(); ?></h3>
+            <h3>$ <?php echo number_format($this->db->select('sum(price) as total')->where('shop', $duka)->where('offer', $offer)->where('type', 'purchase')->get('stats')->row()->total); ?></h3>
             <p>ATC</p> <span class="sales"></span>
         </div>
     </div>
