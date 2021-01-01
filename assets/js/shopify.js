@@ -1046,14 +1046,13 @@ function sleekUpsell() {
                     }
                 }
 
-                brgxczvy(oid, pid, $('.v-' + pid).val(), $('.q-' + pid).val(), datacell['variants'][0]['price'], 'add to cart', 'purchase');
                 $.ajax({
                   type: 'POST', 
                   url: '/cart/add.js',
                   dataType: 'json', 
                   data: $(this).serialize(),
                   success: function(response){
-                      sessionStorage.setItem('sleek_shown_' + oid, 'y');
+                    sessionStorage.setItem('sleek_shown_' + oid, 'y');
                     brgxczvy(oid, pid, $('.v-' + pid).val(), $('.q-' + pid).val(), datacell['variants'][0]['price'], 'add to cart', 'purchase');
                     $('.sleek-atc').innerHTML = '<img src="https://sleek-upsell.com/assets/images/loader.gif" />';
                     if (offers['offer'][oid]['offer'][0]['discount'] == 'y' && offers['offer'][oid]['offer'][0]['code'] != '') {
