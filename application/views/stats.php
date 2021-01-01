@@ -203,10 +203,6 @@
         var donut_chart = Morris.Donut({
             element: 'donut-chart-demo',
             data: [{
-                    label: "Checkout ($ <?php echo number_format($this->db->select('sum(price) as total')->where('shop', $duka)->where('type', 'checkout')->get('stats')->row()->total); ?>)",
-                    value: <?php echo number_format($this->db->where('shop', $duka)->where('type', 'checkout')->get('stats')->num_rows()); ?>
-                },
-                {
                     label: "ATC ($ <?php echo number_format($this->db->select('sum(price) as total')->where('shop', $duka)->where('type', 'purchase')->get('stats')->row()->total); ?>)",
                     value: <?php echo number_format($this->db->where('shop', $duka)->where('type', 'purchase')->get('stats')->num_rows()); ?>
                 },
@@ -324,7 +320,7 @@
                                         echo $title;
                                     }
                                     ?></td>
-                                <td><?php echo number_format(($fetch['reach'] * 100) / $total_stats); ?>%  ($<?php echo number_format($this->db->select('sum(price) as total')->where('shop', $duka)->where('type', 'purchase')->where('offer', $fetch['offer'])->get('stats')->row()->total); ?>)</td>
+                                <td><?php echo number_format(($fetch['reach'] * 100) / $total_stats); ?>% ($<?php echo number_format($this->db->select('sum(price) as total')->where('shop', $duka)->where('type', 'purchase')->where('offer', $fetch['offer'])->get('stats')->row()->total); ?>)</td>
                             </tr>
                         <?php endforeach; ?>
                     </tbody>
