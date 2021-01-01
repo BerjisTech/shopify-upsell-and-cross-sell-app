@@ -1019,16 +1019,16 @@ function sleekUpsell() {
                 $('.q-' + pid).append('<option value="' + q + '">' + q + '</option>')
             }
 
-            brgxczvy(oid, pid, $('.v-' + pid).value, $('.q-' + pid).value, datacell['variants'][0]['price'], 'show', 'show');
+            brgxczvy(oid, pid, $('.v-' + pid).val(), $('.q-' + pid).val(), datacell['variants'][0]['price'], 'show', 'show');
 
             $('.v-' + pid).onchange = function () {
-                brgxczvy(oid, pid, $('.v-' + pid).value, $('.q-' + pid).value, datacell['variants'][0]['price'], 'variant change', 'impression');
+                brgxczvy(oid, pid, $('.v-' + pid).val(), $('.q-' + pid).val(), datacell['variants'][0]['price'], 'variant change', 'impression');
             }
             $('.q-' + pid).onchange = function () {
-                brgxczvy(oid, pid, $('.v-' + pid).value, $('.q-' + pid).value, datacell['variants'][0]['price'], 'quantity change', 'impression');
+                brgxczvy(oid, pid, $('.v-' + pid).val(), $('.q-' + pid).val(), datacell['variants'][0]['price'], 'quantity change', 'impression');
             }
             $('form[data-product-product_id="' + pid + '"]').onmouseover = function () {
-                brgxczvy(oid, pid, $('.v-' + pid).value, $('.q-' + pid).value, datacell['variants'][0]['price'], 'hover', 'impression');
+                brgxczvy(oid, pid, $('.v-' + pid).val(), $('.q-' + pid).val(), datacell['variants'][0]['price'], 'hover', 'impression');
             }
 
             $('form[data-product-product_id="' + pid + '"]').onsubmit = function (e) {
@@ -1055,7 +1055,7 @@ function sleekUpsell() {
                     method: 'POST'
                 }).then(function (response) {
                     sessionStorage.setItem('sleek_shown_' + oid, 'y');
-                    brgxczvy(oid, pid, $('.v-' + pid).value, $('.q-' + pid).value, datacell['variants'][0]['price'], 'add to cart', 'purchase');
+                    brgxczvy(oid, pid, $('.v-' + pid).val(), $('.q-' + pid).val(), datacell['variants'][0]['price'], 'add to cart', 'purchase');
                     $('.sleek-atc').innerHTML = '<img src="https://sleek-upsell.com/assets/images/loader.gif" />';
                     if (offers['offer'][oid]['offer'][0]['discount'] == 'y' && offers['offer'][oid]['offer'][0]['code'] != '') {
                         g_s_s_w('https://' + Shopify.shop + '/discount/' + offers['offer'][oid]['offer'][0]['code']);
