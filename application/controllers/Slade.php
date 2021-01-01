@@ -324,7 +324,7 @@ class Slade extends CI_Controller
 
         $plan = $s_data['plan_display_name'];
 
-        if ($plan == 'Developer Preview') {
+        if ($plan == 'Developer Preview' || $plan == 'Development') {
             $array = array(
                 'recurring_application_charge' => array(
                     'name' => 'Sleek',
