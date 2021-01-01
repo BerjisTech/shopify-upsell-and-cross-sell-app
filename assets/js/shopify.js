@@ -197,7 +197,7 @@ function sleekUpsell() {
         return open.apply(this, arguments);
     }
 
-    if (!page.includes('/cart')) {window.XMLHttpRequest.prototype.open = openReplacement;}
+    if (!page.includes('/cart')) { window.XMLHttpRequest.prototype.open = openReplacement; }
 
     next_offer();
     // collection_based();
@@ -1021,17 +1021,17 @@ function sleekUpsell() {
 
             brgxczvy(oid, pid, $('.v-' + pid).val(), $('.q-' + pid).val(), datacell['variants'][0]['price'], 'show', 'show');
 
-            $('.v-' + pid).onchange = function () {
+            $('.v-' + pid).change(function () {
                 brgxczvy(oid, pid, $('.v-' + pid).val(), $('.q-' + pid).val(), datacell['variants'][0]['price'], 'variant change', 'impression');
-            }
-            $('.q-' + pid).onchange = function () {
+            });
+            $('.q-' + pid).change(function () {
                 brgxczvy(oid, pid, $('.v-' + pid).val(), $('.q-' + pid).val(), datacell['variants'][0]['price'], 'quantity change', 'impression');
-            }
-            $('form[data-product-product_id="' + pid + '"]').onmouseover = function () {
+            });
+            $('form[data-product-product_id="' + pid + '"]').hover(function () {
                 brgxczvy(oid, pid, $('.v-' + pid).val(), $('.q-' + pid).val(), datacell['variants'][0]['price'], 'hover', 'impression');
-            }
+            });
 
-            $('form[data-product-product_id="' + pid + '"]').onsubmit = function (e) {
+            $('form[data-product-product_id="' + pid + '"]').submit(function (e) {
                 e.preventDefault();
 
                 let addToCartForm = $('form[data-product-product_id="' + pid + '"]');
@@ -1084,16 +1084,16 @@ function sleekUpsell() {
                     // console.error(e);
                     $('form[data-product-product_id="' + pid + '"]').closest('button').innerHTML = 'Could not add product';
                 });
-            }
+            });
         }
 
         if ($('.reject_offer') != null) {
-            $('.reject_offer').onclick = function () {
+            $('.reject_offer').click(function () {
                 sessionStorage.setItem('sleek_shown_' + oid, 'y');
                 brgxczvy(oid, '', '', '', '', 'reject', 'reject');
                 $('.sleek-upsell').remove();
                 setTimeout(function () { next_offer() }, 300);
-            }
+            });
         }
 
         setStyles();
