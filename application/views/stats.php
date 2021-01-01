@@ -232,7 +232,7 @@
 <div class="row">
     <div class="col-md-4 col-sm-12">
         <div class="tile-stats tile-white stat-tile">
-            <h3><?php echo number_format($this->db->select('sum(price) as total')->where('shop', $duka)->where('type', 'checkout')->get('stats')->row()->total); ?></h3>
+            <h3><?php echo number_format($this->db->select('sum(price) as total')->where('shop', $duka)->where('type', 'show')->get('stats')->row()->total); ?></h3>
             <p>Shown</p> <span class="all-time-sales"></span>
         </div>
     </div>

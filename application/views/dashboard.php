@@ -180,7 +180,7 @@
                 <div class="row">
                     <div class="col-md-4 col-sm-6">
                         <div class="tile-stats tile-white stat-tile" style="box-shadow: 0px 0px 5px rgba(2, 2, 2, 0.2);">
-                            <h3><?php echo $this->db->where('shop', $duka)->where('type', 'checkout')->get('stats')->num_rows(); ?></h3>
+                            <h3><?php echo $this->db->where('shop', $duka)->where('type', 'show')->get('stats')->num_rows(); ?></h3>
                             <p>Shown</p> <span class="all-time-sales"></span>
                         </div>
                     </div>

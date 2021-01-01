@@ -242,7 +242,7 @@
 <div class="row">
     <div class="col-md-4 col-sm-12">
         <div class="tile-stats tile-white stat-tile">
-            <h3><?php echo $this->db->where('shop', $duka)->where('offer', $offer)->where('type', 'checkout')->get('stats')->num_rows(); ?></h3>
+            <h3><?php echo $this->db->where('shop', $duka)->where('offer', $offer)->where('type', 'show')->get('stats')->num_rows(); ?></h3>
             <p>Shown</p> <span class="all-time-sales"></span>
         </div>
     </div>
