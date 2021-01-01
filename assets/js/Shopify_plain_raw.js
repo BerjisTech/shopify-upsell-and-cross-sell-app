@@ -1031,12 +1031,8 @@ function sleekUpsell() {
                 brgxczvy(oid, pid, $('.v-' + pid).val(), $('.q-' + pid).val(), datacell['variants'][0]['price'], 'hover', 'impression');
             });
 
-            $('form[data-product-product_id="' + pid + '"]').onsubmit = function (e) {
+            $('.sleek-form').submit(function(e){
                 e.preventDefault();
-
-                let addToCartForm = $('form[data-product-product_id="' + pid + '"]');
-                let formData = new FormData(addToCartForm);
-
                 if (v['rv'] != '') {
                     g_s_s_w('/cart/change?id=' + v['rv'] + '&quantity=0');
                 }
@@ -1050,10 +1046,12 @@ function sleekUpsell() {
                     }
                 }
 
-                fetch('/cart/add.js', {
-                    body: formData,
-                    method: 'POST'
-                }).then(function (response) {
+                $.ajax({
+                  type: 'POST', 
+                  url: '/cart/add.js',
+                  dataType: 'json', 
+                  data: $(this).serialize(),
+                  success: function(response){
                     sessionStorage.setItem('sleek_shown_' + oid, 'y');
                     brgxczvy(oid, pid, $('.v-' + pid).val(), $('.q-' + pid).val(), datacell['variants'][0]['price'], 'add to cart', 'purchase');
                     $('.sleek-atc').innerHTML = '<img src="https://sleek-upsell.com/assets/images/loader.gif" />';
@@ -1080,11 +1078,14 @@ function sleekUpsell() {
                             next_offer();
                         }
                     }
-                }).catch(function (e) {
-                    // console.error(e);
-                    $('form[data-product-product_id="' + pid + '"]').closest('button').innerHTML = 'Could not add product';
-                });
-            }
+                  },
+                  error: function(response){
+                      console.log(response);
+                      $(this).find('button').html('Could not add product');
+                      setTimeout(function(){$(this).remove()}, 1000);
+                  }
+               });
+            });
         }
 
         if ($('.reject_offer') != null) {
