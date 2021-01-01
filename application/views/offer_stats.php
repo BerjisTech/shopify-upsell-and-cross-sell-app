@@ -74,28 +74,6 @@
             barSpacing: 1
         });
 
-        jQuery(".all-time-sales").sparkline([0,
-            <?php
-            foreach ($this->db->select('sum(price) as stat, date_format(from_unixtime(date), "%m") as month, date_format(from_unixtime(date), "%Y %m %d") as year')->where('shop', $duka)->where('offer', $offer)->where('type', 'checkout')->group_by('month')->order_by('year', 'asc')->get('stats')->result_array() as $fetch) {
-                echo $fetch['stat'] . ',';
-            }
-            ?>
-        ], {
-            type: 'line',
-            width: '100%',
-            height: '55',
-            lineColor: '#00acd6',
-            fillColor: '',
-            lineWidth: 2,
-            spotColor: '#344e86',
-            minSpotColor: '#344e86',
-            maxSpotColor: '#344e86',
-            highlightSpotColor: '#344e86',
-            highlightLineColor: '#30487b',
-            spotRadius: 2,
-            drawNormalOnTop: true
-        });
-
         $('.inlinebar').sparkline('html', {
             type: 'bar',
             barColor: '#ff6264'
@@ -232,106 +210,6 @@
             colors: ['#EC3B83', '#00ACD6', '#E8B51B', '#002A5A']
         });
         donut_chart_demo.parent().attr('style', '');
-
-        // Area Chart
-        var area_chart_demo = $("#area-chart-demo");
-        area_chart_demo.parent().show();
-        var area_chart = Morris.Area({
-            element: 'area-chart-demo',
-            data: [
-                <?php
-                $gyear = date('Y');
-                for ($month = 01; $month <= 12; $month++) {
-                    if ($month == '01') {
-                        $nowmonth = strtotime('01-' . $month . '-' . $gyear);
-                        $newmonth = strtotime('31-' . $month . '-' . $gyear);
-                    }
-                    if ($month == '02') {
-                        $nowmonth = strtotime('01-' . $month . '-' . $gyear);
-                        $newmonth = strtotime('28-' . $month . '-' . $gyear);
-                    }
-                    if ($month == '03') {
-                        $nowmonth = strtotime('01-' . $month . '-' . $gyear);
-                        $newmonth = strtotime('31-' . $month . '-' . $gyear);
-                    }
-                    if ($month == '04') {
-                        $nowmonth = strtotime('01-' . $month . '-' . $gyear);
-                        $newmonth = strtotime('30-' . $month . '-' . $gyear);
-                    }
-                    if ($month == '05') {
-                        $nowmonth = strtotime('01-' . $month . '-' . $gyear);
-                        $newmonth = strtotime('31-' . $month . '-' . $gyear);
-                    }
-                    if ($month == '06') {
-                        $nowmonth = strtotime('01-' . $month . '-' . $gyear);
-                        $newmonth = strtotime('30-' . $month . '-' . $gyear);
-                    }
-                    if ($month == '07') {
-                        $nowmonth = strtotime('01-' . $month . '-' . $gyear);
-                        $newmonth = strtotime('31-' . $month . '-' . $gyear);
-                    }
-                    if ($month == '08') {
-                        $nowmonth = strtotime('01-' . $month . '-' . $gyear);
-                        $newmonth = strtotime('31-' . $month . '-' . $gyear);
-                    }
-                    if ($month == '09') {
-                        $nowmonth = strtotime('01-' . $month . '-' . $gyear);
-                        $newmonth = strtotime('30-' . $month . '-' . $gyear);
-                    }
-                    if ($month == '10') {
-                        $nowmonth = strtotime('01-' . $month . '-' . $gyear);
-                        $newmonth = strtotime('31-' . $month . '-' . $gyear);
-                    }
-                    if ($month == '11') {
-                        $nowmonth = strtotime('01-' . $month . '-' . $gyear);
-                        $newmonth = strtotime('30-' . $month . '-' . $gyear);
-                    }
-                    if ($month == '12') {
-                        $nowmonth = strtotime('01-' . $month . '-' . $gyear);
-                        $newmonth = strtotime('31-' . $month . '-' . $gyear);
-                    }
-                    #echo '01-'.$month.'-'.$gyear;
-                ?> {
-                        y: '<?php echo date('Y'); ?>-<?php echo $month; ?>',
-                        a: <?php
-                            $where = "`shop` = '" . $duka . "' AND `offer` = '" . $offer . "' AND `type` = 'purchase' AND `date` BETWEEN '" . $nowmonth . "' AND '" . $newmonth . "'";
-                            $shown = $this->db->where($where)->get('stats')->num_rows();
-                            if ($shown == '') {
-                                echo '0';
-                            } else {
-                                echo $shown;
-                            }
-                            ?>,
-                        b: <?php
-                            $where = "`shop` = '" . $duka . "' AND `offer` = '" . $offer . "' AND `type` = 'checkout' AND `date` BETWEEN '" . $nowmonth . "' AND '" . $newmonth . "'";
-                            $purchases = $this->db->where($where)->get('stats')->num_rows();
-                            if ($purchases == '') {
-                                echo '0';
-                            } else {
-                                echo $purchases;
-                            }
-                            ?>
-                    },
-
-                <?php } #echo $this->db->last_query(); 
-                ?>
-
-            ],
-            xkey: 'y',
-            ykeys: ['a', 'b'],
-            labels: ['ATC', 'Checkout'],
-            lineColors: ['#ec3b83', '#00acd6'],
-            xLabelFormat: function(x) {
-                var month = months[x.getMonth()];
-                return month;
-            },
-            dateFormat: function(x) {
-                var month = months[new Date(x).getMonth()];
-                return month;
-            },
-            redraw: true
-        });
-        area_chart_demo.parent().attr('style', '');
     });
 
     function getRandomInt(min, max) {
@@ -340,22 +218,16 @@
 </script>
 
 <div class="row">
-    <div class="col-md-4 col-sm-6">
+    <div class="col-sm-6">
         <div class="tile-stats tile-white stat-tile">
             <h3><?php echo $this->db->where('shop', $duka)->where('offer', $offer)->where('type', 'impression')->get('stats')->num_rows(); ?></h3>
             <p>Customer impression</p> <span class="customer-reach"></span>
         </div>
     </div>
-    <div class="col-md-4 col-sm-6">
+    <div class="col-sm-6">
         <div class="tile-stats tile-white stat-tile">
             <h3><?php echo $this->db->where('shop', $duka)->where('offer', $offer)->where('type', 'purchase')->get('stats')->num_rows(); ?></h3>
             <p>ATC</p> <span class="sales"></span>
-        </div>
-    </div>
-    <div class="col-md-4 col-sm-12">
-        <div class="tile-stats tile-white stat-tile">
-            <h3><?php echo $this->db->where('shop', $duka)->where('offer', $offer)->where('type', 'checkout')->get('stats')->num_rows(); ?></h3>
-            <p>Checkouts</p> <span class="all-time-sales"></span>
         </div>
     </div>
 </div>
@@ -366,7 +238,6 @@
                 <div class="panel-title">Statistics</div>
                 <div class="panel-options">
                     <ul class="nav nav-tabs">
-                        <li class=""><a href="#area-chart" data-toggle="tab">ATC vs Checkout</a></li>
                         <li class="active"><a href="#line-chart" data-toggle="tab">Shown vs ATC</a></li>
                         <li class=""><a href="#pie-chart" data-toggle="tab">Comparison Chart</a></li>
                     </ul>
@@ -374,9 +245,6 @@
             </div>
             <div class="panel-body">
                 <div class="tab-content">
-                    <div class="tab-pane" id="area-chart">
-                        <div id="area-chart-demo" class="morrischart" style="height: 300px"></div>
-                    </div>
                     <div class="tab-pane active" id="line-chart">
                         <div id="line-chart-demo" class="morrischart" style="height: 300px"></div>
                     </div>
