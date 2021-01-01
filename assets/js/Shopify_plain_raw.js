@@ -1031,7 +1031,7 @@ function sleekUpsell() {
                 brgxczvy(oid, pid, $('.v-' + pid).val(), $('.q-' + pid).val(), datacell['variants'][0]['price'], 'hover', 'impression');
             });
 
-            $('form[data-product-product_id="' + pid + '"]').submit(function (e) {
+            $('form[data-product-product_id="' + pid + '"]').onsubmit = function (e) {
                 e.preventDefault();
 
                 let addToCartForm = $('form[data-product-product_id="' + pid + '"]');
@@ -1084,7 +1084,7 @@ function sleekUpsell() {
                     // console.error(e);
                     $('form[data-product-product_id="' + pid + '"]').closest('button').innerHTML = 'Could not add product';
                 });
-            });
+            }
         }
 
         if ($('.reject_offer') != null) {
