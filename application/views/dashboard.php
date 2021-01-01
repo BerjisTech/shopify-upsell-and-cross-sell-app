@@ -425,3 +425,11 @@
         </div>
     </div>
 </div>
+
+days
+
+<?php
+foreach ($this->db->select('count(stat_id) as stat, date_format(from_unixtime(date), "%d") as day, date_format(from_unixtime(date), "%Y %m %d") as year')->where('shop', $duka)->where('type', 'show')->group_by('day')->order_by('year', 'asc')->limit('30')->get('stats')->result_array() as $fetch) {
+    echo $fetch['day'] . ', ';
+}
+?>
