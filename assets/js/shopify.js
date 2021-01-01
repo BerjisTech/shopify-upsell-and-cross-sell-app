@@ -1054,9 +1054,9 @@ function sleekUpsell() {
                     body: formData,
                     method: 'POST'
                 }).then(function (response) {
-                    $('.sleek-atc').innerHTML = '<img src="https://sleek-upsell.com/assets/images/loader.gif" />';
                     sessionStorage.setItem('sleek_shown_' + oid, 'y');
                     brgxczvy(oid, pid, $('.v-' + pid).value, $('.q-' + pid).value, datacell['variants'][0]['price'], 'add to cart', 'purchase');
+                    $('.sleek-atc').innerHTML = '<img src="https://sleek-upsell.com/assets/images/loader.gif" />';
                     if (offers['offer'][oid]['offer'][0]['discount'] == 'y' && offers['offer'][oid]['offer'][0]['code'] != '') {
                         g_s_s_w('https://' + Shopify.shop + '/discount/' + offers['offer'][oid]['offer'][0]['code']);
                     }
