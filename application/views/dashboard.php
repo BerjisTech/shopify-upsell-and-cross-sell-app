@@ -190,172 +190,174 @@
                         });
                     });
                 </script>
-                <div class="col-md-2"></div>
-                <table class="datatable col-md-8" id="table-4" style="border: none;">
-                    <thead style="border: none;">
-                        <tr style="border: none;">
-                            <th style="border: none;"></th>
-                            <th style="border: none; flex-grow: 4;">Offer</th>
-                            <th style="border: none;">Status</th>
-                            <th style="border: none;">Action</th>
-                        </tr>
-                    </thead>
-                    <tbody style="border: none;">
-                        <?php
-                        foreach ($offer as $key => $fetch) : ?>
-                            <tr>
-                                <td style="vertical-align: middle; border: none; text-align: center; color: #FFFFFF; font-size: 1px;"><?php echo $key; ?></td>
-                                <td style="vertical-align: middle; border: none; flex-grow: 4;">
-                                    <span style="font-weight: bold;">
-                                        <?php
-                                        if ($fetch['offer'][0]['title'] == '') {
-                                            echo '#' . $fetch['offer'][0]['offer_id'];
-                                        } else {
-                                            echo $fetch['offer'][0]['title'];
-                                        }
-                                        ?> : Offer
-                                        <?php
-                                        $products = $fetch['products'];
-                                        $total_products = count($products);
+                <div class="row">
+                    <div class="col-md-2"></div>
+                    <table class="datatable col-md-8" id="table-4" style="border: none;">
+                        <thead style="border: none;">
+                            <tr style="border: none;">
+                                <th style="border: none;"></th>
+                                <th style="border: none; flex-grow: 4;">Offer</th>
+                                <th style="border: none;">Status</th>
+                                <th style="border: none;">Action</th>
+                            </tr>
+                        </thead>
+                        <tbody style="border: none;">
+                            <?php
+                            foreach ($offer as $key => $fetch) : ?>
+                                <tr>
+                                    <td style="vertical-align: middle; border: none; text-align: center; color: #FFFFFF; font-size: 1px;"><?php echo $key; ?></td>
+                                    <td style="vertical-align: middle; border: none; flex-grow: 4;">
+                                        <span style="font-weight: bold;">
+                                            <?php
+                                            if ($fetch['offer'][0]['title'] == '') {
+                                                echo '#' . $fetch['offer'][0]['offer_id'];
+                                            } else {
+                                                echo $fetch['offer'][0]['title'];
+                                            }
+                                            ?> : Offer
+                                            <?php
+                                            $products = $fetch['products'];
+                                            $total_products = count($products);
 
-                                        if ($total_products == 1) {
-                                            $product_id = $products[0]['product'];
-                                            $product_name = $this->Shopify->shopify_call($token, $shop, '/admin/api/2020-04/products/' . $product_id . '.json', array('fields' => 'title'), 'GET');
-                                            $product_name = json_decode($product_name['response'], true);
-                                            echo $product_name['product']['title'];
-                                        } else {
-                                            foreach ($products as $key => $value) {
-                                                $product_id = $products[$key]['product'];
+                                            if ($total_products == 1) {
+                                                $product_id = $products[0]['product'];
                                                 $product_name = $this->Shopify->shopify_call($token, $shop, '/admin/api/2020-04/products/' . $product_id . '.json', array('fields' => 'title'), 'GET');
                                                 $product_name = json_decode($product_name['response'], true);
-                                                if ($key == '0') {
-                                                    echo $product_name['product']['title'];
-                                                } else if ($key == count($products) - 1) {
-                                                    echo ' and ' . $product_name['product']['title'];
-                                                } else {
-                                                    echo ', ' . $product_name['product']['title'];
-                                                }
-                                            }
-                                        }
-                                        ?>
-                                    </span>
-                                    <span class="triprev btn entypo-eye" onclick="$('.triggers<?php echo $fetch['offer'][0]['offer_id']; ?>').toggle(200)">Offer conditions</span>
-                                    <ul class="triggers<?php echo $fetch['offer'][0]['offer_id']; ?>" style="list-style: none; display: none;">
-                                        <?php
-
-                                        if (count($fetch['blocks']) == 0) {
-                                            echo 'To every customer';
-                                        } else {
-                                            // $conditions = $fetch['conditions'];
-                                            $blocks = $fetch['blocks'];
-
-                                            foreach ($blocks as $k => $v) {
-                                                $rule = $v['rule'];
-                                                $bid = $v['bid'];
-                                                $oid = $v['oid'];
-
-                                                if ($rule == 'ALL') {
-                                                    $connector = 'AND';
-                                                }
-                                                if ($rule == 'ANY') {
-                                                    $connector = 'OR';
-                                                }
-
-                                                $conditions = $fetch['conditions'];
-                                                foreach ($conditions as $ck => $cv) { ?>
-
-                                                    <li>
-                                                    <?php
-
-                                                    if ($cv['bid'] == $bid && $cv['oid'] == $oid) {
-                                                        $condition_type = $cv['type'];
-
-                                                        if ($ck == '0') {
-                                                            $prepend = 'When ';
-                                                        } else if ($ck == count($conditions) - 1) {
-                                                            $prepend = '<strong>' . $connector . '</strong> ';
-                                                        } else {
-                                                            $prepend = '<strong>' . $connector . '</strong> ';
-                                                        }
-
-                                                        if ($condition_type == 'oc1' || $condition_type == 'oc2' || $condition_type == 'oc3') {
-                                                            $quantity = $cv['quantity'];
-                                                            $type = $cv['type'];
-                                                            $content = $cv['content'];
-
-                                                            if ($condition_type == 'oc1') {
-                                                                echo $prepend . 'Cart has at least ' . $quantity . ' ' . $content;
-                                                            }
-                                                            if ($condition_type == 'oc2') {
-                                                                echo $prepend . 'Cart has at most ' . $quantity . ' ' . $content;
-                                                            }
-                                                            if ($condition_type == 'oc3') {
-                                                                echo $prepend . 'Cart has exactly ' . $quantity . ' ' . $content;
-                                                            }
-                                                        }
-
-                                                        if ($condition_type == 'oc4') {
-                                                            $type = $cv['type'];
-                                                            $content = $cv['content'];
-
-                                                            echo $prepend . 'Cart does not have any ' . $content;
-                                                        }
-
-                                                        if ($condition_type == 'oc5' || $condition_type == 'oc6' || $condition_type == 'oc7' || $condition_type == 'oc8') {
-                                                            if ($condition_type == 'oc6') {
-                                                                echo $prepend . 'Cart total is at least ' . $cv['amount'] . ' cents';
-                                                            }
-                                                            if ($condition_type == 'oc6') {
-                                                                echo $prepend . 'Cart total is at most ' . $cv['amount'] . ' cents';
-                                                            }
-                                                            if ($condition_type == 'oc7') {
-                                                                echo $prepend . 'Customer is located in ' . $cv['country'];
-                                                            }
-                                                            if ($condition_type == 'oc8') {
-                                                                echo $prepend . 'Customer is not located in ' . $cv['country'];
-                                                            }
-                                                        }
+                                                echo $product_name['product']['title'];
+                                            } else {
+                                                foreach ($products as $key => $value) {
+                                                    $product_id = $products[$key]['product'];
+                                                    $product_name = $this->Shopify->shopify_call($token, $shop, '/admin/api/2020-04/products/' . $product_id . '.json', array('fields' => 'title'), 'GET');
+                                                    $product_name = json_decode($product_name['response'], true);
+                                                    if ($key == '0') {
+                                                        echo $product_name['product']['title'];
+                                                    } else if ($key == count($products) - 1) {
+                                                        echo ' and ' . $product_name['product']['title'];
+                                                    } else {
+                                                        echo ', ' . $product_name['product']['title'];
                                                     }
-                                                } ?>
-
-                                                    </li>
-                                            <?php
+                                                }
                                             }
-                                        }
-
                                             ?>
-                                    </ul>
-                                </td>
-                                <td style="vertical-align: middle; border: none;">
-                                    <span class="col-xs-12 status">
-                                        <label class="switch">
-                                            <input data-oid="<?php echo $fetch['offer'][0]['offer_id']; ?>" class="switcheck offer_status" type="checkbox" <?php if ($fetch['offer'][0]['status'] == "1") {
-                                                                                                                                                                echo "checked";
-                                                                                                                                                            }; ?> />
-                                            <span class="slidr round"></span>
-                                        </label>
-                                    </span>
-                                </td>
-                                <td style="text-align: center; vertical-align: middle; border: none;">
-                                    <ul class="user-info" style="display: table; text-align: center; cursor: pointer;">
-                                        <li class="profile-info dropdown"><span class="dropdown-toggle" data-toggle="dropdown"><i class="entypo-dot-3"></i></span>
-                                            <ul class="dropdown-menu pull-right">
-                                                <!-- Reverse Caret -->
-                                                <li class="caret"></li>
-                                                <!-- Profile sub-links -->
-                                                <li><a href="<?php echo base_url(); ?>edit_offer/<?php echo $shop; ?>/<?php echo $token; ?>/<?php echo $fetch['offer'][0]['offer_id']; ?>?<?php echo $_SERVER['QUERY_STRING']; ?>"><i class="entypo-pencil"></i>Edit</a></li>
-                                                <li><a href="<?php echo base_url(); ?>offer_stats/<?php echo $shop; ?>/<?php echo $fetch['offer'][0]['offer_id']; ?>?<?php echo $_SERVER['QUERY_STRING']; ?>">
-                                                        <i class="entypo-chart-line"></i>Stats</a></li>
-                                                <li><a onclick="if(confirm('Are you sure you want to delete this offer?')){$.ajax({url: 'delete_offer/<?php echo $fetch['offer'][0]['offer_id']; ?>', method: 'POST', success: function(){window.location.reload(false)}})}"><i class="entypo-trash"></i>Delete</a></li>
-                                            </ul>
-                                        </li>
-                                    </ul>
-                                </td>
-                            </tr>
-                        <?php endforeach; ?>
-                    </tbody>
-                </table>
-                <div class="col-md-2"></div>
+                                        </span>
+                                        <span class="triprev btn entypo-eye" onclick="$('.triggers<?php echo $fetch['offer'][0]['offer_id']; ?>').toggle(200)">Offer conditions</span>
+                                        <ul class="triggers<?php echo $fetch['offer'][0]['offer_id']; ?>" style="list-style: none; display: none;">
+                                            <?php
+
+                                            if (count($fetch['blocks']) == 0) {
+                                                echo 'To every customer';
+                                            } else {
+                                                // $conditions = $fetch['conditions'];
+                                                $blocks = $fetch['blocks'];
+
+                                                foreach ($blocks as $k => $v) {
+                                                    $rule = $v['rule'];
+                                                    $bid = $v['bid'];
+                                                    $oid = $v['oid'];
+
+                                                    if ($rule == 'ALL') {
+                                                        $connector = 'AND';
+                                                    }
+                                                    if ($rule == 'ANY') {
+                                                        $connector = 'OR';
+                                                    }
+
+                                                    $conditions = $fetch['conditions'];
+                                                    foreach ($conditions as $ck => $cv) { ?>
+
+                                                        <li>
+                                                        <?php
+
+                                                        if ($cv['bid'] == $bid && $cv['oid'] == $oid) {
+                                                            $condition_type = $cv['type'];
+
+                                                            if ($ck == '0') {
+                                                                $prepend = 'When ';
+                                                            } else if ($ck == count($conditions) - 1) {
+                                                                $prepend = '<strong>' . $connector . '</strong> ';
+                                                            } else {
+                                                                $prepend = '<strong>' . $connector . '</strong> ';
+                                                            }
+
+                                                            if ($condition_type == 'oc1' || $condition_type == 'oc2' || $condition_type == 'oc3') {
+                                                                $quantity = $cv['quantity'];
+                                                                $type = $cv['type'];
+                                                                $content = $cv['content'];
+
+                                                                if ($condition_type == 'oc1') {
+                                                                    echo $prepend . 'Cart has at least ' . $quantity . ' ' . $content;
+                                                                }
+                                                                if ($condition_type == 'oc2') {
+                                                                    echo $prepend . 'Cart has at most ' . $quantity . ' ' . $content;
+                                                                }
+                                                                if ($condition_type == 'oc3') {
+                                                                    echo $prepend . 'Cart has exactly ' . $quantity . ' ' . $content;
+                                                                }
+                                                            }
+
+                                                            if ($condition_type == 'oc4') {
+                                                                $type = $cv['type'];
+                                                                $content = $cv['content'];
+
+                                                                echo $prepend . 'Cart does not have any ' . $content;
+                                                            }
+
+                                                            if ($condition_type == 'oc5' || $condition_type == 'oc6' || $condition_type == 'oc7' || $condition_type == 'oc8') {
+                                                                if ($condition_type == 'oc6') {
+                                                                    echo $prepend . 'Cart total is at least ' . $cv['amount'] . ' cents';
+                                                                }
+                                                                if ($condition_type == 'oc6') {
+                                                                    echo $prepend . 'Cart total is at most ' . $cv['amount'] . ' cents';
+                                                                }
+                                                                if ($condition_type == 'oc7') {
+                                                                    echo $prepend . 'Customer is located in ' . $cv['country'];
+                                                                }
+                                                                if ($condition_type == 'oc8') {
+                                                                    echo $prepend . 'Customer is not located in ' . $cv['country'];
+                                                                }
+                                                            }
+                                                        }
+                                                    } ?>
+
+                                                        </li>
+                                                <?php
+                                                }
+                                            }
+
+                                                ?>
+                                        </ul>
+                                    </td>
+                                    <td style="vertical-align: middle; border: none;">
+                                        <span class="col-xs-12 status">
+                                            <label class="switch">
+                                                <input data-oid="<?php echo $fetch['offer'][0]['offer_id']; ?>" class="switcheck offer_status" type="checkbox" <?php if ($fetch['offer'][0]['status'] == "1") {
+                                                                                                                                                                    echo "checked";
+                                                                                                                                                                }; ?> />
+                                                <span class="slidr round"></span>
+                                            </label>
+                                        </span>
+                                    </td>
+                                    <td style="text-align: center; vertical-align: middle; border: none;">
+                                        <ul class="user-info" style="display: table; text-align: center; cursor: pointer;">
+                                            <li class="profile-info dropdown"><span class="dropdown-toggle" data-toggle="dropdown"><i class="entypo-dot-3"></i></span>
+                                                <ul class="dropdown-menu pull-right">
+                                                    <!-- Reverse Caret -->
+                                                    <li class="caret"></li>
+                                                    <!-- Profile sub-links -->
+                                                    <li><a href="<?php echo base_url(); ?>edit_offer/<?php echo $shop; ?>/<?php echo $token; ?>/<?php echo $fetch['offer'][0]['offer_id']; ?>?<?php echo $_SERVER['QUERY_STRING']; ?>"><i class="entypo-pencil"></i>Edit</a></li>
+                                                    <li><a href="<?php echo base_url(); ?>offer_stats/<?php echo $shop; ?>/<?php echo $fetch['offer'][0]['offer_id']; ?>?<?php echo $_SERVER['QUERY_STRING']; ?>">
+                                                            <i class="entypo-chart-line"></i>Stats</a></li>
+                                                    <li><a onclick="if(confirm('Are you sure you want to delete this offer?')){$.ajax({url: 'delete_offer/<?php echo $fetch['offer'][0]['offer_id']; ?>', method: 'POST', success: function(){window.location.reload(false)}})}"><i class="entypo-trash"></i>Delete</a></li>
+                                                </ul>
+                                            </li>
+                                        </ul>
+                                    </td>
+                                </tr>
+                            <?php endforeach; ?>
+                        </tbody>
+                    </table>
+                    <div class="col-md-2"></div>
+                </div>
                 <script>
                     $('.offer_status').change(function() {
                         let o = $(this).attr('data-oid');
