@@ -64,6 +64,28 @@
             barSpacing: 1
         });
 
+        jQuery(".all-time-sales").sparkline([0,
+            <?php
+            foreach ($this->db->select('sum(price) as stat, date_format(from_unixtime(date), "%m") as month, date_format(from_unixtime(date), "%Y %m %d") as year')->where('shop', $duka)->where('type', 'show')->group_by('month')->order_by('year', 'asc')->get('stats')->result_array() as $fetch) {
+                echo $fetch['stat'] . ',';
+            }
+            ?>
+        ], {
+            type: 'line',
+            width: '100%',
+            height: '55',
+            lineColor: '#00acd6',
+            fillColor: '',
+            lineWidth: 2,
+            spotColor: '#344e86',
+            minSpotColor: '#344e86',
+            maxSpotColor: '#344e86',
+            highlightSpotColor: '#344e86',
+            highlightLineColor: '#30487b',
+            spotRadius: 2,
+            drawNormalOnTop: true
+        });
+
         $('.inlinebar').sparkline('html', {
             type: 'bar',
             barColor: '#ff6264'
@@ -180,7 +202,10 @@
         donut_chart_demo.parent().show();
         var donut_chart = Morris.Donut({
             element: 'donut-chart-demo',
-            data: [
+            data: [{
+                    label: "Checkout ($ <?php echo number_format($this->db->select('sum(price) as total')->where('shop', $duka)->where('type', 'checkout')->get('stats')->row()->total); ?>)",
+                    value: <?php echo number_format($this->db->where('shop', $duka)->where('type', 'checkout')->get('stats')->num_rows()); ?>
+                },
                 {
                     label: "ATC ($ <?php echo number_format($this->db->select('sum(price) as total')->where('shop', $duka)->where('type', 'purchase')->get('stats')->row()->total); ?>)",
                     value: <?php echo number_format($this->db->where('shop', $duka)->where('type', 'purchase')->get('stats')->num_rows()); ?>
@@ -205,7 +230,12 @@
 </script>
 
 <div class="row">
-    <div class="col-md-2"></div>
+    <div class="col-md-4 col-sm-12">
+        <div class="tile-stats tile-white stat-tile">
+            <h3><?php echo number_format($this->db->select('sum(price) as total')->where('shop', $duka)->where('type', 'checkout')->get('stats')->row()->total); ?></h3>
+            <p>Shown</p> <span class="all-time-sales"></span>
+        </div>
+    </div>
     <div class="col-md-4 col-sm-6">
         <div class="tile-stats tile-white stat-tile">
             <h3><?php echo $this->db->where('shop', $duka)->where('type', 'impression')->get('stats')->num_rows(); ?></h3>
@@ -218,7 +248,6 @@
             <p>ATC</p> <span class="sales"></span>
         </div>
     </div>
-    <div class="col-md-2"></div>
 </div>
 <div class="row">
     <div class="col-sm-12">
