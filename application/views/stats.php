@@ -6,7 +6,7 @@
         // Sparkline Charts
         jQuery(".sales").sparkline([0,
             <?php
-            foreach ($this->db->select('sum(price) as stat, date_format(from_unixtime(date), "%m") as month, date_format(from_unixtime(date), "%Y %m %d") as year')->where('shop', $duka)->where('type', 'purchase')->group_by('month')->order_by('year', 'asc')->get('stats')->result_array() as $fetch) {
+            foreach ($this->db->select('sum(price) as stat, date_format(from_unixtime(date), "%d") as day, date_format(from_unixtime(date), "%Y %m %d") as year')->where('shop', $duka)->where('type', 'purchase')->group_by('day')->order_by('year', 'asc')->get('stats')->result_array() as $fetch) {
                 echo $fetch['stat'] . ',';
             }
             ?>
@@ -29,7 +29,7 @@
 
         jQuery(".customer-reach").sparkline([0,
             <?php
-            foreach ($this->db->select('count(stat_id) as stat, date_format(from_unixtime(date), "%m") as month, date_format(from_unixtime(date), "%Y %m %d") as year')->where('shop', $duka)->where('type', 'impression')->group_by('month')->order_by('year', 'asc')->get('stats')->result_array() as $fetch) {
+            foreach ($this->db->select('count(stat_id) as stat, date_format(from_unixtime(date), "%d") as day, date_format(from_unixtime(date), "%Y %m %d") as year')->where('shop', $duka)->where('type', 'impression')->group_by('day')->order_by('year', 'asc')->get('stats')->result_array() as $fetch) {
                 echo $fetch['stat'] . ',';
             }
             ?>
@@ -51,7 +51,7 @@
 
         $(".monthly-sales").sparkline([0,
             <?php
-            foreach ($this->db->select('sum(price) as stat, date_format(from_unixtime(date), "%m") as month, date_format(from_unixtime(date), "%Y %m %d") as year')->where('shop', $duka)->where('type', 'purchase')->group_by('month')->order_by('year', 'asc')->get('stats')->result_array() as $fetch) {
+            foreach ($this->db->select('sum(price) as stat, date_format(from_unixtime(date), "%d") as day, date_format(from_unixtime(date), "%Y %m %d") as year')->where('shop', $duka)->where('type', 'purchase')->group_by('day')->order_by('year', 'asc')->get('stats')->result_array() as $fetch) {
                 echo $fetch['stat'] . ',';
             }
             ?>
