@@ -205,18 +205,20 @@
 </script>
 
 <div class="row">
-    <div class="col-sm-6">
+    <div class="col-md-2"></div>
+    <div class="col-md-4 col-sm-6">
         <div class="tile-stats tile-white stat-tile">
             <h3><?php echo $this->db->where('shop', $duka)->where('type', 'impression')->get('stats')->num_rows(); ?></h3>
             <p>Customer impression</p> <span class="customer-reach"></span>
         </div>
     </div>
-    <div class="col-sm-6">
+    <div class="col-md-4 col-sm-6">
         <div class="tile-stats tile-white stat-tile">
             <h3>$ <?php echo number_format($this->db->select('sum(price) as total')->where('shop', $duka)->where('type', 'purchase')->get('stats')->row()->total); ?></h3>
             <p>ATC</p> <span class="sales"></span>
         </div>
     </div>
+    <div class="col-md-2"></div>
 </div>
 <div class="row">
     <div class="col-sm-12">
