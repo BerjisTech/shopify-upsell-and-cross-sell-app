@@ -35,16 +35,26 @@
     <tbody>
         <?php foreach ($user as $key => $fetch) : ?>
             <?php if ($fetch['partner'] == '') : ?>
-                    <td><?php echo $fetch['shop_id']; ?></td>
-                    <td><?php echo $fetch['shop']; ?> (NOT FULLY INSTALLED)</td>
-                    <td></td>
-                    <td></td>
-            <?php endif; ?>
-            <?php if ($fetch['partner'] != '' && $fetch['updated_at'] == '') : ?>
-                <tr>
+                <tr <?php if ($fetch['name'] == 'uninstalled') {
+                        echo 'style="background:rgba(204,0,0,0.1);"';
+                    }; ?>>
                     <td><?php echo $fetch['shop_id']; ?></td>
                     <td>
-                        <?php echo $fetch['shop_owner'] . '<br />'; ?>
+                        <span style="font-size: 0.000001px;"><?php echo $fetch['type']; ?></span>
+                        <?php echo $fetch['shop']; ?> <span class="entypo-arrows-ccw" onclick="refreshData('<?php echo $fetch['shop']; ?>');"></span><br /> (NOT FULLY INSTALLED)
+                    </td>
+                    <td></td>
+                    <td></td>
+                </tr>
+            <?php endif; ?>
+            <?php if ($fetch['partner'] != '' && $fetch['updated_at'] == '') : ?>
+                <tr <?php if ($fetch['name'] == 'uninstalled') {
+                        echo 'style="background:rgba(204,0,0,0.1);"';
+                    }; ?>>
+                    <td><?php echo $fetch['shop_id']; ?></td>
+                    <td>
+                        <?php echo $fetch['shop_owner']; ?> <span class="entypo-arrows-ccw" onclick="refreshData('<?php echo $fetch['shop']; ?>');"></span><br />
+                        <span style="font-size: 0.000001px;"><?php echo $fetch['type']; ?></span>
                         <?php echo $fetch['plan_display_name'] . ' (' . $fetch['plan_name'] . ')<br />'; ?>
                         <strong>First Install</strong> <?php echo date('d M, Y - h:m:a', $fetch['date']) . '<br />'; ?>
                         <strong>Current Install</strong> <?php echo date('d M, Y - h:m:a', $fetch['date']) . '<br />'; ?>
@@ -55,16 +65,19 @@
                     </td>
                     <td>
                         <strong><?php echo $this->db->where('shop', $fetch['shop'])->get('offers')->num_rows(); ?> Offers<br /></strong>
-                        <a href="https://<?php echo $shop ?>.myshopify.com/admin/apps/sleek-upsell/sombo/<?php echo $fetch['shop'] ?>/<?php echo $fetch['token'] ?>?<?php echo $_SERVER['QUERY_STRING']; ?>" target="_BLANK">Dashboard</a><br />
+                        <a href="https://<?php echo $shop ?>.myshopify.com/admin/apps/sleek-upsell-playground/sombo/<?php echo $fetch['shop'] ?>/<?php echo $fetch['token'] ?>?<?php echo $_SERVER['QUERY_STRING']; ?>" target="_BLANK">Dashboard</a><br />
                         <a href="https://partners.shopify.com/1569813/stores/<?php echo $fetch['partner']; ?>" target="_BLANK">Partner Link (<?php echo $fetch['partner']; ?>)</a><br />
                     </td>
                 </tr>
             <?php endif; ?>
             <?php if ($fetch['partner'] != '' && $fetch['updated_at'] != '') : ?>
-                <tr>
+                <tr <?php if ($fetch['name'] == 'uninstalled') {
+                        echo 'style="background:rgba(204,0,0,0.1);"';
+                    }; ?>>
                     <td><?php echo $fetch['shop_id']; ?></td>
                     <td>
-                        <?php echo $fetch['shop_owner'] . '<br />'; ?>
+                        <?php echo $fetch['shop_owner']; ?> <span class="entypo-arrows-ccw" onclick="refreshData('<?php echo $fetch['shop']; ?>');"></span><br />
+                        <span style="font-size: 0.000001px;"><?php echo $fetch['type']; ?></span>
                         <?php echo $fetch['plan_display_name'] . ' (' . $fetch['plan_name'] . ')<br />'; ?>
                         <strong>First Install</strong> <?php echo date('d M, Y - h:m:a', $fetch['date']) . '<br />'; ?>
                         <strong>Current Install</strong> <?php echo date('d M, Y - h:m:a', $fetch['updated_at']) . '<br />'; ?>
@@ -75,7 +88,7 @@
                     </td>
                     <td>
                         <strong><?php echo $this->db->where('shop', $fetch['shop'])->get('offers')->num_rows(); ?> Offers<br /></strong>
-                        <a href="https://<?php echo $shop ?>.myshopify.com/admin/apps/sleek-upsell/sombo/<?php echo $fetch['shop'] ?>/<?php echo $fetch['token'] ?>?<?php echo $_SERVER['QUERY_STRING']; ?>" target="_BLANK">Dashboard</a><br />
+                        <a href="https://<?php echo $shop ?>.myshopify.com/admin/apps/sleek-upsell-playground/sombo/<?php echo $fetch['shop'] ?>/<?php echo $fetch['token'] ?>?<?php echo $_SERVER['QUERY_STRING']; ?>" target="_BLANK">Dashboard</a><br />
                         <a href="https://partners.shopify.com/1569813/stores/<?php echo $fetch['partner']; ?>" target="_BLANK">Partner Link (<?php echo $fetch['partner']; ?>)</a><br />
                     </td>
                 </tr>
@@ -96,3 +109,13 @@
 <script src="<?php echo base_url(); ?>assets/js/datatables/datatables.js" id="script-resource-8"></script>
 <script src="<?php echo base_url(); ?>assets/js/select2/select2.min.js" id="script-resource-9"></script>
 <script src="<?php echo base_url(); ?>assets/js/bootstrap-datepicker.js" id="script-resource-12"></script>
+<script>
+    function refreshData(shop) {
+        $.ajax({
+            url: '<?php echo base_url(); ?>refresh_store_data/' + shop,
+            success: function() {
+                window.location.reload(false);
+            }
+        });
+    }
+</script>
