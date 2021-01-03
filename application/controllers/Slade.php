@@ -1005,23 +1005,51 @@ class Slade extends CI_Controller
         $this->load->view('index', $data);
     }
 
-    public function refresh_store_data($shop, $token)
+    public function refresh_store_data($shop)
     {
 
-        $s_data = $this->Shopify->shopify_call($token, $shop, '/admin/api/2020-10/shop.json', array(), 'GET');
-        $s_data = json_decode($s_data['response'], true);
-        print_r($s_data);
-        $s_data = $s_data['shop'];
+        $token = $this->db->where('shop', $shop)->get('shops')->row()->token;
 
-        $s_array = array(
-            'plan_name' => $s_data['plan_name'],
-            'shop_owner' => $s_data['shop_owner'],
-            'plan_display_name' => $s_data['plan_display_name'],
-            'customer_email' => $s_data['customer_email'],
-            'domain' => $s_data['domain'],
-            'partner' => $s_data['id']
-        );
+        if ($token == '') {
+            $s_array = array(
+                'type' => 'uninstalled',
+                'name' => 'uninstalled'
+            );
 
-        $this->db->where('shop', $shop)->set($s_array)->update('shops');
+            $this->db->where('shop', $shop)->set($s_array)->update('shops');
+        } else {
+
+            $s_data = $this->Shopify->shopify_call($token, $shop, '/admin/api/2020-10/shop.json', array(), 'GET');
+            $s_data = json_decode($s_data['response'], true);
+            if (array_key_exists('errors', $s_data)) {
+                $s_array = array(
+                    'type' => 'uninstalled',
+                    'name' => 'uninstalled'
+                );
+
+                $this->db->where('shop', $shop)->set($s_array)->update('shops');
+            } else {
+                print_r($s_data);
+                $s_data = $s_data['shop'];
+
+                $s_array = array(
+                    'plan_name' => $s_data['plan_name'],
+                    'shop_owner' => $s_data['shop_owner'],
+                    'plan_display_name' => $s_data['plan_display_name'],
+                    'customer_email' => $s_data['customer_email'],
+                    'domain' => $s_data['domain'],
+                    'partner' => $s_data['id']
+                );
+
+                $this->db->where('shop', $shop)->set($s_array)->update('shops');
+            }
+        }
+    }
+
+    public function test_email($shop, $token)
+    {
+        if ($this->Shopify->do_email($this->db->where('shop', $shop)->get('shops')->row()->shop_owner . ' just installed Sleek Apps on ' . $this->db->where('shop', $shop)->get('shops')->row()->domain . '<br /> Email: ' . $this->db->where('shop', $shop)->get('shops')->row()->customer_email, 'New User', 'sleek.apps.data@gmail.com', 'support@sleekupsell.com')) {
+            echo 'email sent';
+        }
     }
 }
