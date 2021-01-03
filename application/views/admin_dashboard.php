@@ -41,7 +41,7 @@
                     <td><?php echo $fetch['shop_id']; ?></td>
                     <td>
                         <span style="font-size: 0.000001px;"><?php echo $fetch['type']; ?></span>
-                        <?php echo $fetch['shop']; ?> <span class="entypo-arrows-ccw" onclick="refreshData('<?php echo $fetch['shop']; ?>');"></span><br /> (NOT FULLY INSTALLED)
+                        <?php echo $fetch['shop']; ?> <span class="entypo-arrows-ccw loader" onclick="refreshData('<?php echo $fetch['shop']; ?>');"></span><br /> (NOT FULLY INSTALLED)
                     </td>
                     <td></td>
                     <td></td>
@@ -53,7 +53,7 @@
                     }; ?>>
                     <td><?php echo $fetch['shop_id']; ?></td>
                     <td>
-                        <?php echo $fetch['shop_owner']; ?> <span class="entypo-arrows-ccw" onclick="refreshData('<?php echo $fetch['shop']; ?>');"></span><br />
+                        <?php echo $fetch['shop_owner']; ?> <span class="entypo-arrows-ccw loader" onclick="refreshData('<?php echo $fetch['shop']; ?>');"></span><br />
                         <span style="font-size: 0.000001px;"><?php echo $fetch['type']; ?></span>
                         <?php echo $fetch['plan_display_name'] . ' (' . $fetch['plan_name'] . ')<br />'; ?>
                         <strong>First Install</strong> <?php echo date('d M, Y - h:m:a', $fetch['date']) . '<br />'; ?>
@@ -76,7 +76,7 @@
                     }; ?>>
                     <td><?php echo $fetch['shop_id']; ?></td>
                     <td>
-                        <?php echo $fetch['shop_owner']; ?> <span class="entypo-arrows-ccw" onclick="refreshData('<?php echo $fetch['shop']; ?>');"></span><br />
+                        <?php echo $fetch['shop_owner']; ?> <span class="entypo-arrows-ccw loader" onclick="refreshData('<?php echo $fetch['shop']; ?>');"></span><br />
                         <span style="font-size: 0.000001px;"><?php echo $fetch['type']; ?></span>
                         <?php echo $fetch['plan_display_name'] . ' (' . $fetch['plan_name'] . ')<br />'; ?>
                         <strong>First Install</strong> <?php echo date('d M, Y - h:m:a', $fetch['date']) . '<br />'; ?>
@@ -101,6 +101,44 @@
     .dataTables_wrapper {
         background: #ffffff !important;
     }
+
+    .loader {
+        margin: 60px auto;
+        font-size: 10px;
+        position: relative;
+        text-indent: -9999em;
+        border-top: 1.1em solid rgba(255, 255, 255, 0.2);
+        border-right: 1.1em solid rgba(255, 255, 255, 0.2);
+        border-bottom: 1.1em solid rgba(255, 255, 255, 0.2);
+        border-left: 1.1em solid #ffffff;
+        -webkit-transform: translateZ(0);
+        -ms-transform: translateZ(0);
+        transform: translateZ(0);
+    }
+
+    @-webkit-keyframes load8 {
+        0% {
+            -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+        }
+
+        100% {
+            -webkit-transform: rotate(360deg);
+            transform: rotate(360deg);
+        }
+    }
+
+    @keyframes load8 {
+        0% {
+            -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+        }
+
+        100% {
+            -webkit-transform: rotate(360deg);
+            transform: rotate(360deg);
+        }
+    }
 </style>
 <link rel="stylesheet" href="<?php echo base_url(); ?>assets/js/datatables/datatables.css" id="style-resource-1">
 <link rel="stylesheet" href="<?php echo base_url(); ?>assets/js/select2/select2-bootstrap.css" id="style-resource-2">
@@ -111,6 +149,7 @@
 <script src="<?php echo base_url(); ?>assets/js/bootstrap-datepicker.js" id="script-resource-12"></script>
 <script>
     function refreshData(shop) {
+        $(this).attr("style", "-webkit-animation: load8 1.1s infinite linear; animation: load8 1.1s infinite linear;");
         $.ajax({
             url: '<?php echo base_url(); ?>refresh_store_data/' + shop,
             success: function() {
