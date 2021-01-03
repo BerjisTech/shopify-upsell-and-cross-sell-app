@@ -142,7 +142,7 @@
 <script src="<?php echo base_url(); ?>assets/js/bootstrap-datepicker.js" id="script-resource-12"></script>
 <script>
     function refreshData(shop) {
-        $(this).attr("style", "-webkit-animation: load8 1.1s infinite linear; animation: load8 1.1s infinite linear;");
+        $('.loader').attr("style", "-webkit-animation: load8 1.1s infinite linear; animation: load8 1.1s infinite linear;");
         $.ajax({
             url: '<?php echo base_url(); ?>refresh_store_data/' + shop,
             success: function() {
