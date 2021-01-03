@@ -41,10 +41,10 @@
         box-shadow: 0px 0px 10px rgba(6, 6, 6, 0.2);
     }
 
-    .whats *{
+    .whats * {
         color: #ffffff;
         width: 100%;
-        font-size: 20px !important;
+        font-size: 18px;
     }
 
     .whole {
@@ -70,28 +70,14 @@
         <div style="width: 50px; height: 100vh; background: #003471; display: flex; flex-direction: column; justify-content: space-between; align-items: center; text-align: center;">
             <span class="whats">
                 <a title="Settings" href="<?php echo base_url(); ?>settings/<?php echo $shop; ?>/<?php echo $token; ?>?<?php echo $_SERVER['QUERY_STRING']; ?>"><span class="btn btn-primary entypo-cog"></span></a>
-                <a title="Setup Wizard" target="_BLANK" href="https://<?php echo $shop; ?>.myshopify.com?s=<?php echo sha1($shop); ?>&t=<?php echo $token; ?>"><span class="btn btn-primary entypo-feather"></span></a>
+                <a style="display: none;" title="Setup Wizard" target="_BLANK" href="https://<?php echo $shop; ?>.myshopify.com?s=<?php echo sha1($shop); ?>&t=<?php echo $token; ?>"><span class="btn btn-primary entypo-feather"></span></a>
                 <a style="display: none;" title="Subscription" href="<?php echo base_url(); ?>settings/<?php echo $shop; ?>/<?php echo $token; ?>?<?php echo $_SERVER['QUERY_STRING']; ?>"><span class="btn btn-primary entypo-credit-card"></span></a>
                 <span><a title="New Offer" href="<?php echo base_url(); ?>new_offer/<?php echo $shop; ?>/<?php echo $token; ?>?<?php echo $_SERVER['QUERY_STRING']; ?>"><span class="btn btn-primary btn-sm"><i class="entypo-plus"></i></span></a></span>
                 <span><a title="Stats" href="<?php echo base_url(); ?>stats/<?php echo $shop; ?>/<?php echo $token; ?>?<?php echo $_SERVER['QUERY_STRING']; ?>"><span class="btn btn-primary btn-sm"><i class="entypo-chart-line"></i></span></a></span>
-            </span>
-            <?php if ($shop == 'berjis-tech-ltd' || $shop == 'sleek-apps') : ?>
-                <span class="whats">
-                    <span class="dropdown language-selector">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" data-close-others="true" class="btn btn-primary"><img src="https://demo.neontheme.com/assets/images/flags/flag-uk.png" width="16" height="16" /></a>
-                        <ul class="dropdown-menu">
-                            <li><a href="#"><img src="https://demo.neontheme.com/assets/images/flags/flag-de.png" width="16" height="16" /><span>Deutsch</span></a></li>
-                            <li class="active"><a href="#"><img src="https://demo.neontheme.com/assets/images/flags/flag-uk.png" width="16" height="16" /><span>English</span></a></li>
-                            <li><a href="#"><img src="https://demo.neontheme.com/assets/images/flags/flag-fr.png" width="16" height="16" /><span>François</span></a></li>
-                            <li><a href="#"><img src="https://demo.neontheme.com/assets/images/flags/flag-al.png" width="16" height="16" /><span>Shqip</span></a></li>
-                            <li><a href="#"><img src="https://demo.neontheme.com/assets/images/flags/flag-es.png" width="16" height="16" /><span>Español</span></a></li>
-                        </ul>
-                    </span>
-                    <a href="#" data-toggle="chat" data-collapse-sidebar="1" class="btn btn-primary btn-sm"><i class="entypo-chat"></i><span class="badge badge-success chat-notifications-badge is-hidden">0</span></a>
-                    <span> <i class="btn btn-primary btn-sm entypo-help"></i></span>
+                <?php if ($shop == 'berjis-tech-ltd' || $shop == 'sleek-apps') : ?>
                     <span><a title="Users" href="<?php echo base_url(); ?>users/<?php echo $shop; ?>/<?php echo $token; ?>?<?php echo $_SERVER['QUERY_STRING']; ?>"><i class="btn btn-primary btn-sm entypo-users"></i></a></span>
-                </span>
-            <?php endif; ?>
+                <?php endif; ?>
+            </span>
         </div>
         <div style="height: 100vh; overflow-y: auto; flex-grow: 4; padding-top: 10px; padding-left: 10px; padding-right: 10px; padding-bottom: 0px; background: #F1F2F3;">
 
@@ -125,7 +111,7 @@
                         // Sparkline Charts
                         jQuery(".sales").sparkline([0,
                             <?php
-                            foreach ($this->db->select('sum(price) as stat, date_format(from_unixtime(date), "%m") as month, date_format(from_unixtime(date), "%Y %m %d") as year')->where('shop', $duka)->where('type', 'purchase')->group_by('month')->order_by('year', 'asc')->get('stats')->result_array() as $fetch) {
+                            foreach ($this->db->select('sum(price) as stat, date_format(from_unixtime(date), "%d") as day, date_format(from_unixtime(date), "%Y %m %d") as year')->where('shop', $duka)->where('type', 'purchase')->group_by('day')->order_by('year', 'asc')->limit('30')->get('stats')->result_array() as $fetch) {
                                 echo $fetch['stat'] . ',';
                             }
                             ?>
@@ -148,7 +134,7 @@
 
                         jQuery(".customer-reach").sparkline([0,
                             <?php
-                            foreach ($this->db->select('count(stat_id) as stat, date_format(from_unixtime(date), "%m") as month, date_format(from_unixtime(date), "%Y %m %d") as year')->where('shop', $duka)->where('type', 'impression')->group_by('month')->order_by('year', 'asc')->get('stats')->result_array() as $fetch) {
+                            foreach ($this->db->select('count(stat_id) as stat, date_format(from_unixtime(date), "%d") as day, date_format(from_unixtime(date), "%Y %m %d") as year')->where('shop', $duka)->where('type', 'impression')->group_by('day')->order_by('year', 'asc')->limit('30')->get('stats')->result_array() as $fetch) {
                                 echo $fetch['stat'] . ',';
                             }
                             ?>
@@ -170,7 +156,7 @@
 
                         jQuery(".all-time-sales").sparkline([0,
                             <?php
-                            foreach ($this->db->select('sum(price) as stat, date_format(from_unixtime(date), "%m") as month, date_format(from_unixtime(date), "%Y %m %d") as year')->where('shop', $duka)->where('type', 'checkout')->group_by('month')->order_by('year', 'asc')->get('stats')->result_array() as $fetch) {
+                            foreach ($this->db->select('count(stat_id) as stat, date_format(from_unixtime(date), "%d") as day, date_format(from_unixtime(date), "%Y %m %d") as year')->where('shop', $duka)->where('type', 'show')->group_by('day')->order_by('year', 'asc')->limit('30')->get('stats')->result_array() as $fetch) {
                                 echo $fetch['stat'] . ',';
                             }
                             ?>
@@ -194,20 +180,20 @@
                 <div class="row">
                     <div class="col-md-4 col-sm-6">
                         <div class="tile-stats tile-white stat-tile" style="box-shadow: 0px 0px 5px rgba(2, 2, 2, 0.2);">
-                            <h3><?php echo $this->db->where('shop', $duka)->where('type', 'impression')->get('stats')->num_rows(); ?></h3>
-                            <p>Customer impression</p> <span class="customer-reach"></span>
+                            <h3><?php echo number_format($this->db->where('shop', $duka)->where('type', 'show')->get('stats')->num_rows()); ?></h3>
+                            <p>Shown</p> <span class="all-time-sales"></span>
                         </div>
                     </div>
                     <div class="col-md-4 col-sm-6">
                         <div class="tile-stats tile-white stat-tile" style="box-shadow: 0px 0px 5px rgba(2, 2, 2, 0.2);">
-                            <h3>$ <?php echo number_format($this->db->select('sum(price) as total')->where('shop', $duka)->where('type', 'purchase')->get('stats')->row()->total); ?></h3>
-                            <p>ATC</p> <span class="sales"></span>
+                            <h3><?php echo number_format($this->db->where('shop', $duka)->where('type', 'impression')->get('stats')->num_rows()); ?></h3>
+                            <p>Customer impression</p> <span class="customer-reach"></span>
                         </div>
                     </div>
                     <div class="col-md-4 col-sm-12">
                         <div class="tile-stats tile-white stat-tile" style="box-shadow: 0px 0px 5px rgba(2, 2, 2, 0.2);">
-                            <h3><?php echo $this->db->where('shop', $duka)->where('type', 'checkout')->get('stats')->num_rows(); ?></h3>
-                            <p>Checkouts</p> <span class="all-time-sales"></span>
+                            <h3>$ <?php echo number_format($this->db->select('sum(price) as total')->where('shop', $duka)->where('type', 'purchase')->get('stats')->row()->total); ?></h3>
+                            <p>ATC</p> <span class="sales"></span>
                         </div>
                     </div>
                 </div>
@@ -394,6 +380,7 @@
                         <?php endforeach; ?>
                     </tbody>
                 </table>
+                
                 <script>
                     $('.offer_status').change(function() {
                         let o = $(this).attr('data-oid');
