@@ -41,7 +41,7 @@
                     <td><?php echo $fetch['shop_id']; ?></td>
                     <td>
                         <span style="font-size: 0.000001px;"><?php echo $fetch['type']; ?></span>
-                        <?php echo $fetch['shop']; ?> <span class="entypo-arrows-ccw loader" onclick="refreshData('<?php echo $fetch['shop']; ?>');"></span><br /> (NOT FULLY INSTALLED)
+                        <?php echo $fetch['shop']; ?> <span class="entypo-arrows-ccw loader"  onclick="$(this).attr('style', '-webkit-animation: load8 1.1s infinite linear; animation: load8 1.1s infinite linear;');refreshData('<?php echo $fetch['shop']; ?>');"></span><br /> (NOT FULLY INSTALLED)
                     </td>
                     <td></td>
                     <td></td>
@@ -53,7 +53,7 @@
                     }; ?>>
                     <td><?php echo $fetch['shop_id']; ?></td>
                     <td>
-                        <?php echo $fetch['shop_owner']; ?> <span class="entypo-arrows-ccw loader" onclick="refreshData('<?php echo $fetch['shop']; ?>');"></span><br />
+                        <?php echo $fetch['shop_owner']; ?> <span class="entypo-arrows-ccw loader"  onclick="$(this).attr('style', '-webkit-animation: load8 1.1s infinite linear; animation: load8 1.1s infinite linear;');refreshData('<?php echo $fetch['shop']; ?>');"></span><br />
                         <span style="font-size: 0.000001px;"><?php echo $fetch['type']; ?></span>
                         <?php echo $fetch['plan_display_name'] . ' (' . $fetch['plan_name'] . ')<br />'; ?>
                         <strong>First Install</strong> <?php echo date('d M, Y - h:m:a', $fetch['date']) . '<br />'; ?>
@@ -76,7 +76,7 @@
                     }; ?>>
                     <td><?php echo $fetch['shop_id']; ?></td>
                     <td>
-                        <?php echo $fetch['shop_owner']; ?> <span class="entypo-arrows-ccw loader" onclick="refreshData('<?php echo $fetch['shop']; ?>');"></span><br />
+                        <?php echo $fetch['shop_owner']; ?> <span class="entypo-arrows-ccw loader"  onclick="$(this).attr('style', '-webkit-animation: load8 1.1s infinite linear; animation: load8 1.1s infinite linear;');refreshData('<?php echo $fetch['shop']; ?>');"></span><br />
                         <span style="font-size: 0.000001px;"><?php echo $fetch['type']; ?></span>
                         <?php echo $fetch['plan_display_name'] . ' (' . $fetch['plan_name'] . ')<br />'; ?>
                         <strong>First Install</strong> <?php echo date('d M, Y - h:m:a', $fetch['date']) . '<br />'; ?>
@@ -142,7 +142,6 @@
 <script src="<?php echo base_url(); ?>assets/js/bootstrap-datepicker.js" id="script-resource-12"></script>
 <script>
     function refreshData(shop) {
-        $('.loader').attr("style", "-webkit-animation: load8 1.1s infinite linear; animation: load8 1.1s infinite linear;");
         $.ajax({
             url: '<?php echo base_url(); ?>refresh_store_data/' + shop,
             success: function() {
