@@ -65,7 +65,7 @@
                     </td>
                     <td>
                         <strong><?php echo $this->db->where('shop', $fetch['shop'])->get('offers')->num_rows(); ?> Offers<br /></strong>
-                        <a href="https://<?php echo $shop ?>.myshopify.com/admin/apps/sleek-upsell-playground/sombo/<?php echo $fetch['shop'] ?>/<?php echo $fetch['token'] ?>?<?php echo $_SERVER['QUERY_STRING']; ?>" target="_BLANK">Dashboard</a><br />
+                        <a href="https://<?php echo $shop ?>.myshopify.com/admin/apps/sleek-upsell/sombo/<?php echo $fetch['shop'] ?>/<?php echo $fetch['token'] ?>?<?php echo $_SERVER['QUERY_STRING']; ?>" target="_BLANK">Dashboard</a><br />
                         <a href="https://partners.shopify.com/1569813/stores/<?php echo $fetch['partner']; ?>" target="_BLANK">Partner Link (<?php echo $fetch['partner']; ?>)</a><br />
                     </td>
                 </tr>
@@ -88,7 +88,7 @@
                     </td>
                     <td>
                         <strong><?php echo $this->db->where('shop', $fetch['shop'])->get('offers')->num_rows(); ?> Offers<br /></strong>
-                        <a href="https://<?php echo $shop ?>.myshopify.com/admin/apps/sleek-upsell-playground/sombo/<?php echo $fetch['shop'] ?>/<?php echo $fetch['token'] ?>?<?php echo $_SERVER['QUERY_STRING']; ?>" target="_BLANK">Dashboard</a><br />
+                        <a href="https://<?php echo $shop ?>.myshopify.com/admin/apps/sleek-upsell/sombo/<?php echo $fetch['shop'] ?>/<?php echo $fetch['token'] ?>?<?php echo $_SERVER['QUERY_STRING']; ?>" target="_BLANK">Dashboard</a><br />
                         <a href="https://partners.shopify.com/1569813/stores/<?php echo $fetch['partner']; ?>" target="_BLANK">Partner Link (<?php echo $fetch['partner']; ?>)</a><br />
                     </td>
                 </tr>
