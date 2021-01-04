@@ -468,7 +468,7 @@ Not supports in Firefox and IE */
                                 <h4>Button Text <br /><small>eg Yes Please or Add To Cart</small></h4>
                                 <input type="text" name="button-text" value="ADD TO CART" class="form-control offer_button_text" style="padding: 10px; border: 2px solid #666666; border-radius: 5px;" />
                             </div>
-                            <div style="display: table; width: 100%;">
+                            <div style="display: none; width: 100%;">
                                 <h4>Color Scheme <br /><small>Product block color scheme (will only affect this product)</small></h4>
                                 <select name="button-text" placeholder="ADD TO CART" class="form-control offer_color_scheme" style="border: 2px solid #666666; border-radius: 5px;">
                                     <option value="default">Default</option>
