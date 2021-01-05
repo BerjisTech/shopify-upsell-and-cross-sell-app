@@ -150,7 +150,7 @@ function sleekUpsell() {
     let offers_url = 'https://sleek-upsell.herokuapp.com/offers/' + Shopify.shop;
 
     let offers = g_d(offers_url);
-    let cart = g_d("https://" + Shopify.shop + "/cart.js");
+    let cart = g_d("/cart.js");
 
     // console.log(offers);
     // console.log(offers['offer']);
