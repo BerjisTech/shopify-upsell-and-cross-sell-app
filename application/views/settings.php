@@ -416,8 +416,8 @@
                                     </div>
                                     <div class="sleek-card-atc">
                                         <div class="sleek-prices">
-                                            <span class="sleek-price money">KES 200</span>
-                                            <span class="sleek-compare-price money">KES 200</span>
+                                            <span class="sleek-price money">$ 200</span>
+                                            <span class="sleek-compare-price money">$ 200</span>
                                         </div>
                                         <button class="sleek-atc" type="submit" onclick="return false;">ADD TO CART</button>
                                     </div>
@@ -434,8 +434,8 @@
                                         <div class="sleek-offer">
                                             <div class="sleek-title">Blue silk tuxedo</div>
                                             <div class="sleek-prices">
-                                                <span class="sleek-price money">KES 200</span>
-                                                <span class="sleek-compare-price money">KES 200</span>
+                                                <span class="sleek-price money">$ 200</span>
+                                                <span class="sleek-compare-price money">$ 200</span>
                                             </div>
                                             <div class="sleek-selectors">
                                                 <select class="v-select">
@@ -465,8 +465,8 @@
                                             <div class="sleek-text">Need Free Shipping?</div>
                                             <div class="sleek-title">Blue silk tuxedo</div>
                                             <div class="sleek-prices">
-                                                <span class="sleek-price money">KES 200</span>
-                                                <span class="sleek-compare-price money">KES 200</span>
+                                                <span class="sleek-price money">$ 200</span>
+                                                <span class="sleek-compare-price money">$ 200</span>
                                             </div>
                                             <div class="sleek-selectors">
                                                 <select class="v-select">
@@ -496,8 +496,8 @@
                                         <div class="sleek-offer">
                                             <div class="sleek-title">Blue silk tuxedo</div>
                                             <div class="sleek-prices">
-                                                <span class="sleek-price money">KES 200</span>
-                                                <span class="sleek-compare-price money">KES 200</span>
+                                                <span class="sleek-price money">$ 200</span>
+                                                <span class="sleek-compare-price money">$ 200</span>
                                             </div>
                                             <div class="sleek-selectors">
                                                 <select class="v-select">
@@ -529,8 +529,8 @@
                                             <div class="sleek-text">Need Free Shipping?</div>
                                             <div class="sleek-title">Blue silk tuxedo</div>
                                             <div class="sleek-prices">
-                                                <span class="sleek-price money">KES 200</span>
-                                                <span class="sleek-compare-price money">KES 200</span>
+                                                <span class="sleek-price money">$ 200</span>
+                                                <span class="sleek-compare-price money">$ 200</span>
                                             </div>
                                             <div class="sleek-selectors">
                                                 <select class="v-select">
