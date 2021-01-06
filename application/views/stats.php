@@ -815,7 +815,7 @@
                     <div class="input-group">
                         <select class="form-control adjust-stats">
                             <option value="">Choose stats time</option>
-                            <option value="0">Today</option>
+                            <option value="0">Last 24 hours</option>
                             <option value="1">Yesterday</option>
                             <option value="7">Last 7 days</option>
                             <option value="30">Lat 30 days</option>
