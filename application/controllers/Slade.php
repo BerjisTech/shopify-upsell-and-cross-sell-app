@@ -520,6 +520,7 @@ class Slade extends CI_Controller
 
         $offers = $this->db->where('shop', $shop_name)->get('offers')->result_array();
         $data['settings'] = $this->db->where('shop', $shop_name)->get('settings')->row();
+        $data['auto_collection'] = $this->db->where('shop', $shop_name)->get('auto_collection')->row();
 
         foreach ($offers as $key => $value) {
             $oid = $value['offer_id'];
