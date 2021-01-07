@@ -468,7 +468,7 @@ Not supports in Firefox and IE */
                                 <h4>Button Text <br /><small>eg Yes Please or Add To Cart</small></h4>
                                 <input type="text" name="button-text" value="ADD TO CART" class="form-control offer_button_text" style="padding: 10px; border: 2px solid #666666; border-radius: 5px;" />
                             </div>
-                            <div style="display: none; width: 100%;">
+                            <div style="display: table; width: 100%;">
                                 <h4>Color Scheme <br /><small>Product block color scheme (will only affect this product)</small></h4>
                                 <select name="button-text" placeholder="ADD TO CART" class="form-control offer_color_scheme" style="border: 2px solid #666666; border-radius: 5px;">
                                     <option value="default">Default</option>
@@ -657,6 +657,8 @@ Not supports in Firefox and IE */
                         <option value="oc6">Cart total is at most</option>
                         <option value="oc7">Customer is located in</option>
                         <option value="oc8">Customer is not located in</option>
+                        <option value="oc9">Cart contains items from vendor</option>
+                        <option value="oc10">Cart has no items from vendor</option>
                     </select>
                     <select type="text" autocomplete="off" class="small form-control" id="oc1Quantity" style="margin: 3px; max-width: 250px; border: 2px solid #666666; border-radius: 5px;">
                         <?php for ($i = 1; $i <= 20; $i++) : ?>
@@ -1291,11 +1293,16 @@ Not supports in Firefox and IE */
 
     $('#ocContent').keyup(function(event) {
 
+        var oc = $('#conditionSelector').val();
+        if (oc == 'oc9' || oc == 'oc10') {
+            var type = 'vendor';
+        } else {
+            var type = $('#oc1Type').val();
+        }
+
         //alert(event.keyCode);
         var item = $(this).val();
         var call_url = base_url + 'search_condition';
-        var type = $('#oc1Type').val();
-
         $.ajax({
             type: "POST",
             url: call_url,
@@ -1530,18 +1537,12 @@ Not supports in Firefox and IE */
                     var s_data = data['shop'];
                     var datacell = data['product'];
                     // console.log(data);
-                    let curr_symbol = s_data['money_with_currency_format'].substring(0, s_data['money_with_currency_format'].indexOf('{'));
 
-                        if(curr_symbol == ''){
-                            let pos = s_data['money_with_currency_format'].indexOf('}')
-                            curr_symbol = s_data['money_with_currency_format'].slice(-pos);
-                        }
-
-                    let card_ui = '<form class="sleek-form" data-product-index="' + i + '"> <div class="sleek-image"> <img src="' + datacell['image']['src'] + '"/> </div><div class="sleek-offer"> <div class="sleek-text">Need Free Shipping?</div><div class="sleek-title">' + datacell['title'] + '</div><div class="sleek-selectors"> <div class="offer_fields_holder o_h_' + product_id + '"></div> <select class="v-select v-' + product_id + '"></select> <select class="q-select q-' + product_id + '"></select> </div></div><div class="sleek-card-atc"> <div class="sleek-prices"> <span class="sleek-price money">' + curr_symbol + ' ' + datacell['variants'][0]['price'] + '</span> <span class="sleek-compare-price money">' + curr_symbol + ' ' + datacell['variants'][0]['price'] + '</span> </div><button class="sleek-atc" type="submit" onclick="return false;">' + $('.offer_button_text').val() + '</button> </div></form>';
-                    let block_ui = '<form class="sleek-form" data-product-index="' + i + '"> <div class="sleek-text">Need Free Shipping?</div><div class="sleek-block"> <div class="sleek-image"> <img src="' + datacell['image']['src'] + '"/> </div><div class="sleek-offer"> <div class="sleek-title">' + datacell['title'] + '</div><div class="sleek-prices"> <span class="sleek-price money">' + curr_symbol + ' ' + datacell['variants'][0]['price'] + '</span> <span class="sleek-compare-price money">' + curr_symbol + ' ' + datacell['variants'][0]['price'] + '</span> </div><div class="sleek-selectors"> <div class="offer_fields_holder o_h_' + product_id + '"></div> <select class="v-select v-' + product_id + '"></select> <select class="q-select q-' + product_id + '"></select> </div></div></div><button class="sleek-atc" type="submit" onclick="return false;">' + $('.offer_button_text').val() + '</button> </form>';
-                    let half_block_ui = '<form class="sleek-form" data-product-index="' + i + '"> <div class="sleek-half-block"> <div class="sleek-image"> <img src="' + datacell['image']['src'] + '"/> </div><div class="sleek-offer"> <div class="sleek-text">Need Free Shipping?</div><div class="sleek-title">' + datacell['title'] + '</div><div class="sleek-prices"> <span class="sleek-price money">' + curr_symbol + ' ' + datacell['variants'][0]['price'] + '</span> <span class="sleek-compare-price money">' + curr_symbol + ' ' + datacell['variants'][0]['price'] + '</span> </div><div class="sleek-selectors"> <div class="offer_fields_holder o_h_' + product_id + '"></div> <select class="v-select v-' + product_id + '"></select> <select class="q-select q-' + product_id + '"></select> </div></div></div><button class="sleek-atc" type="submit" onclick="return false;">' + $('.offer_button_text').val() + '</button> </form>';
-                    let flat_ui = '<form class="sleek-form" data-product-index="' + i + '"> <div class="sleek-text">Need Free Shipping?</div><div class="sleek-flat"> <div class="sleek-image"> <img src="' + datacell['image']['src'] + '"/> </div><div class="sleek-offer"> <div class="sleek-title">' + datacell['title'] + '</div><div class="sleek-prices"> <span class="sleek-price money">' + curr_symbol + ' ' + datacell['variants'][0]['price'] + '</span> <span class="sleek-compare-price money">' + curr_symbol + ' ' + datacell['variants'][0]['price'] + '</span> </div><div class="sleek-selectors"> <div class="offer_fields_holder o_h_' + product_id + '"></div> <select class="v-select v-' + product_id + '"></select> <div class="flex-select"> <select class="q-select q-' + product_id + '"></select> <button class="sleek-atc" type="submit" onclick="return false;">' + $('.offer_button_text').val() + '</button> </div></div></div></div></form>';
-                    let compact_ui = '<form class="sleek-form" data-product-index="' + i + '"> <div class="sleek-compact"> <div class="sleek-image"> <img src="' + datacell['image']['src'] + '"/> </div><div class="sleek-offer"> <div class="sleek-text">Need Free Shipping?</div><div class="sleek-title">' + datacell['title'] + '</div><div class="sleek-prices"> <span class="sleek-price money">' + curr_symbol + ' ' + datacell['variants'][0]['price'] + '</span> <span class="sleek-compare-price money">' + curr_symbol + ' ' + datacell['variants'][0]['price'] + '</span> </div><div class="sleek-selectors"> <div class="offer_fields_holder o_h_' + product_id + '"></div> <select class="v-select v-' + product_id + '"></select> <select class="q-select q-' + product_id + '"></select> </div><button class="sleek-atc" type="submit" onclick="return false;">' + $('.offer_button_text').val() + '</button> </div></div></form>';
+                    let card_ui = '<form class="sleek-form" data-product-index="' + i + '"> <div class="sleek-image"> <img src="' + datacell['image']['src'] + '"/> </div><div class="sleek-offer"> <div class="sleek-text">Need Free Shipping?</div><div class="sleek-title">' + datacell['title'] + '</div><div class="sleek-selectors"> <div class="offer_fields_holder o_h_' + product_id + '"></div> <select class="v-select v-' + product_id + '"></select> <select class="q-select q-' + product_id + '"></select> </div></div><div class="sleek-card-atc"> <div class="sleek-prices"> <span class="sleek-price money">' + s_data['currency'] + ' ' + datacell['variants'][0]['price'] + '</span> <span class="sleek-compare-price money">' + s_data['currency'] + ' ' + datacell['variants'][0]['price'] + '</span> </div><button class="sleek-atc" type="submit" onclick="return false;">' + $('.offer_button_text').val() + '</button> </div></form>';
+                    let block_ui = '<form class="sleek-form" data-product-index="' + i + '"> <div class="sleek-text">Need Free Shipping?</div><div class="sleek-block"> <div class="sleek-image"> <img src="' + datacell['image']['src'] + '"/> </div><div class="sleek-offer"> <div class="sleek-title">' + datacell['title'] + '</div><div class="sleek-prices"> <span class="sleek-price money">' + s_data['currency'] + ' ' + datacell['variants'][0]['price'] + '</span> <span class="sleek-compare-price money">' + s_data['currency'] + ' ' + datacell['variants'][0]['price'] + '</span> </div><div class="sleek-selectors"> <div class="offer_fields_holder o_h_' + product_id + '"></div> <select class="v-select v-' + product_id + '"></select> <select class="q-select q-' + product_id + '"></select> </div></div></div><button class="sleek-atc" type="submit" onclick="return false;">' + $('.offer_button_text').val() + '</button> </form>';
+                    let half_block_ui = '<form class="sleek-form" data-product-index="' + i + '"> <div class="sleek-half-block"> <div class="sleek-image"> <img src="' + datacell['image']['src'] + '"/> </div><div class="sleek-offer"> <div class="sleek-text">Need Free Shipping?</div><div class="sleek-title">' + datacell['title'] + '</div><div class="sleek-prices"> <span class="sleek-price money">' + s_data['currency'] + ' ' + datacell['variants'][0]['price'] + '</span> <span class="sleek-compare-price money">' + s_data['currency'] + ' ' + datacell['variants'][0]['price'] + '</span> </div><div class="sleek-selectors"> <div class="offer_fields_holder o_h_' + product_id + '"></div> <select class="v-select v-' + product_id + '"></select> <select class="q-select q-' + product_id + '"></select> </div></div></div><button class="sleek-atc" type="submit" onclick="return false;">' + $('.offer_button_text').val() + '</button> </form>';
+                    let flat_ui = '<form class="sleek-form" data-product-index="' + i + '"> <div class="sleek-text">Need Free Shipping?</div><div class="sleek-flat"> <div class="sleek-image"> <img src="' + datacell['image']['src'] + '"/> </div><div class="sleek-offer"> <div class="sleek-title">' + datacell['title'] + '</div><div class="sleek-prices"> <span class="sleek-price money">' + s_data['currency'] + ' ' + datacell['variants'][0]['price'] + '</span> <span class="sleek-compare-price money">' + s_data['currency'] + ' ' + datacell['variants'][0]['price'] + '</span> </div><div class="sleek-selectors"> <div class="offer_fields_holder o_h_' + product_id + '"></div> <select class="v-select v-' + product_id + '"></select> <div class="flex-select"> <select class="q-select q-' + product_id + '"></select> <button class="sleek-atc" type="submit" onclick="return false;">' + $('.offer_button_text').val() + '</button> </div></div></div></div></form>';
+                    let compact_ui = '<form class="sleek-form" data-product-index="' + i + '"> <div class="sleek-compact"> <div class="sleek-image"> <img src="' + datacell['image']['src'] + '"/> </div><div class="sleek-offer"> <div class="sleek-text">Need Free Shipping?</div><div class="sleek-title">' + datacell['title'] + '</div><div class="sleek-prices"> <span class="sleek-price money">' + s_data['currency'] + ' ' + datacell['variants'][0]['price'] + '</span> <span class="sleek-compare-price money">' + s_data['currency'] + ' ' + datacell['variants'][0]['price'] + '</span> </div><div class="sleek-selectors"> <div class="offer_fields_holder o_h_' + product_id + '"></div> <select class="v-select v-' + product_id + '"></select> <select class="q-select q-' + product_id + '"></select> </div><button class="sleek-atc" type="submit" onclick="return false;">' + $('.offer_button_text').val() + '</button> </div></div></form>';
                     $('.card').append(card_ui);
                     $('.block').append(block_ui);
                     $('.half-block').append(half_block_ui);
@@ -1552,7 +1553,7 @@ Not supports in Firefox and IE */
                         // console.log(datacell['variants'][i]['title']);
                         $('.v-' + product_id).append('<option value="' + datacell['variants'][i]['id'] +
                             '">' +
-                            datacell['variants'][i]['title'] + ' (' + curr_symbol + ' ' +
+                            datacell['variants'][i]['title'] + ' (' + s_data['currency'] + ' ' +
                             datacell['variants'][i]['price'] + ')</option>');
                     });
                     for (let q = 1; q <= 10; q++) {
@@ -1659,6 +1660,13 @@ Not supports in Firefox and IE */
         }
         if (oc == 'oc7' || oc === 'oc8') {
             $('#countries').show();
+        }
+        if (oc == 'oc9') {
+            $('#oc1Quantity').show();
+            $('#ocContent').show();
+        }
+        if (oc == 'oc10') {
+            $('#ocContent').show();
         }
     });
 
@@ -1785,6 +1793,16 @@ Not supports in Firefox and IE */
             if (e['type'] == 'oc8') {
                 rule_text = 'Customer is not located in '
                 content_text = e['country'];
+            }
+
+            if (e['type'] == 'oc9') {
+                rule_text = 'Cart contains item from vendor  '
+                content_text = e['content'];
+            }
+
+            if (e['type'] == 'oc10') {
+                rule_text = 'Cart has no item from vendor '
+                content_text = e['content'];
             }
 
             var condition =

@@ -276,30 +276,27 @@ Not supports in Firefox and IE */
     }
 </style>
 <script>
-    var offer = [{
-        "offer_id": "",
+    var auto_collection = [{
         "shop": "<?php echo $shop; ?>",
-        "date": "<?php echo time(); ?>",
-        "title": "",
-        "scheme": "",
-        "stop_show": "y",
         "layout": "card",
-        "required_checkout": "n",
+        "close": "y",
+        "atc": "ADD TO CART",
+        "show_title": "y",
+        "show_price": "y",
+        "show_image": "y",
+        "v_price": "y",
+        "c_price": "y",
+        "q_select": "y",
         "discount": "n",
         "code": "",
-        "rule": "ALL",
         "to_checkout": "n",
-        "status": "1",
-        "text": "",
-        "atc": "",
-        "close": "n"
+        "date": "<?php echo time(); ?>",
+        "status":"0"
     }];
     var products = [];
     var variants = [];
     var blocks = [];
     var conditions = [];
-    var fields = [];
-    var choices = [];
 </script>
 <div class="row">
     <div class="col-sm-4 col-xs-12" style="position: fixed; top: 0px; left: 0px; height: 100vh;">
@@ -307,11 +304,9 @@ Not supports in Firefox and IE */
             <div onclick="window.history.back();" style="margin: 0px; padding: 0px; height: 100%; vertical-align: middle; text-align: center; border-radius: 0px;">
                 <span style="height: 100%; margin: 0px; vertical-align: middle; padding-top: 2vh; text-align: center;" class="btn btn-primary entypo-home"></span>
             </div>
-            <div style="flex-grow: 4; margin: 0px; padding: 0px; height: 100%; vertical-align: middle;"><select style="border-radius: 0px; width: 100%; height: 100%; margin: 0px; vertical-align: middle;" class="toplect form-control">
-                    <option value="global">Global</option>
-                </select></div>
-            <div style="margin: 0px; padding: 0px; height: 100%; vertical-align: middle;"><span style="width: 100%; height: 100%; margin: 0px; vertical-align: middle; padding-top: 2vh;" onclick="showAjaxModal('products');" class="btn btn-primary btn-icon icon-right"><i class="entypo-plus" style="padding-top: 2vh;"></i>Add
-                    Product</span></div>
+            <div style="margin: 0px; padding: 0px; height: 100%; vertical-align: middle; flex-grow: 4; ">
+                <span style="width: 100%; height: 100%; margin: 0px; vertical-align: middle; padding-top: 2vh;" onclick="showAjaxModal('products');" class="btn btn-info btn-icon icon-right"><i class="entypo-plus" style="padding-top: 2vh;"></i>Choose Test Product</span>
+            </div>
         </div>
         <div style="position: absolute; top: 7vh; left: 0px; height: 93vh; overflow-y: auto; width: 100%;" class="globalSets">
             <div class="panel-group joined" id="accordion-test-2">
@@ -344,19 +339,28 @@ Not supports in Firefox and IE */
                     <div id="collapseTwo-2" class="panel-collapse collapse">
                         <div class="panel-body">
                             <div style="display: table; width: 100%;">
-                                <h4>Offer Text <br /><small>eg Get 20% discount</small></h4>
-                                <textarea class="form-control general_offer_text" placeholder="offer text" style="margin: 5px auto; height: auto; min-height: 100px; width: 99%; border: 2px solid #666666;"></textarea>
-                            </div>
-                            <div style="display: table; width: 100%;">
                                 <h4>Button Text <br /><small>eg Yes Please or Add To Cart</small></h4>
-                                <input type="text" name="button-text" value="ADD TO CART" class="form-control general_offer_button_text" style="padding: 10px; border: 2px solid #666666; border-radius: 5px;" />
+                                <input type="text" name="button-text" value="ADD TO CART" class="form-control offer_button_text" style="padding: 10px; border: 2px solid #666666; border-radius: 5px;" />
                             </div>
                             <div style="display: table; width: 100%;">
-                                <h4>Color Scheme <br /><small>Choose the offer color scheme</small></h4>
-                                <select name="button-text" placeholder="ADD TO CART" class="form-control general_offer_color_scheme" style="border: 2px solid #666666; border-radius: 5px;">
-                                    <option value="default">Default</option>
-                                    <option value="custom">Custom</option>
-                                </select>
+                                <h4>Product options <br /><small>These will only affect this particular product</small></h4>
+                                <label><input type="checkbox" class="offer_product_image" value="1" checked /> Show
+                                    product image</label><br />
+                                <label><input type="checkbox" class="offer_product_title" value="1" checked /> Show
+                                    product title</label><br />
+                                <label><input type="checkbox" class="offer_product_price" value="1" checked /> Show
+                                    product price</label><br />
+                                <label><input type="checkbox" class="offer_compare_at_price" value="1" checked /> Show
+                                    product compare at price</label><br />
+                                <label><input type="checkbox" class="offer_variant_price" value="1" checked /> Show
+                                    variant price</label><br />
+                            </div>
+                            <div style="display: table; width: 100%;">
+                                <h4>Display options <br /><small>Extra display options for this product</small></h4>
+                                <label><input type="checkbox" class="offer_linked" value="1" /> Link offer to product
+                                    page</label><br />
+                                <label><input type="checkbox" class="offer_quantity_chooser" value="1" checked /> Show
+                                    quantity chooser</label><br />
                             </div>
                             <div style="display: table; width: 100%;">
                                 <h4>Display options <br /><small>Extra general UI settings</small></h4>
@@ -465,164 +469,6 @@ Not supports in Firefox and IE */
 
             </div>
         </div>
-        <div style="position: absolute; top: 7vh; left: 0px; height: 93vh; overflow-y: auto; width: 100%; display: none;" class="offerForm">
-            <input autocomplete="false" type="hidden" value="card" class="offer_layout" />
-            <div class="panel-group joined" id="accordion-test-p2">
-                <div class="panel panel-default">
-                    <div class="panel-heading">
-                        <h4 class="panel-title"> <a data-toggle="collapse" data-parent="#accordion-test-p2" href="#collapseTwo-p2" aria-expanded="true">
-                                1: Product Design
-                            </a> </h4>
-                    </div>
-                    <div id="collapseTwo-p2" class="panel-collapse collapse in">
-                        <div class="panel-body">
-                            <div style="display: table; width: 100%;">
-                                <h4>Offer Text <br /><small>eg Get 20% discount</small></h4>
-                                <textarea class="form-control offer_text" placeholder="offer text" style="margin: 5px auto; height: auto; min-height: 100px; width: 99%; border: 2px solid #666666;"></textarea>
-                            </div>
-                            <div style="display: table; width: 100%;">
-                                <h4>Button Text <br /><small>eg Yes Please or Add To Cart</small></h4>
-                                <input type="text" name="button-text" value="ADD TO CART" class="form-control offer_button_text" style="padding: 10px; border: 2px solid #666666; border-radius: 5px;" />
-                            </div>
-                            <div style="display: table; width: 100%;">
-                                <h4>Color Scheme <br /><small>Product block color scheme (will only affect this product)</small></h4>
-                                <select name="button-text" placeholder="ADD TO CART" class="form-control offer_color_scheme" style="border: 2px solid #666666; border-radius: 5px;">
-                                    <option value="default">Default</option>
-                                    <option value="custom">Custom</option>
-                                </select>
-                            </div>
-                            <div style="display: table; width: 100%;">
-                                <h4>Product options <br /><small>These will only affect this particular product</small></h4>
-                                <label><input type="checkbox" class="offer_product_image" value="1" checked /> Show
-                                    product image</label><br />
-                                <label><input type="checkbox" class="offer_product_title" value="1" checked /> Show
-                                    product title</label><br />
-                                <label><input type="checkbox" class="offer_product_price" value="1" checked /> Show
-                                    product price</label><br />
-                                <label><input type="checkbox" class="offer_compare_at_price" value="1" checked /> Show
-                                    product compare at price</label><br />
-                                <label><input type="checkbox" class="offer_variant_price" value="1" checked /> Show
-                                    variant price</label><br />
-                            </div>
-                            <div style="display: table; width: 100%;">
-                                <h4>Display options <br /><small>Extra display options for this product</small></h4>
-                                <label><input type="checkbox" class="offer_linked" value="1" /> Link offer to product
-                                    page</label><br />
-                                <label><input type="checkbox" class="offer_quantity_chooser" value="1" checked /> Show
-                                    quantity chooser</label><br />
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="panel panel-default">
-                    <div class="panel-heading">
-                        <h4 class="panel-title"> <a data-toggle="collapse" data-parent="#accordion-test-p2" href="#collapseThree-p2" class="collapsed">
-                                2: Upgrade Settings
-                            </a> </h4>
-                    </div>
-                    <div id="collapseThree-p2" class="panel-collapse collapse">
-                        <div class="panel-body">
-                            <h3>Want this to be an upgrade?</h3><br />
-                            <div style="display: table; width: 100%; padding: 10px;">
-                                <h4>Choose the product to be replaced once this offered product is accepted<br /><small>Search product or variant</small></h4>
-                                <div class="input-group">
-                                    <input type="text" placeholder="ADD TO CART" class="form-control replace_this" style="padding: 10px; border: 2px solid #666666; border-radius: 5px 0px 0px 5px;" />
-                                    <span class="input-group-addon btn btn-primary entypo-cancel" onclick="$('.replacer').html('');products[$('.toplect').val()]['rp']='';products[$('.toplect').val()]['rv']='';">CLEAR</span>
-                                </div>
-                                <div class="replacer"></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="panel panel-default">
-                    <div class="panel-heading">
-                        <h4 class="panel-title"> <a data-toggle="collapse" data-parent="#accordion-test-p2" href="#collapseFour-p2" class="collapsed">
-                                3: Product Custom Fields
-                            </a> </h4>
-                    </div>
-                    <div id="collapseFour-p2" class="panel-collapse collapse" style="margin: 0px; padding: 0px;">
-                        <div class="panel-body" style="margin: 0px; padding: 0px;">
-                            <div style="display: table; width: 100%; margin: 0px; padding: 0px;">
-                                <div class="panel minimal minimal-gray">
-                                    <div class="panel-heading">
-                                        <div class="panel-title hidden">
-                                            <h4>Minimal Panel</h4>
-                                        </div>
-                                        <div class="panel-options">
-                                            <ul class="nav nav-tabs">
-                                                <li class="active">
-                                                    <a href="#profile-1" data-toggle="tab" aria-expanded="1">Create Custom Fields</a>
-                                                </li>
-                                                <li class="">
-                                                    <a href="#profile-2" data-toggle="tab" aria-expanded="false">Check fields</a>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                    <div class="panel-body">
-                                        <div class="tab-content">
-                                            <div class="tab-pane active" id="profile-1">
-                                                <form method="GET" class="fields_form">
-                                                    <select class="field_type form-control col-xs-12">
-                                                        <option value="" selected="selected">Choose an option type...</option>
-                                                        <option value="select">Dropdown</option>
-                                                        <option value="text">Single Line Text</option>
-                                                        <option value="number">Number</option>
-                                                        <option value="textarea">Paragraph Text</option>
-                                                        <option value="file">File Upload</option>
-                                                        <option value="checkbox">Single Checkbox</option>
-                                                        <option value="checkbox_group">Checkbox Group</option>
-                                                        <option value="radio">Radio Buttons</option>
-                                                        <option value="date">Date Picker</option>
-                                                        <option value="swatch">Swatch Picker</option>
-                                                    </select>
-                                                    <input required type="text" class="field_name form-control col-xs-12" placeholder="Option name" />
-                                                    <input required type="text" class="field_placeholder form-control col-xs-12" placeholder="Option placeholder" />
-                                                    <input type="number" class="field_price form-control col-xs-12" placeholder="Option price" />
-                                                    <div class="choices" style="display: none;">
-                                                        <p class="col-xs-12">Option Choices</p>
-                                                        <div class="col-xs-12 c_1 sleek_choice" style="padding: 0px;">
-                                                            <span class="btn btn-sm entypo-up pull-left btn-default" onclick="" style="margin: 0px;"></span>
-                                                            <span class="btn btn-sm entypo-down pull-left btn-default" onclick="" style="margin: 0px;"></span>
-                                                            <input type="text" class="c_1_n" placeholder="Choice 1" />
-                                                            <input type="number" class="c_1_p" placeholder="Price" value="0" />
-                                                            <span class="btn btn-sm entypo-plus pull-right btn-default" onclick="" style="font-weight: bold; margin: 0px;"></span>
-                                                            <span class="btn btn-sm entypo-minus pull-right btn-default" onclick="" style="font-weight: bold; margin: 0px;"></span>
-                                                        </div>
-                                                        <div class="col-xs-12 c_2 sleek_choice" style="padding: 0px;">
-                                                            <span class="btn btn-sm entypo-up pull-left btn-default" onclick="" style="margin: 0px;"></span>
-                                                            <span class="btn btn-sm entypo-down pull-left btn-default" onclick="" style="margin: 0px;"></span>
-                                                            <input type="text" class="c_2_n" placeholder="Choice 2" />
-                                                            <input type="number" class="c_2_p" placeholder="Price" value="0" />
-                                                            <span class="btn btn-sm entypo-plus pull-right btn-default" onclick="" style="margin: 0px;"></span>
-                                                            <span class="btn btn-sm entypo-minus pull-right btn-default" onclick="" style="margin: 0px;"></span>
-                                                        </div>
-                                                        <div class="col-xs-12 c_3 sleek_choice" style="padding: 0px;">
-                                                            <span class="btn btn-sm entypo-up pull-left btn-default" onclick="" style="margin: 0px;"></span>
-                                                            <span class="btn btn-sm entypo-down pull-left btn-default" onclick="" style="margin: 0px;"></span>
-                                                            <input type="text" class="c_3_n" placeholder="Choice 3" />
-                                                            <input type="number" class="c_3_p" placeholder="Price" value="0" />
-                                                            <span class="btn btn-sm entypo-plus pull-right btn-default" onclick="" style="margin: 0px;"></span>
-                                                            <span class="btn btn-sm entypo-minus pull-right btn-default" onclick="" style="margin: 0px;"></span>
-                                                        </div>
-                                                    </div>
-                                                    <label class="col-xs-12" style="padding: 0px;"><input type="checkbox" class="field_required" /> Is this field required?</label>
-                                                    <button class="btn btn-primary form-control btn-md center col-xs-12 save_option">ADD OPTION</button>
-                                                </form>
-                                            </div>
-                                            <div class="tab-pane" id="profile-2">
-                                                <div class="panel-group joined fields_holder" id="accordion-fields"></div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div onclick="console.log(offer);console.log(products);console.log(variants);console.log(blocks);console.log(conditions);console.log(fields);console.log(choices);">Log Arrays</div>
-            </div>
-        </div>
     </div>
     <div class="col-sm-8 offer-change-section hidden-xs">
         <div class="affixiate">
@@ -673,8 +519,6 @@ Not supports in Firefox and IE */
                         <option value="oc6">Cart total is at most</option>
                         <option value="oc7">Customer is located in</option>
                         <option value="oc8">Customer is not located in</option>
-                        <option value="oc9">Cart contains items from vendor</option>
-                        <option value="oc10">Cart has no items from vendor</option>
                     </select>
                     <select type="text" autocomplete="off" class="small form-control" id="oc1Quantity" style="margin: 3px; max-width: 250px; border: 2px solid #666666; border-radius: 5px;">
                         <?php for ($i = 1; $i <= 20; $i++) : ?>
@@ -989,197 +833,146 @@ Not supports in Firefox and IE */
         showBlocks();
     }
 
-    $('.toplect').change(function() {
-        let thing = $(this).val();
+    if (auto_collection['show_title'] == 'y') {
+        $('.offer_product_title').prop('checked', true);
+    } else {
+        $('.offer_product_title').prop('checked', false);
+    }
 
-        if (thing == 'global') {
-            $('.offerForm').hide(150);
-            $('.globalSets').show(300);
-        } else {
-            $('.globalSets').hide(150);
-            $('.offerForm').show(300);
+    if (auto_collection['show_price'] == 'y') {
+        $('.offer_product_price').prop('checked', true);
+    } else {
+        $('.offer_product_price').prop('checked', false);
+    }
 
-            if (products[thing]['show_title'] == 'y') {
-                $('.offer_product_title').prop('checked', true);
-            } else {
-                $('.offer_product_title').prop('checked', false);
-            }
+    if (auto_collection['show_image'] == 'y') {
+        $('.offer_product_image').prop('checked', true);
+    } else {
+        $('.offer_product_image').prop('checked', false);
+    }
 
-            if (products[thing]['show_price'] == 'y') {
-                $('.offer_product_price').prop('checked', true);
-            } else {
-                $('.offer_product_price').prop('checked', false);
-            }
+    if (auto_collection['v_price'] == 'y') {
+        $('.offer_variant_price').prop('checked', true);
+    } else {
+        $('.offer_variant_price').prop('checked', false);
+    }
 
-            if (products[thing]['show_image'] == 'y') {
-                $('.offer_product_image').prop('checked', true);
-            } else {
-                $('.offer_product_image').prop('checked', false);
-            }
+    if (auto_collection['c_price'] == 'y') {
+        $('.offer_compare_at_price').prop('checked', true);
+    } else {
+        $('.offer_compare_at_price').prop('checked', false);
+    }
 
-            if (products[thing]['v_price'] == 'y') {
-                $('.offer_variant_price').prop('checked', true);
-            } else {
-                $('.offer_variant_price').prop('checked', false);
-            }
+    if (auto_collection['linked'] == 'y') {
+        $('.offer_linked').prop('checked', true);
+    } else {
+        $('.offer_linked').prop('checked', false);
+    }
 
-            if (products[thing]['c_price'] == 'y') {
-                $('.offer_compare_at_price').prop('checked', true);
-            } else {
-                $('.offer_compare_at_price').prop('checked', false);
-            }
+    if (auto_collection['q_select'] == 'y') {
+        $('.offer_quantity_chooser').prop('checked', true);
+    } else {
+        $('.offer_quantity_chooser').prop('checked', false);
+    }
 
-            if (products[thing]['linked'] == 'y') {
-                $('.offer_linked').prop('checked', true);
-            } else {
-                $('.offer_linked').prop('checked', false);
-            }
-
-            if (products[thing]['q_select'] == 'y') {
-                $('.offer_quantity_chooser').prop('checked', true);
-            } else {
-                $('.offer_quantity_chooser').prop('checked', false);
-            }
-
-            if (products[thing]['ab_test'] == 'y') {
-                $('.offer_ab_test').prop('checked', true);
-            } else {
-                $('.offer_ab_test').prop('checked', false);
-            }
-        }
-    });
-    $('.general_offer_text').on('keyup change', function() {
-        if (products.length > 0) {
-            $(products).each(function(o, p) {
-                if (p['text'] == '') {
-                    $('form[data-product-index="' + o + '"]  .sleek-text').html($('.general_offer_text').val());
-                    offer[0]['text'] = $('.general_offer_text').val();
-                }
-            });
-        }
-    });
-    $('.general_offer_button_text').on('keyup change', function() {
-        if (products.length > 0) {
-            $(products).each(function(o, p) {
-                if (p['atc'] == '') {
-                    $('form[data-product-index="' + o + '"]  .sleek-atc').html($('.general_offer_button_text').val());
-                    offer[0]['atc'] = $('.general_offer_button_text').val();
-                }
-            });
-        }
-    });
     $('.offer_closable').change(function() {
         if (this.checked) {
             $('.reject_offer').show();
-            offer[0]['close'] = 'y';
+            auto_collection['close'] = 'y';
         } else {
             $('.reject_offer').hide();
-            offer[0]['close'] = 'n';
+            auto_collection['close'] = 'n';
         }
     });
     $('.offer_to_checkout').change(function() {
         if (this.checked) {
-            offer[0]['to_checkout'] = 'y';
+            auto_collection['to_checkout'] = 'y';
         } else {
-            offer[0]['to_checkout'] = 'n';
+            auto_collection['to_checkout'] = 'n';
         }
     });
     $('.offer_apply_discount').change(function() {
         if (this.checked) {
-            offer[0]['discount'] = 'y';
+            auto_collection['discount'] = 'y';
         } else {
-            offer[0]['discount'] = 'n';
+            auto_collection['discount'] = 'n';
         }
     });
 
     $('.offer_discount_code').on('input', function() {
-        offer[0]['code'] = $(this).val();
+        auto_collection['code'] = $(this).val();
     });
     $('.offer_status').change(function() {
         if (this.checked) {
-            offer[0]['status'] = '1';
+            auto_collection['status'] = '1';
         } else {
-            offer[0]['status'] = '0';
+            auto_collection['status'] = '0';
         }
     });
     $('.offer_discount_code').on('input', function() {
-        offer[0]['code'] = $(this).val();
+        auto_collection['code'] = $(this).val();
     });
-    $('.offer_text').on('keyup change', function() {
-        $('form[data-product-index="' + $('.toplect').val() + '"]  .sleek-text').html($(this).val());
-        products[$('.toplect').val()]['text'] = $(this).val();
-    });
+
     $('.offer_button_text').on('keyup change', function() {
-        $('form[data-product-index="' + $('.toplect').val() + '"]  .sleek-atc').html($(this).val());
-        products[$('.toplect').val()]['atc'] = $(this).val();
+        $('.sleek-atc').html($(this).val());
+        auto_collection['atc'] = $(this).val();
     });
     $('.offer_product_image').change(function() {
         if (this.checked) {
-            $('form[data-product-index="' + $('.toplect').val() + '"]  .sleek-image').show();
-            products[$('.toplect').val()]['show_image'] = 'y';
+            $('.sleek-image').show();
+            auto_collection['show_image'] = 'y';
         } else {
-            $('form[data-product-index="' + $('.toplect').val() + '"]  .sleek-image').hide();
-            products[$('.toplect').val()]['show_image'] = 'n';
+            $('.sleek-image').hide();
+            auto_collection['show_image'] = 'n';
         }
     });
     $('.offer_product_title').change(function() {
         if (this.checked) {
-            $('form[data-product-index="' + $('.toplect').val() + '"]  .sleek-title').show();
-            products[$('.toplect').val()]['show_title'] = 'y';
+            $('.sleek-title').show();
+            auto_collection['show_title'] = 'y';
         } else {
-            $('form[data-product-index="' + $('.toplect').val() + '"]  .sleek-title').hide();
-            products[$('.toplect').val()]['show_title'] = 'n';
+            $('.sleek-title').hide();
+            auto_collection['show_title'] = 'n';
         }
     });
     $('.offer_product_price').change(function() {
         if (this.checked) {
-            $('form[data-product-index="' + $('.toplect').val() + '"]  .sleek-prices').show();
-            products[$('.toplect').val()]['show_price'] = 'y';
+            $('.sleek-prices').show();
+            auto_collection['show_price'] = 'y';
         } else {
-            $('form[data-product-index="' + $('.toplect').val() + '"]  .sleek-prices').hide();
-            products[$('.toplect').val()]['show_price'] = 'n';
+            $('.sleek-prices').hide();
+            auto_collection['show_price'] = 'n';
         }
     });
     $('.offer_compare_at_price').change(function() {
         if (this.checked) {
-            $('form[data-product-index="' + $('.toplect').val() + '"]  .sleek-compare-price').show();
-            products[$('.toplect').val()]['c_price'] = 'y';
+            $('.sleek-compare-price').show();
+            auto_collection['c_price'] = 'y';
         } else {
-            $('form[data-product-index="' + $('.toplect').val() + '"]  .sleek-compare-price').hide();
-            products[$('.toplect').val()]['c_price'] = 'n';
+            $('.sleek-compare-price').hide();
+            auto_collection['c_price'] = 'n';
         }
     });
     $('.offer_quantity_chooser').change(function() {
         if (this.checked) {
-            $('form[data-product-index="' + $('.toplect').val() + '"]  .q-select').show();
-            products[$('.toplect').val()]['q_select'] = 'y';
+            $('.q-select').show();
+            auto_collection['q_select'] = 'y';
         } else {
-            $('form[data-product-index="' + $('.toplect').val() + '"]  .q-select').hide();
-            products[$('.toplect').val()]['q_select'] = 'n';
+            $('.q-select').hide();
+            auto_collection['q_select'] = 'n';
         }
     });
-    $('.offer_ab_test').change(function() {
-        if (this.checked) {
-            products[$('.toplect').val()]['ab_test'] = 'y';
-        } else {
-            products[$('.toplect').val()]['ab_test'] = 'n';
-        }
-    });
+
     $('.offer_linked').change(function() {
         if (this.checked) {
-            products[$('.toplect').val()]['linked'] = 'y';
+            auto_collection['linked'] = 'y';
         } else {
-            products[$('.toplect').val()]['linked'] = 'n';
+            auto_collection['linked'] = 'n';
         }
     });
-    $('.offer_ab_text').on('keyup change', function() {
-        products[$('.toplect').val()]['ab_text'] = $(this).val();
-    });
-    $('.offer_ab_button').on('keyup change', function() {
-        products[$('.toplect').val()]['ab_atc'] = $(this).val();
-    });
+
     $('.offer_title').on('keyup change', function() {
-        offer[0]['title'] = $(this).val();
+        auto_collection['title'] = $(this).val();
     });
 
     function showAjaxModal(action) {
@@ -1232,16 +1025,12 @@ Not supports in Firefox and IE */
     });
 
     $('#ocContent').keyup(function(event) {
-        var oc = $('#conditionSelector').val();
-        if (oc == 'oc9' || oc == 'oc10') {
-            var type = 'vendor';
-        } else {
-            var type = $('#oc1Type').val();
-        }
 
         //alert(event.keyCode);
         var item = $(this).val();
         var call_url = base_url + 'search_condition';
+        var type = $('#oc1Type').val();
+
         $.ajax({
             type: "POST",
             url: call_url,
@@ -1256,7 +1045,6 @@ Not supports in Firefox and IE */
                 $('.c_i').html(response);
             }
         });
-
     });
 
     function hideAll() {
@@ -1271,11 +1059,11 @@ Not supports in Firefox and IE */
         hideAll();
         $('.' + offerLayout).removeClass('hidden');
         $('.offer_layout').val(offerLayout);
-        offer[0]['layout'] = offerLayout;
+        auto_collection['layout'] = offerLayout;
     }
 
     function activateOffer() {
-        offer[0]['status'] = '1';
+        auto_collection['status'] = '1';
         $('.switcheck').prop('checked', true);
         $('.offerDraftBtn').css({
             'font-size': '12px;',
@@ -1288,7 +1076,7 @@ Not supports in Firefox and IE */
     }
 
     function deactivateOffer() {
-        offer[0]['status'] = '0';
+        auto_collection['status'] = '0';
         $('.switcheck').prop('checked', false);
         $('.offerDraftBtn').css({
             'font-size': '20px;',
@@ -1460,26 +1248,6 @@ Not supports in Firefox and IE */
         });
     }
 
-    $('.replace_this').on('input', function() {
-        $('.replacer').html('');
-        var term = $(this).val();
-        var call_url = base_url + 'replacers';
-
-        $.ajax({
-            type: "POST",
-            url: call_url,
-            data: {
-                term: term,
-                shop: '<?php echo $shop; ?>',
-                token: '<?php echo $token; ?>'
-            },
-            dataType: "html",
-            success: function(response) {
-                $('.replacer').html(response);
-            }
-        });
-    });
-
     function loadUIs() {
         $('.card').html('<div class="reject_offer" style="display: none; position: relative; width: 100%; text-align: right;"><span style="font-size: 15px; cursor: pointer;">x</span></div>');
         $('.block').html('<div class="reject_offer" style="display: none; position: relative; width: 100%; text-align: right;"><span style="font-size: 15px; cursor: pointer;">x</span></div>');
@@ -1498,11 +1266,11 @@ Not supports in Firefox and IE */
                     var datacell = data['product'];
                     // console.log(data);
 
-                    let card_ui = '<form class="sleek-form" data-product-index="' + i + '"> <div class="sleek-image"> <img src="' + datacell['image']['src'] + '"/> </div><div class="sleek-offer"> <div class="sleek-text">Need Free Shipping?</div><div class="sleek-title">' + datacell['title'] + '</div><div class="sleek-selectors"> <div class="offer_fields_holder o_h_' + product_id + '"></div> <select class="v-select v-' + product_id + '"></select> <select class="q-select q-' + product_id + '"></select> </div></div><div class="sleek-card-atc"> <div class="sleek-prices"> <span class="sleek-price money">' + s_data['currency'] + ' ' + datacell['variants'][0]['price'] + '</span> <span class="sleek-compare-price money">' + s_data['currency'] + ' ' + datacell['variants'][0]['price'] + '</span> </div><button class="sleek-atc" type="submit" onclick="return false;">' + $('.offer_button_text').val() + '</button> </div></form>';
-                    let block_ui = '<form class="sleek-form" data-product-index="' + i + '"> <div class="sleek-text">Need Free Shipping?</div><div class="sleek-block"> <div class="sleek-image"> <img src="' + datacell['image']['src'] + '"/> </div><div class="sleek-offer"> <div class="sleek-title">' + datacell['title'] + '</div><div class="sleek-prices"> <span class="sleek-price money">' + s_data['currency'] + ' ' + datacell['variants'][0]['price'] + '</span> <span class="sleek-compare-price money">' + s_data['currency'] + ' ' + datacell['variants'][0]['price'] + '</span> </div><div class="sleek-selectors"> <div class="offer_fields_holder o_h_' + product_id + '"></div> <select class="v-select v-' + product_id + '"></select> <select class="q-select q-' + product_id + '"></select> </div></div></div><button class="sleek-atc" type="submit" onclick="return false;">' + $('.offer_button_text').val() + '</button> </form>';
-                    let half_block_ui = '<form class="sleek-form" data-product-index="' + i + '"> <div class="sleek-half-block"> <div class="sleek-image"> <img src="' + datacell['image']['src'] + '"/> </div><div class="sleek-offer"> <div class="sleek-text">Need Free Shipping?</div><div class="sleek-title">' + datacell['title'] + '</div><div class="sleek-prices"> <span class="sleek-price money">' + s_data['currency'] + ' ' + datacell['variants'][0]['price'] + '</span> <span class="sleek-compare-price money">' + s_data['currency'] + ' ' + datacell['variants'][0]['price'] + '</span> </div><div class="sleek-selectors"> <div class="offer_fields_holder o_h_' + product_id + '"></div> <select class="v-select v-' + product_id + '"></select> <select class="q-select q-' + product_id + '"></select> </div></div></div><button class="sleek-atc" type="submit" onclick="return false;">' + $('.offer_button_text').val() + '</button> </form>';
-                    let flat_ui = '<form class="sleek-form" data-product-index="' + i + '"> <div class="sleek-text">Need Free Shipping?</div><div class="sleek-flat"> <div class="sleek-image"> <img src="' + datacell['image']['src'] + '"/> </div><div class="sleek-offer"> <div class="sleek-title">' + datacell['title'] + '</div><div class="sleek-prices"> <span class="sleek-price money">' + s_data['currency'] + ' ' + datacell['variants'][0]['price'] + '</span> <span class="sleek-compare-price money">' + s_data['currency'] + ' ' + datacell['variants'][0]['price'] + '</span> </div><div class="sleek-selectors"> <div class="offer_fields_holder o_h_' + product_id + '"></div> <select class="v-select v-' + product_id + '"></select> <div class="flex-select"> <select class="q-select q-' + product_id + '"></select> <button class="sleek-atc" type="submit" onclick="return false;">' + $('.offer_button_text').val() + '</button> </div></div></div></div></form>';
-                    let compact_ui = '<form class="sleek-form" data-product-index="' + i + '"> <div class="sleek-compact"> <div class="sleek-image"> <img src="' + datacell['image']['src'] + '"/> </div><div class="sleek-offer"> <div class="sleek-text">Need Free Shipping?</div><div class="sleek-title">' + datacell['title'] + '</div><div class="sleek-prices"> <span class="sleek-price money">' + s_data['currency'] + ' ' + datacell['variants'][0]['price'] + '</span> <span class="sleek-compare-price money">' + s_data['currency'] + ' ' + datacell['variants'][0]['price'] + '</span> </div><div class="sleek-selectors"> <div class="offer_fields_holder o_h_' + product_id + '"></div> <select class="v-select v-' + product_id + '"></select> <select class="q-select q-' + product_id + '"></select> </div><button class="sleek-atc" type="submit" onclick="return false;">' + $('.offer_button_text').val() + '</button> </div></div></form>';
+                    let card_ui = '<form class="sleek-form" data-product-index="' + i + '"> <div class="sleek-image"> <img src="' + datacell['image']['src'] + '"/> </div><div class="sleek-offer"> <div class="sleek-title">' + datacell['title'] + '</div><div class="sleek-selectors">  <select class="v-select v-' + product_id + '"></select> <select class="q-select q-' + product_id + '"></select> </div></div><div class="sleek-card-atc"> <div class="sleek-prices"> <span class="sleek-price money">' + s_data['currency'] + ' ' + datacell['variants'][0]['price'] + '</span> <span class="sleek-compare-price money">' + s_data['currency'] + ' ' + datacell['variants'][0]['price'] + '</span> </div><button class="sleek-atc" type="submit" onclick="return false;">' + $('.offer_button_text').val() + '</button> </div></form>';
+                    let block_ui = '<form class="sleek-form" data-product-index="' + i + '"> <div class="sleek-block"> <div class="sleek-image"> <img src="' + datacell['image']['src'] + '"/> </div><div class="sleek-offer"> <div class="sleek-title">' + datacell['title'] + '</div><div class="sleek-prices"> <span class="sleek-price money">' + s_data['currency'] + ' ' + datacell['variants'][0]['price'] + '</span> <span class="sleek-compare-price money">' + s_data['currency'] + ' ' + datacell['variants'][0]['price'] + '</span> </div><div class="sleek-selectors">  <select class="v-select v-' + product_id + '"></select> <select class="q-select q-' + product_id + '"></select> </div></div></div><button class="sleek-atc" type="submit" onclick="return false;">' + $('.offer_button_text').val() + '</button> </form>';
+                    let half_block_ui = '<form class="sleek-form" data-product-index="' + i + '"> <div class="sleek-half-block"> <div class="sleek-image"> <img src="' + datacell['image']['src'] + '"/> </div><div class="sleek-offer"> <div class="sleek-title">' + datacell['title'] + '</div><div class="sleek-prices"> <span class="sleek-price money">' + s_data['currency'] + ' ' + datacell['variants'][0]['price'] + '</span> <span class="sleek-compare-price money">' + s_data['currency'] + ' ' + datacell['variants'][0]['price'] + '</span> </div><div class="sleek-selectors">  <select class="v-select v-' + product_id + '"></select> <select class="q-select q-' + product_id + '"></select> </div></div></div><button class="sleek-atc" type="submit" onclick="return false;">' + $('.offer_button_text').val() + '</button> </form>';
+                    let flat_ui = '<form class="sleek-form" data-product-index="' + i + '"> <div class="sleek-flat"> <div class="sleek-image"> <img src="' + datacell['image']['src'] + '"/> </div><div class="sleek-offer"> <div class="sleek-title">' + datacell['title'] + '</div><div class="sleek-prices"> <span class="sleek-price money">' + s_data['currency'] + ' ' + datacell['variants'][0]['price'] + '</span> <span class="sleek-compare-price money">' + s_data['currency'] + ' ' + datacell['variants'][0]['price'] + '</span> </div><div class="sleek-selectors">  <select class="v-select v-' + product_id + '"></select> <div class="flex-select"> <select class="q-select q-' + product_id + '"></select> <button class="sleek-atc" type="submit" onclick="return false;">' + $('.offer_button_text').val() + '</button> </div></div></div></div></form>';
+                    let compact_ui = '<form class="sleek-form" data-product-index="' + i + '"> <div class="sleek-compact"> <div class="sleek-image"> <img src="' + datacell['image']['src'] + '"/> </div><div class="sleek-offer"> <div class="sleek-title">' + datacell['title'] + '</div><div class="sleek-prices"> <span class="sleek-price money">' + s_data['currency'] + ' ' + datacell['variants'][0]['price'] + '</span> <span class="sleek-compare-price money">' + s_data['currency'] + ' ' + datacell['variants'][0]['price'] + '</span> </div><div class="sleek-selectors">  <select class="v-select v-' + product_id + '"></select> <select class="q-select q-' + product_id + '"></select> </div><button class="sleek-atc" type="submit" onclick="return false;">' + $('.offer_button_text').val() + '</button> </div></div></form>';
                     $('.card').append(card_ui);
                     $('.block').append(block_ui);
                     $('.half-block').append(half_block_ui);
@@ -1588,8 +1356,6 @@ Not supports in Firefox and IE */
                 product_data.send();
             }
         });
-
-        populateFields();
     }
 
     function removeOfferable(index, product) {
@@ -1621,13 +1387,6 @@ Not supports in Firefox and IE */
         }
         if (oc == 'oc7' || oc === 'oc8') {
             $('#countries').show();
-        }
-        if (oc == 'oc9') {
-            $('#oc1Quantity').show();
-            $('#ocContent').show();
-        }
-        if (oc == 'oc10') {
-            $('#ocContent').show();
         }
     });
 
@@ -1756,16 +1515,6 @@ Not supports in Firefox and IE */
                 content_text = e['country'];
             }
 
-            if (e['type'] == 'oc9') {
-                rule_text = 'Cart contains item from vendor  '
-                content_text = e['content'];
-            }
-
-            if (e['type'] == 'oc10') {
-                rule_text = 'Cart has no item from vendor '
-                content_text = e['content'];
-            }
-
             var condition =
                 '<div style="display: table; width: 100%; width: 100%; background: #ffffff; padding: 5px; margin-bottom: 5px;">' +
                 '<div style="vertical-align: middle; display: inline-table; width: 80%; background: #ffffff;">' +
@@ -1786,481 +1535,19 @@ Not supports in Firefox and IE */
         loadConditions();
     }
 
-    $('.field_type').change(function() {
-        if ($(this).val() == 'select' || $(this).val() == 'checkbox_group' || $(this).val() == 'radio') {
-            $('.choices').css('display', 'table');
-            $('.field_price').hide();
-        } else {
-            $('.choices').css('display', 'none');
-            $('.field_price').show();
-        }
-
-        // 'c_1':{'choice':'','price':''}
-    });
-
-    $('.fields_form').submit(function(e) {
-        e.preventDefault();
-        if ($('.field_type').val() == "") {
-            alert("You need to choose an option style first");
-            return;
-        }
-        var fid = "<?php echo time(); ?>_" + fields.length;
-        var type = $('.field_type').val();
-        var name = $('.field_name').val();
-        var placeholder = $('.field_placeholder').val();
-        var price = $('.field_price').val();
-        var required = '';
-
-        if ($('.field_required').is(':checked')) {
-            required = 'true';
-        }
-
-        if (type == 'select' || type == 'checkbox_group' || type == 'radio') {
-            $('.choices').find('div').each(function(i) {
-                var mc = {};
-                mc['oid'] = '';
-                mc['pid'] = products[$('.toplect').val()]['product'];
-                mc['fid'] = fid;
-
-                $(this).find('input[type="text"]').each(function() {
-                    mc['value'] = $(this).val();
-                });
-                $(this).find('input[type="number"]').each(function() {
-                    mc['price'] = $(this).val();
-                });
-
-                choices.push(mc);
-
-            });
-
-            var product_id = $('.product_id').val();
-            console.log(choices);
-        }
-
-        fields.push({
-            "fid": fid,
-            "oid": "",
-            "pid": products[$('.toplect').val()]['product'],
-            "type": type,
-            "name": name,
-            "placeholder": placeholder,
-            "price": price,
-            "required": required
-        });
-
-        console.log(fields);
-
-        loadFields();
-        populateFields();
-
-        clear_selections();
-    });
-
-    function clear_selections() {
-        $('.field_type').prop('selectedIndex', 0);
-        $('.field_name').val('');
-        $('.field_placeholder').val('');
-        $('.field_price').val('');
-        $('.field_required').val('');
-        $('.choices').find('div').each(function() {
-            $(this).find('input[type="text"]').each(function() {
-                $(this).val('');
-            });
-            $(this).find('input[type="number"]').each(function() {
-                $(this).val('0');
-            });
-        });
-        $('.choices').css('display', 'none');
-        $('.field_price').show();
-    }
-
-    function loadFields() {
-        $('.fields_holder').html('');
-
-        $(fields).each(function(i, e) {
-            var fid = fields[i]['fid'];
-            var type = fields[i]['type'];
-            var name = fields[i]['name'];
-            var placeholder = fields[i]['placeholder'];
-            var price = fields[i]['price'];
-            var required = fields[i]['required'];
-            var el_type = '';
-            var m_c = choices.filter(e => e.fid == fid);
-
-            if (type == "select") {
-                $('.fields_holder').append(
-                    '<div class="panel panel-default">' +
-                    '<div class="panel-heading"' +
-                    '<h4 class="panel-title">' +
-                    '<a style="color: #333333; text-transform: uppercase;" data-toggle="collapse" data-parent="#accordion-options" href="#collapse' +
-                    i + '" aria-expanded="false" class="collapsed btn">' +
-                    name +
-                    '</a>' +
-                    '<span class="btn entypo-up pull-right" onclick="push_up(' + i + ');"></span>' +
-                    '<span class="btn entypo-down pull-right" onclick="push_down(' + i + ');"></span>' +
-                    '<span class="btn entypo-pencil pull-right" onclick="edit_option(' + i + ');"></span>' +
-                    '<span class="btn entypo-docs pull-right" onclick="duplicate_option(' + i + ');"></span>' +
-                    '<span class="btn entypo-cancel pull-right" onclick="remove_option(' + i + ');"></span>' +
-                    '</h4>' +
-                    '</div>' +
-                    '<div id="collapse' + i + '" class="panel-collapse collapse" aria-expanded="false">' +
-                    '<div class="panel-body">' +
-                    '<label>' + placeholder + '</label>' +
-                    '<select class="form-control select sleek_fields_' + fid + '" id="properties[' + name +
-                    ']" name="' + name + '"></select>' +
-                    '</div>' +
-                    '</div>' +
-                    '</div>');
-                $('.sleek_fields_' + name + '')
-                    .append($("<option></option>")
-                        .attr("value", "")
-                        .text(placeholder));
-
-                // var value_arr = value.split(',');
-                $(m_c).each(function(key) {
-                    var c_v = m_c[key]['value'];
-                    var c_p = m_c[key]['price'];
-                    $('.sleek_fields_' + fid + '')
-                        .append($("<option></option>")
-                            .attr("value", c_v)
-                            .text(c_v + ' (' + c_p + ')'));
-                });
-            }
-            if (type == "number") {
-                $('.fields_holder').append(
-                    '<div class="panel panel-default">' +
-                    '<div class="panel-heading"' +
-                    '<h4 class="panel-title">' +
-                    '<a style="color: #333333; text-transform: uppercase;" data-toggle="collapse" data-parent="#accordion-options" href="#collapse' +
-                    i + '" aria-expanded="false" class="collapsed btn">' +
-                    name +
-                    '</a>' +
-                    '<span class="btn entypo-up pull-right" onclick="push_up(' + i + ');"></span>' +
-                    '<span class="btn entypo-down pull-right" onclick="push_down(' + i + ');"></span>' +
-                    '<span class="btn entypo-pencil pull-right" onclick="edit_option(' + i + ');"></span>' +
-                    '<span class="btn entypo-docs pull-right" onclick="duplicate_option(' + i + ');"></span>' +
-                    '<span class="btn entypo-cancel pull-right" onclick="remove_option(' + i + ');"></span>' +
-                    '</h4>' +
-                    '</div>' +
-                    '<div id="collapse' + i + '" class="panel-collapse collapse" aria-expanded="false">' +
-                    '<div class="panel-body">' +
-                    '<label>' + placeholder + '</label>' +
-                    '<input type="number" class="form-control" id="properties[' + name + ']" name="' + name +
-                    '" placeholder="' + placeholder + '" />' +
-                    '</div>' +
-                    '</div>' +
-                    '</div>');
-            }
-            if (type == "text") {
-                $('.fields_holder').append(
-                    '<div class="panel panel-default">' +
-                    '<div class="panel-heading"' +
-                    '<h4 class="panel-title">' +
-                    '<a style="color: #333333; text-transform: uppercase;" data-toggle="collapse" data-parent="#accordion-options" href="#collapse' +
-                    i + '" aria-expanded="false" class="collapsed btn">' +
-                    name +
-                    '</a>' +
-                    '<span class="btn entypo-up pull-right" onclick="push_up(' + i + ');"></span>' +
-                    '<span class="btn entypo-down pull-right" onclick="push_down(' + i + ');"></span>' +
-                    '<span class="btn entypo-pencil pull-right" onclick="edit_option(' + i + ');"></span>' +
-                    '<span class="btn entypo-docs pull-right" onclick="duplicate_option(' + i + ');"></span>' +
-                    '<span class="btn entypo-cancel pull-right" onclick="remove_option(' + i + ');"></span>' +
-                    '</h4>' +
-                    '</div>' +
-                    '<div id="collapse' + i + '" class="panel-collapse collapse" aria-expanded="false">' +
-                    '<div class="panel-body">' +
-                    '<label>' + placeholder + '</label>' +
-                    '<input type="text" class="form-control" id="properties[' + name + ']" name="' + name +
-                    '" placeholder="' + placeholder + '" />' +
-                    '</div>' +
-                    '</div>' +
-                    '</div>');
-            }
-            if (type == "textarea") {
-                $('.fields_holder').append(
-                    '<div class="panel panel-default">' +
-                    '<div class="panel-heading"' +
-                    '<h4 class="panel-title">' +
-                    '<a style="color: #333333; text-transform: uppercase;" data-toggle="collapse" data-parent="#accordion-options" href="#collapse' +
-                    i + '" aria-expanded="false" class="collapsed btn">' +
-                    name +
-                    '</a>' +
-                    '<span class="btn entypo-up pull-right" onclick="push_up(' + i + ');"></span>' +
-                    '<span class="btn entypo-down pull-right" onclick="push_down(' + i + ');"></span>' +
-                    '<span class="btn entypo-pencil pull-right" onclick="edit_option(' + i + ');"></span>' +
-                    '<span class="btn entypo-docs pull-right" onclick="duplicate_option(' + i + ');"></span>' +
-                    '<span class="btn entypo-cancel pull-right" onclick="remove_option(' + i + ');"></span>' +
-                    '</h4>' +
-                    '</div>' +
-                    '<div id="collapse' + i + '" class="panel-collapse collapse" aria-expanded="false">' +
-                    '<div class="panel-body">' +
-                    '<label>' + placeholder + '</label>' +
-                    '<textarea class="form-control" id="properties[' + name + ']" name="' + name +
-                    '" placeholder="' + placeholder + '">' + placeholder + '</textarea>' +
-                    '</div>' +
-                    '</div>' +
-                    '</div>');
-            }
-            if (type == "file") {
-                $('.fields_holder').append(
-                    '<div class="panel panel-default">' +
-                    '<div class="panel-heading"' +
-                    '<h4 class="panel-title">' +
-                    '<a style="color: #333333; text-transform: uppercase;" data-toggle="collapse" data-parent="#accordion-options" href="#collapse' +
-                    i + '" aria-expanded="false" class="collapsed btn">' +
-                    name +
-                    '</a>' +
-                    '<span class="btn entypo-up pull-right" onclick="push_up(' + i + ');"></span>' +
-                    '<span class="btn entypo-down pull-right" onclick="push_down(' + i + ');"></span>' +
-                    '<span class="btn entypo-pencil pull-right" onclick="edit_option(' + i + ');"></span>' +
-                    '<span class="btn entypo-docs pull-right" onclick="duplicate_option(' + i + ');"></span>' +
-                    '<span class="btn entypo-cancel pull-right" onclick="remove_option(' + i + ');"></span>' +
-                    '</h4>' +
-                    '</div>' +
-                    '<div id="collapse' + i + '" class="panel-collapse collapse" aria-expanded="false">' +
-                    '<div class="panel-body">' +
-                    '<label>' + placeholder + '</label>' +
-                    '<input type="file" class="form-control" id="properties[' + name + ']" name="' + name +
-                    '" placeholder="' + placeholder + '" />' +
-                    '</div>' +
-                    '</div>' +
-                    '</div>');
-            }
-            if (type == "checkbox") {
-                $('.fields_holder').append(
-                    '<div class="panel panel-default">' +
-                    '<div class="panel-heading"' +
-                    '<h4 class="panel-title">' +
-                    '<a style="color: #333333; text-transform: uppercase;" data-toggle="collapse" data-parent="#accordion-options" href="#collapse' +
-                    i + '" aria-expanded="false" class="collapsed btn">' +
-                    name +
-                    '</a>' +
-                    '<span class="btn entypo-up pull-right" onclick="push_up(' + i + ');"></span>' +
-                    '<span class="btn entypo-down pull-right" onclick="push_down(' + i + ');"></span>' +
-                    '<span class="btn entypo-pencil pull-right" onclick="edit_option(' + i + ');"></span>' +
-                    '<span class="btn entypo-docs pull-right" onclick="duplicate_option(' + i + ');"></span>' +
-                    '<span class="btn entypo-cancel pull-right" onclick="remove_option(' + i + ');"></span>' +
-                    '</h4>' +
-                    '</div>' +
-                    '<div id="collapse' + i + '" class="panel-collapse collapse" aria-expanded="false">' +
-                    '<div class="panel-body">' +
-                    '<label>' +
-                    '<input type="checkbox" id="properties[' + name + ']" name="' + name +
-                    '" placeholder="' + placeholder + '" /> ' +
-                    placeholder +
-                    '</label>' +
-                    '</div>' +
-                    '</div>' +
-                    '</div>');
-            }
-            if (type == "checkbox_group") {
-                $('.fields_holder').append(
-                    '<div class="panel panel-default">' +
-                    '<div class="panel-heading"' +
-                    '<h4 class="panel-title">' +
-                    '<a style="color: #333333; text-transform: uppercase;" data-toggle="collapse" data-parent="#accordion-options" href="#collapse' +
-                    i + '" aria-expanded="false" class="collapsed btn">' +
-                    name +
-                    '</a>' +
-                    '<span class="btn entypo-up pull-right" onclick="push_up(' + i + ');"></span>' +
-                    '<span class="btn entypo-down pull-right" onclick="push_down(' + i + ');"></span>' +
-                    '<span class="btn entypo-pencil pull-right" onclick="edit_option(' + i + ');"></span>' +
-                    '<span class="btn entypo-docs pull-right" onclick="duplicate_option(' + i + ');"></span>' +
-                    '<span class="btn entypo-cancel pull-right" onclick="remove_option(' + i + ');"></span>' +
-                    '</h4>' +
-                    '</div>' +
-                    '<div id="collapse' + i + '" class="panel-collapse collapse" aria-expanded="false">' +
-                    '<div class="panel-body">' +
-                    '<label>' + placeholder + '</label>' +
-                    '<input type="text" class="form-control" id="properties[' + name + ']" name="' + name +
-                    '" placeholder="' + placeholder + '" />' +
-                    '</div>' +
-                    '</div>' +
-                    '</div>');
-            }
-            if (type == "radio") {
-                $('.fields_holder').append(
-                    '<div class="panel panel-default">' +
-                    '<div class="panel-heading"' +
-                    '<h4 class="panel-title">' +
-                    '<a style="color: #333333; text-transform: uppercase;" data-toggle="collapse" data-parent="#accordion-options" href="#collapse' +
-                    i + '" aria-expanded="false" class="collapsed btn">' +
-                    name +
-                    '</a>' +
-                    '<span class="btn entypo-up pull-right" onclick="push_up(' + i + ');"></span>' +
-                    '<span class="btn entypo-down pull-right" onclick="push_down(' + i + ');"></span>' +
-                    '<span class="btn entypo-pencil pull-right" onclick="edit_option(' + i + ');"></span>' +
-                    '<span class="btn entypo-docs pull-right" onclick="duplicate_option(' + i + ');"></span>' +
-                    '<span class="btn entypo-cancel pull-right" onclick="remove_option(' + i + ');"></span>' +
-                    '</h4>' +
-                    '</div>' +
-                    '<div id="collapse' + i + '" class="panel-collapse collapse" aria-expanded="false">' +
-                    '<div class="panel-body">' +
-                    '<label>' +
-                    '<input type="radio" class="form-control" id="properties[' + name + ']" name="' + name +
-                    '" placeholder="' + placeholder + '" /> ' +
-                    placeholder +
-                    '</label>' +
-                    '</div>' +
-                    '</div>' +
-                    '</div>');
-            }
-            if (type == "date") {
-                $('.fields_holder').append(
-                    '<div class="panel panel-default">' +
-                    '<div class="panel-heading"' +
-                    '<h4 class="panel-title">' +
-                    '<a style="color: #333333; text-transform: uppercase;" data-toggle="collapse" data-parent="#accordion-options" href="#collapse' +
-                    i + '" aria-expanded="false" class="collapsed btn">' +
-                    name +
-                    '</a>' +
-                    '<span class="btn entypo-up pull-right" onclick="push_up(' + i + ');"></span>' +
-                    '<span class="btn entypo-down pull-right" onclick="push_down(' + i + ');"></span>' +
-                    '<span class="btn entypo-pencil pull-right" onclick="edit_option(' + i + ');"></span>' +
-                    '<span class="btn entypo-docs pull-right" onclick="duplicate_option(' + i + ');"></span>' +
-                    '<span class="btn entypo-cancel pull-right" onclick="remove_option(' + i + ');"></span>' +
-                    '</h4>' +
-                    '</div>' +
-                    '<div id="collapse' + i + '" class="panel-collapse collapse" aria-expanded="false">' +
-                    '<div class="panel-body">' +
-                    '<label>' + placeholder + '</label>' +
-                    '<input type="date" class="form-control" id="properties[' + name + ']" name="' + name +
-                    '" placeholder="' + placeholder + '" />' +
-                    '</div>' +
-                    '</div>' +
-                    '</div>');
-            }
-            if (type == "swatch") {
-                $('.fields_holder').append(
-                    '<div class="panel panel-default">' +
-                    '<div class="panel-heading"' +
-                    '<h4 class="panel-title">' +
-                    '<a style="color: #333333; text-transform: uppercase;" data-toggle="collapse" data-parent="#accordion-options" href="#collapse' +
-                    i + '" aria-expanded="false" class="collapsed btn">' +
-                    name +
-                    '</a>' +
-                    '<span class="btn entypo-up pull-right" onclick="push_up(' + i + ');"></span>' +
-                    '<span class="btn entypo-down pull-right" onclick="push_down(' + i + ');"></span>' +
-                    '<span class="btn entypo-pencil pull-right" onclick="edit_option(' + i + ');"></span>' +
-                    '<span class="btn entypo-docs pull-right" onclick="duplicate_option(' + i + ');"></span>' +
-                    '<span class="btn entypo-cancel pull-right" onclick="remove_option(' + i + ');"></span>' +
-                    '</h4>' +
-                    '</div>' +
-                    '<div id="collapse' + i + '" class="panel-collapse collapse" aria-expanded="false">' +
-                    '<div class="panel-body">' +
-                    '<label>' + placeholder + '</label>' +
-                    '<input type="color" class="form-control" id="properties[' + name + ']" name="' + name +
-                    '" placeholder="' + placeholder + '" />' +
-                    '</div>' +
-                    '</div>' +
-                    '</div>');
-            }
-        });
-    }
-
-    function push_up(key) {
-        if (key > 0) {
-            fields.move(key, key - 1);
-            loadFields();
-            populateFields();
-        }
-    }
-
-    function push_down(key) {
-        if (key < fields.length) {
-            fields.move(key, key + 1);
-            loadFields();
-            populateFields();
-        }
-    }
-
-    function edit_option(key) {
-        $('.panel-collapse').attr('class', 'panel-collapse collapse');
-        $('.panel-collapse').attr('aria-expanded', 'false');
-        $('#collapse' + key).attr('class', 'panel-collapse collapse in');
-        $('#collapse' + key).attr('aria-expanded', 'true');
-    }
-
-    function duplicate_option(key) {
-
-        let new_fid = "<?php echo time(); ?>_" + fields.length;
-        let old_fid = fields[key]['fid'];
-
-        var fid = new_fid;
-        var oid = fields[key]['oid'];
-        var pid = fields[key]['pid'];
-        var type = fields[key]['type'];
-        var name = fields[key]['name'];
-        var placeholder = fields[key]['placeholder'];
-        var price = fields[key]['price'];
-        var required = fields[key]['required'];
-
-        if (type == 'select' || type == 'checkbox_group' || type == 'radio') {
-            let new_choice = choices.filter(r => r.fid == old_fid);
-            console.log("new choices");
-            console.log(choices);
-
-            $(new_choice).each(function(i, e) {
-                var mc = {};
-                mc['oid'] = e['oid'];
-                mc['pid'] = e['pid'];
-                mc['fid'] = new_fid;
-                mc['value'] = e['value'];
-                mc['price'] = e['price'];
-                choices.push(mc);
-            });
-        }
-
-        fields.push({
-            'fid': fid,
-            'oid': oid,
-            'pid': pid,
-            'type': type,
-            'name': name,
-            'placeholder': placeholder,
-            'price': price,
-            'required': required
-        });
-
-        console.log(fields);
-        console.log(choices);
-
-        loadFields();
-        populateFields();
-    }
-
-    function remove_option(key) {
-        var result = confirm('Are you sure you want to delete ' + fields[key]['name'] + '?');
-        if (result) {
-            fid = fields[key]['fid'];
-            choices = choices.filter(e => e.fid != fid);
-            fields.splice(key, 1);
-            loadFields();
-            populateFields();
-        }
-    }
-
-    Array.prototype.move = function(from, to) {
-        this.splice(to, 0, this.splice(from, 1)[0]);
-    };
 
     $('.saveOffer').click(function() {
+        console.log(auto_collection);
         $('.saveOffer').attr("disabled", true);
         $.ajax({
             type: "POST",
-            url: base_url + 'create_offers?<?php echo $_SERVER['QUERY_STRING']; ?>',
+            url: base_url + 'create_auto_collection/<?php echo $shop ?>/<?php echo $token; ?>?<?php echo $_SERVER['QUERY_STRING']; ?>',
             data: {
-                offer,
-                products,
-                variants,
-                blocks,
-                conditions,
-                fields,
-                choices
+                auto_collection
             },
             success: function(response) {
-                window.location.href = base_url + "edit_offer/<?php echo $shop; ?>/<?php echo $token ?>/" + response + '?<?php echo $_SERVER['QUERY_STRING']; ?>';
-                //$('.data').html(response);
+                $('.saveOffer').attr("disabled", false);
+                console.log(response);
             },
             error: function() {
                 alert('An error occured');
@@ -2268,127 +1555,4 @@ Not supports in Firefox and IE */
         });
 
     });
-
-    function populateFields() {
-        if (fields.length > 0) {
-            $(products).each(function(i, e) {
-                var pid = products[i]['product'];
-                let o_fields = fields.filter(e => e.pid == pid);
-                console.log(o_fields);
-                if (o_fields.length > 0) {
-                    $('.o_h_' + pid).html('');
-                    $(o_fields).each(function(i, e) {
-                        var fid = o_fields[i]['fid'];
-                        var type = o_fields[i]['type'];
-                        var name = o_fields[i]['name'];
-                        var placeholder = o_fields[i]['placeholder'];
-                        var price = o_fields[i]['price'];
-                        var required = o_fields[i]['required'];
-                        var el_type = '';
-                        var m_c = choices.filter(e => e.fid == fid);
-
-                        if (type == "select") {
-                            $('.o_h_' + pid).append(
-                                '<div>' +
-                                '<label>' + placeholder + '</label>' +
-                                '<select class="form-control select sleek_fields_' + fid + '" id="properties[' + name +
-                                ']" name="properties[' + name + ']"></select>' +
-                                '</div>');
-                            $('.sleek_fields_' + name + '')
-                                .append($("<option></option>")
-                                    .attr("value", "")
-                                    .text(placeholder));
-
-                            // var value_arr = value.split(',');
-                            $(m_c).each(function(key) {
-                                var c_v = m_c[key]['value'];
-                                var c_p = m_c[key]['price'];
-                                $('.sleek_fields_' + fid + '')
-                                    .append($("<option></option>")
-                                        .attr("value", c_v)
-                                        .text(c_v + ' (' + c_p + ')'));
-                            });
-                        }
-                        if (type == "number") {
-                            $('.o_h_' + pid).append(
-                                '<div>' +
-                                '<label>' + placeholder + '</label>' +
-                                '<input type="number" class="form-control" id="properties[' + name + ']" name="properties[' + name +
-                                ']" placeholder="' + placeholder + '" />' +
-                                '</div>');
-                        }
-                        if (type == "text") {
-                            $('.o_h_' + pid).append(
-                                '<div>' +
-                                '<label>' + placeholder + '</label>' +
-                                '<input type="text" class="form-control" id="properties[' + name + ']" name="properties[' + name +
-                                ']" placeholder="' + placeholder + '" />' +
-                                '</div>');
-                        }
-                        if (type == "textarea") {
-                            $('.o_h_' + pid).append(
-                                '<div>' +
-                                '<label>' + placeholder + '</label>' +
-                                '<textarea class="form-control" id="properties[' + name + ']" name="properties[' + name +
-                                ']" placeholder="' + placeholder + '">' + placeholder + '</textarea>' +
-                                '</div>');
-                        }
-                        if (type == "file") {
-                            $('.o_h_' + pid).append(
-                                '<div>' +
-                                '<label>' + placeholder + '</label>' +
-                                '<input type="file" class="form-control" id="properties[' + name + ']" name="properties[' + name +
-                                ']" placeholder="' + placeholder + '" />' +
-                                '</div>');
-                        }
-                        if (type == "checkbox") {
-                            $('.o_h_' + pid).append(
-                                '<div>' +
-                                '<label>' +
-                                '<input type="checkbox" id="properties[' + name + ']" name="properties[' + name +
-                                ']" placeholder="' + placeholder + '" /> ' +
-                                placeholder +
-                                '</label>' +
-                                '</div>');
-                        }
-                        if (type == "checkbox_group") {
-                            $('.o_h_' + pid).append(
-                                '<div>' +
-                                '<label>' + placeholder + '</label>' +
-                                '<input type="text" class="form-control" id="properties[' + name + ']" name="properties[' + name +
-                                ']" placeholder="' + placeholder + '" />' +
-                                '</div>');
-                        }
-                        if (type == "radio") {
-                            $('.o_h_' + pid).append(
-                                '<div>' +
-                                '<label>' +
-                                '<input type="radio" class="form-control" id="properties[' + name + ']" name="properties[' + name +
-                                ']" placeholder="' + placeholder + '" /> ' +
-                                placeholder +
-                                '</label>' +
-                                '</div>');
-                        }
-                        if (type == "date") {
-                            $('.o_h_' + pid).append(
-                                '<div>' +
-                                '<label>' + placeholder + '</label>' +
-                                '<input type="date" class="form-control" id="properties[' + name + ']" name="properties[' + name +
-                                ']" placeholder="' + placeholder + '" />' +
-                                '</div>');
-                        }
-                        if (type == "swatch") {
-                            $('.o_h_' + pid).append(
-                                '<div>' +
-                                '<label>' + placeholder + '</label>' +
-                                '<input type="color" class="form-control" id="properties[' + name + ']" name="properties[' + name +
-                                ']" placeholder="' + placeholder + '" />' +
-                                '</div>');
-                        }
-                    });
-                }
-            });
-        }
-
-    }
 </script>

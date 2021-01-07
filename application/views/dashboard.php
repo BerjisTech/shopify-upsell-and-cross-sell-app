@@ -81,7 +81,7 @@
         </div>
         <div style="height: 100vh; overflow-y: auto; flex-grow: 4; padding-top: 10px; padding-left: 10px; padding-right: 10px; padding-bottom: 0px; background: #F1F2F3;">
 
-            <?php if ($this->db->where('shop', $shop)->get('offers')->num_rows() == 0) : ?>
+            <?php if ($this->db->where('shop', $shop)->get('offers')->num_rows() == 0 && $this->db->where('shop', $shop)->get('auto_collection')->num_rows() == 0) : ?>
                 <div class="row">
                     <div class="col-md-2"></div>
                     <div class="col-md-8">
@@ -96,16 +96,19 @@
 
                             <p style="font-size: 18px !important; color: #8797A8 !important; margin-bottom: 0px !important;">Need help? Be sure to drop an email and we will repsond in less than 20 minutes. Our support team thrives on customer happiness</p>
 
-                            <div style="display: flex; justify-content: space-between; align-items: center; padding: 20px 20px 50px 20px;">
+                            <div style="display: flex; justify-content: space-between; align-items: center; padding: 20px 20px 20px 20px;">
                                 <a href="<?php echo base_url(); ?>new_offer/<?php echo $shop; ?>/<?php echo $token; ?>?<?php echo $_SERVER['QUERY_STRING']; ?>" class="btn btn-lg btn-primary btn-icon icon-right"><i class="entypo-plus"></i>CREATE AN OFFER</a>
                                 <a href="<?php echo base_url(); ?>settings/<?php echo $shop; ?>/<?php echo $token; ?>?<?php echo $_SERVER['QUERY_STRING']; ?>" class="btn btn-lg btn-primary btn-icon icon-right"><i class="entypo-cog"></i>GENERAL SETTINGS</a>
                                 <span onclick="Beacon('open');" class="btn btn-lg btn-danger btn-icon icon-right"><i class="entypo-help"></i>SUPPORT</span>
                             </div>
                         </div>
+                        <div class="tile-stats tile-white stat-tile" style="box-shadow: 0px 0px 5px rgba(2, 2, 2, 0.2); height: auto !important; text-align: center;">
+                            <a href="<?php echo base_url(); ?>auto_collection/<?php echo $shop; ?>/<?php echo $token; ?>?<?php echo $_SERVER['QUERY_STRING']; ?>" class="btn btn-lg btn-primary btn-icon icon-right col-xs-12"><i class="entypo-plus"></i>OR ACTIVATE COLLECTION OFFERS</a>
+                        </div>
                     </div>
                 </div>
             <?php endif; ?>
-            <?php if ($this->db->where('shop', $shop)->get('offers')->num_rows() > 0) : ?>
+            <?php if ($this->db->where('shop', $shop)->get('offers')->num_rows() > 0 || $this->db->where('shop', $shop)->get('auto_collection')->num_rows() > 0) : ?>
                 <script type="text/javascript">
                     jQuery(document).ready(function() {
                         // Sparkline Charts
@@ -226,6 +229,51 @@
                         </tr>
                     </thead>
                     <tbody style="border: none;">
+                        <?php if ($this->db->where('shop', $shop)->get('auto_collection')->num_rows() > 0) : ?>
+                            <tr>
+                                <td style="vertical-align: middle; border: none; text-align: center; color: #FFFFFF; font-size: 1px;">0</td>
+                                <td style="vertical-align: middle; border: none; flex-grow: 4;">
+                                    <span style="font-weight: bold;">
+                                        Auto-collection offers
+                                    </span>
+                                </td>
+                                <td style="vertical-align: middle; border: none;">
+                                    <span class="col-xs-12 status">
+                                        <label class="switch">
+                                            <input class="switcheck collection_status" type="checkbox" <?php if ($this->db->where('shop', $shop)->get('auto_collection')->row()->status == "1") {
+                                                                                                            echo "checked";
+                                                                                                        }; ?> />
+                                            <span class="slidr round"></span>
+                                        </label>
+                                    </span>
+                                </td>
+                                <td style="text-align: center; vertical-align: middle; border: none;">
+                                    <ul class="user-info" style="display: table; text-align: center; cursor: pointer;">
+                                        <li class="profile-info dropdown"><span class="dropdown-toggle" data-toggle="dropdown"><i class="entypo-dot-3"></i></span>
+                                            <ul class="dropdown-menu pull-right">
+                                                <!-- Reverse Caret -->
+                                                <li class="caret"></li>
+                                                <!-- Profile sub-links -->
+                                                <li><a href="<?php echo base_url(); ?>auto_collection/<?php echo $shop; ?>/<?php echo $token; ?>?<?php echo $_SERVER['QUERY_STRING']; ?>"><i class="entypo-pencil"></i>Edit</a></li>
+                                                <li><a href="<?php echo base_url(); ?>offer_stats/<?php echo $shop; ?>/collection?<?php echo $_SERVER['QUERY_STRING']; ?>">
+                                                        <i class="entypo-chart-line"></i>Stats</a></li>
+                                                <li><a onclick="if(confirm('Are you sure you want to delete this offer?')){$.ajax({url: 'delete_ac/<?php echo $shop; ?>', method: 'POST', success: function(){window.location.reload(false)}})}"><i class="entypo-trash"></i>Delete</a></li>
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                </td>
+                            </tr>
+                        <?php else : ?>
+                            <tr>
+                                <td style="vertical-align: middle; border: none; text-align: center; color: #FFFFFF; font-size: 1px;">0</td>
+                                <td style="vertical-align: middle; border: none; flex-grow: 4;">Collection based offers will allow you to automatically offer products from the same collections to your customers.
+                                </td>
+                                <td style="vertical-align: middle; border: none;"></td>
+                                <td style="text-align: center; vertical-align: middle; border: none;">
+                                    <a href="<?php echo base_url(); ?>auto_collection/<?php echo $shop; ?>/<?php echo $token; ?>?<?php echo $_SERVER['QUERY_STRING']; ?>" class="btn btn-lg btn-primary btn-icon icon-right col-xs-12"><i class="entypo-plus"></i>ACTIVATE COLLECTION OFFERS</a>
+                                </td>
+                            </tr>
+                        <?php endif; ?>
                         <?php
                         foreach ($offer as $key => $fetch) : ?>
                             <tr>
@@ -340,6 +388,12 @@
                                                                 echo $prepend . 'Customer is not located in ' . $cv['country'];
                                                             }
                                                         }
+                                                        if ($condition_type == 'oc9') {
+                                                            echo $prepend . 'Cart contains at least ' . $cv['quantity'] . ' item from vendor ' . $cv['content'];
+                                                        }
+                                                        if ($condition_type == 'oc10') {
+                                                            echo $prepend . 'Cart has no item from vendor ' . $cv['content'];
+                                                        }
                                                     }
                                                 } ?>
 
@@ -380,38 +434,62 @@
                         <?php endforeach; ?>
                     </tbody>
                 </table>
-                
+
                 <script>
+                    $('.collection_status').change(function() {
+                        let o = $(this).attr('data-oid');
+                        if (this.checked) {
+                            $.ajax({
+                                type: "POST",
+                                url: base_url + 'collection_status/<?php echo $shop; ?>/1?<?php echo $_SERVER['QUERY_STRING']; ?>',
+                                data: '',
+                                success: function(response) {
+                                    $('.os' + o).prop('checked', true);
+                                },
+                                error: function() {
+                                    alert('An error occured');
+                                }
+                            });
+                        } else {
+                            $.ajax({
+                                type: "POST",
+                                url: base_url + 'collection_status/<?php echo $shop; ?>/0?<?php echo $_SERVER['QUERY_STRING']; ?>',
+                                data: '',
+                                success: function(response) {
+                                    $('.os' + o).prop('checked', false);
+                                },
+                                error: function() {
+                                    alert('An error occured');
+                                }
+                            });
+                        }
+                    });
                     $('.offer_status').change(function() {
                         let o = $(this).attr('data-oid');
                         if (this.checked) {
-                            if (confirm('Are you sure you want to activate this offer?')) {
-                                $.ajax({
-                                    type: "POST",
-                                    url: base_url + 'offer_status/' + o + '/1?<?php echo $_SERVER['QUERY_STRING']; ?>',
-                                    data: '',
-                                    success: function(response) {
-                                        $('.os' + o).prop('checked', true);
-                                    },
-                                    error: function() {
-                                        alert('An error occured');
-                                    }
-                                });
-                            }
+                            $.ajax({
+                                type: "POST",
+                                url: base_url + 'offer_status/' + o + '/1?<?php echo $_SERVER['QUERY_STRING']; ?>',
+                                data: '',
+                                success: function(response) {
+                                    $('.os' + o).prop('checked', true);
+                                },
+                                error: function() {
+                                    alert('An error occured');
+                                }
+                            });
                         } else {
-                            if (confirm('Are you sure you want to deactivate this offer?')) {
-                                $.ajax({
-                                    type: "POST",
-                                    url: base_url + 'offer_status/' + o + '/0?<?php echo $_SERVER['QUERY_STRING']; ?>',
-                                    data: '',
-                                    success: function(response) {
-                                        $('.os' + o).prop('checked', false);
-                                    },
-                                    error: function() {
-                                        alert('An error occured');
-                                    }
-                                });
-                            }
+                            $.ajax({
+                                type: "POST",
+                                url: base_url + 'offer_status/' + o + '/0?<?php echo $_SERVER['QUERY_STRING']; ?>',
+                                data: '',
+                                success: function(response) {
+                                    $('.os' + o).prop('checked', false);
+                                },
+                                error: function() {
+                                    alert('An error occured');
+                                }
+                            });
                         }
                     });
                 </script>

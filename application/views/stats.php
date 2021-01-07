@@ -890,11 +890,15 @@
                             <tr>
                                 <td><?php echo $fetch['offer']; ?></td>
                                 <td><?php
-                                    $title = $this->db->where('offer_id', $fetch['offer'])->get('offers')->row()->title;
-                                    if ($title == '') {
-                                        echo 'Offer #' . $fetch['offer'];
+                                    if ($fetch['offer'] == 'collection') {
+                                        echo "Auto-Collections";
                                     } else {
-                                        echo $title;
+                                        $title = $this->db->where('offer_id', $fetch['offer'])->get('offers')->row()->title;
+                                        if ($title == '') {
+                                            echo ' Offer #' . $fetch['offer'];
+                                        } else {
+                                            echo ' ' . $title;
+                                        }
                                     }
                                     ?></td>
                                 <td><?php echo number_format(($fetch['reach'] * 100) / $total_stats); ?>% ($<?php echo number_format($this->db->select('sum(price) as total')->where('shop', $duka)->where('type', 'purchase')->where('offer', $fetch['offer'])->get('stats')->row()->total); ?>)</td>

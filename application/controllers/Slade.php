@@ -748,6 +748,25 @@ class Slade extends CI_Controller
                 }
             }
         }
+        if ($type == 'vendor') {
+            $array = array(
+                'limit' => '10',
+                'fields' => 'id,title,variants,vendor',
+            );
+            $collections = $this->Shopify->shopify_call($token, $shop, "/admin/api/2020-10/products.json", $array, 'GET');
+            $collections = json_decode($collections['response'], JSON_PRETTY_PRINT);
+            if (empty($collections)) {
+                $html = "<p>There's no vendor matching $search_term </p>";
+            } else {
+                foreach ($collections as $collection) {
+                    foreach ($collection as $key => $value) {
+                        if (stripos($value['vendor'], $search_term) !== false) {
+                            $html .= '<div onclick="$(\'.occ\').val(\'' . $value['vendor'] . '\');$(\'.c_i\').html(\'\');$(\'#ocContent\').val(\'' . $value['vendor'] . '\');" class="col-xs-12" style="cursor: pointer; margin-top: 10px; padding-bottom: 5px; border-bottom: 1px solid #C0C0C0;"><span class="pull-left" style="color: #333333;">' . $value['vendor'] . '</span></div>';
+                        }
+                    }
+                }
+            }
+        }
 
         echo $html;
     }
@@ -1051,5 +1070,35 @@ class Slade extends CI_Controller
         if ($this->Shopify->do_email($this->db->where('shop', $shop)->get('shops')->row()->shop_owner . ' just installed Sleek Apps on ' . $this->db->where('shop', $shop)->get('shops')->row()->domain . '<br /> Email: ' . $this->db->where('shop', $shop)->get('shops')->row()->customer_email, 'New User', 'sleek.apps.data@gmail.com', 'support@sleekupsell.com')) {
             echo 'email sent';
         }
+    }
+
+    public function auto_collection($shop, $token)
+    {
+
+        $data['api_key'] = $this->config->item('shopify_api_key');
+        $data['shop'] = $shop;
+        $data['token'] = $token;
+        $data['page_name'] = 'auto_collection';
+        $this->load->view('index', $data);
+    }
+
+    public function create_auto_collection($shop, $token)
+    {
+        print_r($_POST);
+        if ($this->db->where('shop', $shop)->get('auto_collection')->num_rows() == 0) {
+            $_POST['auto_collection'][0]['id'] = $this->db->get('auto_collection')->num_rows() + 1;
+            $this->db->insert('auto_collection', $_POST['auto_collection'][0]);
+        } else {
+            $this->db->where('shop', $shop)->update('auto_collection', $_POST['auto_collection']);
+        }
+    }
+    public function delete_ac($shop)
+    {
+        $this->db->where('shop', $shop)->delete('auto_collection');
+    }
+
+    public function collection_status($shop, $status)
+    {
+        $this->db->where('shop', $shop)->set('status', $status)->update('auto_collection');
     }
 }
