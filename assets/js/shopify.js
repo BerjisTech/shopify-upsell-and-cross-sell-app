@@ -1,1 +1,1309 @@
-if("undefined"==typeof jQuery||null==jQuery){var script=document.createElement("script");script.type="text/javascript",script.src="https://sleek-upsell.com/assets/js/jquery-1.11.3.min.js",document.getElementsByTagName("head")[0].appendChild(script),script.onload=function(){sleekUpsell()}}else sleekUpsell();function sleekUpsell(){let page_ss=window.location.href,s_s_w=g_s_s_w("https://sleek-upsell.herokuapp.com/s_s_w/"+Shopify.shop);function createSUW(){$("body").prepend('<style>.suw{display: table; width: 300px; height: 500px; background: #ffffff; position: fixed; bottom: 0px; left: 0px; z-index: 3000000;}.suw_head, .suw_footer{display: table; width: 100%; height: 50px !important; background: #981B1B !important; color: #ffffff;}.suw_body{overflow-Y: auto; display: table; width: 100%; height: 400px;}.suw_head:before{content: "SETUP WIZARD"; display: table; position: absolute; top: 10px; left: 10px; z-index: 2000000; color: #FFFFFF; font-size: 12px;}.suw_head{cursor:move;}</style>'),$("body").prepend('<div class="draggable suw"><div class="suw_head dragger"></div><div class="suw_body"><img src="https://sleek-upsell.com/assets/images/loader.gif" style="margin: 150px auto;"/></div><div class="suw_footer"></div></div>');var e,t,s=null;document.addEventListener("mousedown",function(l){for(var i=!1,a=0;l.path[a]!==document.body;a++)if(l.path[a].classList.contains("dragger"))i=!0;else if(i&&l.path[a].classList.contains("draggable"))return(s=l.path[a]).classList.add("dragging"),e=l.clientX-s.style.left.slice(0,-2),void(t=l.clientY-s.style.top.slice(0,-2))}),document.addEventListener("mouseup",function(){null!==s&&s.classList.remove("dragging"),s=null}),document.addEventListener("mousemove",function(l){if(null!==s){s.style.left=l.clientX-e+"px",s.style.top=l.clientY-t+"px";var i=s.parentElement.getBoundingClientRect(),a=s.getBoundingClientRect();a.left<i.left&&(s.style.left=0),a.top<i.top&&(s.style.top=0),a.right>i.right&&(s.style.left=i.width-a.width+"px"),a.bottom>i.bottom&&(s.style.top=i.height-a.height+"px")}}),$(".suw_body").load("https://sleek-upsell.herokuapp.com/suw/"+Shopify.shop)}function get_this(e){e&&(e.onload=function(){return e.responseText},e.send())}function createCORSRequest(e,t){let s=new XMLHttpRequest;return"withCredentials"in s?s.open(e,t,!0):"undefined"!=typeof XDomainRequest?(s=new XDomainRequest).open(e,t):s=null,s}function g_d(e){let t=new XMLHttpRequest;return t.open("GET",e,!1),t.send(null),JSON.parse(t.responseText)}function g_s_s_w(e){let t=new XMLHttpRequest;return t.open("GET",e,!1),t.send(null),t.responseText}function user_browser(){return-1!=(navigator.userAgent.indexOf("Opera")||navigator.userAgent.indexOf("OPR"))?"Opera":-1!=navigator.userAgent.indexOf("Chrome")?"Chrome":-1!=navigator.userAgent.indexOf("Safari")?"Safari":-1!=navigator.userAgent.indexOf("Firefox")?"Firefox":-1!=navigator.userAgent.indexOf("MSIE")||1==!!document.documentMode?"IE":"unknown"}"y"==sessionStorage.getItem("s_u_w")?createSUW():page_ss.includes(s_s_w)&&(sessionStorage.setItem("s_u_w","y"),createSUW());const device=()=>{const e=navigator.userAgent;return/(tablet|ipad|playbook|silk)|(android(?!.*mobi))/i.test(e)?"tablet":/Mobile|iP(hone|od|ad)|Android|BlackBerry|IEMobile|Kindle|Silk-Accelerated|(hpw|web)OS|Opera M(obi|ini)/.test(e)?"mobile":"desktop"};let page=window.location.pathname,offers_url="https://sleek-upsell-updates.herokuapp.com/offers/"+Shopify.shop,offers=g_d(offers_url),cart=g_d("/cart.js"),auto_collection=offers.auto_collection,settings=offers.settings,drawer_selector='form[action="/cart"]',drawer_position="before",cart_selector='form[action="/cart"]',cart_position="before";null!=settings&&(drawer_selector=settings.drawer_location,cart_selector=settings.cart_location,cart_position=settings.cart_position,drawer_position=settings.drawer_position);const open=window.XMLHttpRequest.prototype.open;function openReplacement(){return this.addEventListener("load",function(){["/cart/add.js","/cart/update.js","/cart/change.js","/cart/clear.js"].includes(this._url)&&(page.includes("/cart")||(cart=g_d("https://"+Shopify.shop+"/cart.js"),choose_offer()))}),open.apply(this,arguments)}function choose_offer(){if(page_ss.includes(s_s_w)||"y"==sessionStorage.getItem("s_u_w"))return!1;cart.item_count>0&&("undefined"!=Object.keys(offers.offer)&&"custom"!=sessionStorage.getItem("last_offer")?(sessionStorage.setItem("last_offer","custom"),next_offer()):"undefined"!=Object.keys(auto_collection)&&Object.keys(auto_collection).length>0&&"1"===auto_collection.status&&"collection"!=sessionStorage.getItem("last_offer")?(sessionStorage.setItem("last_offer","collection"),collection_based()):(sessionStorage.setItem("last_offer","custom"),next_offer()))}function next_offer(){try{$(".sleek-upsell").remove()}catch(e){}if(page_ss.includes(s_s_w)||"y"==sessionStorage.getItem("s_u_w"))return!1;if(null!=$(".sleek-upsell")&&$(".sleek-upsell").remove(),cart.item_count>0){let e=0,t=Object.keys(offers.offer),s=offers.offer;for(e=0;e<=t.length-1;e++){let l=t[e];if(1==check_offer(l,s[l])){display_offer(l);break}choose_offer();break}}}function collection_based(){if(cart.item_count>0&&"undefined"!=Object.keys(auto_collection)&&Object.keys(auto_collection).length>0&&"1"===auto_collection.status){let e=offers.collects,t=cart.items,s="";for(let l=0;l<t.length;l++)if(s=t[l].product_id,"y"!=sessionStorage.getItem("c_upsold_"+s)&&-1!=e.findIndex(e=>e.product_id==s)){sessionStorage.setItem("c_upsold_"+s,"y");let l=e.filter(e=>e.product_id==s)[0].collection_id,i=e.filter(e=>e.collection_id==l);for(let e=0;e<i.length;e++)if("z"!=sessionStorage.getItem("c_used_"+i[e].product_id)){if(-1==t.findIndex(t=>t.product_id==i[e].product_id)){sessionStorage.setItem("c_used_"+i[e].product_id,"z"),load_c_based(i[e].product_id);break}sessionStorage.setItem("c_used_"+i[e].product_id,"z")}break}}}function check_offer(e,t){let s=t.offer[0].status,l=t.offer[0].rule,i=t.blocks,a=i.length;if(1==s){if("y"==sessionStorage.getItem("sleek_shown_"+e))return!1;if(a>0){let e=!1;for(let t=0;t<=i.length-1;t++){let s=i[t];if("ANY"==l){if(1==check_block(t,s)){e=!0;break}e=!1;break}if("ALL"==l){if(0==check_block(t,s)){e=!1;break}e=!0;break}}return e}return!0}return!1}function check_block(e,t){let s=t.oid,l=t.bid,i=t.rule,a=offers.offer[s].conditions.filter(e=>e.bid==l);if(a.length>0){let e=!1;for(let t=0;t<=a.length-1;t++){let s=a[t];if("ANY"==i){if(1==check_condition(t,s)){e=!0;break}e=!1;break}if("ALL"==i){if(0==check_condition(t,s)){e=!1;break}e=!0;break}}return e}return!0}function check_condition(e,t){t.cid,t.oid,t.bid;let s=t.type,l=t.quantity,i=t.level,a=t.content,o=t.pid,c=t.vid,r=t.amount,d=(t.country,cart.items),n=!1;if("oc1"==s){if("product"==i){n=d.filter(e=>e.product_id==o).length>=l}if("variant"==i){n=d.filter(e=>e.variant_id==c).length>=l}if("collection"==i){let e=offers.collects.filter(e=>e.collection_id==o),t=0;for(let s=0;s<=d.length-1;s++)if(e.findIndex(e=>e.product_id==d[s].product_id)>=0){if((t+=1)>=l){n=!0;break}}else;}}if("oc2"==s){if("product"==i){n=d.filter(e=>e.product_id==o).length<=l}if("variant"==i){n=d.filter(e=>e.variant_id==c).length<=l}if("collection"==i){let e=offers.collects.filter(e=>e.collection_id==o),t=0;for(let s=0;s<=d.length-1;s++)if(e.findIndex(e=>e.product_id==d[s].product_id)>=0){if((t+=1)>l){n=!1;break}n=!0}else;}}if("oc3"==s){if("product"==i){n=d.filter(e=>e.product_id==o).length==l}if("variant"==i){n=d.filter(e=>e.variant_id==c).length==l}if("collection"==i){let e=offers.collects.filter(e=>e.collection_id==o),t=0;for(let s=0;s<=d.length-1;s++)if(e.findIndex(e=>e.product_id==d[s].product_id)>=0){if((t+=1)==l){n=!0;break}}else;}}if("oc4"==s){if("product"==i){n=d.filter(e=>e.product_id==o).length>0}if("variant"==i){n=d.filter(e=>e.variant_id==c).length>0}if("collection"==i){let e=offers.collects.filter(e=>e.collection_id==o),t=0;for(let s=0;s<=d.length-1;s++)if(e.findIndex(e=>e.product_id==d[s].product_id)>=0){if((t+=1)>0){n=!1;break}n=!0}else;}}if("oc5"==s&&(n=cart.total_price>=r),"oc6"==s&&(n=cart.total_price<=r),"oc9"==s){n=d.filter(e=>e.vendor==a).length>=l}if("oc10"==s){n=!(d.filter(e=>e.vendor==a).length>0)}return n}function populateFields(e,t){let s=offers.offer[e].fields,l=offers.offer[e].choices;if(s.length>0){let e=s.filter(e=>e.pid==t);if(e.length>0){$(".o_h_"+t).innerHTML="";for(let s=0;s<e.length;s++){let i=e[s].fid,a=e[s].type,o=e[s].name,c=e[s].placeholder,r=(e[s].price,e[s].required,l.filter(e=>e.fid==i));if("select"==a){$(".o_h_"+t).append("<div><label>"+c+'</label><select class="form-control select sleek_fields_'+i+'" id="properties['+o+']" name="properties['+o+']"></select></div>'),$(".sleek_fields_"+o).append($('<option value="">'+c+"</option>"));for(let e=0;e<r.length;e++){let t=r[e].value,s=r[e].price;$(".sleek_fields_"+i).append($('<option value="'+t+'">'+t+" ("+s+")</option>"))}}"number"==a&&$(".o_h_"+t).append("<div><label>"+c+'</label><input type="number" id="properties['+o+']" name="properties['+o+']" placeholder="'+c+'" /></div>'),"text"==a&&$(".o_h_"+t).append("<div><label>"+c+'</label><input type="text" id="properties['+o+']" name="properties['+o+']" placeholder="'+c+'" /></div>'),"textarea"==a&&$(".o_h_"+t).append("<div><label>"+c+'</label><textarea id="properties['+o+']" name="properties['+o+']" placeholder="'+c+'">'+c+"</textarea></div>"),"file"==a&&$(".o_h_"+t).append("<div><label>"+c+'</label><input type="file" id="properties['+o+']" name="properties['+o+']" placeholder="'+c+'" /></div>'),"checkbox"==a&&$(".o_h_"+t).append('<div><label><input type="checkbox" id="properties['+o+']" name="properties['+o+']" placeholder="'+c+'" /> '+c+"</label></div>"),"checkbox_group"==a&&$(".o_h_"+t).append("<div><label>"+c+'</label><input type="checkbox" id="properties['+o+']" name="properties['+o+']" placeholder="'+c+'" /></div>'),"radio"==a&&$(".o_h_"+t).append('<div><label><input type="radio" id="properties['+o+']" name="properties['+o+']" placeholder="'+c+'" /> '+c+"</label></div>"),"date"==a&&$(".o_h_"+t).append("<div><label>"+c+'</label><input type="date" id="properties['+o+']" name="properties['+o+']" placeholder="'+c+'" /></div>'),"swatch"==a&&$(".o_h_"+t).append("<div><label>"+c+'</label><input style="min-width: 150px;" type="color" id="properties['+o+']" name="properties['+o+']" placeholder="'+c+'" /></div>')}}}}function brgxczvy(e,t,s,l,i,a,o){let c=[];for(let e=0;e<cart.items.length;e++)c.push(cart.items[e].product_id);Math.floor(Date.now()/1e3),Shopify.shop,device(),user_browser();let r=new XMLHttpRequest,d='stat_id=""&date='+Math.floor(Date.now()/1e3)+"&shop="+Shopify.shop+"&offer="+e+"&product="+t+"&variant="+s+"&quantity="+l+'&ip=""&country=""&type='+o+"&action="+a+"&page="+page+"&device="+device()+"&browser="+user_browser()+"&citems="+JSON.stringify(c)+"&price="+i;r.open("POST","https://sleek-upsell.herokuapp.com/brgxczvy",!0),r.setRequestHeader("Content-type","application/x-www-form-urlencoded"),r.onreadystatechange=function(){4===r.readyState&&r.status},r.send(d)}function setStyles(){$(".sleek-upsell").css("opacity","1"),$(".sleek-upsell").css("transform","none"),$(".sleek-upsell form").css("margin-bottom","0px"),null!=settings&&($("<style>"+settings.override+"</style>").insertAfter(".sleek-upsell"),$(".sleek-upsell").css("background-color",settings.layout_bg),$(".sleek-upsell select").css("background-color",settings.layout_bg),$(".sleek-upsell").css("color",settings.layout_color),$(".sleek-upsell select").css("color",settings.layout_color),$(".sleek-upsell").css("font-family",settings.layout_font),$(".sleek-upsell").css("font-size",settings.layout_size),$(".sleek-upsell").css("margin-top",settings.layout_mt),$(".sleek-upsell").css("margin-bottom",settings.layout_mb),$(".sleek-upsell").css("border-radius",settings.offer_radius),$(".sleek-upsell").css("border-width",settings.offer_bs),$(".sleek-upsell").css("border-color",settings.offer_bc),$(".sleek-upsell").css("border-style",settings.offer_border),$(".sleek-upsell button").css("background-color",settings.button_bg),$(".sleek-upsell button").css("color",settings.button_color),$(".sleek-upsell button").css("font-family",settings.button_font),$(".sleek-upsell button").css("font-size",settings.button_size),$(".sleek-upsell button").css("margin-top",settings.button_mt),$(".sleek-upsell button").css("margin-bottom",settings.button_mb),$(".sleek-upsell button").css("border-radius",settings.button_radius),$(".sleek-upsell button").css("border-width",settings.button_bs),$(".sleek-upsell button").css("border-color",settings.button_bc),$(".sleek-upsell button").css("border-style",settings.button_border),$(".sleek-upsell img").css("border-radius",settings.image_radius),$(".sleek-upsell img").css("border-width",settings.image_bs),$(".sleek-upsell img").css("color",settings.image_bc),$(".sleek-upsell img").css("border-style",settings.image_border),$(".sleek-text").css("color",settings.text_color),$(".sleek-text").css("font-family",settings.text_font),$(".sleek-text").css("font-size",settings.text_size),$(".sleek-title").css("color",settings.title_color),$(".sleek-title").css("font-family",settings.title_font),$(".sleek-title").css("font-size",settings.title_size),$(".sleek-price").css("color",settings.price_color),$(".sleek-price").css("font-family",settings.price_font),$(".sleek-price").css("font-size",settings.price_size))}function display_offer(oid){let element="",curr=Shopify.currency.active,settings=offers.settings,lay=offers.offer[oid].offer[0].layout,lay_el='<div class="card sleek-upsell"></div>',nudge="before";page.includes("/cart")?(element=cart_selector,nudge=cart_position):(element=drawer_selector,nudge=drawer_position),$("<style>.sleek-upsell{background: #ECF0F1; color: #2B3D51; padding: 5px; font-family: inherit; vertical-align: middle; margin: 5px;}.sleek-image img{width: 100px;}.sleek-text{font-weight: bold;}.sleek-upsell select{padding: 4px; margin-top: 5px;}.sleek-prices{font-weight: bold; margin-bottom: 5px;}.sleek-compare-price{text-decoration: line-through;}.sleek-upsell button{padding: 10px; border: none; background: #2B3D51; color: #FFFFFF; font-weight: bold; border-radius: 0px; cursor: pointer; width: 100%;}.card{display: table;}.card .sleek-form{display: flex;}.card .sleek-image, .card .sleek-offer, .card .sleek-card-atc{display: table; align-self: center; padding: 5px;}.card .sleek-offer{flex-grow: 4;}.card .sleek-prices{text-align: center;}.block, .block .sleek-form, .block .sleek-text, .block .sleek-atc{display: table;}.sleek-block{display: flex;}.block .sleek-image, .block .sleek-offer{display: table; align-self: center; padding: 5px;}.block .sleek-offer{flex-grow: 1;}.half-block, .half-block .sleek-form, .half-block .sleek-text, .half-block .sleek-atc{display: table;}.sleek-half-block{display: flex;}.half-block .sleek-image, .half-block .sleek-offer{display: table; align-self: center; padding: 5px;}.half-block .sleek-offer{flex-grow: 1;}.flat, .flat .sleek-form, .flat .sleek-text{display: table;}.sleek-flat{display: flex;}.flat .sleek-image, .flat .sleek-offer{display: table; align-self: center; padding: 5px;}.flat .sleek-offer{flex-grow: 1;}.flat .flex-select{display: flex; width: auto; margin-top: 10px;}.flat .v-select{display: table; width: 100%; align-items: center; justify-content: space-between;}.flat .atc{flex-grow: 4;}.flat .q-select{margin-top: 0px; margin-right: 10px;}.compact, .compact .sleek-form, .compact .sleek-text, .compact .sleek-atc{display: table;}.sleek-compact{display: flex;}.compact .sleek-image, .compact .sleek-offer{display: table; align-self: center; padding: 5px;}.compact .sleek-offer{flex-grow: 1;}.compact .sleek-atc{margin-top: 5px;}@media only screen and (max-width: 600px){.sleek-upsell{width: 97%; margin: 5px auto;}.card select{max-width: 100px;}.block select{max-width: 200px;}.sleek-prices *{display: inline-table;}.block .sleek-form, .block .sleek-text, .block .sleek-atc{width: 100%;}}</style>").insertBefore(element),"card"==lay&&(lay_el='<div class="card sleek-upsell"></div>'),"flat"==lay&&(lay_el='<div class="flat sleek-upsell"></div>'),"block"==lay&&(lay_el='<div class="block sleek-upsell"></div>'),"half-block"==lay&&(lay_el='<div class="half-block sleek-upsell"></div>'),"compact"==lay&&(lay_el='<div class="compact sleek-upsell"></div>'),"prepend"==nudge&&$(element).prepend(lay_el),"append"==nudge&&$(element).append(lay_el),"before"==nudge&&$(lay_el).insertBefore(element),"after"==nudge&&$(lay_el).insertAfter(element),"y"==offers.offer[oid].offer[0].close&&$(lay_el).append('<div style="display: table; position: relative; width: 100%; text-align: right;"><span class="reject_offer" style="font-size: 15px; cursor: pointer;">x</span></div>');let products=offers.offer[oid].products,oprods=offers.products;for(let i=0;i<products.length;i++){let v=products[i],pid=v.product,index=oprods.findIndex(e=>e.id==pid),datacell=oprods[index],oatc=offers.offer[oid].offer[0].atc,vatc=v.atc,atc="ADD TO CART",otext=offers.offer[oid].offer[0].text,vtext=v.text,dtext="ADD TO CART";atc=""!=oatc?oatc:""!=vatc?vatc:"ADD TO CART",dtext=""!=otext?otext:""!=vtext?vtext:"Would you like a "+datacell.title;let o_ui='<form class="sleek-form" data-product-index="'+i+'" data-product-product_id="'+pid+'"> <div class="sleek-image"> <img src="'+datacell.image.src+'"/> </div><div class="sleek-offer"> <div class="sleek-text">'+dtext+'</div><div class="sleek-title">'+datacell.title+'</div><div class="sleek-selectors"> <div class="offer_fields_holder o_h_'+pid+'"></div> <select name="id" class="v-select v-'+pid+'"></select> <select name="quantity" class="q-select q-'+pid+'"></select> </div></div><div class="sleek-card-atc"> <div class="sleek-prices"> <span class="sleek-price money">'+curr+" "+datacell.variants[0].price+'</span> <span class="sleek-compare-price money">'+curr+" "+datacell.variants[0].price+'</span> </div><button class="sleek-atc" type="submit">'+atc+"</button> </div></form>";if("card"==lay&&(o_ui='<form class="sleek-form" action="/cart/add" enctype="multipart/form-data" data-product-index="'+i+'" data-product-product_id="'+pid+'"> <div class="sleek-image"> <img src="'+datacell.image.src+'"/> </div><div class="sleek-offer"> <div class="sleek-text">'+dtext+'</div><div class="sleek-title">'+datacell.title+'</div><div class="sleek-selectors"> <div class="offer_fields_holder o_h_'+pid+'"></div> <select name="id" class="v-select v-'+pid+'"></select> <select name="quantity" class="q-select q-'+pid+'"></select> </div></div><div class="sleek-card-atc"> <div class="sleek-prices"> <span class="sleek-price money">'+curr+" "+datacell.variants[0].price+'</span> <span class="sleek-compare-price money">'+curr+" "+datacell.variants[0].price+'</span> </div><button class="sleek-atc" type="submit">'+atc+"</button> </div></form>"),"flat"==lay&&(o_ui='<form class="sleek-form" action="/cart/add" enctype="multipart/form-data" data-product-index="'+i+'" data-product-product_id="'+pid+'"> <div class="sleek-text">'+dtext+'</div><div class="sleek-flat"> <div class="sleek-image"> <img src="'+datacell.image.src+'"/> </div><div class="sleek-offer"> <div class="sleek-title">'+datacell.title+'</div><div class="sleek-prices"> <span class="sleek-price money">'+curr+" "+datacell.variants[0].price+'</span> <span class="sleek-compare-price money">'+curr+" "+datacell.variants[0].price+'</span> </div><div class="sleek-selectors"> <div class="offer_fields_holder o_h_'+pid+'"></div> <select name="id" class="v-select v-'+pid+'"></select> <div class="flex-select"> <select name="quantity" class="q-select q-'+pid+'"></select> <button class="sleek-atc" type="submit">'+atc+"</button> </div></div></div></div></form>"),"block"==lay&&(o_ui='<form class="sleek-form" action="/cart/add" enctype="multipart/form-data" data-product-index="'+i+'" data-product-product_id="'+pid+'"> <div class="sleek-text">'+dtext+'</div><div class="sleek-block"> <div class="sleek-image"> <img src="'+datacell.image.src+'"/> </div><div class="sleek-offer"> <div class="sleek-title">'+datacell.title+'</div><div class="sleek-prices"> <span class="sleek-price money">'+curr+" "+datacell.variants[0].price+'</span> <span class="sleek-compare-price money">'+curr+" "+datacell.variants[0].price+'</span> </div><div class="sleek-selectors"> <div class="offer_fields_holder o_h_'+pid+'"></div> <select name="id" class="v-select v-'+pid+'"></select> <select name="quantity" class="q-select q-'+pid+'"></select> </div></div></div><button class="sleek-atc" type="submit">'+atc+"</button> </form>"),"half-block"==lay&&(o_ui='<form class="sleek-form" action="/cart/add" enctype="multipart/form-data" data-product-index="'+i+'" data-product-product_id="'+pid+'"> <div class="sleek-half-block"> <div class="sleek-image"> <img src="'+datacell.image.src+'"/> </div><div class="sleek-offer"> <div class="sleek-text">'+dtext+'</div><div class="sleek-title">'+datacell.title+'</div><div class="sleek-prices"> <span class="sleek-price money">'+curr+" "+datacell.variants[0].price+'</span> <span class="sleek-compare-price money">'+curr+" "+datacell.variants[0].price+'</span> </div><div class="sleek-selectors"> <div class="offer_fields_holder o_h_'+pid+'"></div> <select name="id" class="v-select v-'+pid+'"></select> <select name="quantity" class="q-select q-'+pid+'"></select> </div></div></div><button class="sleek-atc" type="submit">'+atc+"</button> </form>"),"compact"==lay&&(o_ui='<form class="sleek-form" action="/cart/add" enctype="multipart/form-data" data-product-index="'+i+'" data-product-product_id="'+pid+'"> <div class="sleek-compact"> <div class="sleek-image"> <img src="'+datacell.image.src+'"/> </div><div class="sleek-offer"> <div class="sleek-text">'+dtext+'</div><div class="sleek-title">'+datacell.title+'</div><div class="sleek-prices"> <span class="sleek-price money">'+curr+" "+datacell.variants[0].price+'</span> <span class="sleek-compare-price money">'+curr+" "+datacell.variants[0].price+'</span> </div><div class="sleek-selectors"> <div class="offer_fields_holder o_h_'+pid+'"></div> <select name="id" class="v-select v-'+pid+'"></select> <select name="quantity" class="q-select q-'+pid+'"></select> </div><button class="sleek-atc" type="submit">'+atc+"</button> </div></div></form>"),$(".sleek-upsell").append(o_ui),$('.sleek-form[data-product-index="'+i+'"]').length>1)for(let e=1;e<=$('.sleek-form[data-product-index="'+i+'"]').length;e++)$('.sleek-form[data-product-index="'+i+'"]')[e].remove();"n"==v.show_title&&$(".sleek-title").remove(),"n"==v.show_price&&$(".sleek-prices").remove(),"n"==v.show_image&&$(".sleek-image").remove(),"n"==v.v_price&&$(".sleek-compare-price").remove(),"n"==v.c_price&&$(".sleek-price").remove(),"n"==v.q_select&&($(".q_select").style.display="none"),populateFields(oid,pid);for(let e=0;e<datacell.variants.length;e++)datacell.variants[e].inventory_quantity>0&&$(".v-"+pid).append('<option value="'+datacell.variants[e].id+'">'+datacell.variants[e].title+" ("+curr+" "+datacell.variants[e].price+")</option>");for(q=1;q<=10;q++)$(".q-"+pid).append('<option value="'+q+'">'+q+"</option>");brgxczvy(oid,pid,$(".v-"+pid).val(),$(".q-"+pid).val(),datacell.variants[0].price,"show","show"),$(".v-"+pid).change(function(){brgxczvy(oid,pid,$(".v-"+pid).val(),$(".q-"+pid).val(),datacell.variants[0].price,"variant change","impression")}),$(".q-"+pid).change(function(){brgxczvy(oid,pid,$(".v-"+pid).val(),$(".q-"+pid).val(),datacell.variants[0].price,"quantity change","impression")}),$('form[data-product-product_id="'+pid+'"]').hover(function(){brgxczvy(oid,pid,$(".v-"+pid).val(),$(".q-"+pid).val(),datacell.variants[0].price,"hover","impression")}),$(".sleek-form").submit(function(e){if(e.preventDefault(),""!=v.rv)g_s_s_w("/cart/change?id="+v.rv+"&quantity=0");else if(""!=v.rp){let e=oprods[oprods.findIndex(e=>e.id==v.rp)],t=[];for(let t=0;t<e.variants.length;t++)g_s_s_w("/cart/change?id="+e.variants[t].id+"&quantity=0")}$.ajax({type:"POST",url:"/cart/add.js",dataType:"json",data:$(this).serialize(),success:function(response){"y"==offers.offer[oid].offer[0].stop_show&&sessionStorage.setItem("sleek_shown_"+oid,"y"),brgxczvy(oid,pid,$(".v-"+pid).val(),$(".q-"+pid).val(),datacell.variants[0].price,"add to cart","purchase"),$(".sleek-atc").innerHTML='<img src="https://sleek-upsell.com/assets/images/loader.gif" />',"y"==offers.offer[oid].offer[0].discount&&""!=offers.offer[oid].offer[0].code&&g_s_s_w("https://"+Shopify.shop+"/discount/"+offers.offer[oid].offer[0].code),"y"==offers.offer[oid].offer[0].to_checkout?window.location.href="/checkout":page.includes("/cart")?("y"==offers.offer[oid].offer[0].stop_show&&sessionStorage.setItem("sleek_shown_"+oid,"y"),$(".sleek-upsell").remove(),window.location.reload(!1)):($(".sleek-upsell").remove(),null!=settings&&"y"==settings.refresh_state&&eval(settings.drawer_refresh),choose_offer())},error:function(e){$(this).find("button").html("Could not add product"),setTimeout(function(){$(this).remove()},1e3)}})})}null!=$(".reject_offer")&&$(".reject_offer").click(function(){sessionStorage.setItem("sleek_shown_"+oid,"y"),brgxczvy(oid,"","","","","reject","reject"),$(".sleek-upsell").remove(),setTimeout(function(){choose_offer()},300)}),setStyles()}function load_c_based(pid){let element="",curr=Shopify.currency.active,settings=offers.settings,auto_collection=offers.auto_collection,lay=auto_collection.layout,lay_el='<div class="card sleek-upsell"></div>',nudge="before";page.includes("/cart")?(element=cart_selector,nudge=cart_position):(element=drawer_selector,nudge=drawer_position),$("<style>.sleek-upsell{background: #ECF0F1; color: #2B3D51; padding: 5px; font-family: inherit; vertical-align: middle; margin: 5px;}.sleek-image img{width: 100px;}.sleek-text{font-weight: bold;}.sleek-upsell select{padding: 4px; margin-top: 5px;}.sleek-prices{font-weight: bold; margin-bottom: 5px;}.sleek-compare-price{text-decoration: line-through;}.sleek-upsell button{padding: 10px; border: none; background: #2B3D51; color: #FFFFFF; font-weight: bold; border-radius: 0px; cursor: pointer; width: 100%;}.card{display: table;}.card .sleek-form{display: flex;}.card .sleek-image, .card .sleek-offer, .card .sleek-card-atc{display: table; align-self: center; padding: 5px;}.card .sleek-offer{flex-grow: 4;}.card .sleek-prices{text-align: center;}.block, .block .sleek-form, .block .sleek-text, .block .sleek-atc{display: table;}.sleek-block{display: flex;}.block .sleek-image, .block .sleek-offer{display: table; align-self: center; padding: 5px;}.block .sleek-offer{flex-grow: 1;}.half-block, .half-block .sleek-form, .half-block .sleek-text, .half-block .sleek-atc{display: table;}.sleek-half-block{display: flex;}.half-block .sleek-image, .half-block .sleek-offer{display: table; align-self: center; padding: 5px;}.half-block .sleek-offer{flex-grow: 1;}.flat, .flat .sleek-form, .flat .sleek-text{display: table;}.sleek-flat{display: flex;}.flat .sleek-image, .flat .sleek-offer{display: table; align-self: center; padding: 5px;}.flat .sleek-offer{flex-grow: 1;}.flat .flex-select{display: flex; width: auto; margin-top: 10px;}.flat .v-select{display: table; width: 100%; align-items: center; justify-content: space-between;}.flat .atc{flex-grow: 4;}.flat .q-select{margin-top: 0px; margin-right: 10px;}.compact, .compact .sleek-form, .compact .sleek-text, .compact .sleek-atc{display: table;}.sleek-compact{display: flex;}.compact .sleek-image, .compact .sleek-offer{display: table; align-self: center; padding: 5px;}.compact .sleek-offer{flex-grow: 1;}.compact .sleek-atc{margin-top: 5px;}@media only screen and (max-width: 600px){.sleek-upsell{width: 97%; margin: 5px auto;}.card select{max-width: 100px;}.block select{max-width: 200px;}.sleek-prices *{display: inline-table;}.block .sleek-form, .block .sleek-text, .block .sleek-atc{width: 100%;}}</style>").insertBefore(element),"card"==lay&&(lay_el='<div class="card sleek-upsell"></div>'),"flat"==lay&&(lay_el='<div class="flat sleek-upsell"></div>'),"block"==lay&&(lay_el='<div class="block sleek-upsell"></div>'),"half-block"==lay&&(lay_el='<div class="half-block sleek-upsell"></div>'),"compact"==lay&&(lay_el='<div class="compact sleek-upsell"></div>'),"prepend"==nudge&&$(element).prepend(lay_el),"append"==nudge&&$(element).append(lay_el),"before"==nudge&&$(lay_el).insertBefore(element),"after"==nudge&&$(lay_el).insertAfter(element),"y"==auto_collection.close&&$(lay_el).append('<div style="display: table; position: relative; width: 100%; text-align: right;"><span class="reject_offer" style="font-size: 15px; cursor: pointer;">x</span></div>');let oprods=offers.products,index=oprods.findIndex(e=>e.id==pid),datacell=oprods[index],oatc=auto_collection.atc,atc="ADD TO CART";atc=""!=oatc?oatc:"ADD TO CART";let o_ui='<form class="sleek-form" data-product-index="0" data-product-product_id="'+pid+'"> <div class="sleek-image"> <img src="'+datacell.image.src+'"/> </div><div class="sleek-offer"><div class="sleek-title">'+datacell.title+'</div><div class="sleek-selectors"> <div class="offer_fields_holder o_h_'+pid+'"></div> <select name="id" class="v-select v-'+pid+'"></select> <select name="quantity" class="q-select q-'+pid+'"></select> </div></div><div class="sleek-card-atc"> <div class="sleek-prices"> <span class="sleek-price money">'+curr+" "+datacell.variants[0].price+'</span> <span class="sleek-compare-price money">'+curr+" "+datacell.variants[0].price+'</span> </div><button class="sleek-atc" type="submit">'+atc+"</button> </div></form>";if("card"==lay&&(o_ui='<form class="sleek-form" action="/cart/add" enctype="multipart/form-data" data-product-index="0" data-product-product_id="'+pid+'"> <div class="sleek-image"> <img src="'+datacell.image.src+'"/> </div><div class="sleek-offer"><div class="sleek-title">'+datacell.title+'</div><div class="sleek-selectors"> <div class="offer_fields_holder o_h_'+pid+'"></div> <select name="id" class="v-select v-'+pid+'"></select> <select name="quantity" class="q-select q-'+pid+'"></select> </div></div><div class="sleek-card-atc"> <div class="sleek-prices"> <span class="sleek-price money">'+curr+" "+datacell.variants[0].price+'</span> <span class="sleek-compare-price money">'+curr+" "+datacell.variants[0].price+'</span> </div><button class="sleek-atc" type="submit">'+atc+"</button> </div></form>"),"flat"==lay&&(o_ui='<form class="sleek-form" action="/cart/add" enctype="multipart/form-data" data-product-index="0" data-product-product_id="'+pid+'"><div class="sleek-flat"> <div class="sleek-image"> <img src="'+datacell.image.src+'"/> </div><div class="sleek-offer"> <div class="sleek-title">'+datacell.title+'</div><div class="sleek-prices"> <span class="sleek-price money">'+curr+" "+datacell.variants[0].price+'</span> <span class="sleek-compare-price money">'+curr+" "+datacell.variants[0].price+'</span> </div><div class="sleek-selectors"> <div class="offer_fields_holder o_h_'+pid+'"></div> <select name="id" class="v-select v-'+pid+'"></select> <div class="flex-select"> <select name="quantity" class="q-select q-'+pid+'"></select> <button class="sleek-atc" type="submit">'+atc+"</button> </div></div></div></div></form>"),"block"==lay&&(o_ui='<form class="sleek-form" action="/cart/add" enctype="multipart/form-data" data-product-index="0" data-product-product_id="'+pid+'"><div class="sleek-block"> <div class="sleek-image"> <img src="'+datacell.image.src+'"/> </div><div class="sleek-offer"> <div class="sleek-title">'+datacell.title+'</div><div class="sleek-prices"> <span class="sleek-price money">'+curr+" "+datacell.variants[0].price+'</span> <span class="sleek-compare-price money">'+curr+" "+datacell.variants[0].price+'</span> </div><div class="sleek-selectors"> <div class="offer_fields_holder o_h_'+pid+'"></div> <select name="id" class="v-select v-'+pid+'"></select> <select name="quantity" class="q-select q-'+pid+'"></select> </div></div></div><button class="sleek-atc" type="submit">'+atc+"</button> </form>"),"half-block"==lay&&(o_ui='<form class="sleek-form" action="/cart/add" enctype="multipart/form-data" data-product-index="0" data-product-product_id="'+pid+'"> <div class="sleek-half-block"> <div class="sleek-image"> <img src="'+datacell.image.src+'"/> </div><div class="sleek-offer"><div class="sleek-title">'+datacell.title+'</div><div class="sleek-prices"> <span class="sleek-price money">'+curr+" "+datacell.variants[0].price+'</span> <span class="sleek-compare-price money">'+curr+" "+datacell.variants[0].price+'</span> </div><div class="sleek-selectors"> <div class="offer_fields_holder o_h_'+pid+'"></div> <select name="id" class="v-select v-'+pid+'"></select> <select name="quantity" class="q-select q-'+pid+'"></select> </div></div></div><button class="sleek-atc" type="submit">'+atc+"</button> </form>"),"compact"==lay&&(o_ui='<form class="sleek-form" action="/cart/add" enctype="multipart/form-data" data-product-index="0" data-product-product_id="'+pid+'"> <div class="sleek-compact"> <div class="sleek-image"> <img src="'+datacell.image.src+'"/> </div><div class="sleek-offer"><div class="sleek-title">'+datacell.title+'</div><div class="sleek-prices"> <span class="sleek-price money">'+curr+" "+datacell.variants[0].price+'</span> <span class="sleek-compare-price money">'+curr+" "+datacell.variants[0].price+'</span> </div><div class="sleek-selectors"> <div class="offer_fields_holder o_h_'+pid+'"></div> <select name="id" class="v-select v-'+pid+'"></select> <select name="quantity" class="q-select q-'+pid+'"></select> </div><button class="sleek-atc" type="submit">'+atc+"</button> </div></div></form>"),$(".sleek-upsell").append(o_ui),$('.sleek-form[data-product-index="0"]').length>1)for(let e=1;e<=$('.sleek-form[data-product-index="0"]').length;e++)$('.sleek-form[data-product-index="0"]')[e].remove();"n"==auto_collection.show_title&&$(".sleek-title").remove(),"n"==auto_collection.show_price&&$(".sleek-prices").remove(),"n"==auto_collection.show_image&&$(".sleek-image").remove(),"n"==auto_collection.v_price&&$(".sleek-compare-price").remove(),"n"==auto_collection.c_price&&$(".sleek-price").remove(),"n"==auto_collection.q_select&&($(".q_select").style.display="none");for(let e=0;e<datacell.variants.length;e++)datacell.variants[e].inventory_quantity>0&&$(".v-"+pid).append('<option value="'+datacell.variants[e].id+'">'+datacell.variants[e].title+" ("+curr+" "+datacell.variants[e].price+")</option>");for(q=1;q<=10;q++)$(".q-"+pid).append('<option value="'+q+'">'+q+"</option>");brgxczvy("collection",pid,$(".v-"+pid).val(),$(".q-"+pid).val(),datacell.variants[0].price,"show","show"),$(".v-"+pid).change(function(){brgxczvy("collection",pid,$(".v-"+pid).val(),$(".q-"+pid).val(),datacell.variants[0].price,"variant change","impression")}),$(".q-"+pid).change(function(){brgxczvy("collection",pid,$(".v-"+pid).val(),$(".q-"+pid).val(),datacell.variants[0].price,"quantity change","impression")}),$('form[data-product-product_id="'+pid+'"]').hover(function(){brgxczvy("collection",pid,$(".v-"+pid).val(),$(".q-"+pid).val(),datacell.variants[0].price,"hover","impression")}),$(".sleek-form").submit(function(e){e.preventDefault(),$.ajax({type:"POST",url:"/cart/add.js",dataType:"json",data:$(this).serialize(),success:function(response){sessionStorage.setItem("sleek_shown_collection","y"),brgxczvy("collection",pid,$(".v-"+pid).val(),$(".q-"+pid).val(),datacell.variants[0].price,"add to cart","purchase"),$(".sleek-atc").innerHTML='<img src="https://sleek-upsell.com/assets/images/loader.gif" />',"y"==auto_collection.discount&&""!=auto_collection.code&&g_s_s_w("https://"+Shopify.shop+"/discount/"+auto_collection.code),"y"==auto_collection.to_checkout?window.location.href="/checkout":page.includes("/cart")?(sessionStorage.setItem("sleek_shown_collection","y"),$(".sleek-upsell").remove(),window.location.reload(!1)):($(".sleek-upsell").remove(),null!=settings&&"y"==settings.refresh_state&&eval(settings.drawer_refresh),choose_offer())},error:function(e){$(this).find("button").html("Could not add product"),setTimeout(function(){$(this).remove()},1e3)}})}),null!=$(".reject_offer")&&$(".reject_offer").click(function(){sessionStorage.setItem("sleek_shown_collection","y"),brgxczvy("collection","","","","","reject","reject"),$(".sleek-upsell").remove(),setTimeout(function(){choose_offer()},300)}),setStyles()}page.includes("/cart")||(window.XMLHttpRequest.prototype.open=openReplacement),choose_offer()}
+if (typeof jQuery === 'undefined' || jQuery == null) {
+    var script = document.createElement('script');
+    script.type = "text/javascript";
+    script.src = "https://sleek-upsell.com/assets/js/jquery-1.11.3.min.js";
+    document.getElementsByTagName('head')[0].appendChild(script);
+    script.onload = function () {
+        sleekUpsell();
+    };
+} else {
+    sleekUpsell();
+}
+
+function sleekUpsell() {
+    let page_ss = window.location.href;
+    let s_s_w = g_s_s_w('https://sleek-upsell.herokuapp.com/s_s_w/' + Shopify.shop);
+
+
+    function createSUW() {
+        $('body').prepend('<style>.suw{display: table; width: 300px; height: 500px; background: #ffffff; position: fixed; bottom: 0px; left: 0px; z-index: 3000000;}.suw_head, .suw_footer{display: table; width: 100%; height: 50px !important; background: #981B1B !important; color: #ffffff;}.suw_body{overflow-Y: auto; display: table; width: 100%; height: 400px;}.suw_head:before{content: "SETUP WIZARD"; display: table; position: absolute; top: 10px; left: 10px; z-index: 2000000; color: #FFFFFF; font-size: 12px;}.suw_head{cursor:move;}</style>');
+        $('body').prepend('<div class="draggable suw">' +
+            '<div class="suw_head dragger"></div>' +
+            '<div class="suw_body"><img src="https://sleek-upsell.com/assets/images/loader.gif" style="margin: 150px auto;"/></div>' +
+            '<div class="suw_footer"></div>' +
+            '</div>');
+        var x, y, target = null;
+
+        document.addEventListener('mousedown', function (e) {
+            var clickedDragger = false;
+            for (var i = 0; e.path[i] !== document.body; i++) {
+                if (e.path[i].classList.contains('dragger')) {
+                    clickedDragger = true;
+                }
+                else if (clickedDragger && e.path[i].classList.contains('draggable')) {
+                    target = e.path[i];
+                    target.classList.add('dragging');
+                    x = e.clientX - target.style.left.slice(0, -2);
+                    y = e.clientY - target.style.top.slice(0, -2);
+                    return;
+                }
+            }
+        });
+
+        document.addEventListener('mouseup', function () {
+            if (target !== null) target.classList.remove('dragging');
+            target = null;
+        });
+
+        document.addEventListener('mousemove', function (e) {
+            if (target === null) return;
+            target.style.left = e.clientX - x + 'px';
+            target.style.top = e.clientY - y + 'px';
+            var pRect = target.parentElement.getBoundingClientRect();
+            var tgtRect = target.getBoundingClientRect();
+
+            if (tgtRect.left < pRect.left) target.style.left = 0;
+            if (tgtRect.top < pRect.top) target.style.top = 0;
+            if (tgtRect.right > pRect.right) target.style.left = pRect.width - tgtRect.width + 'px';
+            if (tgtRect.bottom > pRect.bottom) target.style.top = pRect.height - tgtRect.height + 'px';
+        });
+        $('.suw_body').load('https://sleek-upsell.herokuapp.com/suw/' + Shopify.shop);
+    }
+
+    if (sessionStorage.getItem('s_u_w') == 'y') { createSUW(); }
+    else {
+        console.log(sessionStorage.getItem('s_u_w'));
+        if (page_ss.includes(s_s_w)) {
+            sessionStorage.setItem('s_u_w', 'y');
+            createSUW();
+        }
+        // else {
+        //     console.log(page_ss);
+        //     console.log(s_s_w);
+        // }
+    }
+
+    function get_this(request) {
+        if (request) {
+            request.onload = function () {
+                return request.responseText;
+            };
+            request.send();
+        }
+    }
+
+    function createCORSRequest(method, url) {
+        let xhr = new XMLHttpRequest();
+        if ("withCredentials" in xhr) {
+            xhr.open(method, url, true);
+        } else if (typeof XDomainRequest != "undefined") {
+            xhr = new XDomainRequest();
+            xhr.open(method, url);
+        } else {
+            xhr = null;
+        }
+        return xhr;
+    }
+
+    function g_d(g_url) {
+        let xmlHttp = new XMLHttpRequest();
+        xmlHttp.open("GET", g_url, false); // false for synchronous request
+        xmlHttp.send(null);
+        return JSON.parse(xmlHttp.responseText);
+    }
+
+    function g_s_s_w(g_url) {
+        let xmlHttp = new XMLHttpRequest();
+        xmlHttp.open("GET", g_url, false); // false for synchronous request
+        xmlHttp.send(null);
+        return xmlHttp.responseText;
+    }
+
+    function user_browser() {
+        if ((navigator.userAgent.indexOf("Opera") || navigator.userAgent.indexOf('OPR')) != -1) {
+            return 'Opera';
+        }
+        else if (navigator.userAgent.indexOf("Chrome") != -1) {
+            return 'Chrome';
+        }
+        else if (navigator.userAgent.indexOf("Safari") != -1) {
+            return 'Safari';
+        }
+        else if (navigator.userAgent.indexOf("Firefox") != -1) {
+            return 'Firefox';
+        }
+        else if ((navigator.userAgent.indexOf("MSIE") != -1) || (!!document.documentMode == true)) {
+            return 'IE';
+        }
+        else {
+            return 'unknown';
+        }
+    }
+
+    const device = () => {
+        const ua = navigator.userAgent;
+        if (/(tablet|ipad|playbook|silk)|(android(?!.*mobi))/i.test(ua)) {
+            return "tablet";
+        }
+        if (
+            /Mobile|iP(hone|od|ad)|Android|BlackBerry|IEMobile|Kindle|Silk-Accelerated|(hpw|web)OS|Opera M(obi|ini)/.test(
+                ua
+            )
+        ) {
+            return "mobile";
+        }
+        return "desktop";
+    };
+
+    let page = window.location.pathname;
+
+    let offers_url = 'https://sleek-upsell-updates.herokuapp.com/offers/' + Shopify.shop;
+
+    let offers = g_d(offers_url);
+    let cart = g_d("/cart.js");
+
+    console.log(offers);
+    console.log(offers['offer']);
+    console.log(Object.keys(offers['offer']));
+    console.log(Object.keys(offers));
+    console.log(cart);
+    console.log(Object.keys(cart));
+
+    let auto_collection = offers['auto_collection'];
+    let settings = offers['settings'];
+    let drawer_selector = 'form[action="/cart"]';
+    let drawer_position = 'before';
+    let cart_selector = 'form[action="/cart"]';
+    let cart_position = 'before';
+
+    if (settings != null) {
+        drawer_selector = settings.drawer_location;
+        cart_selector = settings.cart_location;
+        cart_position = settings.cart_position;
+        drawer_position = settings.drawer_position;
+    }
+
+    const open = window.XMLHttpRequest.prototype.open;
+
+    function openReplacement() {
+        this.addEventListener("load", function () {
+            if (
+                [
+                    "/cart/add.js",
+                    "/cart/update.js",
+                    "/cart/change.js",
+                    "/cart/clear.js",
+                ].includes(this._url)
+            ) {
+                if (page.includes('/cart')) {
+
+                } else {
+                    cart = g_d("https://" + Shopify.shop + "/cart.js");
+                    console.log('Cart has changed: New item count - ' + cart["item_count"]);
+                    console.log(this.response);
+                    choose_offer();
+                }
+            }
+        });
+        return open.apply(this, arguments);
+    }
+
+    if (!page.includes('/cart')) { window.XMLHttpRequest.prototype.open = openReplacement; }
+
+    choose_offer();
+
+    function choose_offer() {
+        if (page_ss.includes(s_s_w) || sessionStorage.getItem('s_u_w') == 'y') {
+            return false;
+        } else {
+            if (cart['item_count'] > 0) {
+                if (Object.keys(offers['offer']) != 'undefined' && sessionStorage.getItem('last_offer') != 'custom') {
+                    sessionStorage.setItem('last_offer', 'custom');
+                    next_offer();
+                } else {
+                    if (Object.keys(auto_collection) != 'undefined') {
+                        if (Object.keys(auto_collection).length > 0 && auto_collection.status === '1' && sessionStorage.getItem('last_offer') != 'collection') {
+                            sessionStorage.setItem('last_offer', 'collection');
+                            collection_based();
+                        } else {
+                            sessionStorage.setItem('last_offer', 'custom');
+                            next_offer();
+                        }
+                    } else {
+                        sessionStorage.setItem('last_offer', 'custom');
+                        next_offer();
+                    }
+                }
+            }
+        }
+    }
+
+    function next_offer() {
+        try {
+            $('.sleek-upsell').remove();
+        } catch (error) {
+
+        }
+        if (page_ss.includes(s_s_w) || sessionStorage.getItem('s_u_w') == 'y') {
+            return false;
+        } else {
+            if ($('.sleek-upsell') != null) {
+                $('.sleek-upsell').remove();
+            }
+            if (cart["item_count"] > 0) {
+                let i = 0;
+                let o_p = Object.keys(offers['offer']);
+                let o_arr = offers['offer'];
+                console.log(o_p);
+                for (i = 0; i <= o_p.length - 1; i++) {
+                    let pos = o_p[i];
+                    let v = o_arr[pos];
+                    if (check_offer(pos, v) == true) {
+                        console.log('Showing this offer now');
+                        console.log(i);
+                        console.log(pos);
+                        console.log(o_arr[pos]);
+                        display_offer(pos)
+                        break;
+                    } else {
+                        console.log('Not showing this offer');
+                        console.log(pos);
+                        choose_offer();
+                        break;
+                    }
+
+                    console.log(i);
+                    console.log(pos);
+                    console.log(o_arr[pos]);
+                }
+            }
+        }
+    }
+
+    function collection_based() {
+        if (cart['item_count'] > 0 && Object.keys(auto_collection) != 'undefined' && Object.keys(auto_collection).length > 0 && auto_collection.status === '1') {
+            let collects = offers['collects'];
+            let items = cart['items'];
+            let pid = '';
+            console.log('items');
+            console.log(items);
+            console.log('Looping through ' + items.length + ' items');
+            for (let i = 0; i < items.length; i++) {
+                pid = items[i]['product_id'];
+                console.log('Checking items ' + i + ' : ' + pid);
+                if (sessionStorage.getItem('c_upsold_' + pid) == 'y') {
+                    console.log('This has already been upsold');
+                    continue;
+                } else {
+                    console.log('Creating upsell for ' + pid);
+                    if (collects.findIndex(x => x.product_id == pid) != -1) {
+                        sessionStorage.setItem('c_upsold_' + pid, 'y');
+                        let n = collects.filter(x => x.product_id == pid);
+                        let cid = n[0]['collection_id'];
+                        let cb = collects.filter(x => x.collection_id == cid);
+
+                        console.log('Needed object');
+                        console.log(n);
+                        console.log('Collection ID ' + cid);
+                        console.log(cb);
+
+                        console.log('Looping through ' + cb.length + ' collection items');
+                        for (let c = 0; c < cb.length; c++) {
+                            console.log('Checking collection item ' + c);
+                            if (sessionStorage.getItem('c_used_' + cb[c]['product_id']) == 'z') {
+                                console.log('This item was already an upsell ' + cb[c]['product_id']);
+                                continue;
+                            } else {
+                                if (items.findIndex(x => x.product_id == cb[c]['product_id']) != -1) {
+                                    sessionStorage.setItem('c_used_' + cb[c]['product_id'], 'z');
+                                    continue;
+                                } else {
+                                    sessionStorage.setItem('c_used_' + cb[c]['product_id'], 'z');
+                                    console.log('Using ' + cb[c]['product_id'] + ' as an upsell for ' + pid);
+                                    // alert('Display '+cb[c]['product_id']);
+                                    load_c_based(cb[c]['product_id']);
+                                    break;
+                                }
+                            }
+                        }
+                        break;
+
+                    }
+
+                    else {
+                        console.log('This product aint part of a collection');
+                        continue;
+                    }
+                }
+            }
+        }
+    }
+
+    function check_offer(index, offer) {
+        console.log('Checking offer ' + index);
+
+        let status = offer['offer'][0]['status'];
+        let o_rule = offer['offer'][0]['rule'];
+        let blocks = offer['blocks'];
+        let bc = blocks.length;
+
+        if (status == 1) {
+            console.log('Offer active');
+            if (sessionStorage.getItem('sleek_shown_' + index) == 'y') {
+                console.log('Offer already shown');
+                return false;
+            } else {
+                if (bc > 0) {
+                    console.log('Offer has blocks');
+                    let what = false;
+                    for (let i = 0; i <= blocks.length - 1; i++) {
+                        let v = blocks[i];
+                        if (o_rule == 'ANY') {
+                            console.log('Checking if any block is met');
+                            if (check_block(i, v) == true) {
+                                console.log('Block ' + i + ' return true');
+                                what = true;
+                                break;
+                            } else {
+                                what = false;
+                                break;
+                            }
+                        }
+                        if (o_rule == 'ALL') {
+                            console.log('Checking if all blocks are met');
+                            if (check_block(i, v) == false) {
+                                console.log('Block ' + i + ' return false');
+                                what = false;
+                                break;
+                            } else {
+                                what = true;
+                                break;
+                            }
+                        }
+
+                    }
+                    return what;
+                } else {
+                    console.log('Offer has no blocks');
+                    return true;
+                }
+            }
+
+        } else {
+            console.log('Offer not active');
+            return false;
+        }
+    }
+
+    function check_block(index, block) {
+        let oid = block['oid'];
+        let bid = block['bid'];
+        let b_rule = block['rule'];
+
+        console.log('Checking block ' + bid + ' of offer ' + oid);
+        console.log(block);
+
+        let oc = offers['offer'][oid]['conditions'];
+        let bc = oc.filter(e => e.bid == bid);
+
+        console.log(oc);
+        console.log(bc);
+
+        if (bc.length > 0) {
+            console.log('This block has conditions');
+            let met = false;
+            for (let i = 0; i <= bc.length - 1; i++) {
+                let cond = bc[i];
+                if (b_rule == 'ANY') {
+                    console.log('Checking if any condition is met');
+                    if (check_condition(i, cond) == true) {
+                        console.log('condition ' + cond['cid'] + ' met');
+                        met = true;
+                        break;
+                    } else {
+                        met = false;
+                        break;
+                    }
+                }
+                if (b_rule == 'ALL') {
+                    console.log('Checking if any condition is met');
+                    if (check_condition(i, cond) == false) {
+                        console.log('condition ' + cond['cid'] + ' not met');
+                        met = false;
+                        break;
+                    } else {
+                        met = true;
+                        break;
+                    }
+                }
+            }
+            return met;
+        } else {
+            return true;
+        }
+    }
+
+    function check_condition(index, condition) {
+        let cid = condition["cid"];
+        let oid = condition["oid"];
+        let bid = condition["bid"];
+        let type = condition["type"];
+        let quantity = condition["quantity"];
+        let level = condition["level"];
+        let content = condition["content"];
+        let pid = condition["pid"];
+        let vid = condition["vid"];
+        let amount = condition["amount"];
+        let country = condition["country"];
+        let citems = cart["items"];
+        console.log('citems');
+        console.log(citems);
+
+        let met = false;
+
+        if (type == 'oc1') {
+            // Cart has at least
+            if (level == 'product') {
+                console.log('Now checking if cart has at least ' + quantity + ' ' + content + ' (' + pid + ')');
+                console.log('pitems');
+                let pitems = citems.filter(e => e.product_id == pid);
+                console.log(pitems)
+                if (pitems.length >= quantity) {
+                    console.log('found ' + pitems.length + ' ' + content + 's (' + pid + ')');
+                    met = true;
+                    console.log(met);
+                } else {
+                    console.log('found only ' + pitems.length + ' ' + content + 's (' + pid + ')');
+                    met = false;
+                }
+            }
+            if (level == 'variant') {
+                console.log('Now checking if cart has at least ' + quantity + ' ' + content + ' (' + vid + ')');
+                let vitems = citems.filter(e => e.variant_id == vid);
+                if (vitems.length >= quantity) {
+                    console.log('found ' + vitems.length + ' ' + content + 's (' + vid + ')');
+                    met = true;
+                } else {
+                    console.log('found only ' + vitems.length + ' ' + content + 's (' + vid + ')');
+                    met = false;
+                }
+            }
+            if (level == 'collection') {
+                console.log('Checking if cart has at least ' + quantity + ' products from collections ' + content + '(' + pid + ')');
+                let collects = offers['collects'];
+                let needed = collects.filter(e => e.collection_id == pid);
+                let count = 0;
+                for (let i = 0; i <= citems.length - 1; i++) {
+                    console.log('citems at ' + i);
+                    console.log('Now checking ' + citems[i]['product_id']);
+                    if (needed.findIndex(x => x.product_id == citems[i]['product_id']) >= 0) {
+                        count = count + 1;
+                        console.log('Found ' + count + ' so far');
+                        if (count >= quantity) {
+                            console.log('Breaking at ' + count);
+                            met = true;
+                            break;
+                        } else {
+                            continue;
+                        }
+                    }
+                }
+
+            }
+        }
+        if (type == 'oc2') {
+            // Cart has at most
+            if (level == 'product') {
+                let pitems = citems.filter(e => e.product_id == pid);
+                if (pitems.length <= quantity) {
+                    met = true;
+                } else {
+                    met = false;
+                }
+            }
+            if (level == 'variant') {
+                let vitems = citems.filter(e => e.variant_id == vid);
+                if (vitems.length <= quantity) {
+                    met = true;
+                } else {
+                    met = false;
+                }
+            }
+            if (level == 'collection') {
+                console.log('Checking if cart has at most ' + quantity + ' products from collections ' + pid);
+                let collects = offers['collects'];
+                let needed = collects.filter(e => e.collection_id == pid);
+                let count = 0;
+                for (let i = 0; i <= citems.length - 1; i++) {
+                    console.log('Now checking ' + citems[i]['product_id']);
+                    if (needed.findIndex(x => x.product_id == citems[i]['product_id']) >= 0) {
+                        count = count + 1;
+                        console.log('Found ' + count + ' so far');
+                        if (count > quantity) {
+                            console.log('Breaking at ' + count);
+                            met = false;
+                            break;
+                        } else {
+                            met = true;
+                            continue;
+                        }
+                    }
+                }
+
+            }
+        }
+        if (type == 'oc3') {
+            // Cart has exactly
+            if (level == 'product') {
+                let pitems = citems.filter(e => e.product_id == pid);
+                if (pitems.length == quantity) {
+                    met = true;
+                } else {
+                    met = false;
+                }
+            }
+            if (level == 'variant') {
+                let vitems = citems.filter(e => e.variant_id == vid);
+                if (vitems.length == quantity) {
+                    met = true;
+                } else {
+                    met = false;
+                }
+            }
+            if (level == 'collection') {
+                console.log('Checking if cart has at least ' + quantity + ' products from collections ' + pid);
+                let collects = offers['collects'];
+                let needed = collects.filter(e => e.collection_id == pid);
+                let count = 0;
+                for (let i = 0; i <= citems.length - 1; i++) {
+                    console.log('Now checking ' + citems[i]['product_id']);
+                    if (needed.findIndex(x => x.product_id == citems[i]['product_id']) >= 0) {
+                        count = count + 1;
+                        console.log('Found ' + count + ' so far');
+                        if (count == quantity) {
+                            console.log('Breaking at ' + count);
+                            met = true;
+                            break;
+                        } else {
+                            continue;
+                        }
+                    }
+                }
+
+            }
+        }
+        if (type == 'oc4') {
+            // Cart does not have any
+            if (level == 'product') {
+                let pitems = citems.filter(e => e.product_id == pid);
+                if (pitems.length > 0) {
+                    met = true;
+                } else {
+                    met = false;
+                }
+            }
+            if (level == 'variant') {
+                let vitems = citems.filter(e => e.variant_id == vid);
+                if (vitems.length > 0) {
+                    met = true;
+                } else {
+                    met = false;
+                }
+            }
+            if (level == 'collection') {
+                console.log('Checking if cart has at least ' + quantity + ' products from collections ' + pid);
+                let collects = offers['collects'];
+                let needed = collects.filter(e => e.collection_id == pid);
+                let count = 0;
+                for (let i = 0; i <= citems.length - 1; i++) {
+                    console.log('Now checking ' + citems[i]['product_id']);
+                    if (needed.findIndex(x => x.product_id == citems[i]['product_id']) >= 0) {
+                        count = count + 1;
+                        console.log('Found ' + count + ' so far');
+                        if (count > 0) {
+                            console.log('Breaking at ' + count);
+                            met = false;
+                            break;
+                        } else {
+                            met = true;
+                            continue;
+                        }
+                    }
+                }
+            }
+        }
+        if (type == 'oc5') {
+            // Cart total is at least
+            if (cart["total_price"] >= amount) {
+                met = true;
+            } else {
+                met = false;
+            }
+        }
+        if (type == 'oc6') {
+            // Cart total is at most
+            if (cart["total_price"] <= amount) {
+                met = true;
+            } else {
+                met = false;
+            }
+        }
+        if (type == 'oc7') {
+            // Customer is located in
+        }
+        if (type == 'oc8') {
+            // Customer is not located in
+        }
+        if (type == 'oc9') {
+            let vendor_items = citems.filter(e => e.vendor == content);
+            console.log(vendor_items);
+            if (vendor_items.length >= quantity) {
+                met = true;
+            } else {
+                met = false;
+            }
+        }
+        if (type == 'oc10') {
+            console.log(vendor_items);
+            let vendor_items = citems.filter(e => e.vendor == content);
+            if (vendor_items.length > 0) {
+                met = false;
+            } else {
+                met = true;
+            }
+        }
+
+
+        return met;
+    }
+
+    function populateFields(oid, pid) {
+        console.log('Looking for fields');
+        let fields = offers['offer'][oid]['fields'];
+        let choices = offers['offer'][oid]['choices'];
+        if (fields.length > 0) {
+            console.log('Found ' + fields.length + ' fields');
+            console.log(fields);
+            let o_fields = fields.filter(e => e.pid == pid);
+            console.log(o_fields);
+            if (o_fields.length > 0) {
+                $('.o_h_' + pid).innerHTML = '';
+
+                for (let i = 0; i < o_fields.length; i++) {
+                    let fid = o_fields[i]['fid'];
+                    let type = o_fields[i]['type'];
+                    let name = o_fields[i]['name'];
+                    let placeholder = o_fields[i]['placeholder'];
+                    let price = o_fields[i]['price'];
+                    let required = o_fields[i]['required'];
+                    let el_type = '';
+                    let m_c = choices.filter(e => e.fid == fid);
+
+                    if (type == "select") {
+                        $('.o_h_' + pid).append(
+                            '<div>' +
+                            '<label>' + placeholder + '</label>' +
+                            '<select class="form-control select sleek_fields_' + fid + '" id="properties[' + name +
+                            ']" name="properties[' + name + ']"></select>' +
+                            '</div>');
+                        $('.sleek_fields_' + name + '').append($('<option value="">' + placeholder + '</option>'));
+
+                        // let value_arr = value.split(',');
+                        for (let key = 0; key < m_c.length; key++) {
+                            let c_v = m_c[key]['value'];
+                            let c_p = m_c[key]['price'];
+                            $('.sleek_fields_' + fid + '').append($('<option value="' + c_v + '">' + c_v + ' (' + c_p + ')</option>'));
+                        }
+                    }
+
+                    if (type == "number") {
+                        $('.o_h_' + pid).append('<div>' +
+                            '<label>' + placeholder + '</label>' +
+                            '<input type="number" id="properties[' + name + ']" name="properties[' + name +
+                            ']" placeholder="' + placeholder + '" />' +
+                            '</div>');
+                    }
+                    if (type == "text") {
+                        $('.o_h_' + pid).append(
+                            '<div>' +
+                            '<label>' + placeholder + '</label>' +
+                            '<input type="text" id="properties[' + name + ']" name="properties[' + name +
+                            ']" placeholder="' + placeholder + '" />' +
+                            '</div>');
+                    }
+                    if (type == "textarea") {
+                        $('.o_h_' + pid).append(
+                            '<div>' +
+                            '<label>' + placeholder + '</label>' +
+                            '<textarea id="properties[' + name + ']" name="properties[' + name +
+                            ']" placeholder="' + placeholder + '">' + placeholder + '</textarea>' +
+                            '</div>');
+                    }
+                    if (type == "file") {
+                        $('.o_h_' + pid).append(
+                            '<div>' +
+                            '<label>' + placeholder + '</label>' +
+                            '<input type="file" id="properties[' + name + ']" name="properties[' + name +
+                            ']" placeholder="' + placeholder + '" />' +
+                            '</div>');
+                    }
+                    if (type == "checkbox") {
+                        $('.o_h_' + pid).append(
+                            '<div>' +
+                            '<label>' +
+                            '<input type="checkbox" id="properties[' + name + ']" name="properties[' + name +
+                            ']" placeholder="' + placeholder + '" /> ' +
+                            placeholder +
+                            '</label>' +
+                            '</div>');
+                    }
+                    if (type == "checkbox_group") {
+                        $('.o_h_' + pid).append(
+                            '<div>' +
+                            '<label>' + placeholder + '</label>' +
+                            '<input type="checkbox" id="properties[' + name + ']" name="properties[' + name +
+                            ']" placeholder="' + placeholder + '" />' +
+                            '</div>');
+                    }
+                    if (type == "radio") {
+                        $('.o_h_' + pid).append(
+                            '<div>' +
+                            '<label>' +
+                            '<input type="radio" id="properties[' + name + ']" name="properties[' + name +
+                            ']" placeholder="' + placeholder + '" /> ' +
+                            placeholder +
+                            '</label>' +
+                            '</div>');
+                    }
+                    if (type == "date") {
+                        $('.o_h_' + pid).append(
+                            '<div>' +
+                            '<label>' + placeholder + '</label>' +
+                            '<input type="date" id="properties[' + name + ']" name="properties[' + name +
+                            ']" placeholder="' + placeholder + '" />' +
+                            '</div>');
+                    }
+                    if (type == "swatch") {
+                        $('.o_h_' + pid).append(
+                            '<div>' +
+                            '<label>' + placeholder + '</label>' +
+                            '<input style="min-width: 150px;" type="color" id="properties[' + name + ']" name="properties[' + name +
+                            ']" placeholder="' + placeholder + '" />' +
+                            '</div>');
+                    }
+                }
+            }
+        }
+
+    }
+
+    function brgxczvy(oid, pid, vid, quantity, price, action, type) {
+        let citems = [];
+
+        for (let d = 0; d < cart['items'].length; d++) {
+            citems.push(cart['items'][d]['product_id']);
+        }
+
+        let s = {
+            'stat_id': '',
+            'date': Math.floor(Date.now() / 1000),
+            'shop': Shopify.shop,
+            'offer': oid,
+            'product': pid,
+            'variant': vid,
+            'quantity': quantity,
+            'ip': '',
+            'country': '',
+            'type': type,
+            'action': action,
+            'page': page,
+            'device': device(),
+            'browser': user_browser(),
+            'citems': citems,
+            'price': price
+        }
+
+        console.log(s);
+
+        let http = new XMLHttpRequest();
+        let url = 'https://sleek-upsell.herokuapp.com/brgxczvy';
+        let params = 'stat_id=""&date=' + Math.floor(Date.now() / 1000) + '&shop=' + Shopify.shop + '&offer=' + oid + '&product=' + pid + '&variant=' + vid + '&quantity=' + quantity + '&ip=""&country=""&type=' + type + '&action=' + action + '&page=' + page + '&device=' + device() + '&browser=' + user_browser() + '&citems=' + JSON.stringify(citems) + '&price=' + price;
+        http.open('POST', url, true);
+
+        //Send the proper header information along with the request
+        http.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+
+        http.onreadystatechange = function () {//Call a function when the state changes.
+            if (http.readyState === 4) {
+                if (http.status === 200) {
+                    console.log(http.responseText)
+                } else {
+                    console.log("Error", http.statusText);
+                }
+            }
+        }
+        http.send(params);
+
+
+    }
+
+    function setStyles() {
+        $('.sleek-upsell').css('opacity', '1');
+        $('.sleek-upsell').css('transform', 'none');
+        $('.sleek-upsell form').css('margin-bottom', '0px');
+        if (settings != null) {
+            $('<style>' + settings['override'] + '</style>').insertAfter('.sleek-upsell');
+            $('.sleek-upsell').css('background-color', settings['layout_bg']);
+            $('.sleek-upsell select').css('background-color', settings['layout_bg']);
+            $('.sleek-upsell').css('color', settings['layout_color']);
+            $('.sleek-upsell select').css('color', settings['layout_color']);
+            $('.sleek-upsell').css('font-family', settings['layout_font']);
+            $('.sleek-upsell').css('font-size', settings['layout_size']);
+            $('.sleek-upsell').css('margin-top', settings['layout_mt']);
+            $('.sleek-upsell').css('margin-bottom', settings['layout_mb']);
+            $('.sleek-upsell').css('border-radius', settings['offer_radius']);
+            $('.sleek-upsell').css('border-width', settings['offer_bs']);
+            $('.sleek-upsell').css('border-color', settings['offer_bc']);
+            $('.sleek-upsell').css('border-style', settings['offer_border']);
+            $('.sleek-upsell button').css('background-color', settings['button_bg']);
+            $('.sleek-upsell button').css('color', settings['button_color']);
+            $('.sleek-upsell button').css('font-family', settings['button_font']);
+            $('.sleek-upsell button').css('font-size', settings['button_size']);
+            $('.sleek-upsell button').css('margin-top', settings['button_mt']);
+            $('.sleek-upsell button').css('margin-bottom', settings['button_mb']);
+            $('.sleek-upsell button').css('border-radius', settings['button_radius']);
+            $('.sleek-upsell button').css('border-width', settings['button_bs']);
+            $('.sleek-upsell button').css('border-color', settings['button_bc']);
+            $('.sleek-upsell button').css('border-style', settings['button_border']);
+            $('.sleek-upsell img').css('border-radius', settings['image_radius']);
+            $('.sleek-upsell img').css('border-width', settings['image_bs']);
+            $('.sleek-upsell img').css('color', settings['image_bc']);
+            $('.sleek-upsell img').css('border-style', settings['image_border']);
+            $('.sleek-text').css('color', settings['text_color']);
+            $('.sleek-text').css('font-family', settings['text_font']);
+            $('.sleek-text').css('font-size', settings['text_size']);
+            $('.sleek-title').css('color', settings['title_color']);
+            $('.sleek-title').css('font-family', settings['title_font']);
+            $('.sleek-title').css('font-size', settings['title_size']);
+            $('.sleek-price').css('color', settings['price_color']);
+            $('.sleek-price').css('font-family', settings['price_font']);
+            $('.sleek-price').css('font-size', settings['price_size']);
+        }
+    }
+
+    function display_offer(oid) {
+        let element = '';
+        let curr = Shopify.currency['active'];
+        let settings = offers['settings'];
+        let lay = offers['offer'][oid]['offer'][0]['layout'];
+        let lay_el = '<div class="card sleek-upsell"></div>';
+        let nudge = 'before';
+
+        if (page.includes('/cart')) { element = cart_selector; nudge = cart_position; }
+        else { element = drawer_selector; nudge = drawer_position; }
+
+        $('<style>.sleek-upsell{background: #ECF0F1; color: #2B3D51; padding: 5px; font-family: inherit; vertical-align: middle; margin: 5px;}.sleek-image img{width: 100px;}.sleek-text{font-weight: bold;}.sleek-upsell select{padding: 4px; margin-top: 5px;}.sleek-prices{font-weight: bold; margin-bottom: 5px;}.sleek-compare-price{text-decoration: line-through;}.sleek-upsell button{padding: 10px; border: none; background: #2B3D51; color: #FFFFFF; font-weight: bold; border-radius: 0px; cursor: pointer; width: 100%;}.card{display: table;}.card .sleek-form{display: flex;}.card .sleek-image, .card .sleek-offer, .card .sleek-card-atc{display: table; align-self: center; padding: 5px;}.card .sleek-offer{flex-grow: 4;}.card .sleek-prices{text-align: center;}.block, .block .sleek-form, .block .sleek-text, .block .sleek-atc{display: table;}.sleek-block{display: flex;}.block .sleek-image, .block .sleek-offer{display: table; align-self: center; padding: 5px;}.block .sleek-offer{flex-grow: 1;}.half-block, .half-block .sleek-form, .half-block .sleek-text, .half-block .sleek-atc{display: table;}.sleek-half-block{display: flex;}.half-block .sleek-image, .half-block .sleek-offer{display: table; align-self: center; padding: 5px;}.half-block .sleek-offer{flex-grow: 1;}.flat, .flat .sleek-form, .flat .sleek-text{display: table;}.sleek-flat{display: flex;}.flat .sleek-image, .flat .sleek-offer{display: table; align-self: center; padding: 5px;}.flat .sleek-offer{flex-grow: 1;}.flat .flex-select{display: flex; width: auto; margin-top: 10px;}.flat .v-select{display: table; width: 100%; align-items: center; justify-content: space-between;}.flat .atc{flex-grow: 4;}.flat .q-select{margin-top: 0px; margin-right: 10px;}.compact, .compact .sleek-form, .compact .sleek-text, .compact .sleek-atc{display: table;}.sleek-compact{display: flex;}.compact .sleek-image, .compact .sleek-offer{display: table; align-self: center; padding: 5px;}.compact .sleek-offer{flex-grow: 1;}.compact .sleek-atc{margin-top: 5px;}@media only screen and (max-width: 600px){.sleek-upsell{width: 97%; margin: 5px auto;}.card select{max-width: 100px;}.block select{max-width: 200px;}.sleek-prices *{display: inline-table;}.block .sleek-form, .block .sleek-text, .block .sleek-atc{width: 100%;}}</style>').insertBefore(element);
+
+        if (lay == 'card') {
+            lay_el = '<div class="card sleek-upsell"></div>';
+        }
+        if (lay == 'flat') {
+            lay_el = '<div class="flat sleek-upsell"></div>';
+        }
+        if (lay == 'block') {
+            lay_el = '<div class="block sleek-upsell"></div>';
+        }
+        if (lay == 'half-block') {
+            lay_el = '<div class="half-block sleek-upsell"></div>';
+        }
+        if (lay == 'compact') {
+            lay_el = '<div class="compact sleek-upsell"></div>';
+        }
+
+        if (nudge == 'prepend') { $(element).prepend(lay_el); }
+        if (nudge == 'append') { $(element).append(lay_el); }
+
+        if (nudge == 'before') { $(lay_el).insertBefore(element); }
+        if (nudge == 'after') { $(lay_el).insertAfter(element); }
+
+
+        if (drawer_position == 'before') { }
+
+        if (offers['offer'][oid]['offer'][0]['close'] == 'y') {
+            $(lay_el).append('<div style="display: table; position: relative; width: 100%; text-align: right;"><span class="reject_offer" style="font-size: 15px; cursor: pointer;">x</span></div>');
+        }
+
+        let products = offers['offer'][oid]['products'];
+        let oprods = offers['products'];
+        console.log('Found products');
+        console.log(products);
+        console.log('Shop products');
+        console.log(oprods);
+
+        for (let i = 0; i < products.length; i++) {
+            let v = products[i];
+            let pid = v['product'];
+            let index = oprods.findIndex(x => x.id == pid);
+            let datacell = oprods[index];
+
+            let oatc = offers['offer'][oid]['offer'][0]['atc'];
+            let vatc = v['atc'];
+            let atc = 'ADD TO CART';
+
+            let otext = offers['offer'][oid]['offer'][0]['text'];
+            let vtext = v['text'];
+            let dtext = 'ADD TO CART';
+
+            if (oatc != '') {
+                atc = oatc;
+            } else if (vatc != '') {
+                atc = vatc;
+            } else {
+                atc = 'ADD TO CART';
+            }
+
+            if (otext != '') {
+                dtext = otext;
+            } else if (vtext != '') {
+                dtext = vtext;
+            } else {
+                dtext = 'Would you like a ' + datacell['title'];
+            }
+
+            console.log('Product ' + pid + ' found at position ' + index);
+            console.log(datacell);
+
+            let o_ui = '<form class="sleek-form" data-product-index="' + i + '" data-product-product_id="' + pid + '"> <div class="sleek-image"> <img src="' + datacell['image']['src'] + '"/> </div><div class="sleek-offer"> <div class="sleek-text">' + dtext + '</div><div class="sleek-title">' + datacell['title'] + '</div><div class="sleek-selectors"> <div class="offer_fields_holder o_h_' + pid + '"></div> <select name="id" class="v-select v-' + pid + '"></select> <select name="quantity" class="q-select q-' + pid + '"></select> </div></div><div class="sleek-card-atc"> <div class="sleek-prices"> <span class="sleek-price money">' + curr + ' ' + datacell['variants'][0]['price'] + '</span> <span class="sleek-compare-price money">' + curr + ' ' + datacell['variants'][0]['price'] + '</span> </div><button class="sleek-atc" type="submit">' + atc + '</button> </div></form>';
+
+
+            if (lay == 'card') {
+                o_ui = '<form class="sleek-form" action="/cart/add" enctype="multipart/form-data" data-product-index="' + i + '" data-product-product_id="' + pid + '"> <div class="sleek-image"> <img src="' + datacell['image']['src'] + '"/> </div><div class="sleek-offer"> <div class="sleek-text">' + dtext + '</div><div class="sleek-title">' + datacell['title'] + '</div><div class="sleek-selectors"> <div class="offer_fields_holder o_h_' + pid + '"></div> <select name="id" class="v-select v-' + pid + '"></select> <select name="quantity" class="q-select q-' + pid + '"></select> </div></div><div class="sleek-card-atc"> <div class="sleek-prices"> <span class="sleek-price money">' + curr + ' ' + datacell['variants'][0]['price'] + '</span> <span class="sleek-compare-price money">' + curr + ' ' + datacell['variants'][0]['price'] + '</span> </div><button class="sleek-atc" type="submit">' + atc + '</button> </div></form>';
+            }
+            if (lay == 'flat') {
+                o_ui = '<form class="sleek-form" action="/cart/add" enctype="multipart/form-data" data-product-index="' + i + '" data-product-product_id="' + pid + '"> <div class="sleek-text">' + dtext + '</div><div class="sleek-flat"> <div class="sleek-image"> <img src="' + datacell['image']['src'] + '"/> </div><div class="sleek-offer"> <div class="sleek-title">' + datacell['title'] + '</div><div class="sleek-prices"> <span class="sleek-price money">' + curr + ' ' + datacell['variants'][0]['price'] + '</span> <span class="sleek-compare-price money">' + curr + ' ' + datacell['variants'][0]['price'] + '</span> </div><div class="sleek-selectors"> <div class="offer_fields_holder o_h_' + pid + '"></div> <select name="id" class="v-select v-' + pid + '"></select> <div class="flex-select"> <select name="quantity" class="q-select q-' + pid + '"></select> <button class="sleek-atc" type="submit">' + atc + '</button> </div></div></div></div></form>'
+            }
+            if (lay == 'block') {
+                o_ui = '<form class="sleek-form" action="/cart/add" enctype="multipart/form-data" data-product-index="' + i + '" data-product-product_id="' + pid + '"> <div class="sleek-text">' + dtext + '</div><div class="sleek-block"> <div class="sleek-image"> <img src="' + datacell['image']['src'] + '"/> </div><div class="sleek-offer"> <div class="sleek-title">' + datacell['title'] + '</div><div class="sleek-prices"> <span class="sleek-price money">' + curr + ' ' + datacell['variants'][0]['price'] + '</span> <span class="sleek-compare-price money">' + curr + ' ' + datacell['variants'][0]['price'] + '</span> </div><div class="sleek-selectors"> <div class="offer_fields_holder o_h_' + pid + '"></div> <select name="id" class="v-select v-' + pid + '"></select> <select name="quantity" class="q-select q-' + pid + '"></select> </div></div></div><button class="sleek-atc" type="submit">' + atc + '</button> </form>';
+            }
+            if (lay == 'half-block') {
+                o_ui = '<form class="sleek-form" action="/cart/add" enctype="multipart/form-data" data-product-index="' + i + '" data-product-product_id="' + pid + '"> <div class="sleek-half-block"> <div class="sleek-image"> <img src="' + datacell['image']['src'] + '"/> </div><div class="sleek-offer"> <div class="sleek-text">' + dtext + '</div><div class="sleek-title">' + datacell['title'] + '</div><div class="sleek-prices"> <span class="sleek-price money">' + curr + ' ' + datacell['variants'][0]['price'] + '</span> <span class="sleek-compare-price money">' + curr + ' ' + datacell['variants'][0]['price'] + '</span> </div><div class="sleek-selectors"> <div class="offer_fields_holder o_h_' + pid + '"></div> <select name="id" class="v-select v-' + pid + '"></select> <select name="quantity" class="q-select q-' + pid + '"></select> </div></div></div><button class="sleek-atc" type="submit">' + atc + '</button> </form>';
+            }
+            if (lay == 'compact') {
+                o_ui = '<form class="sleek-form" action="/cart/add" enctype="multipart/form-data" data-product-index="' + i + '" data-product-product_id="' + pid + '"> <div class="sleek-compact"> <div class="sleek-image"> <img src="' + datacell['image']['src'] + '"/> </div><div class="sleek-offer"> <div class="sleek-text">' + dtext + '</div><div class="sleek-title">' + datacell['title'] + '</div><div class="sleek-prices"> <span class="sleek-price money">' + curr + ' ' + datacell['variants'][0]['price'] + '</span> <span class="sleek-compare-price money">' + curr + ' ' + datacell['variants'][0]['price'] + '</span> </div><div class="sleek-selectors"> <div class="offer_fields_holder o_h_' + pid + '"></div> <select name="id" class="v-select v-' + pid + '"></select> <select name="quantity" class="q-select q-' + pid + '"></select> </div><button class="sleek-atc" type="submit">' + atc + '</button> </div></div></form>'
+            }
+
+            $('.sleek-upsell').append(o_ui);
+            console.log('Adding ' + pid + ' for ' + i);
+            if ($('.sleek-form[data-product-index="' + i + '"]').length > 1) {
+                for (let sf = 1; sf <= $('.sleek-form[data-product-index="' + i + '"]').length; sf++) {
+                    console.log('removing ' + sf);
+                    $('.sleek-form[data-product-index="' + i + '"]')[sf].remove();
+                }
+            }
+
+            if (v['show_title'] == 'n') {
+                $('.sleek-title').remove()
+            }
+
+            if (v['show_price'] == 'n') {
+                $('.sleek-prices').remove()
+            }
+
+            if (v['show_image'] == 'n') {
+                $('.sleek-image').remove()
+            }
+
+            if (v['v_price'] == 'n') {
+                $('.sleek-compare-price').remove()
+            }
+
+            if (v['c_price'] == 'n') {
+                $('.sleek-price').remove()
+            }
+
+            if (v['q_select'] == 'n') {
+                $('.q_select').style.display = 'none';
+            }
+
+            populateFields(oid, pid);
+
+            for (let vi = 0; vi < datacell['variants'].length; vi++) {
+                console.log(datacell['variants'][i]['title']);
+                if (datacell['variants'][vi]['inventory_quantity'] > 0) {
+                    $('.v-' + pid).append('<option value="' + datacell['variants'][vi]['id'] +
+                        '">' + datacell['variants'][vi]['title'] + ' (' + curr + ' ' + datacell['variants'][vi]['price'] + ')</option>');
+                }
+            }
+            for (q = 1; q <= 10; q++) {
+                $('.q-' + pid).append('<option value="' + q + '">' + q + '</option>')
+            }
+
+            brgxczvy(oid, pid, $('.v-' + pid).val(), $('.q-' + pid).val(), datacell['variants'][0]['price'], 'show', 'show');
+
+            $('.v-' + pid).change(function () {
+                brgxczvy(oid, pid, $('.v-' + pid).val(), $('.q-' + pid).val(), datacell['variants'][0]['price'], 'variant change', 'impression');
+            });
+            $('.q-' + pid).change(function () {
+                brgxczvy(oid, pid, $('.v-' + pid).val(), $('.q-' + pid).val(), datacell['variants'][0]['price'], 'quantity change', 'impression');
+            });
+            $('form[data-product-product_id="' + pid + '"]').hover(function () {
+                brgxczvy(oid, pid, $('.v-' + pid).val(), $('.q-' + pid).val(), datacell['variants'][0]['price'], 'hover', 'impression');
+            });
+
+            $('.sleek-form').submit(function (e) {
+                e.preventDefault();
+                if (v['rv'] != '') {
+                    g_s_s_w('/cart/change?id=' + v['rv'] + '&quantity=0');
+                }
+                else {
+                    if (v['rp'] != '') {
+                        let dc = oprods[oprods.findIndex(x => x.id == v['rp'])];
+                        let removedVs = [];
+                        for (let vi = 0; vi < dc['variants'].length; vi++) {
+                            g_s_s_w('/cart/change?id=' + dc['variants'][vi]['id'] + '&quantity=0');
+                        }
+                    }
+                }
+
+                $.ajax({
+                    type: 'POST',
+                    url: '/cart/add.js',
+                    dataType: 'json',
+                    data: $(this).serialize(),
+                    success: function (response) {
+                        if (offers['offer'][oid]['offer'][0]['stop_show'] == 'y') { sessionStorage.setItem('sleek_shown_' + oid, 'y') };
+                        brgxczvy(oid, pid, $('.v-' + pid).val(), $('.q-' + pid).val(), datacell['variants'][0]['price'], 'add to cart', 'purchase');
+                        $('.sleek-atc').innerHTML = '<img src="https://sleek-upsell.com/assets/images/loader.gif" />';
+                        if (offers['offer'][oid]['offer'][0]['discount'] == 'y' && offers['offer'][oid]['offer'][0]['code'] != '') {
+                            g_s_s_w('https://' + Shopify.shop + '/discount/' + offers['offer'][oid]['offer'][0]['code']);
+                        }
+                        if (offers['offer'][oid]['offer'][0]['to_checkout'] == 'y') {
+                            window.location.href = "/checkout";
+                        } else {
+                            if (page.includes('/cart')) {
+                                console.log(response);
+                                if (offers['offer'][oid]['offer'][0]['stop_show'] == 'y') { sessionStorage.setItem('sleek_shown_' + oid, 'y') };
+                                $('.sleek-upsell').remove();
+                                window.location.reload(false);
+                            }
+                            else {
+                                $('.sleek-upsell').remove();
+                                console.log(response);
+                                if (settings != null) {
+                                    if (settings['refresh_state'] == 'y') {
+                                        eval(settings['drawer_refresh']);
+                                    }
+                                }
+                                choose_offer();
+                            }
+                        }
+                    },
+                    error: function (response) {
+                        console.log(response);
+                        $(this).find('button').html('Could not add product');
+                        setTimeout(function () { $(this).remove() }, 1000);
+                    }
+                });
+            });
+        }
+
+        if ($('.reject_offer') != null) {
+            $('.reject_offer').click(function () {
+                sessionStorage.setItem('sleek_shown_' + oid, 'y');
+                brgxczvy(oid, '', '', '', '', 'reject', 'reject');
+                $('.sleek-upsell').remove();
+                setTimeout(function () { choose_offer() }, 300);
+            });
+        }
+
+        setStyles();
+
+    }
+
+    function load_c_based(pid) {
+
+        try {
+            let element = '';
+            let curr = Shopify.currency['active'];
+            let settings = offers['settings'];
+            let auto_collection = offers['auto_collection'];
+            console.log(offers);
+            console.log(auto_collection);
+            let lay = auto_collection['layout'];
+            let lay_el = '<div class="card sleek-upsell"></div>';
+            let nudge = 'before';
+
+            if (page.includes('/cart')) { element = cart_selector; nudge = cart_position; }
+            else { element = drawer_selector; nudge = drawer_position; }
+
+            $('<style>.sleek-upsell{background: #ECF0F1; color: #2B3D51; padding: 5px; font-family: inherit; vertical-align: middle; margin: 5px;}.sleek-image img{width: 100px;}.sleek-text{font-weight: bold;}.sleek-upsell select{padding: 4px; margin-top: 5px;}.sleek-prices{font-weight: bold; margin-bottom: 5px;}.sleek-compare-price{text-decoration: line-through;}.sleek-upsell button{padding: 10px; border: none; background: #2B3D51; color: #FFFFFF; font-weight: bold; border-radius: 0px; cursor: pointer; width: 100%;}.card{display: table;}.card .sleek-form{display: flex;}.card .sleek-image, .card .sleek-offer, .card .sleek-card-atc{display: table; align-self: center; padding: 5px;}.card .sleek-offer{flex-grow: 4;}.card .sleek-prices{text-align: center;}.block, .block .sleek-form, .block .sleek-text, .block .sleek-atc{display: table;}.sleek-block{display: flex;}.block .sleek-image, .block .sleek-offer{display: table; align-self: center; padding: 5px;}.block .sleek-offer{flex-grow: 1;}.half-block, .half-block .sleek-form, .half-block .sleek-text, .half-block .sleek-atc{display: table;}.sleek-half-block{display: flex;}.half-block .sleek-image, .half-block .sleek-offer{display: table; align-self: center; padding: 5px;}.half-block .sleek-offer{flex-grow: 1;}.flat, .flat .sleek-form, .flat .sleek-text{display: table;}.sleek-flat{display: flex;}.flat .sleek-image, .flat .sleek-offer{display: table; align-self: center; padding: 5px;}.flat .sleek-offer{flex-grow: 1;}.flat .flex-select{display: flex; width: auto; margin-top: 10px;}.flat .v-select{display: table; width: 100%; align-items: center; justify-content: space-between;}.flat .atc{flex-grow: 4;}.flat .q-select{margin-top: 0px; margin-right: 10px;}.compact, .compact .sleek-form, .compact .sleek-text, .compact .sleek-atc{display: table;}.sleek-compact{display: flex;}.compact .sleek-image, .compact .sleek-offer{display: table; align-self: center; padding: 5px;}.compact .sleek-offer{flex-grow: 1;}.compact .sleek-atc{margin-top: 5px;}@media only screen and (max-width: 600px){.sleek-upsell{width: 97%; margin: 5px auto;}.card select{max-width: 100px;}.block select{max-width: 200px;}.sleek-prices *{display: inline-table;}.block .sleek-form, .block .sleek-text, .block .sleek-atc{width: 100%;}}</style>').insertBefore(element);
+
+            if (lay == 'card') {
+                lay_el = '<div class="card sleek-upsell"></div>';
+            }
+            if (lay == 'flat') {
+                lay_el = '<div class="flat sleek-upsell"></div>';
+            }
+            if (lay == 'block') {
+                lay_el = '<div class="block sleek-upsell"></div>';
+            }
+            if (lay == 'half-block') {
+                lay_el = '<div class="half-block sleek-upsell"></div>';
+            }
+            if (lay == 'compact') {
+                lay_el = '<div class="compact sleek-upsell"></div>';
+            }
+
+            if (nudge == 'prepend') { $(element).prepend(lay_el); }
+            if (nudge == 'append') { $(element).append(lay_el); }
+
+            if (nudge == 'before') { $(lay_el).insertBefore(element); }
+            if (nudge == 'after') { $(lay_el).insertAfter(element); }
+
+
+            if (drawer_position == 'before') { }
+
+            if (auto_collection['close'] == 'y') {
+                $(lay_el).append('<div style="display: table; position: relative; width: 100%; text-align: right;"><span class="reject_offer" style="font-size: 15px; cursor: pointer;">x</span></div>');
+            }
+
+            let oprods = offers['products'];
+            console.log('Shop products');
+            console.log(oprods);
+
+            let index = oprods.findIndex(x => x.id == pid);
+            let datacell = oprods[index];
+
+            let oatc = auto_collection['atc'];
+            let atc = 'ADD TO CART';
+
+            if (oatc != '') {
+                atc = oatc;
+            } else {
+                atc = 'ADD TO CART';
+            }
+
+            console.log('Product ' + pid + ' found at position ' + index);
+            console.log(datacell);
+
+            let o_ui = '<form class="sleek-form" data-product-index="0" data-product-product_id="' + pid + '"> <div class="sleek-image"> <img src="' + datacell['image']['src'] + '"/> </div><div class="sleek-offer"><div class="sleek-title">' + datacell['title'] + '</div><div class="sleek-selectors"> <div class="offer_fields_holder o_h_' + pid + '"></div> <select name="id" class="v-select v-' + pid + '"></select> <select name="quantity" class="q-select q-' + pid + '"></select> </div></div><div class="sleek-card-atc"> <div class="sleek-prices"> <span class="sleek-price money">' + curr + ' ' + datacell['variants'][0]['price'] + '</span> <span class="sleek-compare-price money">' + curr + ' ' + datacell['variants'][0]['price'] + '</span> </div><button class="sleek-atc" type="submit">' + atc + '</button> </div></form>';
+
+
+            if (lay == 'card') {
+                o_ui = '<form class="sleek-form" action="/cart/add" enctype="multipart/form-data" data-product-index="0" data-product-product_id="' + pid + '"> <div class="sleek-image"> <img src="' + datacell['image']['src'] + '"/> </div><div class="sleek-offer"><div class="sleek-title">' + datacell['title'] + '</div><div class="sleek-selectors"> <div class="offer_fields_holder o_h_' + pid + '"></div> <select name="id" class="v-select v-' + pid + '"></select> <select name="quantity" class="q-select q-' + pid + '"></select> </div></div><div class="sleek-card-atc"> <div class="sleek-prices"> <span class="sleek-price money">' + curr + ' ' + datacell['variants'][0]['price'] + '</span> <span class="sleek-compare-price money">' + curr + ' ' + datacell['variants'][0]['price'] + '</span> </div><button class="sleek-atc" type="submit">' + atc + '</button> </div></form>';
+            }
+            if (lay == 'flat') {
+                o_ui = '<form class="sleek-form" action="/cart/add" enctype="multipart/form-data" data-product-index="0" data-product-product_id="' + pid + '"><div class="sleek-flat"> <div class="sleek-image"> <img src="' + datacell['image']['src'] + '"/> </div><div class="sleek-offer"> <div class="sleek-title">' + datacell['title'] + '</div><div class="sleek-prices"> <span class="sleek-price money">' + curr + ' ' + datacell['variants'][0]['price'] + '</span> <span class="sleek-compare-price money">' + curr + ' ' + datacell['variants'][0]['price'] + '</span> </div><div class="sleek-selectors"> <div class="offer_fields_holder o_h_' + pid + '"></div> <select name="id" class="v-select v-' + pid + '"></select> <div class="flex-select"> <select name="quantity" class="q-select q-' + pid + '"></select> <button class="sleek-atc" type="submit">' + atc + '</button> </div></div></div></div></form>'
+            }
+            if (lay == 'block') {
+                o_ui = '<form class="sleek-form" action="/cart/add" enctype="multipart/form-data" data-product-index="0" data-product-product_id="' + pid + '"><div class="sleek-block"> <div class="sleek-image"> <img src="' + datacell['image']['src'] + '"/> </div><div class="sleek-offer"> <div class="sleek-title">' + datacell['title'] + '</div><div class="sleek-prices"> <span class="sleek-price money">' + curr + ' ' + datacell['variants'][0]['price'] + '</span> <span class="sleek-compare-price money">' + curr + ' ' + datacell['variants'][0]['price'] + '</span> </div><div class="sleek-selectors"> <div class="offer_fields_holder o_h_' + pid + '"></div> <select name="id" class="v-select v-' + pid + '"></select> <select name="quantity" class="q-select q-' + pid + '"></select> </div></div></div><button class="sleek-atc" type="submit">' + atc + '</button> </form>';
+            }
+            if (lay == 'half-block') {
+                o_ui = '<form class="sleek-form" action="/cart/add" enctype="multipart/form-data" data-product-index="0" data-product-product_id="' + pid + '"> <div class="sleek-half-block"> <div class="sleek-image"> <img src="' + datacell['image']['src'] + '"/> </div><div class="sleek-offer"><div class="sleek-title">' + datacell['title'] + '</div><div class="sleek-prices"> <span class="sleek-price money">' + curr + ' ' + datacell['variants'][0]['price'] + '</span> <span class="sleek-compare-price money">' + curr + ' ' + datacell['variants'][0]['price'] + '</span> </div><div class="sleek-selectors"> <div class="offer_fields_holder o_h_' + pid + '"></div> <select name="id" class="v-select v-' + pid + '"></select> <select name="quantity" class="q-select q-' + pid + '"></select> </div></div></div><button class="sleek-atc" type="submit">' + atc + '</button> </form>';
+            }
+            if (lay == 'compact') {
+                o_ui = '<form class="sleek-form" action="/cart/add" enctype="multipart/form-data" data-product-index="0" data-product-product_id="' + pid + '"> <div class="sleek-compact"> <div class="sleek-image"> <img src="' + datacell['image']['src'] + '"/> </div><div class="sleek-offer"><div class="sleek-title">' + datacell['title'] + '</div><div class="sleek-prices"> <span class="sleek-price money">' + curr + ' ' + datacell['variants'][0]['price'] + '</span> <span class="sleek-compare-price money">' + curr + ' ' + datacell['variants'][0]['price'] + '</span> </div><div class="sleek-selectors"> <div class="offer_fields_holder o_h_' + pid + '"></div> <select name="id" class="v-select v-' + pid + '"></select> <select name="quantity" class="q-select q-' + pid + '"></select> </div><button class="sleek-atc" type="submit">' + atc + '</button> </div></div></form>'
+            }
+
+            $('.sleek-upsell').append(o_ui);
+            if ($('.sleek-form[data-product-index="0"]').length > 1) {
+                for (let sf = 1; sf <= $('.sleek-form[data-product-index="0"]').length; sf++) {
+                    console.log('removing ' + sf);
+                    $('.sleek-form[data-product-index="0"]')[sf].remove();
+                }
+            }
+
+            if (auto_collection['show_title'] == 'n') {
+                $('.sleek-title').remove()
+            }
+
+            if (auto_collection['show_price'] == 'n') {
+                $('.sleek-prices').remove()
+            }
+
+            if (auto_collection['show_image'] == 'n') {
+                $('.sleek-image').remove()
+            }
+
+            if (auto_collection['v_price'] == 'n') {
+                $('.sleek-compare-price').remove()
+            }
+
+            if (auto_collection['c_price'] == 'n') {
+                $('.sleek-price').remove()
+            }
+
+            if (auto_collection['q_select'] == 'n') {
+                $('.q_select').style.display = 'none';
+            }
+
+            for (let vi = 0; vi < datacell['variants'].length; vi++) {
+                if (datacell['variants'][vi]['inventory_quantity'] > 0) {
+                    $('.v-' + pid).append('<option value="' + datacell['variants'][vi]['id'] +
+                        '">' + datacell['variants'][vi]['title'] + ' (' + curr + ' ' + datacell['variants'][vi]['price'] + ')</option>');
+                }
+            }
+            for (q = 1; q <= 10; q++) {
+                $('.q-' + pid).append('<option value="' + q + '">' + q + '</option>')
+            }
+
+            brgxczvy('collection', pid, $('.v-' + pid).val(), $('.q-' + pid).val(), datacell['variants'][0]['price'], 'show', 'show');
+
+            $('.v-' + pid).change(function () {
+                brgxczvy('collection', pid, $('.v-' + pid).val(), $('.q-' + pid).val(), datacell['variants'][0]['price'], 'variant change', 'impression');
+            });
+            $('.q-' + pid).change(function () {
+                brgxczvy('collection', pid, $('.v-' + pid).val(), $('.q-' + pid).val(), datacell['variants'][0]['price'], 'quantity change', 'impression');
+            });
+            $('form[data-product-product_id="' + pid + '"]').hover(function () {
+                brgxczvy('collection', pid, $('.v-' + pid).val(), $('.q-' + pid).val(), datacell['variants'][0]['price'], 'hover', 'impression');
+            });
+
+            $('.sleek-form').submit(function (e) {
+                e.preventDefault();
+                $.ajax({
+                    type: 'POST',
+                    url: '/cart/add.js',
+                    dataType: 'json',
+                    data: $(this).serialize(),
+                    success: function (response) {
+                        sessionStorage.setItem('sleek_shown_collection', 'y');
+                        brgxczvy('collection', pid, $('.v-' + pid).val(), $('.q-' + pid).val(), datacell['variants'][0]['price'], 'add to cart', 'purchase');
+                        $('.sleek-atc').innerHTML = '<img src="https://sleek-upsell.com/assets/images/loader.gif" />';
+                        if (auto_collection['discount'] == 'y' && auto_collection['code'] != '') {
+                            g_s_s_w('https://' + Shopify.shop + '/discount/' + auto_collection['code']);
+                        }
+                        if (auto_collection['to_checkout'] == 'y') {
+                            window.location.href = "/checkout";
+                        } else {
+                            if (page.includes('/cart')) {
+                                console.log(response);
+                                sessionStorage.setItem('sleek_shown_collection', 'y');
+                                $('.sleek-upsell').remove();
+                                window.location.reload(false);
+                            }
+                            else {
+                                $('.sleek-upsell').remove();
+                                console.log(response);
+                                if (settings != null) {
+                                    if (settings['refresh_state'] == 'y') {
+                                        eval(settings['drawer_refresh']);
+                                    }
+                                }
+                                choose_offer();
+                            }
+                        }
+                    },
+                    error: function (response) {
+                        console.log(response);
+                        $(this).find('button').html('Could not add product');
+                        setTimeout(function () { $(this).remove() }, 1000);
+                    }
+                });
+            });
+
+            if ($('.reject_offer') != null) {
+                $('.reject_offer').click(function () {
+                    sessionStorage.setItem('sleek_shown_collection', 'y');
+                    brgxczvy('collection', '', '', '', '', 'reject', 'reject');
+                    $('.sleek-upsell').remove();
+                    setTimeout(function () { choose_offer() }, 300);
+                });
+            }
+
+            setStyles();
+        } catch (error) {
+            collection_based();
+        }
+    }
+}

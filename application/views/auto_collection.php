@@ -291,7 +291,9 @@ Not supports in Firefox and IE */
         "code": "",
         "to_checkout": "n",
         "date": "<?php echo time(); ?>",
-        "status":"0"
+        "status": "0",
+        "title": "0",
+        "text": "0"
     }];
     var products = [];
     var variants = [];
@@ -339,6 +341,10 @@ Not supports in Firefox and IE */
                     <div id="collapseTwo-2" class="panel-collapse collapse">
                         <div class="panel-body">
                             <div style="display: table; width: 100%;">
+                                <h4>Offer Text <br /><small>eg Get 20% discount</small></h4>
+                                <textarea class="form-control offer_text" placeholder="offer text" style="margin: 5px auto; height: auto; min-height: 100px; width: 99%; border: 2px solid #666666;"></textarea>
+                            </div>
+                            <div style="display: table; width: 100%;">
                                 <h4>Button Text <br /><small>eg Yes Please or Add To Cart</small></h4>
                                 <input type="text" name="button-text" value="ADD TO CART" class="form-control offer_button_text" style="padding: 10px; border: 2px solid #666666; border-radius: 5px;" />
                             </div>
@@ -378,6 +384,7 @@ Not supports in Firefox and IE */
                     </div>
                     <div id="collapseThree-2" class="panel-collapse collapse">
                         <div class="panel-body">
+                            <?php /*
                             <h4>Offer Conditions <br /><small>Choose when to give your customers this offer</small></h4>
                             <div style="display: table; width: 100%; margin-bottom: 10px; vertical-align: top;">
                                 <div style="display: table; width: 100%; width: 100%; background: #ffffff; padding: 5px; margin-bottom: 5px;">
@@ -408,7 +415,7 @@ Not supports in Firefox and IE */
                                 <span class="btn btn-info btn-icon icon-right pull-right" onclick="showAjaxModal('conditions');"> <i class="entypo-plus"></i>Add
                                     Condition</span>
                             </div>
-                            <div style="display: table; width: 100%; height: 1px; background: #333333;"></div>
+                            <div style="display: table; width: 100%; height: 1px; background: #333333;"></div> */ ?>
                             <h4>Extra Options <br /><small>Adjust the offers conditional triggers</small></h4>
                             <div style="display: table; width: 100%; margin-bottom: 10px; vertical-align: top;">
                                 <label><input type="checkbox" class="offer_show_after_accepted" value="1" /> Don't
@@ -913,6 +920,10 @@ Not supports in Firefox and IE */
         auto_collection['code'] = $(this).val();
     });
 
+    $('.offer_text').on('keyup change', function() {
+        $('.sleek-text').html($(this).val());
+        auto_collection['text'] = $(this).val();
+    });
     $('.offer_button_text').on('keyup change', function() {
         $('.sleek-atc').html($(this).val());
         auto_collection['atc'] = $(this).val();
