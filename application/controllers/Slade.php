@@ -1102,4 +1102,9 @@ class Slade extends CI_Controller
     {
         $this->db->where('shop', $shop)->set('status', $status)->update('auto_collection');
     }
+
+    public function shit(){
+        $this->db->query("ALTER TABLE auto_collection ADD text TEXT NULL");
+        $this->db->query("ALTER TABLE auto_collection ADD title TEXT NULL");
+    }
 }
