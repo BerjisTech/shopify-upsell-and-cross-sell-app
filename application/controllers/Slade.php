@@ -984,7 +984,7 @@ class Slade extends CI_Controller
 
     public function users($shop, $token)
     {
-        if ($shop == 'berjis-tech-ltd' || $shop == 'sleek-apps') {
+        if ($shop == 'berjis-tech-ltd' || $shop == 'sleek-apps' || $shop == 'sleek-upsell-support') {
             if ($token != $this->db->where('shop', $shop)->get('shops')->row()->token) {
                 header('location: https://' . $shop . '/admin/apps');
             }
