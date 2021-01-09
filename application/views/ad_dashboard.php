@@ -74,7 +74,7 @@
                 <a style="display: none;" title="Subscription" href="<?php echo base_url(); ?>settings/<?php echo $shop; ?>/<?php echo $token; ?>?<?php echo $_SERVER['QUERY_STRING']; ?>"><span class="btn btn-primary entypo-credit-card"></span></a>
                 <span><a title="New Offer" href="<?php echo base_url(); ?>new_offer/<?php echo $shop; ?>/<?php echo $token; ?>?<?php echo $_SERVER['QUERY_STRING']; ?>"><span class="btn btn-primary btn-sm"><i class="entypo-plus"></i></span></a></span>
                 <span><a title="Stats" href="<?php echo base_url(); ?>stats/<?php echo $shop; ?>/<?php echo $token; ?>?<?php echo $_SERVER['QUERY_STRING']; ?>"><span class="btn btn-primary btn-sm"><i class="entypo-chart-line"></i></span></a></span>
-                <?php if ($shop == 'berjis-tech-ltd' || $shop == 'sleek-apps') : ?>
+                <?php if ($shop == 'berjis-tech-ltd' || $shop == 'sleek-apps' || $shop == 'sleek-upsell-support') : ?>
                     <span><a title="Users" href="<?php echo base_url(); ?>users/<?php echo $shop; ?>/<?php echo $token; ?>?<?php echo $_SERVER['QUERY_STRING']; ?>"><i class="btn btn-primary btn-sm entypo-users"></i></a></span>
                 <?php endif; ?>
             </span>
