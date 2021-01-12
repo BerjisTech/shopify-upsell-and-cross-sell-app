@@ -962,6 +962,8 @@ class Slade extends CI_Controller
         if($this->db->insert('stats', $_POST)){
 			print_r("post \n");
 			print_r($_POST);
+		}else{
+			echo 'Not added \n'.$this->db->last_query();
 		}
     }
 
