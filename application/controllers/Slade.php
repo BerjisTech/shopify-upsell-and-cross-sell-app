@@ -182,7 +182,7 @@ class Slade extends CI_Controller
             if ($this->db->table_exists('shops')) {
                 if ($this->db->where('shop', $shop)->get('shops')->num_rows() == 0) {
                     $shop_data = array(
-                        'shop_id' => $this->db->order_by('shop_id', 'DESC')->limit('1')->get('shops')->row()->shop_id + 1;,
+                        'shop_id' => $this->db->order_by('shop_id', 'DESC')->limit('1')->get('shops')->row()->shop_id + 1,
                         'shop' => $shop,
                         'token' => $access_token,
                         'date' => time(),
@@ -199,7 +199,7 @@ class Slade extends CI_Controller
                 }
             } else {
                 $shop_data = array(
-                    'shop_id' => $this->db->order_by('shop_id', 'DESC')->limit('1')->get('shops')->row()->shop_id + 1;,
+                    'shop_id' => $this->db->order_by('shop_id', 'DESC')->limit('1')->get('shops')->row()->shop_id + 1,
                     'shop' => $shop,
                     'token' => $access_token,
                     'date' => time(),
@@ -856,11 +856,11 @@ class Slade extends CI_Controller
                 $this->db->where('oid', $oid)->delete('choices');
 
                 foreach ($this->db->get('products')->result_array() as $key => $fetch) {
-                    $this->db->where('product_id', $fetch['product_id'])->set('product_id', $key + 1;)->update('products');
+                    $this->db->where('product_id', $fetch['product_id'])->set('product_id', $key + 1)->update('products');
                 }
 
                 foreach ($this->db->get('variants')->result_array() as $key => $fetch) {
-                    $this->db->where('id', $fetch['id'])->set('id', $key + 1;)->update('variants');
+                    $this->db->where('id', $fetch['id'])->set('id', $key + 1)->update('variants');
                 }
 
                 if (array_key_exists('products', $offer_data)) {
