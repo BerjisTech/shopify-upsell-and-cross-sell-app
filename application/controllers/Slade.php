@@ -79,7 +79,6 @@ class Slade extends CI_Controller
                     $delete_script = json_decode($delete_script['response'], true);
                     echo '<script>console.log(' . json_encode($delete_script) . ');</script>';
                 }
-
                 $script_array = array(
                     'script_tag' => array(
                         'event' => 'onload',
@@ -89,6 +88,17 @@ class Slade extends CI_Controller
 
                 $scriptTag = $this->Shopify->shopify_call($token, $this_shop, $script_tags_url, $script_array, 'POST');
                 $scriptTag = json_decode($scriptTag['response'], JSON_PRETTY_PRINT);
+
+                $w_array = array(
+                    'webhook' => array(
+                        'topic' => 'app/uninstalled',
+                        'address' => 'https://sleek-upsell.com/d?shop=' . $_GET['shop'],
+                        'format' => 'json'
+                    )
+                );
+
+                $webhook = $this->Shopify->shopify_call($token, $shop, "/admin/api/2020-07/webhooks.json", $w_array, 'POST');
+                $webhook = json_decode($webhook['response'], JSON_PRETTY_PRINT);
             }
 
 
@@ -227,7 +237,7 @@ class Slade extends CI_Controller
             echo '<script>window.location.href = "' . base_url() . 'upgrade?' . $_SERVER['QUERY_STRING'] . '";</script>';
         } else {
             // Someone is trying to be shady!
-            header("Location: https://sleek-upsell.herokuapp.com/");
+            header("Location: https://sleek-upsell.com/");
             die('This request is NOT from Shopify!');
         }
     }
@@ -748,21 +758,21 @@ class Slade extends CI_Controller
                     }
                 }
             }
-        }
-        if ($type == 'vendor') {
-            $array = array(
-                'limit' => '10',
-                'fields' => 'id,title,variants,vendor',
-            );
-            $collections = $this->Shopify->shopify_call($token, $shop, "/admin/api/2020-10/products.json", $array, 'GET');
-            $collections = json_decode($collections['response'], JSON_PRETTY_PRINT);
-            if (empty($collections)) {
-                $html = "<p>There's no vendor matching $search_term </p>";
-            } else {
-                foreach ($collections as $collection) {
-                    foreach ($collection as $key => $value) {
-                        if (stripos($value['vendor'], $search_term) !== false) {
-                            $html .= '<div onclick="$(\'.occ\').val(\'' . $value['vendor'] . '\');$(\'.c_i\').html(\'\');$(\'#ocContent\').val(\'' . $value['vendor'] . '\');" class="col-xs-12" style="cursor: pointer; margin-top: 10px; padding-bottom: 5px; border-bottom: 1px solid #C0C0C0;"><span class="pull-left" style="color: #333333;">' . $value['vendor'] . '</span></div>';
+            if ($type == 'vendor') {
+                $array = array(
+                    'limit' => '10',
+                    'fields' => 'id,title,variants,vendor',
+                );
+                $collections = $this->Shopify->shopify_call($token, $shop, "/admin/api/2020-10/products.json", $array, 'GET');
+                $collections = json_decode($collections['response'], JSON_PRETTY_PRINT);
+                if (empty($collections)) {
+                    $html = "<p>There's no vendor matching $search_term </p>";
+                } else {
+                    foreach ($collections as $collection) {
+                        foreach ($collection as $key => $value) {
+                            if (stripos($value['vendor'], $search_term) !== false) {
+                                $html .= '<div onclick="$(\'.occ\').val(\'' . $value['vendor'] . '\');$(\'.c_i\').html(\'\');$(\'#ocContent\').val(\'' . $value['vendor'] . '\');" class="col-xs-12" style="cursor: pointer; margin-top: 10px; padding-bottom: 5px; border-bottom: 1px solid #C0C0C0;"><span class="pull-left" style="color: #333333;">' . $value['vendor'] . '</span></div>';
+                            }
                         }
                     }
                 }
@@ -954,6 +964,105 @@ class Slade extends CI_Controller
         print_r($_POST);
     }
 
+    public function new_offer_table()
+    {
+        $this->db->query('DROP TABLE IF EXISTS `offers`');
+        $query = '
+        CREATE TABLE IF NOT EXISTS `offers` (
+          `offer_id` int(11) NOT NULL AUTO_INCREMENT,
+          `offer_title` text NOT NULL,
+          `offer_shop` text NOT NULL,
+          `offer_text` longtext NOT NULL,
+          `offer_button_text` text NOT NULL,
+          `offer_color_scheme` text NOT NULL,
+          `offer_layout` text NOT NULL,
+          `offer_products` longtext NOT NULL,
+          `offer_product_image` text NOT NULL,
+          `offer_product_title` text NOT NULL,
+          `offer_product_price` text NOT NULL,
+          `offer_compare_at_price` text NOT NULL,
+          `offer_variant_price` text NOT NULL,
+          `offer_linked` text NOT NULL,
+          `offer_closable` text NOT NULL,
+          `offer_quantity_chooser` text NOT NULL,
+          `offer_condition_rule` text NOT NULL,
+          `offer_conditions` longtext NOT NULL,
+          `offer_show_after_accepted` text NOT NULL,
+          `offer_required_for_checkout` text NOT NULL,
+          `offer_automatically_remove` text NOT NULL,
+          `offer_apply_discount` text NOT NULL,
+          `offer_discount_code` text NOT NULL,
+          `offer_to_checkout` text NOT NULL,
+          `offer_ab_text` text NOT NULL,
+          `offer_ab_test` text NOT NULL,
+          `offer_ab_button` text NOT NULL,
+          `offer_status` text NOT NULL,
+          `offer_date` int(11) NOT NULL,
+          `offer_custom_fields` longtext NOT NULL,
+          PRIMARY KEY (`offer_id`)
+        ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;';
+
+        if ($this->db->query($query)) {
+            $this->db->query('TRUNCATE TABLE `offers`');
+            $this->db->query('COMMIT;');
+            echo 'table created';
+        }
+    }
+
+    public function new_settings_table()
+    {
+        $this->db->query('DROP TABLE IF EXISTS `settings`');
+        $query = '
+        CREATE TABLE IF NOT EXISTS `settings` (
+            `shop` text NOT NULL,
+            `cart_location` text NOT NULL,
+            `cart_position` text NOT NULL,
+            `drawer_location` text NOT NULL,
+            `drawer_position` text NOT NULL,
+            `refresh_state` text NOT NULL,
+            `drawer_refresh` text NOT NULL,
+            `layout_bg` text NOT NULL,
+            `layout_color` text NOT NULL,
+            `layout_font` text NOT NULL,
+            `layout_size` text NOT NULL,
+            `layout_mt` text NOT NULL,
+            `layout_mb` text NOT NULL,
+            `offer_radius` text NOT NULL,
+            `offer_bs` text NOT NULL,
+            `offer_bc` text NOT NULL,
+            `offer_border` text NOT NULL,
+            `button_bg` text NOT NULL,
+            `button_color` text NOT NULL,
+            `button_font` text NOT NULL,
+            `button_size` text NOT NULL,
+            `button_mt` text NOT NULL,
+            `button_mb` text NOT NULL,
+            `button_radius` text NOT NULL,
+            `button_bs` text NOT NULL,
+            `button_bc` text NOT NULL,
+            `button_border` text NOT NULL,
+            `image_radius` text NOT NULL,
+            `image_bs` text NOT NULL,
+            `image_bc` text NOT NULL,
+            `image_border` text NOT NULL,
+            `text_color` text NOT NULL,
+            `text_font` text NOT NULL,
+            `text_size` text NOT NULL,
+            `title_color` text NOT NULL,
+            `title_font` text NOT NULL,
+            `title_size` text NOT NULL,
+            `price_color` text NOT NULL,
+            `price_font` text NOT NULL,
+            `price_size` text NOT NULL
+        ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;';
+
+        if ($this->db->query($query)) {
+            $this->db->query('TRUNCATE TABLE `settings`');
+            $this->db->query('COMMIT;');
+            echo 'table created';
+        }
+    }
+
     public function metadata()
     {
         $data['shop'] = 'sleek-apps';
@@ -984,7 +1093,7 @@ class Slade extends CI_Controller
 
     public function users($shop, $token)
     {
-        if ($shop == 'berjis-tech-ltd' || $shop == 'sleek-apps' || $shop == 'sleek-upsell-support') {
+        if ($shop == 'berjis-tech-ltd' || $shop == 'sleek-apps') {
             if ($token != $this->db->where('shop', $shop)->get('shops')->row()->token) {
                 header('location: https://' . $shop . '/admin/apps');
             }
@@ -1103,4 +1212,68 @@ class Slade extends CI_Controller
         $this->db->where('shop', $shop)->set('status', $status)->update('auto_collection');
     }
 
+    public function gv($shop, $id)
+    {
+        $shop_name = str_replace(".myshopify.com", "", $shop);
+        $token = $this->db->where('shop', $shop_name)->get('shops')->row()->token;
+
+        $products_json = '/admin/api/2020-10/products/' . $id . '.json';
+        $products = $this->Shopify->shopify_call($token, $shop_name, $products_json, array(), 'GET');
+        $products = json_decode($products['response'], true);
+
+        $shop_json = '/admin/api/2020-10/shop.json';
+        $shop_j = $this->Shopify->shopify_call($token, $shop_name, $shop_json, array('fields' => 'money_with_currency_format,money_format'), 'GET');
+        $shop_j = json_decode($shop_j['response'], true);
+
+        header('Content-Type: application/json');
+        header('X-Shopify-Access-Token: ' . $token);
+        $p = json_encode($products);
+        $s =  json_encode($shop_j);
+
+        $data['product'] = $products['product'];
+        $data['shop'] = $shop_j['shop'];
+
+        echo json_encode($data);
+    }
+
+    public function d()
+    {
+        $shop = str_replace(".myshopify.com", "", $_GET['shop']);
+        $token = $this->db->where('shop', $shop)->get('shops')->row()->token;
+
+        if ($token == '') {
+            $s_array = array(
+                'type' => 'uninstalled',
+                'name' => 'uninstalled'
+            );
+
+            $this->db->where('shop', $shop)->set($s_array)->update('shops');
+        } else {
+
+            $s_data = $this->Shopify->shopify_call($token, $shop, '/admin/api/2020-10/shop.json', array(), 'GET');
+            $s_data = json_decode($s_data['response'], true);
+            if (array_key_exists('errors', $s_data)) {
+                $s_array = array(
+                    'type' => 'uninstalled',
+                    'name' => 'uninstalled'
+                );
+
+                $this->db->where('shop', $shop)->set($s_array)->update('shops');
+            } else {
+                print_r($s_data);
+                $s_data = $s_data['shop'];
+
+                $s_array = array(
+                    'plan_name' => $s_data['plan_name'],
+                    'shop_owner' => $s_data['shop_owner'],
+                    'plan_display_name' => $s_data['plan_display_name'],
+                    'customer_email' => $s_data['customer_email'],
+                    'domain' => $s_data['domain'],
+                    'partner' => $s_data['id']
+                );
+
+                $this->db->where('shop', $shop)->set($s_array)->update('shops');
+            }
+        }
+    }
 }
