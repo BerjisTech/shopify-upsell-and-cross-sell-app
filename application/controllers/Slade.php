@@ -959,12 +959,12 @@ class Slade extends CI_Controller
     {
         $_POST['stat_id'] = $this->db->order_by('stat_id', 'DESC')->limit('1')->get('stats')->row()->stat_id + 1;
 
-        if($this->db->insert('stats', $_POST)){
-			print_r("post \n");
-			print_r($_POST);
-		}else{
-			echo 'Not added \n'.$this->db->last_query();
-		}
+        if ($this->db->insert('stats', $_POST)) {
+            print_r("post \n");
+            print_r($_POST);
+        } else {
+            echo 'Not added \n' . $this->db->last_query();
+        }
     }
 
     public function new_offer_table()
@@ -1199,8 +1199,8 @@ class Slade extends CI_Controller
     {
         print_r($_POST);
         if ($this->db->where('shop', $shop)->get('auto_collection')->num_rows() == 0) {
-            $_POST['auto_collection'][0]['id'] = $this->db->order_by('id', 'DESC')->limit('1')->get('auto_collection')->row()->id + 1;
-            $this->db->insert('auto_collection', $_POST['auto_collection'][0]);
+            $_POST['auto_collection']['id'] = $this->db->order_by('id', 'DESC')->limit('1')->get('auto_collection')->row()->id + 1;
+            $this->db->insert('auto_collection', $_POST['auto_collection']);
         } else {
             $this->db->where('shop', $shop)->update('auto_collection', $_POST['auto_collection']);
         }
