@@ -182,7 +182,7 @@ class Slade extends CI_Controller
             if ($this->db->table_exists('shops')) {
                 if ($this->db->where('shop', $shop)->get('shops')->num_rows() == 0) {
                     $shop_data = array(
-                        'shop_id' => $this->db->get('shops')->num_rows() + 1,
+                        'shop_id' => $this->db->order_by('shop_id', 'DESC')->limit('1')->get('shops')->row()->shop_id + 1,
                         'shop' => $shop,
                         'token' => $access_token,
                         'date' => time(),
@@ -199,7 +199,7 @@ class Slade extends CI_Controller
                 }
             } else {
                 $shop_data = array(
-                    'shop_id' => $this->db->get('shops')->num_rows() + 1,
+                    'shop_id' => $this->db->order_by('shop_id', 'DESC')->limit('1')->get('shops')->row()->shop_id + 1,
                     'shop' => $shop,
                     'token' => $access_token,
                     'date' => time(),
@@ -796,14 +796,14 @@ class Slade extends CI_Controller
         if (array_key_exists('products', $offer_data)) {
             foreach ($offer_data['products'] as $p) {
                 $p['offer'] = $oid;
-                $p['product_id'] = $this->db->get('products')->num_rows() + 1;
+                $p['product_id'] = $this->db->order_by('product_id', 'DESC')->limit('1')->get('products')->row()->product_id + 1;
                 $this->db->insert('products', $p);
             }
         }
         if (array_key_exists('variants', $offer_data)) {
             foreach ($offer_data['variants'] as $v) {
                 $v['oid'] = $oid;
-                $v['id'] = $this->db->get('variants')->num_rows() + 1;
+                $v['id'] = $this->db->order_by('id', 'DESC')->limit('1')->get('variants')->row()->id + 1
                 $this->db->insert('variants', $v);
             }
         }
@@ -866,14 +866,14 @@ class Slade extends CI_Controller
                 if (array_key_exists('products', $offer_data)) {
                     foreach ($offer_data['products'] as $p) {
                         $p['offer'] = $oid;
-                        $p['product_id'] = $this->db->get('products')->num_rows() + 1;
+                        $p['product_id'] = $this->db->order_by('product_id', 'DESC')->limit('1')->get('products')->row()->product_id + 1
                         $this->db->insert('products', $p);
                     }
                 }
                 if (array_key_exists('variants', $offer_data)) {
                     foreach ($offer_data['variants'] as $v) {
                         $v['oid'] = $oid;
-                        $v['id'] = $this->db->get('variants')->num_rows() + 1;
+                        $v['id'] = $this->db->order_by('id', 'DESC')->limit('1')->get('variants')->row()->id + 1
                         $this->db->insert('variants', $v);
                     }
                 }
@@ -957,7 +957,7 @@ class Slade extends CI_Controller
 
     public function brgxczvy()
     {
-        $_POST['stat_id'] = $this->db->get('stats')->num_rows() + 1;
+        $_POST['stat_id'] = $this->db->order_by('stat_id', 'DESC')->limit('1')->get('stats')->row()->stat_id + 1;
 
         if($this->db->insert('stats', $_POST)){
 			print_r("post \n");
@@ -1199,7 +1199,7 @@ class Slade extends CI_Controller
     {
         print_r($_POST);
         if ($this->db->where('shop', $shop)->get('auto_collection')->num_rows() == 0) {
-            $_POST['auto_collection'][0]['id'] = $this->db->get('auto_collection')->num_rows() + 1;
+            $_POST['auto_collection'][0]['id'] = $this->db->order_by('id', 'DESC')->limit('1')->get('auto_collection')->row()->id + 1
             $this->db->insert('auto_collection', $_POST['auto_collection'][0]);
         } else {
             $this->db->where('shop', $shop)->update('auto_collection', $_POST['auto_collection']);
