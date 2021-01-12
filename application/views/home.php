@@ -91,7 +91,10 @@
                             <a class="nav-link" href="#pricing">Pricing</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Help</a>
+                            <a class="nav-link" onclick="Beacon('open');" href="#">Help</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="https://sleekupsell.com/news">News</a>
                         </li>
                         <li class="nav-item text-center">
                             <a href="#signup" class="btn align-middle btn-primary my-2 my-lg-0">GET STARTED</a>
@@ -287,12 +290,12 @@
                             <small class="text-muted">SLEEK</small>
                             <h5 class="card-title">$19.99</h5>
                             <p class="card-text">
-                                <ul class="list-unstyled">
-                                    <li>Unlimited Upsells and Cross-sells</li>
-                                    <li>Advanced Geo-targetting</li>
-                                    <li>Analytics &amp; Reports</li>
-                                    <li>Visual &amp; Logical customizations</li>
-                                </ul>
+                            <ul class="list-unstyled">
+                                <li>Unlimited Upsells and Cross-sells</li>
+                                <li>Advanced Geo-targetting</li>
+                                <li>Analytics &amp; Reports</li>
+                                <li>Visual &amp; Logical customizations</li>
+                            </ul>
                             </p>
                             <a href="/get_app" class="btn btn-xl btn-primary">Choose this plan</a>
                         </div>
@@ -338,6 +341,26 @@
     </div>
 
 
+    <script type="text/javascript">
+        ! function(e, t, n) {
+            function a() {
+                var e = t.getElementsByTagName("script")[0],
+                    n = t.createElement("script");
+                n.type = "text/javascript", n.async = !0, n.src = "https://beacon-v2.helpscout.net", e.parentNode.insertBefore(n, e)
+            }
+            if (e.Beacon = n = function(t, n, a) {
+                    e.Beacon.readyQueue.push({
+                        method: t,
+                        options: n,
+                        data: a
+                    })
+                }, n.readyQueue = [], "complete" === t.readyState) return a();
+            e.attachEvent ? e.attachEvent("onload", a) : e.addEventListener("load", a, !1)
+        }(window, document, window.Beacon || function() {});
+    </script>
+    <script type="text/javascript">
+        window.Beacon('init', 'a622d317-9f86-462f-9ad2-c13970d05d1f')
+    </script>
 
 
 
