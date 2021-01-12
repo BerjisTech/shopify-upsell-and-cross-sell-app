@@ -959,9 +959,10 @@ class Slade extends CI_Controller
     {
         $_POST['stat_id'] = $this->db->get('stats')->num_rows() + 1;
 
-        $this->db->insert('stats', $_POST);
-        print_r("post <br />");
-        print_r($_POST);
+        if($this->db->insert('stats', $_POST)){
+			print_r("post \n");
+			print_r($_POST);
+		}
     }
 
     public function new_offer_table()
