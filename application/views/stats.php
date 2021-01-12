@@ -687,7 +687,7 @@
         function all_time() {
             // Line Charts
             <?php
-            $ts1 = $this->db->where('shop', $duka)->order_by('stat_id', 'ASC')->limit('1')->get('stats')->row()->date;
+            $ts1 = $this->db->where('shop', $shop)->get('shops')->row()->date;
             $ts2 = time();
 
             $year1 = date('Y', $ts1);
