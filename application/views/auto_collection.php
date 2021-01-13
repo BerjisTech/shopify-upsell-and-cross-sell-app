@@ -276,7 +276,7 @@ Not supports in Firefox and IE */
     }
 </style>
 <script>
-    var auto_collection = [{
+    var auto_collection = {
         "shop": "<?php echo $shop; ?>",
         "layout": "card",
         "close": "y",
@@ -285,21 +285,23 @@ Not supports in Firefox and IE */
         "show_price": "y",
         "show_image": "y",
         "v_price": "y",
-        "c_price": "y",
+        "c_price": "n",
         "q_select": "y",
         "discount": "n",
         "code": "",
         "to_checkout": "n",
         "date": "<?php echo time(); ?>",
-        "status": "0",
-        "title": "0",
-        "text": "0"
-    }];
+        "status": "1",
+        "title": "",
+        "text": "Would you like something extra?",
+        "same_vendor": ""
+    };
     var products = [];
     var variants = [];
     var blocks = [];
     var conditions = [];
 </script>
+<div class="saving" style="display: none; position: absolute; top: 0px; right: 0px; z-index: 4000000; width: 100vw; height: 100vh; background: rgba(152,27,27,0.5); vertical-align: middle; text-align: center;"><img src="<?php echo base_url(); ?>assets/images/loader_2.gif" style="margin-top: 30vh;" /></div>
 <div class="row">
     <div class="col-sm-4 col-xs-12" style="position: fixed; top: 0px; left: 0px; height: 100vh;">
         <div style="display: flex; align-items: center; justify-content: space-between; background: #003471; position: absolute; top: 0px; left: 0px; height: 7vh; width: 100%; vertical-align: middle;">
@@ -358,13 +360,9 @@ Not supports in Firefox and IE */
                                     product price</label><br />
                                 <label><input type="checkbox" class="offer_compare_at_price" value="1" checked /> Show
                                     product compare at price</label><br />
-                                <label><input type="checkbox" class="offer_variant_price" value="1" checked /> Show
-                                    variant price</label><br />
                             </div>
                             <div style="display: table; width: 100%;">
                                 <h4>Display options <br /><small>Extra display options for this product</small></h4>
-                                <label><input type="checkbox" class="offer_linked" value="1" /> Link offer to product
-                                    page</label><br />
                                 <label><input type="checkbox" class="offer_quantity_chooser" value="1" checked /> Show
                                     quantity chooser</label><br />
                             </div>
@@ -418,12 +416,7 @@ Not supports in Firefox and IE */
                             <div style="display: table; width: 100%; height: 1px; background: #333333;"></div> */ ?>
                             <h4>Extra Options <br /><small>Adjust the offers conditional triggers</small></h4>
                             <div style="display: table; width: 100%; margin-bottom: 10px; vertical-align: top;">
-                                <label><input type="checkbox" class="offer_show_after_accepted" value="1" /> Don't
-                                    continue to show the offer after it has been accepted</label><br />
-                                <label><input type="checkbox" class="offer_required_for_checkout" value="1" /> The
-                                    offer must be accepted in order to continue.</label><br />
-                                <label><input type="checkbox" class="offer_automatically_remove" value="1" /> Remove
-                                    offer product from cart if offer conditions are no longer met.</label><br />
+                                <label><input type="checkbox" class="same_vendor" value="1" /> Limit offer to same vendors?</label><br />
                             </div>
                         </div>
                     </div>
@@ -891,6 +884,13 @@ Not supports in Firefox and IE */
             auto_collection['close'] = 'n';
         }
     });
+    $('.same_vendor').change(function() {
+        if (this.checked) {
+            auto_collection['same_vendor'] = 'y';
+        } else {
+            auto_collection['same_vendor'] = 'n';
+        }
+    })
     $('.offer_to_checkout').change(function() {
         if (this.checked) {
             auto_collection['to_checkout'] = 'y';
@@ -924,7 +924,7 @@ Not supports in Firefox and IE */
         $('.sleek-text').html($(this).val());
         auto_collection['text'] = $(this).val();
     });
-    $('.offer_button_text').on('keyup change', function() {
+    $('.offer_button_text').on('input', function() {
         $('.sleek-atc').html($(this).val());
         auto_collection['atc'] = $(this).val();
     });
@@ -974,13 +974,6 @@ Not supports in Firefox and IE */
         }
     });
 
-    $('.offer_linked').change(function() {
-        if (this.checked) {
-            auto_collection['linked'] = 'y';
-        } else {
-            auto_collection['linked'] = 'n';
-        }
-    });
 
     $('.offer_title').on('keyup change', function() {
         auto_collection['title'] = $(this).val();
@@ -1277,11 +1270,11 @@ Not supports in Firefox and IE */
                     var datacell = data['product'];
                     // console.log(data);
 
-                    let card_ui = '<form class="sleek-form" data-product-index="' + i + '"> <div class="sleek-image"> <img src="' + datacell['image']['src'] + '"/> </div><div class="sleek-offer"> <div class="sleek-title">' + datacell['title'] + '</div><div class="sleek-selectors">  <select class="v-select v-' + product_id + '"></select> <select class="q-select q-' + product_id + '"></select> </div></div><div class="sleek-card-atc"> <div class="sleek-prices"> <span class="sleek-price money">' + s_data['currency'] + ' ' + datacell['variants'][0]['price'] + '</span> <span class="sleek-compare-price money">' + s_data['currency'] + ' ' + datacell['variants'][0]['price'] + '</span> </div><button class="sleek-atc" type="submit" onclick="return false;">' + $('.offer_button_text').val() + '</button> </div></form>';
-                    let block_ui = '<form class="sleek-form" data-product-index="' + i + '"> <div class="sleek-block"> <div class="sleek-image"> <img src="' + datacell['image']['src'] + '"/> </div><div class="sleek-offer"> <div class="sleek-title">' + datacell['title'] + '</div><div class="sleek-prices"> <span class="sleek-price money">' + s_data['currency'] + ' ' + datacell['variants'][0]['price'] + '</span> <span class="sleek-compare-price money">' + s_data['currency'] + ' ' + datacell['variants'][0]['price'] + '</span> </div><div class="sleek-selectors">  <select class="v-select v-' + product_id + '"></select> <select class="q-select q-' + product_id + '"></select> </div></div></div><button class="sleek-atc" type="submit" onclick="return false;">' + $('.offer_button_text').val() + '</button> </form>';
-                    let half_block_ui = '<form class="sleek-form" data-product-index="' + i + '"> <div class="sleek-half-block"> <div class="sleek-image"> <img src="' + datacell['image']['src'] + '"/> </div><div class="sleek-offer"> <div class="sleek-title">' + datacell['title'] + '</div><div class="sleek-prices"> <span class="sleek-price money">' + s_data['currency'] + ' ' + datacell['variants'][0]['price'] + '</span> <span class="sleek-compare-price money">' + s_data['currency'] + ' ' + datacell['variants'][0]['price'] + '</span> </div><div class="sleek-selectors">  <select class="v-select v-' + product_id + '"></select> <select class="q-select q-' + product_id + '"></select> </div></div></div><button class="sleek-atc" type="submit" onclick="return false;">' + $('.offer_button_text').val() + '</button> </form>';
-                    let flat_ui = '<form class="sleek-form" data-product-index="' + i + '"> <div class="sleek-flat"> <div class="sleek-image"> <img src="' + datacell['image']['src'] + '"/> </div><div class="sleek-offer"> <div class="sleek-title">' + datacell['title'] + '</div><div class="sleek-prices"> <span class="sleek-price money">' + s_data['currency'] + ' ' + datacell['variants'][0]['price'] + '</span> <span class="sleek-compare-price money">' + s_data['currency'] + ' ' + datacell['variants'][0]['price'] + '</span> </div><div class="sleek-selectors">  <select class="v-select v-' + product_id + '"></select> <div class="flex-select"> <select class="q-select q-' + product_id + '"></select> <button class="sleek-atc" type="submit" onclick="return false;">' + $('.offer_button_text').val() + '</button> </div></div></div></div></form>';
-                    let compact_ui = '<form class="sleek-form" data-product-index="' + i + '"> <div class="sleek-compact"> <div class="sleek-image"> <img src="' + datacell['image']['src'] + '"/> </div><div class="sleek-offer"> <div class="sleek-title">' + datacell['title'] + '</div><div class="sleek-prices"> <span class="sleek-price money">' + s_data['currency'] + ' ' + datacell['variants'][0]['price'] + '</span> <span class="sleek-compare-price money">' + s_data['currency'] + ' ' + datacell['variants'][0]['price'] + '</span> </div><div class="sleek-selectors">  <select class="v-select v-' + product_id + '"></select> <select class="q-select q-' + product_id + '"></select> </div><button class="sleek-atc" type="submit" onclick="return false;">' + $('.offer_button_text').val() + '</button> </div></div></form>';
+                    let card_ui = '<form class="sleek-form" data-product-index="' + i + '"> <div class="sleek-image"> <img src="' + datacell['image']['src'] + '"/> </div><div class="sleek-offer"> <div class="sleek-text">Need Free Shipping?</div><div class="sleek-title">' + datacell['title'] + '</div><div class="sleek-selectors"> <div class="offer_fields_holder o_h_' + product_id + '"></div> <select class="v-select v-' + product_id + '"></select> <select class="q-select q-' + product_id + '"></select> </div></div><div class="sleek-card-atc"> <div class="sleek-prices"> <span class="sleek-price money">' + s_data['currency'] + ' ' + datacell['variants'][0]['price'] + '</span> <span class="sleek-compare-price money">' + s_data['currency'] + ' ' + datacell['variants'][0]['price'] + '</span> </div><button class="sleek-atc" type="submit" onclick="return false;">' + $('.offer_button_text').val() + '</button> </div></form>';
+                    let block_ui = '<form class="sleek-form" data-product-index="' + i + '"> <div class="sleek-text">Need Free Shipping?</div><div class="sleek-block"> <div class="sleek-image"> <img src="' + datacell['image']['src'] + '"/> </div><div class="sleek-offer"> <div class="sleek-title">' + datacell['title'] + '</div><div class="sleek-prices"> <span class="sleek-price money">' + s_data['currency'] + ' ' + datacell['variants'][0]['price'] + '</span> <span class="sleek-compare-price money">' + s_data['currency'] + ' ' + datacell['variants'][0]['price'] + '</span> </div><div class="sleek-selectors"> <div class="offer_fields_holder o_h_' + product_id + '"></div> <select class="v-select v-' + product_id + '"></select> <select class="q-select q-' + product_id + '"></select> </div></div></div><button class="sleek-atc" type="submit" onclick="return false;">' + $('.offer_button_text').val() + '</button> </form>';
+                    let half_block_ui = '<form class="sleek-form" data-product-index="' + i + '"> <div class="sleek-half-block"> <div class="sleek-image"> <img src="' + datacell['image']['src'] + '"/> </div><div class="sleek-offer"> <div class="sleek-text">Need Free Shipping?</div><div class="sleek-title">' + datacell['title'] + '</div><div class="sleek-prices"> <span class="sleek-price money">' + s_data['currency'] + ' ' + datacell['variants'][0]['price'] + '</span> <span class="sleek-compare-price money">' + s_data['currency'] + ' ' + datacell['variants'][0]['price'] + '</span> </div><div class="sleek-selectors"> <div class="offer_fields_holder o_h_' + product_id + '"></div> <select class="v-select v-' + product_id + '"></select> <select class="q-select q-' + product_id + '"></select> </div></div></div><button class="sleek-atc" type="submit" onclick="return false;">' + $('.offer_button_text').val() + '</button> </form>';
+                    let flat_ui = '<form class="sleek-form" data-product-index="' + i + '"> <div class="sleek-text">Need Free Shipping?</div><div class="sleek-flat"> <div class="sleek-image"> <img src="' + datacell['image']['src'] + '"/> </div><div class="sleek-offer"> <div class="sleek-title">' + datacell['title'] + '</div><div class="sleek-prices"> <span class="sleek-price money">' + s_data['currency'] + ' ' + datacell['variants'][0]['price'] + '</span> <span class="sleek-compare-price money">' + s_data['currency'] + ' ' + datacell['variants'][0]['price'] + '</span> </div><div class="sleek-selectors"> <div class="offer_fields_holder o_h_' + product_id + '"></div> <select class="v-select v-' + product_id + '"></select> <div class="flex-select"> <select class="q-select q-' + product_id + '"></select> <button class="sleek-atc" type="submit" onclick="return false;">' + $('.offer_button_text').val() + '</button> </div></div></div></div></form>';
+                    let compact_ui = '<form class="sleek-form" data-product-index="' + i + '"> <div class="sleek-compact"> <div class="sleek-image"> <img src="' + datacell['image']['src'] + '"/> </div><div class="sleek-offer"> <div class="sleek-text">Need Free Shipping?</div><div class="sleek-title">' + datacell['title'] + '</div><div class="sleek-prices"> <span class="sleek-price money">' + s_data['currency'] + ' ' + datacell['variants'][0]['price'] + '</span> <span class="sleek-compare-price money">' + s_data['currency'] + ' ' + datacell['variants'][0]['price'] + '</span> </div><div class="sleek-selectors"> <div class="offer_fields_holder o_h_' + product_id + '"></div> <select class="v-select v-' + product_id + '"></select> <select class="q-select q-' + product_id + '"></select> </div><button class="sleek-atc" type="submit" onclick="return false;">' + $('.offer_button_text').val() + '</button> </div></div></form>';
                     $('.card').append(card_ui);
                     $('.block').append(block_ui);
                     $('.half-block').append(half_block_ui);
@@ -1550,6 +1543,7 @@ Not supports in Firefox and IE */
     $('.saveOffer').click(function() {
         console.log(auto_collection);
         $('.saveOffer').attr("disabled", true);
+        $('.saving').show();
         $.ajax({
             type: "POST",
             url: base_url + 'create_auto_collection/<?php echo $shop ?>/<?php echo $token; ?>?<?php echo $_SERVER['QUERY_STRING']; ?>',
@@ -1559,9 +1553,17 @@ Not supports in Firefox and IE */
             success: function(response) {
                 $('.saveOffer').attr("disabled", false);
                 console.log(response);
+                $('.saving').html('<span class="entypo-thumbs-up btn btn-sucess btn-lg" style="margin-top: 30vh; font-weight: bold; color: #ffffff; background: #000000;">SUCCESFULLY SAVED</span>');
+                setTimeout(function() {
+                    $('.saving').hide(400);
+                }, 1000);
             },
-            error: function() {
-                alert('An error occured');
+            error: function(error) {
+                console.log(error);
+                $('.saving').html('<span class="entypo-thumbs-up btn btn-sucess btn-lg" style="margin-top: 30vh; font-weight: bold; color: #ffffff; background: #E52F28;">ERROR</span>');
+                setTimeout(function() {
+                    $('.saving').hide(400);
+                }, 1000);
             }
         });
 
