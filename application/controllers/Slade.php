@@ -1238,6 +1238,24 @@ class Slade extends CI_Controller
 
         echo json_encode($data);
     }
+    
+    public function mf($shop)
+    {
+        $shop_name = str_replace(".myshopify.com", "", $shop);
+        $token = $this->db->where('shop', $shop_name)->get('shops')->row()->token;
+
+        $shop_json = '/admin/api/2020-10/shop.json';
+        $shop_j = $this->Shopify->shopify_call($token, $shop_name, $shop_json, array('fields' => 'money_format'), 'GET');
+        $shop_j = json_decode($shop_j['response'], true);
+
+        header('Content-Type: application/json');
+        header('X-Shopify-Access-Token: ' . $token);
+
+        $shop_j = $shop_j['shop']['money_format'];
+        $shop_j = str_replace('<span class="money">', '', $shop_j);
+        $shop_j = str_replace('</span>', '', $shop_j);
+        echo $shop_j;
+    }
 
     public function d()
     {
