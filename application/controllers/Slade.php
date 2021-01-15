@@ -340,7 +340,7 @@ class Slade extends CI_Controller
                     'name' => 'Sleek',
                     'test' => true,
                     'price' => 19.99,
-                    'trial_days' => 14,
+                    'trial_days' => 0,
                     'return_url' => 'https://' . $_GET['shop'] . '/admin/apps/sleek-upsell/activate?t=true&hmac=' . $_GET['hmac'] . '&shop=' . $_GET['shop'],
                 ),
             );
@@ -350,7 +350,7 @@ class Slade extends CI_Controller
                     'name' => 'Sleek',
                     'test' => false,
                     'price' => 19.99,
-                    'trial_days' => 14,
+                    'trial_days' => 7,
                     'return_url' => 'https://' . $_GET['shop'] . '/admin/apps/sleek-upsell/activate?t=false&hmac=' . $_GET['hmac'] . '&shop=' . $_GET['shop'],
                 ),
             );
@@ -408,7 +408,7 @@ class Slade extends CI_Controller
                 'bill_interval' => 'EVERY_30_DAYS',
                 'capped_amount' => 19.99,
                 'terms' => 'NO_TERMS',
-                'trial_days' => '14',
+                'trial_days' => '7',
                 'test' => $_GET['t'],
                 'on_install' => 1,
                 'created_at' => '',
