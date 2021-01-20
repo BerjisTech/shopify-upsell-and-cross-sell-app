@@ -386,7 +386,7 @@ Not supports in Firefox and IE */
                             <h4>Offer Conditions <br /><small>Choose when to give your customers this offer</small></h4>
                             <div style="display: table; width: 100%; margin-bottom: 10px; vertical-align: top;">
                                 <div style="display: table; width: 100%; width: 100%; background: #ffffff; padding: 5px; margin-bottom: 5px;">
-                                    <p>Select the eneral rule that'll Affects blocks e.g Block 1 and/or Block 2
+                                    <p>Select the general rule that'll affect blocks e.g Block 1 and/or Block 2
                                         <select class="form-control offer_general_rule">
                                             <option value="ALL">ALL</option>
                                             <option value="ANY">ANY</option>
@@ -430,7 +430,7 @@ Not supports in Firefox and IE */
                     <div id="collapseFour-2" class="panel-collapse collapse">
                         <div class="panel-body">
                             <div style="display: table; width: 100%; margin-bottom: 10px;">
-                                <label><input type="checkbox" class="offer_apply_discount" value="1" /> Add add
+                                <label><input type="checkbox" class="offer_apply_discount" value="1" /> Add
                                     discount to this offer. <br /><span class="text-info">Paste your discount code
                                         below</span></label><br />
                                 <input type="text" name="discount-code" placeholder="Paste your discount code here" class="form-control offer_discount_code" style="padding: 10px; border: 2px solid #666666; border-radius: 5px;" />
@@ -1333,23 +1333,23 @@ Not supports in Firefox and IE */
                     console.log(products[i]);
 
                     if (products[i]['show_title'] == 'n') {
-                        $('.sleek-title').remove();
+                        $('.sleek-title').hide();
                     }
 
                     if (products[i]['show_price'] == 'n') {
-                        $('.sleek-prices').remove();
+                        $('.sleek-prices').hide();
                     }
 
                     if (products[i]['show_image'] == 'n') {
-                        $('.sleek-image').remove();
+                        $('.sleek-image').hide();
                     }
 
                     if (products[i]['v_price'] == 'n') {
-                        $('.sleek-price').remove();
+                        $('.sleek-price').hide();
                     }
 
                     if (products[i]['c_price'] == 'n') {
-                        $('.sleek-compare-price').remove();
+                        $('.sleek-compare-price').hide();
                     }
 
                     if (products[i]['q_select'] == 'n') {

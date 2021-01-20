@@ -1601,23 +1601,23 @@ Not supports in Firefox and IE */
                     console.log(products[i]);
 
                     if (products[i]['show_title'] == 'n') {
-                        $('.sleek-title').remove();
+                        $('.sleek-title').hide();
                     }
 
                     if (products[i]['show_price'] == 'n') {
-                        $('.sleek-prices').remove();
+                        $('.sleek-prices').hide();
                     }
 
                     if (products[i]['show_image'] == 'n') {
-                        $('.sleek-image').remove();
+                        $('.sleek-image').hide();
                     }
 
                     if (products[i]['v_price'] == 'n') {
-                        $('.sleek-price').remove();
+                        $('.sleek-price').hide();
                     }
 
                     if (products[i]['c_price'] == 'n') {
-                        $('.sleek-compare-price').remove();
+                        $('.sleek-compare-price').hide();
                     }
 
                     if (products[i]['q_select'] == 'n') {
