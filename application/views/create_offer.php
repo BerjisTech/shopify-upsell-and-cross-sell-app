@@ -1573,11 +1573,11 @@ Not supports in Firefox and IE */
                     }
 
                     if (products[i]['v_price'] == 'n') {
-                        $('.sleek-compare-price').remove();
+                        $('.sleek-price').remove();
                     }
 
                     if (products[i]['c_price'] == 'n') {
-                        $('.sleek-price').remove();
+                        $('.sleek-compare-price').remove();
                     }
 
                     if (products[i]['q_select'] == 'n') {
