@@ -92,7 +92,7 @@
                             </h1>
                             <hr />
                             <h3>Welcome to the world of Sleek Upsell</h3>
-                            <p style="font-size: 18px !important; color: #8797A8 !important; margin-bottom: 0px !important;">Thank you for choosing Sleek Upsell to boost your sales! the app has veerything in-built. No need for complex settings to get you started. Use the links below to create offers and adjust the visual design.</p>
+                            <p style="font-size: 18px !important; color: #8797A8 !important; margin-bottom: 0px !important;">Thank you for choosing Sleek Upsell to boost your sales! the app has everything in-built. No need for complex settings to get you started. Use the links below to create offers and adjust the visual design.</p>
 
                             <p style="font-size: 18px !important; color: #8797A8 !important; margin-bottom: 0px !important;">Need help? Be sure to drop an email and we will repsond in less than 20 minutes. Our support team thrives on customer happiness</p>
 
