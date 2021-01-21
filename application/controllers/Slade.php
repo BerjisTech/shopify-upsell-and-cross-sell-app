@@ -51,54 +51,13 @@ class Slade extends CI_Controller
             $this_script = '/admin/api/2020-10/script_tags.json';
             $script_tags_url = "/admin/api/2020-10/script_tags.json";
 
-            $script_exists = $this->Shopify->shopify_call($token, $this_shop, $this_script, array('fields' => 'id,src,event,created_at,updated_at,'), 'GET');
+            $script_exists = $this->Shopify->shopify_call($token, $shop, $this_script, array('fields' => 'id,src,event,created_at,updated_at,'), 'GET');
             $script_exists = json_decode($script_exists['response'], true);
 
-            if (!isset($script_exists['script_tags'])) {
-                echo '<script>window.location.href = "' . base_url() . 'install?shop=' . $this_shop . '";</script>';
-            }
-            // CREATE NEW SCRIPT TAG
             if (count($script_exists['script_tags']) == 0) {
-                $script_array = array(
-                    'script_tag' => array(
-                        'event' => 'onload',
-                        'src' => base_url() . 'assets/js/shopify.js',
-                    ),
-                );
-
-                $scriptTag = $this->Shopify->shopify_call($token, $this_shop, $script_tags_url, $script_array, 'POST');
-                $scriptTag = json_decode($scriptTag['response'], JSON_PRETTY_PRINT);
+                $data['do_script'] = "add";
             } else {
-                echo '<script>console.log(' . json_encode($script_exists) . ');</script>';
-            }
-
-            // REMOVE OLD SCRIPT TAGS
-            if (count($script_exists['script_tags']) > 1) {
-                foreach ($script_exists['script_tags'] as $key => $fetch) {
-                    $delete_script = $this->Shopify->shopify_call($token, $this_shop, '/admin/api/2020-10/script_tags/' . $fetch['id'] . '.json', array('fields' => 'id,src,event,created_at,updated_at,'), 'DELETE');
-                    $delete_script = json_decode($delete_script['response'], true);
-                    echo '<script>console.log(' . json_encode($delete_script) . ');</script>';
-                }
-                $script_array = array(
-                    'script_tag' => array(
-                        'event' => 'onload',
-                        'src' => base_url() . 'assets/js/shopify.js',
-                    ),
-                );
-
-                $scriptTag = $this->Shopify->shopify_call($token, $this_shop, $script_tags_url, $script_array, 'POST');
-                $scriptTag = json_decode($scriptTag['response'], JSON_PRETTY_PRINT);
-
-                $w_array = array(
-                    'webhook' => array(
-                        'topic' => 'app/uninstalled',
-                        'address' => 'https://sleek-upsell.com/d?shop=' . $_GET['shop'],
-                        'format' => 'json'
-                    )
-                );
-
-                $webhook = $this->Shopify->shopify_call($token, $shop, "/admin/api/2020-07/webhooks.json", $w_array, 'POST');
-                $webhook = json_decode($webhook['response'], JSON_PRETTY_PRINT);
+                $data['do_script'] = "remove";
             }
 
 
@@ -420,8 +379,103 @@ class Slade extends CI_Controller
             $this->Shopify->do_email($this->db->where('shop', $shop)->get('shops')->row()->shop_owner . ' just installed Sleek Apps on ' . $this->db->where('shop', $shop)->get('shops')->row()->domain . '<br /> Email: ' . $this->db->where('shop', $shop)->get('shops')->row()->customer_email, 'New User', 'support@sleekupsell.com', 'sleek.apps.data@gmail.com');
 
             $this->db->where('shop', str_replace(".myshopify.com", "", $_GET['shop']))->set($active_shop)->update('shops');
+
+            // SCRIPT TAGS
+            $this_script = '/admin/api/2020-10/script_tags.json';
+            $script_tags_url = "/admin/api/2020-10/script_tags.json";
+
+            $script_exists = $this->Shopify->shopify_call($token, $shop, $this_script, array('fields' => 'id,src,event,created_at,updated_at,'), 'GET');
+            $script_exists = json_decode($script_exists['response'], true);
+
+            // CREATE NEW SCRIPT TAG
+            if (count($script_exists['script_tags']) == 0) {
+                $script_array = array(
+                    'script_tag' => array(
+                        'event' => 'onload',
+                        'src' => base_url() . 'assets/js/shopify.js',
+                    ),
+                );
+
+                $scriptTag = $this->Shopify->shopify_call($token, $shop, $script_tags_url, $script_array, 'POST');
+                $scriptTag = json_decode($scriptTag['response'], JSON_PRETTY_PRINT);
+            } else {
+                echo '<script>console.log(' . json_encode($script_exists) . ');</script>';
+            }
+
+            // REMOVE OLD SCRIPT TAGS
+            if (count($script_exists['script_tags']) > 1) {
+                foreach ($script_exists['script_tags'] as $key => $fetch) {
+                    $delete_script = $this->Shopify->shopify_call($token, $shop, '/admin/api/2020-10/script_tags/' . $fetch['id'] . '.json', array('fields' => 'id,src,event,created_at,updated_at,'), 'DELETE');
+                    $delete_script = json_decode($delete_script['response'], true);
+                    echo '<script>console.log(' . json_encode($delete_script) . ');</script>';
+                }
+                $script_array = array(
+                    'script_tag' => array(
+                        'event' => 'onload',
+                        'src' => base_url() . 'assets/js/shopify.js',
+                    ),
+                );
+
+                $scriptTag = $this->Shopify->shopify_call($token, $shop, $script_tags_url, $script_array, 'POST');
+                $scriptTag = json_decode($scriptTag['response'], JSON_PRETTY_PRINT);
+
+                $w_array = array(
+                    'webhook' => array(
+                        'topic' => 'app/uninstalled',
+                        'address' => 'https://sleek-upsell.com/d?shop=' . $_GET['shop'],
+                        'format' => 'json'
+                    )
+                );
+
+                $webhook = $this->Shopify->shopify_call($token, $shop, "/admin/api/2020-07/webhooks.json", $w_array, 'POST');
+                $webhook = json_decode($webhook['response'], JSON_PRETTY_PRINT);
+            }
+
             echo '<script>top.window.location="https://' . $_GET['shop'] . '/admin/apps/sleek-upsell?' . $_SERVER['QUERY_STRING'] . '";</script>';
         }
+    }
+
+    public function add_tag($shop, $token)
+    {
+        // SCRIPT TAGS
+        $this_script = '/admin/api/2020-10/script_tags.json';
+        $script_tags_url = "/admin/api/2020-10/script_tags.json";
+
+        $script_exists = $this->Shopify->shopify_call($token, $shop, $this_script, array('fields' => 'id,src,event,created_at,updated_at,'), 'GET');
+        $script_exists = json_decode($script_exists['response'], true);
+
+        // CREATE NEW SCRIPT TAG
+        if (count($script_exists['script_tags']) == 0) {
+            $script_array = array(
+                'script_tag' => array(
+                    'event' => 'onload',
+                    'src' => base_url() . 'assets/js/shopify.js',
+                ),
+            );
+
+            $scriptTag = $this->Shopify->shopify_call($token, $shop, $script_tags_url, $script_array, 'POST');
+            $scriptTag = json_decode($scriptTag['response'], JSON_PRETTY_PRINT);
+            echo 'Automatic script tag succesfully added';
+        } else {
+            echo 'Automatic script tag already exists';
+        }
+    }
+
+    public function remove_tag($shop, $token)
+    {
+        // SCRIPT TAGS
+        $this_script = '/admin/api/2020-10/script_tags.json';
+        $script_tags_url = "/admin/api/2020-10/script_tags.json";
+
+        $script_exists = $this->Shopify->shopify_call($token, $shop, $this_script, array('fields' => 'id,src,event,created_at,updated_at,'), 'GET');
+        $script_exists = json_decode($script_exists['response'], true);
+
+        // REMOVE OLD SCRIPT TAGS
+        foreach ($script_exists['script_tags'] as $key => $fetch) {
+            $delete_script = $this->Shopify->shopify_call($token, $shop, '/admin/api/2020-10/script_tags/' . $fetch['id'] . '.json', array('fields' => 'id,src,event,created_at,updated_at,'), 'DELETE');
+            $delete_script = json_decode($delete_script['response'], true);
+        }
+        echo 'Automatic script tag succesfully removed';
     }
 
     public function get_app()
@@ -1238,7 +1292,7 @@ class Slade extends CI_Controller
 
         echo json_encode($data);
     }
-    
+
     public function mf($shop)
     {
         $shop_name = str_replace(".myshopify.com", "", $shop);

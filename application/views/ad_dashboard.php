@@ -109,6 +109,18 @@
                 </div>
             <?php endif; ?>
             <?php if ($this->db->where('shop', $shop)->get('offers')->num_rows() > 0 || $this->db->where('shop', $shop)->get('auto_collection')->num_rows() > 0) : ?>
+                <div class="tile-stats tile-white stat-tile" style="display: table; width: 100%; height: auto !important; padding: 10px;margin-bottom: 10px; box-shadow: 0px 0px 5px rgba(2, 2, 2, 0.2);">
+                    <?php if ($do_script == 'add') : ?>
+                        <span onclick="$.ajax({url: '<?php echo base_url(); ?>add_tag/<?php echo $shop . '/' . $token ?>', success: function(e){ alert(e); window.location.reload(false);}, error: function(){ Alert('There was an error removing the automatic script tag'); } })" class="pull-right btn btn-success btn-icon icon-right">Add Automatic Script Tag<em class="entypo-plus"></em></span>
+                    <?php else : ?>
+                        <span class="pull-left">
+                            Is the app loading slowly or slowing down your store? You can add our manual script tag to your theme.liquid file right before the
+                            <pre>&lt;/body&gt;</pre> tag then remove the automatic tag<br />
+                            <pre>&lt;script src="https://sleek-upsell.com/assets/js/shopify.js?shop=<?php echo $shop; ?>.myshopify.com"&gt;&lt;/script&gt;</pre>
+                        </span>
+                        <span onclick="$.ajax({url: '<?php echo base_url(); ?>remove_tag/<?php echo $shop . '/' . $token ?>', success: function(e){ alert(e); window.location.reload(false);}, error: function(){ Alert('There was an error removing the automatic script tag'); } })" class="pull-right btn btn-danger btn-icon icon-right">Remove Automatic Script Tag<em class="entypo-trash"></em></span>
+                    <?php endif; ?>
+                </div>
                 <script type="text/javascript">
                     jQuery(document).ready(function() {
                         // Sparkline Charts
