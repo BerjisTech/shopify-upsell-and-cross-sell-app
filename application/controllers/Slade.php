@@ -556,8 +556,6 @@ class Slade extends CI_Controller
     public function offers($shop)
     {
         $shop_name = str_replace(".myshopify.com", "", $shop);
-        $products_json = '/admin/api/2020-10/products.json';
-        $collections_json = '/admin/api/2020-10/custom_collections.json';
         $collects_json = '/admin/api/2020-10/collects.json';
         $themes_json = '/admin/api/2020-10/themes.json';
 
@@ -570,15 +568,11 @@ class Slade extends CI_Controller
             $data['shop'] = $shop_name;
             $data['token'] = $token;
             $collects = $this->Shopify->shopify_call($token, $shop_name, $collects_json, array(), 'GET');
-            $collections = $this->Shopify->shopify_call($token, $shop_name, $collections_json, array(), 'GET');
-            $products = $this->Shopify->shopify_call($token, $shop_name, $products_json, array(), 'GET');
             $themes = $this->Shopify->shopify_call($token, $shop_name, $themes_json, array(), 'GET');
         }
 
         $sid = $this->db->where('shop', $shop_name)->get('shops')->row()->shop_id;
 
-        $params['products'] = json_decode($products['response'], true);
-        $params['collections'] = json_decode($collections['response'], true);
         $params['collects'] = json_decode($collects['response'], true);
         $params['themes'] = json_decode($themes['response'], true);
 
@@ -597,8 +591,6 @@ class Slade extends CI_Controller
             $data['offer'][$oid]['choices'] = $this->db->where('oid', $oid)->get('choices')->result_array();
         }
 
-        $data['products'] = $params['products']['products'];
-        $data['collections'] = $params['collections']['custom_collections'];
         $data['collects'] = $params['collects']['collects'];
         $data['themes'] = $params['themes']['themes'];
 

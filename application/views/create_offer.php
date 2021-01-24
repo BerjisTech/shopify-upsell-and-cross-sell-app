@@ -527,7 +527,7 @@ Not supports in Firefox and IE */
                                 <h4>Choose the product to be replaced once this offered product is accepted<br /><small>Search product or variant</small></h4>
                                 <div class="input-group">
                                     <input type="text" placeholder="ADD TO CART" class="form-control replace_this" style="padding: 10px; border: 2px solid #666666; border-radius: 5px 0px 0px 5px;" />
-                                    <span class="input-group-addon btn btn-primary entypo-cancel" onclick="$('.replacer').html('');products[$('.toplect').val()]['rp']='';products[$('.toplect').val()]['rv']='';">CLEAR</span>
+                                    <span class="input-group-addon btn btn-primary entypo-cancel" onclick="$('.replacer').html('');products[$('.toplect').val()]['rp']='';products[$('.toplect').val()]['rv']='';$('.replace_this').val('');">CLEAR</span>
                                 </div>
                                 <div class="replacer"></div>
                             </div>
