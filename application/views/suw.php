@@ -1240,7 +1240,7 @@
         $('.saving').show();
         $.ajax({
             type: "POST",
-            url: ''<?php echo base_url(); ?>'update_settings?<?php echo $_SERVER['QUERY_STRING']; ?>',
+            url: '<?php echo base_url(); ?>update_settings?<?php echo $_SERVER['QUERY_STRING']; ?>',
             data: shop_sets,
             success: function(response) {
                 console.log(response);
