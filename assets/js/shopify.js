@@ -914,12 +914,6 @@ if (sessionStorage.getItem('s_u_w') == 'y' || page_ss.includes(s_s_w)) {
                 }
 
                 $('.sleek-upsell').append(o_ui);
-                if ($('.sleek-form[data-product-index="0"]').length > 1) {
-                    for (let sf = 1; sf <= $('.sleek-form[data-product-index="0"]').length; sf++) {
-                        console.log('removing ' + sf);
-                        $('.sleek-form[data-product-index="0"]')[sf].remove();
-                    }
-                }
 
                 if (auto_collection['show_title'] == 'n') {
                     $('.sleek-title').remove()
