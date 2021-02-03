@@ -293,27 +293,37 @@ class Slade extends CI_Controller
 
         $plan = $s_data['plan_display_name'];
 
-        if ($plan == 'Developer Preview' || $plan == 'Development') {
-            $array = array(
-                'recurring_application_charge' => array(
-                    'name' => 'Sleek',
-                    'test' => true,
-                    'price' => 19.99,
-                    'trial_days' => 0,
-                    'return_url' => 'https://' . $_GET['shop'] . '/admin/apps/sleek-upsell/activate?t=true&hmac=' . $_GET['hmac'] . '&shop=' . $_GET['shop'],
-                ),
-            );
-        } else {
-            $array = array(
-                'recurring_application_charge' => array(
-                    'name' => 'Sleek',
-                    'test' => false,
-                    'price' => 19.99,
-                    'trial_days' => 7,
-                    'return_url' => 'https://' . $_GET['shop'] . '/admin/apps/sleek-upsell/activate?t=false&hmac=' . $_GET['hmac'] . '&shop=' . $_GET['shop'],
-                ),
-            );
-        }
+        // if ($plan == 'Developer Preview' || $plan == 'Development') {
+        //     $array = array(
+        //         'recurring_application_charge' => array(
+        //             'name' => 'Sleek',
+        //             'test' => true,
+        //             'price' => 19.99,
+        //             'trial_days' => 0,
+        //             'return_url' => 'https://' . $_GET['shop'] . '/admin/apps/sleek-upsell/activate?t=true&hmac=' . $_GET['hmac'] . '&shop=' . $_GET['shop'],
+        //         ),
+        //     );
+        // } else {
+        //     $array = array(
+        //         'recurring_application_charge' => array(
+        //             'name' => 'Sleek',
+        //             'test' => false,
+        //             'price' => 19.99,
+        //             'trial_days' => 7,
+        //             'return_url' => 'https://' . $_GET['shop'] . '/admin/apps/sleek-upsell/activate?t=false&hmac=' . $_GET['hmac'] . '&shop=' . $_GET['shop'],
+        //         ),
+        //     );
+        // }
+
+        $array = array(
+            'recurring_application_charge' => array(
+                'name' => 'Sleek',
+                'test' => false,
+                'price' => 19.99,
+                'trial_days' => 14,
+                'return_url' => 'https://' . $_GET['shop'] . '/admin/apps/sleek-upsell/activate?t=false&hmac=' . $_GET['hmac'] . '&shop=' . $_GET['shop'],
+            ),
+        );
 
         $charge = $this->Shopify->shopify_call($token, $shop, "/admin/api/2020-10/recurring_application_charges.json", $array, 'POST');
         $charge = json_decode($charge['response'], JSON_PRETTY_PRINT);
