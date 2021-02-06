@@ -91,14 +91,12 @@
                                 Sleek Upsell
                             </h1>
                             <hr />
-                            
                             <h3>Welcome to the world of Sleek Upsell</h3>
-
                             <p style="font-size: 18px !important; color: #8797A8 !important; margin-bottom: 0px !important;">Thank you for choosing Sleek Upsell to boost your sales! the app has everything in-built. No need for complex settings to get you started. Use the links below to create offers and adjust the visual design.</p>
 
                             <p style="font-size: 18px !important; color: #8797A8 !important; margin-bottom: 0px !important;">Need help? Be sure to drop an email and we will repsond in less than 20 minutes. Our support team thrives on customer happiness</p>
 
-                            <iframe style="width: 100%; height: auto;" src="https://www.youtube.com/embed/DCygIfcKoes" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                            <iframe style="width: 90%; margin-left: 5%; height: 400px; border-radius: 10px; box-shadow: 0px 0px 10px rgb(3 3 3 / 60%);" src="https://www.youtube.com/embed/DCygIfcKoes" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
                             <div style="display: flex; justify-content: space-between; align-items: center; padding: 20px 20px 20px 20px;">
                                 <a href="<?php echo base_url(); ?>new_offer/<?php echo $shop; ?>/<?php echo $token; ?>?<?php echo $_SERVER['QUERY_STRING']; ?>" class="btn btn-lg btn-primary btn-icon icon-right"><i class="entypo-plus"></i>CREATE AN OFFER</a>
