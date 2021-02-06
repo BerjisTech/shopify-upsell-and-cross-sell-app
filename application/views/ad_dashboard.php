@@ -505,7 +505,7 @@
                         });
                     </script>
 
-                    <div class="tile-stats tile-white stat-tile" style="display: table; width: 100%; height: auto !important; padding: 10px;margin-bottom: 10px; box-shadow: 0px 0px 5px rgba(2, 2, 2, 0.2);">
+                    <div class="tile-stats tile-white stat-tile" style="display: table; width: 100%; height: auto !important; padding: 10px; margin-bottom: 40px; margin-top: 10px; box-shadow: 0px 0px 5px rgba(2, 2, 2, 0.2);">
                         <?php if ($do_script == 'add') : ?>
                             <span onclick="$.ajax({url: '<?php echo base_url(); ?>add_tag/<?php echo $shop . '/' . $token ?>', success: function(e){ alert(e); window.location.reload(false);}, error: function(){ Alert('There was an error removing the automatic script tag'); } })" class="pull-right btn btn-success btn-icon icon-right">Add Automatic Script Tag<em class="entypo-plus"></em></span>
                         <?php else : ?>
