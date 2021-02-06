@@ -1,5 +1,8 @@
 <?php $duka = $shop . '.myshopify.com'; ?>
 <style>
+    table.dataTable {
+        display: block !important;
+    }
     pre {
         padding: 10px;
         border: 1px solid #3A3A3A;
