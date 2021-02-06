@@ -119,18 +119,7 @@
 
                 <div style="height: 100vh; overflow-y: auto; flex-grow: 4; padding-top: 10px; padding-left: 10%; padding-right: 10%; padding-bottom: 0px; background: #F1F2F3;">
 
-                    <div class="tile-stats tile-white stat-tile" style="display: table; width: 100%; height: auto !important; padding: 10px;margin-bottom: 10px; box-shadow: 0px 0px 5px rgba(2, 2, 2, 0.2);">
-                        <?php if ($do_script == 'add') : ?>
-                            <span onclick="$.ajax({url: '<?php echo base_url(); ?>add_tag/<?php echo $shop . '/' . $token ?>', success: function(e){ alert(e); window.location.reload(false);}, error: function(){ Alert('There was an error removing the automatic script tag'); } })" class="pull-right btn btn-success btn-icon icon-right">Add Automatic Script Tag<em class="entypo-plus"></em></span>
-                        <?php else : ?>
-                            <span class="pull-left">
-                                Is the app loading slowly or slowing down your store? You can add our manual script tag to your theme.liquid file right before the
-                                <pre>&lt;/body&gt;</pre> tag then remove the automatic tag<br />
-                                <pre>&lt;script src="https://sleek-upsell.com/assets/js/shopify.js?shop=<?php echo $shop; ?>.myshopify.com"&gt;&lt;/script&gt;</pre>
-                            </span>
-                            <span onclick="$.ajax({url: '<?php echo base_url(); ?>remove_tag/<?php echo $shop . '/' . $token ?>', success: function(e){ alert(e); window.location.reload(false);}, error: function(){ Alert('There was an error removing the automatic script tag'); } })" class="pull-right btn btn-danger btn-icon icon-right">Remove Automatic Script Tag<em class="entypo-trash"></em></span>
-                        <?php endif; ?>
-                    </div>
+
                     <script type="text/javascript">
                         jQuery(document).ready(function() {
                             // Sparkline Charts
@@ -515,6 +504,20 @@
                             }
                         });
                     </script>
+
+                    <div class="tile-stats tile-white stat-tile" style="display: table; width: 100%; height: auto !important; padding: 10px;margin-bottom: 10px; box-shadow: 0px 0px 5px rgba(2, 2, 2, 0.2);">
+                        <?php if ($do_script == 'add') : ?>
+                            <span onclick="$.ajax({url: '<?php echo base_url(); ?>add_tag/<?php echo $shop . '/' . $token ?>', success: function(e){ alert(e); window.location.reload(false);}, error: function(){ Alert('There was an error removing the automatic script tag'); } })" class="pull-right btn btn-success btn-icon icon-right">Add Automatic Script Tag<em class="entypo-plus"></em></span>
+                        <?php else : ?>
+                            <span class="pull-left">
+                                Is the app loading slowly or slowing down your store? You can add our manual script tag to your theme.liquid file right before the
+                                <pre>&lt;/body&gt;</pre> tag then remove the automatic tag<br />
+                                <pre>&lt;script src="https://sleek-upsell.com/assets/js/shopify.js?shop=<?php echo $shop; ?>.myshopify.com"&gt;&lt;/script&gt;</pre>
+                            </span>
+                            <span onclick="$.ajax({url: '<?php echo base_url(); ?>remove_tag/<?php echo $shop . '/' . $token ?>', success: function(e){ alert(e); window.location.reload(false);}, error: function(){ Alert('There was an error removing the automatic script tag'); } })" class="pull-right btn btn-danger btn-icon icon-right">Remove Automatic Script Tag<em class="entypo-trash"></em></span>
+                        <?php endif; ?>
+                    </div>
+
                     <link rel="stylesheet" href="<?php echo base_url(); ?>assets/js/datatables/datatables.css" id="style-resource-1">
                     <link rel="stylesheet" href="<?php echo base_url(); ?>assets/js/select2/select2-bootstrap.css" id="style-resource-2">
                     <link rel="stylesheet" href="<?php echo base_url(); ?>assets/js/select2/select2.css" id="style-resource-3">
@@ -522,6 +525,8 @@
                     <script src="<?php echo base_url(); ?>assets/js/datatables/datatables.js" id="script-resource-8"></script>
                     <script src="<?php echo base_url(); ?>assets/js/select2/select2.min.js" id="script-resource-9"></script>
                     <script src="<?php echo base_url(); ?>assets/js/bootstrap-datepicker.js" id="script-resource-12"></script>
+
+
                 <?php endif; ?>
                 </div>
             </div>
