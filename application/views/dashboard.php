@@ -3,6 +3,7 @@
     table.dataTable {
         display: block !important;
     }
+
     pre {
         padding: 10px;
         border: 1px solid #3A3A3A;
@@ -82,9 +83,10 @@
                 <?php endif; ?>
             </span>
         </div>
-        <div style="height: 100vh; overflow-y: auto; flex-grow: 4; padding-top: 10px; padding-left: 10px; padding-right: 10px; padding-bottom: 0px; background: #F1F2F3;">
+        <?php if ($this->db->where('shop', $shop)->get('offers')->num_rows() == 0 && $this->db->where('shop', $shop)->get('auto_collection')->num_rows() == 0) : ?>
 
-            <?php if ($this->db->where('shop', $shop)->get('offers')->num_rows() == 0 && $this->db->where('shop', $shop)->get('auto_collection')->num_rows() == 0) : ?>
+            <div style="height: 100vh; overflow-y: auto; flex-grow: 4; padding-top: 10px; padding-left: 10px; padding-right: 10px; padding-bottom: 0px; background: #F1F2F3;">
+
                 <div class="row">
                     <div class="col-md-2"></div>
                     <div class="col-md-8">
@@ -114,410 +116,413 @@
                 </div>
             <?php endif; ?>
             <?php if ($this->db->where('shop', $shop)->get('offers')->num_rows() > 0 || $this->db->where('shop', $shop)->get('auto_collection')->num_rows() > 0) : ?>
-                <div class="tile-stats tile-white stat-tile" style="display: table; width: 100%; height: auto !important; padding: 10px;margin-bottom: 10px; box-shadow: 0px 0px 5px rgba(2, 2, 2, 0.2);">
-                    <?php if ($do_script == 'add') : ?>
-                        <span onclick="$.ajax({url: '<?php echo base_url(); ?>add_tag/<?php echo $shop . '/' . $token ?>', success: function(e){ alert(e); window.location.reload(false);}, error: function(){ Alert('There was an error removing the automatic script tag'); } })" class="pull-right btn btn-success btn-icon icon-right">Add Automatic Script Tag<em class="entypo-plus"></em></span>
-                    <?php else : ?>
-                        <span class="pull-left">
-                            Is the app loading slowly or slowing down your store? You can add our manual script tag to your theme.liquid file right before the
-                            <pre>&lt;/body&gt;</pre> tag then remove the automatic tag<br />
-                            <pre>&lt;script src="https://sleek-upsell.com/assets/js/shopify.js?shop=<?php echo $shop; ?>.myshopify.com"&gt;&lt;/script&gt;</pre>
-                        </span>
-                        <span onclick="$.ajax({url: '<?php echo base_url(); ?>remove_tag/<?php echo $shop . '/' . $token ?>', success: function(e){ alert(e); window.location.reload(false);}, error: function(){ Alert('There was an error removing the automatic script tag'); } })" class="pull-right btn btn-danger btn-icon icon-right">Remove Automatic Script Tag<em class="entypo-trash"></em></span>
-                    <?php endif; ?>
-                </div>
-                <script type="text/javascript">
-                    jQuery(document).ready(function() {
-                        // Sparkline Charts
-                        jQuery(".sales").sparkline([0,
-                            <?php
-                            foreach ($this->db->select('sum(price) as stat, date_format(from_unixtime(date), "%d") as day, date_format(from_unixtime(date), "%Y %m %d") as year')->where('shop', $duka)->where('type', 'purchase')->group_by('day')->order_by('year', 'asc')->limit('30')->get('stats')->result_array() as $fetch) {
-                                echo $fetch['stat'] . ',';
-                            }
-                            ?>
-                        ], {
-                            type: 'line',
-                            width: '100%',
-                            height: '55',
-                            lineColor: '#e8b51b',
-                            fillColor: '',
-                            lineWidth: 2,
-                            spotColor: '#344e86',
-                            minSpotColor: '#344e86',
-                            maxSpotColor: '#344e86',
-                            highlightSpotColor: '#344e86',
-                            highlightLineColor: '#30487b',
-                            spotRadius: 2,
-                            drawNormalOnTop: true
-                        });
 
+                <div style="height: 100vh; overflow-y: auto; flex-grow: 4; padding-top: 10px; padding-left: 10%; padding-right: 10%; padding-bottom: 0px; background: #F1F2F3;">
 
-                        jQuery(".customer-reach").sparkline([0,
-                            <?php
-                            foreach ($this->db->select('count(stat_id) as stat, date_format(from_unixtime(date), "%d") as day, date_format(from_unixtime(date), "%Y %m %d") as year')->where('shop', $duka)->where('type', 'impression')->group_by('day')->order_by('year', 'asc')->limit('30')->get('stats')->result_array() as $fetch) {
-                                echo $fetch['stat'] . ',';
-                            }
-                            ?>
-                        ], {
-                            type: 'line',
-                            width: '100%',
-                            height: '55',
-                            lineColor: '#ec3b83',
-                            fillColor: '',
-                            lineWidth: 2,
-                            spotColor: '#344e86',
-                            minSpotColor: '#344e86',
-                            maxSpotColor: '#344e86',
-                            highlightSpotColor: '#344e86',
-                            highlightLineColor: '#30487b',
-                            spotRadius: 2,
-                            drawNormalOnTop: true
-                        });
-
-                        jQuery(".all-time-sales").sparkline([0,
-                            <?php
-                            foreach ($this->db->select('count(stat_id) as stat, date_format(from_unixtime(date), "%d") as day, date_format(from_unixtime(date), "%Y %m %d") as year')->where('shop', $duka)->where('type', 'show')->group_by('day')->order_by('year', 'asc')->limit('30')->get('stats')->result_array() as $fetch) {
-                                echo $fetch['stat'] . ',';
-                            }
-                            ?>
-                        ], {
-                            type: 'line',
-                            width: '100%',
-                            height: '55',
-                            lineColor: '#00acd6',
-                            fillColor: '',
-                            lineWidth: 2,
-                            spotColor: '#344e86',
-                            minSpotColor: '#344e86',
-                            maxSpotColor: '#344e86',
-                            highlightSpotColor: '#344e86',
-                            highlightLineColor: '#30487b',
-                            spotRadius: 2,
-                            drawNormalOnTop: true
-                        });
-                    });
-                </script>
-                <div class="row">
-                    <div class="col-md-4 col-sm-6">
-                        <div class="tile-stats tile-white stat-tile" style="box-shadow: 0px 0px 5px rgba(2, 2, 2, 0.2);">
-                            <h3><?php echo number_format($this->db->where('shop', $duka)->where('type', 'show')->get('stats')->num_rows()); ?></h3>
-                            <p>Shown</p> <span class="all-time-sales"></span>
-                        </div>
-                    </div>
-                    <div class="col-md-4 col-sm-6">
-                        <div class="tile-stats tile-white stat-tile" style="box-shadow: 0px 0px 5px rgba(2, 2, 2, 0.2);">
-                            <h3><?php echo number_format($this->db->where('shop', $duka)->where('type', 'impression')->get('stats')->num_rows()); ?></h3>
-                            <p>Customer impression</p> <span class="customer-reach"></span>
-                        </div>
-                    </div>
-                    <div class="col-md-4 col-sm-12">
-                        <div class="tile-stats tile-white stat-tile" style="box-shadow: 0px 0px 5px rgba(2, 2, 2, 0.2);">
-                            <h3>$ <?php echo number_format($this->db->select('sum(price) as total')->where('shop', $duka)->where('type', 'purchase')->get('stats')->row()->total); ?></h3>
-                            <p>ATC</p> <span class="sales"></span>
-                        </div>
-                    </div>
-                </div>
-                <script type="text/javascript">
-                    jQuery(document).ready(function($) {
-                        var $table4 = jQuery("#table-4");
-                        $table4.DataTable({
-                            //'aLengthMenu': [[10, 25, 50, -1], [10, 25, 50, "All"]],
-                            dom: 'Bfrtip',
-                            buttons: [
-                                'copyHtml5',
-                                'excelHtml5',
-                                'csvHtml5',
-                                'pdfHtml5',
-                                'print'
-                            ]
-                        });
-                        $table4.closest('.dataTables_wrapper').find('select').select2({
-                            minimumResultsForSearch: -1
-                        });
-                    });
-                </script>
-                <table class="datatable" id="table-4" style="border: none;">
-                    <thead style="border: none;">
-                        <tr style="border: none;">
-                            <th style="border: none;"></th>
-                            <th style="border: none; flex-grow: 4;">Offer</th>
-                            <th style="border: none;">Status</th>
-                            <th style="border: none;">Action</th>
-                        </tr>
-                    </thead>
-                    <tbody style="border: none;">
-                        <?php if ($this->db->where('shop', $shop)->get('auto_collection')->num_rows() > 0) : ?>
-                            <tr>
-                                <td style="vertical-align: middle; border: none; text-align: center; color: #FFFFFF; font-size: 1px;">0</td>
-                                <td style="vertical-align: middle; border: none; flex-grow: 4;">
-                                    <span style="font-weight: bold;">
-                                        Auto-collection offers
-                                    </span>
-                                </td>
-                                <td style="vertical-align: middle; border: none;">
-                                    <span class="col-xs-12 status">
-                                        <label class="switch">
-                                            <input class="switcheck collection_status" type="checkbox" <?php if ($this->db->where('shop', $shop)->get('auto_collection')->row()->status == "1") {
-                                                                                                            echo "checked";
-                                                                                                        }; ?> />
-                                            <span class="slidr round"></span>
-                                        </label>
-                                    </span>
-                                </td>
-                                <td style="text-align: center; vertical-align: middle; border: none;">
-                                    <ul class="user-info" style="display: table; text-align: center; cursor: pointer;">
-                                        <li class="profile-info dropdown"><span class="dropdown-toggle" data-toggle="dropdown"><i class="entypo-dot-3"></i></span>
-                                            <ul class="dropdown-menu pull-right">
-                                                <!-- Reverse Caret -->
-                                                <li class="caret"></li>
-                                                <!-- Profile sub-links -->
-                                                <li><a href="<?php echo base_url(); ?>auto_collection/<?php echo $shop; ?>/<?php echo $token; ?>?<?php echo $_SERVER['QUERY_STRING']; ?>"><i class="entypo-pencil"></i>Edit</a></li>
-                                                <li><a href="<?php echo base_url(); ?>offer_stats/<?php echo $shop; ?>/collection?<?php echo $_SERVER['QUERY_STRING']; ?>">
-                                                        <i class="entypo-chart-line"></i>Stats</a></li>
-                                                <li><a onclick="if(confirm('Are you sure you want to delete this offer?')){$.ajax({url: 'delete_ac/<?php echo $shop; ?>', method: 'POST', success: function(){window.location.reload(false)}})}"><i class="entypo-trash"></i>Delete</a></li>
-                                            </ul>
-                                        </li>
-                                    </ul>
-                                </td>
-                            </tr>
+                    <div class="tile-stats tile-white stat-tile" style="display: table; width: 100%; height: auto !important; padding: 10px;margin-bottom: 10px; box-shadow: 0px 0px 5px rgba(2, 2, 2, 0.2);">
+                        <?php if ($do_script == 'add') : ?>
+                            <span onclick="$.ajax({url: '<?php echo base_url(); ?>add_tag/<?php echo $shop . '/' . $token ?>', success: function(e){ alert(e); window.location.reload(false);}, error: function(){ Alert('There was an error removing the automatic script tag'); } })" class="pull-right btn btn-success btn-icon icon-right">Add Automatic Script Tag<em class="entypo-plus"></em></span>
                         <?php else : ?>
-                            <tr>
-                                <td style="vertical-align: middle; border: none; text-align: center; color: #FFFFFF; font-size: 1px;">0</td>
-                                <td style="vertical-align: middle; border: none; flex-grow: 4;">Collection based offers will allow you to automatically offer products from the same collections to your customers.
-                                </td>
-                                <td style="vertical-align: middle; border: none;"></td>
-                                <td style="text-align: center; vertical-align: middle; border: none;">
-                                    <a href="<?php echo base_url(); ?>auto_collection/<?php echo $shop; ?>/<?php echo $token; ?>?<?php echo $_SERVER['QUERY_STRING']; ?>" class="btn btn-lg btn-primary btn-icon icon-right col-xs-12"><i class="entypo-plus"></i>ACTIVATE COLLECTION OFFERS</a>
-                                </td>
-                            </tr>
+                            <span class="pull-left">
+                                Is the app loading slowly or slowing down your store? You can add our manual script tag to your theme.liquid file right before the
+                                <pre>&lt;/body&gt;</pre> tag then remove the automatic tag<br />
+                                <pre>&lt;script src="https://sleek-upsell.com/assets/js/shopify.js?shop=<?php echo $shop; ?>.myshopify.com"&gt;&lt;/script&gt;</pre>
+                            </span>
+                            <span onclick="$.ajax({url: '<?php echo base_url(); ?>remove_tag/<?php echo $shop . '/' . $token ?>', success: function(e){ alert(e); window.location.reload(false);}, error: function(){ Alert('There was an error removing the automatic script tag'); } })" class="pull-right btn btn-danger btn-icon icon-right">Remove Automatic Script Tag<em class="entypo-trash"></em></span>
                         <?php endif; ?>
-                        <?php
-                        foreach ($offer as $key => $fetch) : ?>
-                            <tr>
-                                <td style="vertical-align: middle; border: none; text-align: center; color: #FFFFFF; font-size: 1px;"><?php echo $key; ?></td>
-                                <td style="vertical-align: middle; border: none; flex-grow: 4;">
-                                    <span style="font-weight: bold;">
-                                        <?php
-                                        if ($fetch['offer'][0]['title'] == '') {
-                                            echo '#' . $fetch['offer'][0]['offer_id'];
-                                        } else {
-                                            echo $fetch['offer'][0]['title'];
-                                        }
-                                        ?> : Offer
-                                        <?php
-                                        $products = $fetch['products'];
-                                        $total_products = count($products);
+                    </div>
+                    <script type="text/javascript">
+                        jQuery(document).ready(function() {
+                            // Sparkline Charts
+                            jQuery(".sales").sparkline([0,
+                                <?php
+                                foreach ($this->db->select('sum(price) as stat, date_format(from_unixtime(date), "%d") as day, date_format(from_unixtime(date), "%Y %m %d") as year')->where('shop', $duka)->where('type', 'purchase')->group_by('day')->order_by('year', 'asc')->limit('30')->get('stats')->result_array() as $fetch) {
+                                    echo $fetch['stat'] . ',';
+                                }
+                                ?>
+                            ], {
+                                type: 'line',
+                                width: '100%',
+                                height: '55',
+                                lineColor: '#e8b51b',
+                                fillColor: '',
+                                lineWidth: 2,
+                                spotColor: '#344e86',
+                                minSpotColor: '#344e86',
+                                maxSpotColor: '#344e86',
+                                highlightSpotColor: '#344e86',
+                                highlightLineColor: '#30487b',
+                                spotRadius: 2,
+                                drawNormalOnTop: true
+                            });
 
-                                        if ($total_products == 1) {
-                                            $product_id = $products[0]['product'];
-                                            $product_name = $this->Shopify->shopify_call($token, $shop, '/admin/api/2020-04/products/' . $product_id . '.json', array('fields' => 'title'), 'GET');
-                                            $product_name = json_decode($product_name['response'], true);
-                                            echo $product_name['product']['title'];
-                                        } else {
-                                            foreach ($products as $key => $value) {
-                                                $product_id = $products[$key]['product'];
+
+                            jQuery(".customer-reach").sparkline([0,
+                                <?php
+                                foreach ($this->db->select('count(stat_id) as stat, date_format(from_unixtime(date), "%d") as day, date_format(from_unixtime(date), "%Y %m %d") as year')->where('shop', $duka)->where('type', 'impression')->group_by('day')->order_by('year', 'asc')->limit('30')->get('stats')->result_array() as $fetch) {
+                                    echo $fetch['stat'] . ',';
+                                }
+                                ?>
+                            ], {
+                                type: 'line',
+                                width: '100%',
+                                height: '55',
+                                lineColor: '#ec3b83',
+                                fillColor: '',
+                                lineWidth: 2,
+                                spotColor: '#344e86',
+                                minSpotColor: '#344e86',
+                                maxSpotColor: '#344e86',
+                                highlightSpotColor: '#344e86',
+                                highlightLineColor: '#30487b',
+                                spotRadius: 2,
+                                drawNormalOnTop: true
+                            });
+
+                            jQuery(".all-time-sales").sparkline([0,
+                                <?php
+                                foreach ($this->db->select('count(stat_id) as stat, date_format(from_unixtime(date), "%d") as day, date_format(from_unixtime(date), "%Y %m %d") as year')->where('shop', $duka)->where('type', 'show')->group_by('day')->order_by('year', 'asc')->limit('30')->get('stats')->result_array() as $fetch) {
+                                    echo $fetch['stat'] . ',';
+                                }
+                                ?>
+                            ], {
+                                type: 'line',
+                                width: '100%',
+                                height: '55',
+                                lineColor: '#00acd6',
+                                fillColor: '',
+                                lineWidth: 2,
+                                spotColor: '#344e86',
+                                minSpotColor: '#344e86',
+                                maxSpotColor: '#344e86',
+                                highlightSpotColor: '#344e86',
+                                highlightLineColor: '#30487b',
+                                spotRadius: 2,
+                                drawNormalOnTop: true
+                            });
+                        });
+                    </script>
+                    <div class="row">
+                        <div class="col-md-4 col-sm-6">
+                            <div class="tile-stats tile-white stat-tile" style="box-shadow: 0px 0px 5px rgba(2, 2, 2, 0.2);">
+                                <h3><?php echo number_format($this->db->where('shop', $duka)->where('type', 'show')->get('stats')->num_rows()); ?></h3>
+                                <p>Shown</p> <span class="all-time-sales"></span>
+                            </div>
+                        </div>
+                        <div class="col-md-4 col-sm-6">
+                            <div class="tile-stats tile-white stat-tile" style="box-shadow: 0px 0px 5px rgba(2, 2, 2, 0.2);">
+                                <h3><?php echo number_format($this->db->where('shop', $duka)->where('type', 'impression')->get('stats')->num_rows()); ?></h3>
+                                <p>Customer impression</p> <span class="customer-reach"></span>
+                            </div>
+                        </div>
+                        <div class="col-md-4 col-sm-12">
+                            <div class="tile-stats tile-white stat-tile" style="box-shadow: 0px 0px 5px rgba(2, 2, 2, 0.2);">
+                                <h3>$ <?php echo number_format($this->db->select('sum(price) as total')->where('shop', $duka)->where('type', 'purchase')->get('stats')->row()->total); ?></h3>
+                                <p>ATC</p> <span class="sales"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <script type="text/javascript">
+                        jQuery(document).ready(function($) {
+                            var $table4 = jQuery("#table-4");
+                            $table4.DataTable({
+                                //'aLengthMenu': [[10, 25, 50, -1], [10, 25, 50, "All"]],
+                                dom: 'Bfrtip',
+                                buttons: [
+                                    'copyHtml5',
+                                    'excelHtml5',
+                                    'csvHtml5',
+                                    'pdfHtml5',
+                                    'print'
+                                ]
+                            });
+                            $table4.closest('.dataTables_wrapper').find('select').select2({
+                                minimumResultsForSearch: -1
+                            });
+                        });
+                    </script>
+                    <table class="datatable" id="table-4" style="border: none;">
+                        <thead style="border: none;">
+                            <tr style="border: none;">
+                                <th style="border: none;"></th>
+                                <th style="border: none; flex-grow: 4;">Offer</th>
+                                <th style="border: none;">Status</th>
+                                <th style="border: none;">Action</th>
+                            </tr>
+                        </thead>
+                        <tbody style="border: none;">
+                            <?php if ($this->db->where('shop', $shop)->get('auto_collection')->num_rows() > 0) : ?>
+                                <tr>
+                                    <td style="vertical-align: middle; border: none; text-align: center; color: #FFFFFF; font-size: 1px;">0</td>
+                                    <td style="vertical-align: middle; border: none; flex-grow: 4;">
+                                        <span style="font-weight: bold;">
+                                            Auto-collection offers
+                                        </span>
+                                    </td>
+                                    <td style="vertical-align: middle; border: none;">
+                                        <span class="col-xs-12 status">
+                                            <label class="switch">
+                                                <input class="switcheck collection_status" type="checkbox" <?php if ($this->db->where('shop', $shop)->get('auto_collection')->row()->status == "1") {
+                                                                                                                echo "checked";
+                                                                                                            }; ?> />
+                                                <span class="slidr round"></span>
+                                            </label>
+                                        </span>
+                                    </td>
+                                    <td style="text-align: center; vertical-align: middle; border: none;">
+                                        <ul class="user-info" style="display: table; text-align: center; cursor: pointer;">
+                                            <li class="profile-info dropdown"><span class="dropdown-toggle" data-toggle="dropdown"><i class="entypo-dot-3"></i></span>
+                                                <ul class="dropdown-menu pull-right">
+                                                    <!-- Reverse Caret -->
+                                                    <li class="caret"></li>
+                                                    <!-- Profile sub-links -->
+                                                    <li><a href="<?php echo base_url(); ?>auto_collection/<?php echo $shop; ?>/<?php echo $token; ?>?<?php echo $_SERVER['QUERY_STRING']; ?>"><i class="entypo-pencil"></i>Edit</a></li>
+                                                    <li><a href="<?php echo base_url(); ?>offer_stats/<?php echo $shop; ?>/collection?<?php echo $_SERVER['QUERY_STRING']; ?>">
+                                                            <i class="entypo-chart-line"></i>Stats</a></li>
+                                                    <li><a onclick="if(confirm('Are you sure you want to delete this offer?')){$.ajax({url: 'delete_ac/<?php echo $shop; ?>', method: 'POST', success: function(){window.location.reload(false)}})}"><i class="entypo-trash"></i>Delete</a></li>
+                                                </ul>
+                                            </li>
+                                        </ul>
+                                    </td>
+                                </tr>
+                            <?php else : ?>
+                                <tr>
+                                    <td style="vertical-align: middle; border: none; text-align: center; color: #FFFFFF; font-size: 1px;">0</td>
+                                    <td style="vertical-align: middle; border: none; flex-grow: 4;">Collection based offers will allow you to automatically offer products from the same collections to your customers.
+                                    </td>
+                                    <td style="vertical-align: middle; border: none;"></td>
+                                    <td style="text-align: center; vertical-align: middle; border: none;">
+                                        <a href="<?php echo base_url(); ?>auto_collection/<?php echo $shop; ?>/<?php echo $token; ?>?<?php echo $_SERVER['QUERY_STRING']; ?>" class="btn btn-lg btn-primary btn-icon icon-right col-xs-12"><i class="entypo-plus"></i>ACTIVATE COLLECTION OFFERS</a>
+                                    </td>
+                                </tr>
+                            <?php endif; ?>
+                            <?php
+                            foreach ($offer as $key => $fetch) : ?>
+                                <tr>
+                                    <td style="vertical-align: middle; border: none; text-align: center; color: #FFFFFF; font-size: 1px;"><?php echo $key; ?></td>
+                                    <td style="vertical-align: middle; border: none; flex-grow: 4;">
+                                        <span style="font-weight: bold;">
+                                            <?php
+                                            if ($fetch['offer'][0]['title'] == '') {
+                                                echo '#' . $fetch['offer'][0]['offer_id'];
+                                            } else {
+                                                echo $fetch['offer'][0]['title'];
+                                            }
+                                            ?> : Offer
+                                            <?php
+                                            $products = $fetch['products'];
+                                            $total_products = count($products);
+
+                                            if ($total_products == 1) {
+                                                $product_id = $products[0]['product'];
                                                 $product_name = $this->Shopify->shopify_call($token, $shop, '/admin/api/2020-04/products/' . $product_id . '.json', array('fields' => 'title'), 'GET');
                                                 $product_name = json_decode($product_name['response'], true);
-                                                if ($key == '0') {
-                                                    echo $product_name['product']['title'];
-                                                } else if ($key == count($products) - 1) {
-                                                    echo ' and ' . $product_name['product']['title'];
-                                                } else {
-                                                    echo ', ' . $product_name['product']['title'];
-                                                }
-                                            }
-                                        }
-                                        ?>
-                                    </span>
-                                    <span class="triprev btn entypo-eye" onclick="$('.triggers<?php echo $fetch['offer'][0]['offer_id']; ?>').toggle(200)">Offer conditions</span>
-                                    <ul class="triggers<?php echo $fetch['offer'][0]['offer_id']; ?>" style="list-style: none; display: none;">
-                                        <?php
-
-                                        if (count($fetch['blocks']) == 0) {
-                                            echo 'To every customer';
-                                        } else {
-                                            // $conditions = $fetch['conditions'];
-                                            $blocks = $fetch['blocks'];
-
-                                            foreach ($blocks as $k => $v) {
-                                                $rule = $v['rule'];
-                                                $bid = $v['bid'];
-                                                $oid = $v['oid'];
-
-                                                if ($rule == 'ALL') {
-                                                    $connector = 'AND';
-                                                }
-                                                if ($rule == 'ANY') {
-                                                    $connector = 'OR';
-                                                }
-
-                                                $conditions = $fetch['conditions'];
-                                                foreach ($conditions as $ck => $cv) { ?>
-
-                                                    <li>
-                                                    <?php
-
-                                                    if ($cv['bid'] == $bid && $cv['oid'] == $oid) {
-                                                        $condition_type = $cv['type'];
-
-                                                        if ($ck == '0') {
-                                                            $prepend = 'When ';
-                                                        } else if ($ck == count($conditions) - 1) {
-                                                            $prepend = '<strong>' . $connector . '</strong> ';
-                                                        } else {
-                                                            $prepend = '<strong>' . $connector . '</strong> ';
-                                                        }
-
-                                                        if ($condition_type == 'oc1' || $condition_type == 'oc2' || $condition_type == 'oc3') {
-                                                            $quantity = $cv['quantity'];
-                                                            $type = $cv['type'];
-                                                            $content = $cv['content'];
-
-                                                            if ($condition_type == 'oc1') {
-                                                                echo $prepend . 'Cart has at least ' . $quantity . ' ' . $content;
-                                                            }
-                                                            if ($condition_type == 'oc2') {
-                                                                echo $prepend . 'Cart has at most ' . $quantity . ' ' . $content;
-                                                            }
-                                                            if ($condition_type == 'oc3') {
-                                                                echo $prepend . 'Cart has exactly ' . $quantity . ' ' . $content;
-                                                            }
-                                                        }
-
-                                                        if ($condition_type == 'oc4') {
-                                                            $type = $cv['type'];
-                                                            $content = $cv['content'];
-
-                                                            echo $prepend . 'Cart does not have any ' . $content;
-                                                        }
-
-                                                        if ($condition_type == 'oc5' || $condition_type == 'oc6' || $condition_type == 'oc7' || $condition_type == 'oc8') {
-                                                            if ($condition_type == 'oc6') {
-                                                                echo $prepend . 'Cart total is at least ' . $cv['amount'] . ' cents';
-                                                            }
-                                                            if ($condition_type == 'oc6') {
-                                                                echo $prepend . 'Cart total is at most ' . $cv['amount'] . ' cents';
-                                                            }
-                                                            if ($condition_type == 'oc7') {
-                                                                echo $prepend . 'Customer is located in ' . $cv['country'];
-                                                            }
-                                                            if ($condition_type == 'oc8') {
-                                                                echo $prepend . 'Customer is not located in ' . $cv['country'];
-                                                            }
-                                                        }
-                                                        if ($condition_type == 'oc9') {
-                                                            echo $prepend . 'Cart contains at least ' . $cv['quantity'] . ' item from vendor ' . $cv['content'];
-                                                        }
-                                                        if ($condition_type == 'oc10') {
-                                                            echo $prepend . 'Cart has no item from vendor ' . $cv['content'];
-                                                        }
+                                                echo $product_name['product']['title'];
+                                            } else {
+                                                foreach ($products as $key => $value) {
+                                                    $product_id = $products[$key]['product'];
+                                                    $product_name = $this->Shopify->shopify_call($token, $shop, '/admin/api/2020-04/products/' . $product_id . '.json', array('fields' => 'title'), 'GET');
+                                                    $product_name = json_decode($product_name['response'], true);
+                                                    if ($key == '0') {
+                                                        echo $product_name['product']['title'];
+                                                    } else if ($key == count($products) - 1) {
+                                                        echo ' and ' . $product_name['product']['title'];
+                                                    } else {
+                                                        echo ', ' . $product_name['product']['title'];
                                                     }
-                                                } ?>
-
-                                                    </li>
-                                            <?php
+                                                }
                                             }
-                                        }
-
                                             ?>
-                                    </ul>
-                                </td>
-                                <td style="vertical-align: middle; border: none;">
-                                    <span class="col-xs-12 status">
-                                        <label class="switch">
-                                            <input data-oid="<?php echo $fetch['offer'][0]['offer_id']; ?>" class="switcheck offer_status" type="checkbox" <?php if ($fetch['offer'][0]['status'] == "1") {
-                                                                                                                                                                echo "checked";
-                                                                                                                                                            }; ?> />
-                                            <span class="slidr round"></span>
-                                        </label>
-                                    </span>
-                                </td>
-                                <td style="text-align: center; vertical-align: middle; border: none;">
-                                    <ul class="user-info" style="display: table; text-align: center; cursor: pointer;">
-                                        <li class="profile-info dropdown"><span class="dropdown-toggle" data-toggle="dropdown"><i class="entypo-dot-3"></i></span>
-                                            <ul class="dropdown-menu pull-right">
-                                                <!-- Reverse Caret -->
-                                                <li class="caret"></li>
-                                                <!-- Profile sub-links -->
-                                                <li><a href="<?php echo base_url(); ?>edit_offer/<?php echo $shop; ?>/<?php echo $token; ?>/<?php echo $fetch['offer'][0]['offer_id']; ?>?<?php echo $_SERVER['QUERY_STRING']; ?>"><i class="entypo-pencil"></i>Edit</a></li>
-                                                <li><a href="<?php echo base_url(); ?>offer_stats/<?php echo $shop; ?>/<?php echo $fetch['offer'][0]['offer_id']; ?>?<?php echo $_SERVER['QUERY_STRING']; ?>">
-                                                        <i class="entypo-chart-line"></i>Stats</a></li>
-                                                <li><a onclick="if(confirm('Are you sure you want to delete this offer?')){$.ajax({url: 'delete_offer/<?php echo $fetch['offer'][0]['offer_id']; ?>', method: 'POST', success: function(){window.location.reload(false)}})}"><i class="entypo-trash"></i>Delete</a></li>
-                                            </ul>
-                                        </li>
-                                    </ul>
-                                </td>
-                            </tr>
-                        <?php endforeach; ?>
-                    </tbody>
-                </table>
+                                        </span>
+                                        <span class="triprev btn entypo-eye" onclick="$('.triggers<?php echo $fetch['offer'][0]['offer_id']; ?>').toggle(200)">Offer conditions</span>
+                                        <ul class="triggers<?php echo $fetch['offer'][0]['offer_id']; ?>" style="list-style: none; display: none;">
+                                            <?php
 
-                <script>
-                    $('.collection_status').change(function() {
-                        let o = $(this).attr('data-oid');
-                        if (this.checked) {
-                            $.ajax({
-                                type: "POST",
-                                url: base_url + 'collection_status/<?php echo $shop; ?>/1?<?php echo $_SERVER['QUERY_STRING']; ?>',
-                                data: '',
-                                success: function(response) {
-                                    $('.os' + o).prop('checked', true);
-                                },
-                                error: function() {
-                                    alert('An error occured');
-                                }
-                            });
-                        } else {
-                            $.ajax({
-                                type: "POST",
-                                url: base_url + 'collection_status/<?php echo $shop; ?>/0?<?php echo $_SERVER['QUERY_STRING']; ?>',
-                                data: '',
-                                success: function(response) {
-                                    $('.os' + o).prop('checked', false);
-                                },
-                                error: function() {
-                                    alert('An error occured');
-                                }
-                            });
-                        }
-                    });
-                    $('.offer_status').change(function() {
-                        let o = $(this).attr('data-oid');
-                        if (this.checked) {
-                            $.ajax({
-                                type: "POST",
-                                url: base_url + 'offer_status/' + o + '/1?<?php echo $_SERVER['QUERY_STRING']; ?>',
-                                data: '',
-                                success: function(response) {
-                                    $('.os' + o).prop('checked', true);
-                                },
-                                error: function() {
-                                    alert('An error occured');
-                                }
-                            });
-                        } else {
-                            $.ajax({
-                                type: "POST",
-                                url: base_url + 'offer_status/' + o + '/0?<?php echo $_SERVER['QUERY_STRING']; ?>',
-                                data: '',
-                                success: function(response) {
-                                    $('.os' + o).prop('checked', false);
-                                },
-                                error: function() {
-                                    alert('An error occured');
-                                }
-                            });
-                        }
-                    });
-                </script>
-                <link rel="stylesheet" href="<?php echo base_url(); ?>assets/js/datatables/datatables.css" id="style-resource-1">
-                <link rel="stylesheet" href="<?php echo base_url(); ?>assets/js/select2/select2-bootstrap.css" id="style-resource-2">
-                <link rel="stylesheet" href="<?php echo base_url(); ?>assets/js/select2/select2.css" id="style-resource-3">
-                <link rel="stylesheet" href="<?php echo base_url(); ?>assets/js/daterangepicker/daterangepicker-bs3.css" id="style-resource-4">
-                <script src="<?php echo base_url(); ?>assets/js/datatables/datatables.js" id="script-resource-8"></script>
-                <script src="<?php echo base_url(); ?>assets/js/select2/select2.min.js" id="script-resource-9"></script>
-                <script src="<?php echo base_url(); ?>assets/js/bootstrap-datepicker.js" id="script-resource-12"></script>
-            <?php endif; ?>
-        </div>
+                                            if (count($fetch['blocks']) == 0) {
+                                                echo 'To every customer';
+                                            } else {
+                                                // $conditions = $fetch['conditions'];
+                                                $blocks = $fetch['blocks'];
+
+                                                foreach ($blocks as $k => $v) {
+                                                    $rule = $v['rule'];
+                                                    $bid = $v['bid'];
+                                                    $oid = $v['oid'];
+
+                                                    if ($rule == 'ALL') {
+                                                        $connector = 'AND';
+                                                    }
+                                                    if ($rule == 'ANY') {
+                                                        $connector = 'OR';
+                                                    }
+
+                                                    $conditions = $fetch['conditions'];
+                                                    foreach ($conditions as $ck => $cv) { ?>
+
+                                                        <li>
+                                                        <?php
+
+                                                        if ($cv['bid'] == $bid && $cv['oid'] == $oid) {
+                                                            $condition_type = $cv['type'];
+
+                                                            if ($ck == '0') {
+                                                                $prepend = 'When ';
+                                                            } else if ($ck == count($conditions) - 1) {
+                                                                $prepend = '<strong>' . $connector . '</strong> ';
+                                                            } else {
+                                                                $prepend = '<strong>' . $connector . '</strong> ';
+                                                            }
+
+                                                            if ($condition_type == 'oc1' || $condition_type == 'oc2' || $condition_type == 'oc3') {
+                                                                $quantity = $cv['quantity'];
+                                                                $type = $cv['type'];
+                                                                $content = $cv['content'];
+
+                                                                if ($condition_type == 'oc1') {
+                                                                    echo $prepend . 'Cart has at least ' . $quantity . ' ' . $content;
+                                                                }
+                                                                if ($condition_type == 'oc2') {
+                                                                    echo $prepend . 'Cart has at most ' . $quantity . ' ' . $content;
+                                                                }
+                                                                if ($condition_type == 'oc3') {
+                                                                    echo $prepend . 'Cart has exactly ' . $quantity . ' ' . $content;
+                                                                }
+                                                            }
+
+                                                            if ($condition_type == 'oc4') {
+                                                                $type = $cv['type'];
+                                                                $content = $cv['content'];
+
+                                                                echo $prepend . 'Cart does not have any ' . $content;
+                                                            }
+
+                                                            if ($condition_type == 'oc5' || $condition_type == 'oc6' || $condition_type == 'oc7' || $condition_type == 'oc8') {
+                                                                if ($condition_type == 'oc6') {
+                                                                    echo $prepend . 'Cart total is at least ' . $cv['amount'] . ' cents';
+                                                                }
+                                                                if ($condition_type == 'oc6') {
+                                                                    echo $prepend . 'Cart total is at most ' . $cv['amount'] . ' cents';
+                                                                }
+                                                                if ($condition_type == 'oc7') {
+                                                                    echo $prepend . 'Customer is located in ' . $cv['country'];
+                                                                }
+                                                                if ($condition_type == 'oc8') {
+                                                                    echo $prepend . 'Customer is not located in ' . $cv['country'];
+                                                                }
+                                                            }
+                                                            if ($condition_type == 'oc9') {
+                                                                echo $prepend . 'Cart contains at least ' . $cv['quantity'] . ' item from vendor ' . $cv['content'];
+                                                            }
+                                                            if ($condition_type == 'oc10') {
+                                                                echo $prepend . 'Cart has no item from vendor ' . $cv['content'];
+                                                            }
+                                                        }
+                                                    } ?>
+
+                                                        </li>
+                                                <?php
+                                                }
+                                            }
+
+                                                ?>
+                                        </ul>
+                                    </td>
+                                    <td style="vertical-align: middle; border: none;">
+                                        <span class="col-xs-12 status">
+                                            <label class="switch">
+                                                <input data-oid="<?php echo $fetch['offer'][0]['offer_id']; ?>" class="switcheck offer_status" type="checkbox" <?php if ($fetch['offer'][0]['status'] == "1") {
+                                                                                                                                                                    echo "checked";
+                                                                                                                                                                }; ?> />
+                                                <span class="slidr round"></span>
+                                            </label>
+                                        </span>
+                                    </td>
+                                    <td style="text-align: center; vertical-align: middle; border: none;">
+                                        <ul class="user-info" style="display: table; text-align: center; cursor: pointer;">
+                                            <li class="profile-info dropdown"><span class="dropdown-toggle" data-toggle="dropdown"><i class="entypo-dot-3"></i></span>
+                                                <ul class="dropdown-menu pull-right">
+                                                    <!-- Reverse Caret -->
+                                                    <li class="caret"></li>
+                                                    <!-- Profile sub-links -->
+                                                    <li><a href="<?php echo base_url(); ?>edit_offer/<?php echo $shop; ?>/<?php echo $token; ?>/<?php echo $fetch['offer'][0]['offer_id']; ?>?<?php echo $_SERVER['QUERY_STRING']; ?>"><i class="entypo-pencil"></i>Edit</a></li>
+                                                    <li><a href="<?php echo base_url(); ?>offer_stats/<?php echo $shop; ?>/<?php echo $fetch['offer'][0]['offer_id']; ?>?<?php echo $_SERVER['QUERY_STRING']; ?>">
+                                                            <i class="entypo-chart-line"></i>Stats</a></li>
+                                                    <li><a onclick="if(confirm('Are you sure you want to delete this offer?')){$.ajax({url: 'delete_offer/<?php echo $fetch['offer'][0]['offer_id']; ?>', method: 'POST', success: function(){window.location.reload(false)}})}"><i class="entypo-trash"></i>Delete</a></li>
+                                                </ul>
+                                            </li>
+                                        </ul>
+                                    </td>
+                                </tr>
+                            <?php endforeach; ?>
+                        </tbody>
+                    </table>
+
+                    <script>
+                        $('.collection_status').change(function() {
+                            let o = $(this).attr('data-oid');
+                            if (this.checked) {
+                                $.ajax({
+                                    type: "POST",
+                                    url: base_url + 'collection_status/<?php echo $shop; ?>/1?<?php echo $_SERVER['QUERY_STRING']; ?>',
+                                    data: '',
+                                    success: function(response) {
+                                        $('.os' + o).prop('checked', true);
+                                    },
+                                    error: function() {
+                                        alert('An error occured');
+                                    }
+                                });
+                            } else {
+                                $.ajax({
+                                    type: "POST",
+                                    url: base_url + 'collection_status/<?php echo $shop; ?>/0?<?php echo $_SERVER['QUERY_STRING']; ?>',
+                                    data: '',
+                                    success: function(response) {
+                                        $('.os' + o).prop('checked', false);
+                                    },
+                                    error: function() {
+                                        alert('An error occured');
+                                    }
+                                });
+                            }
+                        });
+                        $('.offer_status').change(function() {
+                            let o = $(this).attr('data-oid');
+                            if (this.checked) {
+                                $.ajax({
+                                    type: "POST",
+                                    url: base_url + 'offer_status/' + o + '/1?<?php echo $_SERVER['QUERY_STRING']; ?>',
+                                    data: '',
+                                    success: function(response) {
+                                        $('.os' + o).prop('checked', true);
+                                    },
+                                    error: function() {
+                                        alert('An error occured');
+                                    }
+                                });
+                            } else {
+                                $.ajax({
+                                    type: "POST",
+                                    url: base_url + 'offer_status/' + o + '/0?<?php echo $_SERVER['QUERY_STRING']; ?>',
+                                    data: '',
+                                    success: function(response) {
+                                        $('.os' + o).prop('checked', false);
+                                    },
+                                    error: function() {
+                                        alert('An error occured');
+                                    }
+                                });
+                            }
+                        });
+                    </script>
+                    <link rel="stylesheet" href="<?php echo base_url(); ?>assets/js/datatables/datatables.css" id="style-resource-1">
+                    <link rel="stylesheet" href="<?php echo base_url(); ?>assets/js/select2/select2-bootstrap.css" id="style-resource-2">
+                    <link rel="stylesheet" href="<?php echo base_url(); ?>assets/js/select2/select2.css" id="style-resource-3">
+                    <link rel="stylesheet" href="<?php echo base_url(); ?>assets/js/daterangepicker/daterangepicker-bs3.css" id="style-resource-4">
+                    <script src="<?php echo base_url(); ?>assets/js/datatables/datatables.js" id="script-resource-8"></script>
+                    <script src="<?php echo base_url(); ?>assets/js/select2/select2.min.js" id="script-resource-9"></script>
+                    <script src="<?php echo base_url(); ?>assets/js/bootstrap-datepicker.js" id="script-resource-12"></script>
+                <?php endif; ?>
+                </div>
+            </div>
     </div>
-</div>
