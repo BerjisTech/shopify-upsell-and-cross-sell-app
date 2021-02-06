@@ -320,7 +320,7 @@ class Slade extends CI_Controller
                 'name' => 'Sleek',
                 'test' => false,
                 'price' => 19.99,
-                'trial_days' => 14,
+                'trial_days' => 30,
                 'return_url' => 'https://' . $_GET['shop'] . '/admin/apps/sleek-upsell/activate?t=false&hmac=' . $_GET['hmac'] . '&shop=' . $_GET['shop'],
             ),
         );
