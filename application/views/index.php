@@ -137,7 +137,7 @@
     <script>
         setTimeout(function() {
             $('iframe[aria-label="Toggle Customer Support"]').contents().find('body').append('<style>@media only screen and (max-width: 600px) { button.sc-Axmtr{position: absolute !important;right: 0px;} span.sc-fzozJi{display: none;} }</style>');
-        }, 4000)
+        }, 4000);
     </script>
 </body>
 
