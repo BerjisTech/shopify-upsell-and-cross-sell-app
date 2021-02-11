@@ -503,7 +503,7 @@ $duka = $shop . '.myshopify.com';
                                         success: function(response) {
                                             $('.os' + o).prop('checked', true);
                                             $(this).prop('checked', true);
-                                            $('.offer_status').prop('disable', true);
+                                            $('.offer_status').attr('disable', true);
                                             window.location.reload(false);
                                         },
                                         error: function() {
@@ -520,7 +520,7 @@ $duka = $shop . '.myshopify.com';
                                     success: function(response) {
                                         $('.os' + o).prop('checked', false);
                                         $(this).prop('checked', false);
-                                        $('.offer_status').prop('disable', true);
+                                        $('.offer_status').attr('disable', true);
                                         window.location.reload(false);
                                     },
                                     error: function() {
