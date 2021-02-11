@@ -1528,7 +1528,7 @@ class Slade extends CI_Controller
 
         $ip = str_replace('.', '', $ip);
 
-        $where = "`ipFROM` <= '" . $ip . "' AND `ipTO` >= '" . $ip . "'";
+        $where = "`ipFROM` >= '" . $ip . "' AND `ipTO` <= '" . $ip . "'";
         $country = $this->db->where($where)->get('ipcountry')->row();
 
         echo $country->countrySHORT;
@@ -1552,7 +1552,7 @@ class Slade extends CI_Controller
         $ip = str_replace('.', '', $ip);
         echo $ip;
 
-        $where = "`ipFROM` <= '" . $ip . "' AND `ipTO` >= '" . $ip . "'";
+        $where = "`ipFROM` >= '" . $ip . "' AND `ipTO` <= '" . $ip . "'";
         $country = $this->db->where($where)->get('ipcountry')->row();
 
         echo $country->countrySHORT;
