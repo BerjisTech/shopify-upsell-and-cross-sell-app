@@ -452,6 +452,7 @@ $duka = $shop . '.myshopify.com';
                     <script>
                         $('.collection_status').change(function() {
                             let o = $(this).attr('data-oid');
+                            $('.saving').show();
                             if (this.checked) {
                                 $.ajax({
                                     type: "POST",
@@ -459,9 +460,11 @@ $duka = $shop . '.myshopify.com';
                                     data: '',
                                     success: function(response) {
                                         $('.os' + o).prop('checked', true);
+                                        $('.saving').hide();
                                     },
                                     error: function() {
                                         alert('An error occured');
+                                        $('.saving').hide();
                                     }
                                 });
                             } else {
@@ -471,9 +474,11 @@ $duka = $shop . '.myshopify.com';
                                     data: '',
                                     success: function(response) {
                                         $('.os' + o).prop('checked', false);
+                                        $('.saving').hide();
                                     },
                                     error: function() {
                                         alert('An error occured');
+                                        $('.saving').hide();
                                     }
                                 });
                             }
