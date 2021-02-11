@@ -478,8 +478,6 @@ $duka = $shop . '.myshopify.com';
                             }
                         });
                         $('.offer_status').change(function() {
-                            alert('<?php echo $shop_details->name . " " . $this->db->where('shop', $shop)->where('status', 1)->get('offers')->num_rows(); ?>')
-
                             let o = $(this).attr('data-oid');
                             if (this.checked) {
                                 <?php if ($shop_details->name == 'Free' && $this->db->where('shop', $shop)->where('status', 1)->get('offers')->num_rows() > 0) : ?>
