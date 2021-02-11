@@ -506,7 +506,7 @@ $duka = $shop . '.myshopify.com';
                                         success: function(response) {
                                             $('.os' + o).prop('checked', true);
                                             $(this).prop('checked', true);
-                                            $('.slidr').addClass('hidden');
+                                            // $('.slidr').addClass('hidden');
                                             window.location.reload(false);
                                         },
                                         error: function() {
@@ -523,7 +523,7 @@ $duka = $shop . '.myshopify.com';
                                     success: function(response) {
                                         $('.os' + o).prop('checked', false);
                                         $(this).prop('checked', false);
-                                        $('.slidr').addClass('hidden');
+                                        // $('.slidr').addClass('hidden');
                                         window.location.reload(false);
                                     },
                                     error: function() {
