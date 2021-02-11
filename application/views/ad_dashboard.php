@@ -496,6 +496,9 @@ $duka = $shop . '.myshopify.com';
                                         success: function(response) {
                                             $('.os' + o).prop('checked', true);
                                             $(this).prop('checked', true);
+                                            <?php if (($shop_details->name == 'Free' && $this->db->where('shop', $shop)->where('status', 1)->get('offers')->num_rows() > 0) || ($shop_details->name == 'Sleek' && $this->db->where('shop', $shop)->where('status', 1)->get('offers')->num_rows() > 19)) : ?>
+                                                window.location.reload(false);
+                                            <?php endif; ?>
                                         },
                                         error: function() {
                                             alert('An error occured');
@@ -511,6 +514,9 @@ $duka = $shop . '.myshopify.com';
                                     success: function(response) {
                                         $('.os' + o).prop('checked', false);
                                         $(this).prop('checked', false);
+                                        <?php if (($shop_details->name == 'Free' && $this->db->where('shop', $shop)->where('status', 1)->get('offers')->num_rows() == 0) || ($shop_details->name == 'Sleek' && $this->db->where('shop', $shop)->where('status', 1)->get('offers')->num_rows() < 20)) : ?>
+                                            window.location.reload(false);
+                                        <?php endif; ?>
                                     },
                                     error: function() {
                                         alert('An error occured');
