@@ -433,11 +433,11 @@
                                 <ul>
                                     <li> <i class="fa fa-check" aria-hidden="true"></i> 1 Offer Active </li>
                                     <li> <i class="fa fa-check" aria-hidden="true"></i> Limited Offer Conditions </li>
-                                    <li> <i class="fa fa-times" aria-hidden="true"></i> </li>
-                                    <li> <i class="fa fa-times" aria-hidden="true"></i> </li>
+                                    <li> <i class="fa fa-times" aria-hidden="true"></i> x</li>
+                                    <li> <i class="fa fa-times" aria-hidden="true"></i> x</li>
                                 </ul>
                             </div>
-                            <a href="<?php echo base_url() . 'upgrade/' . $shop . '/' . $token; ?>/Free?<?php echo $_SERVER['QUERY_STRING']; ?>">GET FREE </a>
+                            <a href="/get_app">GET FREE </a>
                         </div>
                     </div>
                     <!-- END Col one -->
@@ -458,7 +458,7 @@
                                     <li> <i class="fa fa-check" aria-hidden="true"></i> Reports </li>
                                 </ul>
                             </div>
-                            <a href="<?php echo base_url() . 'upgrade/' . $shop . '/' . $token; ?>/Sleek?<?php echo $_SERVER['QUERY_STRING']; ?>">Upgrade </a>
+                            <a href="/get_app">Upgrade </a>
                         </div>
                     </div>
                     <!-- END Col two -->
@@ -479,7 +479,7 @@
                                     <li> <i class="fa fa-check" aria-hidden="true"></i> Live Support </li>
                                 </ul>
                             </div>
-                            <a href="<?php echo base_url() . 'upgrade/' . $shop . '/' . $token; ?>/Premium?<?php echo $_SERVER['QUERY_STRING']; ?>">Upgrade </a>
+                            <a href="/get_app">Upgrade </a>
                         </div>
                     </div>
                     <!-- END Col three -->
@@ -488,7 +488,7 @@
         </div>
     </section>
 
-    <div class="section bg-light py-lg" id="pricing">
+    <div class="section bg-light py-lg" id="pricing" style="display: none;">
         <div class="container">
             <div class="section-title text-center mt-0 mb-5">
                 <h3>Choose your plan</h3>
