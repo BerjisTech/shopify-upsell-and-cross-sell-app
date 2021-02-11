@@ -480,6 +480,8 @@ $duka = $shop . '.myshopify.com';
                         });
                         $('.offer_status').change(function() {
                             let o = $(this).attr('data-oid');
+                            $('.saving').show();
+                            $('.offer_status').attr('disabled', true);
                             if (this.checked) {
                                 <?php if ($shop_details->name == 'Free' && $this->db->where('shop', $shop)->where('status', 1)->get('offers')->num_rows() > 0) : ?>
                                     alert('You\'ve already maxed out your total active offers allowed. Upgrade your account to activate more offers.')
@@ -497,7 +499,7 @@ $duka = $shop . '.myshopify.com';
                                         success: function(response) {
                                             $('.os' + o).prop('checked', true);
                                             $(this).prop('checked', true);
-                                            $('.slidr').addClass('hidden');
+                                            // $('.slidr').addClass('hidden');
                                             window.location.reload(false);
                                         },
                                         error: function() {
@@ -514,7 +516,7 @@ $duka = $shop . '.myshopify.com';
                                     success: function(response) {
                                         $('.os' + o).prop('checked', false);
                                         $(this).prop('checked', false);
-                                        $('.slidr').addClass('hidden');
+                                        // $('.slidr').addClass('hidden');
                                         window.location.reload(false);
                                     },
                                     error: function() {

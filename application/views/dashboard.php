@@ -459,6 +459,7 @@ $duka = $shop . '.myshopify.com';
                     <script>
                         $('.collection_status').change(function() {
                             let o = $(this).attr('data-oid');
+                            $('.saving').show();
                             if (this.checked) {
                                 $.ajax({
                                     type: "POST",
@@ -466,9 +467,11 @@ $duka = $shop . '.myshopify.com';
                                     data: '',
                                     success: function(response) {
                                         $('.os' + o).prop('checked', true);
+                                        $('.saving').hide();
                                     },
                                     error: function() {
                                         alert('An error occured');
+                                        $('.saving').hide();
                                     }
                                 });
                             } else {
@@ -478,18 +481,20 @@ $duka = $shop . '.myshopify.com';
                                     data: '',
                                     success: function(response) {
                                         $('.os' + o).prop('checked', false);
+                                        $('.saving').hide();
                                     },
                                     error: function() {
                                         alert('An error occured');
+                                        $('.saving').hide();
                                     }
                                 });
                             }
                         });
                         $('.offer_status').change(function() {
                             let o = $(this).attr('data-oid');
+                            $('.saving').show();
                             $('.offer_status').attr('disabled', true);
                             if (this.checked) {
-                                //  $('.saving').show();
                                 <?php if ($shop_details->name == 'Free' && $this->db->where('shop', $shop)->where('status', 1)->get('offers')->num_rows() > 0) : ?>
                                     alert('You\'ve already maxed out your total active offers allowed. Upgrade your account to activate more offers.')
                                     $('.os' + o).prop('checked', false);
