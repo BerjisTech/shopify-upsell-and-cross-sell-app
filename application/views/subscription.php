@@ -15,7 +15,7 @@
                             <ul>
                                 <li> <i class="fa fa-check" aria-hidden="true"></i> 1 Offer Active </li>
                                 <li> <i class="fa fa-check" aria-hidden="true"></i> Limited Offer Conditions </li>
-                                <li> <i class="fa fa-check" aria-hidden="true"></i>   </li>
+                                <li> <i class="fa fa-times" aria-hidden="true"></i>   </li>
                                 <li> <i class="fa fa-times" aria-hidden="true"></i>   </li>
                             </ul>
                         </div>
@@ -37,7 +37,7 @@
                                 <li> <i class="fa fa-check" aria-hidden="true"></i> 20 active offers </li>
                                 <li> <i class="fa fa-check" aria-hidden="true"></i> Manual/Custom offers </li>
                                 <li> <i class="fa fa-check" aria-hidden="true"></i> Extended offer conditioning </li>
-                                <li> <i class="fa fa-times" aria-hidden="true"></i> Reports </li>
+                                <li> <i class="fa fa-check" aria-hidden="true"></i> Reports </li>
                             </ul>
                         </div>
                         <a href="<?php echo base_url() . 'upgrade/' . $shop . '/' . $token; ?>/Sleek?<?php echo $_SERVER['QUERY_STRING']; ?>">Upgrade </a>
