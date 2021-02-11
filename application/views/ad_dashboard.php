@@ -492,10 +492,12 @@ $duka = $shop . '.myshopify.com';
                                     alert('You\'ve already maxed out your total active offers allowed. Upgrade your account to activate more offers.')
                                     $('.os' + o).prop('checked', false);
                                     $(this).prop('checked', false);
+                                    $('.saving').hide();
                                 <?php elseif ($shop_details->name == 'Sleek' && $this->db->where('shop', $shop)->where('status', 1)->get('offers')->num_rows() > 19) : ?>
                                     alert('You\'ve already maxed out your total active offers allowed. Upgrade your account to activate more offers.')
                                     $('.os' + o).prop('checked', false);
                                     $(this).prop('checked', false);
+                                    $('.saving').hide();
                                 <?php else : ?>
                                     $.ajax({
                                         type: "POST",
