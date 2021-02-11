@@ -51,7 +51,7 @@
                             <h2>Premium</h2>
                         </div>
                         <div class="price">
-                            <h4><sup>$</sup>49.99</h4>
+                            <h4><sup>$</sup>59.99</h4>
                         </div>
                         <div class="option">
                             <ul>
