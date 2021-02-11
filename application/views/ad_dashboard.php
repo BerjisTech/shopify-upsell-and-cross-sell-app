@@ -1,4 +1,7 @@
-<?php $duka = $shop . '.myshopify.com'; ?>
+<?php
+$shop_details = $this->db->where('shop', $shop)->get('shops')->row();
+$duka = $shop . '.myshopify.com';
+?>
 <style>
     table.dataTable {
         display: block !important;
@@ -75,16 +78,15 @@
             <span class="whats">
                 <a title="Settings" href="<?php echo base_url(); ?>settings/<?php echo $shop; ?>/<?php echo $token; ?>?<?php echo $_SERVER['QUERY_STRING']; ?>"><span class="btn btn-primary entypo-cog"></span></a>
                 <a style="display: none;" title="Setup Wizard" target="_BLANK" href="https://<?php echo $shop; ?>.myshopify.com?s=<?php echo sha1($shop); ?>&t=<?php echo $token; ?>"><span class="btn btn-primary entypo-feather"></span></a>
-                <a style="display: none;" title="Subscription" href="<?php echo base_url(); ?>settings/<?php echo $shop; ?>/<?php echo $token; ?>?<?php echo $_SERVER['QUERY_STRING']; ?>"><span class="btn btn-primary entypo-credit-card"></span></a>
+                <a title="Subscription" href="<?php echo base_url(); ?>subscription/<?php echo $shop; ?>/<?php echo $token; ?>?<?php echo $_SERVER['QUERY_STRING']; ?>"><span class="btn btn-primary entypo-credit-card"></span></a>
                 <span><a title="New Offer" href="<?php echo base_url(); ?>new_offer/<?php echo $shop; ?>/<?php echo $token; ?>?<?php echo $_SERVER['QUERY_STRING']; ?>"><span class="btn btn-primary btn-sm"><i class="entypo-plus"></i></span></a></span>
                 <span><a title="Stats" href="<?php echo base_url(); ?>stats/<?php echo $shop; ?>/<?php echo $token; ?>?<?php echo $_SERVER['QUERY_STRING']; ?>"><span class="btn btn-primary btn-sm"><i class="entypo-chart-line"></i></span></a></span>
-                <?php if ($shop == 'berjis-tech-ltd' || $shop == 'sleek-apps' || $shop == 'sleek-upsell-support') : ?>
+                <?php if ($shop == 'berjis-tech-ltd' || $shop == 'sleek-apps') : ?>
                     <span><a title="Users" href="<?php echo base_url(); ?>users/<?php echo $shop; ?>/<?php echo $token; ?>?<?php echo $_SERVER['QUERY_STRING']; ?>"><i class="btn btn-primary btn-sm entypo-users"></i></a></span>
                 <?php endif; ?>
             </span>
         </div>
         <?php if ($this->db->where('shop', $shop)->get('offers')->num_rows() == 0 && $this->db->where('shop', $shop)->get('auto_collection')->num_rows() == 0) : ?>
-
             <div style="height: 100vh; overflow-y: auto; flex-grow: 4; padding-top: 10px; padding-left: 10px; padding-right: 10px; padding-bottom: 0px; background: #F1F2F3;">
 
                 <div class="row">
@@ -97,7 +99,7 @@
                             </h1>
                             <hr />
                             <h3>Welcome to the world of Sleek Upsell</h3>
-                            <p style="font-size: 18px !important; color: #8797A8 !important; margin-bottom: 0px !important;">Thank you for choosing Sleek Upsell to boost your sales! the app has everything in-built. No need for complex settings to get you started. Use the links below to create offers and adjust the visual design.</p>
+                            <p style="font-size: 18px !important; color: #8797A8 !important; margin-bottom: 0px !important;">Thank you for choosing Sleek Upsell to boost your sales! the app has veerything in-built. No need for complex settings to get you started. Use the links below to create offers and adjust the visual design.</p>
 
                             <p style="font-size: 18px !important; color: #8797A8 !important; margin-bottom: 0px !important;">Need help? Be sure to drop an email and we will repsond in less than 20 minutes. Our support team thrives on customer happiness</p>
 
@@ -116,9 +118,7 @@
                 </div>
             <?php endif; ?>
             <?php if ($this->db->where('shop', $shop)->get('offers')->num_rows() > 0 || $this->db->where('shop', $shop)->get('auto_collection')->num_rows() > 0) : ?>
-
                 <div style="height: 100vh; overflow-y: auto; flex-grow: 4; padding-top: 10px; padding-left: 10%; padding-right: 10%; padding-bottom: 0px; background: #F1F2F3;">
-
 
                     <script type="text/javascript">
                         jQuery(document).ready(function() {
@@ -240,50 +240,52 @@
                             </tr>
                         </thead>
                         <tbody style="border: none;">
-                            <?php if ($this->db->where('shop', $shop)->get('auto_collection')->num_rows() > 0) : ?>
-                                <tr>
-                                    <td style="vertical-align: middle; border: none; text-align: center; color: #FFFFFF; font-size: 1px;">0</td>
-                                    <td style="vertical-align: middle; border: none; flex-grow: 4;">
-                                        <span style="font-weight: bold;">
-                                            Auto-collection offers
-                                        </span>
-                                    </td>
-                                    <td style="vertical-align: middle; border: none;">
-                                        <span class="col-xs-12 status">
-                                            <label class="switch">
-                                                <input class="switcheck collection_status" type="checkbox" <?php if ($this->db->where('shop', $shop)->get('auto_collection')->row()->status == "1") {
-                                                                                                                echo "checked";
-                                                                                                            }; ?> />
-                                                <span class="slidr round"></span>
-                                            </label>
-                                        </span>
-                                    </td>
-                                    <td style="text-align: center; vertical-align: middle; border: none;">
-                                        <ul class="user-info" style="display: table; text-align: center; cursor: pointer;">
-                                            <li class="profile-info dropdown"><span class="dropdown-toggle" data-toggle="dropdown"><i class="entypo-dot-3"></i></span>
-                                                <ul class="dropdown-menu pull-right">
-                                                    <!-- Reverse Caret -->
-                                                    <li class="caret"></li>
-                                                    <!-- Profile sub-links -->
-                                                    <li><a href="<?php echo base_url(); ?>auto_collection/<?php echo $shop; ?>/<?php echo $token; ?>?<?php echo $_SERVER['QUERY_STRING']; ?>"><i class="entypo-pencil"></i>Edit</a></li>
-                                                    <li><a href="<?php echo base_url(); ?>offer_stats/<?php echo $shop; ?>/collection?<?php echo $_SERVER['QUERY_STRING']; ?>">
-                                                            <i class="entypo-chart-line"></i>Stats</a></li>
-                                                    <li><a onclick="if(confirm('Are you sure you want to delete this offer?')){$.ajax({url: 'delete_ac/<?php echo $shop; ?>', method: 'POST', success: function(){window.location.reload(false)}})}"><i class="entypo-trash"></i>Delete</a></li>
-                                                </ul>
-                                            </li>
-                                        </ul>
-                                    </td>
-                                </tr>
-                            <?php else : ?>
-                                <tr>
-                                    <td style="vertical-align: middle; border: none; text-align: center; color: #FFFFFF; font-size: 1px;">0</td>
-                                    <td style="vertical-align: middle; border: none; flex-grow: 4;">Collection based offers will allow you to automatically offer products from the same collections to your customers.
-                                    </td>
-                                    <td style="vertical-align: middle; border: none;"></td>
-                                    <td style="text-align: center; vertical-align: middle; border: none;">
-                                        <a href="<?php echo base_url(); ?>auto_collection/<?php echo $shop; ?>/<?php echo $token; ?>?<?php echo $_SERVER['QUERY_STRING']; ?>" class="btn btn-lg btn-primary btn-icon icon-right col-xs-12"><i class="entypo-plus"></i>ACTIVATE COLLECTION OFFERS</a>
-                                    </td>
-                                </tr>
+                            <?php if ($shop_details->name == 'Premium') : ?>
+                                <?php if ($this->db->where('shop', $shop)->get('auto_collection')->num_rows() > 0) : ?>
+                                    <tr>
+                                        <td style="vertical-align: middle; border: none; text-align: center; color: #FFFFFF; font-size: 1px;">0</td>
+                                        <td style="vertical-align: middle; border: none; flex-grow: 4;">
+                                            <span style="font-weight: bold;">
+                                                Auto-collection offers
+                                            </span>
+                                        </td>
+                                        <td style="vertical-align: middle; border: none;">
+                                            <span class="col-xs-12 status">
+                                                <label class="switch">
+                                                    <input class="switcheck collection_status" type="checkbox" <?php if ($this->db->where('shop', $shop)->get('auto_collection')->row()->status == "1") {
+                                                                                                                    echo "checked";
+                                                                                                                }; ?> />
+                                                    <span class="slidr round"></span>
+                                                </label>
+                                            </span>
+                                        </td>
+                                        <td style="text-align: center; vertical-align: middle; border: none;">
+                                            <ul class="user-info" style="display: table; text-align: center; cursor: pointer;">
+                                                <li class="profile-info dropdown"><span class="dropdown-toggle" data-toggle="dropdown"><i class="entypo-dot-3"></i></span>
+                                                    <ul class="dropdown-menu pull-right">
+                                                        <!-- Reverse Caret -->
+                                                        <li class="caret"></li>
+                                                        <!-- Profile sub-links -->
+                                                        <li><a href="<?php echo base_url(); ?>auto_collection/<?php echo $shop; ?>/<?php echo $token; ?>?<?php echo $_SERVER['QUERY_STRING']; ?>"><i class="entypo-pencil"></i>Edit</a></li>
+                                                        <li><a href="<?php echo base_url(); ?>offer_stats/<?php echo $shop; ?>/collection?<?php echo $_SERVER['QUERY_STRING']; ?>">
+                                                                <i class="entypo-chart-line"></i>Stats</a></li>
+                                                        <li><a onclick="if(confirm('Are you sure you want to delete this offer?')){$.ajax({url: 'delete_ac/<?php echo $shop; ?>', method: 'POST', success: function(){window.location.reload(false)}})}"><i class="entypo-trash"></i>Delete</a></li>
+                                                    </ul>
+                                                </li>
+                                            </ul>
+                                        </td>
+                                    </tr>
+                                <?php else : ?>
+                                    <tr>
+                                        <td style="vertical-align: middle; border: none; text-align: center; color: #FFFFFF; font-size: 1px;">0</td>
+                                        <td style="vertical-align: middle; border: none; flex-grow: 4;">Collection based offers will allow you to automatically offer products from the same collections to your customers.
+                                        </td>
+                                        <td style="vertical-align: middle; border: none;"></td>
+                                        <td style="text-align: center; vertical-align: middle; border: none;">
+                                            <a href="<?php echo base_url(); ?>auto_collection/<?php echo $shop; ?>/<?php echo $token; ?>?<?php echo $_SERVER['QUERY_STRING']; ?>" class="btn btn-lg btn-primary btn-icon icon-right col-xs-12"><i class="entypo-plus"></i>ACTIVATE COLLECTION OFFERS</a>
+                                        </td>
+                                    </tr>
+                                <?php endif; ?>
                             <?php endif; ?>
                             <?php
                             foreach ($offer as $key => $fetch) : ?>
@@ -476,19 +478,33 @@
                             }
                         });
                         $('.offer_status').change(function() {
+                            alert('<?php echo $shop_details->name . " " . $this->db->where('shop', $shop)->where('status', 1)->get('offers')->num_rows(); ?>')
+
                             let o = $(this).attr('data-oid');
                             if (this.checked) {
-                                $.ajax({
-                                    type: "POST",
-                                    url: base_url + 'offer_status/' + o + '/1?<?php echo $_SERVER['QUERY_STRING']; ?>',
-                                    data: '',
-                                    success: function(response) {
-                                        $('.os' + o).prop('checked', true);
-                                    },
-                                    error: function() {
-                                        alert('An error occured');
-                                    }
-                                });
+                                <?php if ($shop_details->name == 'Free' && $this->db->where('shop', $shop)->where('status', 1)->get('offers')->num_rows() > 0) : ?>
+                                    alert('You\'ve already maxed out your total active offers allowed. Upgrade your account to activate more offers.')
+                                    $('.os' + o).prop('checked', false);
+                                    $(this).prop('checked', false);
+                                <?php elseif ($shop_details->name == 'Sleek' && $this->db->where('shop', $shop)->where('status', 1)->get('offers')->num_rows() > 19) : ?>
+                                    alert('You\'ve already maxed out your total active offers allowed. Upgrade your account to activate more offers.')
+                                    $('.os' + o).prop('checked', false);
+                                    $(this).prop('checked', false);
+                                <?php else : ?>
+                                    $.ajax({
+                                        type: "POST",
+                                        url: base_url + 'offer_status/' + o + '/1?<?php echo $_SERVER['QUERY_STRING']; ?>',
+                                        data: '',
+                                        success: function(response) {
+                                            $('.os' + o).prop('checked', true);
+                                            $(this).prop('checked', true);
+                                        },
+                                        error: function() {
+                                            alert('An error occured');
+                                        }
+                                    });
+
+                                <?php endif; ?>
                             } else {
                                 $.ajax({
                                     type: "POST",
@@ -496,6 +512,7 @@
                                     data: '',
                                     success: function(response) {
                                         $('.os' + o).prop('checked', false);
+                                        $(this).prop('checked', false);
                                     },
                                     error: function() {
                                         alert('An error occured');
@@ -505,7 +522,7 @@
                         });
                     </script>
 
-                    <div class="tile-stats tile-white stat-tile" style="display: table; width: 100%; height: auto !important; padding: 10px; margin-bottom: 40px; margin-top: 10px; box-shadow: 0px 0px 5px rgba(2, 2, 2, 0.2);">
+                    <div class="tile-stats tile-white stat-tile" style="display: table; width: 100%; height: auto !important; padding: 10px;margin-bottom: 40px; margin-top: 10px; box-shadow: 0px 0px 5px rgba(2, 2, 2, 0.2);">
                         <?php if ($do_script == 'add') : ?>
                             <span onclick="$.ajax({url: '<?php echo base_url(); ?>add_tag/<?php echo $shop . '/' . $token ?>', success: function(e){ alert(e); window.location.reload(false);}, error: function(){ Alert('There was an error removing the automatic script tag'); } })" class="pull-right btn btn-success btn-icon icon-right">Add Automatic Script Tag<em class="entypo-plus"></em></span>
                         <?php else : ?>
@@ -525,9 +542,21 @@
                     <script src="<?php echo base_url(); ?>assets/js/datatables/datatables.js" id="script-resource-8"></script>
                     <script src="<?php echo base_url(); ?>assets/js/select2/select2.min.js" id="script-resource-9"></script>
                     <script src="<?php echo base_url(); ?>assets/js/bootstrap-datepicker.js" id="script-resource-12"></script>
-
-
                 <?php endif; ?>
                 </div>
             </div>
+
+            <?php
+
+            $this_script = '/admin/api/2021-01/recurring_application_charges.json';
+
+            $script_exists = $this->Shopify->shopify_call($token, $shop, $this_script, array(), 'GET');
+            $script_exists = json_decode($script_exists['response'], true);
+            // print_r($script_exists);
+
+            foreach ($script_exists['recurring_application_charges'] as $key => $fetch) :
+                echo $fetch['id'] . '=> name: ' . $fetch['name'] . '=> price: ' . $fetch['price'] . '=> status: ' . $fetch['status'] . '=> activated_on: ' . $fetch['activated_on'] . '=> cancelled_on: ' . $fetch['cancelled_on'] . '<br />';
+            endforeach;
+
+            ?><br /><br /><br />
     </div>
