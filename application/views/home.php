@@ -458,7 +458,7 @@
                                     <li> <i class="fa fa-check" aria-hidden="true"></i> Reports </li>
                                 </ul>
                             </div>
-                            <a href="/get_app">START 30 DAYS FREE </a>
+                            <a href="/get_app">30 DAYS FREE </a>
                         </div>
                     </div>
                     <!-- END Col two -->
@@ -479,7 +479,7 @@
                                     <li> <i class="fa fa-check" aria-hidden="true"></i> Live Support </li>
                                 </ul>
                             </div>
-                            <a href="/get_app">START 30 DAYS FREE </a>
+                            <a href="/get_app">30 DAYS FREE </a>
                         </div>
                     </div>
                     <!-- END Col three -->
