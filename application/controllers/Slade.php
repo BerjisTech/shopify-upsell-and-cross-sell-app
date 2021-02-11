@@ -399,7 +399,7 @@ class Slade extends CI_Controller
                 $array = array(
                     'recurring_application_charge' => array(
                         'name' => 'Sleek',
-                        'test' => true,
+                        'test' => false,
                         'price' => 19.99,
                         'trial_days' => 30,
                         'return_url' => 'https://' . $_GET['shop'] . '/admin/apps/sleek-upsell/activate/Sleek?t=false&hmac=' . $_GET['hmac'] . '&shop=' . $_GET['shop'],
@@ -410,7 +410,7 @@ class Slade extends CI_Controller
                 $array = array(
                     'recurring_application_charge' => array(
                         'name' => 'Premium',
-                        'test' => true,
+                        'test' => false,
                         'price' => 59.99,
                         'trial_days' => 30,
                         'return_url' => 'https://' . $_GET['shop'] . '/admin/apps/sleek-upsell/activate/Premium?t=false&hmac=' . $_GET['hmac'] . '&shop=' . $_GET['shop'],
