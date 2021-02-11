@@ -416,7 +416,7 @@
         </div>
     </div>
 
-    <section>
+    <section id="pricing">
         <div class="container-fluid">
             <div class="container">
                 <div class="row">
@@ -488,7 +488,7 @@
         </div>
     </section>
 
-    <div class="section bg-light py-lg" id="pricing" style="display: none;">
+    <div class="section bg-light py-lg" style="display: none;">
         <div class="container">
             <div class="section-title text-center mt-0 mb-5">
                 <h3>Choose your plan</h3>
