@@ -1,3 +1,4 @@
+<div class="saving" style="display: none; position: absolute; top: 0px; right: 0px; z-index: 4000000; width: 100vw; height: 100vh; background: rgba(152,27,27,0.5); vertical-align: middle; text-align: center;"><img src="<?php echo base_url(); ?>assets/images/loader_2.gif" style="margin-top: 30vh;" /></div>
 <?php
 $shop_details = $this->db->where('shop', $shop)->get('shops')->row();
 $duka = $shop . '.myshopify.com';
@@ -486,7 +487,9 @@ $duka = $shop . '.myshopify.com';
                         });
                         $('.offer_status').change(function() {
                             let o = $(this).attr('data-oid');
+                            $('.offer_status').attr('disabled', true);
                             if (this.checked) {
+                                //  $('.saving').show();
                                 <?php if ($shop_details->name == 'Free' && $this->db->where('shop', $shop)->where('status', 1)->get('offers')->num_rows() > 0) : ?>
                                     alert('You\'ve already maxed out your total active offers allowed. Upgrade your account to activate more offers.')
                                     $('.os' + o).prop('checked', false);

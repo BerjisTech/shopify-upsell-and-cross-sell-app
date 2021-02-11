@@ -1,3 +1,4 @@
+<div class="saving" style="display: none; position: absolute; top: 0px; right: 0px; z-index: 4000000; width: 100vw; height: 100vh; background: rgba(152,27,27,0.5); vertical-align: middle; text-align: center;"><img src="<?php echo base_url(); ?>assets/images/loader_2.gif" style="margin-top: 30vh;" /></div>
 <?php
 $shop_details = $this->db->where('shop', $shop)->get('shops')->row();
 $duka = $shop . '.myshopify.com';
