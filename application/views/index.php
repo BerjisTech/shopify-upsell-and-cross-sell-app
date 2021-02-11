@@ -134,6 +134,11 @@
     <script type="text/javascript">
         window.Beacon('init', 'a622d317-9f86-462f-9ad2-c13970d05d1f')
     </script>
+    <script>
+        setTimeout(function() {
+            $('iframe[aria-label="Toggle Customer Support"]').contents().find('body').append('<style>@media only screen and (max-width: 600px) { button.sc-Axmtr{position: absolute !important;right: 0px;} span.sc-fzozJi{display: none;} }</style>');
+        }, 4000)
+    </script>
 </body>
 
 </html>
