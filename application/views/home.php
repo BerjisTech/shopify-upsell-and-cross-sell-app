@@ -458,7 +458,7 @@
                                     <li> <i class="fa fa-check" aria-hidden="true"></i> Reports </li>
                                 </ul>
                             </div>
-                            <a href="/get_app">30 DAYS FREE </a>
+                            <a href="/get_app">7 DAYS FREE </a>
                         </div>
                     </div>
                     <!-- END Col two -->
@@ -479,7 +479,7 @@
                                     <li> <i class="fa fa-check" aria-hidden="true"></i> Live Support </li>
                                 </ul>
                             </div>
-                            <a href="/get_app">30 DAYS FREE </a>
+                            <a href="/get_app">7 DAYS FREE </a>
                         </div>
                     </div>
                     <!-- END Col three -->
@@ -533,7 +533,7 @@
                             <input style="text-align: center;" id="shop" name="shop" type="text" placeholder="example.myshopify.com" class="form-control">
                         </div>
                         <div class="form-group">
-                            <button type="submit" class="btn btn-xl btn-block btn-primary">START 30 DAYS FREE</button>
+                            <button type="submit" class="btn btn-xl btn-block btn-primary">START 7 DAYS FREE</button>
                         </div>
                     </form>
                 </div>
