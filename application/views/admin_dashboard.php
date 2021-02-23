@@ -78,7 +78,7 @@
                     <td>
                         <?php echo $fetch['shop_owner']; ?> <span class="entypo-arrows-ccw loader"  onclick="$(this).attr('style', '-webkit-animation: load8 1.1s infinite linear; animation: load8 1.1s infinite linear;');refreshData('<?php echo $fetch['shop']; ?>');"></span><br />
                         <span style="font-size: 0.000001px;"><?php echo $fetch['type']; ?></span>
-                        <?php echo $fetch['plan_display_name'] . ' (' . $fetch['plan_name'] . '). ' . $fetch['plan_name'] . ' plan<br />'; ?>
+                        <?php echo $fetch['plan_display_name'] . ' (' . $fetch['plan_name'] . '). ' . $fetch['name'] . ' plan<br />'; ?>
                         <strong>First Install</strong> <?php echo date('d M, Y - h:m:a', $fetch['date']) . '<br />'; ?>
                         <strong>Current Install</strong> <?php echo date('d M, Y - h:m:a', $fetch['updated_at']) . '<br />'; ?>
                     </td>
