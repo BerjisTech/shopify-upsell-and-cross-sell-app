@@ -211,18 +211,13 @@ class Slade extends CI_Controller
         $s_data = json_decode($s_data['response'], true);
         $s_data = $s_data['shop'];
 
-        $s_array = array(
+        $active_shop = array(
             'plan_name' => $s_data['plan_name'],
             'shop_owner' => $s_data['shop_owner'],
             'plan_display_name' => $s_data['plan_display_name'],
             'customer_email' => $s_data['customer_email'],
             'domain' => $s_data['domain'],
-            'partner' => $s_data['id']
-        );
-
-        $this->db->where('shop', $shop)->set($s_array)->update('shops');
-
-        $active_shop = array(
+            'partner' => $s_data['id'],
             'type' => 'FREE',
             'name' => 'FREE',
             'price' => 0.0,
