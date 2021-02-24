@@ -1,1 +1,990 @@
-const _0x38b5=['exactly','ajax','\x22>\x20<div\x20class=\x22sleek-compact\x22>\x20<div\x20class=\x22sleek-image\x22>\x20<img\x20src=\x22','OPR','stop_show','\x22/>\x20</div><div\x20class=\x22sleek-offer\x22>\x20<div\x20class=\x22sleek-text\x22>','\x22></select>\x20<select\x20name=\x22quantity\x22\x20class=\x22q-select\x20q-','layout_color','<input\x20type=\x22','<div\x20class=\x22','Opera','map','\x22>\x20<div\x20class=\x22sleek-image\x22>\x20<img\x20src=\x22','title_color','innerHTML','cart_position','swatch','getItem','display','\x22></select>\x20</div></div></div><button\x20class=\x22sleek-atc\x22\x20type=\x22submit\x22>','add\x20to\x20cart','</div><div\x20class=\x22sleek-title\x22>','Product\x20out\x20of\x20stock','before','layout_bg','/cart','Firefox','price_font','form[action=\x22/cart\x22]','inventory_quantity','change','unknown','onload','offer_bs','</button>\x20</form>','impression','setItem','products','includes','json','button','insertAfter','title_font','compact','select','POST','atleast','indexOf','submit','357364lBPhPk','drawer_position','<option\x20value=\x22','keys','oc6','prepend','Safari','reject','shop','after','\x20sleek-upsell\x22></div>','.sleek_fields_','location','code','undefined','.sleek-atc','collection_id','html','remove','button_size','style','\x22]\x20img','pid','.sleek-upsell\x20img','offer_radius','oc2','stringify','text_size','responseText','money_format','bid','currency','insertBefore','replace','title','amount_with_comma_separator','purchase','&quantity=0','image','text','getElementsByTagName','\x22\x20data-product-product_id=\x22','.sleek-upsell\x20button','</span>\x20</div><div\x20class=\x22sleek-selectors\x22>\x20<div\x20class=\x22offer_fields_holder\x20o_h_','send','/mf/','css','load','Could\x20not\x20add\x20product','<option\x20value=\x22\x22>','now','conditions','.reject_offer','show_image','offer_bc','<img\x20src=\x22https://sleekupsell.com/assets/images/loader.gif\x22\x20/>','.sleek-title','<form\x20class=\x22sleek-form\x22\x20data-product-index=\x22','</div><div\x20class=\x22sleek-flat\x22>\x20<div\x20class=\x22sleek-image\x22>\x20<img\x20src=\x22','sleek_shown_collection','discount','c_price','oc1','card','readyState','some','documentMode','0px','atmost','/discount/','Chrome','auto_collection','close','\x22></select>\x20</div><button\x20class=\x22sleek-atc\x22\x20type=\x22submit\x22>','split','log',')</option>','variant_id','form[data-product-product_id=\x22','<select\x20class=\x22form-control\x20select\x20sleek_fields_','substr',']\x22\x20name=\x22properties[','image_radius','.sleek-upsell\x20select','open','.q-','button_border','</div><div\x20class=\x22sleek-block\x22>\x20<div\x20class=\x22sleek-image\x22>\x20<img\x20src=\x22','find','name','/cart/change?id=','&variant=','number','.sleek-compare-price','offer_border','file','&shop=','c_used_','val','items','formatMoney','/cart/update.js','drawer_refresh','show','button_bs','</div><div\x20class=\x22sleek-selectors\x22>\x20<div\x20class=\x22offer_fields_holder\x20o_h_','hover','mobile','value','/gv/','compare_at_price','to_checkout','none','drawer_location','/cart/add.js','MSIE','_url','ADD\x20TO\x20CART','oc3','onreadystatechange','https://sleekupsell.com/offers/','textarea','118912lBhujw','price_size','fid','layout_font','</button>\x20</div></form>','</div><div\x20class=\x22sleek-prices\x22>\x20<span\x20class=\x22sleek-price\x20money\x22>','837728HKBZQM','rule','\x22>\x20<div\x20class=\x22sleek-half-block\x22>\x20<div\x20class=\x22sleek-image\x22>\x20<img\x20src=\x22','.sleek-form[data-product-index=\x22','373187XiWezu','refresh_state','button_bc','price_color','&browser=','amount','\x22></select>\x20<div\x20class=\x22flex-select\x22>\x20<select\x20name=\x22quantity\x22\x20class=\x22q-select\x20q-','button_mb','price','offer','prototype','flat','<style>.sleek-upsell{background:\x20#ECF0F1;\x20color:\x20#2B3D51;\x20padding:\x205px;\x20font-family:\x20inherit;\x20vertical-align:\x20middle;\x20margin:\x205px;}.sleek-image\x20img{width:\x20100px;}.sleek-text{font-weight:\x20bold;}.sleek-upsell\x20select{padding:\x204px;\x20margin-top:\x205px;}.sleek-prices{font-weight:\x20bold;\x20margin-bottom:\x205px;}.sleek-compare-price{text-decoration:\x20line-through;}.sleek-upsell\x20button{padding:\x2010px;\x20border:\x20none;\x20background:\x20#2B3D51;\x20color:\x20#FFFFFF;\x20font-weight:\x20bold;\x20border-radius:\x200px;\x20cursor:\x20pointer;\x20width:\x20100%;}.card{display:\x20table;}.card\x20.sleek-form{display:\x20flex;}.card\x20.sleek-image,\x20.card\x20.sleek-offer,\x20.card\x20.sleek-card-atc{display:\x20table;\x20align-self:\x20center;\x20padding:\x205px;}.card\x20.sleek-offer{flex-grow:\x204;}.card\x20.sleek-prices{text-align:\x20center;}.block,\x20.block\x20.sleek-form,\x20.block\x20.sleek-text,\x20.block\x20.sleek-atc{display:\x20table;}.sleek-block{display:\x20flex;}.block\x20.sleek-image,\x20.block\x20.sleek-offer{display:\x20table;\x20align-self:\x20center;\x20padding:\x205px;}.block\x20.sleek-offer{flex-grow:\x201;}.half-block,\x20.half-block\x20.sleek-form,\x20.half-block\x20.sleek-text,\x20.half-block\x20.sleek-atc{display:\x20table;}.sleek-half-block{display:\x20flex;}.half-block\x20.sleek-image,\x20.half-block\x20.sleek-offer{display:\x20table;\x20align-self:\x20center;\x20padding:\x205px;}.half-block\x20.sleek-offer{flex-grow:\x201;}.flat,\x20.flat\x20.sleek-form,\x20.flat\x20.sleek-text{display:\x20table;}.sleek-flat{display:\x20flex;}.flat\x20.sleek-image,\x20.flat\x20.sleek-offer{display:\x20table;\x20align-self:\x20center;\x20padding:\x205px;}.flat\x20.sleek-offer{flex-grow:\x201;}.flat\x20.flex-select{display:\x20flex;\x20width:\x20auto;\x20margin-top:\x2010px;}.flat\x20.v-select{display:\x20table;\x20width:\x20100%;\x20align-items:\x20center;\x20justify-content:\x20space-between;}.flat\x20.atc{flex-grow:\x204;}.flat\x20.q-select{margin-top:\x200px;\x20margin-right:\x2010px;}.compact,\x20.compact\x20.sleek-form,\x20.compact\x20.sleek-text,\x20.compact\x20.sleek-atc{display:\x20table;}.sleek-compact{display:\x20flex;}.compact\x20.sleek-image,\x20.compact\x20.sleek-offer{display:\x20table;\x20align-self:\x20center;\x20padding:\x205px;}.compact\x20.sleek-offer{flex-grow:\x201;}.compact\x20.sleek-atc{margin-top:\x205px;}@media\x20only\x20screen\x20and\x20(max-width:\x20600px){.sleek-upsell{width:\x2097%;\x20margin:\x205px\x20auto;}.card\x20select{max-width:\x20100px;}.block\x20select{max-width:\x20200px;}.sleek-prices\x20*{display:\x20inline-table;}.block\x20.sleek-form,\x20.block\x20.sleek-text,\x20.block\x20.sleek-atc{width:\x20100%;}}</style>','layout','image_bc','href','string','ANY','quantity','2BNcsVs','<style>','241811pfnrAa','\x22></div>\x20<select\x20name=\x22id\x22\x20class=\x22v-select\x20v-','v_price','button_bg','appendChild','same_vendor','apply','1VbGIrj','head','vendor','image_border','https://sleekupsell.com/assets/js/jquery-1.11.3.min.js','1eXLFpK','atc','createElement','null','></select>','src','</label>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20','&device=','application/x-www-form-urlencoded','.sleek-upsell','addEventListener','/cart/change.js','oc7','half-block','image_bs','367292vMkinW','userAgent','toFixed','settings','collection','<textarea','49877uduBvI','<form\x20class=\x22sleek-form\x22\x20action=\x22/cart/add\x22\x20enctype=\x22multipart/form-data\x22\x20data-product-index=\x22','button_mt','block','show_title','oid','oc8','collects','every','date','show_price','</span>\x20</div><button\x20class=\x22sleek-atc\x22\x20type=\x22submit\x22>','reload','</button>\x20</div></div></form>','XMLHttpRequest','\x22/>\x20</div><div\x20class=\x22sleek-offer\x22>\x20<div\x20class=\x22sleek-title\x22>','tablet','.sleek-text','&offer=','Would\x20you\x20like\x20a\x20','c_upsold_','variant','total_price','setRequestHeader','.sleek-prices','stat_id=\x22\x22&date=','content','attr','floor','product_id','\x22></select>\x20<button\x20class=\x22sleek-atc\x22\x20type=\x22submit\x22>','/checkout','display:none','.q_select','checkbox_group','item_count','length','click','<div\x20class=\x22card\x20sleek-upsell\x22></div>','.o_h_','</option>','</span>\x20<span\x20class=\x22sleek-compare-price\x20money\x22>','<input\x20type=\x22checkbox\x22','\x22></select>\x20</div></div><div\x20class=\x22sleek-card-atc\x22>\x20<div\x20class=\x22sleek-prices\x22>\x20<span\x20class=\x22sleek-price\x20money\x22>','.v-','variants','\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20</div>','</button>\x20</div></div></div></div></form>','serialize','<div\x20style=\x22display:\x20table;\x20position:\x20relative;\x20width:\x20100%;\x20text-align:\x20right;\x22><span\x20class=\x22reject_offer\x22\x20style=\x22font-size:\x2015px;\x20cursor:\x20pointer;\x22>x</span></div>','\x20id=\x22properties[','forEach','&quantity=','\x22>\x20<div\x20class=\x22sleek-text\x22>','oc9','GET','amount_no_decimals','radio','q_select','layout_size','filter','margin-bottom','override','findIndex','sleek_shown_','oc10','/cart.js','status','oc5','images','https://','vid','button_radius','product','append','.sleek-price','test'];const _0x3d70=function(_0x378b43,_0x1eedb2){_0x378b43=_0x378b43-0xb0;let _0x38b596=_0x38b5[_0x378b43];return _0x38b596;};const _0x11c070=_0x3d70;(function(_0x15e7dd,_0x229e37){const _0x57f78c=_0x3d70;while(!![]){try{const _0x219c79=parseInt(_0x57f78c(0xf1))*parseInt(_0x57f78c(0x114))+-parseInt(_0x57f78c(0xf3))*-parseInt(_0x57f78c(0xff))+-parseInt(_0x57f78c(0xde))+parseInt(_0x57f78c(0xd4))+parseInt(_0x57f78c(0xfa))*-parseInt(_0x57f78c(0x192))+-parseInt(_0x57f78c(0x10e))+parseInt(_0x57f78c(0xda));if(_0x219c79===_0x229e37)break;else _0x15e7dd['push'](_0x15e7dd['shift']());}catch(_0x59a2d5){_0x15e7dd['push'](_0x15e7dd['shift']());}}}(_0x38b5,0x30eaa));function g_d(_0x51c448){const _0x2a5ee2=_0x3d70;let _0x4feff9=new XMLHttpRequest();return _0x4feff9[_0x2a5ee2(0x1e6)](_0x2a5ee2(0x14b),_0x51c448,![]),_0x4feff9[_0x2a5ee2(0x1be)](null),JSON['parse'](_0x4feff9[_0x2a5ee2(0x1ae)]);}function g_s_s_w(_0x482e1f){const _0x483408=_0x3d70;let _0x4e12c7=new XMLHttpRequest();return _0x4e12c7[_0x483408(0x1e6)](_0x483408(0x14b),_0x482e1f,![]),_0x4e12c7['send'](null),_0x4e12c7[_0x483408(0x1ae)];}function get_this(_0x541ac3){const _0x2e07aa=_0x3d70;_0x541ac3&&(_0x541ac3[_0x2e07aa(0x181)]=function(){const _0x51db2a=_0x2e07aa;return _0x541ac3[_0x51db2a(0x1ae)];},_0x541ac3[_0x2e07aa(0x1be)]());}const simu=()=>{const _0x1db2f3=_0x3d70,_0x2f2c73=navigator[_0x1db2f3(0x10f)];if(/(tablet|ipad|playbook|silk)|(android(?!.*mobi))/i[_0x1db2f3(0x160)](_0x2f2c73))return _0x1db2f3(0x124);if(/Mobile|iP(hone|od|ad)|Android|BlackBerry|IEMobile|Kindle|Silk-Accelerated|(hpw|web)OS|Opera M(obi|ini)/[_0x1db2f3(0x160)](_0x2f2c73))return _0x1db2f3(0xc5);return'desktop';};let burl='https://sleekupsell.com',page_ss=window[_0x11c070(0x19e)][_0x11c070(0xed)],s_s_w=g_s_s_w('https://sleekupsell.com/s_s_w/'+Shopify[_0x11c070(0x19a)]),Shopify=Shopify||{};Shopify['money_format']=g_s_s_w(burl+_0x11c070(0x1bf)+Shopify[_0x11c070(0x19a)]),Shopify['currency']=Shopify[_0x11c070(0x1af)][_0x11c070(0x1e2)](0x0,Shopify[_0x11c070(0x1af)]['indexOf']('{'))[_0x11c070(0x1e2)](0x0,Shopify['money_format'][_0x11c070(0x190)]('}')),Shopify['formatMoney']=function(_0x2047bd,_0xf4e98a){const _0x30e848=_0x11c070;typeof _0x2047bd==_0x30e848(0xee)&&(_0x2047bd=_0x2047bd[_0x30e848(0x1b3)]('.',''));let _0x367ed1='',_0x4c4ee0=/\{\{\s*(\w+)\s*\}\}/,_0x3ac4a2=_0xf4e98a||this[_0x30e848(0x1af)];function _0x3fdb8c(_0x5b20d7,_0x21d6e7){const _0x406192=_0x30e848;return typeof _0x5b20d7==_0x406192(0x1a0)?_0x21d6e7:_0x5b20d7;}function _0x11d1d4(_0x146765,_0x4cb234,_0x2054a4,_0x18e727){const _0x265ae1=_0x30e848;_0x4cb234=_0x3fdb8c(_0x4cb234,0x2),_0x2054a4=_0x3fdb8c(_0x2054a4,','),_0x18e727=_0x3fdb8c(_0x18e727,'.');if(isNaN(_0x146765)||_0x146765==null)return 0x0;_0x146765=(_0x146765/0x64)[_0x265ae1(0x110)](_0x4cb234);let _0x19a818=_0x146765[_0x265ae1(0x1dc)]('.'),_0x1fa831=_0x19a818[0x0][_0x265ae1(0x1b3)](/(\d)(?=(\d\d\d)+(?!\d))/g,Shopify[_0x265ae1(0x1b1)]+'\x201'+_0x2054a4),_0xea1c9d=_0x19a818[0x1]?_0x18e727+_0x19a818[0x1]:'';return _0x1fa831+_0xea1c9d;}switch(_0x3ac4a2['match'](_0x4c4ee0)[0x1]){case'amount':_0x367ed1=_0x11d1d4(_0x2047bd,0x2);break;case _0x30e848(0x14c):_0x367ed1=_0x11d1d4(_0x2047bd,0x0);break;case _0x30e848(0x1b5):_0x367ed1=_0x11d1d4(_0x2047bd,0x2,'.',',');break;case'amount_no_decimals_with_comma_separator':_0x367ed1=_0x11d1d4(_0x2047bd,0x0,'.',',');break;}return _0x3ac4a2[_0x30e848(0x1b3)](_0x4c4ee0,_0x367ed1);};if(typeof jQuery===_0x11c070(0x1a0)||jQuery==null){let script=document[_0x11c070(0x101)]('script');script['type']='text/javascript',script['src']=_0x11c070(0xfe),document[_0x11c070(0x1ba)](_0x11c070(0xfb))[0x0][_0x11c070(0xf7)](script),script[_0x11c070(0x181)]=function(){sleek_upsell();};}else sleek_upsell();async function sleek_upsell(){const _0x3b7adc=_0x11c070;Array['prototype']['atleast']=function(_0x40122f,_0x3cf0fb){if(_0x40122f==0x0)return!![];let _0x529d7c=0x0;for(let _0x12e773 of this){if(_0x3cf0fb(_0x12e773)){_0x529d7c++;if(_0x529d7c==_0x40122f)return!![];}}return![];},Array[_0x3b7adc(0xe8)]['atmost']=function(_0x17bf89,_0x590c84){let _0x46d845=0x0;for(let _0x968fd8 of this){if(_0x590c84(_0x968fd8)){_0x46d845++;if(_0x46d845>_0x17bf89)return![];}}return!![];},Array[_0x3b7adc(0xe8)][_0x3b7adc(0x161)]=function(_0x5a82ca,_0x150550){let _0x4e5484=0x0;for(let _0x49d17d of this){if(_0x150550(_0x49d17d)){_0x4e5484++;if(_0x4e5484>_0x5a82ca)return![];}}return _0x4e5484==_0x5a82ca;},Array[_0x3b7adc(0xe8)]['none']=function(_0x453851){const _0x15ac1b=_0x3b7adc;return!this[_0x15ac1b(0x1d3)](_0x453851);};let _0x16538c=window['location']['pathname'],_0xf2e3ae=_0x3b7adc(0xd2)+Shopify[_0x3b7adc(0x19a)],_0xc99848=g_d(_0xf2e3ae),_0x2bcb47=g_d(_0x3b7adc(0x156)),_0x5f5c7f=_0xc99848['auto_collection'],_0x110249=_0xc99848[_0x3b7adc(0x111)],_0x807043=_0x3b7adc(0x17d),_0x1d6870=_0x3b7adc(0x178),_0x29d53e=_0x3b7adc(0x17d),_0x2128cc=_0x3b7adc(0x178);_0x110249!=null&&(_0x807043=_0x110249[_0x3b7adc(0xcb)],_0x29d53e=_0x110249['cart_location'],_0x2128cc=_0x110249[_0x3b7adc(0x170)],_0x1d6870=_0x110249[_0x3b7adc(0x193)]);function _0x237b4d(){const _0xea76d8=_0x3b7adc;return this[_0xea76d8(0x109)](_0xea76d8(0x1c1),function(){const _0x12fe8c=_0xea76d8;if([_0x12fe8c(0xcc),_0x12fe8c(0xbf),_0x12fe8c(0x10a),'/cart/clear.js'][_0x12fe8c(0x187)](this[_0x12fe8c(0xce)])){if(_0x16538c[_0x12fe8c(0x187)](_0x12fe8c(0x17a))){}else _0x2bcb47=g_d(_0x12fe8c(0x15a)+Shopify['shop']+_0x12fe8c(0x156)),_0x1c0af3();}}),_0xc7a03[_0xea76d8(0xf9)](this,arguments);}const _0xc7a03=window['XMLHttpRequest'][_0x3b7adc(0xe8)][_0x3b7adc(0x1e6)];!_0x16538c['includes'](_0x3b7adc(0x17a))&&(window[_0x3b7adc(0x122)][_0x3b7adc(0xe8)]['open']=_0x237b4d);_0x1c0af3();function _0x1c0af3(){const _0x31d3dd=_0x3b7adc;try{_0x2bcb47[_0x31d3dd(0x137)]>0x0&&(_0x5f5c7f!=_0x31d3dd(0x102)&&_0x5f5c7f!=null&&_0x5f5c7f[_0x31d3dd(0x157)]==='1'?_0x2cca02():_0x217789());}catch(_0x554f03){_0x217789();}}function _0x217789(){const _0x4a1c86=_0x3b7adc;try{$(_0x4a1c86(0x108))[_0x4a1c86(0x1a4)]();}catch(_0x1aec2b){}if(page_ss[_0x4a1c86(0x187)](s_s_w)||sessionStorage[_0x4a1c86(0x172)]('s_u_w')=='y')return![];else{$(_0x4a1c86(0x108))!=null&&$(_0x4a1c86(0x108))[_0x4a1c86(0x1a4)]();if(_0x2bcb47[_0x4a1c86(0x137)]>0x0){let _0x410a34=Object['entries'](_0xc99848[_0x4a1c86(0xe7)])['find'](([_0x4f920a,_0x4d2ae8])=>_0x3ae026(_0x4f920a,_0x4d2ae8));if(_0x410a34){let [_0x558674,_0x5906f4]=_0x410a34;_0x24f4ee(_0x558674);}}}}function _0x2cca02(){const _0x4c3d31=_0x3b7adc;if(_0x2bcb47[_0x4c3d31(0x137)]>0x0&&Object[_0x4c3d31(0x195)](_0x5f5c7f)!='undefined'&&Object[_0x4c3d31(0x195)](_0x5f5c7f)['length']>0x0&&_0x5f5c7f[_0x4c3d31(0x157)]==='1'){let _0x22bbe6=_0xc99848[_0x4c3d31(0x11b)],_0xad9c22=_0x2bcb47[_0x4c3d31(0xbd)],_0x16c24b='';for(let _0x296d69=0x0;_0x296d69<_0xad9c22['length'];_0x296d69++){_0x16c24b=_0xad9c22[_0x296d69][_0x4c3d31(0x131)];if(sessionStorage[_0x4c3d31(0x172)](_0x4c3d31(0x128)+_0x16c24b)=='y')continue;else{if(_0x22bbe6[_0x4c3d31(0x153)](_0x2bc99c=>_0x2bc99c[_0x4c3d31(0x131)]==_0x16c24b)!=-0x1){sessionStorage[_0x4c3d31(0x185)](_0x4c3d31(0x128)+_0x16c24b,'y');let _0x46e111=_0x22bbe6[_0x4c3d31(0x150)](_0x1052f9=>_0x1052f9[_0x4c3d31(0x131)]==_0x16c24b),_0x36e6d0=_0x46e111[0x0][_0x4c3d31(0x1a2)],_0x50b38f=_0x22bbe6[_0x4c3d31(0x150)](_0x44abb2=>_0x44abb2[_0x4c3d31(0x1a2)]==_0x36e6d0);for(let _0x176323=0x0;_0x176323<_0x50b38f[_0x4c3d31(0x138)];_0x176323++){if(sessionStorage[_0x4c3d31(0x172)](_0x4c3d31(0xbb)+_0x50b38f[_0x176323]['product_id'])=='z')continue;else{if(_0xad9c22[_0x4c3d31(0x153)](_0x656823=>_0x656823[_0x4c3d31(0x131)]==_0x50b38f[_0x176323][_0x4c3d31(0x131)])!=-0x1){sessionStorage[_0x4c3d31(0x185)](_0x4c3d31(0xbb)+_0x50b38f[_0x176323]['product_id'],'z');continue;}else{if(_0x5f5c7f[_0x4c3d31(0xf8)]=='y'){pidV=_0xad9c22[_0x296d69]['vendor'];;pid2V=gv(base_url+_0x4c3d31(0xc7)+Shopify[_0x4c3d31(0x19a)]+'/'+_0x50b38f[_0x176323]['product_id'])[_0x4c3d31(0x15d)][_0x4c3d31(0xfc)];if(pidV==pid2V)sessionStorage[_0x4c3d31(0x185)]('c_used_'+_0x50b38f[_0x176323]['product_id'],'z'),_0x338409(_0x50b38f[_0x176323]['product_id']);else continue;}else sessionStorage[_0x4c3d31(0x185)](_0x4c3d31(0xbb)+_0x50b38f[_0x176323][_0x4c3d31(0x131)],'z'),_0x338409(_0x50b38f[_0x176323][_0x4c3d31(0x131)]);break;}}}break;}else continue;}}}}function _0x3ae026(_0x23c585,_0x15b33b){const _0x1361e1=_0x3b7adc;let _0x5eb854=_0x15b33b['offer'][0x0][_0x1361e1(0x157)];if(_0x5eb854!=0x1||sessionStorage[_0x1361e1(0x172)](_0x1361e1(0x154)+_0x23c585)=='y')return![];let _0x2598e2=_0x15b33b[_0x1361e1(0xe7)][0x0][_0x1361e1(0xdb)],_0x17c9d6=_0x15b33b['blocks'];switch(_0x2598e2){case _0x1361e1(0xef):return _0x17c9d6[_0x1361e1(0x1d3)](_0x2faece);case'ALL':return _0x17c9d6['every'](_0x2faece);default:return![];}}function _0x2faece(_0x5cb767){const _0x29ba52=_0x3b7adc;let _0x31fc0c=_0x5cb767[_0x29ba52(0x119)],_0x32a757=_0x5cb767[_0x29ba52(0x1b0)],_0x5d9f27=_0x5cb767[_0x29ba52(0xdb)],_0x2abfce=_0xc99848['offer'][_0x31fc0c][_0x29ba52(0x1c5)],_0x244a13=_0x2abfce[_0x29ba52(0x150)](_0x4333a8=>_0x4333a8[_0x29ba52(0x1b0)]==_0x32a757);switch(_0x5d9f27){case _0x29ba52(0xef):return _0x244a13[_0x29ba52(0x1d3)](_0x40fa3f);case'ALL':return _0x244a13[_0x29ba52(0x11c)](_0x40fa3f);default:return![];}}function _0x40fa3f(_0x5c4616){const _0x5d2761=_0x3b7adc;let _0x1a413e=_0x5c4616['type'],_0x53579e=_0x5c4616[_0x5d2761(0xf0)],_0x26ae57=_0x5c4616['level'],_0x324503=_0x5c4616[_0x5d2761(0x12e)],_0x4e245d=_0x5c4616['pid'],_0x1fb0b1=_0x5c4616[_0x5d2761(0x15b)],_0x3f1072=_0x5c4616[_0x5d2761(0xe3)],_0x5b36c1=_0x5c4616['country'],_0x5725a9=_0x2bcb47[_0x5d2761(0xbd)];switch(_0x1a413e){case _0x5d2761(0x1d0):switch(_0x26ae57){case _0x5d2761(0x15d):return _0x5725a9[_0x5d2761(0x18f)](_0x53579e,_0x3c38c2=>_0x3c38c2[_0x5d2761(0x131)]==_0x4e245d);case _0x5d2761(0x129):return _0x5725a9[_0x5d2761(0x18f)](_0x53579e,_0x5e4284=>_0x5e4284[_0x5d2761(0x1df)]==_0x1fb0b1);case _0x5d2761(0x112):return _0xc99848['collects'][_0x5d2761(0x18f)](_0x53579e,_0x113eeb=>_0x113eeb[_0x5d2761(0x1a2)]==_0x4e245d&&_0x5725a9[_0x5d2761(0x1d3)](_0x1f90a7=>_0x1f90a7['product_id']==_0x113eeb[_0x5d2761(0x131)]));default:return![];}case _0x5d2761(0x1ab):switch(_0x26ae57){case'product':return _0x5725a9[_0x5d2761(0x1d6)](_0x53579e,_0x1d7e49=>_0x1d7e49[_0x5d2761(0x131)]==_0x4e245d);case'variant':return _0x5725a9[_0x5d2761(0x1d6)](_0x53579e,_0xcbf89c=>_0xcbf89c[_0x5d2761(0x1df)]==_0x1fb0b1);case _0x5d2761(0x112):return _0xc99848[_0x5d2761(0x11b)][_0x5d2761(0x1d6)](_0x53579e,_0x304a7b=>_0x304a7b['collection_id']==_0x4e245d&&_0x5725a9[_0x5d2761(0x1d3)](_0x102a73=>_0x102a73[_0x5d2761(0x131)]==_0x304a7b['product_id']));default:return![];}case _0x5d2761(0xd0):switch(_0x26ae57){case _0x5d2761(0x15d):return _0x5725a9[_0x5d2761(0x161)](_0x53579e,_0x41c315=>_0x41c315[_0x5d2761(0x131)]==_0x4e245d);case _0x5d2761(0x129):return _0x5725a9[_0x5d2761(0x161)](_0x53579e,_0x5df105=>_0x5df105[_0x5d2761(0x1df)]==_0x1fb0b1);case _0x5d2761(0x112):return _0xc99848['collects'][_0x5d2761(0x161)](_0x53579e,_0x55e4fa=>_0x55e4fa[_0x5d2761(0x1a2)]==_0x4e245d&&_0x5725a9[_0x5d2761(0x1d3)](_0x3b3787=>_0x3b3787[_0x5d2761(0x131)]==_0x55e4fa[_0x5d2761(0x131)]));default:return![];}case'oc4':switch(_0x26ae57){case _0x5d2761(0x15d):return _0x5725a9[_0x5d2761(0xca)](_0x23d160=>_0x23d160[_0x5d2761(0x131)]==_0x4e245d);case _0x5d2761(0x129):return _0x5725a9[_0x5d2761(0xca)](_0x280648=>_0x280648['variant_id']==_0x1fb0b1);case _0x5d2761(0x112):return _0xc99848[_0x5d2761(0x11b)]['none'](_0x1b0350=>_0x1b0350[_0x5d2761(0x1a2)]==_0x4e245d&&_0x5725a9[_0x5d2761(0x1d3)](_0x35830c=>_0x35830c[_0x5d2761(0x131)]==_0x1b0350[_0x5d2761(0x131)]));default:return![];}case _0x5d2761(0x158):return _0x2bcb47[_0x5d2761(0x12a)]>=_0x3f1072;case _0x5d2761(0x196):return _0x2bcb47[_0x5d2761(0x12a)]<=_0x3f1072;case _0x5d2761(0x10b):return![];case _0x5d2761(0x11a):return![];case _0x5d2761(0x14a):return _0x5725a9['some'](_0x38cdef=>_0x38cdef[_0x5d2761(0xfc)]==_0x324503);case _0x5d2761(0x155):return _0x5725a9[_0x5d2761(0xca)](_0x27c255=>_0x27c255[_0x5d2761(0xfc)]==_0x324503);default:return![];}}function _0x5ae4e9(_0x1c15cd,_0x1b05bd){const _0xea8f58=_0x3b7adc;let _0x1f1619=_0xc99848[_0xea8f58(0xe7)][_0x1c15cd]['fields'],_0x45a9c5=_0xc99848['offer'][_0x1c15cd]['choices'];_0x1f1619[_0xea8f58(0x150)](_0x51f9dd=>_0x51f9dd[_0xea8f58(0x1a8)]==_0x1b05bd)[_0xea8f58(0x147)](_0x5efc84=>_0x25ec78(_0x1b05bd,_0x5efc84,_0x5efc84['type']==_0xea8f58(0x18d)?_0x45a9c5[_0xea8f58(0x150)](_0x27d0c2=>_0x27d0c2[_0xea8f58(0xd6)]==_0x5efc84[_0xea8f58(0xd6)]):[]));}function _0x25ec78(_0x45e1c2,_0x147a75,_0x4e5237){const _0x2e2245=_0x3b7adc;let _0x24e0ae=_0x147a75['type'],_0x2c77d2=_0x147a75['placeholder'],_0x5471da=_0x147a75[_0x2e2245(0xb3)];switch(_0x24e0ae){case _0x2e2245(0x18d):_0x52d6b4(_0x510040(_0x2e2245(0x1e1)+_0x147a75[_0x2e2245(0xd6)]+'\x22',_0x2e2245(0x103),_0x2c77d2,_0x5471da),_0x45e1c2),_0x248ce5(_0x5471da,_0x2c77d2),_0x4e5237[_0x2e2245(0x147)](_0x22e23f=>_0x495cd2(_0x147a75[_0x2e2245(0xd6)],_0x22e23f[_0x2e2245(0xc6)],_0x22e23f['price']));break;case _0x2e2245(0x136):_0x52d6b4(_0x510040(_0x2e2245(0x13e),'/>',_0x2c77d2,_0x5471da),_0x45e1c2);break;case _0x2e2245(0xd3):_0x52d6b4(_0x510040(_0x2e2245(0x113),'>'+_0x2c77d2+'<textarea/>',_0x2c77d2,_0x5471da),_0x45e1c2);break;case'checkbox':case _0x2e2245(0x14d):_0x52d6b4(_0x510040(_0x2e2245(0x169)+_0x24e0ae+'\x22','/>\x20'+_0x2c77d2,_0x2c77d2,_0x5471da),_0x45e1c2);break;case _0x2e2245(0xb6):case _0x2e2245(0x1b9):case _0x2e2245(0xb9):case _0x2e2245(0x11d):_0x52d6b4(_0x510040(_0x2e2245(0x169)+_0x24e0ae+'\x22','/>',_0x2c77d2,_0x5471da),_0x45e1c2);break;case _0x2e2245(0x171):_0x52d6b4(_0x510040('<input\x20type=\x22color\x22\x20style=\x22min-width:\x20150px;\x22','/>',_0x2c77d2,_0x5471da),_0x45e1c2);break;}}function _0x52d6b4(_0xaa1e11,_0x3f22e4){const _0x356ae=_0x3b7adc;$(_0x356ae(0x13b)+_0x3f22e4)[_0x356ae(0x15e)](_0xaa1e11);}function _0x248ce5(_0x180b69,_0x4cef9a){const _0x2e10eb=_0x3b7adc;$(_0x2e10eb(0x19d)+_0x180b69)[_0x2e10eb(0x15e)]($(_0x2e10eb(0x1c3)+_0x4cef9a+_0x2e10eb(0x13c)));}function _0x495cd2(_0x1026de,_0x15b9ba,_0x45f345){const _0x5500a0=_0x3b7adc;$('.sleek_fields_'+_0x1026de)[_0x5500a0(0x15e)]($('<option\x20value=\x22'+_0x15b9ba+'\x22>'+_0x15b9ba+'\x20('+_0x45f345+_0x5500a0(0x1de)));}function _0x510040(_0x36c7ea,_0x42c553,_0x57963f,_0x1a6272){const _0x9ef133=_0x3b7adc;return'\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<div>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<label>'+_0x57963f+_0x9ef133(0x105)+_0x36c7ea+_0x9ef133(0x146)+_0x1a6272+_0x9ef133(0x1e3)+_0x1a6272+']\x20placeholder=\x22'+_0x57963f+'\x22\x20'+_0x42c553+_0x9ef133(0x142);}function _0x4113ef(){const _0x196484=_0x3b7adc;if((navigator[_0x196484(0x10f)]['indexOf'](_0x196484(0x16b))||navigator[_0x196484(0x10f)][_0x196484(0x190)](_0x196484(0x164)))!=-0x1)return _0x196484(0x16b);else{if(navigator['userAgent'][_0x196484(0x190)](_0x196484(0x1d8))!=-0x1)return _0x196484(0x1d8);else{if(navigator[_0x196484(0x10f)][_0x196484(0x190)]('Safari')!=-0x1)return _0x196484(0x198);else{if(navigator['userAgent'][_0x196484(0x190)](_0x196484(0x17b))!=-0x1)return _0x196484(0x17b);else return navigator['userAgent'][_0x196484(0x190)](_0x196484(0xcd))!=-0x1||!!document[_0x196484(0x1d4)]==!![]?'IE':_0x196484(0x180);}}}}function _0x70d9a4(_0x5cd5a6,_0x19cdaa,_0x39c6de,_0x49df6a,_0x40907d,_0x4646b4,_0xdc41bc){const _0x219bfc=_0x3b7adc;let _0x4c2796=_0x2bcb47[_0x219bfc(0xbd)][_0x219bfc(0x16c)](_0x3f3ef7=>_0x3f3ef7[_0x219bfc(0x131)]),_0x957780=new XMLHttpRequest(),_0x10dcf5='https://sleekupsell.com/brgxczvy',_0x2850b2=_0x219bfc(0x12d)+Math[_0x219bfc(0x130)](Date[_0x219bfc(0x1c4)]()/0x3e8)+_0x219bfc(0xba)+Shopify[_0x219bfc(0x19a)]+_0x219bfc(0x126)+_0x5cd5a6+'&product='+_0x19cdaa+_0x219bfc(0xb5)+_0x39c6de+_0x219bfc(0x148)+_0x49df6a+'&ip=\x22\x22&country=\x22\x22&type='+_0xdc41bc+'&action='+_0x4646b4+'&page='+_0x16538c+_0x219bfc(0x106)+simu()+_0x219bfc(0xe2)+_0x4113ef()+'&citems='+JSON[_0x219bfc(0x1ac)](_0x4c2796)+'&price='+_0x40907d;_0x957780['open'](_0x219bfc(0x18e),_0x10dcf5,!![]),_0x957780[_0x219bfc(0x12b)]('Content-type',_0x219bfc(0x107)),_0x957780[_0x219bfc(0xd1)]=function(){const _0x3208d8=_0x219bfc;if(_0x957780[_0x3208d8(0x1d2)]===0x4){if(_0x957780['status']===0xc8){}else{}}},_0x957780[_0x219bfc(0x1be)](_0x2850b2);}function _0x278f9a(){const _0xe1526c=_0x3b7adc;$(_0xe1526c(0x108))[_0xe1526c(0x1c0)]({'opacity':'1','transform':'none'}),$('.sleek-upsell\x20form')[_0xe1526c(0x1c0)](_0xe1526c(0x151),_0xe1526c(0x1d5)),_0x110249!=null&&($(_0xe1526c(0xf2)+_0x110249[_0xe1526c(0x152)]+'</style>')[_0xe1526c(0x18a)]('.sleek-upsell'),$(_0xe1526c(0x108))[_0xe1526c(0x1c0)]({'background-color':_0x110249['layout_bg'],'color':_0x110249[_0xe1526c(0x168)],'font-family':_0x110249[_0xe1526c(0xd7)],'font-size':_0x110249[_0xe1526c(0x14f)],'margin-top':_0x110249['layout_mt'],'margin-bottom':_0x110249['layout_mb'],'border-radius':_0x110249[_0xe1526c(0x1aa)],'border-width':_0x110249[_0xe1526c(0x182)],'border-color':_0x110249[_0xe1526c(0x1c8)],'border-style':_0x110249[_0xe1526c(0xb8)]}),$(_0xe1526c(0x1e5))['css']({'background-color':_0x110249[_0xe1526c(0x179)],'color':_0x110249[_0xe1526c(0x168)]}),$(_0xe1526c(0x1bc))['css']({'background-color':_0x110249[_0xe1526c(0xf6)],'color':_0x110249['button_color'],'font-family':_0x110249['button_font'],'font-size':_0x110249[_0xe1526c(0x1a5)],'margin-top':_0x110249[_0xe1526c(0x116)],'margin-bottom':_0x110249[_0xe1526c(0xe5)],'border-radius':_0x110249[_0xe1526c(0x15c)],'border-width':_0x110249[_0xe1526c(0xc2)],'border-color':_0x110249[_0xe1526c(0xe0)],'border-style':_0x110249[_0xe1526c(0xb0)]}),$(_0xe1526c(0x1a9))[_0xe1526c(0x1c0)]({'border-radius':_0x110249[_0xe1526c(0x1e4)],'border-width':_0x110249[_0xe1526c(0x10d)],'color':_0x110249[_0xe1526c(0xec)],'border-style':_0x110249[_0xe1526c(0xfd)]}),$(_0xe1526c(0x125))[_0xe1526c(0x1c0)]({'color':_0x110249['text_color'],'font-family':_0x110249['text_font'],'font-size':_0x110249[_0xe1526c(0x1ad)]}),$(_0xe1526c(0x1ca))[_0xe1526c(0x1c0)]({'color':_0x110249[_0xe1526c(0x16e)],'font-family':_0x110249[_0xe1526c(0x18b)],'font-size':_0x110249['title_size']}),$(_0xe1526c(0x15f))[_0xe1526c(0x1c0)]({'color':_0x110249[_0xe1526c(0xe1)],'font-family':_0x110249[_0xe1526c(0x17c)],'font-size':_0x110249[_0xe1526c(0xd5)]}));}function _0x24f4ee(_0x3962a4){const _0x4eee60=_0x3b7adc;let _0x54bf0d='',_0x2ae2a4=_0xc99848['settings'],_0x55f686=_0xc99848[_0x4eee60(0xe7)][_0x3962a4]['offer'][0x0][_0x4eee60(0xeb)],_0x179b40=_0x4eee60(0x13a),_0x3d438d=_0x4eee60(0x178);_0x16538c[_0x4eee60(0x187)](_0x4eee60(0x17a))?(_0x54bf0d=_0x29d53e,_0x3d438d=_0x2128cc):(_0x54bf0d=_0x807043,_0x3d438d=_0x1d6870);$(_0x4eee60(0xea))[_0x4eee60(0x1b2)](_0x54bf0d);switch(_0x55f686){case _0x4eee60(0x1d1):case _0x4eee60(0xe9):case _0x4eee60(0x117):case'half-block':case _0x4eee60(0x18c):_0x179b40=_0x4eee60(0x16a)+_0x55f686+_0x4eee60(0x19c);break;default:_0x179b40=_0x4eee60(0x13a);}switch(_0x3d438d){case _0x4eee60(0x197):$(_0x54bf0d)['prepend'](_0x179b40);break;case _0x4eee60(0x15e):$(_0x54bf0d)[_0x4eee60(0x15e)](_0x179b40);break;case _0x4eee60(0x178):$(_0x179b40)['insertBefore'](_0x54bf0d);break;case'after':$(_0x179b40)[_0x4eee60(0x18a)](_0x54bf0d);break;}if(_0x1d6870=='before'){}_0xc99848[_0x4eee60(0xe7)][_0x3962a4][_0x4eee60(0xe7)][0x0][_0x4eee60(0x1da)]=='y'&&$(_0x179b40)['append'](_0x4eee60(0x145));let _0x6722f0=_0xc99848['offer'][_0x3962a4][_0x4eee60(0x186)];for(let _0x47c2da=0x0;_0x47c2da<_0x6722f0[_0x4eee60(0x138)];_0x47c2da++){let _0x17d425=_0x6722f0[_0x47c2da],_0x41cfbf=_0x17d425[_0x4eee60(0x15d)],_0x46bd01=g_d(burl+_0x4eee60(0xc7)+Shopify['shop']+'/'+_0x41cfbf),_0x39069b=_0x46bd01[_0x4eee60(0x15d)],_0x478ad7=_0xc99848[_0x4eee60(0xe7)][_0x3962a4][_0x4eee60(0xe7)][0x0]['atc'],_0x1b5739=_0x17d425['atc'],_0x2984b8=_0x4eee60(0xcf),_0x27d68e=_0xc99848['offer'][_0x3962a4][_0x4eee60(0xe7)][0x0]['text'],_0x30a652=_0x17d425['text'],_0x318c89=_0x4eee60(0xcf);if(_0x478ad7!='')_0x2984b8=_0x478ad7;else _0x1b5739!=''?_0x2984b8=_0x1b5739:_0x2984b8='ADD\x20TO\x20CART';if(_0x27d68e!='')_0x318c89=_0x27d68e;else _0x30a652!=''?_0x318c89=_0x30a652:_0x318c89='Would\x20you\x20like\x20a\x20'+_0x39069b['title'];let _0x20c920=_0x4eee60(0x1cb)+_0x47c2da+_0x4eee60(0x1bb)+_0x41cfbf+_0x4eee60(0x16d)+_0x39069b[_0x4eee60(0x1b8)][_0x4eee60(0x104)]+_0x4eee60(0x166)+_0x318c89+_0x4eee60(0x176)+_0x39069b['title']+_0x4eee60(0xc3)+_0x41cfbf+_0x4eee60(0xf4)+_0x41cfbf+_0x4eee60(0x167)+_0x41cfbf+_0x4eee60(0x13f)+Shopify[_0x4eee60(0xbe)](_0x39069b[_0x4eee60(0x141)][0x0][_0x4eee60(0xe6)]*0x64,Shopify[_0x4eee60(0x1af)])+'</span>\x20<span\x20class=\x22sleek-compare-price\x20money\x22>'+Shopify[_0x4eee60(0xbe)](_0x39069b[_0x4eee60(0x141)][0x0][_0x4eee60(0xc8)]*0x64,Shopify[_0x4eee60(0x1af)])+'</span>\x20</div><button\x20class=\x22sleek-atc\x22\x20type=\x22submit\x22>'+_0x2984b8+'</button>\x20</div></form>';if(_0x55f686==_0x4eee60(0x1d1))_0x20c920=_0x4eee60(0x115)+_0x47c2da+_0x4eee60(0x1bb)+_0x41cfbf+_0x4eee60(0x16d)+_0x39069b[_0x4eee60(0x1b8)][_0x4eee60(0x104)]+_0x4eee60(0x166)+_0x318c89+'</div><div\x20class=\x22sleek-title\x22>'+_0x39069b[_0x4eee60(0x1b4)]+_0x4eee60(0xc3)+_0x41cfbf+'\x22></div>\x20<select\x20name=\x22id\x22\x20class=\x22v-select\x20v-'+_0x41cfbf+_0x4eee60(0x167)+_0x41cfbf+_0x4eee60(0x13f)+Shopify['formatMoney'](_0x39069b[_0x4eee60(0x141)][0x0]['price']*0x64,Shopify['money_format'])+'</span>\x20<span\x20class=\x22sleek-compare-price\x20money\x22>'+Shopify[_0x4eee60(0xbe)](_0x39069b['variants'][0x0][_0x4eee60(0xc8)]*0x64,Shopify[_0x4eee60(0x1af)])+_0x4eee60(0x11f)+_0x2984b8+'</button>\x20</div></form>';else{if(_0x55f686==_0x4eee60(0xe9))_0x20c920=_0x4eee60(0x115)+_0x47c2da+_0x4eee60(0x1bb)+_0x41cfbf+_0x4eee60(0x149)+_0x318c89+_0x4eee60(0x1cc)+_0x39069b[_0x4eee60(0x1b8)]['src']+'\x22/>\x20</div><div\x20class=\x22sleek-offer\x22>\x20<div\x20class=\x22sleek-title\x22>'+_0x39069b[_0x4eee60(0x1b4)]+_0x4eee60(0xd9)+Shopify[_0x4eee60(0xbe)](_0x39069b['variants'][0x0][_0x4eee60(0xe6)]*0x64,Shopify[_0x4eee60(0x1af)])+_0x4eee60(0x13d)+Shopify[_0x4eee60(0xbe)](_0x39069b['variants'][0x0][_0x4eee60(0xc8)]*0x64,Shopify[_0x4eee60(0x1af)])+_0x4eee60(0x1bd)+_0x41cfbf+_0x4eee60(0xf4)+_0x41cfbf+_0x4eee60(0xe4)+_0x41cfbf+_0x4eee60(0x132)+_0x2984b8+_0x4eee60(0x143);else{if(_0x55f686==_0x4eee60(0x117))_0x20c920=_0x4eee60(0x115)+_0x47c2da+_0x4eee60(0x1bb)+_0x41cfbf+_0x4eee60(0x149)+_0x318c89+_0x4eee60(0xb1)+_0x39069b[_0x4eee60(0x1b8)][_0x4eee60(0x104)]+_0x4eee60(0x123)+_0x39069b[_0x4eee60(0x1b4)]+_0x4eee60(0xd9)+Shopify[_0x4eee60(0xbe)](_0x39069b[_0x4eee60(0x141)][0x0][_0x4eee60(0xe6)]*0x64,Shopify[_0x4eee60(0x1af)])+_0x4eee60(0x13d)+Shopify[_0x4eee60(0xbe)](_0x39069b['variants'][0x0][_0x4eee60(0xc8)]*0x64,Shopify['money_format'])+_0x4eee60(0x1bd)+_0x41cfbf+_0x4eee60(0xf4)+_0x41cfbf+'\x22></select>\x20<select\x20name=\x22quantity\x22\x20class=\x22q-select\x20q-'+_0x41cfbf+_0x4eee60(0x174)+_0x2984b8+_0x4eee60(0x183);else{if(_0x55f686==_0x4eee60(0x10c))_0x20c920='<form\x20class=\x22sleek-form\x22\x20action=\x22/cart/add\x22\x20enctype=\x22multipart/form-data\x22\x20data-product-index=\x22'+_0x47c2da+_0x4eee60(0x1bb)+_0x41cfbf+_0x4eee60(0xdc)+_0x39069b[_0x4eee60(0x1b8)]['src']+_0x4eee60(0x166)+_0x318c89+'</div><div\x20class=\x22sleek-title\x22>'+_0x39069b['title']+_0x4eee60(0xd9)+Shopify['formatMoney'](_0x39069b[_0x4eee60(0x141)][0x0][_0x4eee60(0xe6)]*0x64,Shopify['money_format'])+_0x4eee60(0x13d)+Shopify['formatMoney'](_0x39069b[_0x4eee60(0x141)][0x0]['compare_at_price']*0x64,Shopify[_0x4eee60(0x1af)])+'</span>\x20</div><div\x20class=\x22sleek-selectors\x22>\x20<div\x20class=\x22offer_fields_holder\x20o_h_'+_0x41cfbf+_0x4eee60(0xf4)+_0x41cfbf+_0x4eee60(0x167)+_0x41cfbf+_0x4eee60(0x174)+_0x2984b8+_0x4eee60(0x183);else _0x55f686==_0x4eee60(0x18c)&&(_0x20c920=_0x4eee60(0x115)+_0x47c2da+_0x4eee60(0x1bb)+_0x41cfbf+_0x4eee60(0x163)+_0x39069b[_0x4eee60(0x1b8)]['src']+'\x22/>\x20</div><div\x20class=\x22sleek-offer\x22>\x20<div\x20class=\x22sleek-text\x22>'+_0x318c89+'</div><div\x20class=\x22sleek-title\x22>'+_0x39069b[_0x4eee60(0x1b4)]+_0x4eee60(0xd9)+Shopify[_0x4eee60(0xbe)](_0x39069b[_0x4eee60(0x141)][0x0][_0x4eee60(0xe6)]*0x64,Shopify[_0x4eee60(0x1af)])+_0x4eee60(0x13d)+Shopify[_0x4eee60(0xbe)](_0x39069b[_0x4eee60(0x141)][0x0][_0x4eee60(0xc8)]*0x64,Shopify[_0x4eee60(0x1af)])+'</span>\x20</div><div\x20class=\x22sleek-selectors\x22>\x20<div\x20class=\x22offer_fields_holder\x20o_h_'+_0x41cfbf+_0x4eee60(0xf4)+_0x41cfbf+_0x4eee60(0x167)+_0x41cfbf+_0x4eee60(0x1db)+_0x2984b8+_0x4eee60(0x121));}}}$('.sleek-upsell')[_0x4eee60(0x15e)](_0x20c920);if($(_0x4eee60(0xdd)+_0x47c2da+'\x22]')[_0x4eee60(0x138)]>0x1)for(let _0x2c9e4e=0x1;_0x2c9e4e<=$(_0x4eee60(0xdd)+_0x47c2da+'\x22]')[_0x4eee60(0x138)];_0x2c9e4e++){$(_0x4eee60(0xdd)+_0x47c2da+'\x22]')[_0x2c9e4e][_0x4eee60(0x1a4)]();}_0x17d425[_0x4eee60(0x118)]=='n'&&$('.sleek-title')[_0x4eee60(0x1a4)]();_0x17d425[_0x4eee60(0x11e)]=='n'&&$(_0x4eee60(0x12c))[_0x4eee60(0x1a4)]();_0x17d425[_0x4eee60(0x1c7)]=='n'&&$('.sleek-image')[_0x4eee60(0x1a4)]();_0x17d425['v_price']=='n'&&$('.sleek-compare-price')[_0x4eee60(0x1a4)]();_0x17d425[_0x4eee60(0x1cf)]=='n'&&$(_0x4eee60(0xb7))[_0x4eee60(0x1a4)]();_0x17d425[_0x4eee60(0x14e)]=='n'&&($(_0x4eee60(0x135))['style'][_0x4eee60(0x173)]=_0x4eee60(0xca));_0x5ae4e9(_0x3962a4,_0x41cfbf);if(_0x39069b['variants'][_0x4eee60(0xb2)](_0x3d0710=>_0x3d0710[_0x4eee60(0x17e)]>0x0))for(let _0x595789=0x0;_0x595789<_0x39069b['variants'][_0x4eee60(0x138)];_0x595789++){_0x39069b[_0x4eee60(0x141)][_0x595789][_0x4eee60(0x17e)]>0x0&&$(_0x4eee60(0x140)+_0x41cfbf)['append']('<option\x20value=\x22'+_0x39069b['variants'][_0x595789]['id']+'\x22>'+_0x39069b['variants'][_0x595789][_0x4eee60(0x1b4)]+'\x20('+Shopify[_0x4eee60(0xbe)](_0x39069b[_0x4eee60(0x141)][_0x595789][_0x4eee60(0xe6)]*0x64,Shopify[_0x4eee60(0x1af)])+')</option>');}else console[_0x4eee60(0x1dd)](_0x4eee60(0x177)),sessionStorage[_0x4eee60(0x185)](_0x4eee60(0x154)+_0x3962a4,'y'),$('.sleek-upsell')[_0x4eee60(0x1a4)]();_0x39069b[_0x4eee60(0x141)]['length']<0x2&&$(_0x4eee60(0x140)+_0x41cfbf)['attr']('style',_0x4eee60(0x134));for(q=0x1;q<=0xa;q++){$(_0x4eee60(0x1e7)+_0x41cfbf)[_0x4eee60(0x15e)](_0x4eee60(0x194)+q+'\x22>'+q+_0x4eee60(0x13c));}_0x70d9a4(_0x3962a4,_0x41cfbf,$(_0x4eee60(0x140)+_0x41cfbf)['val'](),$(_0x4eee60(0x1e7)+_0x41cfbf)['val'](),_0x39069b[_0x4eee60(0x141)][0x0][_0x4eee60(0xe6)],_0x4eee60(0xc1),_0x4eee60(0xc1)),$(_0x4eee60(0x140)+_0x41cfbf)[_0x4eee60(0x17f)](function(){const _0x2c3c2a=_0x4eee60;let _0x5609e0=_0x39069b['variants'][_0x2c3c2a(0x153)](_0x1814cc=>_0x1814cc['id']==$(this)['val']());$(_0x2c3c2a(0x1e0)+_0x41cfbf+'\x22]\x20img')[_0x2c3c2a(0x12f)](_0x2c3c2a(0x104),_0x39069b[_0x2c3c2a(0x159)]['0'][_0x2c3c2a(0x104)]),_0x70d9a4(_0x3962a4,_0x41cfbf,$(_0x2c3c2a(0x140)+_0x41cfbf)[_0x2c3c2a(0xbc)](),$(_0x2c3c2a(0x1e7)+_0x41cfbf)[_0x2c3c2a(0xbc)](),_0x39069b[_0x2c3c2a(0x141)][0x0][_0x2c3c2a(0xe6)],'variant\x20change',_0x2c3c2a(0x184));}),$(_0x4eee60(0x1e7)+_0x41cfbf)['change'](function(){const _0x461935=_0x4eee60;_0x70d9a4(_0x3962a4,_0x41cfbf,$(_0x461935(0x140)+_0x41cfbf)[_0x461935(0xbc)](),$(_0x461935(0x1e7)+_0x41cfbf)['val'](),_0x39069b[_0x461935(0x141)][0x0][_0x461935(0xe6)],'quantity\x20change',_0x461935(0x184));}),$(_0x4eee60(0x1e0)+_0x41cfbf+'\x22]')[_0x4eee60(0xc4)](function(){const _0x4849ca=_0x4eee60;_0x70d9a4(_0x3962a4,_0x41cfbf,$(_0x4849ca(0x140)+_0x41cfbf)[_0x4849ca(0xbc)](),$(_0x4849ca(0x1e7)+_0x41cfbf)[_0x4849ca(0xbc)](),_0x39069b['variants'][0x0]['price'],_0x4849ca(0xc4),_0x4849ca(0x184));}),$('.sleek-form')[_0x4eee60(0x191)](function(_0x5dbf46){const _0x54e93e=_0x4eee60;_0x5dbf46['preventDefault']();if(_0x17d425['rv']!='')g_s_s_w('/cart/change?id='+_0x17d425['rv']+_0x54e93e(0x1b7));else{if(_0x17d425['rp']!=''){let _0x54923c=g_d(burl+_0x54e93e(0xc7)+Shopify[_0x54e93e(0x19a)]+'/'+_0x17d425['rp']);for(let _0x152e61=0x0;_0x152e61<_0x54923c['product']['variants'][_0x54e93e(0x138)];_0x152e61++){g_s_s_w(_0x54e93e(0xb4)+_0x54923c[_0x54e93e(0x15d)][_0x54e93e(0x141)][_0x152e61]['id']+_0x54e93e(0x1b7));}}}$[_0x54e93e(0x162)]({'type':_0x54e93e(0x18e),'url':_0x54e93e(0xcc),'dataType':_0x54e93e(0x188),'data':$(this)[_0x54e93e(0x144)](),'success':function(_0xb189e7){const _0x937833=_0x54e93e;_0xc99848[_0x937833(0xe7)][_0x3962a4][_0x937833(0xe7)][0x0][_0x937833(0x165)]=='y'&&sessionStorage['setItem'](_0x937833(0x154)+_0x3962a4,'y');;_0x70d9a4(_0x3962a4,_0x41cfbf,$('.v-'+_0x41cfbf)[_0x937833(0xbc)](),$('.q-'+_0x41cfbf)[_0x937833(0xbc)](),_0x39069b['variants'][0x0]['price'],'add\x20to\x20cart',_0x937833(0x1b6)),$(_0x937833(0x1a1))[_0x937833(0x16f)]=_0x937833(0x1c9);_0xc99848['offer'][_0x3962a4]['offer'][0x0][_0x937833(0x1ce)]=='y'&&_0xc99848[_0x937833(0xe7)][_0x3962a4][_0x937833(0xe7)][0x0][_0x937833(0x19f)]!=''&&g_s_s_w(_0x937833(0x15a)+Shopify[_0x937833(0x19a)]+'/discount/'+_0xc99848[_0x937833(0xe7)][_0x3962a4][_0x937833(0xe7)][0x0][_0x937833(0x19f)]);if(_0xc99848[_0x937833(0xe7)][_0x3962a4][_0x937833(0xe7)][0x0][_0x937833(0xc9)]=='y')window[_0x937833(0x19e)][_0x937833(0xed)]=_0x937833(0x133);else{if(_0x16538c[_0x937833(0x187)](_0x937833(0x17a))){_0xc99848[_0x937833(0xe7)][_0x3962a4][_0x937833(0xe7)][0x0]['stop_show']=='y'&&sessionStorage[_0x937833(0x185)](_0x937833(0x154)+_0x3962a4,'y');;$(_0x937833(0x108))['remove'](),window[_0x937833(0x19e)][_0x937833(0x120)](![]);}else $('.sleek-upsell')[_0x937833(0x1a4)](),_0x2ae2a4!=null&&(_0x2ae2a4[_0x937833(0xdf)]=='y'&&eval(_0x2ae2a4[_0x937833(0xc0)])),_0x217789();}},'error':function(_0x2ff4fd){const _0x4d9d44=_0x54e93e;$(this)[_0x4d9d44(0xb2)](_0x4d9d44(0x189))[_0x4d9d44(0x1a3)](_0x4d9d44(0x1c2)),setTimeout(function(){$(this)['remove']();},0x3e8);}});});}$(_0x4eee60(0x1c6))!=null&&$(_0x4eee60(0x1c6))['click'](function(){const _0x5ec5da=_0x4eee60;sessionStorage[_0x5ec5da(0x185)]('sleek_shown_'+_0x3962a4,'y'),_0x70d9a4(_0x3962a4,'','','','',_0x5ec5da(0x199),'reject'),$(_0x5ec5da(0x108))[_0x5ec5da(0x1a4)](),setTimeout(function(){_0x217789();},0x12c);}),_0x278f9a();}function _0x338409(_0x1693b3){const _0x2aa2b9=_0x3b7adc;try{let _0x3ac4ef=0x0,_0x3995be='',_0x3dce28=_0xc99848[_0x2aa2b9(0x111)],_0x4f658f=_0xc99848[_0x2aa2b9(0x1d9)],_0x4678d8=_0x4f658f[_0x2aa2b9(0xeb)],_0x4bc7fc=_0x2aa2b9(0x13a),_0x190a35=_0x2aa2b9(0x178);_0x16538c[_0x2aa2b9(0x187)]('/cart')?(_0x3995be=_0x29d53e,_0x190a35=_0x2128cc):(_0x3995be=_0x807043,_0x190a35=_0x1d6870);$('<style>.sleek-upsell{background:\x20#ECF0F1;\x20color:\x20#2B3D51;\x20padding:\x205px;\x20font-family:\x20inherit;\x20vertical-align:\x20middle;\x20margin:\x205px;}.sleek-image\x20img{width:\x20100px;}.sleek-text{font-weight:\x20bold;}.sleek-upsell\x20select{padding:\x204px;\x20margin-top:\x205px;}.sleek-prices{font-weight:\x20bold;\x20margin-bottom:\x205px;}.sleek-compare-price{text-decoration:\x20line-through;}.sleek-upsell\x20button{padding:\x2010px;\x20border:\x20none;\x20background:\x20#2B3D51;\x20color:\x20#FFFFFF;\x20font-weight:\x20bold;\x20border-radius:\x200px;\x20cursor:\x20pointer;\x20width:\x20100%;}.card{display:\x20table;}.card\x20.sleek-form{display:\x20flex;}.card\x20.sleek-image,\x20.card\x20.sleek-offer,\x20.card\x20.sleek-card-atc{display:\x20table;\x20align-self:\x20center;\x20padding:\x205px;}.card\x20.sleek-offer{flex-grow:\x204;}.card\x20.sleek-prices{text-align:\x20center;}.block,\x20.block\x20.sleek-form,\x20.block\x20.sleek-text,\x20.block\x20.sleek-atc{display:\x20table;}.sleek-block{display:\x20flex;}.block\x20.sleek-image,\x20.block\x20.sleek-offer{display:\x20table;\x20align-self:\x20center;\x20padding:\x205px;}.block\x20.sleek-offer{flex-grow:\x201;}.half-block,\x20.half-block\x20.sleek-form,\x20.half-block\x20.sleek-text,\x20.half-block\x20.sleek-atc{display:\x20table;}.sleek-half-block{display:\x20flex;}.half-block\x20.sleek-image,\x20.half-block\x20.sleek-offer{display:\x20table;\x20align-self:\x20center;\x20padding:\x205px;}.half-block\x20.sleek-offer{flex-grow:\x201;}.flat,\x20.flat\x20.sleek-form,\x20.flat\x20.sleek-text{display:\x20table;}.sleek-flat{display:\x20flex;}.flat\x20.sleek-image,\x20.flat\x20.sleek-offer{display:\x20table;\x20align-self:\x20center;\x20padding:\x205px;}.flat\x20.sleek-offer{flex-grow:\x201;}.flat\x20.flex-select{display:\x20flex;\x20width:\x20auto;\x20margin-top:\x2010px;}.flat\x20.v-select{display:\x20table;\x20width:\x20100%;\x20align-items:\x20center;\x20justify-content:\x20space-between;}.flat\x20.atc{flex-grow:\x204;}.flat\x20.q-select{margin-top:\x200px;\x20margin-right:\x2010px;}.compact,\x20.compact\x20.sleek-form,\x20.compact\x20.sleek-text,\x20.compact\x20.sleek-atc{display:\x20table;}.sleek-compact{display:\x20flex;}.compact\x20.sleek-image,\x20.compact\x20.sleek-offer{display:\x20table;\x20align-self:\x20center;\x20padding:\x205px;}.compact\x20.sleek-offer{flex-grow:\x201;}.compact\x20.sleek-atc{margin-top:\x205px;}@media\x20only\x20screen\x20and\x20(max-width:\x20600px){.sleek-upsell{width:\x2097%;\x20margin:\x205px\x20auto;}.card\x20select{max-width:\x20100px;}.block\x20select{max-width:\x20200px;}.sleek-prices\x20*{display:\x20inline-table;}.block\x20.sleek-form,\x20.block\x20.sleek-text,\x20.block\x20.sleek-atc{width:\x20100%;}}</style>')[_0x2aa2b9(0x1b2)](_0x3995be);switch(_0x4678d8){case _0x2aa2b9(0x1d1):case _0x2aa2b9(0xe9):case _0x2aa2b9(0x117):case'half-block':case'compact':_0x4bc7fc='<div\x20class=\x22'+_0x4678d8+_0x2aa2b9(0x19c);break;}switch(_0x190a35){case _0x2aa2b9(0x197):$(_0x3995be)['prepend'](_0x4bc7fc);break;case _0x2aa2b9(0x15e):$(_0x3995be)[_0x2aa2b9(0x15e)](_0x4bc7fc);break;case _0x2aa2b9(0x178):$(_0x4bc7fc)[_0x2aa2b9(0x1b2)](_0x3995be);break;case _0x2aa2b9(0x19b):$(_0x4bc7fc)['insertAfter'](_0x3995be);break;}if(_0x1d6870==_0x2aa2b9(0x178)){}_0x4f658f[_0x2aa2b9(0x1da)]=='y'&&$(_0x4bc7fc)[_0x2aa2b9(0x15e)](_0x2aa2b9(0x145));let _0x5068ab=g_d(burl+_0x2aa2b9(0xc7)+Shopify[_0x2aa2b9(0x19a)]+'/'+_0x1693b3),_0x2f32ab=_0x5068ab['product'],_0x49934d=_0x4f658f[_0x2aa2b9(0x100)],_0x16af72=_0x2aa2b9(0xcf),_0x11ffcc=_0x4f658f[_0x2aa2b9(0x1b9)],_0x18d6eb='';_0x11ffcc!=''?_0x18d6eb=_0x11ffcc:_0x18d6eb=_0x2aa2b9(0x127)+_0x2f32ab[_0x2aa2b9(0x1b4)];_0x49934d!=''?_0x16af72=_0x49934d:_0x16af72=_0x2aa2b9(0xcf);let _0x2bdcea=_0x2aa2b9(0x1cb)+_0x3ac4ef+_0x2aa2b9(0x1bb)+_0x1693b3+'\x22>\x20<div\x20class=\x22sleek-image\x22>\x20<img\x20src=\x22'+_0x2f32ab[_0x2aa2b9(0x1b8)]['src']+_0x2aa2b9(0x166)+_0x18d6eb+_0x2aa2b9(0x176)+_0x2f32ab['title']+_0x2aa2b9(0xc3)+_0x1693b3+_0x2aa2b9(0xf4)+_0x1693b3+'\x22></select>\x20<select\x20name=\x22quantity\x22\x20class=\x22q-select\x20q-'+_0x1693b3+_0x2aa2b9(0x13f)+Shopify[_0x2aa2b9(0xbe)](_0x2f32ab[_0x2aa2b9(0x141)][0x0]['price']*0x64,Shopify[_0x2aa2b9(0x1af)])+_0x2aa2b9(0x13d)+Shopify[_0x2aa2b9(0xbe)](_0x2f32ab[_0x2aa2b9(0x141)][0x0][_0x2aa2b9(0xc8)]*0x64,Shopify[_0x2aa2b9(0x1af)])+_0x2aa2b9(0x11f)+_0x16af72+_0x2aa2b9(0xd8);_0x4678d8=='card'&&(_0x2bdcea=_0x2aa2b9(0x115)+_0x3ac4ef+'\x22\x20data-product-product_id=\x22'+_0x1693b3+_0x2aa2b9(0x16d)+_0x2f32ab[_0x2aa2b9(0x1b8)][_0x2aa2b9(0x104)]+_0x2aa2b9(0x166)+_0x18d6eb+_0x2aa2b9(0x176)+_0x2f32ab[_0x2aa2b9(0x1b4)]+_0x2aa2b9(0xc3)+_0x1693b3+_0x2aa2b9(0xf4)+_0x1693b3+_0x2aa2b9(0x167)+_0x1693b3+_0x2aa2b9(0x13f)+Shopify[_0x2aa2b9(0xbe)](_0x2f32ab[_0x2aa2b9(0x141)][0x0][_0x2aa2b9(0xe6)]*0x64,Shopify[_0x2aa2b9(0x1af)])+_0x2aa2b9(0x13d)+Shopify[_0x2aa2b9(0xbe)](_0x2f32ab[_0x2aa2b9(0x141)][0x0][_0x2aa2b9(0xc8)]*0x64,Shopify['money_format'])+'</span>\x20</div><button\x20class=\x22sleek-atc\x22\x20type=\x22submit\x22>'+_0x16af72+_0x2aa2b9(0xd8));_0x4678d8==_0x2aa2b9(0xe9)&&(_0x2bdcea=_0x2aa2b9(0x115)+_0x3ac4ef+_0x2aa2b9(0x1bb)+_0x1693b3+_0x2aa2b9(0x149)+_0x18d6eb+'</div><div\x20class=\x22sleek-flat\x22>\x20<div\x20class=\x22sleek-image\x22>\x20<img\x20src=\x22'+_0x2f32ab[_0x2aa2b9(0x1b8)][_0x2aa2b9(0x104)]+'\x22/>\x20</div><div\x20class=\x22sleek-offer\x22>\x20<div\x20class=\x22sleek-title\x22>'+_0x2f32ab[_0x2aa2b9(0x1b4)]+_0x2aa2b9(0xd9)+Shopify[_0x2aa2b9(0xbe)](_0x2f32ab[_0x2aa2b9(0x141)][0x0][_0x2aa2b9(0xe6)]*0x64,Shopify[_0x2aa2b9(0x1af)])+_0x2aa2b9(0x13d)+Shopify['formatMoney'](_0x2f32ab[_0x2aa2b9(0x141)][0x0][_0x2aa2b9(0xc8)]*0x64,Shopify[_0x2aa2b9(0x1af)])+_0x2aa2b9(0x1bd)+_0x1693b3+_0x2aa2b9(0xf4)+_0x1693b3+_0x2aa2b9(0xe4)+_0x1693b3+_0x2aa2b9(0x132)+_0x16af72+_0x2aa2b9(0x143));_0x4678d8==_0x2aa2b9(0x117)&&(_0x2bdcea=_0x2aa2b9(0x115)+_0x3ac4ef+_0x2aa2b9(0x1bb)+_0x1693b3+'\x22>\x20<div\x20class=\x22sleek-text\x22>'+_0x18d6eb+_0x2aa2b9(0xb1)+_0x2f32ab[_0x2aa2b9(0x1b8)][_0x2aa2b9(0x104)]+'\x22/>\x20</div><div\x20class=\x22sleek-offer\x22>\x20<div\x20class=\x22sleek-title\x22>'+_0x2f32ab[_0x2aa2b9(0x1b4)]+_0x2aa2b9(0xd9)+Shopify['formatMoney'](_0x2f32ab['variants'][0x0][_0x2aa2b9(0xe6)]*0x64,Shopify[_0x2aa2b9(0x1af)])+_0x2aa2b9(0x13d)+Shopify[_0x2aa2b9(0xbe)](_0x2f32ab['variants'][0x0][_0x2aa2b9(0xc8)]*0x64,Shopify[_0x2aa2b9(0x1af)])+_0x2aa2b9(0x1bd)+_0x1693b3+'\x22></div>\x20<select\x20name=\x22id\x22\x20class=\x22v-select\x20v-'+_0x1693b3+'\x22></select>\x20<select\x20name=\x22quantity\x22\x20class=\x22q-select\x20q-'+_0x1693b3+_0x2aa2b9(0x174)+_0x16af72+'</button>\x20</form>');_0x4678d8==_0x2aa2b9(0x10c)&&(_0x2bdcea=_0x2aa2b9(0x115)+_0x3ac4ef+_0x2aa2b9(0x1bb)+_0x1693b3+_0x2aa2b9(0xdc)+_0x2f32ab[_0x2aa2b9(0x1b8)][_0x2aa2b9(0x104)]+'\x22/>\x20</div><div\x20class=\x22sleek-offer\x22>\x20<div\x20class=\x22sleek-text\x22>'+_0x18d6eb+_0x2aa2b9(0x176)+_0x2f32ab[_0x2aa2b9(0x1b4)]+_0x2aa2b9(0xd9)+Shopify['formatMoney'](_0x2f32ab[_0x2aa2b9(0x141)][0x0]['price']*0x64,Shopify[_0x2aa2b9(0x1af)])+_0x2aa2b9(0x13d)+Shopify[_0x2aa2b9(0xbe)](_0x2f32ab[_0x2aa2b9(0x141)][0x0]['compare_at_price']*0x64,Shopify['money_format'])+_0x2aa2b9(0x1bd)+_0x1693b3+_0x2aa2b9(0xf4)+_0x1693b3+_0x2aa2b9(0x167)+_0x1693b3+'\x22></select>\x20</div></div></div><button\x20class=\x22sleek-atc\x22\x20type=\x22submit\x22>'+_0x16af72+_0x2aa2b9(0x183));_0x4678d8=='compact'&&(_0x2bdcea=_0x2aa2b9(0x115)+_0x3ac4ef+'\x22\x20data-product-product_id=\x22'+_0x1693b3+_0x2aa2b9(0x163)+_0x2f32ab['image']['src']+_0x2aa2b9(0x166)+_0x18d6eb+'</div><div\x20class=\x22sleek-title\x22>'+_0x2f32ab[_0x2aa2b9(0x1b4)]+_0x2aa2b9(0xd9)+Shopify[_0x2aa2b9(0xbe)](_0x2f32ab['variants'][0x0][_0x2aa2b9(0xe6)]*0x64,Shopify[_0x2aa2b9(0x1af)])+'</span>\x20<span\x20class=\x22sleek-compare-price\x20money\x22>'+Shopify['formatMoney'](_0x2f32ab[_0x2aa2b9(0x141)][0x0][_0x2aa2b9(0xc8)]*0x64,Shopify['money_format'])+'</span>\x20</div><div\x20class=\x22sleek-selectors\x22>\x20<div\x20class=\x22offer_fields_holder\x20o_h_'+_0x1693b3+_0x2aa2b9(0xf4)+_0x1693b3+_0x2aa2b9(0x167)+_0x1693b3+_0x2aa2b9(0x1db)+_0x16af72+'</button>\x20</div></div></form>');$(_0x2aa2b9(0x108))[_0x2aa2b9(0x15e)](_0x2bdcea);_0x4f658f[_0x2aa2b9(0x118)]=='n'&&$(_0x2aa2b9(0x1ca))[_0x2aa2b9(0x1a4)]();_0x4f658f[_0x2aa2b9(0x11e)]=='n'&&$(_0x2aa2b9(0x12c))['remove']();_0x4f658f[_0x2aa2b9(0x1c7)]=='n'&&$('.sleek-image')[_0x2aa2b9(0x1a4)]();_0x4f658f[_0x2aa2b9(0xf5)]=='n'&&$(_0x2aa2b9(0xb7))['remove']();_0x4f658f[_0x2aa2b9(0x1cf)]=='n'&&$(_0x2aa2b9(0xb7))[_0x2aa2b9(0x1a4)]();_0x4f658f['q_select']=='n'&&($('.q_select')['style']['display']=_0x2aa2b9(0xca));if(_0x2f32ab['variants'][_0x2aa2b9(0xb2)](_0x245972=>_0x245972[_0x2aa2b9(0x17e)]>0x0))for(let _0x421c53=0x0;_0x421c53<_0x2f32ab[_0x2aa2b9(0x141)]['length'];_0x421c53++){_0x2f32ab['variants'][_0x421c53][_0x2aa2b9(0x17e)]>0x0&&$('.v-'+_0x1693b3)['append'](_0x2aa2b9(0x194)+_0x2f32ab[_0x2aa2b9(0x141)][_0x421c53]['id']+'\x22>'+_0x2f32ab[_0x2aa2b9(0x141)][_0x421c53][_0x2aa2b9(0x1b4)]+'\x20('+Shopify['formatMoney'](_0x2f32ab[_0x2aa2b9(0x141)][_0x421c53][_0x2aa2b9(0xe6)]*0x64,Shopify[_0x2aa2b9(0x1af)])+_0x2aa2b9(0x1de));}else console[_0x2aa2b9(0x1dd)](_0x2aa2b9(0x177)),sessionStorage[_0x2aa2b9(0x185)](_0x2aa2b9(0x1cd),'y'),$(_0x2aa2b9(0x108))[_0x2aa2b9(0x1a4)](),_0x2cca02();_0x2f32ab[_0x2aa2b9(0x141)][_0x2aa2b9(0x138)]<0x2&&$(_0x2aa2b9(0x140)+_0x1693b3)[_0x2aa2b9(0x12f)](_0x2aa2b9(0x1a6),_0x2aa2b9(0x134));for(q=0x1;q<=0xa;q++){$(_0x2aa2b9(0x1e7)+_0x1693b3)[_0x2aa2b9(0x15e)](_0x2aa2b9(0x194)+q+'\x22>'+q+_0x2aa2b9(0x13c));}_0x70d9a4(_0x2aa2b9(0x112),_0x1693b3,$('.v-'+_0x1693b3)[_0x2aa2b9(0xbc)](),$(_0x2aa2b9(0x1e7)+_0x1693b3)[_0x2aa2b9(0xbc)](),_0x2f32ab[_0x2aa2b9(0x141)][0x0][_0x2aa2b9(0xe6)],'show',_0x2aa2b9(0xc1)),$(_0x2aa2b9(0x140)+_0x1693b3)['change'](function(){const _0x411acf=_0x2aa2b9;let _0x333325=_0x2f32ab[_0x411acf(0x141)][_0x411acf(0x153)](_0x119caf=>_0x119caf['id']==$(this)[_0x411acf(0xbc)]());$(_0x411acf(0x1e0)+_0x1693b3+_0x411acf(0x1a7))['attr']('src',_0x2f32ab[_0x411acf(0x159)]['0'][_0x411acf(0x104)]),_0x70d9a4('collection',_0x1693b3,$(_0x411acf(0x140)+_0x1693b3)[_0x411acf(0xbc)](),$('.q-'+_0x1693b3)['val'](),_0x2f32ab['variants'][0x0][_0x411acf(0xe6)],'variant\x20change',_0x411acf(0x184));}),$(_0x2aa2b9(0x1e7)+_0x1693b3)[_0x2aa2b9(0x17f)](function(){const _0x240a36=_0x2aa2b9;_0x70d9a4(_0x240a36(0x112),_0x1693b3,$('.v-'+_0x1693b3)[_0x240a36(0xbc)](),$(_0x240a36(0x1e7)+_0x1693b3)['val'](),_0x2f32ab[_0x240a36(0x141)][0x0][_0x240a36(0xe6)],'quantity\x20change',_0x240a36(0x184));}),$(_0x2aa2b9(0x1e0)+_0x1693b3+'\x22]')[_0x2aa2b9(0xc4)](function(){const _0x27f8c9=_0x2aa2b9;_0x70d9a4(_0x27f8c9(0x112),_0x1693b3,$(_0x27f8c9(0x140)+_0x1693b3)[_0x27f8c9(0xbc)](),$(_0x27f8c9(0x1e7)+_0x1693b3)[_0x27f8c9(0xbc)](),_0x2f32ab[_0x27f8c9(0x141)][0x0][_0x27f8c9(0xe6)],_0x27f8c9(0xc4),'impression');}),$('.sleek-form')[_0x2aa2b9(0x191)](function(_0x1c1ac5){const _0x30cfc9=_0x2aa2b9;_0x1c1ac5['preventDefault'](),$[_0x30cfc9(0x162)]({'type':_0x30cfc9(0x18e),'url':'/cart/add.js','dataType':'json','data':$(this)['serialize'](),'success':function(_0x2d6ab7){const _0xfae159=_0x30cfc9;sessionStorage[_0xfae159(0x185)](_0xfae159(0x1cd),'y'),_0x70d9a4(_0xfae159(0x112),_0x1693b3,$(_0xfae159(0x140)+_0x1693b3)[_0xfae159(0xbc)](),$(_0xfae159(0x1e7)+_0x1693b3)[_0xfae159(0xbc)](),_0x2f32ab[_0xfae159(0x141)][0x0][_0xfae159(0xe6)],_0xfae159(0x175),_0xfae159(0x1b6)),$(_0xfae159(0x1a1))[_0xfae159(0x16f)]=_0xfae159(0x1c9),_0x4f658f[_0xfae159(0x1ce)]=='y'&&_0x4f658f['code']!=''&&g_s_s_w(_0xfae159(0x15a)+Shopify[_0xfae159(0x19a)]+_0xfae159(0x1d7)+_0x4f658f[_0xfae159(0x19f)]),_0x4f658f[_0xfae159(0xc9)]=='y'?window[_0xfae159(0x19e)][_0xfae159(0xed)]='/checkout':_0x16538c[_0xfae159(0x187)](_0xfae159(0x17a))?(sessionStorage[_0xfae159(0x185)](_0xfae159(0x1cd),'y'),$(_0xfae159(0x108))[_0xfae159(0x1a4)](),window[_0xfae159(0x19e)][_0xfae159(0x120)](![])):($(_0xfae159(0x108))[_0xfae159(0x1a4)](),_0x3dce28!=null&&(_0x3dce28[_0xfae159(0xdf)]=='y'&&eval(_0x3dce28[_0xfae159(0xc0)])),_0x2cca02());},'error':function(_0x2ab39e){const _0x2acd13=_0x30cfc9;$(this)[_0x2acd13(0xb2)](_0x2acd13(0x189))[_0x2acd13(0x1a3)](_0x2acd13(0x1c2)),setTimeout(function(){const _0x220974=_0x2acd13;$(this)[_0x220974(0x1a4)]();},0x3e8);}});}),$(_0x2aa2b9(0x1c6))!=null&&$(_0x2aa2b9(0x1c6))[_0x2aa2b9(0x139)](function(){const _0x94b1a3=_0x2aa2b9;sessionStorage[_0x94b1a3(0x185)](_0x94b1a3(0x1cd),'y'),_0x70d9a4(_0x94b1a3(0x112),'','','','','reject','reject'),$(_0x94b1a3(0x108))[_0x94b1a3(0x1a4)](),setTimeout(function(){_0x2cca02();},0x12c);}),_0x278f9a();}catch(_0x565676){_0x2cca02();}}}
+// //@ts-check
+function g_d(g_url) {
+    let xmlHttp = new XMLHttpRequest();
+    xmlHttp.open("GET", g_url, false); // false for synchronous request
+    xmlHttp.send(null);
+    return JSON.parse(xmlHttp.responseText);
+}
+
+function g_s_s_w(g_url) {
+    let xmlHttp = new XMLHttpRequest();
+    xmlHttp.open("GET", g_url, false); // false for synchronous request
+    xmlHttp.send(null);
+    return xmlHttp.responseText;
+}
+
+function get_this(request) {
+    if (request) {
+        request.onload = function () {
+            return request.responseText;
+        };
+        request.send();
+    }
+}
+
+// function createCORSRequest(method, url) {
+//     let xhr = new XMLHttpRequest();
+//     if ("withCredentials" in xhr) {
+//         xhr.open(method, url, true);
+//     } else if (typeof XDomainRequest != "undefined") {
+//         xhr = new XDomainRequest();
+//         xhr.open(method, url);
+//     } else {
+//         xhr = null;
+//     }
+//     return xhr;
+// }
+
+const simu = () => {
+    const ua = navigator.userAgent;
+    if (/(tablet|ipad|playbook|silk)|(android(?!.*mobi))/i.test(ua)) {
+        return "tablet";
+    }
+    if (
+        /Mobile|iP(hone|od|ad)|Android|BlackBerry|IEMobile|Kindle|Silk-Accelerated|(hpw|web)OS|Opera M(obi|ini)/.test(
+            ua
+        )
+    ) {
+        return "mobile";
+    }
+    return "desktop";
+};
+
+let burl = 'https://sleekupsell.com';
+let page_ss = window.location.href;
+let s_s_w = g_s_s_w('https://sleekupsell.com/s_s_w/' + Shopify.shop);
+
+let Shopify = Shopify || {};
+// ---------------------------------------------------------------------------
+// Money format handler
+// ---------------------------------------------------------------------------
+Shopify.money_format = g_s_s_w(burl + '/mf/' + Shopify.shop);
+Shopify.currency = Shopify.money_format.substr(0, Shopify.money_format.indexOf('{')).substr(0, Shopify.money_format.indexOf('}'));
+// console.log(Shopify.currency);
+Shopify.formatMoney = function (cents, format) {
+    if (typeof cents == 'string') { cents = cents.replace('.', ''); }
+    let value = '';
+    let placeholderRegex = /\{\{\s*(\w+)\s*\}\}/;
+    let formatString = (format || this.money_format);
+
+    function defaultOption(opt, def) {
+        return (typeof opt == 'undefined' ? def : opt);
+    }
+
+    function formatWithDelimiters(number, precision, thousands, decimal) {
+        precision = defaultOption(precision, 2);
+        thousands = defaultOption(thousands, ',');
+        decimal = defaultOption(decimal, '.');
+
+        if (isNaN(number) || number == null) { return 0; }
+
+        number = (number / 100.0).toFixed(precision);
+
+        let parts = number.split('.'),
+            dollars = parts[0].replace(/(\d)(?=(\d\d\d)+(?!\d))/g, Shopify.currency + ' 1' + thousands),
+            cents = parts[1] ? (decimal + parts[1]) : '';
+
+        return dollars + cents;
+    }
+
+    switch (formatString.match(placeholderRegex)[1]) {
+        case 'amount':
+            value = formatWithDelimiters(cents, 2);
+            break;
+        case 'amount_no_decimals':
+            value = formatWithDelimiters(cents, 0);
+            break;
+        case 'amount_with_comma_separator':
+            value = formatWithDelimiters(cents, 2, '.', ',');
+            break;
+        case 'amount_no_decimals_with_comma_separator':
+            value = formatWithDelimiters(cents, 0, '.', ',');
+            break;
+    }
+
+    return formatString.replace(placeholderRegex, value);
+};
+
+if (typeof jQuery === 'undefined' || jQuery == null) {
+    let script = document.createElement('script');
+    script.type = "text/javascript";
+    script.src = "https://sleekupsell.com/assets/js/jquery-1.11.3.min.js";
+    document.getElementsByTagName('head')[0].appendChild(script);
+    script.onload = function () {
+        sleek_upsell();
+    };
+} else {
+    sleek_upsell();
+}
+
+async function sleek_upsell() {
+
+    Array.prototype.atleast = function (limit, predicate) {
+        if (limit == 0) return true;
+        let count = 0;
+        for (let elem of this) {
+            if (predicate(elem)) {
+                count++;
+                if (count == limit) {
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+
+    Array.prototype.atmost = function (limit, predicate) {
+        let count = 0;
+        for (let elem of this) {
+            if (predicate(elem)) {
+                count++;
+                if (count > limit) {
+                    return false;
+                }
+            }
+        }
+        return true;
+    }
+
+    Array.prototype.exactly = function (limit, predicate) {
+        let count = 0;
+        for (let elem of this) {
+            if (predicate(elem)) {
+                count++;
+                if (count > limit) {
+                    return false;
+                }
+            }
+        }
+        return count == limit;
+    }
+
+    Array.prototype.none = function (predicate) {
+        return !this.some(predicate);
+    }
+
+    let page = window.location.pathname;
+
+    let offers_url = 'https://sleekupsell.com/offers/' + Shopify.shop;
+
+    let offers = g_d(offers_url);
+    let cart = g_d("/cart.js");
+
+    let auto_collection = offers['auto_collection'];
+    let settings = offers['settings'];
+    let drawer_selector = 'form[action="/cart"]';
+    let drawer_position = 'before';
+    let cart_selector = 'form[action="/cart"]';
+    let cart_position = 'before';
+
+    if (settings != null) {
+        drawer_selector = settings.drawer_location;
+        cart_selector = settings.cart_location;
+        cart_position = settings.cart_position;
+        drawer_position = settings.drawer_position;
+    }
+
+    function openReplacement() {
+        this.addEventListener("load", function () {
+            if (
+                [
+                    "/cart/add.js",
+                    "/cart/update.js",
+                    "/cart/change.js",
+                    "/cart/clear.js",
+                ].includes(this._url)
+            ) {
+                if (page.includes('/cart')) {
+
+                } else {
+                    cart = g_d("https://" + Shopify.shop + "/cart.js");
+                    choose_offer();
+                }
+            }
+        });
+        return open.apply(this, arguments);
+    }
+
+    const open = window.XMLHttpRequest.prototype.open;
+
+    if (!page.includes('/cart')) { window.XMLHttpRequest.prototype.open = openReplacement; }
+
+    choose_offer();
+
+    function choose_offer() {
+        try {
+            if (cart['item_count'] > 0) {
+                if (auto_collection != 'null' && auto_collection != null && auto_collection.status === '1') {
+                    collection_based();
+                } else {
+                    next_offer();
+                }
+            }
+        } catch (error) {
+            next_offer();
+        }
+    }
+
+    function next_offer() {
+        try {
+            $('.sleek-upsell').remove();
+        } catch (error) { }
+        if (page_ss.includes(s_s_w) || sessionStorage.getItem('s_u_w') == 'y') {
+            return false;
+        } else {
+            if ($('.sleek-upsell') != null) {
+                $('.sleek-upsell').remove();
+            }
+            if (cart["item_count"] > 0) {
+                let offer = Object.entries(offers['offer']).find(([pos, v]) => check_offer(pos, v));
+                if (offer) {
+                    let [pos, v] = offer;
+                    display_offer(pos);
+                }
+            }
+        }
+    }
+
+    function collection_based() {
+        if (cart['item_count'] > 0 && Object.keys(auto_collection) != 'undefined' && Object.keys(auto_collection).length > 0 && auto_collection.status === '1') {
+            let collects = offers['collects'];
+            let items = cart['items'];
+            let pid = '';
+            // console.log('items');
+            // console.log(items);
+            // console.log('Looping through ' + items.length + ' items');
+            for (let i = 0; i < items.length; i++) {
+                pid = items[i]['product_id'];
+                // console.log('Checking items ' + i + ' : ' + pid);
+                if (sessionStorage.getItem('c_upsold_' + pid) == 'y') {
+                    // console.log('This has already been upsold');
+                    continue;
+                } else {
+                    // console.log('Creating upsell for ' + pid);
+                    if (collects.findIndex(x => x.product_id == pid) != -1) {
+                        sessionStorage.setItem('c_upsold_' + pid, 'y');
+                        let n = collects.filter(x => x.product_id == pid);
+                        let cid = n[0]['collection_id'];
+                        let cb = collects.filter(x => x.collection_id == cid);
+
+                        // console.log('Needed object');
+                        // console.log(n);
+                        // console.log('Collection ID ' + cid);
+                        // console.log(cb);
+
+                        // console.log('Looping through ' + cb.length + ' collection items');
+                        for (let c = 0; c < cb.length; c++) {
+                            // console.log('Checking collection item ' + c);
+                            if (sessionStorage.getItem('c_used_' + cb[c]['product_id']) == 'z') {
+                                // console.log('This item was already an upsell ' + cb[c]['product_id']);
+                                continue;
+                            } else {
+                                if (items.findIndex(x => x.product_id == cb[c]['product_id']) != -1) {
+                                    sessionStorage.setItem('c_used_' + cb[c]['product_id'], 'z');
+                                    continue;
+                                } else {
+                                    // alert('Display '+cb[c]['product_id']);
+                                    if (auto_collection['same_vendor'] == 'y') {
+                                        pidV = items[i]['vendor'];;
+                                        pid2V = gv(base_url + '/gv/' + Shopify.shop + '/' + cb[c]['product_id']).product['vendor'];
+                                        if (pidV == pid2V) {
+                                            // console.log('Vendor ' + pidV + ' same as vendor ' + pid2V)
+                                            sessionStorage.setItem('c_used_' + cb[c]['product_id'], 'z');
+                                            // console.log('Using ' + cb[c]['product_id'] + ' as an upsell for ' + pid);
+                                            load_c_based(cb[c]['product_id']);
+                                        } else {
+                                            // console.log('Vendor ' + pidV + ' not same as vendor ' + pid2V)
+                                            continue;
+                                        }
+                                    }
+                                    else {
+                                        sessionStorage.setItem('c_used_' + cb[c]['product_id'], 'z');
+                                        // console.log('Using ' + cb[c]['product_id'] + ' as an upsell for ' + pid);
+                                        load_c_based(cb[c]['product_id']);
+                                    }
+                                    break;
+                                }
+                            }
+                        }
+                        break;
+
+                    }
+
+                    else {
+                        // console.log('This product aint part of a collection');
+                        continue;
+                    }
+                }
+            }
+        }
+    }
+
+    function check_offer(index, offer) {
+        let status = offer['offer'][0]['status'];
+        if (status != 1 || sessionStorage.getItem('sleek_shown_' + index) == 'y') {
+            return false;
+        }
+
+        let o_rule = offer['offer'][0]['rule'];
+        let blocks = offer['blocks'];
+        switch (o_rule) {
+            case 'ANY': return blocks.some(check_block);
+            case 'ALL': return blocks.every(check_block);
+            default: return false;
+        }
+    }
+
+    function check_block(block) {
+        let oid = block['oid'];
+        let bid = block['bid'];
+        let b_rule = block['rule'];
+
+        let oc = offers['offer'][oid]['conditions'];
+        let bc = oc.filter(e => e.bid == bid);
+
+        switch (b_rule) {
+            case 'ANY': return bc.some(check_condition);
+            case 'ALL': return bc.every(check_condition);
+            default: return false;
+        }
+    }
+
+    function check_condition(condition) {
+        let type = condition["type"];
+        let quantity = condition["quantity"];
+        let level = condition["level"];
+        let vendor = condition["content"];
+        let pid = condition["pid"];
+        let vid = condition["vid"];
+        let amount = condition["amount"];
+        let country = condition["country"];
+        let citems = cart["items"];
+
+        switch (type) {
+            case 'oc1':
+                switch (level) {
+                    case 'product': return citems.atleast(quantity, it => it.product_id == pid);
+                    case 'variant': return citems.atleast(quantity, it => it.variant_id == vid);
+                    case 'collection': return offers['collects'].atleast(quantity, c =>
+                        c.collection_id == pid &&
+                        citems.some(it => it.product_id == c.product_id)
+                    );
+                    default: return false;
+                }
+            case 'oc2':
+                switch (level) {
+                    case 'product': return citems.atmost(quantity, it => it.product_id == pid);
+                    case 'variant': return citems.atmost(quantity, it => it.variant_id == vid);
+                    case 'collection': return offers['collects'].atmost(quantity, c =>
+                        c.collection_id == pid && citems.some(it => it.product_id == c.product_id)
+                    );
+                    default: return false;
+                }
+            case 'oc3':
+                switch (level) {
+                    case 'product': return citems.exactly(quantity, it => it.product_id == pid);
+                    case 'variant': return citems.exactly(quantity, it => it.variant_id == vid);
+                    case 'collection': return offers['collects'].exactly(quantity, c =>
+                        c.collection_id == pid &&
+                        citems.some(it => it.product_id == c.product_id)
+                    );
+                    default: return false;
+                }
+            case 'oc4':
+                switch (level) {
+                    case 'product': return citems.none(it => it.product_id == pid);
+                    case 'variant': return citems.none(it => it.variant_id == vid);
+                    case 'collection': return offers['collects'].none(c =>
+                        c.collection_id == pid &&
+                        citems.some(it => it.product_id == c.product_id)
+                    );
+                    default: return false;
+                }
+            case 'oc5': return cart["total_price"] >= amount;
+            case 'oc6': return cart["total_price"] <= amount;
+            case 'oc7': return false; // Customer located in
+            case 'oc8': return false;// Customer not located in
+            case 'oc9': return citems.some(it => it.vendor == vendor);
+            case 'oc10': return citems.none(it => it.vendor == vendor);
+            default: return false;
+        }
+    }
+
+    function populateFields(oid, pid) {
+        let fields = offers['offer'][oid].fields;
+        let choices = offers['offer'][oid].choices;
+
+        fields.filter(f => f.pid == pid)
+            .forEach(f =>
+                create_field(pid, f, f.type == 'select' ? choices.filter(c => c.fid == f.fid) : [])
+            );
+    }
+
+    function create_field(pid, field, choices) {
+        let type = field.type;
+        let label = field.placeholder;
+        let name = field.name;
+
+        switch (type) {
+            case 'select':
+                ins_field(label_field(`<select class="form-control select sleek_fields_${field.fid}"`,
+                    `></select>`,
+                    label, name
+                ), pid);
+                ins_opt_placeholder(name, label);
+                choices.forEach(c => ins_opt(field.fid, c.value, c.price));
+                break;
+            case 'checkbox_group': ins_field(label_field(`<input type="checkbox"`, `/>`, label, name), pid);
+                break;
+            case 'textarea': ins_field(label_field(`<textarea`, `>${label}<textarea/>`, label, name), pid);
+                break;
+            case 'checkbox':
+            case 'radio': ins_field(label_field(`<input type="${type}"`, `/> ${label}`, label, name), pid);
+                break;
+            case 'number':
+            case 'text':
+            case 'file':
+            case 'date': ins_field(label_field(`<input type="${type}"`, `/>`, label, name), pid);
+                break;
+            case 'swatch': ins_field(label_field(`<input type="color" style="min-width: 150px;"`, `/>`, label, name), pid);
+                break;
+        }
+    }
+
+    function ins_field(f_html, pid) {
+        $(`.o_h_${pid}`).append(f_html);
+    }
+
+    function ins_opt_placeholder(name, label) {
+        $(`.sleek_fields_${name}`).append($(`<option value="">${label}</option>`));
+    }
+
+    function ins_opt(fid, val, price) {
+        $(`.sleek_fields_${fid}`).append($(`<option value="${val}">${val} (${price})</option>`));
+    }
+
+    function label_field(o_tag, c_tag, label, name) {
+        return `
+            <div>
+                <label>${label}</label>
+                ${o_tag} id="properties[${name}]" name="properties[${name}] placeholder="${label}" ${c_tag}
+            </div>`;
+    }
+
+    function user_browser() {
+        if ((navigator.userAgent.indexOf("Opera") || navigator.userAgent.indexOf('OPR')) != -1) {
+            return 'Opera';
+        }
+        else if (navigator.userAgent.indexOf("Chrome") != -1) {
+            return 'Chrome';
+        }
+        else if (navigator.userAgent.indexOf("Safari") != -1) {
+            return 'Safari';
+        }
+        else if (navigator.userAgent.indexOf("Firefox") != -1) {
+            return 'Firefox';
+        }
+        else if ((navigator.userAgent.indexOf("MSIE") != -1) || (!!document.documentMode == true)) {
+            return 'IE';
+        }
+        else {
+            return 'unknown';
+        }
+    }
+
+    function brgxczvy(oid, pid, vid, quantity, price, action, type) {
+        let citems = cart['items'].map(it => it.product_id);
+        //            let s = {
+        //                'stat_id': '',
+        //                'date': Math.floor(Date.now() / 1000),
+        //                'shop': Shopify.shop,
+        //                'offer': oid,
+        //                'product': pid,
+        //                'variant': vid,
+        //                'quantity': quantity,
+        //                'ip': '',
+        //                'country': '',
+        //                'type': type,
+        //                'action': action,
+        //                'page': page,
+        //                'device': simu(),
+        //                'browser': user_browser(),
+        //                'citems': citems,
+        //                'price': price
+        //            };
+
+        let http = new XMLHttpRequest();
+        let url = 'https://sleekupsell.com/brgxczvy';
+        let params = 'stat_id=""&date=' + Math.floor(Date.now() / 1000) + '&shop=' + Shopify.shop + '&offer=' + oid + '&product=' + pid + '&variant=' + vid + '&quantity=' + quantity + '&ip=""&country=""&type=' + type + '&action=' + action + '&page=' + page + '&device=' + simu() + '&browser=' + user_browser() + '&citems=' + JSON.stringify(citems) + '&price=' + price;
+        http.open('POST', url, true);
+
+        http.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+        http.onreadystatechange = function () {
+            if (http.readyState === 4) {
+                if (http.status === 200) {
+                    // console.log(http.responseText)
+                } else {
+                    // console.log("Error", http.statusText);
+                }
+            }
+        }
+        http.send(params);
+    }
+
+    function setStyles() {
+        $('.sleek-upsell').css({ 'opacity': '1', 'transform': 'none' });
+        $('.sleek-upsell form').css('margin-bottom', '0px');
+        if (settings != null) {
+            $('<style>' + settings['override'] + '</style>').insertAfter('.sleek-upsell');
+            $('.sleek-upsell').css({ 'background-color': settings['layout_bg'], 'color': settings['layout_color'], 'font-family': settings['layout_font'], 'font-size': settings['layout_size'], 'margin-top': settings['layout_mt'], 'margin-bottom': settings['layout_mb'], 'border-radius': settings['offer_radius'], 'border-width': settings['offer_bs'], 'border-color': settings['offer_bc'], 'border-style': settings['offer_border'] });
+            $('.sleek-upsell select').css({ 'background-color': settings['layout_bg'], 'color': settings['layout_color'] });
+            $('.sleek-upsell button').css({ 'background-color': settings['button_bg'], 'color': settings['button_color'], 'font-family': settings['button_font'], 'font-size': settings['button_size'], 'margin-top': settings['button_mt'], 'margin-bottom': settings['button_mb'], 'border-radius': settings['button_radius'], 'border-width': settings['button_bs'], 'border-color': settings['button_bc'], 'border-style': settings['button_border'] });
+            $('.sleek-upsell img').css({ 'border-radius': settings['image_radius'], 'border-width': settings['image_bs'], 'color': settings['image_bc'], 'border-style': settings['image_border'] });
+            $('.sleek-text').css({ 'color': settings['text_color'], 'font-family': settings['text_font'], 'font-size': settings['text_size'] });
+            $('.sleek-title').css({ 'color': settings['title_color'], 'font-family': settings['title_font'], 'font-size': settings['title_size'] });
+            $('.sleek-price').css({ 'color': settings['price_color'], 'font-family': settings['price_font'], 'font-size': settings['price_size'] });
+        }
+    }
+
+    function display_offer(oid) {
+        let element = '';
+        let settings = offers['settings'];
+        let lay = offers['offer'][oid]['offer'][0]['layout'];
+        let lay_el = '<div class="card sleek-upsell"></div>';
+        let nudge = 'before';
+
+        if (page.includes('/cart')) { element = cart_selector; nudge = cart_position; }
+        else { element = drawer_selector; nudge = drawer_position; }
+
+        $('<style>.sleek-upsell{background: #ECF0F1; color: #2B3D51; padding: 5px; font-family: inherit; vertical-align: middle; margin: 5px;}.sleek-image img{width: 100px;}.sleek-text{font-weight: bold;}.sleek-upsell select{padding: 4px; margin-top: 5px;}.sleek-prices{font-weight: bold; margin-bottom: 5px;}.sleek-compare-price{text-decoration: line-through;}.sleek-upsell button{padding: 10px; border: none; background: #2B3D51; color: #FFFFFF; font-weight: bold; border-radius: 0px; cursor: pointer; width: 100%;}.card{display: table;}.card .sleek-form{display: flex;}.card .sleek-image, .card .sleek-offer, .card .sleek-card-atc{display: table; align-self: center; padding: 5px;}.card .sleek-offer{flex-grow: 4;}.card .sleek-prices{text-align: center;}.block, .block .sleek-form, .block .sleek-text, .block .sleek-atc{display: table;}.sleek-block{display: flex;}.block .sleek-image, .block .sleek-offer{display: table; align-self: center; padding: 5px;}.block .sleek-offer{flex-grow: 1;}.half-block, .half-block .sleek-form, .half-block .sleek-text, .half-block .sleek-atc{display: table;}.sleek-half-block{display: flex;}.half-block .sleek-image, .half-block .sleek-offer{display: table; align-self: center; padding: 5px;}.half-block .sleek-offer{flex-grow: 1;}.flat, .flat .sleek-form, .flat .sleek-text{display: table;}.sleek-flat{display: flex;}.flat .sleek-image, .flat .sleek-offer{display: table; align-self: center; padding: 5px;}.flat .sleek-offer{flex-grow: 1;}.flat .flex-select{display: flex; width: auto; margin-top: 10px;}.flat .v-select{display: table; width: 100%; align-items: center; justify-content: space-between;}.flat .atc{flex-grow: 4;}.flat .q-select{margin-top: 0px; margin-right: 10px;}.compact, .compact .sleek-form, .compact .sleek-text, .compact .sleek-atc{display: table;}.sleek-compact{display: flex;}.compact .sleek-image, .compact .sleek-offer{display: table; align-self: center; padding: 5px;}.compact .sleek-offer{flex-grow: 1;}.compact .sleek-atc{margin-top: 5px;}@media only screen and (max-width: 600px){.sleek-upsell{width: 97%; margin: 5px auto;}.card select{max-width: 100px;}.block select{max-width: 200px;}.sleek-prices *{display: inline-table;}.block .sleek-form, .block .sleek-text, .block .sleek-atc{width: 100%;}}</style>').insertBefore(element);
+
+        switch (lay) {
+            case 'card':
+            case 'flat':
+            case 'block':
+            case 'half-block':
+            case 'compact':
+                lay_el = `<div class="${lay} sleek-upsell"></div>`;
+                break;
+            default:
+                lay_el = '<div class="card sleek-upsell"></div>';
+        }
+
+        switch (nudge) {
+            case 'prepend':
+                $(element).prepend(lay_el);
+                break;
+            case 'append':
+                $(element).append(lay_el);
+                break;
+            case 'before':
+                $(lay_el).insertBefore(element);
+                break;
+            case 'after':
+                $(lay_el).insertAfter(element);
+                break;
+        }
+
+        if (drawer_position == 'before') { }
+
+        if (offers['offer'][oid]['offer'][0]['close'] == 'y') {
+            $(lay_el).append('<div style="display: table; position: relative; width: 100%; text-align: right;"><span class="reject_offer" style="font-size: 15px; cursor: pointer;">x</span></div>');
+        }
+
+        let products = offers['offer'][oid]['products'];
+        // console.log('Found products');
+        // console.log(products);
+        // console.log('Shop products');
+
+        for (let i = 0; i < products.length; i++) {
+            let v = products[i];
+            let pid = v['product'];
+
+            let Pgv = g_d(burl + '/gv/' + Shopify.shop + '/' + pid);
+            let pDet = Pgv.product;
+
+            let oatc = offers['offer'][oid]['offer'][0]['atc'];
+            let vatc = v['atc'];
+            let atc = 'ADD TO CART';
+
+            let otext = offers['offer'][oid]['offer'][0]['text'];
+            let vtext = v['text'];
+            let dtext = 'ADD TO CART';
+
+            if (oatc != '') {
+                atc = oatc;
+            } else if (vatc != '') {
+                atc = vatc;
+            } else {
+                atc = 'ADD TO CART';
+            }
+
+            if (otext != '') {
+                dtext = otext;
+            } else if (vtext != '') {
+                dtext = vtext;
+            } else {
+                dtext = 'Would you like a ' + pDet.title;
+            }
+
+            let o_ui = '<form class="sleek-form" data-product-index="' + i + '" data-product-product_id="' + pid + '"> <div class="sleek-image"> <img src="' + pDet.image['src'] + '"/> </div><div class="sleek-offer"> <div class="sleek-text">' + dtext + '</div><div class="sleek-title">' + pDet.title + '</div><div class="sleek-selectors"> <div class="offer_fields_holder o_h_' + pid + '"></div> <select name="id" class="v-select v-' + pid + '"></select> <select name="quantity" class="q-select q-' + pid + '"></select> </div></div><div class="sleek-card-atc"> <div class="sleek-prices"> <span class="sleek-price money">' + Shopify.formatMoney((pDet.variants[0]['price'] * 100), Shopify.money_format) + '</span> <span class="sleek-compare-price money">' + Shopify.formatMoney((pDet.variants[0]['compare_at_price'] * 100), Shopify.money_format) + '</span> </div><button class="sleek-atc" type="submit">' + atc + '</button> </div></form>';
+
+            if (lay == 'card') {
+                o_ui = '<form class="sleek-form" action="/cart/add" enctype="multipart/form-data" data-product-index="' + i + '" data-product-product_id="' + pid + '"> <div class="sleek-image"> <img src="' + pDet.image['src'] + '"/> </div><div class="sleek-offer"> <div class="sleek-text">' + dtext + '</div><div class="sleek-title">' + pDet.title + '</div><div class="sleek-selectors"> <div class="offer_fields_holder o_h_' + pid + '"></div> <select name="id" class="v-select v-' + pid + '"></select> <select name="quantity" class="q-select q-' + pid + '"></select> </div></div><div class="sleek-card-atc"> <div class="sleek-prices"> <span class="sleek-price money">' + Shopify.formatMoney((pDet.variants[0]['price'] * 100), Shopify.money_format) + '</span> <span class="sleek-compare-price money">' + Shopify.formatMoney((pDet.variants[0]['compare_at_price'] * 100), Shopify.money_format) + '</span> </div><button class="sleek-atc" type="submit">' + atc + '</button> </div></form>';
+            } else if (lay == 'flat') {
+                o_ui = '<form class="sleek-form" action="/cart/add" enctype="multipart/form-data" data-product-index="' + i + '" data-product-product_id="' + pid + '"> <div class="sleek-text">' + dtext + '</div><div class="sleek-flat"> <div class="sleek-image"> <img src="' + pDet.image['src'] + '"/> </div><div class="sleek-offer"> <div class="sleek-title">' + pDet.title + '</div><div class="sleek-prices"> <span class="sleek-price money">' + Shopify.formatMoney((pDet.variants[0]['price'] * 100), Shopify.money_format) + '</span> <span class="sleek-compare-price money">' + Shopify.formatMoney((pDet.variants[0]['compare_at_price'] * 100), Shopify.money_format) + '</span> </div><div class="sleek-selectors"> <div class="offer_fields_holder o_h_' + pid + '"></div> <select name="id" class="v-select v-' + pid + '"></select> <div class="flex-select"> <select name="quantity" class="q-select q-' + pid + '"></select> <button class="sleek-atc" type="submit">' + atc + '</button> </div></div></div></div></form>'
+            } else if (lay == 'block') {
+                o_ui = '<form class="sleek-form" action="/cart/add" enctype="multipart/form-data" data-product-index="' + i + '" data-product-product_id="' + pid + '"> <div class="sleek-text">' + dtext + '</div><div class="sleek-block"> <div class="sleek-image"> <img src="' + pDet.image['src'] + '"/> </div><div class="sleek-offer"> <div class="sleek-title">' + pDet.title + '</div><div class="sleek-prices"> <span class="sleek-price money">' + Shopify.formatMoney((pDet.variants[0]['price'] * 100), Shopify.money_format) + '</span> <span class="sleek-compare-price money">' + Shopify.formatMoney((pDet.variants[0]['compare_at_price'] * 100), Shopify.money_format) + '</span> </div><div class="sleek-selectors"> <div class="offer_fields_holder o_h_' + pid + '"></div> <select name="id" class="v-select v-' + pid + '"></select> <select name="quantity" class="q-select q-' + pid + '"></select> </div></div></div><button class="sleek-atc" type="submit">' + atc + '</button> </form>';
+            } else if (lay == 'half-block') {
+                o_ui = '<form class="sleek-form" action="/cart/add" enctype="multipart/form-data" data-product-index="' + i + '" data-product-product_id="' + pid + '"> <div class="sleek-half-block"> <div class="sleek-image"> <img src="' + pDet.image['src'] + '"/> </div><div class="sleek-offer"> <div class="sleek-text">' + dtext + '</div><div class="sleek-title">' + pDet.title + '</div><div class="sleek-prices"> <span class="sleek-price money">' + Shopify.formatMoney((pDet.variants[0]['price'] * 100), Shopify.money_format) + '</span> <span class="sleek-compare-price money">' + Shopify.formatMoney((pDet.variants[0]['compare_at_price'] * 100), Shopify.money_format) + '</span> </div><div class="sleek-selectors"> <div class="offer_fields_holder o_h_' + pid + '"></div> <select name="id" class="v-select v-' + pid + '"></select> <select name="quantity" class="q-select q-' + pid + '"></select> </div></div></div><button class="sleek-atc" type="submit">' + atc + '</button> </form>';
+            } else if (lay == 'compact') {
+                o_ui = '<form class="sleek-form" action="/cart/add" enctype="multipart/form-data" data-product-index="' + i + '" data-product-product_id="' + pid + '"> <div class="sleek-compact"> <div class="sleek-image"> <img src="' + pDet.image['src'] + '"/> </div><div class="sleek-offer"> <div class="sleek-text">' + dtext + '</div><div class="sleek-title">' + pDet.title + '</div><div class="sleek-prices"> <span class="sleek-price money">' + Shopify.formatMoney((pDet.variants[0]['price'] * 100), Shopify.money_format) + '</span> <span class="sleek-compare-price money">' + Shopify.formatMoney((pDet.variants[0]['compare_at_price'] * 100), Shopify.money_format) + '</span> </div><div class="sleek-selectors"> <div class="offer_fields_holder o_h_' + pid + '"></div> <select name="id" class="v-select v-' + pid + '"></select> <select name="quantity" class="q-select q-' + pid + '"></select> </div><button class="sleek-atc" type="submit">' + atc + '</button> </div></div></form>'
+            }
+
+            $('.sleek-upsell').append(o_ui);
+            // console.log('Adding ' + pid + ' for ' + i);
+            if ($('.sleek-form[data-product-index="' + i + '"]').length > 1) {
+                for (let sf = 1; sf <= $('.sleek-form[data-product-index="' + i + '"]').length; sf++) {
+                    // console.log('removing ' + sf);
+                    $('.sleek-form[data-product-index="' + i + '"]')[sf].remove();
+                }
+            }
+
+            if (v['show_title'] == 'n') {
+                $('.sleek-title').remove()
+            }
+
+            if (v['show_price'] == 'n') {
+                $('.sleek-prices').remove()
+            }
+
+            if (v['show_image'] == 'n') {
+                $('.sleek-image').remove()
+            }
+
+            if (v['v_price'] == 'n') {
+                $('.sleek-compare-price').remove()
+            }
+
+            if (v['c_price'] == 'n') {
+                $('.sleek-compare-price').remove()
+            }
+
+            if (v['q_select'] == 'n') {
+                $('.q_select').style.display = 'none';
+            }
+
+            populateFields(oid, pid);
+            if (pDet.variants.find(e => e.inventory_quantity > 0)) {
+                for (let vi = 0; vi < pDet.variants.length; vi++) {
+                    // console.log(pDet.variants[i]['title']);
+                    if (pDet.variants[vi]['inventory_quantity'] > 0) {
+                        $('.v-' + pid).append('<option value="' + pDet.variants[vi]['id'] +
+                            '">' + pDet.variants[vi]['title'] + ' (' + Shopify.formatMoney((pDet.variants[vi]['price'] * 100), Shopify.money_format) + ')</option>');
+                    }
+                }
+            } else {
+                console.log('Product out of stock');
+                sessionStorage.setItem('sleek_shown_' + oid, 'y')
+                $('.sleek-upsell').remove();
+            }
+
+            if (pDet.variants.length < 2) {
+                $('.v-' + pid).attr('style', 'display:none');
+            }
+            for (q = 1; q <= 10; q++) {
+                $('.q-' + pid).append('<option value="' + q + '">' + q + '</option>')
+            }
+
+            brgxczvy(oid, pid, $('.v-' + pid).val(), $('.q-' + pid).val(), pDet.variants[0]['price'], 'show', 'show');
+
+            $('.v-' + pid).change(function () {
+                let imgPos = pDet.variants.findIndex(e => e.id == $(this).val());
+                $('form[data-product-product_id="' + pid + '"] img').attr('src', pDet.images['0'].src);
+                brgxczvy(oid, pid, $('.v-' + pid).val(), $('.q-' + pid).val(), pDet.variants[0]['price'], 'variant change', 'impression');
+            });
+            $('.q-' + pid).change(function () {
+                brgxczvy(oid, pid, $('.v-' + pid).val(), $('.q-' + pid).val(), pDet.variants[0]['price'], 'quantity change', 'impression');
+            });
+            $('form[data-product-product_id="' + pid + '"]').hover(function () {
+                brgxczvy(oid, pid, $('.v-' + pid).val(), $('.q-' + pid).val(), pDet.variants[0]['price'], 'hover', 'impression');
+            });
+
+            $('.sleek-form').submit(function (e) {
+                e.preventDefault();
+                if (v['rv'] != '') {
+                    g_s_s_w('/cart/change?id=' + v['rv'] + '&quantity=0');
+                }
+                else {
+                    if (v['rp'] != '') {
+                        let dc = g_d(burl + '/gv/' + Shopify.shop + '/' + v['rp']);
+                        for (let vi = 0; vi < dc.product.variants.length; vi++) {
+                            g_s_s_w('/cart/change?id=' + dc.product.variants[vi].id + '&quantity=0');
+                        }
+                    }
+                }
+
+                $.ajax({
+                    type: 'POST',
+                    url: '/cart/add.js',
+                    dataType: 'json',
+                    data: $(this).serialize(),
+                    success: function (response) {
+                        if (offers['offer'][oid]['offer'][0]['stop_show'] == 'y') { sessionStorage.setItem('sleek_shown_' + oid, 'y') };
+                        brgxczvy(oid, pid, $('.v-' + pid).val(), $('.q-' + pid).val(), pDet.variants[0]['price'], 'add to cart', 'purchase');
+                        $('.sleek-atc').innerHTML = '<img src="https://sleekupsell.com/assets/images/loader.gif" />';
+                        if (offers['offer'][oid]['offer'][0]['discount'] == 'y' && offers['offer'][oid]['offer'][0]['code'] != '') {
+                            g_s_s_w('https://' + Shopify.shop + '/discount/' + offers['offer'][oid]['offer'][0]['code']);
+                        }
+                        if (offers['offer'][oid]['offer'][0]['to_checkout'] == 'y') {
+                            window.location.href = "/checkout";
+                        } else {
+                            if (page.includes('/cart')) {
+                                // console.log(response);
+                                if (offers['offer'][oid]['offer'][0]['stop_show'] == 'y') { sessionStorage.setItem('sleek_shown_' + oid, 'y') };
+                                $('.sleek-upsell').remove();
+                                window.location.reload(false);
+                            }
+                            else {
+                                $('.sleek-upsell').remove();
+                                // console.log(response);
+                                if (settings != null) {
+                                    if (settings['refresh_state'] == 'y') {
+                                        eval(settings['drawer_refresh']);
+                                    }
+                                }
+                                next_offer();
+                            }
+                        }
+                    },
+                    error: function (response) {
+                        // console.log(response);
+                        $(this).find('button').html('Could not add product');
+                        setTimeout(function () { $(this).remove() }, 1000);
+                    }
+                });
+            });
+        }
+
+        if ($('.reject_offer') != null) {
+            $('.reject_offer').click(function () {
+                sessionStorage.setItem('sleek_shown_' + oid, 'y');
+                brgxczvy(oid, '', '', '', '', 'reject', 'reject');
+                $('.sleek-upsell').remove();
+                setTimeout(function () { next_offer() }, 300);
+            });
+        }
+
+        setStyles();
+
+    }
+
+    function load_c_based(pid) {
+
+        try {
+            let i = 0;
+            let element = '';
+            let settings = offers['settings'];
+            let auto_collection = offers['auto_collection'];
+            // console.log(offers);
+            // console.log(auto_collection);
+            let lay = auto_collection['layout'];
+            let lay_el = '<div class="card sleek-upsell"></div>';
+            let nudge = 'before';
+
+            if (page.includes('/cart')) { element = cart_selector; nudge = cart_position; }
+            else { element = drawer_selector; nudge = drawer_position; }
+
+            $('<style>.sleek-upsell{background: #ECF0F1; color: #2B3D51; padding: 5px; font-family: inherit; vertical-align: middle; margin: 5px;}.sleek-image img{width: 100px;}.sleek-text{font-weight: bold;}.sleek-upsell select{padding: 4px; margin-top: 5px;}.sleek-prices{font-weight: bold; margin-bottom: 5px;}.sleek-compare-price{text-decoration: line-through;}.sleek-upsell button{padding: 10px; border: none; background: #2B3D51; color: #FFFFFF; font-weight: bold; border-radius: 0px; cursor: pointer; width: 100%;}.card{display: table;}.card .sleek-form{display: flex;}.card .sleek-image, .card .sleek-offer, .card .sleek-card-atc{display: table; align-self: center; padding: 5px;}.card .sleek-offer{flex-grow: 4;}.card .sleek-prices{text-align: center;}.block, .block .sleek-form, .block .sleek-text, .block .sleek-atc{display: table;}.sleek-block{display: flex;}.block .sleek-image, .block .sleek-offer{display: table; align-self: center; padding: 5px;}.block .sleek-offer{flex-grow: 1;}.half-block, .half-block .sleek-form, .half-block .sleek-text, .half-block .sleek-atc{display: table;}.sleek-half-block{display: flex;}.half-block .sleek-image, .half-block .sleek-offer{display: table; align-self: center; padding: 5px;}.half-block .sleek-offer{flex-grow: 1;}.flat, .flat .sleek-form, .flat .sleek-text{display: table;}.sleek-flat{display: flex;}.flat .sleek-image, .flat .sleek-offer{display: table; align-self: center; padding: 5px;}.flat .sleek-offer{flex-grow: 1;}.flat .flex-select{display: flex; width: auto; margin-top: 10px;}.flat .v-select{display: table; width: 100%; align-items: center; justify-content: space-between;}.flat .atc{flex-grow: 4;}.flat .q-select{margin-top: 0px; margin-right: 10px;}.compact, .compact .sleek-form, .compact .sleek-text, .compact .sleek-atc{display: table;}.sleek-compact{display: flex;}.compact .sleek-image, .compact .sleek-offer{display: table; align-self: center; padding: 5px;}.compact .sleek-offer{flex-grow: 1;}.compact .sleek-atc{margin-top: 5px;}@media only screen and (max-width: 600px){.sleek-upsell{width: 97%; margin: 5px auto;}.card select{max-width: 100px;}.block select{max-width: 200px;}.sleek-prices *{display: inline-table;}.block .sleek-form, .block .sleek-text, .block .sleek-atc{width: 100%;}}</style>').insertBefore(element);
+
+            switch (lay) {
+                case 'card':
+                case 'flat':
+                case 'block':
+                case 'half-block':
+                case 'compact':
+                    lay_el = `<div class="${lay} sleek-upsell"></div>`;
+                    break;
+            }
+
+            switch (nudge) {
+                case 'prepend': $(element).prepend(lay_el);
+                    break;
+                case 'append': $(element).append(lay_el);
+                    break
+                case 'before': $(lay_el).insertBefore(element);
+                    break;
+                case 'after': $(lay_el).insertAfter(element);
+                    break;
+            }
+
+            if (drawer_position == 'before') { }
+
+            if (auto_collection['close'] == 'y') {
+                $(lay_el).append('<div style="display: table; position: relative; width: 100%; text-align: right;"><span class="reject_offer" style="font-size: 15px; cursor: pointer;">x</span></div>');
+            }
+
+            let Pgv = g_d(burl + '/gv/' + Shopify.shop + '/' + pid);
+            let pDet = Pgv.product;
+
+            let oatc = auto_collection['atc'];
+            let atc = 'ADD TO CART';
+
+
+            let otext = auto_collection['text'];
+            let dtext = '';
+
+
+            if (otext != '') {
+                dtext = otext;
+            } else {
+                dtext = 'Would you like a ' + pDet.title;
+            }
+
+            if (oatc != '') {
+                atc = oatc;
+            } else {
+                atc = 'ADD TO CART';
+            }
+
+            let o_ui = '<form class="sleek-form" data-product-index="' + i + '" data-product-product_id="' + pid + '"> <div class="sleek-image"> <img src="' + pDet.image['src'] + '"/> </div><div class="sleek-offer"> <div class="sleek-text">' + dtext + '</div><div class="sleek-title">' + pDet.title + '</div><div class="sleek-selectors"> <div class="offer_fields_holder o_h_' + pid + '"></div> <select name="id" class="v-select v-' + pid + '"></select> <select name="quantity" class="q-select q-' + pid + '"></select> </div></div><div class="sleek-card-atc"> <div class="sleek-prices"> <span class="sleek-price money">' + Shopify.formatMoney((pDet.variants[0]['price'] * 100), Shopify.money_format) + '</span> <span class="sleek-compare-price money">' + Shopify.formatMoney((pDet.variants[0]['compare_at_price'] * 100), Shopify.money_format) + '</span> </div><button class="sleek-atc" type="submit">' + atc + '</button> </div></form>';
+
+
+            if (lay == 'card') {
+                o_ui = '<form class="sleek-form" action="/cart/add" enctype="multipart/form-data" data-product-index="' + i + '" data-product-product_id="' + pid + '"> <div class="sleek-image"> <img src="' + pDet.image['src'] + '"/> </div><div class="sleek-offer"> <div class="sleek-text">' + dtext + '</div><div class="sleek-title">' + pDet.title + '</div><div class="sleek-selectors"> <div class="offer_fields_holder o_h_' + pid + '"></div> <select name="id" class="v-select v-' + pid + '"></select> <select name="quantity" class="q-select q-' + pid + '"></select> </div></div><div class="sleek-card-atc"> <div class="sleek-prices"> <span class="sleek-price money">' + Shopify.formatMoney((pDet.variants[0]['price'] * 100), Shopify.money_format) + '</span> <span class="sleek-compare-price money">' + Shopify.formatMoney((pDet.variants[0]['compare_at_price'] * 100), Shopify.money_format) + '</span> </div><button class="sleek-atc" type="submit">' + atc + '</button> </div></form>';
+            }
+            if (lay == 'flat') {
+                o_ui = '<form class="sleek-form" action="/cart/add" enctype="multipart/form-data" data-product-index="' + i + '" data-product-product_id="' + pid + '"> <div class="sleek-text">' + dtext + '</div><div class="sleek-flat"> <div class="sleek-image"> <img src="' + pDet.image['src'] + '"/> </div><div class="sleek-offer"> <div class="sleek-title">' + pDet.title + '</div><div class="sleek-prices"> <span class="sleek-price money">' + Shopify.formatMoney((pDet.variants[0]['price'] * 100), Shopify.money_format) + '</span> <span class="sleek-compare-price money">' + Shopify.formatMoney((pDet.variants[0]['compare_at_price'] * 100), Shopify.money_format) + '</span> </div><div class="sleek-selectors"> <div class="offer_fields_holder o_h_' + pid + '"></div> <select name="id" class="v-select v-' + pid + '"></select> <div class="flex-select"> <select name="quantity" class="q-select q-' + pid + '"></select> <button class="sleek-atc" type="submit">' + atc + '</button> </div></div></div></div></form>'
+            }
+            if (lay == 'block') {
+                o_ui = '<form class="sleek-form" action="/cart/add" enctype="multipart/form-data" data-product-index="' + i + '" data-product-product_id="' + pid + '"> <div class="sleek-text">' + dtext + '</div><div class="sleek-block"> <div class="sleek-image"> <img src="' + pDet.image['src'] + '"/> </div><div class="sleek-offer"> <div class="sleek-title">' + pDet.title + '</div><div class="sleek-prices"> <span class="sleek-price money">' + Shopify.formatMoney((pDet.variants[0]['price'] * 100), Shopify.money_format) + '</span> <span class="sleek-compare-price money">' + Shopify.formatMoney((pDet.variants[0]['compare_at_price'] * 100), Shopify.money_format) + '</span> </div><div class="sleek-selectors"> <div class="offer_fields_holder o_h_' + pid + '"></div> <select name="id" class="v-select v-' + pid + '"></select> <select name="quantity" class="q-select q-' + pid + '"></select> </div></div></div><button class="sleek-atc" type="submit">' + atc + '</button> </form>';
+            }
+            if (lay == 'half-block') {
+                o_ui = '<form class="sleek-form" action="/cart/add" enctype="multipart/form-data" data-product-index="' + i + '" data-product-product_id="' + pid + '"> <div class="sleek-half-block"> <div class="sleek-image"> <img src="' + pDet.image['src'] + '"/> </div><div class="sleek-offer"> <div class="sleek-text">' + dtext + '</div><div class="sleek-title">' + pDet.title + '</div><div class="sleek-prices"> <span class="sleek-price money">' + Shopify.formatMoney((pDet.variants[0]['price'] * 100), Shopify.money_format) + '</span> <span class="sleek-compare-price money">' + Shopify.formatMoney((pDet.variants[0]['compare_at_price'] * 100), Shopify.money_format) + '</span> </div><div class="sleek-selectors"> <div class="offer_fields_holder o_h_' + pid + '"></div> <select name="id" class="v-select v-' + pid + '"></select> <select name="quantity" class="q-select q-' + pid + '"></select> </div></div></div><button class="sleek-atc" type="submit">' + atc + '</button> </form>';
+            }
+            if (lay == 'compact') {
+                o_ui = '<form class="sleek-form" action="/cart/add" enctype="multipart/form-data" data-product-index="' + i + '" data-product-product_id="' + pid + '"> <div class="sleek-compact"> <div class="sleek-image"> <img src="' + pDet.image['src'] + '"/> </div><div class="sleek-offer"> <div class="sleek-text">' + dtext + '</div><div class="sleek-title">' + pDet.title + '</div><div class="sleek-prices"> <span class="sleek-price money">' + Shopify.formatMoney((pDet.variants[0]['price'] * 100), Shopify.money_format) + '</span> <span class="sleek-compare-price money">' + Shopify.formatMoney((pDet.variants[0]['compare_at_price'] * 100), Shopify.money_format) + '</span> </div><div class="sleek-selectors"> <div class="offer_fields_holder o_h_' + pid + '"></div> <select name="id" class="v-select v-' + pid + '"></select> <select name="quantity" class="q-select q-' + pid + '"></select> </div><button class="sleek-atc" type="submit">' + atc + '</button> </div></div></form>'
+            }
+
+            $('.sleek-upsell').append(o_ui);
+
+            if (auto_collection['show_title'] == 'n') {
+                $('.sleek-title').remove()
+            }
+
+            if (auto_collection['show_price'] == 'n') {
+                $('.sleek-prices').remove()
+            }
+
+            if (auto_collection['show_image'] == 'n') {
+                $('.sleek-image').remove()
+            }
+
+            if (auto_collection['v_price'] == 'n') {
+                $('.sleek-compare-price').remove()
+            }
+
+            if (auto_collection['c_price'] == 'n') {
+                $('.sleek-compare-price').remove()
+            }
+
+            if (auto_collection['q_select'] == 'n') {
+                $('.q_select').style.display = 'none';
+            }
+
+            if (pDet.variants.find(e => e.inventory_quantity > 0)) {
+                for (let vi = 0; vi < pDet.variants.length; vi++) {
+                    if (pDet.variants[vi]['inventory_quantity'] > 0) {
+                        $('.v-' + pid).append('<option value="' + pDet.variants[vi]['id'] +
+                            '">' + pDet.variants[vi]['title'] + ' (' + Shopify.formatMoney((pDet.variants[vi]['price'] * 100), Shopify.money_format) + ')</option>');
+                    }
+                }
+            } else {
+                console.log('Product out of stock');
+                sessionStorage.setItem('sleek_shown_collection', 'y');
+                $('.sleek-upsell').remove();
+                collection_based();
+            }
+
+            if (pDet.variants.length < 2) {
+                $('.v-' + pid).attr('style', 'display:none');
+            }
+            for (q = 1; q <= 10; q++) {
+                $('.q-' + pid).append('<option value="' + q + '">' + q + '</option>')
+            }
+
+            brgxczvy('collection', pid, $('.v-' + pid).val(), $('.q-' + pid).val(), pDet.variants[0]['price'], 'show', 'show');
+
+            $('.v-' + pid).change(function () {
+                let imgPos = pDet.variants.findIndex(e => e.id == $(this).val());
+                $('form[data-product-product_id="' + pid + '"] img').attr('src', pDet.images['0'].src);
+                brgxczvy('collection', pid, $('.v-' + pid).val(), $('.q-' + pid).val(), pDet.variants[0]['price'], 'variant change', 'impression');
+            });
+            $('.q-' + pid).change(function () {
+                brgxczvy('collection', pid, $('.v-' + pid).val(), $('.q-' + pid).val(), pDet.variants[0]['price'], 'quantity change', 'impression');
+            });
+            $('form[data-product-product_id="' + pid + '"]').hover(function () {
+                brgxczvy('collection', pid, $('.v-' + pid).val(), $('.q-' + pid).val(), pDet.variants[0]['price'], 'hover', 'impression');
+            });
+
+            $('.sleek-form').submit(function (e) {
+                e.preventDefault();
+                $.ajax({
+                    type: 'POST',
+                    url: '/cart/add.js',
+                    dataType: 'json',
+                    data: $(this).serialize(),
+                    success: function (response) {
+                        sessionStorage.setItem('sleek_shown_collection', 'y');
+                        brgxczvy('collection', pid, $('.v-' + pid).val(), $('.q-' + pid).val(), pDet.variants[0]['price'], 'add to cart', 'purchase');
+                        $('.sleek-atc').innerHTML = '<img src="https://sleekupsell.com/assets/images/loader.gif" />';
+                        if (auto_collection['discount'] == 'y' && auto_collection['code'] != '') {
+                            g_s_s_w('https://' + Shopify.shop + '/discount/' + auto_collection['code']);
+                        }
+                        if (auto_collection['to_checkout'] == 'y') {
+                            window.location.href = "/checkout";
+                        } else {
+                            if (page.includes('/cart')) {
+                                // console.log(response);
+                                sessionStorage.setItem('sleek_shown_collection', 'y');
+                                $('.sleek-upsell').remove();
+                                window.location.reload(false);
+                            }
+                            else {
+                                $('.sleek-upsell').remove();
+                                // console.log(response);
+                                if (settings != null) {
+                                    if (settings['refresh_state'] == 'y') {
+                                        eval(settings['drawer_refresh']);
+                                    }
+                                }
+                                collection_based();
+                            }
+                        }
+                    },
+                    error: function (response) {
+                        // console.log(response);
+                        $(this).find('button').html('Could not add product');
+                        setTimeout(function () { $(this).remove() }, 1000);
+                    }
+                });
+            });
+
+            if ($('.reject_offer') != null) {
+                $('.reject_offer').click(function () {
+                    sessionStorage.setItem('sleek_shown_collection', 'y');
+                    brgxczvy('collection', '', '', '', '', 'reject', 'reject');
+                    $('.sleek-upsell').remove();
+                    setTimeout(function () { collection_based() }, 300);
+                });
+            }
+
+            setStyles();
+
+        } catch (error) {
+            // console.log(error);
+            collection_based();
+        }
+    }
+}
+
