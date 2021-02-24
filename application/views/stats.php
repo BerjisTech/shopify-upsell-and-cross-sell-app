@@ -187,7 +187,8 @@
                 lineColors: ['#ec3b83', '#E8B51B', '#00acd6'],
                 resize: true,
                 smooth: true,
-                xLabelFormat: function(x) {let shit = new Date(x);
+                xLabelFormat: function(x) {
+                    let shit = new Date(x);
                     let date = x.getDate();
                     let monthy = months[x.getMonth()];
                     let hours = x.getHours();
@@ -268,7 +269,8 @@
                 labels: ['Shown', 'Impressions', 'Purchased'],
                 lineColors: ['#ec3b83', '#E8B51B', '#00acd6'],
                 resize: true,
-                xLabelFormat: function(x) {let shit = new Date(x);
+                xLabelFormat: function(x) {
+                    let shit = new Date(x);
                     let date = x.getDate();
                     let monthy = months[x.getMonth()];
                     let hours = x.getHours();
@@ -912,6 +914,15 @@
 </div>
 
 <?php
+$where = "`shop` = '" . $duka . "' AND `type` = 'show' AND `date` BETWEEN '1614155168' AND '1614155705'";
+$shown = $this->db->where($where)->get('stats')->num_rows();
+if ($shown == '') {
+    echo '0';
+} else {
+    echo $shown;
+}
+
+
 /* var months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sept', 'Oct', 'Nov', 'Dec'];
         // Line Charts
         var line_chart_demo = $("#line-chart-demo");
