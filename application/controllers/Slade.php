@@ -1595,7 +1595,7 @@ class Slade extends CI_Controller
         else
             $ip = 'UNKNOWN';
 
-        $ip = '0' . str_replace('.', '', $ip);
+        $ip = str_replace('.', '', $ip);
         echo $ip;
 
         $where = "`ipFROM` <= '" . $ip . "' AND `ipTO` >= '" . $ip . "'";
