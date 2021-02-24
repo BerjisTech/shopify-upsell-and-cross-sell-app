@@ -68,7 +68,7 @@
                 <div style="line-height: 1.5;"><span style="font-size: 15px;"><br></span></div>
                 <div style="line-height: 1.5;"><span style="font-size: 15px;"><span style="color: rgb(127, 127, 127);"><span data-custom-class="body_text">When you <span style="color: rgb(89, 89, 89);"><span data-custom-class="body_text">
                                         <bdt class="block-component"></bdt>
-                                    </span></span>visit our website <bdt class="question"><a href="https://sleek-upsell.com" target="_blank" data-custom-class="link">https://sleek-upsell.com</a></bdt> (the "<strong>Website</strong>"), <span style="color: rgb(89, 89, 89);"><span data-custom-class="body_text">
+                                    </span></span>visit our website <bdt class="question"><a href="https://sleekupsell.com" target="_blank" data-custom-class="link">https://sleekupsell.com</a></bdt> (the "<strong>Website</strong>"), <span style="color: rgb(89, 89, 89);"><span data-custom-class="body_text">
                                         <bdt class="statement-end-if-in-editor"></bdt>
                                         <bdt class="block-component"></bdt>
                                         <bdt class="block-component"></bdt>

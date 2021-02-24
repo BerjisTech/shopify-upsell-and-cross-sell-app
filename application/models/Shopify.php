@@ -94,7 +94,7 @@ class Shopify extends CI_Model
         $this->email->to($to);
         $this->email->subject($sub);
 
-        $msg    =    $msg . "<br /><br /><br /><br /><br /><br /><br /><hr /><center><a href=\"https://sleek-upsell.com\">&copy; " . date('Y', time()) . " Sleek Upsell</a></center>";
+        $msg    =    $msg . "<br /><br /><br /><br /><br /><br /><br /><hr /><center><a href=\"https://sleekupsell.com\">&copy; " . date('Y', time()) . " Sleek Upsell</a></center>";
         $this->email->message($msg);
 
         $this->email->send();

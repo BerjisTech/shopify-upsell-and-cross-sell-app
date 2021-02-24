@@ -196,7 +196,7 @@ class Slade extends CI_Controller
             echo '<script>window.location.href = "' . base_url() . 'start?' . $_SERVER['QUERY_STRING'] . '";</script>';
         } else {
             // Someone is trying to be shady!
-            header("Location: https://sleek-upsell.com/");
+            header("Location: https://sleekupsell.com/");
             die('This request is NOT from Shopify!');
         }
     }
@@ -275,7 +275,7 @@ class Slade extends CI_Controller
             $w_array = array(
                 'webhook' => array(
                     'topic' => 'app/uninstalled',
-                    'address' => 'https://sleek-upsell.com/d?shop=' . $_GET['shop'],
+                    'address' => 'https://sleekupsell.com/d?shop=' . $_GET['shop'],
                     'format' => 'json'
                 )
             );

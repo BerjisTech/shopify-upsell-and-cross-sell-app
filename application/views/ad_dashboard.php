@@ -95,7 +95,7 @@ $duka = $shop . '.myshopify.com';
                     <div class="col-md-8">
                         <div class="tile-stats tile-white stat-tile" style="box-shadow: 0px 0px 5px rgba(2, 2, 2, 0.2); height: auto !important;">
                             <h1 style="width: 100%; text-align: center;">
-                                <img src="https://sleek-upsell.com/logo.png" style="width: 50px;">
+                                <img src="https://sleekupsell.com/logo.png" style="width: 50px;">
                                 Sleek Upsell
                             </h1>
                             <hr />
@@ -540,7 +540,7 @@ $duka = $shop . '.myshopify.com';
                             <span class="pull-left">
                                 Is the app loading slowly or slowing down your store? You can add our manual script tag to your theme.liquid file right before the
                                 <pre>&lt;/body&gt;</pre> tag then remove the automatic tag<br />
-                                <pre>&lt;script src="https://sleek-upsell.com/assets/js/shopify.js?shop=<?php echo $shop; ?>.myshopify.com"&gt;&lt;/script&gt;</pre>
+                                <pre>&lt;script src="https://sleekupsell.com/assets/js/shopify.js?shop=<?php echo $shop; ?>.myshopify.com"&gt;&lt;/script&gt;</pre>
                             </span>
                             <span onclick="$.ajax({url: '<?php echo base_url(); ?>remove_tag/<?php echo $shop . '/' . $token ?>', success: function(e){ alert(e); window.location.reload(false);}, error: function(){ Alert('There was an error removing the automatic script tag'); } })" class="pull-right btn btn-danger btn-icon icon-right">Remove Automatic Script Tag<em class="entypo-trash"></em></span>
                         <?php endif; ?>
