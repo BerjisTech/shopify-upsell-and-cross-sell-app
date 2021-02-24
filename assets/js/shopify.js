@@ -53,7 +53,7 @@ let burl = 'https://sleekupsell.com';
 let page_ss = window.location.href;
 let s_s_w = g_s_s_w('https://sleekupsell.com/s_s_w/' + Shopify.shop);
 
-let Shopify = Shopify || {};
+var Shopify = Shopify || {};
 // ---------------------------------------------------------------------------
 // Money format handler
 // ---------------------------------------------------------------------------
