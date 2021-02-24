@@ -146,7 +146,7 @@
                     <?php
                     for ($m = 48; $m > 23; $m--) {
                         $nowmonth = strtotime(date('Y-m-d H:m:s', strtotime('-' . $m . ' hours')));
-                        $lastmonth = strtotime(date('Y-m-d H:m:s', strtotime('-' . $m - 1 . ' hours'))); ?> {
+                        $lastmonth = strtotime(date('Y-m-d H:m:s', strtotime('-' . ($m - 1) . ' hours'))); ?> {
 
                             y: '<?php echo date('Y-m-d H:m:s', strtotime('-' . $m . ' hours')); ?>',
                             a: <?php
