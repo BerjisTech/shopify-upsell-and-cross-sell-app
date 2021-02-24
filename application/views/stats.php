@@ -229,7 +229,7 @@
                     <?php
                     for ($m = 24; $m > -1; $m--) {
                         $nowmonth = strtotime(date('Y-m-d H:m:s', strtotime('-' . $m . ' hours')));
-                        $lastmonth = strtotime(date('Y-m-d H:m:s', strtotime('-' . $m - 1 . ' hours'))); ?> {
+                        $lastmonth = strtotime(date('Y-m-d H:m:s', strtotime('-' . ($m - 1) . ' hours'))); ?> {
 
                             y: '<?php echo date('Y-m-d H:m:s', strtotime('-' . $m . ' hours')); ?>',
                             a: <?php
@@ -312,7 +312,7 @@
                     <?php
                     for ($m = 30; $m > -1; $m--) {
                         $nowmonth = strtotime(date('d-M-Y', strtotime('-' . $m . ' days')));
-                        $lastmonth = strtotime(date('d-M-Y', strtotime('-' . $m - 1 . ' days'))); ?> {
+                        $lastmonth = strtotime(date('d-M-Y', strtotime('-' . ($m - 1) . ' days'))); ?> {
 
                             y: '<?php echo date('Y-m-d', strtotime('-' . $m . ' days')); ?>',
                             a: <?php
@@ -376,7 +376,7 @@
                     <?php
                     for ($m = 7; $m > -1; $m--) {
                         $nowmonth = strtotime(date('d-M-Y', strtotime('-' . $m . ' days')));
-                        $lastmonth = strtotime(date('d-M-Y', strtotime('-' . $m - 1 . ' days'))); ?> {
+                        $lastmonth = strtotime(date('d-M-Y', strtotime('-' . ($m - 1) . ' days'))); ?> {
 
                             y: '<?php echo date('Y-m-d', strtotime('-' . $m . ' days')); ?>',
                             a: <?php
@@ -439,7 +439,7 @@
                     <?php
                     for ($m = 90; $m > -1; $m--) {
                         $nowmonth = strtotime(date('d-M-Y', strtotime('-' . $m . ' days')));
-                        $lastmonth = strtotime(date('d-M-Y', strtotime('-' . $m - 1 . ' days'))); ?> {
+                        $lastmonth = strtotime(date('d-M-Y', strtotime('-' . ($m - 1) . ' days'))); ?> {
 
                             y: '<?php echo date('Y-m-d', strtotime('-' . $m . ' days')); ?>',
                             a: <?php
@@ -503,7 +503,7 @@
                     <?php
                     for ($m = 12; $m > -1; $m--) {
                         $nowmonth = strtotime(date('d-M-Y', strtotime('-' . $m . ' months')));
-                        $lastmonth = strtotime(date('d-M-Y', strtotime('-' . $m - 1 . ' months'))); ?> {
+                        $lastmonth = strtotime(date('d-M-Y', strtotime('-' . ($m - 1) . ' months'))); ?> {
 
                             y: '<?php echo date('Y-m', $nowmonth); ?>',
                             a: <?php
@@ -567,7 +567,7 @@
                     <?php
                     for ($m = 60; $m > 29; $m--) {
                         $nowmonth = strtotime(date('d-M-Y', strtotime('-' . $m . ' days')));
-                        $lastmonth = strtotime(date('d-M-Y', strtotime('-' . $m - 1 . ' days'))); ?> {
+                        $lastmonth = strtotime(date('d-M-Y', strtotime('-' . ($m - 1) . ' days'))); ?> {
 
                             y: '<?php echo date('Y-m-d', strtotime('-' . $m . ' days')); ?>',
                             a: <?php
@@ -631,7 +631,7 @@
                     <?php
                     for ($m = 24; $m > 11; $m--) {
                         $nowmonth = strtotime(date('d-M-Y', strtotime('-' . $m . ' months')));
-                        $lastmonth = strtotime(date('d-M-Y', strtotime('-' . $m - 1 . ' months'))); ?> {
+                        $lastmonth = strtotime(date('d-M-Y', strtotime('-' . ($m - 1) . ' months'))); ?> {
 
                             y: '<?php echo date('Y-m', $nowmonth); ?>',
                             a: <?php
@@ -706,7 +706,7 @@
                     <?php
                     for ($m = $diff; $m > -1; $m--) {
                         $nowmonth = strtotime(date('d-M-Y', strtotime('-' . $m . ' months')));
-                        $lastmonth = strtotime(date('d-M-Y', strtotime('-' . $m - 1 . ' months'))); ?> {
+                        $lastmonth = strtotime(date('d-M-Y', strtotime('-' . ($m - 1) . ' months'))); ?> {
 
                             y: '<?php echo date('Y-m', $nowmonth); ?>',
                             a: <?php
@@ -914,9 +914,6 @@
 </div>
 
 <?php
-
-echo strtotime(date('Y-m-d H:m:s', strtotime('-' . $m . ' hours')));
-echo '<br />' . strtotime(date('Y-m-d H:m:s', strtotime('-' . $m - 1 . ' hours')));
 
 // $where = "`shop` = '" . $duka . "' AND `type` = 'show' AND `date` BETWEEN '1614155168' AND '1614155705'";
 // $shown = $this->db->where($where)->get('stats')->num_rows();
