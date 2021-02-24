@@ -1617,9 +1617,9 @@ class Slade extends CI_Controller
             echo '<br /><br /><hr />' . $fetch['ipFROM'] . ' - ' . $fetch['ipTO'] . '<br />' . $fetch['countrySHORT'] . '<br /> ' . $fetch['countryLONG'] . '<br /><hr />';
         }
 
-        echo '<table>';
+        echo '<table style="width: 100%;">';
         foreach ($my_country as $take) {
-            echo '<tr border="1px"> <td>' . $take['ipFROM'] . '</td><td>' . $take['ipTO'] . '</td><td>' . $take['countrySHORT'] . '</td><td>' . $take['countryLONG'] . '</td></tr>';
+            echo '<tr> <td>' . $take['ipFROM'] . '</td><td>' . $take['ipTO'] . '</td><td>' . $take['countrySHORT'] . '</td><td>' . $take['countryLONG'] . '</td></tr>';
         }
         echo '</table>';
     }
