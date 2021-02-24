@@ -916,12 +916,8 @@
 <?php
 $where = "`shop` = '" . $duka . "' AND `type` = 'show' AND `date` BETWEEN '1614155168' AND '1614155705'";
 $shown = $this->db->where($where)->get('stats')->num_rows();
-if ($shown == '') {
-    echo '0';
-} else {
-    echo $shown;
-}
-
+echo $shown;
+echo '<br />'.$this->db->last_query();
 
 /* var months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sept', 'Oct', 'Nov', 'Dec'];
         // Line Charts
