@@ -1619,7 +1619,7 @@ class Slade extends CI_Controller
 
         echo '<table>';
         foreach ($my_country as $take) {
-            echo '<tr> <td border="1">' . $take['ipFROM'] . '</td><td border="1">' . $take['ipTO'] . '</td><td border="1">' . $take['countrySHORT'] . '</td><td border="1">' . $take['countryLONG'] . '</td></tr>';
+            echo '<tr border="1px"> <td>' . $take['ipFROM'] . '</td><td>' . $take['ipTO'] . '</td><td>' . $take['countrySHORT'] . '</td><td>' . $take['countryLONG'] . '</td></tr>';
         }
         echo '</table>';
     }
