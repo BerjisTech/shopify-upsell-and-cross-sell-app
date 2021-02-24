@@ -1600,4 +1600,14 @@ class Slade extends CI_Controller
             echo '<br /><br /><hr />' . $fetch['ipFROM'] . ' - ' . $fetch['ipTO'] . '<br />' . $fetch['countrySHORT'] . '<br /> ' . $fetch['countryLONG'] . '<br /><hr />';
         }
     }
+
+    public function myLocation(){
+        $country = $this->db->where('countrySHORT', 'KE')->get('ipcountry')->result_array();
+
+        echo $this->db->last_query();
+
+        foreach ($country as $fetch) {
+            echo '<br /><br /><hr />' . $fetch['ipFROM'] . ' - ' . $fetch['ipTO'] . '<br />' . $fetch['countrySHORT'] . '<br /> ' . $fetch['countryLONG'] . '<br /><hr />';
+        }
+    }
 }
