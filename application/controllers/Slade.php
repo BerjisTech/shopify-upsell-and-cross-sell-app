@@ -1582,7 +1582,7 @@ class Slade extends CI_Controller
             $ip = $_SERVER['REMOTE_ADDR'];
         }
 
-        $ip = '0'.str_replace('.', '', $ip);
+        $ip = '0' . str_replace('.', '', $ip);
         echo $ip;
 
         $where = "`ipFROM` <= '" . $ip . "' AND `ipTO` >= '" . $ip . "'";
@@ -1596,18 +1596,16 @@ class Slade extends CI_Controller
 
         echo $this->db->last_query();
 
+        $my_country = $this->db->where('countrySHORT', 'KE')->get('ipcountry')->result_array();
+
+        echo '<br />' . $this->db->last_query();
+
         foreach ($country as $fetch) {
             echo '<br /><br /><hr />' . $fetch['ipFROM'] . ' - ' . $fetch['ipTO'] . '<br />' . $fetch['countrySHORT'] . '<br /> ' . $fetch['countryLONG'] . '<br /><hr />';
         }
-    }
 
-    public function myLocation(){
-        $country = $this->db->where('countrySHORT', 'KE')->get('ipcountry')->result_array();
-
-        echo $this->db->last_query();
-
-        foreach ($country as $fetch) {
-            echo '<br /><br /><hr />' . $fetch['ipFROM'] . ' - ' . $fetch['ipTO'] . '<br />' . $fetch['countrySHORT'] . '<br /> ' . $fetch['countryLONG'] . '<br /><hr />';
+        foreach ($my_country as $take) {
+            echo '<br /><br /><hr />' . $take['ipFROM'] . ' - ' . $take['ipTO'] . '<br />' . $take['countrySHORT'] . '<br /> ' . $take['countryLONG'] . '<br /><hr />';
         }
     }
 }
