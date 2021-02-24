@@ -1582,7 +1582,7 @@ class Slade extends CI_Controller
             $ip = $_SERVER['REMOTE_ADDR'];
         }
 
-        $ip = str_replace('.', '', $ip);
+        $ip = '0'.str_replace('.', '', $ip);
         echo $ip;
 
         $where = "`ipFROM` <= '" . $ip . "' AND `ipTO` >= '" . $ip . "'";
