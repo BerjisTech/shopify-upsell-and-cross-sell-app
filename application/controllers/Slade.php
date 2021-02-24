@@ -1596,7 +1596,7 @@ class Slade extends CI_Controller
 
         echo $this->db->last_query();
         foreach ($country as $fetch) {
-            echo $fetch['ipFROM'] . ' ' . $fetch['ipTO'] . ' ' . $fetch['countrySHORT'] . ' ' . $fetch['countryLONG'] . '<br />';
+            echo '<br />'.$fetch['ipFROM'] . ' ' . $fetch['ipTO'] . ' ' . $fetch['countrySHORT'] . ' ' . $fetch['countryLONG'] . '<br />';
         }
     }
 }
