@@ -751,7 +751,7 @@
                 },
                 dateFormat: function(x) {
                     let d = new Date(x)
-                    var month = months[d.getMonth()] + ' ' + d.getFullYear();;
+                    var month = d.getDate() + ' ' + months[d.getMonth()] + ' ' + d.getFullYear();;
                     return month;
                 },
                 resize: true,
