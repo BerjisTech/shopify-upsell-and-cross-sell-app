@@ -3,7 +3,7 @@ foreach ($tables as $t_key => $table) :
     // echo '<h3>'.$table . '</h3><br />';
     // print_r($this->db->get($table)->result_array());
     // echo '<br /><br /><hr />';
-    if($data[$table] != 'ipcountry'): 
+    if($data[$table] == 'stats'): 
         $data[$table] = $this->db->get($table)->result_array();
 ?>
     <br />
