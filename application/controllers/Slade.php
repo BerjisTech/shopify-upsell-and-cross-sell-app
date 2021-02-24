@@ -141,7 +141,7 @@ class Slade extends CI_Controller
             if ($this->db->table_exists('shops')) {
                 if ($this->db->where('shop', $shop)->get('shops')->num_rows() == 0) {
                     $shop_data = array(
-                        'shop_id' => $this->db->order_by('shop_id', 'DESC')->limit('1')->get('shops')->row()->shop_id + 1,
+                        'shop_id' => ($this->db->order_by('shop_id', 'DESC')->limit('1')->get('shops')->row()->shop_id + 1),
                         'shop' => $shop,
                         'token' => $access_token,
                         'date' => time(),
@@ -158,7 +158,7 @@ class Slade extends CI_Controller
                 }
             } else {
                 $shop_data = array(
-                    'shop_id' => $this->db->order_by('shop_id', 'DESC')->limit('1')->get('shops')->row()->shop_id + 1,
+                    'shop_id' => ($this->db->order_by('shop_id', 'DESC')->limit('1')->get('shops')->row()->shop_id + 1),
                     'shop' => $shop,
                     'token' => $access_token,
                     'date' => time(),
@@ -920,7 +920,7 @@ class Slade extends CI_Controller
         $offer_data = $_POST;
 
         foreach ($offer_data['offer'] as $o) {
-            $o['offer_id'] = $this->db->limit('1')->order_by('offer_id', 'DESC')->get('offers')->row()->offer_id + 1;
+            $o['offer_id'] = ($this->db->limit('1')->order_by('offer_id', 'DESC')->get('offers')->row()->offer_id + 1);
             $this->db->insert('offers', $o);
         }
 
@@ -929,14 +929,14 @@ class Slade extends CI_Controller
         if (array_key_exists('products', $offer_data)) {
             foreach ($offer_data['products'] as $p) {
                 $p['offer'] = $oid;
-                $p['product_id'] = $this->db->order_by('product_id', 'DESC')->limit('1')->get('products')->row()->product_id + 1;
+                $p['product_id'] = ($this->db->order_by('product_id', 'DESC')->limit('1')->get('products')->row()->product_id + 1);
                 $this->db->insert('products', $p);
             }
         }
         if (array_key_exists('variants', $offer_data)) {
             foreach ($offer_data['variants'] as $v) {
                 $v['oid'] = $oid;
-                $v['id'] = $this->db->order_by('id', 'DESC')->limit('1')->get('variants')->row()->id + 1;
+                $v['id'] = ($this->db->order_by('id', 'DESC')->limit('1')->get('variants')->row()->id + 1);
                 $this->db->insert('variants', $v);
             }
         }
@@ -989,24 +989,24 @@ class Slade extends CI_Controller
                 $this->db->where('oid', $oid)->delete('choices');
 
                 foreach ($this->db->get('products')->result_array() as $key => $fetch) {
-                    $this->db->where('product_id', $fetch['product_id'])->set('product_id', $key + 1)->update('products');
+                    $this->db->where('product_id', $fetch['product_id'])->set('product_id', ($key + 1))->update('products');
                 }
 
                 foreach ($this->db->get('variants')->result_array() as $key => $fetch) {
-                    $this->db->where('id', $fetch['id'])->set('id', $key + 1)->update('variants');
+                    $this->db->where('id', $fetch['id'])->set('id', ($key + 1))->update('variants');
                 }
 
                 if (array_key_exists('products', $offer_data)) {
                     foreach ($offer_data['products'] as $p) {
                         $p['offer'] = $oid;
-                        $p['product_id'] = $this->db->order_by('product_id', 'DESC')->limit('1')->get('products')->row()->product_id + 1;
+                        $p['product_id'] = ($this->db->order_by('product_id', 'DESC')->limit('1')->get('products')->row()->product_id + 1);
                         $this->db->insert('products', $p);
                     }
                 }
                 if (array_key_exists('variants', $offer_data)) {
                     foreach ($offer_data['variants'] as $v) {
                         $v['oid'] = $oid;
-                        $v['id'] = $this->db->order_by('id', 'DESC')->limit('1')->get('variants')->row()->id + 1;
+                        $v['id'] = ($this->db->order_by('id', 'DESC')->limit('1')->get('variants')->row()->id + 1);
                         $this->db->insert('variants', $v);
                     }
                 }
@@ -1090,7 +1090,7 @@ class Slade extends CI_Controller
 
     public function brgxczvy()
     {
-        $_POST['stat_id'] = $this->db->order_by('stat_id', 'DESC')->limit('1')->get('stats')->row()->stat_id + 1;
+        $_POST['stat_id'] = ($this->db->order_by('stat_id', 'DESC')->limit('1')->get('stats')->row()->stat_id + 1);
 
         if ($this->db->insert('stats', $_POST)) {
             print_r("post \n");
@@ -1342,7 +1342,7 @@ class Slade extends CI_Controller
     {
         print_r($_POST);
         if ($this->db->where('shop', $shop)->get('auto_collection')->num_rows() == 0) {
-            $_POST['auto_collection']['id'] = $this->db->order_by('id', 'DESC')->limit('1')->get('auto_collection')->row()->id + 1;
+            $_POST['auto_collection']['id'] = ($this->db->order_by('id', 'DESC')->limit('1')->get('auto_collection')->row()->id + 1);
             $this->db->insert('auto_collection', $_POST['auto_collection']);
         } else {
             $this->db->where('shop', $shop)->update('auto_collection', $_POST['auto_collection']);
@@ -1505,7 +1505,7 @@ class Slade extends CI_Controller
             'variant' => "37882965164227"
         );
 
-        $d['stat_id'] = $this->db->order_by('stat_id', 'DESC')->limit('1')->get('stats')->row()->stat_id + 1;
+        $d['stat_id'] = ($this->db->order_by('stat_id', 'DESC')->limit('1')->get('stats')->row()->stat_id + 1);
 
         if ($this->db->insert('stats', $d)) {
             print_r("post <br />");
@@ -1540,7 +1540,7 @@ class Slade extends CI_Controller
         );
 
         if ($this->db->where('shop', 'sleek-upsell-demo')->get('auto_collection')->num_rows() == 0) {
-            $d['id'] = $this->db->order_by('id', 'DESC')->limit('1')->get('auto_collection')->row()->id + 1;
+            $d['id'] = ($this->db->order_by('id', 'DESC')->limit('1')->get('auto_collection')->row()->id + 1);
             $this->db->insert('auto_collection', $d);
         } else {
             $this->db->where('shop', 'sleek-upsell-demo')->update('auto_collection', $d);

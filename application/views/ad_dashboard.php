@@ -317,7 +317,7 @@ $duka = $shop . '.myshopify.com';
                                                     $product_name = json_decode($product_name['response'], true);
                                                     if ($key == '0') {
                                                         echo $product_name['product']['title'];
-                                                    } else if ($key == count($products) - 1) {
+                                                    } else if ($key == (count($products) - 1)) {
                                                         echo ' and ' . $product_name['product']['title'];
                                                     } else {
                                                         echo ', ' . $product_name['product']['title'];
@@ -359,7 +359,7 @@ $duka = $shop . '.myshopify.com';
 
                                                             if ($ck == '0') {
                                                                 $prepend = 'When ';
-                                                            } else if ($ck == count($conditions) - 1) {
+                                                            } else if ($ck == (count($conditions) - 1)) {
                                                                 $prepend = '<strong>' . $connector . '</strong> ';
                                                             } else {
                                                                 $prepend = '<strong>' . $connector . '</strong> ';
