@@ -746,7 +746,7 @@
                 labels: ['Shown', 'Impressions', 'Purchased'],
                 lineColors: ['#ec3b83', '#E8B51B', '#00acd6'],
                 xLabelFormat: function(x) {
-                    var month = months[x.getMonth()] + ' ' + x.getFullYear();
+                    var month = x.getDate() + ' ' + months[x.getMonth()] + ' ' + x.getFullYear();
                     return month;
                 },
                 dateFormat: function(x) {
