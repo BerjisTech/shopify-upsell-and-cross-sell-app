@@ -1569,13 +1569,13 @@ class Slade extends CI_Controller
 
     public function cc()
     {
-        echo 'HTTP_CLIENT_IP' . $_SERVER['HTTP_CLIENT_IP'] . '<br />';
-        echo 'HTTP_X_FORWARDED_FOR' . $_SERVER['HTTP_X_FORWARDED_FOR'] . '<br />';
-        echo 'HTTP_X_FORWARDED' . $_SERVER['HTTP_X_FORWARDED'] . '<br />';
-        echo 'HTTP_X_CLUSTER_CLIENT_IP' . $_SERVER['HTTP_X_CLUSTER_CLIENT_IP'] . '<br />';
-        echo 'HTTP_FORWARDED_FOR' . $_SERVER['HTTP_FORWARDED_FOR'] . '<br />';
-        echo 'HTTP_FORWARDED' . $_SERVER['HTTP_FORWARDED'] . '<br />';
-        echo 'REMOTE_ADDR' . $_SERVER['REMOTE_ADDR'] . '<br />';
+        echo 'HTTP_CLIENT_IP ' . $_SERVER['HTTP_CLIENT_IP'] . '<br />';
+        echo 'HTTP_X_FORWARDED_FOR ' . $_SERVER['HTTP_X_FORWARDED_FOR'] . '<br />';
+        echo 'HTTP_X_FORWARDED ' . $_SERVER['HTTP_X_FORWARDED'] . '<br />';
+        echo 'HTTP_X_CLUSTER_CLIENT_IP ' . $_SERVER['HTTP_X_CLUSTER_CLIENT_IP'] . '<br />';
+        echo 'HTTP_FORWARDED_FOR ' . $_SERVER['HTTP_FORWARDED_FOR'] . '<br />';
+        echo 'HTTP_FORWARDED ' . $_SERVER['HTTP_FORWARDED'] . '<br />';
+        echo 'REMOTE_ADDR ' . $_SERVER['REMOTE_ADDR'] . '<br />';
 
         $ip = $_SERVER['REMOTE_ADDR'];
         if (isset($_SERVER['HTTP_CLIENT_IP']))
