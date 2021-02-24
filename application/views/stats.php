@@ -914,10 +914,14 @@
 </div>
 
 <?php
-$where = "`shop` = '" . $duka . "' AND `type` = 'show' AND `date` BETWEEN '1614155168' AND '1614155705'";
-$shown = $this->db->where($where)->get('stats')->num_rows();
-echo $shown;
-echo '<br />'.$this->db->last_query();
+
+echo strtotime(date('Y-m-d H:m:s', strtotime('-' . $m . ' hours')));
+echo '<br />' . strtotime(date('Y-m-d H:m:s', strtotime('-' . $m - 1 . ' hours')));
+
+// $where = "`shop` = '" . $duka . "' AND `type` = 'show' AND `date` BETWEEN '1614155168' AND '1614155705'";
+// $shown = $this->db->where($where)->get('stats')->num_rows();
+// echo $shown;
+// echo '<br />'.$this->db->last_query();
 
 /* var months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sept', 'Oct', 'Nov', 'Dec'];
         // Line Charts
