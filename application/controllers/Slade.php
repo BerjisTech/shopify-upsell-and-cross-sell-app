@@ -416,7 +416,18 @@ class Slade extends CI_Controller
                     ),
                 );
             }
-            if ($plan == 'Premium') {
+            if ($plan == 'Premium' && $shop == 'sleek-upsell-live') {
+                $array = array(
+                    'recurring_application_charge' => array(
+                        'name' => 'Premium',
+                        'test' => true,
+                        'price' => 59.99,
+                        'trial_days' => 7,
+                        'return_url' => 'https://' . $_GET['shop'] . '/admin/apps/sleek-upsell/activate/Premium?t=false&hmac=' . $_GET['hmac'] . '&shop=' . $_GET['shop'],
+                    ),
+                );
+            }
+            if ($plan == 'Premium' && $shop != 'sleek-upsell-live') {
                 $array = array(
                     'recurring_application_charge' => array(
                         'name' => 'Premium',
