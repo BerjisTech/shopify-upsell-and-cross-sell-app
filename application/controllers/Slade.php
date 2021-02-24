@@ -1261,6 +1261,18 @@ class Slade extends CI_Controller
             }
         }
 
+        $this_script = '/admin/api/2020-10/script_tags.json';
+        $script_tags_url = "/admin/api/2020-10/script_tags.json";
+
+        $script_exists = $this->Shopify->shopify_call($token, $shop, $this_script, array('fields' => 'id,src,event,created_at,updated_at,'), 'GET');
+        $script_exists = json_decode($script_exists['response'], true);
+
+        if (count($script_exists['script_tags']) == 0) {
+            $data['do_script'] = "add";
+        } else {
+            $data['do_script'] = "remove";
+        }
+
         $data['api_key'] = $this->config->item('shopify_api_key');
         $data['shop'] = $shop;
         $data['token'] = $token;
