@@ -708,7 +708,7 @@
                         $nowmonth = strtotime(date('d-M-Y', strtotime('-' . $m . ' months')));
                         $lastmonth = strtotime(date('d-M-Y', strtotime('-' . ($m - 1) . ' months'))); ?> {
 
-                            y: '<?php echo date('Y-m', $nowmonth); ?>',
+                            y: '<?php echo date('Y-m-d', $nowmonth); ?>',
                             a: <?php
                                 $where = "`shop` = '" . $duka . "' AND `type` = 'show' AND `date` BETWEEN '" . $nowmonth . "' AND '" . $lastmonth . "'";
                                 $shown = $this->db->where($where)->get('stats')->num_rows();
