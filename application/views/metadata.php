@@ -3,7 +3,8 @@ foreach ($tables as $t_key => $table) :
     // echo '<h3>'.$table . '</h3><br />';
     // print_r($this->db->get($table)->result_array());
     // echo '<br /><br /><hr />';
-    $data[$table] = $this->db->get($table)->result_array();
+    if($data[$table] != 'ipcountry'): 
+        $data[$table] = $this->db->get($table)->result_array();
 ?>
     <br />
     <hr />
@@ -61,7 +62,7 @@ foreach ($tables as $t_key => $table) :
         </tbody>
 
     </table>
-<?php endforeach; ?>
+<?php endif; endforeach; ?>
 <link rel="stylesheet" href="<?php echo base_url(); ?>assets/js/datatables/datatables.css" id="style-resource-1">
 <link rel="stylesheet" href="<?php echo base_url(); ?>assets/js/select2/select2-bootstrap.css" id="style-resource-2">
 <link rel="stylesheet" href="<?php echo base_url(); ?>assets/js/select2/select2.css" id="style-resource-3">
