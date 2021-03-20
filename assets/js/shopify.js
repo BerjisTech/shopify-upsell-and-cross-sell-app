@@ -1,5 +1,3 @@
-// //@ts-check
-
 let sleek_url = 'https://sleekupsell.com';
 let current_page = window.location.href;
 
