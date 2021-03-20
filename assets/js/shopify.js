@@ -3,7 +3,7 @@ let current_page = window.location.href;
 
 var Shopify = Shopify || {};
 
-const ex_requests = (g_url, which) => {
+let ex_requests = (g_url, which) => {
     let xmlHttp = new XMLHttpRequest();
     xmlHttp.open("GET", g_url, false);
     xmlHttp.send(null);
@@ -165,7 +165,7 @@ choose_offer();
 
 
 
-const stats_events = (oid, pid, pDet) => {
+let stats_events = (oid, pid, pDet) => {
     brgxczvy(oid, pid, document.querySelector('.v-' + pid).value, document.querySelector('.q-' + pid).value, pDet.variants[0]['price'], 'show', 'show');
 
     document.querySelector('.v-' + pid).onchange = () => {
@@ -180,7 +180,7 @@ const stats_events = (oid, pid, pDet) => {
     }
 }
 
-const layout_designs = (lay, o_ui, i, pid, dtext, pDet, atc) => {
+let layout_designs = (lay, o_ui, i, pid, dtext, pDet, atc) => {
     if (lay == 'card') {
         o_ui = '<form class="sleek-form" action="/cart/add" enctype="multipart/form-data" data-product-index="' + i + '" data-product-product_id="' + pid + '"> <div class="sleek-image"> <img src="' + pDet.image['src'] + '"/> </div><div class="sleek-offer"> <div class="sleek-text">' + dtext + '</div><div class="sleek-title">' + pDet.title + '</div><div class="sleek-selectors"> <div class="offer_fields_holder o_h_' + pid + '"></div> <select name="id" class="v-select v-' + pid + '"></select> <select name="quantity" class="q-select q-' + pid + '"></select> </div></div><div class="sleek-card-atc"> <div class="sleek-prices"> <span class="sleek-price money">' + Shopify.formatMoney((pDet.variants[0]['price'] * 100), Shopify.money_format) + '</span> <span class="sleek-compare-price money">' + Shopify.formatMoney((pDet.variants[0]['compare_at_price'] * 100), Shopify.money_format) + '</span> </div><button class="sleek-atc" type="submit">' + atc + '</button> </div></form>';
     } else if (lay == 'flat') {
@@ -194,7 +194,7 @@ const layout_designs = (lay, o_ui, i, pid, dtext, pDet, atc) => {
     }
 }
 
-const some_removals = (v) => {
+let some_removals = (v) => {
     if (v['show_title'] == 'n') {
         $('.sleek-title').remove()
     }
@@ -220,7 +220,7 @@ const some_removals = (v) => {
     }
 }
 
-const accept_offer = (oid, pid, v, pDet, i) => {
+let accept_offer = (oid, pid, v, pDet, i) => {
     document.querySelector('.sleek-form[data-product-index="' + i + '"]').onsubmit = (e) => {
         e.preventDefault();
         if (v['rv'] != '') {
@@ -281,7 +281,7 @@ const accept_offer = (oid, pid, v, pDet, i) => {
     }
 }
 
-const correct_layout = (lay, lay_el) => {
+let correct_layout = (lay, lay_el) => {
     switch (lay) {
         case 'card':
         case 'flat':
@@ -295,7 +295,7 @@ const correct_layout = (lay, lay_el) => {
     }
 }
 
-const correct_nudge = (nudge, element, lay_el) => {
+let correct_nudge = (nudge, element, lay_el) => {
     switch (nudge) {
         case 'prepend':
             document.querySelector(element).insertAdjacentHTML('afterbegin', lay_el);
@@ -312,7 +312,7 @@ const correct_nudge = (nudge, element, lay_el) => {
     }
 }
 
-const iterate_offer_options = (products, sleek_url, oid, lay) => {
+let iterate_offer_options = (products, sleek_url, oid, lay) => {
     for (let i = 0; i < products.length; i++) {
         let v = products[i];
         let pid = v['product'];
@@ -387,7 +387,7 @@ const iterate_offer_options = (products, sleek_url, oid, lay) => {
     }
 }
 
-const proceed_collection = (pid, lay, i, auto_collection, otype) => {
+let proceed_collection = (pid, lay, i, auto_collection, otype) => {
     let Pgv = ex_requests(sleek_url + '/gv/' + Shopify.shop + '/' + pid, 'json');
     let pDet = Pgv.product;
 
@@ -452,7 +452,7 @@ const proceed_collection = (pid, lay, i, auto_collection, otype) => {
 
 }
 
-const check_offer = (index, offer) => {
+let check_offer = (index, offer) => {
     let status = offer['offer'][0]['status']
     if (status != 1 || sessionStorage.getItem('sleek_shown_' + index) == 'y')
         return false
@@ -466,7 +466,7 @@ const check_offer = (index, offer) => {
     }
 }
 
-const check_block = (block) => {
+let check_block = (block) => {
     let oid = block['oid']
     let bid = block['bid']
     let b_rule = block['rule']
@@ -481,7 +481,7 @@ const check_block = (block) => {
     }
 }
 
-const check_condition = (condition) => {
+let check_condition = (condition) => {
     let type = condition["type"]
     let quantity = condition["quantity"]
     let level = condition["level"]
@@ -532,7 +532,7 @@ const check_condition = (condition) => {
 }
 
 
-const populateFields = (oid, pid) => {
+let populateFields = (oid, pid) => {
     let fields = offers['offer'][oid].fields
     let choices = offers['offer'][oid].choices
 
@@ -542,7 +542,7 @@ const populateFields = (oid, pid) => {
         );
 }
 
-const create_field = (pid, field, choices) => {
+let create_field = (pid, field, choices) => {
     let type = field.type
     let label = field.placeholder
     let name = field.name
@@ -573,19 +573,19 @@ const create_field = (pid, field, choices) => {
     }
 }
 
-const ins_field = (f_html, pid) => {
+let ins_field = (f_html, pid) => {
     document.querySelector(`.o_h_${pid}`).insertAdjacentHTML('beforeend', f_html)
 }
 
-const ins_opt_placeholder = (name, label) => {
+let ins_opt_placeholder = (name, label) => {
     document.querySelector(`.sleek_fields_${name}`).insertAdjacentHTML('beforeend', `<option value="">${label}</option>`)
 }
 
-const ins_opt = (fid, val, price) => {
+let ins_opt = (fid, val, price) => {
     document.querySelector(`.sleek_fields_${fid}`).insertAdjacentHTML('beforeend', `<option value="${val}">${val} (${price})</option>`)
 }
 
-const label_field = (o_tag, c_tag, label, name) => {
+let label_field = (o_tag, c_tag, label, name) => {
     return `
         <div>
             <label>${label}</label>
@@ -593,7 +593,7 @@ const label_field = (o_tag, c_tag, label, name) => {
         </div>`;
 }
 
-const user_browser = () => {
+let user_browser = () => {
     if ((navigator.userAgent.indexOf("Opera") || navigator.userAgent.indexOf('OPR')) != -1) {
         return 'Opera'
     }
@@ -614,7 +614,7 @@ const user_browser = () => {
     }
 }
 
-const brgxczvy = (oid, pid, vid, quantity, price, action, type) => {
+let brgxczvy = (oid, pid, vid, quantity, price, action, type) => {
     let citems = cart['items'].map(it => it.product_id)
 
     let http = new XMLHttpRequest()
@@ -635,7 +635,7 @@ const brgxczvy = (oid, pid, vid, quantity, price, action, type) => {
     http.send(params);
 }
 
-const setStyles = () => {
+let setStyles = () => {
     document.querySelectorAll('.sleek-upsell').forEach(el => el.style.cssText = 'opacity:1; transform:none;')
     document.querySelectorAll('.sleek-upsell form').forEach(el => el.style.cssText = 'margin-bottom: 0px;')
     if (settings != null) {
@@ -650,7 +650,7 @@ const setStyles = () => {
     }
 }
 
-const generate_offer = (oid, otype) => {
+let generate_offer = (oid, otype) => {
     let element = '';
     let auto_collection = offers['auto_collection'];
     let lay = offers['offer'][oid]['offer'][0]['layout']
@@ -678,7 +678,7 @@ const generate_offer = (oid, otype) => {
         proceed_collection(oid, lay, 0, auto_collection, otype)
 }
 
-const next_offer = () => {
+let next_offer = () => {
     try {
         document.querySelector('.sleek-upsell').remove()
     } catch (error) { }
@@ -696,7 +696,7 @@ const next_offer = () => {
 
 }
 
-const collection_based = () => {
+let collection_based = () => {
     if (cart['item_count'] > 0 && Object.keys(auto_collection) != 'undefined' && Object.keys(auto_collection).length > 0 && auto_collection.status === '1') {
         let collects = offers['collects']
         let items = cart['items']
