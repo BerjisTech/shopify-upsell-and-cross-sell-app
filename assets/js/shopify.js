@@ -1,7 +1,7 @@
 let sleek_url = 'https://sleekupsell.com';
 let current_page = window.location.href;
 
-let Shopify = Shopify || {};
+var Shopify = Shopify || {};
 
 const ex_requests = (g_url, which) => {
     let xmlHttp = new XMLHttpRequest();
