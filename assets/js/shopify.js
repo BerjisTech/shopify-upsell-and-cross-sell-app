@@ -463,8 +463,13 @@ function generate_offer(oid, otype) {
     correct_layout(lay, lay_el)
     correct_nudge(nudge, element, lay_el)
 
-    if ((offers['offer'][oid]['offer'][0]['close'] == 'y' && otype == 'product') || (auto_collection['close'] == 'y' && otype == 'collection'))
-        document.querySelector(lay_el).insertAdjacentHTML('beforeend', '<div style="display: table; position: relative; width: 100%; text-align: right;"><span class="reject_offer" style="font-size: 15px; cursor: pointer;">x</span></div>')
+    if (otype == 'product')
+        if (offers['offer'][oid]['offer'][0]['close'] == 'y')
+            document.querySelector(lay_el).insertAdjacentHTML('beforeend', '<div style="display: table; position: relative; width: 100%; text-align: right;"><span class="reject_offer" style="font-size: 15px; cursor: pointer;">x</span></div>')
+
+    if (otype == 'collection')
+        if (auto_collection['close'] == 'y')
+            document.querySelector(lay_el).insertAdjacentHTML('beforeend', '<div style="display: table; position: relative; width: 100%; text-align: right;"><span class="reject_offer" style="font-size: 15px; cursor: pointer;">x</span></div>')
 
 
     let products = offers['offer'][oid]['products']
