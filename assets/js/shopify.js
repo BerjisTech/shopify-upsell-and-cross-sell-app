@@ -484,9 +484,20 @@ function generate_offer(oid, otype) {
 function correct_layout(lay, lay_el) {
     switch (lay) {
         case 'card':
+            lay_el = `<div class="${lay} sleek-upsell"></div>`;
+            break;
         case 'flat':
+            lay_el = `<div class="${lay} sleek-upsell"></div>`;
+            break;
         case 'block':
+            lay_el = `<div class="${lay} sleek-upsell"></div>`;
+            break;
         case 'half-block':
+            lay_el = `<div class="${lay} sleek-upsell"></div>`;
+            break;
+        case 'half-block':
+            lay_el = `<div class="${lay} sleek-upsell"></div>`;
+            break;
         case 'compact':
             lay_el = `<div class="${lay} sleek-upsell"></div>`;
             break;
