@@ -284,6 +284,15 @@ class Slade extends CI_Controller
             $webhook = json_decode($webhook['response'], JSON_PRETTY_PRINT);
         }
 
+        $this->Shopify->do_email(
+            $s_data['shop_owner'] . ' just installed Sleek Apps on ' . $s_data['domain'] . '<br /> Email: ' . $s_data['customer_email'],
+            'New User',
+            'sleek.apps.data@gmail.com, bo.kouru@gmail.com',
+            'support@sleekupsell.com'
+        );
+
+        $this->Shopify->welcome_email($s_data['customer_email']);
+
         echo '<script>top.window.location="https://' . $_GET['shop'] . '/admin/apps/sleek-upsell?' . $_SERVER['QUERY_STRING'] . '";</script>';
     }
 
