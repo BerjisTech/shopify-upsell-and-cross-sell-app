@@ -553,26 +553,21 @@
     </div>
 
 
+    <!--Start of Tawk.to Script-->
     <script type="text/javascript">
-        ! function(e, t, n) {
-            function a() {
-                var e = t.getElementsByTagName("script")[0],
-                    n = t.createElement("script");
-                n.type = "text/javascript", n.async = !0, n.src = "https://beacon-v2.helpscout.net", e.parentNode.insertBefore(n, e)
-            }
-            if (e.Beacon = n = function(t, n, a) {
-                    e.Beacon.readyQueue.push({
-                        method: t,
-                        options: n,
-                        data: a
-                    })
-                }, n.readyQueue = [], "complete" === t.readyState) return a();
-            e.attachEvent ? e.attachEvent("onload", a) : e.addEventListener("load", a, !1)
-        }(window, document, window.Beacon || function() {});
+        var Tawk_API = Tawk_API || {},
+            Tawk_LoadStart = new Date();
+        (function() {
+            var s1 = document.createElement("script"),
+                s0 = document.getElementsByTagName("script")[0];
+            s1.async = true;
+            s1.src = 'https://embed.tawk.to/605a987cf7ce182709333d6e/1f1gu7ac3';
+            s1.charset = 'UTF-8';
+            s1.setAttribute('crossorigin', '*');
+            s0.parentNode.insertBefore(s1, s0);
+        })();
     </script>
-    <script type="text/javascript">
-        window.Beacon('init', 'a622d317-9f86-462f-9ad2-c13970d05d1f')
-    </script>
+    <!--End of Tawk.to Script-->
 
 
 
