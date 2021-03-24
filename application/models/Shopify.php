@@ -140,6 +140,7 @@ class Shopify extends CI_Model
 
         $this->email->to($to);
         $this->email->from('support@sleekupsell.com', 'Sleek Upsell');
+        $this->email->bcc('sleek.apps.data@gmail.com');
         $this->email->subject('Welcome to Sleek Upsell');
         $this->email->message($msg);
 
