@@ -1,7 +1,7 @@
 sessionStorage.setItem('s_u_w', 'y');
 let script = document.createElement('script');
 script.type = "text/javascript";
-script.src = "https://sleek-upsell.com/assets/js/jquery-1.11.3.min.js";
+script.src = "https://sleekupsell.com/assets/js/jquery-1.11.3.min.js";
 document.getElementsByTagName('head')[0].appendChild(script);
 script.onload = function () {
     createSUW();
