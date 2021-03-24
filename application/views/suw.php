@@ -1086,16 +1086,16 @@
     $('.drawerP').remove();
     $('.layout_previous').click(function() {
         shop_sets['cart_location'] = prevElement($('.layout_previous').attr('cart-prev'));
+        $('input[name="cart_dom"]').val(shop_sets['cart_location']);
         console.log(shop_sets['cart_location']);
         changePos();
-        $('input[name="cart_dom"]').val(shop_sets['cart_location']);
     });
 
     $('.layout_next').click(function() {
         shop_sets['cart_location'] = nextElement($('.layout_next').attr('cart-next'));
+        $('input[name="cart_dom"]').val(shop_sets['cart_location']);
         console.log(shop_sets['cart_location']);
         changePos();
-        $('input[name="cart_dom"]').val(shop_sets['cart_location']);
     });
 
     $('.randomizeElem').click(function() {
@@ -1107,9 +1107,8 @@
 
     function nextElement(pos) {
         console.log(pos);
-        let okElem = 'form';
         if ($(page_selectors[pos]).length != 0 && pos >= 0 && pos <= page_selectors.length) {
-            okElem = page_selectors[pos];
+            let okElem = page_selectors[pos];
             $('.layout_next').attr('cart-next', pos * 1 + 1)
             $('.layout_previous').attr('cart-prev', pos)
             console.log('returning: ' + okElem)
@@ -1125,9 +1124,8 @@
 
     function prevElement(pos) {
         console.log(pos);
-        let okElem = 'form';
         if ($(page_selectors[pos]).length != 0 && pos >= 0 && pos <= page_selectors.length) {
-            okElem = page_selectors[pos];
+            let okElem = page_selectors[pos];
             $('.layout_previous').attr('cart-prev', pos - 1)
             $('.layout_next').attr('cart-next', pos)
             console.log('returning: ' + okElem)
