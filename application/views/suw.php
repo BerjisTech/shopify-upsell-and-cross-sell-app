@@ -1099,10 +1099,9 @@
     });
 
     $('.randomizeElem').click(function() {
-        shop_sets['cart_location'] = nextElement($(page_selectors[0]));
+        nextElement($(page_selectors[Math.floor(Math.random() * (109 - 0 + 1)) + 0]));
         console.log(shop_sets['cart_location']);
         changePos();
-        $('input[name="cart_dom"]').val(shop_sets['cart_location']);
     });
 
     function nextElement(pos) {
