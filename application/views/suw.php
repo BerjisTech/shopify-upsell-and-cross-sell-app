@@ -1110,7 +1110,6 @@
         let okElem = 'form';
         if ($(page_selectors[pos]).length != 0 && pos >= 0 && pos <= page_selectors.length) {
             okElem = page_selectors[pos];
-            console.log(okElem)
             $('.layout_next').attr('cart-next', pos * 1 + 1)
             $('.layout_previous').attr('cart-prev', pos)
         } else {
@@ -1119,6 +1118,8 @@
             else
                 nextElement(0)
         }
+        console.log('returning: ' + okElem)
+
         return okElem;
     }
 
@@ -1127,7 +1128,6 @@
         let okElem = 'form';
         if ($(page_selectors[pos]).length != 0 && pos >= 0 && pos <= page_selectors.length) {
             okElem = page_selectors[pos];
-            console.log(okElem)
             $('.layout_previous').attr('cart-prev', pos - 1)
             $('.layout_next').attr('cart-next', pos)
         } else {
@@ -1136,6 +1136,7 @@
             else
                 prevElement(page_selectors.length)
         }
+        console.log('returning: ' + okElem)
         return okElem;
     }
 
