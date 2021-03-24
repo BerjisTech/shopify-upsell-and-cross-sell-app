@@ -1108,12 +1108,12 @@
     function nextElement(pos) {
         console.log(pos);
         if ($(page_selectors[pos]).length != 0 && pos >= 0 && pos <= page_selectors.length) {
-            let okElem = page_selectors[pos];
+            page_selectors[pos];
             $('.layout_next').attr('cart-next', pos * 1 + 1)
             $('.layout_previous').attr('cart-prev', pos)
-            console.log('returning: ' + okElem)
+            console.log('returning: ' + page_selectors[pos])
 
-            return okElem;
+            return page_selectors[pos];
         } else {
             if (pos >= 0 && pos <= page_selectors.length)
                 nextElement(pos * 1 + 1)
@@ -1125,11 +1125,11 @@
     function prevElement(pos) {
         console.log(pos);
         if ($(page_selectors[pos]).length != 0 && pos >= 0 && pos <= page_selectors.length) {
-            let okElem = page_selectors[pos];
             $('.layout_previous').attr('cart-prev', pos - 1)
             $('.layout_next').attr('cart-next', pos)
-            console.log('returning: ' + okElem)
-            return okElem;
+            console.log('returning: ' + page_selectors[pos])
+
+            return page_selectors[pos];
         } else {
             if (pos >= 0 && pos <= page_selectors.length)
                 prevElement(pos - 1)
