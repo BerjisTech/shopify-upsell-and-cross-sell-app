@@ -1087,14 +1087,12 @@
     $('.layout_previous').click(function() {
         prevElement($('.layout_previous').attr('cart-prev'));
 
-        console.log(shop_sets['cart_location']);
         changePos();
     });
 
     $('.layout_next').click(function() {
         nextElement($('.layout_next').attr('cart-next'));
 
-        console.log(shop_sets['cart_location']);
         changePos();
     });
 
@@ -1128,7 +1126,7 @@
         console.log(pos);
         if ($(page_selectors[pos]).length != 0 && pos >= 0 && pos <= page_selectors.length) {
 
-            $('input[name="cart_dom"]').val(shop_sets['cart_location']);
+            shop_sets['cart_location'] = page_selectors[pos];
             $('input[name="cart_dom"]').val(shop_sets['cart_location']);
 
             $('.layout_previous').attr('cart-prev', pos - 1)
