@@ -3,7 +3,333 @@
 <link rel="stylesheet" href="<?php echo base_url(); ?>assets/js/jquery-ui/css/no-theme/jquery-ui-1.10.3.custom.min.css" id="style-resource-1">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@icon/entypo@1.0.0-alpha.3/entypo.min.css" id="style-resource-2">
 <script src="<?php echo base_url(); ?>assets/js/bootstrap.js" id="script-resource-3"></script>
-
+<script>
+    var page_selectors = [
+        "form#cart_form",
+        "form#cart-form",
+        "form#cartform",
+        "form#cartForm",
+        "form.cart",
+        "form.cartform",
+        "form.cartForm",
+        "form.cart-form",
+        "form.cart-form .cart-row:first",
+        "form.cart .cart__row:first",
+        "form.cart-form",
+        "table",
+        "footer.cart__footer",
+        "#shopify-section-cart-template",
+        "form[action='/cart']",
+        "form.cart-wrapper .cart__row:first",
+        "form#update_cart",
+        "div.grid.cart__row",
+        "form.cart.table-wrap",
+        "div.ten.columns.cart_items",
+        "div.grid__item.cart__buttons.text-right.small--text-center.medium-up--one-half",
+        "form[action^='/cart']",
+        "div.ten.columns",
+        "form[action^='/cart'] .cart__row:first",
+        "div.cart-tools",
+        "form#cart-form",
+        "form.cart__form",
+        "div.grid",
+        "div.cart__row.medium-down--hide.cart__header-labels",
+        "div.section-header",
+        "form.cart-wrapper",
+        "h2",
+        ".atc-banner--outer",
+        "div.cart-items",
+        "div.cart-subtotal",
+        "form#cart",
+        "div.grid__item.text-right.post-large--seven-twelfths",
+        ".step:first",
+        "div.grid__item.text-right.small--text-center",
+        "div#cart-notes",
+        "div.cart__row.text-center.large--text-right",
+        "div#cart-bottom",
+        "ul#cart-items-list",
+        "div.doubly-message",
+        "div.cart__row.cart__footer",
+        "div.cart-row.cart-summary",
+        "div.cart_bottom.grid",
+        "div.additional-checkout-buttons",
+        "div#cart-upsell",
+        "div.cart__shipping",
+        "div.clearfix.shopping-cart-btns",
+        "div.col-sm-8.col-md-9.col-left",
+        "form#cartform table",
+        "div.grid__item.text-center.medium-up--one-half.medium-up--text-right",
+        "form.cart.white",
+        "div.grid__item.large--seven-twelfths",
+        "div.twelve.columns.alpha",
+        "form.cart.ng-pristine.ng-valid",
+        "p.timer_box",
+        "div.grid-item.large--seven-twelfths",
+        "div.items",
+        "div.cart-bottom-box",
+        "div.cart__row",
+        "form.cart[action='/cart']",
+        "footer.cart-footer",
+        "div.checkout_table_header",
+        "div.cart__row.cart-btm",
+        "div.cart__body",
+        "form[action^='/cart']:first",
+        "form#cartform[action='/cart']",
+        "form.custom",
+        "div.cart__note",
+        ".section-header",
+        "div.cart__additional_checkout",
+        "p#CartSubtotal",
+        "ul.cart-list",
+        "form[action^='/cart'] .cart-row:first",
+        "form.cart .section-header",
+        "div.table-row",
+        "div.payment-methods-wrap",
+        "div#unseen",
+        ".in-cart-upsell",
+        "td.total.pr10",
+        "div.table-responsive.col-md-6.col-md-pull-6.col-sm-12.col-xs-12",
+        "form.cart.cartForm",
+        "tr.cart__row.border-bottom.line1.cart-flex.border-top",
+        "form",
+        "div.grid__item.large--three-fifths",
+        "li#cart-header",
+        "div.wrapper-cart.col-xs-12.col-sm-8.col-md-9",
+        "form#cart_form .ten.columns",
+        "p.txt--minor.txt--emphasis",
+        "table.shopping-cart-table",
+        "form[action^='/cart'] .cart__row:last",
+        "form.cart.clearfix",
+        "form.js-cart_content__form[action='/checkout']",
+        "form.cart .cart__row:last",
+        "#shopping-cart",
+        "div.cart-checkout",
+        "#upsell",
+        "div.group-bottom",
+        "p#agree-terms",
+        "h1.h2",
+        "div.container-widget",
+        "div.cart-total",
+        "h4.title",
+        "table.cart-table",
+        "form.cart[action^='/cart']:first",
+        "div.grid__item.medium-up--one-half.cart-note",
+        "#CartContainer form[action^='/cart'] .ajaxcart__inner",
+        "form[action^='/cart'] .cart__row:first",
+        "#ajaxifyCart form[action^='/cart']:first",
+        "form.js-cart_content__form ul.cart_items",
+        "form[action^='/cart']",
+        "form.cart-form",
+        "div.ajaxcart__inner.ajaxcart__inner--has-fixed-footer",
+        "#ajaxifyCart .cart-row:first",
+        "form.cart",
+        "form[action^='/cart'] .cart-row:first",
+        "form[action^='/cart']:first",
+        ".ajaxcart__row:first",
+        ".cart__row:first",
+        "form.cart.ajaxcart",
+        "form[action^='/cart']:last",
+        "#CartContainer form.cart .ajaxcart__row:first",
+        "div.ajaxcart__product",
+        "form#AddToCartForm",
+        "form#cart li.mm-subtitle:first",
+        "form.cart-wrapper",
+        "form.cart-form .cart-row:first",
+        "form#cart li.cart_item:first",
+        "footer.cart__footer",
+        ".ajaxcart__inner:first",
+        "form.product-form",
+        "#cart li.cart_item:first",
+        "form.product-form.product-form-product-template",
+        "div.ajaxcart__row",
+        "p.cart-subtotal__note",
+        "form#cartform",
+        "h1.h2",
+        "form[action^='/cart'] ul#line-items",
+        "div.cart__row.text-center.large--text-right",
+        "form[action='/cart']",
+        "form#cart",
+        "form#cart_form",
+        "form.js-cart_content__form[action='/checkout']",
+        "form#addToCartForm",
+        "div.product-form__item.product-form__item--submit",
+        "div.grid",
+        "div.cart-subtotal",
+        "form.cart-drawer",
+        "li.mm-subtitle.clearfix",
+        "table",
+        "div.product-single__cart-submit-wrapper",
+        "div.cart__row.cart__footer",
+        "div.cart-drawer__footer",
+        "form#addToCartForm-product-template",
+        "a.ajaxcart__product-name",
+        "#CartContainer form.cart .ajaxcart__product:first",
+        "h1.text-center.cart__title",
+        "div.ajaxcart__footer.ajaxcart__footer--fixed",
+        "ul.mm-listview",
+        "#ajaxifyCart .cart__row:first",
+        "div.grid-item.large--seven-twelfths",
+        "div.grid__item.additional-checkout-buttons",
+        "div.ajaxcart__footer.row",
+        "a.continue.ss-icon",
+        "p.text-center",
+        "h3",
+        ".header .cart_container ul.js-cart_items",
+        "div.grid__item.three-quarters",
+        "div.grid.grid--half-gutters",
+        "#CartContainer .ajaxcart__inner",
+        "div.additional-checkout-buttons",
+        "div#mm-1",
+        "li.mm-label",
+        "h2.h6",
+        "form.ajaxcart .ajaxcart__inner",
+        "div.ajaxcart__footer",
+        ".ajaxcart__inner",
+        "form.cart-drawer .cart-drawer__item-list",
+        "textarea#note",
+        "li.cart_item",
+        "p.product__price",
+        "#CartDrawer .ajaxcart__product:first",
+        "#ajaxifyCart form.cart-form",
+        "div.more",
+        "form#AddToCartForm--product-template",
+        "a.mm-subclose.continue",
+        "form.cart.cartForm",
+        "div.note_item.col-xs-12.col-sm-6.col-md-6",
+        "form#push-cart",
+        "#cart-summary .cart-summary-item-list.ft.ftw",
+        "form.ajaxcart",
+        "#AjaxifyCart .cart__body",
+        "div.ajaxcart__inner",
+        "form[action^='/cart'] .section-header",
+        "#AjaxifyCart .section-header:first",
+        "div.cart-drawer__header",
+        "div.list_button_cart.clearfix",
+        "div#text_above_timer",
+        "ul#mm-1",
+        "input.btn.uppercase.btn--large.checkout__button",
+        "span.ajaxcart__product-meta",
+        "div.doubly-message",
+        "div.cart__body",
+        "form.cart-drawer .cart-drawer__content-container",
+        "form.product-form.product-form-product-template.product-form--hide-variant-labels",
+        ".cart-summary-item-list.ft.ftw",
+        "div.clearfix.order_notes",
+        "div.modal-footer",
+        ".cart-drawer",
+        "#CartContainer .ajaxcart__row:first",
+        "div.grid.cart__row",
+        "textarea#CartSpecialInstructions"
+    ];
+    var ajax_selectors = [
+        "#CartContainer form[action^='/cart'] .ajaxcart__inner",
+        "form[action^='/cart'] .cart__row:first",
+        "#ajaxifyCart form[action^='/cart']:first",
+        "form.js-cart_content__form ul.cart_items",
+        "form[action^='/cart']",
+        "form.cart-form",
+        "div.ajaxcart__inner.ajaxcart__inner--has-fixed-footer",
+        "#ajaxifyCart .cart-row:first",
+        "form.cart",
+        "form[action^='/cart'] .cart-row:first",
+        "form[action^='/cart']:first",
+        ".ajaxcart__row:first",
+        ".cart__row:first",
+        "form.cart.ajaxcart",
+        "form[action^='/cart']:last",
+        "#CartContainer form.cart .ajaxcart__row:first",
+        "div.ajaxcart__product",
+        "form#AddToCartForm",
+        "form#cart li.mm-subtitle:first",
+        "form.cart-wrapper",
+        "form.cart-form .cart-row:first",
+        "form#cart li.cart_item:first",
+        "footer.cart__footer",
+        ".ajaxcart__inner:first",
+        "form.product-form",
+        "#cart li.cart_item:first",
+        "form.product-form.product-form-product-template",
+        "div.ajaxcart__row",
+        "p.cart-subtotal__note",
+        "form#cartform",
+        "h1.h2",
+        "form[action^='/cart'] ul#line-items",
+        "div.cart__row.text-center.large--text-right",
+        "form[action='/cart']",
+        "form#cart",
+        "form#cart_form",
+        "form.js-cart_content__form[action='/checkout']",
+        "form#addToCartForm",
+        "div.product-form__item.product-form__item--submit",
+        "div.grid",
+        "div.cart-subtotal",
+        "form.cart-drawer",
+        "li.mm-subtitle.clearfix",
+        "table",
+        "div.product-single__cart-submit-wrapper",
+        "div.cart__row.cart__footer",
+        "div.cart-drawer__footer",
+        "form#addToCartForm-product-template",
+        "a.ajaxcart__product-name",
+        "#CartContainer form.cart .ajaxcart__product:first",
+        "h1.text-center.cart__title",
+        "div.ajaxcart__footer.ajaxcart__footer--fixed",
+        "ul.mm-listview",
+        "#ajaxifyCart .cart__row:first",
+        "div.grid-item.large--seven-twelfths",
+        "div.grid__item.additional-checkout-buttons",
+        "div.ajaxcart__footer.row",
+        "a.continue.ss-icon",
+        "p.text-center",
+        "h3",
+        ".header .cart_container ul.js-cart_items",
+        "div.grid__item.three-quarters",
+        "div.grid.grid--half-gutters",
+        "#CartContainer .ajaxcart__inner",
+        "div.additional-checkout-buttons",
+        "div#mm-1",
+        "li.mm-label",
+        "h2.h6",
+        "form.ajaxcart .ajaxcart__inner",
+        "div.ajaxcart__footer",
+        ".ajaxcart__inner",
+        "form.cart-drawer .cart-drawer__item-list",
+        "textarea#note",
+        "li.cart_item",
+        "p.product__price",
+        "#CartDrawer .ajaxcart__product:first",
+        "#ajaxifyCart form.cart-form",
+        "div.more",
+        "form#AddToCartForm--product-template",
+        "a.mm-subclose.continue",
+        "form.cart.cartForm",
+        "div.note_item.col-xs-12.col-sm-6.col-md-6",
+        "form#push-cart",
+        "#cart-summary .cart-summary-item-list.ft.ftw",
+        "form.ajaxcart",
+        "#AjaxifyCart .cart__body",
+        "div.ajaxcart__inner",
+        "form[action^='/cart'] .section-header",
+        "#AjaxifyCart .section-header:first",
+        "div.cart-drawer__header",
+        "div.list_button_cart.clearfix",
+        "div#text_above_timer",
+        "ul#mm-1",
+        "input.btn.uppercase.btn--large.checkout__button",
+        "span.ajaxcart__product-meta",
+        "div.doubly-message",
+        "div.cart__body",
+        "form.cart-drawer .cart-drawer__content-container",
+        "form.product-form.product-form-product-template.product-form--hide-variant-labels",
+        ".cart-summary-item-list.ft.ftw",
+        "div.clearfix.order_notes",
+        "div.modal-footer",
+        ".cart-drawer",
+        "#CartContainer .ajaxcart__row:first",
+        "div.grid.cart__row",
+        "textarea#CartSpecialInstructions"
+    ];
+</script>
 
 
 <div class="saving" style="display: none; position: absolute; top: 0px; right: 0px; z-index: 2000000; width: 300px; height: 400px; background: rgba(152,27,27,0.5); vertical-align: middle; text-align: center;"><img src="<?php echo base_url(); ?>assets/images/loader_2.gif" style="margin-top: 30vh;" /></div>
@@ -29,9 +355,9 @@
                 <small style="display: table; width: 100%; text-align: center;">Use this section to position your offers on the cart page and cart drawer</small>
                 <hr />
                 <div class="input-group">
-                    <span class="layout_previous input-group-addon btn btn-danger entypo-left"></span>
+                    <span class="layout_previous input-group-addon btn btn-danger entypo-left" cart-prev="109"></span>
                     <input type="text" class="form-control" value="Change position" disabled style="cursor: none; background: #ffffff !important; border: none !important; color: #000000 !important" />
-                    <span class="layout_next input-group-addon btn btn-danger entypo-right"></span>
+                    <span class="layout_next input-group-addon btn btn-danger entypo-right" cart-next="0"></span>
                     <span class="randomizeElem input-group-addon btn btn-success entypo-shuffle"></span>
                 </div>
                 <br />
@@ -757,146 +1083,51 @@
     <?php endif; ?>
     let things = $('div');
 
-    if (window.location.pathname.includes('/cart')) {
-        $('.drawerP').remove();
-        $('.layout_previous').click(function() {
-            shop_sets['cart_location'] = prevElement(shop_sets['cart_location']);
-            console.log('cl ' + shop_sets['cart_location']);
-            changePos();
-            $('input[name="cart_dom"]').val(shop_sets['cart_location']);
-        });
+    $('.drawerP').remove();
+    $('.layout_previous').click(function() {
+        shop_sets['cart_location'] = prevElement($('.layout_previous').attr('cart-prev'));
+        console.log('cl ' + shop_sets['cart_location']);
+        changePos();
+        $('input[name="cart_dom"]').val(shop_sets['cart_location']);
+    });
 
-        $('.layout_next').click(function() {
-            shop_sets['cart_location'] = nextElement(shop_sets['cart_location']);
-            console.log('cl ' + shop_sets['cart_location']);
-            changePos();
-            $('input[name="cart_dom"]').val(shop_sets['cart_location']);
-        });
+    $('.layout_next').click(function() {
+        shop_sets['cart_location'] = nextElement($('.layout_next').attr('cart-next'));
+        console.log('cl ' + shop_sets['cart_location']);
+        changePos();
+        $('input[name="cart_dom"]').val(shop_sets['cart_location']);
+    });
 
-        $('.randomizeElem').click(function() {
-            shop_sets['cart_location'] = randomizeElem();
-            console.log('dl ' + shop_sets['cart_location']);
-            changePos();
-            $('input[name="cart_dom"]').val(shop_sets['cart_location']);
-        });
-    } else {
-        $('.cartP').remove();
-        $('.layout_previous').click(function() {
-            shop_sets['drawer_location'] = prevElement(shop_sets['drawer_location']);
-            console.log('dl ' + shop_sets['drawer_location']);
-            changePos();
-            $('input[name="drawer_dom"]').val(shop_sets['drawer_location']);
-        });
+    $('.randomizeElem').click(function() {
+        shop_sets['cart_location'] = nextElement($(page_selectors[0]));
+        console.log('dl ' + shop_sets['cart_location']);
+        changePos();
+        $('input[name="cart_dom"]').val(shop_sets['cart_location']);
+    });
 
-        $('.layout_next').click(function() {
-            shop_sets['drawer_location'] = nextElement(shop_sets['drawer_location']);
-            console.log('dl ' + shop_sets['drawer_location']);
-            changePos();
-            $('input[name="drawer_dom"]').val(shop_sets['drawer_location']);
-        });
-
-        $('.randomizeElem').click(function() {
-            shop_sets['drawer_location'] = randomizeElem();
-            console.log('dl ' + shop_sets['drawer_location']);
-            changePos();
-            $('input[name="drawer_dom"]').val(shop_sets['drawer_location']);
-        });
-    }
-
-    function nextElement(currElem) {
-        let okElem = '';
-        try {
-            if (document.querySelector(currElem) == null) {
-                okElem = 'form';
-            } else {
-                let pn = $(currElem).parent();
-                let fc = $(currElem).children(":first");
-                let ns = $(currElem).next();
-                let ps = $(currElem).prev();
-
-
-
-                if ($(currElem).is(':parent') || fc != null) {
-                    if (fc[0].className == '' || fc[0].className == null) {
-                        okElem = fc[0].nodeName;
-                    } else {
-                        okElem = fc[0].nodeName + '.' + fc[0].className.replace(' ', '.');
-                    }
-                } else if (ns != null) {
-                    if (ns[0].className == '' || ns[0].className == null) {
-                        okElem = ns[0].nodeName;
-                    } else {
-                        okElem = ns[0].nodeName + '.' + ns[0].className.replace(' ', '.');
-                    }
-                } else {
-                    if (pn.parent()[0].className == '' || pn.parent()[0].className == null) {
-                        okElem = pn[0].nodeName;
-                    } else {
-                        okElem = pn.parent()[0].nodeName + '.' + pn.parent()[0].className.replace(' ', '.');
-                    }
-
-                }
-                if (okElem.includes('sleek-upsell')) {
-                    okElem = randomizeElem();
-                }
-            }
-        } catch (error) {
-            console.log(error);
-            okElem = randomizeElem();
-        }
-
-        console.log('okelem ' + okElem);
-        return okElem;
-    }
-
-    function prevElement(currElem) {
-        let okElem = '';
-        let pn = $(currElem).parent();
-        let ps = $(currElem).prev();
-
-        try {
-            if (ps != null) {
-                if (ps[0].className == '' || ps[0].className == null) {
-                    okElem = ps[0].nodeName;
-                } else {
-                    okElem = ps[0].nodeName + '.' + ps[0].className.replace(' ', '.');
-                }
-            } else {
-                if (pn[0].className == '' || pn[0].className == null) {
-                    okElem = pn[0].nodeName;
-                } else {
-                    okElem = pn[0].nodeName + '.' + pn[0].className.replace(' ', '.');
-                }
-
-            }
-            if (okElem.includes('sleek-upsell')) {
-                okElem = randomizeElem();
-            }
-        } catch (error) {
-            console.log(error);
-            okElem = randomizeElem();
-        }
-
-        console.log('okelem ' + okElem);
-        return okElem;
-    }
-
-    function randomizeElem() {
-        let okElem = '';
-        let randElem = $('body').children()[Math.floor(Math.random(0, $('body').children().length) * 10)];
-        if (randElem.nodeName == '' || randElem.nodeName == null || randElem.nodeName == 'STYLE' || randElem.nodeName == 'SCRIPT' || randElem.nodeName == 'SVG' || randElem.className == 'draggable suw' || randElem.className.includes('sleek-upsell') || randElem.className.includes('hidden')) {
-            randomizeElem();
+    function nextElement(pos) {
+        let okElem = 'form';
+        if ($(page_selectors[pos]) != 'undefined') {
+            okElem = page_selectors[pos];
+            $('.layout_next').attr('cart-next', pos + 1)
         } else {
-            if (randElem.className == '' || randElem.className == null) {
-                okElem = randElem.nodeName;
-            } else {
-                okElem = randElem.nodeName + '.' + randElem.className.replace(' ', '.');
-            }
+            nextElement(pos + 1)
         }
-
-        console.log('randElem ' + okElem);
         return okElem;
     }
+
+    function prevElement(pos) {
+        let okElem = 'form';
+        if ($(page_selectors[page_selectors.length]) != 'undefined') {
+            okElem = page_selectors[pos];
+            $('.layout_previous').attr('cart-prev', pos - 1)
+        } else {
+            nextElement(pos - 1)
+        }
+        return okElem;
+    }
+
+
 
     changePos();
 
