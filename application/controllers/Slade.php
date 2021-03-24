@@ -1323,7 +1323,14 @@ class Slade extends CI_Controller
 
     public function test_email($shop, $token)
     {
-        if ($this->Shopify->do_email($this->db->where('shop', $shop)->get('shops')->row()->shop_owner . ' just installed Sleek Apps on ' . $this->db->where('shop', $shop)->get('shops')->row()->domain . '<br /> Email: ' . $this->db->where('shop', $shop)->get('shops')->row()->customer_email, 'New User', 'sleek.apps.data@gmail.com', 'support@sleekupsell.com')) {
+        if (
+            $this->Shopify->do_email(
+                $this->db->where('shop', $shop)->get('shops')->row()->shop_owner . ' just installed Sleek Apps on ' . $this->db->where('shop', $shop)->get('shops')->row()->domain . '<br /> Email: ' . $this->db->where('shop', $shop)->get('shops')->row()->customer_email,
+                'New User',
+                'sleek.apps.data@gmail.com',
+                'support@sleekupsell.com'
+            )
+        ) {
             echo 'email sent';
         }
     }

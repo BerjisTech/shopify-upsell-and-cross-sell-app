@@ -69,36 +69,29 @@ class Shopify extends CI_Model
     function do_email($msg = NULL, $sub = NULL, $to = NULL, $from = NULL)
     {
 
-        $config = array();
-        $config['useragent']        = "CodeIgniter";
-        $config['mailpath']         = "/usr/bin/sendmail"; // or "/usr/sbin/sendmail"
-        $config['protocol']         = "smtp";
-        $config['smtp_host']        = "mail.sleekupsell.com";
-        $config['smtp_port']        = "25";
-        $config['smtp_user']        = "support@sleekupsell.com";
-        $config['smtp_pass']        = "890Berjis*()";
-        $config['smtp_keepalive']   = TRUE;
-        $config['smtp_crypto']      = "ssl";
-        $config['mailtype']         = 'html';
-        $config['charset']          = 'utf-8';
-        $config['newline']          = "\r\n";
-        $config['wordwrap']         = TRUE;
-        $config['validate']         = TRUE;
-
+        //Load email library
         $this->load->library('email');
 
+        //SMTP & mail configuration
+        $config = array(
+            'protocol' => 'smtp',
+            'smtp_host' => 'ssl://smtp.gmail.com',
+            'smtp_port' => 465,
+            'smtp_user' => 'support@sleekupsell.com',
+            'smtp_pass' => '890Berjis*()',
+            'mailtype' => 'html',
+            'charset' => 'iso-8859-1'
+        );
         $this->email->initialize($config);
+        $this->email->set_mailtype("html");
+        $this->email->set_newline("\r\n");
 
-        $this->email->from($from, 'Sleek Upsell');
-        $this->email->from($from, 'Sleek Upsell');
         $this->email->to($to);
+        $this->email->from($from, 'Sleek Upsell');
         $this->email->subject($sub);
-
-        $msg    =    $msg . "<br /><br /><br /><br /><br /><br /><br /><hr /><center><a href=\"https://sleekupsell.com\">&copy; " . date('Y', time()) . " Sleek Upsell</a></center>";
         $this->email->message($msg);
 
+        //Send email
         $this->email->send();
-
-        //echo $this->email->print_debugger();
     }
 }
