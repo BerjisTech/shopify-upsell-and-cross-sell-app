@@ -1111,6 +1111,7 @@
         if ($(page_selectors[pos]).length != 0 && pos <= page_selectors.length) {
             okElem = page_selectors[pos];
             $('.layout_next').attr('cart-next', pos * 1 + 1)
+            $('.layout_previous').attr('cart-prev', pos)
         } else {
             nextElement(pos * 1 + 1)
         }
@@ -1123,6 +1124,7 @@
         if ($(page_selectors[pos]).length != 0 && pos >= 0) {
             okElem = page_selectors[pos];
             $('.layout_previous').attr('cart-prev', pos - 1)
+            $('.layout_next').attr('cart-next', pos)
         } else {
             nextElement(pos - 1)
         }
