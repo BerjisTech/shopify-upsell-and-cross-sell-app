@@ -1106,6 +1106,7 @@
     });
 
     function nextElement(pos) {
+        console.log(pos);
         let okElem = 'form';
         if ($(page_selectors[pos]) != 'undefined') {
             okElem = page_selectors[pos];
@@ -1117,8 +1118,9 @@
     }
 
     function prevElement(pos) {
+        console.log(pos);
         let okElem = 'form';
-        if ($(page_selectors[page_selectors.length]) != 'undefined') {
+        if ($(page_selectors[pos]) != 'undefined') {
             okElem = page_selectors[pos];
             $('.layout_previous').attr('cart-prev', pos - 1)
         } else {
