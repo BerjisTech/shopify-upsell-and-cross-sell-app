@@ -71,6 +71,7 @@ class Shopify extends CI_Model
 
         //Load email library
         $this->load->library('email');
+        $this->load->library('encrypt');
 
         //SMTP & mail configuration
         $config = array(
