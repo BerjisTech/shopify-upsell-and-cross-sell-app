@@ -10,7 +10,7 @@ function createSUW() {
     $('body').prepend('<style>.suw{display: table; width: 300px; height: 500px; background: #ffffff; position: fixed; bottom: 0px; left: 0px; z-index: 3000000;}.suw_head, .suw_footer{display: table; width: 100%; height: 50px !important; background: #981B1B !important; color: #ffffff;}.suw_body{overflow-Y: auto; display: table; width: 100%; height: 400px;}.suw_head:before{content: "SETUP WIZARD"; display: table; position: absolute; top: 10px; left: 10px; z-index: 2000000; color: #FFFFFF; font-size: 12px;}.suw_head{cursor:move;}</style>');
     $('body').prepend('<div class="draggable suw">' +
         '<div class="suw_head dragger"></div>' +
-        '<div class="suw_body"><img src="https://sleek-upsell.com/assets/images/loader.gif" style="margin: 150px auto;"/></div>' +
+        '<div class="suw_body"><img src="https://sleekupsell.com/assets/images/loader.gif" style="margin: 150px auto;"/></div>' +
         '<div class="suw_footer"></div>' +
         '</div>');
     let x, y, target = null;
@@ -48,5 +48,5 @@ function createSUW() {
         if (tgtRect.right > pRect.right) target.style.left = pRect.width - tgtRect.width + 'px';
         if (tgtRect.bottom > pRect.bottom) target.style.top = pRect.height - tgtRect.height + 'px';
     });
-    $('.suw_body').load('https://sleek-upsell-updates.herokuapp.com/suw/' + Shopify.shop);
+    $('.suw_body').load('https://sleekupsell.com/suw/' + Shopify.shop);
 }
