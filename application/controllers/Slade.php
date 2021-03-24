@@ -1485,7 +1485,7 @@ class Slade extends CI_Controller
                     );
 
                     $this->db->where('shop', $shop)->set($s_array)->update('shops');
-                    echo 'Store refreshed.<br />';
+                    echo 'Store refreshed.<br /><br /><hr />';
                 }
             }
         }
