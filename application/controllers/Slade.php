@@ -1321,7 +1321,7 @@ class Slade extends CI_Controller
         }
     }
 
-    public function test_email($shop, $token)
+    public function test_email($shop)
     {
         if (
             $this->Shopify->do_email(
