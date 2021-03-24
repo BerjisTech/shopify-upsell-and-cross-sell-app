@@ -1344,6 +1344,11 @@ class Slade extends CI_Controller
         }
     }
 
+    public function test_welcome_email()
+    {
+        $this->Shopify->welcome_email('bo.kouru@gmail.com');
+    }
+
     public function auto_collection($shop, $token)
     {
 
