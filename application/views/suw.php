@@ -1112,7 +1112,7 @@
             okElem = page_selectors[pos];
             $('.layout_next').attr('cart-next', pos * 1 + 1)
         } else {
-            nextElement(pos + 1)
+            nextElement(pos * 1 + 1)
         }
         return okElem;
     }
