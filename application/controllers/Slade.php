@@ -1472,7 +1472,7 @@ class Slade extends CI_Controller
                     $this->db->where('shop', $shop)->set($s_array)->update('shops');
                     echo 'Store marked uninstalled<br />';
                 } else {
-                    print_r($s_data);
+                    // print_r($s_data);
                     $s_data = $s_data['shop'];
 
                     $s_array = array(
@@ -1485,7 +1485,7 @@ class Slade extends CI_Controller
                     );
 
                     $this->db->where('shop', $shop)->set($s_array)->update('shops');
-                    echo'Store refreshed.<br />';
+                    echo 'Store refreshed.<br />';
                 }
             }
         }
