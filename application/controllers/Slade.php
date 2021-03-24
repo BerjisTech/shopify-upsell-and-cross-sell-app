@@ -1458,7 +1458,7 @@ class Slade extends CI_Controller
                 );
 
                 $this->db->where('shop', $shop)->set($s_array)->update('shops');
-                echo $shop . '\'s token not found<br />Store marked uninstalled<br />';
+                echo $shop . '\'s token not found<br />Store marked uninstalled<br /><br /><hr />';
             } else {
 
                 $s_data = $this->Shopify->shopify_call($token, $shop, '/admin/api/2020-10/shop.json', array(), 'GET');
@@ -1470,7 +1470,7 @@ class Slade extends CI_Controller
                     );
 
                     $this->db->where('shop', $shop)->set($s_array)->update('shops');
-                    echo 'Store marked uninstalled<br />';
+                    echo 'Store marked uninstalled<br /><br /><hr />';
                 } else {
                     // print_r($s_data);
                     $s_data = $s_data['shop'];
