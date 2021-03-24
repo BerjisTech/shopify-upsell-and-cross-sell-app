@@ -115,13 +115,13 @@ class Shopify extends CI_Model
 
         $msg = '
         <h3>Hello!</h3>
-        <p>This is Ben with In Cart Upsell. Welcome to the family! ;) </p>
+        <p>This is Mark with Sleek Upsell. Welcome to the family! ;) </p>
 
         <p>Say goodbye to annoying up-sell popups on your store, and say hello to effective up-selling when customers are already purchasing your products. Here\'s to big-time SHOPIFY SUCCESS - We\'re in this thing together :) Woot!</p>
 
-        <p>Did you know that we are the longest standing Shopify app for In Cart Upsells? Yup, that is right! With all of the data across Shopify stores just like yours, we\'re here to help you get up and running as efficiently as possible to start increasing your sales from customers that are already checking out and purchasing your products.</p>
+        <p>Did you know that we are the longest standing Shopify app for Sleek Upsells? Yup, that is right! With all of the data across Shopify stores just like yours, we\'re here to help you get up and running as efficiently as possible to start increasing your sales from customers that are already checking out and purchasing your products.</p>
 
-        <p>In the next email we send, we\'ll outline the three steps for getting started in In Cart Upsell.</p>
+        <p>In the next email we send, we\'ll outline the three steps for getting started in Sleek Upsell.</p>
 
         <p>In the meantime, I\'m only a quick email away to support your success. So glad to have you here.  </p>
 
