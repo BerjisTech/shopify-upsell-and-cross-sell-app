@@ -1112,15 +1112,15 @@
             okElem = page_selectors[pos];
             $('.layout_next').attr('cart-next', pos * 1 + 1)
             $('.layout_previous').attr('cart-prev', pos)
+            console.log('returning: ' + okElem)
+
+            return okElem;
         } else {
             if (pos >= 0 && pos <= page_selectors.length)
                 nextElement(pos * 1 + 1)
             else
                 nextElement(0)
         }
-        console.log('returning: ' + okElem)
-
-        return okElem;
     }
 
     function prevElement(pos) {
@@ -1130,14 +1130,14 @@
             okElem = page_selectors[pos];
             $('.layout_previous').attr('cart-prev', pos - 1)
             $('.layout_next').attr('cart-next', pos)
+            console.log('returning: ' + okElem)
+            return okElem;
         } else {
             if (pos >= 0 && pos <= page_selectors.length)
                 prevElement(pos - 1)
             else
                 prevElement(page_selectors.length)
         }
-        console.log('returning: ' + okElem)
-        return okElem;
     }
 
 
