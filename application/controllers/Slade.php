@@ -1447,6 +1447,8 @@ class Slade extends CI_Controller
             $shop = $fetch['shop'];
             $token = $fetch['token'];
 
+            echo 'Refreshing ' . $shop . '<br />';
+
             // $token = $this->db->where('shop', $shop)->get('shops')->row()->token;
 
             if ($token == '') {
@@ -1456,6 +1458,7 @@ class Slade extends CI_Controller
                 );
 
                 $this->db->where('shop', $shop)->set($s_array)->update('shops');
+                echo $shop . '\'s token not found<br />Store marked uninstalled<br />';
             } else {
 
                 $s_data = $this->Shopify->shopify_call($token, $shop, '/admin/api/2020-10/shop.json', array(), 'GET');
@@ -1467,6 +1470,7 @@ class Slade extends CI_Controller
                     );
 
                     $this->db->where('shop', $shop)->set($s_array)->update('shops');
+                    echo 'Store marked uninstalled<br />';
                 } else {
                     print_r($s_data);
                     $s_data = $s_data['shop'];
@@ -1481,6 +1485,7 @@ class Slade extends CI_Controller
                     );
 
                     $this->db->where('shop', $shop)->set($s_array)->update('shops');
+                    echo'Store refreshed.<br />';
                 }
             }
         }
