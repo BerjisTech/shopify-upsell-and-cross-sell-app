@@ -1092,23 +1092,23 @@
     });
 
     $('.layout_next').click(function() {
-        shop_sets['cart_location'] = nextElement($('.layout_next').attr('cart-next'));
-        $('input[name="cart_dom"]').val(shop_sets['cart_location']);
+        nextElement($('.layout_next').attr('cart-next'));
         console.log(shop_sets['cart_location']);
         changePos();
     });
 
     $('.randomizeElem').click(function() {
-        shop_sets['cart_location'] = nextElement($(page_selectors[0]));
         console.log(shop_sets['cart_location']);
         changePos();
-        $('input[name="cart_dom"]').val(shop_sets['cart_location']);
     });
 
     function nextElement(pos) {
         console.log(pos);
         if ($(page_selectors[pos]).length != 0 && pos >= 0 && pos <= page_selectors.length) {
-            page_selectors[pos];
+
+            shop_sets['cart_location'] = page_selectors[pos];
+            $('input[name="cart_dom"]').val(shop_sets['cart_location']);
+
             $('.layout_next').attr('cart-next', pos * 1 + 1)
             $('.layout_previous').attr('cart-prev', pos)
             console.log('returning: ' + page_selectors[pos])
@@ -1125,8 +1125,12 @@
     function prevElement(pos) {
         console.log(pos);
         if ($(page_selectors[pos]).length != 0 && pos >= 0 && pos <= page_selectors.length) {
+            shop_sets['cart_location'] = nextElement($(page_selectors[0]));
+            $('input[name="cart_dom"]').val(shop_sets['cart_location']);
+
             $('.layout_previous').attr('cart-prev', pos - 1)
             $('.layout_next').attr('cart-next', pos)
+
             console.log('returning: ' + page_selectors[pos])
 
             return page_selectors[pos];
