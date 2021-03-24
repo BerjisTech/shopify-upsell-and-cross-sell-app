@@ -1108,12 +1108,15 @@
     function nextElement(pos) {
         console.log(pos);
         let okElem = 'form';
-        if ($(page_selectors[pos]).length != 0 && pos <= page_selectors.length) {
+        if ($(page_selectors[pos]).length != 0 && pos >= 0 && pos <= page_selectors.length) {
             okElem = page_selectors[pos];
             $('.layout_next').attr('cart-next', pos * 1 + 1)
             $('.layout_previous').attr('cart-prev', pos)
         } else {
-            nextElement(pos * 1 + 1)
+            if (pos >= 0 && pos <= page_selectors.length)
+                nextElement(pos * 1 + 1)
+            else
+                nextElement(0)
         }
         return okElem;
     }
@@ -1121,12 +1124,15 @@
     function prevElement(pos) {
         console.log(pos);
         let okElem = 'form';
-        if ($(page_selectors[pos]).length != 0 && pos >= 0) {
+        if ($(page_selectors[pos]).length != 0 && pos >= 0 && pos <= page_selectors.length) {
             okElem = page_selectors[pos];
             $('.layout_previous').attr('cart-prev', pos - 1)
             $('.layout_next').attr('cart-next', pos)
         } else {
-            nextElement(pos - 1)
+            if (pos >= 0 && pos <= page_selectors.length)
+                prevElement(pos - 1)
+            else
+                prevElement(page_selectors.length)
         }
         return okElem;
     }
