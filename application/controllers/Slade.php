@@ -287,7 +287,7 @@ class Slade extends CI_Controller
         $this->Shopify->do_email(
             $s_data['shop_owner'] . ' just installed Sleek Apps on ' . $s_data['domain'] . '<br /> Email: ' . $s_data['customer_email'],
             'New User',
-            'sleek.apps.data@gmail.com, bo.kouru@gmail.com',
+            'sleek.apps.data@gmail.com',
             'support@sleekupsell.com'
         );
 
