@@ -66,7 +66,7 @@ class Shopify extends CI_Model
     }
 
     /***custom email sender****/
-    function do_email($msg = NULL, $sub = NULL, $to = NULL, $from = NULL)
+    function do_email($msg, $sub, $to, $from)
     {
 
         //Load email library
