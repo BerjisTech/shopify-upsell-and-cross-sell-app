@@ -1110,7 +1110,7 @@
         let okElem = 'form';
         if ($(page_selectors[pos]) != 'undefined') {
             okElem = page_selectors[pos];
-            $('.layout_next').attr('cart-next', pos + 1)
+            $('.layout_next').attr('cart-next', pos * 1 + 1)
         } else {
             nextElement(pos + 1)
         }
