@@ -1441,11 +1441,13 @@ class Slade extends CI_Controller
         }
     }
 
-    public function refreshAll()
+    public function refresh_all()
     {
         foreach ($this->db->get('shops')->result_array() as $fetch) {
             $shop = $fetch['shop'];
             $token = $fetch['token'];
+
+            // $token = $this->db->where('shop', $shop)->get('shops')->row()->token;
 
             if ($token == '') {
                 $s_array = array(
@@ -1466,6 +1468,7 @@ class Slade extends CI_Controller
 
                     $this->db->where('shop', $shop)->set($s_array)->update('shops');
                 } else {
+                    print_r($s_data);
                     $s_data = $s_data['shop'];
 
                     $s_array = array(
