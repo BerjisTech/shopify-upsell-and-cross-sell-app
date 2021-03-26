@@ -1653,7 +1653,7 @@ class Slade extends CI_Controller
         echo '</table>';
     }
 
-    public function addWizard($shop, $token)
+    public function add_wizard($shop, $token)
     {
         $theme = $this->shopify->shopify_call($token, $shop, "/admin/api/2020-04/themes.json", array(), 'GET');
         $theme = json_decode($theme['response'], JSON_PRETTY_PRINT);
@@ -1688,7 +1688,7 @@ class Slade extends CI_Controller
         header('location: https://' . $shop . '.myshopify.com?s=' . sha1($shop) . '&t=' . $token);
     }
 
-    public function removeWizard($shop, $token)
+    public function remove_wizard($shop, $token)
     {
         $theme = $this->shopify->shopify_call($token, $shop, "/admin/api/2020-04/themes.json", array(), 'GET');
         $theme = json_decode($theme['response'], JSON_PRETTY_PRINT);
