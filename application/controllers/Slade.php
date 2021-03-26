@@ -1681,6 +1681,10 @@ class Slade extends CI_Controller
                     $asset = json_decode($asset['response'], JSON_PRETTY_PRINT);
 
                     echo print_r($asset);
+
+                    if (array_key_exists('errors', $asset)) {
+                        echo 'It looks like our update requires some extra permission to add the setup wizard to your store. Kindly reinstall the app to update the permissions';
+                    }
                 }
             }
         }
