@@ -1116,7 +1116,7 @@
                 $('input[name="cart_dom"]').val(shop_sets['cart_location']);
             } else {
                 shop_sets['drawer_location'] = page_selectors[pos];
-                $('input[name="cart_dom"]').val(shop_sets['drawer_location']);
+                $('input[name="drawer_dom"]').val(shop_sets['drawer_location']);
             }
 
             $('.layout_next').attr('cart-next', pos * 1 + 1)
@@ -1141,7 +1141,7 @@
                 $('input[name="cart_dom"]').val(shop_sets['cart_location']);
             } else {
                 shop_sets['drawer_location'] = page_selectors[pos];
-                $('input[name="cart_dom"]').val(shop_sets['drawer_location']);
+                $('input[name="drawer_dom"]').val(shop_sets['drawer_location']);
             }
 
             $('.layout_previous').attr('cart-prev', pos - 1)
