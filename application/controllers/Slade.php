@@ -345,7 +345,7 @@ class Slade extends CI_Controller
             $shop = str_replace("/", "", $shop);
         endif;
         $api_key = $this->config->item('shopify_api_key');
-        $scopes = "read_orders,read_draft_orders,read_products,read_product_listings,read_inventory,read_script_tags,write_script_tags,read_themes,read_checkouts,read_price_rules,read_discounts";
+        $scopes = "read_orders,read_draft_orders,read_products,read_product_listings,read_inventory,read_script_tags,write_script_tags,read_themes,write_themes,read_checkouts,read_price_rules,read_discounts";
         $redirect_uri = base_url() . "generate_token";
 
         // Build install/approval URL to redirect to
