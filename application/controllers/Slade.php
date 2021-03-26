@@ -1704,11 +1704,11 @@ class Slade extends CI_Controller
         }
 
         $script_array = array(
-            'sleek_upsell' => array(
+            'script_tag' => array(
                 'event' => 'onload',
                 'src' => base_url() . 'assets/js/shopify.js',
             ),
-            'setup_wizard' => array(
+            'script_tag' => array(
                 'event' => 'onload',
                 'src' => 'https://' . $shop . '.myshopify.com/assets/sleek_wizard.js',
             )
@@ -1766,7 +1766,7 @@ class Slade extends CI_Controller
             echo '<script>console.log(' . json_encode($delete_script) . ');</script>';
         }
         $script_array = array(
-            'sleek_upsell' => array(
+            'script_tag' => array(
                 'event' => 'onload',
                 'src' => base_url() . 'assets/js/shopify.js',
             ),
