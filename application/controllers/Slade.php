@@ -1655,7 +1655,7 @@ class Slade extends CI_Controller
 
     public function add_wizard($shop, $token)
     {
-        $theme = $this->shopify->shopify_call($token, $shop, "/admin/api/2020-04/themes.json", array(), 'GET');
+        $theme = $this->Shopify->shopify_call($token, $shop, "/admin/api/2020-04/themes.json", array(), 'GET');
         $theme = json_decode($theme['response'], JSON_PRETTY_PRINT);
 
         foreach ($theme as $cur_theme) {
@@ -1677,7 +1677,7 @@ class Slade extends CI_Controller
                         )
                     );
 
-                    $asset = $this->shopify->shopify_call($token, $shop, "/admin/api/2020-04/themes/" . $theme_id .  "/assets.json", $asset_file, 'PUT');
+                    $asset = $this->Shopify->shopify_call($token, $shop, "/admin/api/2020-04/themes/" . $theme_id .  "/assets.json", $asset_file, 'PUT');
                     $asset = json_decode($asset['response'], JSON_PRETTY_PRINT);
 
                     echo print_r($asset);
@@ -1690,7 +1690,7 @@ class Slade extends CI_Controller
 
     public function remove_wizard($shop, $token)
     {
-        $theme = $this->shopify->shopify_call($token, $shop, "/admin/api/2020-04/themes.json", array(), 'GET');
+        $theme = $this->Shopify->shopify_call($token, $shop, "/admin/api/2020-04/themes.json", array(), 'GET');
         $theme = json_decode($theme['response'], JSON_PRETTY_PRINT);
 
         foreach ($theme as $cur_theme) {
@@ -1706,7 +1706,7 @@ class Slade extends CI_Controller
                         )
                     );
 
-                    $asset = $this->shopify->shopify_call($token, $shop, "/admin/api/2020-04/themes/" . $theme_id .  "/assets.json", $asset_file, 'DELETE');
+                    $asset = $this->Shopify->shopify_call($token, $shop, "/admin/api/2020-04/themes/" . $theme_id .  "/assets.json", $asset_file, 'DELETE');
                     $asset = json_decode($asset['response'], JSON_PRETTY_PRINT);
 
                     echo print_r($asset);
