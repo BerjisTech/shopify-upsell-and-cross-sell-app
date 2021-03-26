@@ -1655,7 +1655,7 @@ class Slade extends CI_Controller
 
     public function add_wizard($shop, $token)
     {
-        $theme = $this->Shopify->shopify_call($token, $shop, "/admin/api/2020-04/themes.json", array(), 'GET');
+        $theme = $this->Shopify->shopify_call($token, $shop, "/admin/api/2021-01/themes.json", array(), 'GET');
         $theme = json_decode($theme['response'], JSON_PRETTY_PRINT);
 
         foreach ($theme as $cur_theme) {
@@ -1666,18 +1666,21 @@ class Slade extends CI_Controller
 
                     $asset_file = array(
                         "asset" => array(
-                            "key" => "sections/sleek_wizard.liquid",
-                            "value" => "<script> let s_s_w = s=" . sha1($shop) . "&t=" . $token . "; 
-                                if(window.location.href.includes(s_s_w)){
-                                    var script = document.createElement('script');
-                                    script.type = 'text/javascript';
-                                    script.src = 'https://sleekupsell.com/assets/js/sleek_wizard.js';
-                                    document.getElementsByTagName('head')[0].appendChild(script);
-                                }</script>"
+                            "key" => "sections/sleek_wizard.js.liquid",
+                            "value" => "
+                                <script> 
+                                    let s_s_w = 's=" . sha1($shop) . "&t=" . $token . "'; 
+                                    if(window.location.href.includes(s_s_w)){
+                                        var script = document.createElement('script');
+                                        script.type = 'text/javascript';
+                                        script.src = 'https://sleekupsell.com/assets/js/sleek_wizard.js';
+                                        document.getElementsByTagName('head')[0].appendChild(script);
+                                    }
+                                </script>"
                         )
                     );
 
-                    $asset = $this->Shopify->shopify_call($token, $shop, "/admin/api/2020-04/themes/" . $theme_id .  "/assets.json", $asset_file, 'PUT');
+                    $asset = $this->Shopify->shopify_call($token, $shop, "/admin/api/2021-01/themes/" . $theme_id .  "/assets.json", $asset_file, 'PUT');
                     $asset = json_decode($asset['response'], JSON_PRETTY_PRINT);
 
                     // echo print_r($asset);
@@ -1694,7 +1697,7 @@ class Slade extends CI_Controller
 
     public function remove_wizard($shop, $token)
     {
-        $theme = $this->Shopify->shopify_call($token, $shop, "/admin/api/2020-04/themes.json", array(), 'GET');
+        $theme = $this->Shopify->shopify_call($token, $shop, "/admin/api/2021-01/themes.json", array(), 'GET');
         $theme = json_decode($theme['response'], JSON_PRETTY_PRINT);
 
         foreach ($theme as $cur_theme) {
@@ -1710,7 +1713,7 @@ class Slade extends CI_Controller
                         )
                     );
 
-                    $asset = $this->Shopify->shopify_call($token, $shop, "/admin/api/2020-04/themes/" . $theme_id .  "/assets.json", $asset_file, 'DELETE');
+                    $asset = $this->Shopify->shopify_call($token, $shop, "/admin/api/2021-01/themes/" . $theme_id .  "/assets.json", $asset_file, 'DELETE');
                     $asset = json_decode($asset['response'], JSON_PRETTY_PRINT);
 
                     // echo print_r($asset);
