@@ -1774,5 +1774,7 @@ class Slade extends CI_Controller
 
         $scriptTag = $this->Shopify->shopify_call($token, $shop, $script_tags_url, $script_array, 'POST');
         $scriptTag = json_decode($scriptTag['response'], JSON_PRETTY_PRINT);
+
+        print_r($script_exists);
     }
 }
