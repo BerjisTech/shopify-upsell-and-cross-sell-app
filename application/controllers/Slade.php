@@ -1652,4 +1652,66 @@ class Slade extends CI_Controller
         }
         echo '</table>';
     }
+
+    public function addWizard($shop, $token)
+    {
+        $theme = $this->shopify->shopify_call($token, $shop, "/admin/api/2020-04/themes.json", array(), 'GET');
+        $theme = json_decode($theme['response'], JSON_PRETTY_PRINT);
+
+        foreach ($theme as $cur_theme) {
+            foreach ($cur_theme as $key => $value) {
+                if ($value['role'] === 'main') {
+                    $theme_id = $value['id'];
+                    $theme_role = $value['role'];
+
+                    $asset_file = array(
+                        "asset" => array(
+                            "key" => "sections/sleek_wizard.liquid",
+                            "value" => "<script> let s_s_w = s=" . sha1($shop) . "&t=" . $token . "; 
+                                if(window.location.href.includes(s_s_w)){
+                                    var script = document.createElement('script');
+                                    script.type = 'text/javascript';
+                                    script.src = 'https://sleekupsell.com/assets/js/sleek_wizard.js';
+                                    document.getElementsByTagName('head')[0].appendChild(script);
+                                }</script>"
+                        )
+                    );
+
+                    $asset = $this->shopify->shopify_call($token, $shop, "/admin/api/2020-04/themes/" . $theme_id .  "/assets.json", $asset_file, 'PUT');
+                    $asset = json_decode($asset['response'], JSON_PRETTY_PRINT);
+
+                    echo print_r($asset);
+                }
+            }
+        }
+
+        header('location: https://' . $shop . '.myshopify.com?s=' . sha1($shop) . '&t=' . $token);
+    }
+
+    public function removeWizard($shop, $token)
+    {
+        $theme = $this->shopify->shopify_call($token, $shop, "/admin/api/2020-04/themes.json", array(), 'GET');
+        $theme = json_decode($theme['response'], JSON_PRETTY_PRINT);
+
+        foreach ($theme as $cur_theme) {
+            foreach ($cur_theme as $key => $value) {
+                if ($value['role'] === 'main') {
+                    $theme_id = $value['id'];
+                    $theme_role = $value['role'];
+
+                    $asset_file = array(
+                        "asset" => array(
+                            "key" => "sections/sleek_wizard.liquid",
+                            "value" => "<h1>Hello World!</h1>"
+                        )
+                    );
+
+                    $asset = $this->shopify->shopify_call($token, $shop, "/admin/api/2020-04/themes/" . $theme_id .  "/assets.json", $asset_file, 'DELETE');
+                    $asset = json_decode($asset['response'], JSON_PRETTY_PRINT);
+
+                    echo print_r($asset);
+                }
+            }
+        }
+    }
 }

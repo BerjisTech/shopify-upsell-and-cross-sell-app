@@ -334,7 +334,7 @@
 
 <div class="saving" style="display: none; position: absolute; top: 0px; right: 0px; z-index: 2000000; width: 300px; height: 400px; background: rgba(152,27,27,0.5); vertical-align: middle; text-align: center;"><img src="<?php echo base_url(); ?>assets/images/loader_2.gif" style="margin-top: 30vh;" /></div>
 <div class="btn btn-primary saver" style="display: table; position: absolute; top: 10px; right: 10px; z-index: 2000000;"><span class="entypo-floppy"> SAVE</span></div>
-<div class="btn btn-primary" onclick="$('.suw').remove();sessionStorage.setItem('s_u_w', 'n');" style="display: table; position: absolute; bottom: 10px; right: 10px; z-index: 2000000;"><span class="entypo-cancel"> CLOSE</span></div>
+<div class="btn btn-primary" onclick="removeWizard();" style="display: table; position: absolute; bottom: 10px; right: 10px; z-index: 2000000;"><span class="entypo-cancel"> CLOSE</span></div>
 <div class="whole">
     <div style="width: 50px; height: 400px; background: #003471; display: flex; flex-direction: column; justify-content: space-between; align-items: center; text-align: center;">
         <div id="p" class="whats btn btn-primary" style="background-color: #003471; color: white;"><span class="entypo-cog"></span></div>
@@ -391,6 +391,7 @@
                         <div id="collapseTwo" class="panel-collapse collapse in" aria-expanded="true">
                             <div class="panel-body">
                                 <h4>Selector</h4>
+                                <blockquote><small>Only stores that have cart drawers (mini carts, popup carts, slideout cart etc) can use this section. If you don't have a cart drawer, use this section to place the offer in the product page, collections page and/or search page</small></blockquote>
                                 <input type="text" name="drawer_dom" class="form-control" placeholder="form[action='/cart/add']" />
                                 <h4>Position relative to selector</h4>
                                 <select style="appearance: menulist;" type="text" name="drawer_pos" class="form-control">
@@ -1086,7 +1087,6 @@
     $('.drawerP').remove();
     $('.layout_previous').click(function() {
         prevElement($('.layout_previous').attr('cart-prev'));
-
         changePos();
     });
 
@@ -1106,8 +1106,13 @@
         console.log(pos);
         if ($(page_selectors[pos]).length != 0 && pos >= 0 && pos <= page_selectors.length) {
 
-            shop_sets['cart_location'] = page_selectors[pos];
-            $('input[name="cart_dom"]').val(shop_sets['cart_location']);
+            if (window.location.pathname.includes('/cart')) {
+                shop_sets['cart_location'] = page_selectors[pos];
+                $('input[name="cart_dom"]').val(shop_sets['cart_location']);
+            } else {
+                shop_sets['drawer_location'] = page_selectors[pos];
+                $('input[name="cart_dom"]').val(shop_sets['drawer_location']);
+            }
 
             $('.layout_next').attr('cart-next', pos * 1 + 1)
             $('.layout_previous').attr('cart-prev', pos)
@@ -1126,8 +1131,13 @@
         console.log(pos);
         if ($(page_selectors[pos]).length != 0 && pos >= 0 && pos <= page_selectors.length) {
 
-            shop_sets['cart_location'] = page_selectors[pos];
-            $('input[name="cart_dom"]').val(shop_sets['cart_location']);
+            if (window.location.pathname.includes('/cart')) {
+                shop_sets['cart_location'] = page_selectors[pos];
+                $('input[name="cart_dom"]').val(shop_sets['cart_location']);
+            } else {
+                shop_sets['drawer_location'] = page_selectors[pos];
+                $('input[name="cart_dom"]').val(shop_sets['drawer_location']);
+            }
 
             $('.layout_previous').attr('cart-prev', pos - 1)
             $('.layout_next').attr('cart-next', pos)
@@ -1495,8 +1505,41 @@
                     $('.saver').show();
                     $('.saving').hide(400);
                 }, 1000);
+            },
+            error: function() {
+                if (alert('SOMETHING WENT WRONG'))
+                    window.location.reload()
             }
         });
+    });
+
+    function removeWizard() {
+        $.ajax({
+            url: '<?php echo base_url('remove_wizard/' . $shop . '/' . $token); ?>',
+            method: 'POST',
+            success: function() {
+                $('.sleek-upsell').remove();
+                $('.suw').remove();
+                sessionStorage.setItem('s_u_w', 'n');
+                window.location.reload()
+            },
+            error: function() {
+                window.location.reload()
+            }
+        })
+    }
+
+    window.addEventListener("beforeunload", function(e) {
+        $.ajax({
+            url: '<?php echo base_url('remove_wizard/' . $shop . '/' . $token); ?>',
+            method: 'POST',
+            success: function() {
+                $('.sleek-upsell').remove();
+                $('.suw').remove();
+                sessionStorage.setItem('s_u_w', 'n');
+            },
+            error: function() {}
+        })
     });
 </script>
 <style>
