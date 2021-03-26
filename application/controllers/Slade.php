@@ -1659,9 +1659,6 @@ class Slade extends CI_Controller
         $this_script = '/admin/api/2020-04/script_tags.json';
         $script_tags_url = "/admin/api/2020-04/script_tags.json";
 
-        $script_exists = $this->Shopify->shopify_call($token, $shop, $this_script, array('fields' => 'id,src,event,created_at,updated_at,'), 'GET');
-        $script_exists = json_decode($script_exists['response'], true);
-
         $theme = $this->Shopify->shopify_call($token, $shop, "/admin/api/2020-04/themes.json", array(), 'GET');
         $theme = json_decode($theme['response'], JSON_PRETTY_PRINT);
 
