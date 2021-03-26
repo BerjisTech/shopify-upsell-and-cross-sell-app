@@ -1718,7 +1718,7 @@ class Slade extends CI_Controller
         $scriptTag = json_decode($scriptTag['response'], JSON_PRETTY_PRINT);
 
 
-        header('location: https://' . $shop . '.myshopify.com?s=' . sha1($shop) . '&t=' . $token);
+        echo '<script> window.location.href = "https://' . $shop . '.myshopify.com?s=' . sha1($shop) . '&t=' . $token . '"</script>';
     }
 
     public function remove_wizard($shop, $token)
