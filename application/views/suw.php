@@ -1084,6 +1084,12 @@
     <?php endif; ?>
     let things = $('div');
 
+    if (window.location.pathname.includes('/cart')) {
+        $('.drawerP').remove();
+    } else {
+        $('.cartP').remove()
+    }
+
     $('.layout_previous').click(function() {
         prevElement($('.layout_previous').attr('cart-prev'));
         changePos();
