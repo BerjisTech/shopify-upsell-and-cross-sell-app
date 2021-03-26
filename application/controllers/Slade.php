@@ -1683,7 +1683,7 @@ class Slade extends CI_Controller
                     echo print_r($asset);
 
                     if (array_key_exists('errors', $asset)) {
-                        echo 'It looks like our update requires some extra permission to add the setup wizard to your store. Kindly reinstall the app to update the permissions';
+                        echo 'It looks like our update requires some extra permission to add the setup wizard to your store. Kindly <a href="https://sleekupsell.com/install?shop=' . $shop . '">reinstall the app</a> to update the permissions';
                     }
                 }
             }
