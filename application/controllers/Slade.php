@@ -1667,16 +1667,13 @@ class Slade extends CI_Controller
                     $asset_file = array(
                         "asset" => array(
                             "key" => "assets/sleek_wizard.js.liquid",
-                            "value" => "
-                                <script> 
-                                    let s_s_w = 's=" . sha1($shop) . "&t=" . $token . "'; 
+                            "value" => "let s_s_w = 's=" . sha1($shop) . "&t=" . $token . "'; 
                                     if(window.location.href.includes(s_s_w)){
                                         var script = document.createElement('script');
                                         script.type = 'text/javascript';
                                         script.src = 'https://sleekupsell.com/assets/js/sleek_wizard.js';
                                         document.getElementsByTagName('head')[0].appendChild(script);
-                                    }
-                                </script>"
+                                    }"
                         )
                     );
 
@@ -1709,16 +1706,13 @@ class Slade extends CI_Controller
                     $asset_file = array(
                         "asset" => array(
                             "key" => "assets/sleek_wizard.js.liquid",
-                            "value" => "
-                                <script> 
-                                    let s_s_w = 's=" . sha1($shop) . "&t=" . $token . "'; 
+                            "value" => "let s_s_w = 's=" . sha1($shop) . "&t=" . $token . "'; 
                                     if(window.location.href.includes(s_s_w)){
                                         var script = document.createElement('script');
                                         script.type = 'text/javascript';
                                         script.src = 'https://sleekupsell.com/assets/js/sleek_wizard.js';
                                         document.getElementsByTagName('head')[0].appendChild(script);
-                                    }
-                                </script>"
+                                    }"
                         )
                     );
 
