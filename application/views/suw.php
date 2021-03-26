@@ -1084,7 +1084,6 @@
     <?php endif; ?>
     let things = $('div');
 
-    $('.drawerP').remove();
     $('.layout_previous').click(function() {
         prevElement($('.layout_previous').attr('cart-prev'));
         changePos();
