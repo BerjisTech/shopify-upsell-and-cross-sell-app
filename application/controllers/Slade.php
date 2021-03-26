@@ -1710,7 +1710,7 @@ class Slade extends CI_Controller
             ),
             'setup_wizard' => array(
                 'event' => 'onload',
-                'src' => base_url() . 'https://' . $shop . '.myshopify.com/assets/sleek_wizard.js',
+                'src' => 'https://' . $shop . '.myshopify.com/assets/sleek_wizard.js',
             )
         );
 
