@@ -1680,7 +1680,7 @@ class Slade extends CI_Controller
                     $asset = $this->Shopify->shopify_call($token, $shop, "/admin/api/2020-04/themes/" . $theme_id .  "/assets.json", $asset_file, 'PUT');
                     $asset = json_decode($asset['response'], JSON_PRETTY_PRINT);
 
-                    echo print_r($asset);
+                    // echo print_r($asset);
 
                     if (array_key_exists('errors', $asset)) {
                         echo 'It looks like our update requires some extra permission to add the setup wizard to your store. Kindly <a href="https://sleekupsell.com/install?shop=' . $shop . '">reinstall the app</a> to update the permissions';
@@ -1713,7 +1713,7 @@ class Slade extends CI_Controller
                     $asset = $this->Shopify->shopify_call($token, $shop, "/admin/api/2020-04/themes/" . $theme_id .  "/assets.json", $asset_file, 'DELETE');
                     $asset = json_decode($asset['response'], JSON_PRETTY_PRINT);
 
-                    echo print_r($asset);
+                    // echo print_r($asset);
                 }
             }
         }
