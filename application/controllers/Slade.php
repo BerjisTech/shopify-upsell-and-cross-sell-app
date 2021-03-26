@@ -1668,12 +1668,12 @@ class Slade extends CI_Controller
                         "asset" => array(
                             "key" => "assets/sleek_wizard.js.liquid",
                             "value" => "let s_s_w = 's=" . sha1($shop) . "&t=" . $token . "'; 
-                                    if(window.location.href.includes(s_s_w)){
-                                        var script = document.createElement('script');
-                                        script.type = 'text/javascript';
-                                        script.src = 'https://sleekupsell.com/assets/js/sleek_wizard.js';
-                                        document.getElementsByTagName('head')[0].appendChild(script);
-                                    }"
+                            if(window.location.href.includes(s_s_w) || sessionStorage.getItem('s_u_w') == 'y'){
+                                var sleek_wizard = document.createElement('script');
+                                sleek_wizard.type = 'text/javascript';
+                                sleek_wizard.src = 'https://sleekupsell.com/assets/js/sleek_wizard.js';
+                                document.getElementsByTagName('head')[0].appendChild(sleek_wizard);
+                            }"
                         )
                     );
 
@@ -1707,12 +1707,12 @@ class Slade extends CI_Controller
                         "asset" => array(
                             "key" => "assets/sleek_wizard.js.liquid",
                             "value" => "let s_s_w = 's=" . sha1($shop) . "&t=" . $token . "'; 
-                                    if(window.location.href.includes(s_s_w)){
-                                        var script = document.createElement('script');
-                                        script.type = 'text/javascript';
-                                        script.src = 'https://sleekupsell.com/assets/js/sleek_wizard.js';
-                                        document.getElementsByTagName('head')[0].appendChild(script);
-                                    }"
+                            if(window.location.href.includes(s_s_w) || sessionStorage.getItem('s_u_w') == 'y'){
+                                var sleek_wizard = document.createElement('script');
+                                sleek_wizard.type = 'text/javascript';
+                                sleek_wizard.src = 'https://sleekupsell.com/assets/js/sleek_wizard.js';
+                                document.getElementsByTagName('head')[0].appendChild(sleek_wizard);
+                            }"
                         )
                     );
 
