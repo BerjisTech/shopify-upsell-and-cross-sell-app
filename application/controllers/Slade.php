@@ -1656,48 +1656,12 @@ class Slade extends CI_Controller
     public function add_wizard($shop, $token)
     {
         // SCRIPT TAGS
-        $this_script = '/admin/api/2020-04/script_tags.json';
         $script_tags_url = "/admin/api/2020-04/script_tags.json";
-
-        $theme = $this->Shopify->shopify_call($token, $shop, "/admin/api/2020-04/themes.json", array(), 'GET');
-        $theme = json_decode($theme['response'], JSON_PRETTY_PRINT);
-
-        foreach ($theme as $cur_theme) {
-            foreach ($cur_theme as $key => $value) {
-                if ($value['role'] === 'main') {
-                    $theme_id = $value['id'];
-                    $theme_role = $value['role'];
-
-                    $asset_file = array(
-                        "asset" => array(
-                            "key" => "assets/sleek_wizard.js",
-                            "value" => "let s_s_w = 's=" . sha1($shop) . "&t=" . $token . "'; 
-                            if(window.location.href.includes(s_s_w) || sessionStorage.getItem('s_u_w') == 'y'){
-                                var sleek_wizard = document.createElement('script');
-                                sleek_wizard.type = 'text/javascript';
-                                sleek_wizard.src = 'https://sleekupsell.com/assets/js/sleek_wizard.js';
-                                document.getElementsByTagName('head')[0].appendChild(sleek_wizard);
-                            }"
-                        )
-                    );
-
-                    $asset = $this->Shopify->shopify_call($token, $shop, "/admin/api/2020-04/themes/" . $theme_id .  "/assets.json", $asset_file, 'PUT');
-                    $asset = json_decode($asset['response'], JSON_PRETTY_PRINT);
-
-                    // echo print_r($asset);
-
-                    if (array_key_exists('errors', $asset)) {
-                        echo 'It looks like our update requires some extra permission to add the setup wizard to your store. Kindly <a href="https://sleekupsell.com/install?shop=' . $shop . '">reinstall the app</a> to update the permissions';
-                    }
-                }
-            }
-        }
-
 
         $script_array = array(
             'script_tag' => array(
                 'event' => 'onload',
-                'src' => '<script type="text/javascript" src="{{ \'sleek_wizard.js\' | asset_url }}" defer="defer"></script>',
+                'src' => '<script type="text/javascript" src="https://sleekupsell.com/assets/js/sleek_wizard.js" defer="defer"></script>',
             )
         );
 
@@ -1716,36 +1680,6 @@ class Slade extends CI_Controller
 
         $script_exists = $this->Shopify->shopify_call($token, $shop, $this_script, array('fields' => 'id,src,event,created_at,updated_at,'), 'GET');
         $script_exists = json_decode($script_exists['response'], true);
-
-        $theme = $this->Shopify->shopify_call($token, $shop, "/admin/api/2020-04/themes.json", array(), 'GET');
-        $theme = json_decode($theme['response'], JSON_PRETTY_PRINT);
-
-        foreach ($theme as $cur_theme) {
-            foreach ($cur_theme as $key => $value) {
-                if ($value['role'] === 'main') {
-                    $theme_id = $value['id'];
-                    $theme_role = $value['role'];
-
-                    $asset_file = array(
-                        "asset" => array(
-                            "key" => "assets/sleek_wizard.js",
-                            "value" => "let s_s_w = 's=" . sha1($shop) . "&t=" . $token . "'; 
-                            if(window.location.href.includes(s_s_w) || sessionStorage.getItem('s_u_w') == 'y'){
-                                var sleek_wizard = document.createElement('script');
-                                sleek_wizard.type = 'text/javascript';
-                                sleek_wizard.src = 'https://sleekupsell.com/assets/js/sleek_wizard.js';
-                                document.getElementsByTagName('head')[0].appendChild(sleek_wizard);
-                            }"
-                        )
-                    );
-
-                    $asset = $this->Shopify->shopify_call($token, $shop, "/admin/api/2020-04/themes/" . $theme_id .  "/assets.json", $asset_file, 'DELETE');
-                    $asset = json_decode($asset['response'], JSON_PRETTY_PRINT);
-
-                    // echo print_r($asset);
-                }
-            }
-        }
 
         foreach ($script_exists['script_tags'] as $key => $fetch) {
             $delete_script = $this->Shopify->shopify_call($token, $shop, '/admin/api/2020-04/script_tags/' . $fetch['id'] . '.json', array('fields' => 'id,src,event,created_at,updated_at,'), 'DELETE');

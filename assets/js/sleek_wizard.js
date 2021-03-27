@@ -1,10 +1,23 @@
-let script = document.createElement('script');
-script.type = "text/javascript";
-script.src = "https://sleekupsell.com/assets/js/jquery-1.11.3.min.js";
-document.getElementsByTagName('head')[0].appendChild(script);
-script.onload = function () {
-    createSUW();
-};
+function g_s_s_w(g_url) {
+    let xmlHttp = new XMLHttpRequest();
+    xmlHttp.open("GET", g_url, false); // false for synchronous request
+    xmlHttp.send(null);
+    return xmlHttp.responseText;
+}
+
+let s_s_w = g_s_s_w('https://sleekupsell.com/s_s_w/' + Shopify.shop);
+
+if (window.location.href.includes(s_s_w) || sessionStorage.getItem('s_u_w') == 'y') {
+    let script = document.createElement('script');
+    script.type = "text/javascript";
+    script.src = "https://sleekupsell.com/assets/js/jquery-1.11.3.min.js";
+    document.getElementsByTagName('head')[0].appendChild(script);
+    script.onload = function () {
+        createSUW();
+    };
+}
+
+
 
 function createSUW() {
     $('body').prepend('<style>.suw{display: table; width: 300px; height: 500px; background: #ffffff; position: fixed; bottom: 0px; left: 0px; z-index: 3000000;}.suw_head, .suw_footer{display: table; width: 100%; height: 50px !important; background: #981B1B !important; color: #ffffff;}.suw_body{overflow-Y: auto; display: table; width: 100%; height: 400px;}.suw_head:before{content: "SETUP WIZARD"; display: table; position: absolute; top: 10px; left: 10px; z-index: 2000000; color: #FFFFFF; font-size: 12px;}.suw_head{cursor:move;}</style>');
