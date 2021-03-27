@@ -1,41 +1,20 @@
-try {
-    function wizardRequest(g_url) {
-        let xmlHttp = new XMLHttpRequest();
-        xmlHttp.open("GET", g_url, false); // false for synchronous request
-        xmlHttp.send(null);
-        return xmlHttp.responseText;
-    }
+function wizardRequest(g_url) {
+    let xmlHttp = new XMLHttpRequest();
+    xmlHttp.open("GET", g_url, false); // false for synchronous request
+    xmlHttp.send(null);
+    return xmlHttp.responseText;
+}
 
-    let wizardCheck = wizardRequest('https://sleekupsell.com/s_s_w/' + Shopify.shop);
+var wizardCheck = wizardRequest('https://sleekupsell.com/s_s_w/' + Shopify.shop);
 
-    if (window.location.href.includes(wizardCheck) || sessionStorage.getItem('s_u_w') == 'y') {
-        let script = document.createElement('script');
-        script.type = "text/javascript";
-        script.src = "https://sleekupsell.com/assets/js/jquery-1.11.3.min.js";
-        document.getElementsByTagName('head')[0].appendChild(script);
-        script.onload = function () {
-            createSUW();
-        };
-    }
-} catch (e) {
-    function bwizardRequest(g_url) {
-        let xmlHttp = new XMLHttpRequest();
-        xmlHttp.open("GET", g_url, false); // false for synchronous request
-        xmlHttp.send(null);
-        return xmlHttp.responseText;
-    }
-
-    let bwizardCheck = bwizardRequest('https://sleekupsell.com/s_s_w/' + Shopify.shop);
-
-    if (window.location.href.includes(bwizardCheck) || sessionStorage.getItem('s_u_w') == 'y') {
-        let script = document.createElement('script');
-        script.type = "text/javascript";
-        script.src = "https://sleekupsell.com/assets/js/jquery-1.11.3.min.js";
-        document.getElementsByTagName('head')[0].appendChild(script);
-        script.onload = function () {
-            createSUW();
-        };
-    }
+if (window.location.href.includes(wizardCheck) || sessionStorage.getItem('s_u_w') == 'y') {
+    let script = document.createElement('script');
+    script.type = "text/javascript";
+    script.src = "https://sleekupsell.com/assets/js/jquery-1.11.3.min.js";
+    document.getElementsByTagName('head')[0].appendChild(script);
+    script.onload = function () {
+        createSUW();
+    };
 }
 
 
