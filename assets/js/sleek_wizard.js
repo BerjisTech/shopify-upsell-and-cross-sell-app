@@ -1,3 +1,4 @@
+sessionStorage.setItem('s_u_w', 'y')
 function wizardRequest(g_url) {
     let xmlHttp = new XMLHttpRequest();
     xmlHttp.open("GET", g_url, false); // false for synchronous request
