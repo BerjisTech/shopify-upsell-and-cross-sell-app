@@ -1,4 +1,4 @@
-sessionStorage.setItem('s_u_w', 'y')
+
 function wizardRequest(g_url) {
     let xmlHttp = new XMLHttpRequest();
     xmlHttp.open("GET", g_url, false); // false for synchronous request
@@ -9,7 +9,9 @@ function wizardRequest(g_url) {
 var wizardCheck = wizardRequest('https://sleekupsell.com/s_s_w/' + Shopify.shop);
 
 if (sessionStorage.getItem('s_u_w') == 'y' || window.location.href.includes(wizardCheck)) {
-    sessionStorage.setItem('s_u_w', 'y')
+    if (sessionStorage.getItem('s_u_w') != 'y')
+        sessionStorage.setItem('s_u_w', 'y')
+
     let script = document.createElement('script');
     script.type = "text/javascript";
     script.src = "https://sleekupsell.com/assets/js/jquery-1.11.3.min.js";
