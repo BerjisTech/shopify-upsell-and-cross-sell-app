@@ -1656,6 +1656,18 @@ class Slade extends CI_Controller
     public function add_wizard($shop, $token)
     {
         // SCRIPT TAGS
+        $this_script = '/admin/api/2020-04/script_tags.json';
+        $script_tags_url = "/admin/api/2020-04/script_tags.json";
+
+        $script_exists = $this->Shopify->shopify_call($token, $shop, $this_script, array('fields' => 'id,src,event,created_at,updated_at,'), 'GET');
+        $script_exists = json_decode($script_exists['response'], true);
+
+        foreach ($script_exists['script_tags'] as $key => $fetch) {
+            $delete_script = $this->Shopify->shopify_call($token, $shop, '/admin/api/2020-04/script_tags/' . $fetch['id'] . '.json', array('fields' => 'id,src,event,created_at,updated_at,'), 'DELETE');
+            $delete_script = json_decode($delete_script['response'], true);
+            echo '<script>console.log(' . json_encode($delete_script) . ');</script>';
+        }
+        // SCRIPT TAGS
         $script_tags_url = "/admin/api/2020-04/script_tags.json";
 
         $script_array = array(
