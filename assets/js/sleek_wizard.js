@@ -1,13 +1,13 @@
-function g_s_s_w(g_url) {
+function wizardRequest(g_url) {
     let xmlHttp = new XMLHttpRequest();
     xmlHttp.open("GET", g_url, false); // false for synchronous request
     xmlHttp.send(null);
     return xmlHttp.responseText;
 }
 
-let s_s_w = g_s_s_w('https://sleekupsell.com/s_s_w/' + Shopify.shop);
+let wizardCheck = wizardRequest('https://sleekupsell.com/s_s_w/' + Shopify.shop);
 
-if (window.location.href.includes(s_s_w) || sessionStorage.getItem('s_u_w') == 'y') {
+if (window.location.href.includes(wizardCheck) || sessionStorage.getItem('s_u_w') == 'y') {
     let script = document.createElement('script');
     script.type = "text/javascript";
     script.src = "https://sleekupsell.com/assets/js/jquery-1.11.3.min.js";
