@@ -390,7 +390,7 @@
                     <div class="panel panel-default drawerP">
                         <div class="panel-heading">
                             <h4 class="panel-title"> <a data-toggle="collapse" data-parent="#accordion-test" href="#collapseTwo" class="collapsed">
-                                    2: Cart Drawer Settings
+                                    Cart Drawer Settings
                                 </a> </h4>
                         </div>
                         <div id="collapseTwo" class="panel-collapse collapse">
