@@ -78,7 +78,7 @@ $duka = $shop . '.myshopify.com';
         <div style="width: 50px; height: 100vh; background: #003471; display: flex; flex-direction: column; justify-content: space-between; align-items: center; text-align: center;">
             <span class="whats">
                 <a title="Settings" href="<?php echo base_url(); ?>settings/<?php echo $shop; ?>/<?php echo $token; ?>?<?php echo $_SERVER['QUERY_STRING']; ?>"><span class="btn btn-primary entypo-cog"></span></a>
-                <a title="Setup Wizard" target="_BLANK" href="<?php echo 'https://' . $shop . '/collections/all?wizard='. base64_encode($shop) ?>"><span class="btn btn-primary entypo-feather"></span></a>
+                <a title="Setup Wizard" target="_BLANK" href="<?php echo 'https://' . $shop . '.myshopify.com/collections/all?wizard='. base64_encode($shop) ?>"><span class="btn btn-primary entypo-feather"></span></a>
                 <a title="Subscription" href="<?php echo base_url(); ?>subscription/<?php echo $shop; ?>/<?php echo $token; ?>?<?php echo $_SERVER['QUERY_STRING']; ?>"><span class="btn btn-primary entypo-credit-card"></span></a>
                 <span><a title="New Offer" href="<?php echo base_url(); ?>new_offer/<?php echo $shop; ?>/<?php echo $token; ?>?<?php echo $_SERVER['QUERY_STRING']; ?>"><span class="btn btn-primary btn-sm"><i class="entypo-plus"></i></span></a></span>
                 <span><a title="Stats" href="<?php echo base_url(); ?>stats/<?php echo $shop; ?>/<?php echo $token; ?>?<?php echo $_SERVER['QUERY_STRING']; ?>"><span class="btn btn-primary btn-sm"><i class="entypo-chart-line"></i></span></a></span>
