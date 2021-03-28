@@ -336,65 +336,49 @@
 <div class="btn btn-primary saver" style="display: table; position: absolute; top: 10px; right: 10px; z-index: 2000000;"><span class="entypo-floppy"> SAVE</span></div>
 <div class="btn btn-primary" onclick="removeWizard();" style="display: table; position: absolute; bottom: 10px; right: 10px; z-index: 2000000;"><span class="entypo-cancel"> CLOSE</span></div>
 <div class="whole">
-    <div style="width: 50px; height: 400px; background: #003471; display: flex; flex-direction: column; justify-content: space-between; align-items: center; text-align: center;">
-        <div id="p" class="whats btn btn-primary" style="background-color: #003471; color: white;"><span class="entypo-cog"></span></div>
-        <div id="d" class="whats btn btn-primary"><span class="entypo-palette"></span></div>
+    <div style=" z-index: 3000000; width: 50px; height: 100vh; background: #003471; display: flex; flex-direction: column; justify-content: space-between; align-items: center; text-align: center;">
+        <div id="p" class="whats btn btn-primary" style="background-color: #003471; color: white;"><span class="entypo-leaf"></span></div>
+        <div id="d" class="whats btn btn-primary"><span class="entypo-brush"></span></div>
     </div>
-    <div style="height: 400px; overflow-y: auto; flex-grow: 4; padding-bottom: 0px;">
+    <div style="height: 100vh; overflow-y: auto; flex-grow: 4; padding-bottom: 0px;">
         <div class="setting_tab s_p" style="display: flex;">
-            <div style="height: 400px; background: #FAFAFA; padding: 10px;">
-                <h4>Test different layouts</h4>
-                <select style="appearance: menulist;" type="text" name="test_layout" class="form-control">
-                    <option value="card">Card</option>
-                    <option value="block">Block</option>
-                    <option value="halfBlock">Half-Block</option>
-                    <option value="flat">Flat</option>
-                    <option value="compact">Compact</option>
-                </select>
+            <div style="height: 100vh; background: #FAFAFA; padding: 10px;">
                 <h3 style="width: 100%; text-align: center;">Offer position</h3>
                 <small style="display: table; width: 100%; text-align: center;">Use this section to position your offers on the cart page and cart drawer</small>
                 <hr />
-                <div class="input-group">
-                    <span class="layout_previous input-group-addon btn btn-danger entypo-left" cart-prev="109"></span>
-                    <input type="text" class="form-control" value="Change position" disabled style="cursor: none; background: #ffffff !important; border: none !important; color: #000000 !important" />
-                    <span class="layout_next input-group-addon btn btn-danger entypo-right" cart-next="0"></span>
-                    <span class="randomizeElem input-group-addon btn btn-success entypo-shuffle"></span>
-                </div>
-                <br />
                 <div class="panel-group joined" id="accordion-test">
-                    <div class="panel panel-default cartP">
+                    <div class="panel panel-default">
                         <div class="panel-heading">
-                            <h4 class="panel-title"> <a data-toggle="collapse" data-parent="#accordion-test" href="#collapseOne" aria-expanded="true">
+                            <h4 class="panel-title"> <a data-toggle="collapse" data-parent="#accordion-test" href="#collapseOne" class="collapsed">
                                     1: Cart Page Settings
                                 </a> </h4>
                         </div>
-                        <div id="collapseOne" class="panel-collapse collapse in" aria-expanded="true">
+                        <div id="collapseOne" class="panel-collapse collapse">
                             <div class="panel-body">
                                 <h4>Selector</h4>
                                 <input type="text" name="cart_dom" class="form-control" placeholder="form[action='/cart/add']" />
                                 <h4>Position relative to selector</h4>
-                                <select style="appearance: menulist;" type="text" name="cart_pos" class="form-control">
-                                    <option value="prepend">Top Of</option>
-                                    <option value="before">Before</option>
-                                    <option value="append">Bottom Of</option>
-                                    <option value="after">After</option>
+                                <select type="text" name="cart_pos" class="form-control">
+                                    <option value="prepend">Top Of (Prepend)</option>
+                                    <option value="before">Before (insertBefore)</option>
+                                    <option value="append">Bottom Of (Append)</option>
+                                    <option value="after">After (insertAfter)</option>
                                 </select>
                             </div>
                         </div>
                     </div>
-                    <div class="panel panel-default drawerP">
+                    <div class="panel panel-default">
                         <div class="panel-heading">
-                            <h4 class="panel-title"> <a data-toggle="collapse" data-parent="#accordion-test" href="#collapseTwo" aria-expanded="true">
+                            <h4 class="panel-title"> <a data-toggle="collapse" data-parent="#accordion-test" href="#collapseTwo" class="collapsed">
                                     2: Cart Drawer Settings
                                 </a> </h4>
                         </div>
-                        <div id="collapseTwo" class="panel-collapse collapse in" aria-expanded="true">
+                        <div id="collapseTwo" class="panel-collapse collapse">
                             <div class="panel-body">
                                 <h4>Selector</h4>
-                                <blockquote><small>Only stores that have cart drawers (mini carts, popup carts, slideout cart etc) can use this section. If you don't have a cart drawer, use this section to place the offer in the product page, collections page and/or search page</small></blockquote>
                                 <input type="text" name="drawer_dom" class="form-control" placeholder="form[action='/cart/add']" />
                                 <h4>Position relative to selector</h4>
-                                <select style="appearance: menulist;" type="text" name="drawer_pos" class="form-control">
+                                <select type="text" name="drawer_pos" class="form-control">
                                     <option value="prepend">Top Of</option>
                                     <option value="before">Before</option>
                                     <option value="append">Bottom Of</option>
@@ -410,12 +394,32 @@
                         </div>
                     </div>
 
-                </div><br /><br /><br />
+                </div>
 
+            </div>
+            <div style=" display: table; height: 100vh; background: #FAFAFA; align-items: center; justify-content: center;">
+                <h1 style="width: 100%; text-align: center;">How to get the selectors</h1>
+                <hr />
+                <ul>
+                    <li>Open <a href="https://<?php echo $shop; ?>.myshopify.com" target="_BLANK">your store</a> in a new tab without closing this tab.</li>
+                    <li>Once you're on the page you'd like the offer to appear, choose a specific place you want the offer to appear</li>
+                    <li>Right click on the area</li>
+                    <li>Select "inspect"</li>
+                    <li>This will open a console. Don't worry. Everything done on this console is temporary and will not affect your store in any way</li>
+                    <li>On the console, before you scroll or hover, there'll be a highlighted section, which when you hover over, also highlights a section on your store.</li>
+                    <li>Hover around till you have the correct part highlighted</li>
+                    <li>The selected element should have attributes like class="" or id=""</li>
+                    <li>Copy the text inside the tags eg in class="class_name" copy class_name only</li>
+                    <li>Paste that in the selector area. If you copied it on the cart page, paste it on the cart selector section otherwise paste it on the cart drawer selector section</li>
+                    <li>When pasting, if you copied the selector from class="" add a . before pasting eg .class_name if you copied from class="class_name"</li>
+                    <li>if you copied the selector from class="" add a # before pasting eg #class_name if you copied from id="class_name"</li>
+                    <li>Don't hesitate to contact support if you have any problems with this.</li>
+                    <span onclick="Beacon('open');" class="btn btn-lg btn-danger btn-icon icon-right"><i class="entypo-help"></i>REQUEST HELP</span>
+                </ul>
             </div>
         </div>
         <div class="setting_tab s_d" style="display: none; background: #FFFFFF;">
-            <div class="col-sm-12" style="border-right: 1px solid #003471; margin: 0px; padding: 5px; background: #FFFFFF; height: 400px;">
+            <div class="col-sm-4" style="border-right: 1px solid #003471; margin: 0px; padding: 5px; background: #FFFFFF; height: 100vh;">
                 <div class="panel-group joined" id="accordion-test-2">
                     <div class="panel panel-default">
                         <div class="panel-heading">
@@ -465,7 +469,7 @@
                                 </div>
                                 <div style="display: table; width: 100%; margin-bottom: 10px;">
                                     <h4>Border Style <small>Set the border size to see border</small></h4>
-                                    <select style="appearance: menulist;" class="offer_border form-control">
+                                    <select class="offer_border form-control">
                                         <option value="none">No Border</option>
                                         <option value="solid">Standard</option>
                                         <option value="dotted">Dotted</option>
@@ -541,7 +545,7 @@
                                 </div>
                                 <div style="display: table; width: 100%; margin-bottom: 10px;">
                                     <h4>Border Style <small>Set the border size to see border</small></h4>
-                                    <select style="appearance: menulist;" class="button_border form-control">
+                                    <select class="button_border form-control">
                                         <option value="none">No Border</option>
                                         <option value="solid">Standard</option>
                                         <option value="dotted">Dotted</option>
@@ -583,7 +587,7 @@
                                 </div>
                                 <div style="display: table; width: 100%; margin-bottom: 10px;">
                                     <h4>Border Style <small>Set the border size to see border</small></h4>
-                                    <select style="appearance: menulist;" class="image_border form-control">
+                                    <select class="image_border form-control">
                                         <option value="none">No Border</option>
                                         <option value="solid">Standard</option>
                                         <option value="dotted">Dotted</option>
@@ -695,11 +699,29 @@
                             </div>
                         </div>
                     </div>
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h4 class="panel-title"> <a data-toggle="collapse" data-parent="#accordion-test-2" href="#collapseSeven-2" class="collapsed">
+                                    7: Page Override
+                                </a> </h4>
+                        </div>
+                        <div id="collapseSeven-2" class="panel-collapse collapse">
+                            <div class="panel-body">
+                                <div style="display: table; width: 100%; margin-bottom: 10px;">
+                                    <h4>Use this section to add custom CSS rules to override the offer's or your theme's default CSS without tampering with your theme files.</h4>
+                                    <div class="input-group col-xs-12" style="margin-bottom: 100px;">
+                                        <textarea class="form-control override" name="override" style="resize: vertical; min-height: 200px;"></textarea>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
 
                 </div>
             </div>
-            <div class="col-sm-8" style="display: none; margin: 0px; padding: 0px; ">
+            <div class="col-sm-8" style="margin: 0px; padding: 0px; ">
                 <div class="affix">
+                    <div class="oStyler" style="font-size: 0px; width: 0px; height: 0px;"></div>
                     <div style="vertical-align: middle; background: #FFFFFF; padding: 20px; width: 100%;">
                         <div class="sleekOffer">
 
@@ -712,12 +734,12 @@
                                         <div class="sleek-text">Need Free Shipping?</div>
                                         <div class="sleek-title">Blue silk tuxedo</div>
                                         <div class="sleek-selectors">
-                                            <select style="appearance: menulist;" class="v-select">
-                                                <option>Demo Variant</option>
-                                                <option>Demo Variant</option>
-                                                <option>Demo Variant</option>
+                                            <select class="v-select">
+                                                <option>small one very loong text here</option>
+                                                <option>large ones very loong text here</option>
+                                                <option>xl for fatty very loong text here</option>
                                             </select>
-                                            <select style="appearance: menulist;" class="q-select">
+                                            <select class="q-select">
                                                 <option>1</option>
                                                 <option>2</option>
                                                 <option>3</option>
@@ -726,8 +748,8 @@
                                     </div>
                                     <div class="sleek-card-atc">
                                         <div class="sleek-prices">
-                                            <span class="sleek-price money">KES 200</span>
-                                            <span class="sleek-compare-price money">KES 200</span>
+                                            <span class="sleek-price money">$ 200</span>
+                                            <span class="sleek-compare-price money">$ 200</span>
                                         </div>
                                         <button class="sleek-atc" type="submit" onclick="return false;">ADD TO CART</button>
                                     </div>
@@ -744,16 +766,16 @@
                                         <div class="sleek-offer">
                                             <div class="sleek-title">Blue silk tuxedo</div>
                                             <div class="sleek-prices">
-                                                <span class="sleek-price money">KES 200</span>
-                                                <span class="sleek-compare-price money">KES 200</span>
+                                                <span class="sleek-price money">$ 200</span>
+                                                <span class="sleek-compare-price money">$ 200</span>
                                             </div>
                                             <div class="sleek-selectors">
-                                                <select style="appearance: menulist;" class="v-select">
-                                                    <option>Demo Variant</option>
-                                                    <option>Demo Variant</option>
-                                                    <option>Demo Variant</option>
+                                                <select class="v-select">
+                                                    <option>small one very loong text here dfgdfsgsdfg sdf gsdf gsdf g</option>
+                                                    <option>large ones very loong text heresd fgsd fg sdfgsdf gdf gdfg</option>
+                                                    <option>xl for fatty very loong text here sdef gsdfg sdfg sdfgsdf</option>
                                                 </select>
-                                                <select style="appearance: menulist;" class="q-select">
+                                                <select class="q-select">
                                                     <option>1</option>
                                                     <option>2</option>
                                                     <option>3</option>
@@ -775,16 +797,16 @@
                                             <div class="sleek-text">Need Free Shipping?</div>
                                             <div class="sleek-title">Blue silk tuxedo</div>
                                             <div class="sleek-prices">
-                                                <span class="sleek-price money">KES 200</span>
-                                                <span class="sleek-compare-price money">KES 200</span>
+                                                <span class="sleek-price money">$ 200</span>
+                                                <span class="sleek-compare-price money">$ 200</span>
                                             </div>
                                             <div class="sleek-selectors">
-                                                <select style="appearance: menulist;" class="v-select">
-                                                    <option>Demo Variant</option>
-                                                    <option>Demo Variant</option>
-                                                    <option>Demo Variant</option>
+                                                <select class="v-select">
+                                                    <option>small one very loong text here dfgdfsgsdfg sdf gsdf gsdf g</option>
+                                                    <option>large ones very loong text heresd fgsd fg sdfgsdf gdf gdfg</option>
+                                                    <option>xl for fatty very loong text here sdef gsdfg sdfg sdfgsdf</option>
                                                 </select>
-                                                <select style="appearance: menulist;" class="q-select">
+                                                <select class="q-select">
                                                     <option>1</option>
                                                     <option>2</option>
                                                     <option>3</option>
@@ -806,17 +828,17 @@
                                         <div class="sleek-offer">
                                             <div class="sleek-title">Blue silk tuxedo</div>
                                             <div class="sleek-prices">
-                                                <span class="sleek-price money">KES 200</span>
-                                                <span class="sleek-compare-price money">KES 200</span>
+                                                <span class="sleek-price money">$ 200</span>
+                                                <span class="sleek-compare-price money">$ 200</span>
                                             </div>
                                             <div class="sleek-selectors">
-                                                <select style="appearance: menulist;" class="v-select">
-                                                    <option>Demo Variant</option>
-                                                    <option>Demo Variant</option>
-                                                    <option>Demo Variant</option>
+                                                <select class="v-select">
+                                                    <option>small one very loong text here dfgdfsgsdfg sdf gsdf gsdf g</option>
+                                                    <option>large ones very loong text heresd fgsd fg sdfgsdf gdf gdfg</option>
+                                                    <option>xl for fatty very loong text here sdef gsdfg sdfg sdfgsdf</option>
                                                 </select>
                                                 <div class="flex-select">
-                                                    <select style="appearance: menulist;" class="q-select">
+                                                    <select class="q-select">
                                                         <option>1</option>
                                                         <option>2</option>
                                                         <option>3</option>
@@ -839,16 +861,16 @@
                                             <div class="sleek-text">Need Free Shipping?</div>
                                             <div class="sleek-title">Blue silk tuxedo</div>
                                             <div class="sleek-prices">
-                                                <span class="sleek-price money">KES 200</span>
-                                                <span class="sleek-compare-price money">KES 200</span>
+                                                <span class="sleek-price money">$ 200</span>
+                                                <span class="sleek-compare-price money">$ 200</span>
                                             </div>
                                             <div class="sleek-selectors">
-                                                <select style="appearance: menulist;" class="v-select">
-                                                    <option>Demo Variant</option>
-                                                    <option>Demo Variant</option>
-                                                    <option>Demo Variant</option>
+                                                <select class="v-select">
+                                                    <option>small one very loong text here dfgdfsgsdfg sdf gsdf gsdf g</option>
+                                                    <option>large ones very loong text heresd fgsd fg sdfgsdf gdf gdfg</option>
+                                                    <option>xl for fatty very loong text here sdef gsdfg sdfg sdfgsdf</option>
                                                 </select>
-                                                <select style="appearance: menulist;" class="q-select">
+                                                <select class="q-select">
                                                     <option>1</option>
                                                     <option>2</option>
                                                     <option>3</option>
