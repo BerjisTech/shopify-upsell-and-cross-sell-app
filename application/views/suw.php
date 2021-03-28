@@ -992,12 +992,12 @@
 
     $('.randomizeElem').click(function() {
         nextElement($(page_selectors[Math.floor(Math.random() * (109 - 0 + 1)) + 0]));
-        console.log(shop_sets['cart_location']);
+        // console.log(shop_sets['cart_location']);
         changePos();
     });
 
     function nextElement(pos) {
-        console.log(pos);
+        // console.log(pos);
         if ($(page_selectors[pos]).length != 0 && pos >= 0 && pos <= page_selectors.length) {
 
             if (window.location.pathname.includes('/cart')) {
@@ -1010,7 +1010,7 @@
 
             $('.layout_next').attr('cart-next', pos * 1 + 1)
             $('.layout_previous').attr('cart-prev', pos)
-            console.log('returning: ' + page_selectors[pos])
+            // console.log('returning: ' + page_selectors[pos])
 
             return page_selectors[pos];
         } else {
@@ -1022,7 +1022,7 @@
     }
 
     function prevElement(pos) {
-        console.log(pos);
+        // console.log(pos);
         if ($(page_selectors[pos]).length != 0 && pos >= 0 && pos <= page_selectors.length) {
 
             if (window.location.pathname.includes('/cart')) {
@@ -1035,7 +1035,7 @@
 
             $('.layout_previous').attr('cart-prev', pos - 1)
             $('.layout_next').attr('cart-next', pos)
-            console.log('returning: ' + page_selectors[pos])
+            // console.log('returning: ' + page_selectors[pos])
 
             return page_selectors[pos];
         } else {
@@ -1338,7 +1338,7 @@
         shop_sets['price_size'] = $(this).val() + 'px';
     });
     $('.saver').click(function() {
-        console.log(shop_sets);
+        // console.log(shop_sets);
         $('.saver').hide();
         $('.saving').show();
         $.ajax({
@@ -1346,7 +1346,7 @@
             url: base_url + 'update_settings?<?php echo $_SERVER['QUERY_STRING']; ?>',
             data: shop_sets,
             success: function(response) {
-                console.log(response);
+                // console.log(response);
                 $('.saving').html('<span class="entypo-thumbs-up btn btn-sucess btn-lg" style="margin-top: 30vh; font-weight: bold; color: #ffffff; background: #000000;">SUCCESFULLY SAVED</span>');
                 setTimeout(function() {
                     $('.saver').show();
