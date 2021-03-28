@@ -1,4 +1,4 @@
-DirectoryIndex /public/index.php
+DirectoryIndex https://sleekupsell.com/thabase/public/index.php
 RewriteEngine on
 RewriteCond $1 !^(index\.php|images|assets|css|js|robots\.txt|favicon\.ico)
 RewriteCond %{REQUEST_FILENAME} !-f
