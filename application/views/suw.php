@@ -397,7 +397,7 @@
                 </div>
 
             </div>
-            <div style=" display: table; height: 100vh; background: #FAFAFA; align-items: center; justify-content: center;">
+            <div style=" display: none; height: 100vh; background: #FAFAFA; align-items: center; justify-content: center;">
                 <h1 style="width: 100%; text-align: center;">How to get the selectors</h1>
                 <hr />
                 <ul>
@@ -419,7 +419,7 @@
             </div>
         </div>
         <div class="setting_tab s_d" style="display: none; background: #FFFFFF;">
-            <div class="col-sm-4" style="border-right: 1px solid #003471; margin: 0px; padding: 5px; background: #FFFFFF; height: 100vh;">
+            <div class="col-sm-12" style="border-right: 1px solid #003471; margin: 0px; padding: 5px; background: #FFFFFF; height: 100vh;">
                 <div class="panel-group joined" id="accordion-test-2">
                     <div class="panel panel-default">
                         <div class="panel-heading">
@@ -719,7 +719,7 @@
 
                 </div>
             </div>
-            <div class="col-sm-8" style="margin: 0px; padding: 0px; ">
+            <div class="hidden" style="margin: 0px; padding: 0px; ">
                 <div class="affix">
                     <div class="oStyler" style="font-size: 0px; width: 0px; height: 0px;"></div>
                     <div style="vertical-align: middle; background: #FFFFFF; padding: 20px; width: 100%;">
