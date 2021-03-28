@@ -7,7 +7,6 @@ use CodeIgniter\HTTP\RequestInterface;
 use CodeIgniter\HTTP\ResponseInterface;
 use CodeIgniter\Model;
 use Psr\Log\LoggerInterface;
-use Shopify;
 
 /**
  * Class BaseController
@@ -48,7 +47,6 @@ class BaseController extends Controller
 		//--------------------------------------------------------------------
 		// E.g.: $this->session = \Config\Services::session();
 		helper('url');
-		$this->Shopify = new Shopify;
 		$this->session = \Config\Services::session();
 		$this->db = \Config\Database::connect();
 	}
