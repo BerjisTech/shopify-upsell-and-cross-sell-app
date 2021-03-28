@@ -1573,16 +1573,16 @@
         $('.suw_body').html('<img src="https://sleekupsell.com/assets/images/loader.gif" style="margin: 150px auto;"/>')
         $('.sleek-upsell').remove();
         $('.suw').remove();
-        sessionStorage.setItem('s_u_w', 'n');
+        sessionStorage.clear();
         window.location.replace('https://' + Shopify.shop + window.location.pathname.replace('?wizard=<?php echo base64_encode($shop); ?>', ''))
-        sleeak_upsell()
     }
 
     window.addEventListener("beforeunload", function(e) {
+        $('.suw_body').html('<img src="https://sleekupsell.com/assets/images/loader.gif" style="margin: 150px auto;"/>')
         $('.sleek-upsell').remove();
         $('.suw').remove();
-        sessionStorage.setItem('s_u_w', 'n');
-        sleeak_upsell()
+        sessionStorage.clear();
+        window.location.replace('https://' + Shopify.shop + window.location.pathname.replace('?wizard=<?php echo base64_encode($shop); ?>', ''))
     });
 </script>
 
