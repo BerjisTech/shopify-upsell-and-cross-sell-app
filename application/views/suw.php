@@ -365,10 +365,10 @@
                 </div>
                 <br />
                 <div class="panel-group joined" id="accordion-test">
-                    <div class="panel panel-default">
+                    <div class="panel panel-default cartP">
                         <div class="panel-heading">
                             <h4 class="panel-title"> <a data-toggle="collapse" data-parent="#accordion-test" href="#collapseOne" class="collapsed">
-                                    1: Cart Page Settings
+                                    Cart Page Settings
                                 </a> </h4>
                         </div>
                         <div id="collapseOne" class="panel-collapse collapse">
@@ -385,7 +385,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="panel panel-default">
+                    <div class="panel panel-default drawerP">
                         <div class="panel-heading">
                             <h4 class="panel-title"> <a data-toggle="collapse" data-parent="#accordion-test" href="#collapseTwo" class="collapsed">
                                     2: Cart Drawer Settings
