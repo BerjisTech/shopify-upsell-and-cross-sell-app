@@ -534,21 +534,22 @@ class Slade extends CI_Controller
         $script_exists = $this->Shopify->shopify_call($token, $shop, $this_script, array('fields' => 'id,src,event,created_at,updated_at,'), 'GET');
         $script_exists = json_decode($script_exists['response'], true);
 
-        // CREATE NEW SCRIPT TAG
-        if (count($script_exists['script_tags']) == 0) {
-            $script_array = array(
-                'sleek_upsell' => array(
-                    'event' => 'onload',
-                    'src' => base_url() . 'assets/js/shopify.js',
-                ),
-            );
-
-            $scriptTag = $this->Shopify->shopify_call($token, $shop, $script_tags_url, $script_array, 'POST');
-            $scriptTag = json_decode($scriptTag['response'], JSON_PRETTY_PRINT);
-            echo 'Automatic script tag succesfully added';
-        } else {
-            echo 'Automatic script tag already exists';
+        foreach ($script_exists['script_tags'] as $key => $fetch) {
+            $delete_script = $this->Shopify->shopify_call($token, $shop, '/admin/api/2020-04/script_tags/' . $fetch['id'] . '.json', array('fields' => 'id,src,event,created_at,updated_at,'), 'DELETE');
+            $delete_script = json_decode($delete_script['response'], true);
+            echo '<script>console.log(' . json_encode($delete_script) . ');</script>';
         }
+        $script_array = array(
+            'script_tag' => array(
+                'event' => 'onload',
+                'src' => base_url() . 'assets/js/shopify.js',
+            ),
+        );
+
+        $scriptTag = $this->Shopify->shopify_call($token, $shop, $script_tags_url, $script_array, 'POST');
+        $scriptTag = json_decode($scriptTag['response'], JSON_PRETTY_PRINT);
+
+        echo 'Automatic script tag succesfully added';
     }
 
     public function remove_tag($shop, $token)
