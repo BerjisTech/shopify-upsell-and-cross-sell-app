@@ -246,6 +246,7 @@ class Slade extends CI_Controller
                 'sleek_upsell' => array(
                     'event' => 'onload',
                     'src' => base_url() . 'assets/js/shopify.js',
+                    'display_scope' => 'all'
                 ),
             );
 
@@ -266,6 +267,7 @@ class Slade extends CI_Controller
                 'sleek_upsell' => array(
                     'event' => 'onload',
                     'src' => base_url() . 'assets/js/shopify.js',
+                    'display_scope' => 'all'
                 ),
             );
 
@@ -543,6 +545,7 @@ class Slade extends CI_Controller
             'script_tag' => array(
                 'event' => 'onload',
                 'src' => base_url() . 'assets/js/shopify.js',
+                'display_scope' => 'all'
             ),
         );
 
@@ -1673,6 +1676,7 @@ class Slade extends CI_Controller
             'script_tag' => array(
                 'event' => 'onload',
                 'src' => base_url() . 'assets/js/shopify.js',
+                'display_scope' => 'all'
             )
         );
 
@@ -1683,6 +1687,7 @@ class Slade extends CI_Controller
             'script_tag' => array(
                 'event' => 'onload',
                 'src' => base_url() . 'assets/js/sleek_wizard.js',
+                'display_scope' => 'all'
             )
         );
 
@@ -1711,6 +1716,7 @@ class Slade extends CI_Controller
             'script_tag' => array(
                 'event' => 'onload',
                 'src' => base_url() . 'assets/js/shopify.js',
+                'display_scope' => 'all'
             ),
         );
 
