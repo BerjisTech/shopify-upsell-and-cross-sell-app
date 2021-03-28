@@ -1519,6 +1519,7 @@
     });
 
     function removeWizard() {
+        $('.suw_body').html('<img src="https://sleekupsell.com/assets/images/loader.gif" style="margin: 150px auto;"/>')
         $.ajax({
             url: '<?php echo base_url('remove_wizard/' . $shop . '/' . $token); ?>',
             method: 'POST',

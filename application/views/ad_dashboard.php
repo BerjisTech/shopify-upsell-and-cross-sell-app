@@ -82,14 +82,14 @@ $duka = $shop . '.myshopify.com';
                 <a title="Subscription" href="<?php echo base_url(); ?>subscription/<?php echo $shop; ?>/<?php echo $token; ?>?<?php echo $_SERVER['QUERY_STRING']; ?>"><span class="btn btn-primary entypo-credit-card"></span></a>
                 <span><a title="New Offer" href="<?php echo base_url(); ?>new_offer/<?php echo $shop; ?>/<?php echo $token; ?>?<?php echo $_SERVER['QUERY_STRING']; ?>"><span class="btn btn-primary btn-sm"><i class="entypo-plus"></i></span></a></span>
                 <span><a title="Stats" href="<?php echo base_url(); ?>stats/<?php echo $shop; ?>/<?php echo $token; ?>?<?php echo $_SERVER['QUERY_STRING']; ?>"><span class="btn btn-primary btn-sm"><i class="entypo-chart-line"></i></span></a></span>
-                <?php if ($shop == 'berjis-tech-ltd' || $shop == 'sleek-apps') : ?>
+                <?php if ($shop == 'berjis-tech-ltd' || $shop == 'sleek-apps' || $shop == 'sleek-upsell-demo') : ?>
                     <span><a title="Users" href="<?php echo base_url(); ?>users/<?php echo $shop; ?>/<?php echo $token; ?>?<?php echo $_SERVER['QUERY_STRING']; ?>"><i class="btn btn-primary btn-sm entypo-users"></i></a></span>
                 <?php endif; ?>
             </span>
         </div>
         <?php if ($this->db->where('shop', $shop)->get('offers')->num_rows() == 0 && $this->db->where('shop', $shop)->get('auto_collection')->num_rows() == 0) : ?>
-            <div style="height: 100vh; overflow-y: auto; flex-grow: 4; padding-top: 10px; padding-left: 10px; padding-right: 10px; padding-bottom: 0px; background: #F1F2F3;">
 
+            <div style="height: 100vh; overflow-y: auto; flex-grow: 4; padding-top: 10px; padding-left: 10px; padding-right: 10px; padding-bottom: 0px; background: #F1F2F3;">
                 <div class="row">
                     <div class="col-md-2"></div>
                     <div class="col-md-8">
@@ -100,11 +100,13 @@ $duka = $shop . '.myshopify.com';
                             </h1>
                             <hr />
                             <h3>Welcome to the world of Sleek Upsell</h3>
-                            <p style="font-size: 18px !important; color: #8797A8 !important; margin-bottom: 0px !important;">Thank you for choosing Sleek Upsell to boost your sales! the app has veerything in-built. No need for complex settings to get you started. Use the links below to create offers and adjust the visual design.</p>
+                            <p style="font-size: 18px !important; color: #8797A8 !important; margin-bottom: 0px !important;">Thank you for choosing Sleek Upsell to boost your sales! the app has everything in-built. No need for complex settings to get you started. Use the links below to create offers and adjust the visual design.</p>
 
                             <p style="font-size: 18px !important; color: #8797A8 !important; margin-bottom: 0px !important;">Need help? Be sure to drop an email and we will repsond in less than 20 minutes. Our support team thrives on customer happiness</p>
 
+
                             <iframe style="width: 90%; margin-left: 5%; height: 400px; border-radius: 10px; box-shadow: 0px 0px 10px rgb(3 3 3 / 60%);" src="https://www.youtube.com/embed/DCygIfcKoes" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
 
                             <div style="display: flex; justify-content: space-between; align-items: center; padding: 20px 20px 20px 20px;">
                                 <a href="<?php echo base_url(); ?>new_offer/<?php echo $shop; ?>/<?php echo $token; ?>?<?php echo $_SERVER['QUERY_STRING']; ?>" class="btn btn-lg btn-primary btn-icon icon-right"><i class="entypo-plus"></i>CREATE AN OFFER</a>
@@ -112,13 +114,17 @@ $duka = $shop . '.myshopify.com';
                                 <span onclick="Beacon('open');" class="btn btn-lg btn-danger btn-icon icon-right"><i class="entypo-help"></i>SUPPORT</span>
                             </div>
                         </div>
-                        <div class="tile-stats tile-white stat-tile" style="box-shadow: 0px 0px 5px rgba(2, 2, 2, 0.2); height: auto !important; text-align: center;">
-                            <a href="<?php echo base_url(); ?>auto_collection/<?php echo $shop; ?>/<?php echo $token; ?>?<?php echo $_SERVER['QUERY_STRING']; ?>" class="btn btn-lg btn-primary btn-icon icon-right col-xs-12"><i class="entypo-plus"></i>OR ACTIVATE COLLECTION OFFERS</a>
-                        </div>
+                        <?php if ($shop_details->name == 'Premium') : ?>
+                            <div class="tile-stats tile-white stat-tile" style="box-shadow: 0px 0px 5px rgba(2, 2, 2, 0.2); height: auto !important; text-align: center;">
+                                <a href="<?php echo base_url(); ?>auto_collection/<?php echo $shop; ?>/<?php echo $token; ?>?<?php echo $_SERVER['QUERY_STRING']; ?>" class="btn btn-lg btn-primary btn-icon icon-right col-xs-12"><i class="entypo-plus"></i>OR ACTIVATE COLLECTION OFFERS</a>
+                            </div>
+                        <?php endif; ?>
+
                     </div>
                 </div>
             <?php endif; ?>
             <?php if ($this->db->where('shop', $shop)->get('offers')->num_rows() > 0 || $this->db->where('shop', $shop)->get('auto_collection')->num_rows() > 0) : ?>
+
                 <div style="height: 100vh; overflow-y: auto; flex-grow: 4; padding-top: 10px; padding-left: 10%; padding-right: 10%; padding-bottom: 0px; background: #F1F2F3;">
 
                     <script type="text/javascript">
@@ -241,6 +247,7 @@ $duka = $shop . '.myshopify.com';
                             </tr>
                         </thead>
                         <tbody style="border: none;">
+
                             <?php if ($shop_details->name == 'Premium') : ?>
                                 <?php if ($this->db->where('shop', $shop)->get('auto_collection')->num_rows() > 0) : ?>
                                     <tr>
@@ -533,7 +540,7 @@ $duka = $shop . '.myshopify.com';
                         });
                     </script>
 
-                    <div class="tile-stats tile-white stat-tile" style="display: table; width: 100%; height: auto !important; padding: 10px;margin-bottom: 40px; margin-top: 10px; box-shadow: 0px 0px 5px rgba(2, 2, 2, 0.2);">
+                    <div class="tile-stats tile-white stat-tile" style="display: table; width: 100%; height: auto !important; padding: 10px; margin-bottom: 40px; margin-top: 10px; box-shadow: 0px 0px 5px rgba(2, 2, 2, 0.2);">
                         <?php if ($do_script == 'add') : ?>
                             <span onclick="$.ajax({url: '<?php echo base_url(); ?>add_tag/<?php echo $shop . '/' . $token ?>', success: function(e){ alert(e); window.location.reload(false);}, error: function(){ Alert('There was an error removing the automatic script tag'); } })" class="pull-right btn btn-success btn-icon icon-right">Add Automatic Script Tag<em class="entypo-plus"></em></span>
                         <?php else : ?>
@@ -546,6 +553,7 @@ $duka = $shop . '.myshopify.com';
                         <?php endif; ?>
                     </div>
 
+
                     <link rel="stylesheet" href="<?php echo base_url(); ?>assets/js/datatables/datatables.css" id="style-resource-1">
                     <link rel="stylesheet" href="<?php echo base_url(); ?>assets/js/select2/select2-bootstrap.css" id="style-resource-2">
                     <link rel="stylesheet" href="<?php echo base_url(); ?>assets/js/select2/select2.css" id="style-resource-3">
@@ -556,18 +564,4 @@ $duka = $shop . '.myshopify.com';
                 <?php endif; ?>
                 </div>
             </div>
-
-            <?php
-
-            $this_script = '/admin/api/2021-01/recurring_application_charges.json';
-
-            $script_exists = $this->Shopify->shopify_call($token, $shop, $this_script, array(), 'GET');
-            $script_exists = json_decode($script_exists['response'], true);
-            // print_r($script_exists);
-
-            foreach ($script_exists['recurring_application_charges'] as $key => $fetch) :
-                echo $fetch['id'] . '=> name: ' . $fetch['name'] . '=> price: ' . $fetch['price'] . '=> status: ' . $fetch['status'] . '=> activated_on: ' . $fetch['activated_on'] . '=> cancelled_on: ' . $fetch['cancelled_on'] . '<br />';
-            endforeach;
-
-            ?><br /><br /><br />
     </div>

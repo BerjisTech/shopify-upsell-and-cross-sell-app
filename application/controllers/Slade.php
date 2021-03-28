@@ -1718,4 +1718,9 @@ class Slade extends CI_Controller
 
         print_r($script_exists);
     }
+
+    public function sha256getter($shop)
+    {
+        echo base64_encode(hash("sha256", $shop, TRUE));
+    }
 }
