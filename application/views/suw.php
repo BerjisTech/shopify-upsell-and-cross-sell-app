@@ -1406,7 +1406,7 @@
 
         applyStyles()
         $('html, body').animate({
-            scrollTop: $(".sleek-upsell").offset().top
+            scrollTop: $(".sleek-upsell").offset().top - 70
         }, 300);
     }
 
