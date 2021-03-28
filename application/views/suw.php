@@ -336,16 +336,34 @@
 <div class="btn btn-primary saver" style="display: table; position: absolute; top: 10px; right: 10px; z-index: 2000000;"><span class="entypo-floppy"> SAVE</span></div>
 <div class="btn btn-primary" onclick="removeWizard();" style="display: table; position: absolute; bottom: 10px; right: 10px; z-index: 2000000;"><span class="entypo-cancel"> CLOSE</span></div>
 <div class="whole">
-    <div style=" z-index: 3000000; width: 50px; height: 100vh; background: #003471; display: flex; flex-direction: column; justify-content: space-between; align-items: center; text-align: center;">
+    <div style=" z-index: 3000000; width: 50px; height: 400px; background: #003471; display: flex; flex-direction: column; justify-content: space-between; align-items: center; text-align: center;">
         <div id="p" class="whats btn btn-primary" style="background-color: #003471; color: white;"><span class="entypo-leaf"></span></div>
         <div id="d" class="whats btn btn-primary"><span class="entypo-brush"></span></div>
     </div>
-    <div style="height: 100vh; overflow-y: auto; flex-grow: 4; padding-bottom: 0px;">
+    <div style="height: 400px; overflow-y: auto; flex-grow: 4; padding-bottom: 0px;">
         <div class="setting_tab s_p" style="display: flex;">
-            <div style="height: 100vh; background: #FAFAFA; padding: 10px;">
+            <div style="height: 400px; background: #FAFAFA; padding: 10px;">
                 <h3 style="width: 100%; text-align: center;">Offer position</h3>
                 <small style="display: table; width: 100%; text-align: center;">Use this section to position your offers on the cart page and cart drawer</small>
                 <hr />
+                <h4>Test different layouts</h4>
+                <select style="appearance: menulist;" type="text" name="test_layout" class="form-control">
+                    <option value="card">Card</option>
+                    <option value="block">Block</option>
+                    <option value="halfBlock">Half-Block</option>
+                    <option value="flat">Flat</option>
+                    <option value="compact">Compact</option>
+                </select>
+                <h3 style="width: 100%; text-align: center;">Offer position</h3>
+                <small style="display: table; width: 100%; text-align: center;">Use this section to position your offers on the cart page and cart drawer</small>
+                <hr />
+                <div class="input-group">
+                    <span class="layout_previous input-group-addon btn btn-danger entypo-left" cart-prev="109"></span>
+                    <input type="text" class="form-control" value="Change position" disabled style="cursor: none; background: #ffffff !important; border: none !important; color: #000000 !important" />
+                    <span class="layout_next input-group-addon btn btn-danger entypo-right" cart-next="0"></span>
+                    <span class="randomizeElem input-group-addon btn btn-success entypo-shuffle"></span>
+                </div>
+                <br />
                 <div class="panel-group joined" id="accordion-test">
                     <div class="panel panel-default">
                         <div class="panel-heading">
@@ -397,7 +415,7 @@
                 </div>
 
             </div>
-            <div style=" display: none; height: 100vh; background: #FAFAFA; align-items: center; justify-content: center;">
+            <div style=" display: none; height: 400px; background: #FAFAFA; align-items: center; justify-content: center;">
                 <h1 style="width: 100%; text-align: center;">How to get the selectors</h1>
                 <hr />
                 <ul>
@@ -419,7 +437,7 @@
             </div>
         </div>
         <div class="setting_tab s_d" style="display: none; background: #FFFFFF;">
-            <div class="col-sm-12" style="border-right: 1px solid #003471; margin: 0px; padding: 5px; background: #FFFFFF; height: 100vh;">
+            <div class="col-sm-12" style="border-right: 1px solid #003471; margin: 0px; padding: 5px; background: #FFFFFF; height: 400px;">
                 <div class="panel-group joined" id="accordion-test-2">
                     <div class="panel panel-default">
                         <div class="panel-heading">
@@ -901,8 +919,7 @@
 </div>
 <script src="<?php echo base_url(); ?>assets/js/bootstrap-colorpicker.min.js" id="script-resource-14"></script>
 <script>
-
-<?php if ($this->db->where('shop', $shop)->get('settings')->num_rows() > 0) : ?>
+    <?php if ($this->db->where('shop', $shop)->get('settings')->num_rows() > 0) : ?>
         let shop_sets = <?php echo json_encode($this->db->where('shop', $shop)->get('settings')->row()); ?>;
         if (shop_sets != null) {
             $('input[name="cart_dom"]').val(shop_sets['cart_location']);
