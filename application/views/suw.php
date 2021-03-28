@@ -1570,13 +1570,14 @@
         $('.sleek-upsell').remove();
         $('.suw').remove();
         sessionStorage.setItem('s_u_w', 'n');
-        window.location.reload()
+        sleeak_upsell()
     }
 
     window.addEventListener("beforeunload", function(e) {
         $('.sleek-upsell').remove();
         $('.suw').remove();
         sessionStorage.setItem('s_u_w', 'n');
+        sleeak_upsell()
     });
 </script>
 
