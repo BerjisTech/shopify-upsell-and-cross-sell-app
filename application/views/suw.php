@@ -1405,6 +1405,9 @@
         }
 
         applyStyles()
+        $('html, body').animate({
+            scrollTop: $(".sleek-upsell").offset().top
+        }, 300);
     }
 
     function applyStyles() {
