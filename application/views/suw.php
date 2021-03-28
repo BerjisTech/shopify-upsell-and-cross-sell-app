@@ -4,6 +4,7 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@icon/entypo@1.0.0-alpha.3/entypo.min.css" id="style-resource-2">
 <script src="<?php echo base_url(); ?>assets/js/bootstrap.js" id="script-resource-3"></script>
 <script>
+    var base_url = '<?php echo base_url(); ?>'
     var page_selectors = [
         "form#cart_form",
         "form#cart-form",
