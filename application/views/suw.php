@@ -1571,6 +1571,7 @@
         $('.sleek-upsell').remove();
         $('.suw').remove();
         sessionStorage.setItem('s_u_w', 'n');
+        window.location.replace('https://' + Shopify.shop + window.location.pathname.replace('wizard=<?php echo base64_encode($shop); ?>', ''))
         sleeak_upsell()
     }
 
