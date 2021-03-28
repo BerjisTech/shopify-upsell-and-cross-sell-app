@@ -341,7 +341,7 @@
         <div id="p" class="whats btn btn-primary" style="background-color: #003471; color: white;"><span class="entypo-leaf"></span></div>
         <div id="d" class="whats btn btn-primary"><span class="entypo-brush"></span></div>
     </div>
-    <div style="height: 400px; overflow-y: auto; flex-grow: 4; padding-bottom: 0px;">
+    <div style="height: 400px; overflow-y: auto; flex-grow: 4; padding-bottom: 100px;">
         <div class="setting_tab s_p" style="display: flex;">
             <div style="height: 400px; background: #FAFAFA; padding: 10px;">
                 <h3 style="width: 100%; text-align: center;">Offer position</h3>
