@@ -68,3 +68,7 @@ function createSUW() {
     });
     $('.suw_body').load('https://sleekupsell.com/suw/' + Shopify.shop);
 }
+
+
+
+
