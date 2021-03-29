@@ -298,7 +298,7 @@ Not supports in Firefox and IE */
         "text": "",
         "atc": "",
         "close": "n",
-        "auto_add": "n"
+        "auto_add": "0"
     }];
     var products = [];
     var variants = [];
