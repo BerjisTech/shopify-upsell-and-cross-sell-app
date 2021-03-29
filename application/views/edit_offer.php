@@ -423,6 +423,9 @@ Not supports in Firefox and IE */
                                 <label><input type="checkbox" class="offer_to_checkout" value="1" /> Send user to
                                     checkout after accepting offer</label><br />
                             </div>
+                            <div style="display: table; width: 100%; margin-bottom: 10px;">
+                                <label><input type="checkbox" class="offer_auto_add" value="1" /> Automatically add this product(s) to cart if the conditions are met</label><br />
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -1029,6 +1032,14 @@ Not supports in Firefox and IE */
             $('.offer_to_checkout').prop('checked', false);
         }
 
+        if (this_offer['auto_add'] == '1') {
+            $('.offer_auto_add').prop('checked', true);
+        } else {
+            $('.offer_auto_add').prop('checked', false);
+        }
+
+        
+
         if (this_offer['status'] == 1) {
             $('.offer_status').prop('checked', true);
         } else {
@@ -1188,6 +1199,13 @@ Not supports in Firefox and IE */
             offer[0]['to_checkout'] = 'n';
         }
     });
+    $('.offer_auto_add').change(function() {
+        if (this.checked) {
+            offer[0]['auto_add'] = '1';
+        } else {
+            offer[0]['auto_add'] = '0';
+        }
+    })
     $('.offer_apply_discount').change(function() {
         if (this.checked) {
             offer[0]['discount'] = 'y';
