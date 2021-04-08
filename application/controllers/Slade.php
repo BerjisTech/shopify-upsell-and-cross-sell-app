@@ -207,6 +207,8 @@ class Slade extends CI_Controller
         $shop = str_replace(".myshopify.com", "", $_GET['shop']);
         $token = $this->db->where('shop', $shop)->get('shops')->row()->token;
 
+        $this->addtag($shop, $token);
+
         $s_data = $this->Shopify->shopify_call($token, $shop, '/admin/api/2020-04/shop.json', array(), 'GET');
         $s_data = json_decode($s_data['response'], true);
         $s_data = $s_data['shop'];
@@ -528,6 +530,34 @@ class Slade extends CI_Controller
     }
 
     public function add_tag($shop, $token)
+    {
+        // SCRIPT TAGS
+        $this_script = '/admin/api/2020-04/script_tags.json';
+        $script_tags_url = "/admin/api/2020-04/script_tags.json";
+
+        $script_exists = $this->Shopify->shopify_call($token, $shop, $this_script, array('fields' => 'id,src,event,created_at,updated_at,'), 'GET');
+        $script_exists = json_decode($script_exists['response'], true);
+
+        foreach ($script_exists['script_tags'] as $key => $fetch) {
+            $delete_script = $this->Shopify->shopify_call($token, $shop, '/admin/api/2020-04/script_tags/' . $fetch['id'] . '.json', array('fields' => 'id,src,event,created_at,updated_at,'), 'DELETE');
+            $delete_script = json_decode($delete_script['response'], true);
+            echo '<script>console.log(' . json_encode($delete_script) . ');</script>';
+        }
+        $script_array = array(
+            'script_tag' => array(
+                'event' => 'onload',
+                'src' => base_url() . 'assets/js/shopify.js',
+                'display_scope' => 'all'
+            ),
+        );
+
+        $scriptTag = $this->Shopify->shopify_call($token, $shop, $script_tags_url, $script_array, 'POST');
+        $scriptTag = json_decode($scriptTag['response'], JSON_PRETTY_PRINT);
+
+        echo 'Automatic script tag succesfully added';
+    }
+
+    private function addtag($shop, $token)
     {
         // SCRIPT TAGS
         $this_script = '/admin/api/2020-04/script_tags.json';
