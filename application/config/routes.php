@@ -50,7 +50,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 |		my-controller/my-method	-> my_controller/my_method
 */
 $default_controller = "slade";
-$controller_exceptions = array('welcome');
+$controller_exceptions = array('welcome','fr','cn','it','in','ar','ru','de');
 
 $route['default_controller'] = $default_controller;
 $route["^((?!\b".implode('\b|\b', $controller_exceptions)."\b).*)$"] = $default_controller.'/$1';
