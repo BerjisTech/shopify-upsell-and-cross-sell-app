@@ -232,7 +232,7 @@
                             <a class="nav-link" href="#pricing">Pricing</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" onclick="Beacon('open');" href="#">Help</a>
+                            <a class="nav-link" href="mailto:support@sleekupsell.com">Help</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="https://sleekupsell.com/news">News</a>
