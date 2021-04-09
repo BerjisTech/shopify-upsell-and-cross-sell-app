@@ -334,9 +334,9 @@
 
 
 <div class="saving" style="display: none; position: absolute; top: 0px; right: 0px; z-index: 2000000; width: 300px; height: 400px; background: rgba(152,27,27,0.5); vertical-align: middle; text-align: center;"><img src="<?php echo base_url(); ?>assets/images/loader_2.gif" style="margin-top: 30vh;" /></div>
-<div class="dragger" style="cursor: grab; display: table; position: absolute; top: 10px; left: 10px; z-index: 2000000; color: #FFFFFF;"><span style="font-weight:700">SETUP WIZARD</span><br /><small>click to drag around</small></div>
-<div class="btn btn-primary saver" style="display: table; position: absolute; top: 10px; right: 10px; z-index: 2000000;"><span class="entypo-floppy"> SAVE</span></div>
-<div class="btn btn-primary" onclick="removeWizard();" style="display: table; position: absolute; bottom: 10px; right: 10px; z-index: 2000000;"><span class="entypo-cancel"> CLOSE</span></div>
+<div class="dragger" style="cursor: grab; display: table; position: absolute; top: 10px; left: 10px; z-index: 2000000; color: #FFFFFF;"><span style="font-weight:700">ASSISTANT DE CONFIGURATION</span><br /><small>cliquez pour faire glisser</small></div>
+<div class="btn btn-primary saver" style="display: table; position: absolute; top: 10px; right: 10px; z-index: 2000000;"><span class="entypo-floppy"> SAUVER</span></div>
+<div class="btn btn-primary" onclick="removeWizard();" style="display: table; position: absolute; bottom: 10px; right: 10px; z-index: 2000000;"><span class="entypo-cancel"> FERMER</span></div>
 <div class="whole">
     <div style=" z-index: 3000000; width: 50px; height: 400px; background: #003471; display: flex; flex-direction: column; justify-content: space-between; align-items: center; text-align: center;">
         <div id="p" class="whats btn btn-primary" style="background-color: #003471; color: white;"><span class="entypo-leaf"></span></div>
@@ -345,10 +345,10 @@
     <div style="height: 400px; overflow-y: auto; flex-grow: 4; padding-bottom: 100px;">
         <div class="setting_tab s_p" style="display: flex;">
             <div style="height: 400px; background: #FAFAFA; padding: 10px;">
-                <h3 style="width: 100%; text-align: center;">Offer position</h3>
-                <small style="display: table; width: 100%; text-align: center;">Use this section to position your offers on the cart page and cart drawer</small>
+                <h3 style="width: 100%; text-align: center;">Position de l'offre</h3>
+                <small style="display: table; width: 100%; text-align: center;">Utilisez cette section pour positionner vos offres sur la page du panier et le tiroir du panier</small>
                 <hr />
-                <h4>Test different layouts</h4>
+                <h4>Tester différentes mises en page</h4>
                 <select style="appearance: menulist;" type="text" name="test_layout" class="form-control">
                     <option value="card">Card</option>
                     <option value="block">Block</option>
@@ -356,8 +356,8 @@
                     <option value="flat">Flat</option>
                     <option value="compact">Compact</option>
                 </select>
-                <h3 style="width: 100%; text-align: center;">Offer position</h3>
-                <small style="display: table; width: 100%; text-align: center;">Use this section to position your offers on the cart page and cart drawer</small>
+                <h3 style="width: 100%; text-align: center;">Position de l'offre</h3>
+                <small style="display: table; width: 100%; text-align: center;">Utilisez cette section pour positionner vos offres sur la page du panier et le tiroir du panier</small>
                 <hr />
                 <div class="input-group">
                     <span class="layout_previous input-group-addon btn btn-danger entypo-left" cart-prev="109"></span>
@@ -370,19 +370,19 @@
                     <div class="panel panel-default cartP">
                         <div class="panel-heading">
                             <h4 class="panel-title"> <a data-toggle="collapse" data-parent="#accordion-test" href="#collapseOne" class="collapsed">
-                                    Cart Page Settings
+                                    Paramètres de la page du panier
                                 </a> </h4>
                         </div>
                         <div id="collapseOne" class="panel-collapse collapse">
                             <div class="panel-body">
-                                <h4>Selector</h4>
+                                <h4>Sélecteur</h4>
                                 <input type="text" name="cart_dom" class="form-control" placeholder="form[action='/cart/add']" />
-                                <h4>Position relative to selector</h4>
+                                <h4>Position par rapport au sélecteur</h4>
                                 <select type="text" name="cart_pos" class="form-control">
-                                    <option value="prepend">Top Of (Prepend)</option>
-                                    <option value="before">Before (insertBefore)</option>
-                                    <option value="append">Bottom Of (Append)</option>
-                                    <option value="after">After (insertAfter)</option>
+                                    <option value="prepend">Sommet de (Prepend)</option>
+                                    <option value="before">Avant que (insertBefore)</option>
+                                    <option value="append">Le fond de (Append)</option>
+                                    <option value="after">Après (insertAfter)</option>
                                 </select>
                             </div>
                         </div>
@@ -390,25 +390,25 @@
                     <div class="panel panel-default drawerP">
                         <div class="panel-heading">
                             <h4 class="panel-title"> <a data-toggle="collapse" data-parent="#accordion-test" href="#collapseTwo" class="collapsed">
-                                    Cart Drawer Settings
+                                    Paramètres du tiroir du chariot
                                 </a> </h4>
                         </div>
                         <div id="collapseTwo" class="panel-collapse collapse">
                             <div class="panel-body">
-                                <h4>Selector</h4>
+                                <h4>Sélecteur</h4>
                                 <input type="text" name="drawer_dom" class="form-control" placeholder="form[action='/cart/add']" />
-                                <h4>Position relative to selector</h4>
+                                <h4>Position par rapport au sélecteur</h4>
                                 <select type="text" name="drawer_pos" class="form-control">
-                                    <option value="prepend">Top Of</option>
-                                    <option value="before">Before</option>
-                                    <option value="append">Bottom Of</option>
-                                    <option value="after">After</option>
+                                    <option value="prepend">Sommet de (Prepend)</option>
+                                    <option value="before">Avant que (insertBefore)</option>
+                                    <option value="append">Le fond de (Append)</option>
+                                    <option value="after">Après (insertAfter)</option>
                                 </select>
                                 <hr />
                                 <label>
-                                    <input type="checkbox" name="drawer_refresh" /> Refresh the drawer without sending user to another page?
+                                    <input type="checkbox" name="drawer_refresh" /> Actualiser le tiroir sans envoyer l'utilisateur vers une autre page?
                                 </label>
-                                <h4>Add your theme's refresh code</h4>
+                                <h4>Ajoutez le code d'actualisation de votre thème</h4>
                                 <textarea style="resize: none; width: 100%; height: 150px;" class="form-control" name="refresh_code"></textarea>
                             </div>
                         </div>
@@ -417,26 +417,6 @@
                 </div>
 
             </div>
-            <div style=" display: none; height: 400px; background: #FAFAFA; align-items: center; justify-content: center;">
-                <h1 style="width: 100%; text-align: center;">How to get the selectors</h1>
-                <hr />
-                <ul>
-                    <li>Open <a href="https://<?php echo $shop; ?>.myshopify.com" target="_BLANK">your store</a> in a new tab without closing this tab.</li>
-                    <li>Once you're on the page you'd like the offer to appear, choose a specific place you want the offer to appear</li>
-                    <li>Right click on the area</li>
-                    <li>Select "inspect"</li>
-                    <li>This will open a console. Don't worry. Everything done on this console is temporary and will not affect your store in any way</li>
-                    <li>On the console, before you scroll or hover, there'll be a highlighted section, which when you hover over, also highlights a section on your store.</li>
-                    <li>Hover around till you have the correct part highlighted</li>
-                    <li>The selected element should have attributes like class="" or id=""</li>
-                    <li>Copy the text inside the tags eg in class="class_name" copy class_name only</li>
-                    <li>Paste that in the selector area. If you copied it on the cart page, paste it on the cart selector section otherwise paste it on the cart drawer selector section</li>
-                    <li>When pasting, if you copied the selector from class="" add a . before pasting eg .class_name if you copied from class="class_name"</li>
-                    <li>if you copied the selector from class="" add a # before pasting eg #class_name if you copied from id="class_name"</li>
-                    <li>Don't hesitate to contact support if you have any problems with this.</li>
-                    <a href="mailto:support@sleekupsell.com" class="btn btn-lg btn-danger btn-icon icon-right"><i class="entypo-help"></i>REQUEST HELP</a>
-                </ul>
-            </div>
         </div>
         <div class="setting_tab s_d" style="display: none; background: #FFFFFF;">
             <div class="col-sm-12" style="border-right: 1px solid #003471; margin: 0px; padding: 5px; background: #FFFFFF; height: 400px;">
@@ -444,13 +424,13 @@
                     <div class="panel panel-default">
                         <div class="panel-heading">
                             <h4 class="panel-title"> <a data-toggle="collapse" data-parent="#accordion-test-2" href="#collapseOne-2" class="collapsed">
-                                    1: General Offer Layout Settings
+                                    1: Paramètres de mise en page de l'offre générale
                                 </a> </h4>
                         </div>
                         <div id="collapseOne-2" class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div style="display: table; width: 100%; margin-bottom: 10px;">
-                                    <h4>Offer Background</h4>
+                                    <h4>Contexte de l'offre</h4>
                                     <div class="input-group">
                                         <input type="text" class="offer_bg_hex form-control" data-format="hex" />
                                         <div class="input-group-addon">
@@ -459,7 +439,7 @@
                                     </div>
                                 </div>
                                 <div style="display: table; width: 100%; margin-bottom: 10px;">
-                                    <h4>Offer Text Color</h4>
+                                    <h4>Couleur du texte de l'offre</h4>
                                     <div class="input-group">
                                         <input type="text" class="offer_color_hex form-control" data-format="hex" />
                                         <div class="input-group-addon">
@@ -468,29 +448,29 @@
                                     </div>
                                 </div>
                                 <div style="display: table; width: 100%; margin-bottom: 10px;">
-                                    <h4>Offer Text Font</h4>
+                                    <h4>Police du texte de l'offre</h4>
                                     <input type="text" class="offer_font form-control" placeholder="Choose offer font" />
                                 </div>
                                 <div style="display: table; width: 100%; margin-bottom: 10px;">
-                                    <h4>Offer Text Size</h4>
+                                    <h4>Taille du texte de l'offre</h4>
                                     <input type="range" min="8" max="50" class="offer_size form-control" value="12" />
                                 </div>
                                 <div style="display: table; width: 100%; margin-bottom: 10px;">
-                                    <h4>Space Above offer</h4>
+                                    <h4>Espace au-dessus de l'offre</h4>
                                     <input type="range" class="offer_mt form-control" min="0" max="50" value="0" />
                                 </div>
                                 <div style="display: table; width: 100%; margin-bottom: 10px;">
-                                    <h4>Space below offer</h4>
+                                    <h4>Espace en dessous de l'offre</h4>
                                     <input type="range" class="offer_mb form-control" min="0" max="50" value="0" />
                                 </div>
                                 <div style="display: table; width: 100%; margin-bottom: 10px;">
-                                    <h4>Border Radius</h4>
+                                    <h4>Rayon de la bordure</h4>
                                     <input type="range" class="offer_radius form-control" min="0" max="100" value="0" />
                                 </div>
                                 <div style="display: table; width: 100%; margin-bottom: 10px;">
-                                    <h4>Border Style <small>Set the border size to see border</small></h4>
+                                    <h4>Style de bordure <small>Définissez la taille de la bordure pour voir la bordure</small></h4>
                                     <select class="offer_border form-control">
-                                        <option value="none">No Border</option>
+                                        <option value="none">Pas de frontière</option>
                                         <option value="solid">Standard</option>
                                         <option value="dotted">Dotted</option>
                                         <option value="dashed">Dashed</option>
@@ -502,11 +482,11 @@
                                     </select>
                                 </div>
                                 <div style="display: table; width: 100%; margin-bottom: 10px;">
-                                    <h4>Border Size <small>Change border style from none to see border</small></h4>
+                                    <h4>Taille de la bordure <small>Changer le style de bordure de aucun pour voir la bordure</small></h4>
                                     <input type="range" class="offer_bs form-control" min="0" max="10" value="0" />
                                 </div>
                                 <div style="display: table; width: 100%; margin-bottom: 10px;">
-                                    <h4>Border Color</h4>
+                                    <h4>Couleur de la bordure</h4>
                                     <div class="input-group">
                                         <input type="text" class="offer_bc_hex form-control" data-format="hex" />
                                         <div class="input-group-addon">
@@ -520,13 +500,13 @@
                     <div class="panel panel-default">
                         <div class="panel-heading">
                             <h4 class="panel-title"> <a data-toggle="collapse" data-parent="#accordion-test-2" href="#collapseTwo-2" class="collapsed">
-                                    2: Offer Button
+                                    2: Bouton d'offre
                                 </a> </h4>
                         </div>
                         <div id="collapseTwo-2" class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div style="display: table; width: 100%; margin-bottom: 10px;">
-                                    <h4>Button Background</h4>
+                                    <h4>Arrière-plan du bouton</h4>
                                     <div class="input-group">
                                         <input type="text" class="button_bg_hex form-control" data-format="hex" />
                                         <div class="input-group-addon">
@@ -544,29 +524,29 @@
                                     </div>
                                 </div>
                                 <div style="display: table; width: 100%; margin-bottom: 10px;">
-                                    <h4>Offer Text Font</h4>
+                                    <h4>Police du texte du bouton</h4>
                                     <input type="text" class="button_font form-control" placeholder="Choose offer font" />
                                 </div>
                                 <div style="display: table; width: 100%; margin-bottom: 10px;">
-                                    <h4>Offer Text Size</h4>
+                                    <h4>Taille du texte du bouton</h4>
                                     <input type="range" class="button_size form-control" min="8" max="50" value="12" />
                                 </div>
                                 <div style="display: table; width: 100%; margin-bottom: 10px;">
-                                    <h4>Space Above offer</h4>
+                                    <h4>Espace au-dessus du bouton</h4>
                                     <input type="range" class="button_mt form-control" min="0" max="30" value="0" />
                                 </div>
                                 <div style="display: table; width: 100%; margin-bottom: 10px;">
-                                    <h4>Space below offer</h4>
+                                    <h4>Espace sous le bouton</h4>
                                     <input type="range" class="button_mb form-control" min="0" max="30" value="0" />
                                 </div>
                                 <div style="display: table; width: 100%; margin-bottom: 10px;">
-                                    <h4>Border Radius</h4>
+                                    <h4>Rayon de la bordure</h4>
                                     <input type="range" class="button_radius form-control" min="0" max="100" value="0" />
                                 </div>
                                 <div style="display: table; width: 100%; margin-bottom: 10px;">
-                                    <h4>Border Style <small>Set the border size to see border</small></h4>
+                                    <h4>Style de bordure <small>Définissez la taille de la bordure pour voir la bordure</small></h4>
                                     <select class="button_border form-control">
-                                        <option value="none">No Border</option>
+                                        <option value="none">Pas de frontière</option>
                                         <option value="solid">Standard</option>
                                         <option value="dotted">Dotted</option>
                                         <option value="dashed">Dashed</option>
@@ -578,11 +558,11 @@
                                     </select>
                                 </div>
                                 <div style="display: table; width: 100%; margin-bottom: 10px;">
-                                    <h4>Border Size <small>Change border style from none to see border</small></h4>
+                                    <h4>Taille de la bordure <small>Changer le style de bordure de aucun pour voir la bordure</small></h4>
                                     <input type="range" class="button_bs form-control" min="0" max="10" value="0" />
                                 </div>
                                 <div style="display: table; width: 100%; margin-bottom: 10px;">
-                                    <h4>Border Color</h4>
+                                    <h4>Couleur de la bordure</h4>
                                     <div class="input-group">
                                         <input type="text" class="button_bc_hex form-control" data-format="hex" />
                                         <div class="input-group-addon">
@@ -596,19 +576,19 @@
                     <div class="panel panel-default">
                         <div class="panel-heading">
                             <h4 class="panel-title"> <a data-toggle="collapse" data-parent="#accordion-test-2" href="#collapseThree-2" class="collapsed">
-                                    3: Image Settings
+                                    3: Paramètres d'image
                                 </a> </h4>
                         </div>
                         <div id="collapseThree-2" class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div style="display: table; width: 100%; margin-bottom: 10px;">
-                                    <h4>Border Radius</h4>
+                                    <h4>Rayon de la bordure</h4>
                                     <input type="range" class="image_radius form-control" min="0" max="100" value="0" />
                                 </div>
                                 <div style="display: table; width: 100%; margin-bottom: 10px;">
-                                    <h4>Border Style <small>Set the border size to see border</small></h4>
+                                    <h4>Style de bordure <small>Définissez la taille de la bordure pour voir la bordure</small></h4>
                                     <select class="image_border form-control">
-                                        <option value="none">No Border</option>
+                                        <option value="none">Pas de frontière</option>
                                         <option value="solid">Standard</option>
                                         <option value="dotted">Dotted</option>
                                         <option value="dashed">Dashed</option>
@@ -620,11 +600,11 @@
                                     </select>
                                 </div>
                                 <div style="display: table; width: 100%; margin-bottom: 10px;">
-                                    <h4>Border Size <small>Change border style from none to see border</small></h4>
+                                    <h4>Taille de la bordure <small>Changer le style de bordure de aucun pour voir la bordure</small></h4>
                                     <input type="range" min="0" max="30" class="image_bs form-control" value="0" />
                                 </div>
                                 <div style="display: table; width: 100%; margin-bottom: 10px;">
-                                    <h4>Border Color</h4>
+                                    <h4>Couleur de la bordure</h4>
                                     <div class="input-group">
                                         <input type="text" class="image_bc_hex form-control" data-format="hex" />
                                         <div class="input-group-addon">
@@ -638,13 +618,13 @@
                     <div class="panel panel-default">
                         <div class="panel-heading">
                             <h4 class="panel-title"> <a data-toggle="collapse" data-parent="#accordion-test-2" href="#collapseFour-2" class="collapsed">
-                                    4: Offer Text
+                                    4: Texte de l'offre
                                 </a> </h4>
                         </div>
                         <div id="collapseFour-2" class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div style="display: table; width: 100%; margin-bottom: 10px;">
-                                    <h4>Offer Text Color</h4>
+                                    <h4>Couleur du texte de l'offre</h4>
                                     <div class="input-group">
                                         <input type="text" class="text_color_hex form-control" data-format="hex" />
                                         <div class="input-group-addon">
@@ -653,11 +633,11 @@
                                     </div>
                                 </div>
                                 <div style="display: table; width: 100%; margin-bottom: 10px;">
-                                    <h4>Offer Text Font</h4>
+                                    <h4>Police du texte de l'offre</h4>
                                     <input type="text" class="text_font form-control" placeholder="Choose offer font" />
                                 </div>
                                 <div style="display: table; width: 100%; margin-bottom: 10px;">
-                                    <h4>Offer Text Size</h4>
+                                    <h4>Taille du texte de l'offre</h4>
                                     <input type="range" class="text_size form-control" min="8" max="50" value="12" />
                                 </div>
                             </div>
@@ -666,13 +646,13 @@
                     <div class="panel panel-default">
                         <div class="panel-heading">
                             <h4 class="panel-title"> <a data-toggle="collapse" data-parent="#accordion-test-2" href="#collapseFive-2" class="collapsed">
-                                    5: Product Title
+                                    5: Titre du produit
                                 </a> </h4>
                         </div>
                         <div id="collapseFive-2" class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div style="display: table; width: 100%; margin-bottom: 10px;">
-                                    <h4>Product Title Text Color</h4>
+                                    <h4>Couleur du texte du titre du produit</h4>
                                     <div class="input-group">
                                         <input type="text" class="title_color_hex form-control" data-format="hex" />
                                         <div class="input-group-addon">
@@ -681,11 +661,11 @@
                                     </div>
                                 </div>
                                 <div style="display: table; width: 100%; margin-bottom: 10px;">
-                                    <h4>Product Title Text Font</h4>
+                                    <h4>Police du texte du titre du produit</h4>
                                     <input type="text" class="title_font form-control" placeholder="Choose offer font" />
                                 </div>
                                 <div style="display: table; width: 100%; margin-bottom: 10px;">
-                                    <h4>Product Title Text Size</h4>
+                                    <h4>Taille du texte du titre du produit</h4>
                                     <input type="range" class="title_size form-control" min="8" max="50" value="12" />
                                 </div>
                             </div>
@@ -694,13 +674,13 @@
                     <div class="panel panel-default">
                         <div class="panel-heading">
                             <h4 class="panel-title"> <a data-toggle="collapse" data-parent="#accordion-test-2" href="#collapseSix-2" class="collapsed">
-                                    6: Price Settings
+                                    6: Paramètres de prix
                                 </a> </h4>
                         </div>
                         <div id="collapseSix-2" class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div style="display: table; width: 100%; margin-bottom: 10px;">
-                                    <h4>Price Text Color</h4>
+                                    <h4>Couleur du texte du prix</h4>
                                     <div class="input-group">
                                         <input type="text" class="price_color_hex form-control" data-format="hex" />
                                         <div class="input-group-addon">
@@ -709,11 +689,11 @@
                                     </div>
                                 </div>
                                 <div style="display: table; width: 100%; margin-bottom: 10px;">
-                                    <h4>Price Text Font</h4>
+                                    <h4>Police du texte de prix</h4>
                                     <input type="text" class="price_font form-control" placeholder="Choose offer font" />
                                 </div>
                                 <div style="display: table; width: 100%; margin-bottom: 10px;">
-                                    <h4>Price Text Size</h4>
+                                    <h4>Taille du texte du prix</h4>
                                     <input type="range" class="price_size form-control" min="8" max="50" value="12" />
                                 </div>
                             </div>
@@ -722,13 +702,13 @@
                     <div class="panel panel-default">
                         <div class="panel-heading">
                             <h4 class="panel-title"> <a data-toggle="collapse" data-parent="#accordion-test-2" href="#collapseSeven-2" class="collapsed">
-                                    7: Page Override
+                                    7: Remplacement de page
                                 </a> </h4>
                         </div>
                         <div id="collapseSeven-2" class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div style="display: table; width: 100%; margin-bottom: 10px;">
-                                    <h4>Use this section to add custom CSS rules to override the offer's or your theme's default CSS without tampering with your theme files.</h4>
+                                    <h4>Utilisez cette section pour ajouter des règles CSS personnalisées afin de remplacer le CSS par défaut de l'offre ou de votre thème sans altérer vos fichiers de thème.</h4>
                                     <div class="input-group col-xs-12" style="margin-bottom: 100px;">
                                         <textarea class="form-control override" name="override" style="resize: vertical; min-height: 200px;"></textarea>
                                     </div>
@@ -751,13 +731,13 @@
                                         <img src="https://cdn.shopify.com/s/files/1/0295/4815/0859/products/man-adjusts-blue-tuxedo-bowtie_925x_656f2a36-34a8-4db2-9701-c01e49e9e5c0_x190.jpg?v=1590595412" />
                                     </div>
                                     <div class="sleek-offer">
-                                        <div class="sleek-text">Need Free Shipping?</div>
+                                        <div class="sleek-text">Besoin d'une livraison gratuite?</div>
                                         <div class="sleek-title">Blue silk tuxedo</div>
                                         <div class="sleek-selectors">
                                             <select class="v-select">
-                                                <option>small one very loong text here</option>
-                                                <option>large ones very loong text here</option>
-                                                <option>xl for fatty very loong text here</option>
+                                                <option>variant 1</option>
+                                                <option>variant 2</option>
+                                                <option>variant 3</option>
                                             </select>
                                             <select class="q-select">
                                                 <option>1</option>
@@ -771,14 +751,14 @@
                                             <span class="sleek-price money">$ 200</span>
                                             <span class="sleek-compare-price money">$ 200</span>
                                         </div>
-                                        <button class="sleek-atc" type="submit" onclick="return false;">ADD TO CART</button>
+                                        <button class="sleek-atc" type="submit" onclick="return false;">AJOUTER AU PANIER</button>
                                     </div>
                                 </form>
                             </div>
 
                             <div class="hidden block sleek-upsell">
                                 <form class="sleek-form">
-                                    <div class="sleek-text">Need Free Shipping?</div>
+                                    <div class="sleek-text">Besoin d'une livraison gratuite?</div>
                                     <div class="sleek-block">
                                         <div class="sleek-image">
                                             <img src="https://cdn.shopify.com/s/files/1/0295/4815/0859/products/man-adjusts-blue-tuxedo-bowtie_925x_656f2a36-34a8-4db2-9701-c01e49e9e5c0_x190.jpg?v=1590595412" />
@@ -791,9 +771,9 @@
                                             </div>
                                             <div class="sleek-selectors">
                                                 <select class="v-select">
-                                                    <option>small one very loong text here dfgdfsgsdfg sdf gsdf gsdf g</option>
-                                                    <option>large ones very loong text heresd fgsd fg sdfgsdf gdf gdfg</option>
-                                                    <option>xl for fatty very loong text here sdef gsdfg sdfg sdfgsdf</option>
+                                                    <option>variant 1</option>
+                                                    <option>variant 2</option>
+                                                    <option>variant 3</option>
                                                 </select>
                                                 <select class="q-select">
                                                     <option>1</option>
@@ -803,7 +783,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <button class="sleek-atc" type="submit" onclick="return false;">ADD TO CART</button>
+                                    <button class="sleek-atc" type="submit" onclick="return false;">AJOUTER AU PANIER</button>
                                 </form>
                             </div>
 
@@ -814,7 +794,7 @@
                                             <img src="https://cdn.shopify.com/s/files/1/0295/4815/0859/products/man-adjusts-blue-tuxedo-bowtie_925x_656f2a36-34a8-4db2-9701-c01e49e9e5c0_x190.jpg?v=1590595412" />
                                         </div>
                                         <div class="sleek-offer">
-                                            <div class="sleek-text">Need Free Shipping?</div>
+                                            <div class="sleek-text">Besoin d'une livraison gratuite?</div>
                                             <div class="sleek-title">Blue silk tuxedo</div>
                                             <div class="sleek-prices">
                                                 <span class="sleek-price money">$ 200</span>
@@ -822,9 +802,9 @@
                                             </div>
                                             <div class="sleek-selectors">
                                                 <select class="v-select">
-                                                    <option>small one very loong text here dfgdfsgsdfg sdf gsdf gsdf g</option>
-                                                    <option>large ones very loong text heresd fgsd fg sdfgsdf gdf gdfg</option>
-                                                    <option>xl for fatty very loong text here sdef gsdfg sdfg sdfgsdf</option>
+                                                    <option>variant 1</option>
+                                                    <option>variant 2</option>
+                                                    <option>variant 3</option>
                                                 </select>
                                                 <select class="q-select">
                                                     <option>1</option>
@@ -834,13 +814,13 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <button class="sleek-atc" type="submit" onclick="return false;">ADD TO CART</button>
+                                    <button class="sleek-atc" type="submit" onclick="return false;">AJOUTER AU PANIER</button>
                                 </form>
                             </div>
 
                             <div class="hidden flat sleek-upsell">
                                 <form class="sleek-form">
-                                    <div class="sleek-text">Need Free Shipping?</div>
+                                    <div class="sleek-text">Besoin d'une livraison gratuite?</div>
                                     <div class="sleek-flat">
                                         <div class="sleek-image">
                                             <img src="https://cdn.shopify.com/s/files/1/0295/4815/0859/products/man-adjusts-blue-tuxedo-bowtie_925x_656f2a36-34a8-4db2-9701-c01e49e9e5c0_x190.jpg?v=1590595412" />
@@ -853,9 +833,9 @@
                                             </div>
                                             <div class="sleek-selectors">
                                                 <select class="v-select">
-                                                    <option>small one very loong text here dfgdfsgsdfg sdf gsdf gsdf g</option>
-                                                    <option>large ones very loong text heresd fgsd fg sdfgsdf gdf gdfg</option>
-                                                    <option>xl for fatty very loong text here sdef gsdfg sdfg sdfgsdf</option>
+                                                    <option>variant 1</option>
+                                                    <option>variant 2</option>
+                                                    <option>variant 3</option>
                                                 </select>
                                                 <div class="flex-select">
                                                     <select class="q-select">
@@ -863,7 +843,7 @@
                                                         <option>2</option>
                                                         <option>3</option>
                                                     </select>
-                                                    <button class="sleek-atc" type="submit" onclick="return false;">ADD TO CART</button>
+                                                    <button class="sleek-atc" type="submit" onclick="return false;">AJOUTER AU PANIER</button>
                                                 </div>
                                             </div>
                                         </div>
@@ -878,7 +858,7 @@
                                             <img src="https://cdn.shopify.com/s/files/1/0295/4815/0859/products/man-adjusts-blue-tuxedo-bowtie_925x_656f2a36-34a8-4db2-9701-c01e49e9e5c0_x190.jpg?v=1590595412" />
                                         </div>
                                         <div class="sleek-offer">
-                                            <div class="sleek-text">Need Free Shipping?</div>
+                                            <div class="sleek-text">Besoin d'une livraison gratuite?</div>
                                             <div class="sleek-title">Blue silk tuxedo</div>
                                             <div class="sleek-prices">
                                                 <span class="sleek-price money">$ 200</span>
@@ -886,9 +866,9 @@
                                             </div>
                                             <div class="sleek-selectors">
                                                 <select class="v-select">
-                                                    <option>small one very loong text here dfgdfsgsdfg sdf gsdf gsdf g</option>
-                                                    <option>large ones very loong text heresd fgsd fg sdfgsdf gdf gdfg</option>
-                                                    <option>xl for fatty very loong text here sdef gsdfg sdfg sdfgsdf</option>
+                                                    <option>variant 1</option>
+                                                    <option>variant 2</option>
+                                                    <option>variant 3</option>
                                                 </select>
                                                 <select class="q-select">
                                                     <option>1</option>
@@ -896,7 +876,7 @@
                                                     <option>3</option>
                                                 </select>
                                             </div>
-                                            <button class="sleek-atc" type="submit" onclick="return false;">ADD TO CART</button>
+                                            <button class="sleek-atc" type="submit" onclick="return false;">AJOUTER AU PANIER</button>
                                         </div>
                                     </div>
                                 </form>
@@ -1343,7 +1323,7 @@
         $('.saving').show();
         $.ajax({
             type: "POST",
-            url: base_url + 'update_settings?<?php echo $_SERVER['QUERY_STRING']; ?>',
+            url: base_url + 'fr/update_settings?<?php echo $_SERVER['QUERY_STRING']; ?>',
             data: shop_sets,
             success: function(response) {
                 // console.log(response);

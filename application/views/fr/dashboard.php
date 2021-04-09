@@ -77,14 +77,11 @@ $duka = $shop . '.myshopify.com';
     <div class="mwili">
         <div style="width: 50px; height: 100vh; background: #003471; display: flex; flex-direction: column; justify-content: space-between; align-items: center; text-align: center;">
             <span class="whats">
-                <a title="Settings" href="<?php echo base_url(); ?>settings/<?php echo $shop; ?>/<?php echo $token; ?>?<?php echo $_SERVER['QUERY_STRING']; ?>"><span class="btn btn-primary entypo-cog"></span></a>
-                <a title="Setup Wizard" target="_BLANK" href="<?php echo 'https://' . $shop . '.myshopify.com/collections/all?wizard='. base64_encode($shop) ?>"><span class="btn btn-primary entypo-feather"></span></a>
-                <a title="Subscription" href="<?php echo base_url(); ?>subscription/<?php echo $shop; ?>/<?php echo $token; ?>?<?php echo $_SERVER['QUERY_STRING']; ?>"><span class="btn btn-primary entypo-credit-card"></span></a>
-                <span><a title="New Offer" href="<?php echo base_url(); ?>new_offer/<?php echo $shop; ?>/<?php echo $token; ?>?<?php echo $_SERVER['QUERY_STRING']; ?>"><span class="btn btn-primary btn-sm"><i class="entypo-plus"></i></span></a></span>
-                <span><a title="Stats" href="<?php echo base_url(); ?>stats/<?php echo $shop; ?>/<?php echo $token; ?>?<?php echo $_SERVER['QUERY_STRING']; ?>"><span class="btn btn-primary btn-sm"><i class="entypo-chart-line"></i></span></a></span>
-                <?php if ($shop == 'berjis-tech-ltd' || $shop == 'sleek-apps' || $shop == 'sleek-upsell-demo') : ?>
-                    <span><a title="Users" href="<?php echo base_url(); ?>users/<?php echo $shop; ?>/<?php echo $token; ?>?<?php echo $_SERVER['QUERY_STRING']; ?>"><i class="btn btn-primary btn-sm entypo-users"></i></a></span>
-                <?php endif; ?>
+                <a title="Paramètres" href="<?php echo base_url(); ?>fr/settings/<?php echo $shop; ?>/<?php echo $token; ?>?<?php echo $_SERVER['QUERY_STRING']; ?>"><span class="btn btn-primary entypo-cog"></span></a>
+                <a title="Assistant de configuration" target="_BLANK" href="<?php echo 'https://' . $shop . '.myshopify.com/collections/all?wizard=' . base64_encode($shop) ?>"><span class="btn btn-primary entypo-feather"></span></a>
+                <a title="Abonnement" href="<?php echo base_url(); ?>fr/subscription/<?php echo $shop; ?>/<?php echo $token; ?>?<?php echo $_SERVER['QUERY_STRING']; ?>"><span class="btn btn-primary entypo-credit-card"></span></a>
+                <span><a title="Nouvelle offre" href="<?php echo base_url(); ?>fr/new_offer/<?php echo $shop; ?>/<?php echo $token; ?>?<?php echo $_SERVER['QUERY_STRING']; ?>"><span class="btn btn-primary btn-sm"><i class="entypo-plus"></i></span></a></span>
+                <span><a title="Statistiques" href="<?php echo base_url(); ?>fr/stats/<?php echo $shop; ?>/<?php echo $token; ?>?<?php echo $_SERVER['QUERY_STRING']; ?>"><span class="btn btn-primary btn-sm"><i class="entypo-chart-line"></i></span></a></span>
             </span>
         </div>
         <?php if ($this->db->where('shop', $shop)->get('offers')->num_rows() == 0 && $this->db->where('shop', $shop)->get('auto_collection')->num_rows() == 0) : ?>
@@ -99,24 +96,24 @@ $duka = $shop . '.myshopify.com';
                                 Sleek Upsell
                             </h1>
                             <hr />
-                            <h3>Welcome to the world of Sleek Upsell</h3>
-                            <p style="font-size: 18px !important; color: #8797A8 !important; margin-bottom: 0px !important;">Thank you for choosing Sleek Upsell to boost your sales! the app has everything in-built. No need for complex settings to get you started. Use the links below to create offers and adjust the visual design.</p>
+                            <h3>Bienvenue dans le monde de Sleek Upsell</h3>
+                            <p style="font-size: 18px !important; color: #8797A8 !important; margin-bottom: 0px !important;">Merci d'avoir choisi Sleek Upsell pour booster vos ventes! l'application a tout intégré. Pas besoin de paramètres complexes pour vous aider à démarrer. Utilisez les liens ci-dessous pour créer des offres et ajuster la conception visuelle.</p>
 
-                            <p style="font-size: 18px !important; color: #8797A8 !important; margin-bottom: 0px !important;">Need help? Be sure to drop an email and we will repsond in less than 20 minutes. Our support team thrives on customer happiness</p>
+                            <p style="font-size: 18px !important; color: #8797A8 !important; margin-bottom: 0px !important;">Besoin d'aide? Assurez-vous de déposer un e-mail et nous vous répondrons en moins de 20 minutes. Notre équipe d'assistance se nourrit du bonheur des clients</p>
 
 
                             <iframe style="width: 90%; margin-left: 5%; height: 400px; border-radius: 10px; box-shadow: 0px 0px 10px rgb(3 3 3 / 60%);" src="https://www.youtube.com/embed/DCygIfcKoes" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 
                             <div style="display: flex; justify-content: space-between; align-items: center; padding: 20px 20px 20px 20px;">
-                                <a href="<?php echo base_url(); ?>new_offer/<?php echo $shop; ?>/<?php echo $token; ?>?<?php echo $_SERVER['QUERY_STRING']; ?>" class="btn btn-lg btn-primary btn-icon icon-right"><i class="entypo-plus"></i>CREATE AN OFFER</a>
-                                <a href="<?php echo base_url(); ?>settings/<?php echo $shop; ?>/<?php echo $token; ?>?<?php echo $_SERVER['QUERY_STRING']; ?>" class="btn btn-lg btn-primary btn-icon icon-right"><i class="entypo-cog"></i>GENERAL SETTINGS</a>
+                                <a href="<?php echo base_url(); ?>fr/new_offer/<?php echo $shop; ?>/<?php echo $token; ?>?<?php echo $_SERVER['QUERY_STRING']; ?>" class="btn btn-lg btn-primary btn-icon icon-right"><i class="entypo-plus"></i>CRÉER UNE OFFRE</a>
+                                <a href="<?php echo base_url(); ?>fr/settings/<?php echo $shop; ?>/<?php echo $token; ?>?<?php echo $_SERVER['QUERY_STRING']; ?>" class="btn btn-lg btn-primary btn-icon icon-right"><i class="entypo-cog"></i>RÉGLAGES GÉNÉRAUX</a>
                                 <a href="mailto:support@sleekupsell.com" class="btn btn-lg btn-danger btn-icon icon-right"><i class="entypo-help"></i>SUPPORT</a>
                             </div>
                         </div>
                         <?php if ($shop_details->name == 'Premium') : ?>
                             <div class="tile-stats tile-white stat-tile" style="box-shadow: 0px 0px 5px rgba(2, 2, 2, 0.2); height: auto !important; text-align: center;">
-                                <a href="<?php echo base_url(); ?>auto_collection/<?php echo $shop; ?>/<?php echo $token; ?>?<?php echo $_SERVER['QUERY_STRING']; ?>" class="btn btn-lg btn-primary btn-icon icon-right col-xs-12"><i class="entypo-plus"></i>OR ACTIVATE COLLECTION OFFERS</a>
+                                <a href="<?php echo base_url(); ?>fr/auto_collection/<?php echo $shop; ?>/<?php echo $token; ?>?<?php echo $_SERVER['QUERY_STRING']; ?>" class="btn btn-lg btn-primary btn-icon icon-right col-xs-12"><i class="entypo-plus"></i>OU ACTIVER LES OFFRES DE COLLECTE</a>
                             </div>
                         <?php endif; ?>
 
@@ -202,13 +199,13 @@ $duka = $shop . '.myshopify.com';
                         <div class="col-md-4 col-sm-6">
                             <div class="tile-stats tile-white stat-tile" style="box-shadow: 0px 0px 5px rgba(2, 2, 2, 0.2);">
                                 <h3><?php echo number_format($this->db->where('shop', $duka)->where('type', 'show')->get('stats')->num_rows()); ?></h3>
-                                <p>Shown</p> <span class="all-time-sales"></span>
+                                <p>Montré</p> <span class="all-time-sales"></span>
                             </div>
                         </div>
                         <div class="col-md-4 col-sm-6">
                             <div class="tile-stats tile-white stat-tile" style="box-shadow: 0px 0px 5px rgba(2, 2, 2, 0.2);">
                                 <h3><?php echo number_format($this->db->where('shop', $duka)->where('type', 'impression')->get('stats')->num_rows()); ?></h3>
-                                <p>Customer impression</p> <span class="customer-reach"></span>
+                                <p>Impression client</p> <span class="customer-reach"></span>
                             </div>
                         </div>
                         <div class="col-md-4 col-sm-12">
@@ -241,8 +238,8 @@ $duka = $shop . '.myshopify.com';
                         <thead style="border: none;">
                             <tr style="border: none;">
                                 <th style="border: none;"></th>
-                                <th style="border: none; flex-grow: 4;">Offer</th>
-                                <th style="border: none;">Status</th>
+                                <th style="border: none; flex-grow: 4;">Offre</th>
+                                <th style="border: none;">Statut</th>
                                 <th style="border: none;">Action</th>
                             </tr>
                         </thead>
@@ -254,7 +251,7 @@ $duka = $shop . '.myshopify.com';
                                         <td style="vertical-align: middle; border: none; text-align: center; color: #FFFFFF; font-size: 1px;">0</td>
                                         <td style="vertical-align: middle; border: none; flex-grow: 4;">
                                             <span style="font-weight: bold;">
-                                                Auto-collection offers
+                                                Offres de collecte automatique
                                             </span>
                                         </td>
                                         <td style="vertical-align: middle; border: none;">
@@ -274,10 +271,10 @@ $duka = $shop . '.myshopify.com';
                                                         <!-- Reverse Caret -->
                                                         <li class="caret"></li>
                                                         <!-- Profile sub-links -->
-                                                        <li><a href="<?php echo base_url(); ?>auto_collection/<?php echo $shop; ?>/<?php echo $token; ?>?<?php echo $_SERVER['QUERY_STRING']; ?>"><i class="entypo-pencil"></i>Edit</a></li>
-                                                        <li><a href="<?php echo base_url(); ?>offer_stats/<?php echo $shop; ?>/collection?<?php echo $_SERVER['QUERY_STRING']; ?>">
-                                                                <i class="entypo-chart-line"></i>Stats</a></li>
-                                                        <li><a onclick="if(confirm('Are you sure you want to delete this offer?')){$.ajax({url: 'delete_ac/<?php echo $shop; ?>', method: 'POST', success: function(){window.location.reload(false)}})}"><i class="entypo-trash"></i>Delete</a></li>
+                                                        <li><a href="<?php echo base_url(); ?>fr/auto_collection/<?php echo $shop; ?>/<?php echo $token; ?>?<?php echo $_SERVER['QUERY_STRING']; ?>"><i class="entypo-pencil"></i>Éditer</a></li>
+                                                        <li><a href="<?php echo base_url(); ?>fr/offer_stats/<?php echo $shop; ?>/collection?<?php echo $_SERVER['QUERY_STRING']; ?>">
+                                                                <i class="entypo-chart-line"></i>Statistiques</a></li>
+                                                        <li><a onclick="if(confirm('Are you sure you want to delete this offer?')){$.ajax({url: 'delete_ac/<?php echo $shop; ?>', method: 'POST', success: function(){window.location.reload(false)}})}"><i class="entypo-trash"></i>Effacer</a></li>
                                                     </ul>
                                                 </li>
                                             </ul>
@@ -286,11 +283,11 @@ $duka = $shop . '.myshopify.com';
                                 <?php else : ?>
                                     <tr>
                                         <td style="vertical-align: middle; border: none; text-align: center; color: #FFFFFF; font-size: 1px;">0</td>
-                                        <td style="vertical-align: middle; border: none; flex-grow: 4;">Collection based offers will allow you to automatically offer products from the same collections to your customers.
+                                        <td style="vertical-align: middle; border: none; flex-grow: 4;">Les offres basées sur les collections vous permettront de proposer automatiquement des produits des mêmes collections à vos clients.
                                         </td>
                                         <td style="vertical-align: middle; border: none;"></td>
                                         <td style="text-align: center; vertical-align: middle; border: none;">
-                                            <a href="<?php echo base_url(); ?>auto_collection/<?php echo $shop; ?>/<?php echo $token; ?>?<?php echo $_SERVER['QUERY_STRING']; ?>" class="btn btn-lg btn-primary btn-icon icon-right col-xs-12"><i class="entypo-plus"></i>ACTIVATE COLLECTION OFFERS</a>
+                                            <a href="<?php echo base_url(); ?>fr/auto_collection/<?php echo $shop; ?>/<?php echo $token; ?>?<?php echo $_SERVER['QUERY_STRING']; ?>" class="btn btn-lg btn-primary btn-icon icon-right col-xs-12"><i class="entypo-plus"></i>ACTIVER LES OFFRES DE COLLECTE</a>
                                         </td>
                                     </tr>
                                 <?php endif; ?>
@@ -307,7 +304,7 @@ $duka = $shop . '.myshopify.com';
                                             } else {
                                                 echo $fetch['offer'][0]['title'];
                                             }
-                                            ?> : Offer
+                                            ?> : Offre
                                             <?php
                                             $products = $fetch['products'];
                                             $total_products = count($products);
@@ -325,7 +322,7 @@ $duka = $shop . '.myshopify.com';
                                                     if ($key == '0') {
                                                         echo $product_name['product']['title'];
                                                     } else if ($key == (count($products) - 1)) {
-                                                        echo ' and ' . $product_name['product']['title'];
+                                                        echo ' et ' . $product_name['product']['title'];
                                                     } else {
                                                         echo ', ' . $product_name['product']['title'];
                                                     }
@@ -333,12 +330,12 @@ $duka = $shop . '.myshopify.com';
                                             }
                                             ?>
                                         </span>
-                                        <span class="triprev btn entypo-eye" onclick="$('.triggers<?php echo $fetch['offer'][0]['offer_id']; ?>').toggle(200)">Offer conditions</span>
+                                        <span class="triprev btn entypo-eye" onclick="$('.triggers<?php echo $fetch['offer'][0]['offer_id']; ?>').toggle(200)">Conditions de l'offre</span>
                                         <ul class="triggers<?php echo $fetch['offer'][0]['offer_id']; ?>" style="list-style: none; display: none;">
                                             <?php
 
                                             if (count($fetch['blocks']) == 0) {
-                                                echo 'To every customer';
+                                                echo 'À chaque client';
                                             } else {
                                                 // $conditions = $fetch['conditions'];
                                                 $blocks = $fetch['blocks'];
@@ -349,10 +346,10 @@ $duka = $shop . '.myshopify.com';
                                                     $oid = $v['oid'];
 
                                                     if ($rule == 'ALL') {
-                                                        $connector = 'AND';
+                                                        $connector = 'ET';
                                                     }
                                                     if ($rule == 'ANY') {
-                                                        $connector = 'OR';
+                                                        $connector = 'OU';
                                                     }
 
                                                     $conditions = $fetch['conditions'];
@@ -365,7 +362,7 @@ $duka = $shop . '.myshopify.com';
                                                             $condition_type = $cv['type'];
 
                                                             if ($ck == '0') {
-                                                                $prepend = 'When ';
+                                                                $prepend = 'Lorsque ';
                                                             } else if ($ck == (count($conditions) - 1)) {
                                                                 $prepend = '<strong>' . $connector . '</strong> ';
                                                             } else {
@@ -378,13 +375,13 @@ $duka = $shop . '.myshopify.com';
                                                                 $content = $cv['content'];
 
                                                                 if ($condition_type == 'oc1') {
-                                                                    echo $prepend . 'Cart has at least ' . $quantity . ' ' . $content;
+                                                                    echo $prepend . 'Le panier a au moins ' . $quantity . ' ' . $content;
                                                                 }
                                                                 if ($condition_type == 'oc2') {
-                                                                    echo $prepend . 'Cart has at most ' . $quantity . ' ' . $content;
+                                                                    echo $prepend . 'Le panier a au plus ' . $quantity . ' ' . $content;
                                                                 }
                                                                 if ($condition_type == 'oc3') {
-                                                                    echo $prepend . 'Cart has exactly ' . $quantity . ' ' . $content;
+                                                                    echo $prepend . 'Le panier a exactement ' . $quantity . ' ' . $content;
                                                                 }
                                                             }
 
@@ -392,28 +389,28 @@ $duka = $shop . '.myshopify.com';
                                                                 $type = $cv['type'];
                                                                 $content = $cv['content'];
 
-                                                                echo $prepend . 'Cart does not have any ' . $content;
+                                                                echo $prepend . 'Le panier n\'en a pas ' . $content;
                                                             }
 
                                                             if ($condition_type == 'oc5' || $condition_type == 'oc6' || $condition_type == 'oc7' || $condition_type == 'oc8') {
                                                                 if ($condition_type == 'oc6') {
-                                                                    echo $prepend . 'Cart total is at least ' . $cv['amount'] . ' cents';
+                                                                    echo $prepend . 'Le total du panier est au moins ' . $cv['amount'] . ' cents';
                                                                 }
                                                                 if ($condition_type == 'oc6') {
-                                                                    echo $prepend . 'Cart total is at most ' . $cv['amount'] . ' cents';
+                                                                    echo $prepend . 'Le total du panier est au maximum ' . $cv['amount'] . ' cents';
                                                                 }
                                                                 if ($condition_type == 'oc7') {
-                                                                    echo $prepend . 'Customer is located in ' . $cv['country'];
+                                                                    echo $prepend . 'Le client est situé dans ' . $cv['country'];
                                                                 }
                                                                 if ($condition_type == 'oc8') {
-                                                                    echo $prepend . 'Customer is not located in ' . $cv['country'];
+                                                                    echo $prepend . 'Le client n\'est pas situé dans ' . $cv['country'];
                                                                 }
                                                             }
                                                             if ($condition_type == 'oc9') {
-                                                                echo $prepend . 'Cart contains at least ' . $cv['quantity'] . ' item from vendor ' . $cv['content'];
+                                                                echo $prepend . 'Le panier contient au moins ' . $cv['quantity'] . ' article du fournisseur ' . $cv['content'];
                                                             }
                                                             if ($condition_type == 'oc10') {
-                                                                echo $prepend . 'Cart has no item from vendor ' . $cv['content'];
+                                                                echo $prepend . 'Le panier ne contient aucun article du fournisseur ' . $cv['content'];
                                                             }
                                                         }
                                                     } ?>
@@ -443,10 +440,10 @@ $duka = $shop . '.myshopify.com';
                                                     <!-- Reverse Caret -->
                                                     <li class="caret"></li>
                                                     <!-- Profile sub-links -->
-                                                    <li><a href="<?php echo base_url(); ?>edit_offer/<?php echo $shop; ?>/<?php echo $token; ?>/<?php echo $fetch['offer'][0]['offer_id']; ?>?<?php echo $_SERVER['QUERY_STRING']; ?>"><i class="entypo-pencil"></i>Edit</a></li>
-                                                    <li><a href="<?php echo base_url(); ?>offer_stats/<?php echo $shop; ?>/<?php echo $fetch['offer'][0]['offer_id']; ?>?<?php echo $_SERVER['QUERY_STRING']; ?>">
-                                                            <i class="entypo-chart-line"></i>Stats</a></li>
-                                                    <li><a onclick="if(confirm('Are you sure you want to delete this offer?')){$.ajax({url: 'delete_offer/<?php echo $fetch['offer'][0]['offer_id']; ?>', method: 'POST', success: function(){window.location.reload(false)}})}"><i class="entypo-trash"></i>Delete</a></li>
+                                                    <li><a href="<?php echo base_url(); ?>fr/edit_offer/<?php echo $shop; ?>/<?php echo $token; ?>/<?php echo $fetch['offer'][0]['offer_id']; ?>?<?php echo $_SERVER['QUERY_STRING']; ?>"><i class="entypo-pencil"></i>Éditer</a></li>
+                                                    <li><a href="<?php echo base_url(); ?>fr/offer_stats/<?php echo $shop; ?>/<?php echo $fetch['offer'][0]['offer_id']; ?>?<?php echo $_SERVER['QUERY_STRING']; ?>">
+                                                            <i class="entypo-chart-line"></i>Statistiques</a></li>
+                                                    <li><a onclick="if(confirm('Voulez-vous vraiment supprimer cette offre?')){$.ajax({url: 'delete_offer/<?php echo $fetch['offer'][0]['offer_id']; ?>', method: 'POST', success: function(){window.location.reload(false)}})}"><i class="entypo-trash"></i>Effacer</a></li>
                                                 </ul>
                                             </li>
                                         </ul>
@@ -463,28 +460,28 @@ $duka = $shop . '.myshopify.com';
                             if (this.checked) {
                                 $.ajax({
                                     type: "POST",
-                                    url: base_url + 'collection_status/<?php echo $shop; ?>/1?<?php echo $_SERVER['QUERY_STRING']; ?>',
+                                    url: base_url + 'fr/collection_status/<?php echo $shop; ?>/1?<?php echo $_SERVER['QUERY_STRING']; ?>',
                                     data: '',
                                     success: function(response) {
                                         $('.os' + o).prop('checked', true);
                                         $('.saving').hide();
                                     },
                                     error: function() {
-                                        alert('An error occured');
+                                        alert('Une erreur s\'est produite');
                                         $('.saving').hide();
                                     }
                                 });
                             } else {
                                 $.ajax({
                                     type: "POST",
-                                    url: base_url + 'collection_status/<?php echo $shop; ?>/0?<?php echo $_SERVER['QUERY_STRING']; ?>',
+                                    url: base_url + 'fr/collection_status/<?php echo $shop; ?>/0?<?php echo $_SERVER['QUERY_STRING']; ?>',
                                     data: '',
                                     success: function(response) {
                                         $('.os' + o).prop('checked', false);
                                         $('.saving').hide();
                                     },
                                     error: function() {
-                                        alert('An error occured');
+                                        alert('Une erreur s\'est produite');
                                         $('.saving').hide();
                                     }
                                 });
@@ -495,19 +492,19 @@ $duka = $shop . '.myshopify.com';
                             $('.saving').show();
                             if (this.checked) {
                                 <?php if ($shop_details->name == 'Free' && $this->db->where('shop', $shop)->where('status', 1)->get('offers')->num_rows() > 0) : ?>
-                                    alert('You\'ve already maxed out your total active offers allowed. Upgrade your account to activate more offers.')
+                                    alert('Vous avez déjà maximisé le nombre total d\'offres actives autorisées. Mettez à niveau votre compte pour activer plus d\'offres.')
                                     $('.os' + o).prop('checked', false);
                                     $(this).prop('checked', false);
                                     $('.saving').hide();
                                 <?php elseif ($shop_details->name == 'Sleek' && $this->db->where('shop', $shop)->where('status', 1)->get('offers')->num_rows() > 19) : ?>
-                                    alert('You\'ve already maxed out your total active offers allowed. Upgrade your account to activate more offers.')
+                                    alert('Vous avez déjà maximisé le nombre total d\'offres actives autorisées. Mettez à niveau votre compte pour activer plus d\'offres.')
                                     $('.os' + o).prop('checked', false);
                                     $(this).prop('checked', false);
                                     $('.saving').hide();
                                 <?php else : ?>
                                     $.ajax({
                                         type: "POST",
-                                        url: base_url + 'offer_status/' + o + '/1?<?php echo $_SERVER['QUERY_STRING']; ?>',
+                                        url: base_url + 'fr/offer_status/' + o + '/1?<?php echo $_SERVER['QUERY_STRING']; ?>',
                                         data: '',
                                         success: function(response) {
                                             $('.os' + o).prop('checked', true);
@@ -516,7 +513,7 @@ $duka = $shop . '.myshopify.com';
                                             window.location.reload(false);
                                         },
                                         error: function() {
-                                            alert('An error occured');
+                                            alert('Une erreur s\'est produite');
                                         }
                                     });
 
@@ -524,7 +521,7 @@ $duka = $shop . '.myshopify.com';
                             } else {
                                 $.ajax({
                                     type: "POST",
-                                    url: base_url + 'offer_status/' + o + '/0?<?php echo $_SERVER['QUERY_STRING']; ?>',
+                                    url: base_url + 'fr/offer_status/' + o + '/0?<?php echo $_SERVER['QUERY_STRING']; ?>',
                                     data: '',
                                     success: function(response) {
                                         $('.os' + o).prop('checked', false);
@@ -533,7 +530,7 @@ $duka = $shop . '.myshopify.com';
                                         window.location.reload(false);
                                     },
                                     error: function() {
-                                        alert('An error occured');
+                                        alert('Une erreur s\'est produite');
                                     }
                                 });
                             }
@@ -542,14 +539,14 @@ $duka = $shop . '.myshopify.com';
 
                     <div class="tile-stats tile-white stat-tile" style="display: table; width: 100%; height: auto !important; padding: 10px; margin-bottom: 40px; margin-top: 10px; box-shadow: 0px 0px 5px rgba(2, 2, 2, 0.2);">
                         <?php if ($do_script == 'add') : ?>
-                            <span onclick="$.ajax({url: '<?php echo base_url(); ?>add_tag/<?php echo $shop . '/' . $token ?>', success: function(e){ alert(e); window.location.reload(false);}, error: function(){ Alert('There was an error removing the automatic script tag'); } })" class="pull-right btn btn-success btn-icon icon-right">Add Automatic Script Tag<em class="entypo-plus"></em></span>
+                            <span onclick="$.ajax({url: '<?php echo base_url(); ?>fr/add_tag/<?php echo $shop . '/' . $token ?>', success: function(e){ alert(e); window.location.reload(false);}, error: function(){ Alert('Une erreur s\'est produite lors de la suppression de la balise de script automatique'); } })" class="pull-right btn btn-success btn-icon icon-right">Ajouter une balise de script automatique<em class="entypo-plus"></em></span>
                         <?php else : ?>
                             <span class="pull-left">
-                                Is the app loading slowly or slowing down your store? You can add our manual script tag to your theme.liquid file right before the
-                                <pre>&lt;/body&gt;</pre> tag then remove the automatic tag<br />
+                            L'application se charge-t-elle lentement ou ralentit-elle votre boutique? Vous pouvez ajouter notre balise de script manuelle à votre fichier theme.liquid juste avant le
+                                <pre>&lt;/body&gt;</pre> tag puis supprimez le tag automatique<br />
                                 <pre>&lt;script src="https://sleekupsell.com/assets/js/shopify.js?shop=<?php echo $shop; ?>.myshopify.com"&gt;&lt;/script&gt;</pre>
                             </span>
-                            <span onclick="$.ajax({url: '<?php echo base_url(); ?>remove_tag/<?php echo $shop . '/' . $token ?>', success: function(e){ alert(e); window.location.reload(false);}, error: function(){ Alert('There was an error removing the automatic script tag'); } })" class="pull-right btn btn-danger btn-icon icon-right">Remove Automatic Script Tag<em class="entypo-trash"></em></span>
+                            <span onclick="$.ajax({url: '<?php echo base_url(); ?>fr/remove_tag/<?php echo $shop . '/' . $token ?>', success: function(e){ alert(e); window.location.reload(false);}, error: function(){ Alert('Une erreur s\'est produite lors de la suppression de la balise de script automatique'); } })" class="pull-right btn btn-danger btn-icon icon-right">Supprimer la balise de script automatique<em class="entypo-trash"></em></span>
                         <?php endif; ?>
                     </div>
 

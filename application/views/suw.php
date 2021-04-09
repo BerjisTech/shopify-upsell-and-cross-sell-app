@@ -1405,9 +1405,16 @@
         }
 
         applyStyles()
-        $('html, body').animate({
-            scrollTop: $(".sleek-upsell").offset().top - 70
-        }, 300);
+
+        try {
+            $('html, body').animate({
+                scrollTop: $(".sleek-upsell").offset().top - 70
+            }, 300);
+        } catch (e) {
+
+        }
+
+
     }
 
     function applyStyles() {

@@ -280,7 +280,7 @@ Not supports in Firefox and IE */
         "shop": "<?php echo $shop; ?>",
         "layout": "card",
         "close": "y",
-        "atc": "ADD TO CART",
+        "atc": "AJOUTER AU PANIER",
         "show_title": "y",
         "show_price": "y",
         "show_image": "y",
@@ -293,7 +293,7 @@ Not supports in Firefox and IE */
         "date": "<?php echo time(); ?>",
         "status": "1",
         "title": "",
-        "text": "Would you like something extra?",
+        "text": "Souhaitez-vous quelque chose en plus?",
         "same_vendor": ""
     };
     var products = [];
@@ -309,7 +309,7 @@ Not supports in Firefox and IE */
                 <span style="height: 100%; margin: 0px; vertical-align: middle; padding-top: 2vh; text-align: center;" class="btn btn-primary entypo-home"></span>
             </div>
             <div style="margin: 0px; padding: 0px; height: 100%; vertical-align: middle; flex-grow: 4; ">
-                <span style="width: 100%; height: 100%; margin: 0px; vertical-align: middle; padding-top: 2vh;" onclick="showAjaxModal('products');" class="btn btn-info btn-icon icon-right"><i class="entypo-plus" style="padding-top: 2vh;"></i>Choose Test Product</span>
+                <span style="width: 100%; height: 100%; margin: 0px; vertical-align: middle; padding-top: 2vh;" onclick="showAjaxModal('products');" class="btn btn-info btn-icon icon-right"><i class="entypo-plus" style="padding-top: 2vh;"></i>Choisissez le produit de test</span>
             </div>
         </div>
         <div style="position: absolute; top: 7vh; left: 0px; height: 93vh; overflow-y: auto; width: 100%;" class="globalSets">
@@ -317,12 +317,12 @@ Not supports in Firefox and IE */
                 <div class="panel panel-default">
                     <div class="panel-heading">
                         <h4 class="panel-title"> <a data-toggle="collapse" data-parent="#accordion-test-2" href="#collapseOne-2" aria-expanded="true">
-                                1: Offer Details
+                                1: Détails de l'offre
                             </a> </h4>
                     </div>
                     <div id="collapseOne-2" class="panel-collapse collapse in">
                         <div class="panel-body">
-                            <h4>Offer Title <br /><small>(Optional) Your customers won't see this</small></h4>
+                            <h4>Titre de l'offre <br /><small>(Facultatif) Vos clients ne verront pas cela</small></h4>
                             <div style="display: table; width: 100%; margin-bottom: 10px;">
                                 <input type="text" class="form-control offer_title" style="padding: 10px; border: 2px solid #666666; border-radius: 5px;" />
                             </div>
@@ -337,39 +337,33 @@ Not supports in Firefox and IE */
                 <div class="panel panel-default">
                     <div class="panel-heading">
                         <h4 class="panel-title"> <a data-toggle="collapse" data-parent="#accordion-test-2" href="#collapseTwo-2" class="collapsed">
-                                2: Design
+                                2: Conception
                             </a> </h4>
                     </div>
                     <div id="collapseTwo-2" class="panel-collapse collapse">
                         <div class="panel-body">
                             <div style="display: table; width: 100%;">
-                                <h4>Offer Text <br /><small>eg Get 20% discount</small></h4>
+                                <h4>Texte de l'offre <br /><small>par exemple, obtenez 20% de réduction</small></h4>
                                 <textarea class="form-control offer_text" placeholder="offer text" style="margin: 5px auto; height: auto; min-height: 100px; width: 99%; border: 2px solid #666666;"></textarea>
                             </div>
                             <div style="display: table; width: 100%;">
-                                <h4>Button Text <br /><small>eg Yes Please or Add To Cart</small></h4>
-                                <input type="text" name="button-text" value="ADD TO CART" class="form-control offer_button_text" style="padding: 10px; border: 2px solid #666666; border-radius: 5px;" />
+                                <h4>Texte du bouton <br /><small>par exemple Oui s'il vous plaît ou ajouter au panier</small></h4>
+                                <input type="text" name="button-text" value="AJOUTER AU PANIER" class="form-control offer_button_text" style="padding: 10px; border: 2px solid #666666; border-radius: 5px;" />
                             </div>
                             <div style="display: table; width: 100%;">
-                                <h4>Product options <br /><small>These will only affect this particular product</small></h4>
-                                <label><input type="checkbox" class="offer_product_image" value="1" checked /> Show
-                                    product image</label><br />
-                                <label><input type="checkbox" class="offer_product_title" value="1" checked /> Show
-                                    product title</label><br />
-                                <label><input type="checkbox" class="offer_product_price" value="1" checked /> Show
-                                    product price</label><br />
-                                <label><input type="checkbox" class="offer_compare_at_price" value="1" checked /> Show
-                                    product compare at price</label><br />
+                                <h4>Options de produits <br /><small>Celles-ci n'affecteront que ce produit particulier</small></h4>
+                                <label><input type="checkbox" class="offer_product_image" value="1" checked /> Afficher l'image du produit</label><br />
+                                <label><input type="checkbox" class="offer_product_title" value="1" checked /> Afficher le titre du produit</label><br />
+                                <label><input type="checkbox" class="offer_product_price" value="1" checked /> Afficher le prix du produit</label><br />
+                                <label><input type="checkbox" class="offer_compare_at_price" value="1" checked /> Afficher le produit comparer au prix</label><br />
                             </div>
                             <div style="display: table; width: 100%;">
-                                <h4>Display options <br /><small>Extra display options for this product</small></h4>
-                                <label><input type="checkbox" class="offer_quantity_chooser" value="1" checked /> Show
-                                    quantity chooser</label><br />
+                                <h4>Option d'affichage <br /><small>Options d'affichage supplémentaires pour ce produit</small></h4>
+                                <label><input type="checkbox" class="offer_quantity_chooser" value="1" checked /> Afficher le sélecteur de quantité</label><br />
                             </div>
                             <div style="display: table; width: 100%;">
-                                <h4>Display options <br /><small>Extra general UI settings</small></h4>
-                                <label><input type="checkbox" class="offer_closable" value="1" /> Show an x to
-                                    dismiss offer</label><br />
+                                <h4>Option d'affichage <br /><small>Paramètres d'interface utilisateur généraux supplémentaires</small></h4>
+                                <label><input type="checkbox" class="offer_closable" value="1" /> Afficher un x pour rejeter l'offre</label><br />
                             </div>
                         </div>
                     </div>
@@ -382,41 +376,9 @@ Not supports in Firefox and IE */
                     </div>
                     <div id="collapseThree-2" class="panel-collapse collapse">
                         <div class="panel-body">
-                            <?php /*
-                            <h4>Offer Conditions <br /><small>Choose when to give your customers this offer</small></h4>
+                            <h4>Options supplémentaires <br /><small>Ajuster les déclencheurs conditionnels des offres</small></h4>
                             <div style="display: table; width: 100%; margin-bottom: 10px; vertical-align: top;">
-                                <div style="display: table; width: 100%; width: 100%; background: #ffffff; padding: 5px; margin-bottom: 5px;">
-                                    <p>Select the general rule that'll affect blocks e.g Block 1 and/or Block 2
-                                        <select class="form-control offer_general_rule">
-                                            <option value="ALL">ALL</option>
-                                            <option value="ANY">ANY</option>
-                                        </select>
-                                    </p>
-                                    <p>
-                                    <p>Block Clause <br /><small>Affects conditions within specific blocks e.g this condition 1 and/or that condition 2</small></p>
-                                    <div class="input-group" style="margin: 0px; padding: 0px;">
-                                        <select class="form-control offer_block_rule">
-                                            <option value="ALL">ALL</option>
-                                            <option value="ANY">ANY</option>
-                                        </select>
-                                        <span class="btn btn-primary btn-icon icon-right input-group-addon" onclick="addBlock();"> <i class="entypo-plus"></i>Add Block</span>
-                                    </div>
-                                    </p>
-                                </div>
-                                <div class="conditionsHandler">
-                                </div>
-                                <div class="single_conditions" style="display: none; width: 100%; width: 100%; background: #ffffff; padding: 5px; margin-bottom: 5px;">
-                                    <p>Add conditions to block <select class="which_b"></select> </p>
-                                </div>
-                            </div>
-                            <div class="conditions_btn_wrapper" style="display: none; width: 100%; margin-bottom: 10px; vertical-align: top;">
-                                <span class="btn btn-info btn-icon icon-right pull-right" onclick="showAjaxModal('conditions');"> <i class="entypo-plus"></i>Add
-                                    Condition</span>
-                            </div>
-                            <div style="display: table; width: 100%; height: 1px; background: #333333;"></div> */ ?>
-                            <h4>Extra Options <br /><small>Adjust the offers conditional triggers</small></h4>
-                            <div style="display: table; width: 100%; margin-bottom: 10px; vertical-align: top;">
-                                <label><input type="checkbox" class="same_vendor" value="1" /> Limit offer to same vendors?</label><br />
+                                <label><input type="checkbox" class="same_vendor" value="1" /> Limiter l'offre aux mêmes fournisseurs?</label><br />
                             </div>
                         </div>
                     </div>
@@ -424,20 +386,18 @@ Not supports in Firefox and IE */
                 <div class="panel panel-default">
                     <div class="panel-heading">
                         <h4 class="panel-title"> <a data-toggle="collapse" data-parent="#accordion-test-2" href="#collapseFour-2" class="collapsed">
-                                4: Offer Addons
+                                4: Addons d'offres
                             </a> </h4>
                     </div>
                     <div id="collapseFour-2" class="panel-collapse collapse">
                         <div class="panel-body">
                             <div style="display: table; width: 100%; margin-bottom: 10px;">
-                                <label><input type="checkbox" class="offer_apply_discount" value="1" /> Add
-                                    discount to this offer. <br /><span class="text-info">Paste your discount code
-                                        below</span></label><br />
+                                <label><input type="checkbox" class="offer_apply_discount" value="1" /> Ajoutez une remise à cette offre. <br />
+                                <span class="text-info">Collez votre code de réduction ci-dessous</span></label><br />
                                 <input type="text" name="discount-code" placeholder="Paste your discount code here" class="form-control offer_discount_code" style="padding: 10px; border: 2px solid #666666; border-radius: 5px;" />
                             </div>
                             <div style="display: table; width: 100%; margin-bottom: 10px;">
-                                <label><input type="checkbox" class="offer_to_checkout" value="1" /> Send user to
-                                    checkout after accepting offer</label><br />
+                                <label><input type="checkbox" class="offer_to_checkout" value="1" /> Envoyer l'utilisateur à la caisse après avoir accepté l'offre</label><br />
                             </div>
                         </div>
                     </div>
@@ -451,14 +411,14 @@ Not supports in Firefox and IE */
                     </div>
                     <div class="panel-body">
                         <div class="row">
-                            <div class="col-xs-6 offerDraftBtn" onclick="deactivateOffer();" style="text-align: center; cursor: pointer;">DRAFT</div>
+                            <div class="col-xs-6 offerDraftBtn" onclick="deactivateOffer();" style="text-align: center; cursor: pointer;">BROUILLON</div>
                             <div class="col-xs-6 offerActiveBtn" onclick="activateOffer();" style="text-align: center; cursor: pointer;">ACTIVE</div>
                         </div>
                     </div>
                 </div>
                 <div class="panel panel-default">
                     <div class="panel-heading" style="text-align: center;">
-                        <button class="btn btn-lg btn-flat btn-primary saveOffer">Save</button>
+                        <button class="btn btn-lg btn-flat btn-primary saveOffer">Sauvegarder</button>
                     </div>
                     <div class="panel-body">
                         <div class="row">
@@ -511,14 +471,14 @@ Not supports in Firefox and IE */
                 </div>
                 <div class="form-inline" style="display: table; width: 100%; padding: 0px; margin: 0px;" id="conditions-wrappers">
                     <select type="text" autocomplete="off" class="small form-control" id="conditionSelector" style="margin: 3px; width: 250px; border: 2px solid #666666; border-radius: 5px;">
-                        <option value="oc1">Cart has at least</option>
-                        <option value="oc2">Cart has at most</option>
-                        <option value="oc3">Cart has exactly</option>
-                        <option value="oc4">Cart does not have any</option>
-                        <option value="oc5">Cart total is at least</option>
-                        <option value="oc6">Cart total is at most</option>
-                        <option value="oc7">Customer is located in</option>
-                        <option value="oc8">Customer is not located in</option>
+                        <option value="oc1">Le panier a au moins</option>
+                        <option value="oc2">Le panier a au plus</option>
+                        <option value="oc3">Le panier a exactement</option>
+                        <option value="oc4">Le panier n'en a pas</option>
+                        <option value="oc5">Le total du panier est au moins</option>
+                        <option value="oc6">Le total du panier est au maximum</option>
+                        <option value="oc7">Le client est situé dans</option>
+                        <option value="oc8">Le client n'est pas situé dans</option>
                     </select>
                     <select type="text" autocomplete="off" class="small form-control" id="oc1Quantity" style="margin: 3px; max-width: 250px; border: 2px solid #666666; border-radius: 5px;">
                         <?php for ($i = 1; $i <= 20; $i++) : ?>
@@ -526,9 +486,9 @@ Not supports in Firefox and IE */
                         <?php endfor; ?>
                     </select>
                     <select type="text" autocomplete="off" class="small form-control" id="oc1Type" style="margin: 3px; width: 250px; border: 2px solid #666666; border-radius: 5px;">
-                        <option value="product">Of product</option>
-                        <option value="variant">Of variant</option>
-                        <option value="collection">Item from collection</option>
+                        <option value="product">Du produit</option>
+                        <option value="variant">De variante</option>
+                        <option value="collection">Article de la collection</option>
                     </select>
                     <input type="hidden" class="occ" />
                     <input type="text" autocomplete="off" class="small form-control" id="ocContent" style="margin: 3px; width: 96%; padding: 10px; border: 2px solid #666666; border-radius: 5px;" placeholder="Search for item">
@@ -786,8 +746,8 @@ Not supports in Firefox and IE */
                 </div>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-info saveCondition" style="display: none;">Save changes</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal">Fermer</button>
+                <button type="button" class="btn btn-info saveCondition" style="display: none;">Sauvegarder les modifications</button>
             </div>
         </div>
     </div>
@@ -986,7 +946,7 @@ Not supports in Firefox and IE */
         if (action == "products" || action === "products") {
             jQuery('#products-wrappers').show();
             jQuery('#conditions-wrappers').hide();
-            $('.modal-title').html('Add products to offer');
+            $('.modal-title').html('Ajouter des produits à offrir');
             jQuery('#products').html('<div style="display: table; width: 100%; text-align: center;"><img src="' + base_url +
                 'assets/images/loader.gif" style="width: 200px; height: auto;" /></div>');
             loadProducts(' ');
@@ -994,11 +954,11 @@ Not supports in Firefox and IE */
         if (action == "conditions" || action === "conditions") {
             jQuery('#products-wrappers').hide();
             jQuery('#conditions-wrappers').show();
-            $('.modal-title').html('Add conditions to your offer');
+            $('.modal-title').html('Ajoutez des conditions à votre offre');
             $('#conditionSelector').trigger('change');
             $('#oc1Type').trigger('change');
             $('#oc1Quantity').trigger('change');
-            $('.saveCondition').html('Add condition');
+            $('.saveCondition').html('Ajouter une condition');
             $('.saveCondition').show();
         }
     }
@@ -1006,7 +966,7 @@ Not supports in Firefox and IE */
     function loadProducts(product) {
         $.ajax({
             type: "POST",
-            url: base_url + 'search_products',
+            url: base_url + 'fr/search_products',
             data: {
                 term: product,
                 shop: '<?php echo $shop; ?>',
@@ -1270,11 +1230,11 @@ Not supports in Firefox and IE */
                     var datacell = data['product'];
                     // console.log(data);
 
-                    let card_ui = '<form class="sleek-form" data-product-index="' + i + '"> <div class="sleek-image"> <img src="' + datacell['image']['src'] + '"/> </div><div class="sleek-offer"> <div class="sleek-text">Need Free Shipping?</div><div class="sleek-title">' + datacell['title'] + '</div><div class="sleek-selectors"> <div class="offer_fields_holder o_h_' + product_id + '"></div> <select class="v-select v-' + product_id + '"></select> <select class="q-select q-' + product_id + '"></select> </div></div><div class="sleek-card-atc"> <div class="sleek-prices"> <span class="sleek-price money">' + s_data['currency'] + ' ' + datacell['variants'][0]['price'] + '</span> <span class="sleek-compare-price money">' + s_data['currency'] + ' ' + datacell['variants'][0]['compare_at_price'] + '</span> </div><button class="sleek-atc" type="submit" onclick="return false;">' + $('.offer_button_text').val() + '</button> </div></form>';
-                    let block_ui = '<form class="sleek-form" data-product-index="' + i + '"> <div class="sleek-text">Need Free Shipping?</div><div class="sleek-block"> <div class="sleek-image"> <img src="' + datacell['image']['src'] + '"/> </div><div class="sleek-offer"> <div class="sleek-title">' + datacell['title'] + '</div><div class="sleek-prices"> <span class="sleek-price money">' + s_data['currency'] + ' ' + datacell['variants'][0]['price'] + '</span> <span class="sleek-compare-price money">' + s_data['currency'] + ' ' + datacell['variants'][0]['compare_at_price'] + '</span> </div><div class="sleek-selectors"> <div class="offer_fields_holder o_h_' + product_id + '"></div> <select class="v-select v-' + product_id + '"></select> <select class="q-select q-' + product_id + '"></select> </div></div></div><button class="sleek-atc" type="submit" onclick="return false;">' + $('.offer_button_text').val() + '</button> </form>';
-                    let half_block_ui = '<form class="sleek-form" data-product-index="' + i + '"> <div class="sleek-half-block"> <div class="sleek-image"> <img src="' + datacell['image']['src'] + '"/> </div><div class="sleek-offer"> <div class="sleek-text">Need Free Shipping?</div><div class="sleek-title">' + datacell['title'] + '</div><div class="sleek-prices"> <span class="sleek-price money">' + s_data['currency'] + ' ' + datacell['variants'][0]['price'] + '</span> <span class="sleek-compare-price money">' + s_data['currency'] + ' ' + datacell['variants'][0]['compare_at_price'] + '</span> </div><div class="sleek-selectors"> <div class="offer_fields_holder o_h_' + product_id + '"></div> <select class="v-select v-' + product_id + '"></select> <select class="q-select q-' + product_id + '"></select> </div></div></div><button class="sleek-atc" type="submit" onclick="return false;">' + $('.offer_button_text').val() + '</button> </form>';
-                    let flat_ui = '<form class="sleek-form" data-product-index="' + i + '"> <div class="sleek-text">Need Free Shipping?</div><div class="sleek-flat"> <div class="sleek-image"> <img src="' + datacell['image']['src'] + '"/> </div><div class="sleek-offer"> <div class="sleek-title">' + datacell['title'] + '</div><div class="sleek-prices"> <span class="sleek-price money">' + s_data['currency'] + ' ' + datacell['variants'][0]['price'] + '</span> <span class="sleek-compare-price money">' + s_data['currency'] + ' ' + datacell['variants'][0]['compare_at_price'] + '</span> </div><div class="sleek-selectors"> <div class="offer_fields_holder o_h_' + product_id + '"></div> <select class="v-select v-' + product_id + '"></select> <div class="flex-select"> <select class="q-select q-' + product_id + '"></select> <button class="sleek-atc" type="submit" onclick="return false;">' + $('.offer_button_text').val() + '</button> </div></div></div></div></form>';
-                    let compact_ui = '<form class="sleek-form" data-product-index="' + i + '"> <div class="sleek-compact"> <div class="sleek-image"> <img src="' + datacell['image']['src'] + '"/> </div><div class="sleek-offer"> <div class="sleek-text">Need Free Shipping?</div><div class="sleek-title">' + datacell['title'] + '</div><div class="sleek-prices"> <span class="sleek-price money">' + s_data['currency'] + ' ' + datacell['variants'][0]['price'] + '</span> <span class="sleek-compare-price money">' + s_data['currency'] + ' ' + datacell['variants'][0]['compare_at_price'] + '</span> </div><div class="sleek-selectors"> <div class="offer_fields_holder o_h_' + product_id + '"></div> <select class="v-select v-' + product_id + '"></select> <select class="q-select q-' + product_id + '"></select> </div><button class="sleek-atc" type="submit" onclick="return false;">' + $('.offer_button_text').val() + '</button> </div></div></form>';
+                    let card_ui = '<form class="sleek-form" data-product-index="' + i + '"> <div class="sleek-image"> <img src="' + datacell['image']['src'] + '"/> </div><div class="sleek-offer"> <div class="sleek-text">Besoin d\'une livraison gratuite?</div><div class="sleek-title">' + datacell['title'] + '</div><div class="sleek-selectors"> <div class="offer_fields_holder o_h_' + product_id + '"></div> <select class="v-select v-' + product_id + '"></select> <select class="q-select q-' + product_id + '"></select> </div></div><div class="sleek-card-atc"> <div class="sleek-prices"> <span class="sleek-price money">' + s_data['currency'] + ' ' + datacell['variants'][0]['price'] + '</span> <span class="sleek-compare-price money">' + s_data['currency'] + ' ' + datacell['variants'][0]['compare_at_price'] + '</span> </div><button class="sleek-atc" type="submit" onclick="return false;">' + $('.offer_button_text').val() + '</button> </div></form>';
+                    let block_ui = '<form class="sleek-form" data-product-index="' + i + '"> <div class="sleek-text">Besoin d\'une livraison gratuite?</div><div class="sleek-block"> <div class="sleek-image"> <img src="' + datacell['image']['src'] + '"/> </div><div class="sleek-offer"> <div class="sleek-title">' + datacell['title'] + '</div><div class="sleek-prices"> <span class="sleek-price money">' + s_data['currency'] + ' ' + datacell['variants'][0]['price'] + '</span> <span class="sleek-compare-price money">' + s_data['currency'] + ' ' + datacell['variants'][0]['compare_at_price'] + '</span> </div><div class="sleek-selectors"> <div class="offer_fields_holder o_h_' + product_id + '"></div> <select class="v-select v-' + product_id + '"></select> <select class="q-select q-' + product_id + '"></select> </div></div></div><button class="sleek-atc" type="submit" onclick="return false;">' + $('.offer_button_text').val() + '</button> </form>';
+                    let half_block_ui = '<form class="sleek-form" data-product-index="' + i + '"> <div class="sleek-half-block"> <div class="sleek-image"> <img src="' + datacell['image']['src'] + '"/> </div><div class="sleek-offer"> <div class="sleek-text">Besoin d\'une livraison gratuite?</div><div class="sleek-title">' + datacell['title'] + '</div><div class="sleek-prices"> <span class="sleek-price money">' + s_data['currency'] + ' ' + datacell['variants'][0]['price'] + '</span> <span class="sleek-compare-price money">' + s_data['currency'] + ' ' + datacell['variants'][0]['compare_at_price'] + '</span> </div><div class="sleek-selectors"> <div class="offer_fields_holder o_h_' + product_id + '"></div> <select class="v-select v-' + product_id + '"></select> <select class="q-select q-' + product_id + '"></select> </div></div></div><button class="sleek-atc" type="submit" onclick="return false;">' + $('.offer_button_text').val() + '</button> </form>';
+                    let flat_ui = '<form class="sleek-form" data-product-index="' + i + '"> <div class="sleek-text">Besoin d\'une livraison gratuite?</div><div class="sleek-flat"> <div class="sleek-image"> <img src="' + datacell['image']['src'] + '"/> </div><div class="sleek-offer"> <div class="sleek-title">' + datacell['title'] + '</div><div class="sleek-prices"> <span class="sleek-price money">' + s_data['currency'] + ' ' + datacell['variants'][0]['price'] + '</span> <span class="sleek-compare-price money">' + s_data['currency'] + ' ' + datacell['variants'][0]['compare_at_price'] + '</span> </div><div class="sleek-selectors"> <div class="offer_fields_holder o_h_' + product_id + '"></div> <select class="v-select v-' + product_id + '"></select> <div class="flex-select"> <select class="q-select q-' + product_id + '"></select> <button class="sleek-atc" type="submit" onclick="return false;">' + $('.offer_button_text').val() + '</button> </div></div></div></div></form>';
+                    let compact_ui = '<form class="sleek-form" data-product-index="' + i + '"> <div class="sleek-compact"> <div class="sleek-image"> <img src="' + datacell['image']['src'] + '"/> </div><div class="sleek-offer"> <div class="sleek-text">Besoin d\'une livraison gratuite?</div><div class="sleek-title">' + datacell['title'] + '</div><div class="sleek-prices"> <span class="sleek-price money">' + s_data['currency'] + ' ' + datacell['variants'][0]['price'] + '</span> <span class="sleek-compare-price money">' + s_data['currency'] + ' ' + datacell['variants'][0]['compare_at_price'] + '</span> </div><div class="sleek-selectors"> <div class="offer_fields_holder o_h_' + product_id + '"></div> <select class="v-select v-' + product_id + '"></select> <select class="q-select q-' + product_id + '"></select> </div><button class="sleek-atc" type="submit" onclick="return false;">' + $('.offer_button_text').val() + '</button> </div></div></form>';
                     $('.card').append(card_ui);
                     $('.block').append(block_ui);
                     $('.half-block').append(half_block_ui);
@@ -1398,13 +1358,13 @@ Not supports in Firefox and IE */
         var type = $('#oc1Type').val();
 
         if (type == 'product') {
-            $('#ocContent').attr('placeholder', 'Search for product');
+            $('#ocContent').attr('placeholder', 'Rechercher un produit');
         }
         if (type == 'variant') {
-            $('#ocContent').attr('placeholder', 'Search for variant');
+            $('#ocContent').attr('placeholder', 'Rechercher une variante');
         }
         if (type == 'collection') {
-            $('#ocContent').attr('placeholder', 'Search for collection');
+            $('#ocContent').attr('placeholder', 'Rechercher une collection');
         }
     });
 
@@ -1546,21 +1506,21 @@ Not supports in Firefox and IE */
         $('.saving').show();
         $.ajax({
             type: "POST",
-            url: base_url + 'create_auto_collection/<?php echo $shop ?>/<?php echo $token; ?>?<?php echo $_SERVER['QUERY_STRING']; ?>',
+            url: base_url + 'fr/create_auto_collection/<?php echo $shop ?>/<?php echo $token; ?>?<?php echo $_SERVER['QUERY_STRING']; ?>',
             data: {
                 auto_collection
             },
             success: function(response) {
                 $('.saveOffer').attr("disabled", false);
                 console.log(response);
-                $('.saving').html('<span class="entypo-thumbs-up btn btn-sucess btn-lg" style="margin-top: 30vh; font-weight: bold; color: #ffffff; background: #000000;">SUCCESFULLY SAVED</span>');
+                $('.saving').html('<span class="entypo-thumbs-up btn btn-sucess btn-lg" style="margin-top: 30vh; font-weight: bold; color: #ffffff; background: #000000;">ENREGISTRÉ AVEC SUCCÈS</span>');
                 setTimeout(function() {
                     $('.saving').hide(400);
                 }, 1000);
             },
             error: function(error) {
                 console.log(error);
-                $('.saving').html('<span class="entypo-thumbs-up btn btn-sucess btn-lg" style="margin-top: 30vh; font-weight: bold; color: #ffffff; background: #E52F28;">ERROR</span>');
+                $('.saving').html('<span class="entypo-thumbs-up btn btn-sucess btn-lg" style="margin-top: 30vh; font-weight: bold; color: #ffffff; background: #E52F28;">ERREUR</span>');
                 setTimeout(function() {
                     $('.saving').hide(400);
                 }, 1000);
