@@ -335,12 +335,12 @@
 
 <div class="saving" style="display: none; position: absolute; top: 0px; right: 0px; z-index: 2000000; width: 300px; height: 400px; background: rgba(152,27,27,0.5); vertical-align: middle; text-align: center;"><img src="<?php echo base_url(); ?>assets/images/loader_2.gif" style="margin-top: 30vh;" /></div>
 <div class="dragger" style="cursor: grab; display: table; position: absolute; top: 10px; left: 10px; z-index: 2000000; color: #FFFFFF;"><span style="font-weight:700">SETUP WIZARD</span><br /><small>click to drag around</small></div>
-<div class="btn btn-primary saver" style="display: table; position: absolute; top: 10px; right: 10px; z-index: 2000000;"><span class="entypo-floppy"> SAVE</span></div>
-<div class="btn btn-primary" onclick="removeWizard();" style="display: table; position: absolute; bottom: 10px; right: 10px; z-index: 2000000;"><span class="entypo-cancel"> CLOSE</span></div>
+<div class="btn-primary saver" style="display: table; position: absolute; top: 10px; right: 10px; z-index: 2000000;"><span class="entypo-floppy"> SAVE</span></div>
+<div class="btn-primary" onclick="removeWizard();" style="display: table; position: absolute; bottom: 10px; right: 10px; z-index: 2000000;"><span class="entypo-cancel"> CLOSE</span></div>
 <div class="whole">
     <div style=" z-index: 3000000; width: 50px; height: 400px; background: #003471; display: flex; flex-direction: column; justify-content: space-between; align-items: center; text-align: center;">
-        <div id="p" class="whats btn btn-primary" style="background-color: #003471; color: white;"><span class="entypo-leaf"></span></div>
-        <div id="d" class="whats btn btn-primary"><span class="entypo-brush"></span></div>
+        <div id="p" class="whats btn-primary" style="background-color: #003471; color: white;"><span class="entypo-leaf"></span></div>
+        <div id="d" class="whats btn-primary"><span class="entypo-brush"></span></div>
     </div>
     <div style="height: 400px; overflow-y: auto; flex-grow: 4; padding-bottom: 100px;">
         <div class="setting_tab s_p" style="display: flex;">
@@ -360,10 +360,10 @@
                 <small style="display: table; width: 100%; text-align: center;">Use this section to position your offers on the cart page and cart drawer</small>
                 <hr />
                 <div class="input-group">
-                    <span class="layout_previous input-group-addon btn btn-danger entypo-left" cart-prev="109"></span>
+                    <span class="layout_previous input-group-addon btn-danger entypo-left" cart-prev="109"></span>
                     <input type="text" class="form-control" value="Change position" disabled style="cursor: none; background: #ffffff !important; border: none !important; color: #000000 !important" />
-                    <span class="layout_next input-group-addon btn btn-danger entypo-right" cart-next="0"></span>
-                    <span class="randomizeElem input-group-addon btn btn-success entypo-shuffle"></span>
+                    <span class="layout_next input-group-addon btn-danger entypo-right" cart-next="0"></span>
+                    <span class="randomizeElem input-group-addon btn-success entypo-shuffle"></span>
                 </div>
                 <br />
                 <div class="panel-group joined" id="accordion-test">
@@ -434,7 +434,7 @@
                     <li>When pasting, if you copied the selector from class="" add a . before pasting eg .class_name if you copied from class="class_name"</li>
                     <li>if you copied the selector from class="" add a # before pasting eg #class_name if you copied from id="class_name"</li>
                     <li>Don't hesitate to contact support if you have any problems with this.</li>
-                    <a href="mailto:support@sleekupsell.com" class="btn btn-lg btn-danger btn-icon icon-right"><i class="entypo-help"></i>REQUEST HELP</a>
+                    <a href="mailto:support@sleekupsell.com" class="btn-lg btn-danger btn-icon icon-right"><i class="entypo-help"></i>REQUEST HELP</a>
                 </ul>
             </div>
         </div>
@@ -1347,7 +1347,7 @@
             data: shop_sets,
             success: function(response) {
                 // console.log(response);
-                $('.saving').html('<span class="entypo-thumbs-up btn btn-sucess btn-lg" style="margin-top: 30vh; font-weight: bold; color: #ffffff; background: #000000;">SUCCESFULLY SAVED</span>');
+                $('.saving').html('<span class="entypo-thumbs-up btn-sucess btn-lg" style="margin-top: 30vh; font-weight: bold; color: #ffffff; background: #000000;">SUCCESFULLY SAVED</span>');
                 setTimeout(function() {
                     $('.saver').show();
                     $('.saving').hide(400);
