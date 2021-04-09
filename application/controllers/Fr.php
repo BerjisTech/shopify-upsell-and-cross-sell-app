@@ -56,6 +56,8 @@ class Fr extends CI_Controller
             $script_exists = $this->Shopify->shopify_call($token, $shop, $this_script, array('fields' => 'id,src,event,created_at,updated_at,'), 'GET');
             $script_exists = json_decode($script_exists['response'], true);
 
+            print_r($script_exists);
+
             if (count($script_exists['script_tags']) == 0) {
                 $data['do_script'] = "add";
             } else {
