@@ -335,8 +335,8 @@
 
 <div class="saving" style="display: none; position: absolute; top: 0px; right: 0px; z-index: 2000000; width: 300px; height: 400px; background: rgba(152,27,27,0.5); vertical-align: middle; text-align: center;"><img src="<?php echo base_url(); ?>assets/images/loader_2.gif" style="margin-top: 30vh;" /></div>
 <div class="dragger" style="cursor: grab; display: table; position: absolute; top: 10px; left: 10px; z-index: 2000000; color: #FFFFFF;"><span style="font-weight:700">SETUP WIZARD</span><br /><small>click to drag around</small></div>
-<div class="btn-primary saver" style="display: table; position: absolute; top: 10px; right: 10px; z-index: 2000000;"><span class="entypo-floppy"> SAVE</span></div>
-<div class="btn-primary" onclick="removeWizard();" style="display: table; position: absolute; bottom: 10px; right: 10px; z-index: 2000000;"><span class="entypo-cancel"> CLOSE</span></div>
+<div class="btn btn-primary saver" style="width: 50px !important; display: table; position: absolute; top: 10px; right: 10px; z-index: 2000000;"><span class="entypo-floppy"> SAVE</span></div>
+<div class="btn btn-primary" onclick="removeWizard();" style="width: 50px !important; display: table; position: absolute; bottom: 10px; right: 10px; z-index: 2000000;"><span class="entypo-cancel"> CLOSE</span></div>
 <div class="whole">
     <div style=" z-index: 3000000; width: 50px; height: 400px; background: #003471; display: flex; flex-direction: column; justify-content: space-between; align-items: center; text-align: center;">
         <div id="p" class="whats btn-primary" style="background-color: #003471; color: white;"><span class="entypo-leaf"></span></div>
