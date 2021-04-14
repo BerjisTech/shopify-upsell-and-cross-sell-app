@@ -295,7 +295,7 @@ class Slade extends CI_Controller
             'support@sleekupsell.com'
         );
 
-        $this->Shopify->welcome_email($s_data['customer_email']);
+        // $this->Shopify->welcome_email($s_data['customer_email']);
 
         echo '<script>top.window.location="https://' . $_GET['shop'] . '/admin/apps/sleek-upsell?' . $_SERVER['QUERY_STRING'] . '";</script>';
     }
