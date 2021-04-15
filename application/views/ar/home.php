@@ -345,7 +345,7 @@
                                 <div class="circle circle-blue"></div>
                             </div>
                         </div>
-                        <div class="content" style="max-height: 220px;">
+                        <div class="content" style="max-height: 520px;">
                             <img src="https://apps.shopifycdn.com/listing_images/ad1d8c0159547e886af6d777c058e4d9/desktop_screenshot/098658710174ca226fba1effc80ded67.jpeg" alt="image">
                         </div>
                     </div>
