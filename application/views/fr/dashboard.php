@@ -102,7 +102,7 @@ $duka = $shop . '.myshopify.com';
                             <p style="font-size: 18px !important; color: #8797A8 !important; margin-bottom: 0px !important;">Besoin d'aide? Assurez-vous de déposer un e-mail et nous vous répondrons en moins de 20 minutes. Notre équipe d'assistance se nourrit du bonheur des clients</p>
 
 
-                            
+                            <iframe style="width: 90%; margin-left: 5%; height: 400px; border-radius: 10px; box-shadow: 0px 0px 10px rgb(3 3 3 / 60%);" src="https://www.youtube.com/embed/N8Xj0yjhhc8" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 
                             <div style="display: flex; justify-content: space-between; align-items: center; padding: 20px 20px 20px 20px;">
