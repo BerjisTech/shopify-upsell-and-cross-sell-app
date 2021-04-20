@@ -1,6 +1,6 @@
 <?php $duka = $shop . '.myshopify.com'; ?>
 <div class="btn btn-primary" onclick="window.history.back();" style="display: table; position: absolute; top: 10px; right: 30px; z-index: 2000000;"><span class="entypo-home"> BACK</span></div>
-<h2 style="margin-top: -10px; text-align: center;">General stats for <?php echo $shop; ?> offers</h2>
+<h2 style="margin-top: -10px; text-align: center;">Statistiques générales pour <?php echo $shop; ?> offres</h2>
 <script type="text/javascript">
     jQuery(document).ready(function() {
         // Sparkline Charts
@@ -183,7 +183,7 @@
                 ],
                 xkey: 'y',
                 ykeys: ['a', 'b', 'c'],
-                labels: ['Shown', 'Impressions', 'Purchased'],
+                labels: ['Exposé', 'Impressions', 'Purchased'],
                 lineColors: ['#ec3b83', '#E8B51B', '#00acd6'],
                 resize: true,
                 smooth: true,
@@ -266,7 +266,7 @@
                 ],
                 xkey: 'y',
                 ykeys: ['a', 'b', 'c'],
-                labels: ['Shown', 'Impressions', 'Purchased'],
+                labels: ['Exposé', 'Impressions', 'Purchased'],
                 lineColors: ['#ec3b83', '#E8B51B', '#00acd6'],
                 resize: true,
                 xLabelFormat: function(x) {
@@ -349,7 +349,7 @@
                 ],
                 xkey: 'y',
                 ykeys: ['a', 'b', 'c'],
-                labels: ['Shown', 'Impressions', 'Purchased'],
+                labels: ['Exposé', 'Impressions', 'Purchased'],
                 lineColors: ['#ec3b83', '#E8B51B', '#00acd6'],
                 xLabelFormat: function(d) {
                     return d.getDate() + ' ' + months[d.getMonth()];
@@ -413,7 +413,7 @@
                 ],
                 xkey: 'y',
                 ykeys: ['a', 'b', 'c'],
-                labels: ['Shown', 'Impressions', 'Purchased'],
+                labels: ['Exposé', 'Impressions', 'Purchased'],
                 lineColors: ['#ec3b83', '#E8B51B', '#00acd6'],
                 xLabelFormat: function(d) {
                     return d.getDate() + ' ' + months[d.getMonth()];
@@ -476,7 +476,7 @@
                 ],
                 xkey: 'y',
                 ykeys: ['a', 'b', 'c'],
-                labels: ['Shown', 'Impressions', 'Purchased'],
+                labels: ['Exposé', 'Impressions', 'Purchased'],
                 lineColors: ['#ec3b83', '#E8B51B', '#00acd6'],
                 xLabelFormat: function(d) {
                     return d.getDate() + ' ' + months[d.getMonth()];
@@ -540,7 +540,7 @@
                 ],
                 xkey: 'y',
                 ykeys: ['a', 'b', 'c'],
-                labels: ['Shown', 'Impressions', 'Purchased'],
+                labels: ['Exposé', 'Impressions', 'Purchased'],
                 lineColors: ['#ec3b83', '#E8B51B', '#00acd6'],
                 xLabelFormat: function(x) {
                     var month = months[x.getMonth()] + ' ' + x.getFullYear();
@@ -604,7 +604,7 @@
                 ],
                 xkey: 'y',
                 ykeys: ['a', 'b', 'c'],
-                labels: ['Shown', 'Impressions', 'Purchased'],
+                labels: ['Exposé', 'Impressions', 'Purchased'],
                 lineColors: ['#ec3b83', '#E8B51B', '#00acd6'],
                 xLabelFormat: function(d) {
                     return d.getDate() + ' ' + months[d.getMonth()];
@@ -668,7 +668,7 @@
                 ],
                 xkey: 'y',
                 ykeys: ['a', 'b', 'c'],
-                labels: ['Shown', 'Impressions', 'Purchased'],
+                labels: ['Exposé', 'Impressions', 'Purchased'],
                 lineColors: ['#ec3b83', '#E8B51B', '#00acd6'],
                 xLabelFormat: function(x) {
                     var month = months[x.getMonth()] + ' ' + x.getFullYear();
@@ -743,7 +743,7 @@
                 ],
                 xkey: 'y',
                 ykeys: ['a', 'b', 'c'],
-                labels: ['Shown', 'Impressions', 'Purchased'],
+                labels: ['Exposé', 'Impressions', 'Purchased'],
                 lineColors: ['#ec3b83', '#E8B51B', '#00acd6'],
                 xLabelFormat: function(x) {
                     var month = x.getDate() + ' ' + months[x.getMonth()] + ' ' + x.getFullYear();
@@ -793,13 +793,13 @@
     <div class="col-md-4 col-sm-12">
         <div class="tile-stats tile-white stat-tile">
             <h3><?php echo number_format($this->db->where('shop', $duka)->where('type', 'show')->get('stats')->num_rows()); ?></h3>
-            <p>Shown</p> <span class="all-time-sales"></span>
+            <p>Exposé</p> <span class="all-time-sales"></span>
         </div>
     </div>
     <div class="col-md-4 col-sm-6">
         <div class="tile-stats tile-white stat-tile">
             <h3><?php echo number_format($this->db->where('shop', $duka)->where('type', 'impression')->get('stats')->num_rows()); ?></h3>
-            <p>Customer impression</p> <span class="customer-reach"></span>
+            <p>Impression client</p> <span class="customer-reach"></span>
         </div>
     </div>
     <div class="col-md-4 col-sm-6">
@@ -816,23 +816,23 @@
                 <div class="panel-title">
                     <div class="input-group">
                         <select class="form-control adjust-stats">
-                            <option value="">Choose stats time</option>
-                            <option value="0">Last 24 hours</option>
-                            <option value="1">Yesterday</option>
-                            <option value="7">Last 7 days</option>
-                            <option value="30">Lat 30 days</option>
-                            <option value="90">Last 90 days</option>
-                            <option value="365">Last 365 days</option>
-                            <option value="31">Last month</option>
-                            <option value="366">Last year</option>
-                            <option value="all">All Time</option>
+                            <option value="">Choisissez l'heure des statistiques</option>
+                            <option value="0">Dernières 24 heures</option>
+                            <option value="1">Hier</option>
+                            <option value="7">Les 7 derniers jours</option>
+                            <option value="30">Lat 30 jours</option>
+                            <option value="90">90 derniers jours</option>
+                            <option value="365">365 derniers jours</option>
+                            <option value="31">Le mois dernier</option>
+                            <option value="366">L'année dernière</option>
+                            <option value="all">Tout le temps</option>
                         </select>
                     </div>
                 </div>
                 <div class="panel-options">
                     <ul class="nav nav-tabs">
-                        <li class="active"><a href="#line-chart" data-toggle="tab">Shown vs ATC</a></li>
-                        <li class=""><a href="#pie-chart" data-toggle="tab">Comparison Chart</a></li>
+                        <li class="active"><a href="#line-chart" data-toggle="tab">Montré vs ATC</a></li>
+                        <li class=""><a href="#pie-chart" data-toggle="tab">Tableau de comparaison</a></li>
                     </ul>
                 </div>
             </div>
@@ -862,7 +862,7 @@
                 <tbody>
                     <tr>
                         <td class="panel-heading">
-                            <h4>Monthly Sales</h4>
+                            <h4>Ventes mensuelles</h4>
                         </td>
                     </tr>
                 </tbody>
@@ -872,14 +872,14 @@
     <div class="col-sm-8">
         <div class="panel panel-primary">
             <div class="panel-heading">
-                <div class="panel-title">Top 3 offers</div>
+                <div class="panel-title">Top 3 des offres</div>
             </div>
             <div class="panel-body with-table">
                 <table class="table table-bordered table-responsive">
                     <thead>
                         <tr>
                             <th>#</th>
-                            <th>Offer</th>
+                            <th>Offre</th>
                             <th>CTR</th>
                         </tr>
                     </thead>
@@ -1005,7 +1005,7 @@
             ],
             xkey: 'y',
             ykeys: ['a', 'b'],
-            labels: ['Shown', 'Purchased'],
+            labels: ['Exposé', 'Purchased'],
             lineColors: ['#ec3b83', '#00acd6'],
             xLabelFormat: function(x) {
                 var month = months[x.getMonth()];
