@@ -691,6 +691,12 @@ class Slade extends CI_Controller
         $shop_name = str_replace(".myshopify.com", "", $shop);
         $collects_json = '/admin/api/2020-04/collects.json';
         $themes_json = '/admin/api/2020-04/themes.json';
+        $products_json = '/admin/api/2020-04/products.json';
+        $shop_json = '/admin/api/2020-04/shop.json';
+
+
+
+
 
         if ($this->db->where('shop', $shop_name)->get('shops')->num_rows() == 0) {
             $offers = array();
@@ -701,10 +707,14 @@ class Slade extends CI_Controller
             $data['token'] = $token;
             $collects = $this->Shopify->shopify_call($token, $shop_name, $collects_json, array(), 'GET');
             $themes = $this->Shopify->shopify_call($token, $shop_name, $themes_json, array(), 'GET');
+            $shop_j = $this->Shopify->shopify_call($token, $shop_name, $shop_json, array('fields' => 'money_with_currency_format,money_format'), 'GET');
+            $products = $this->Shopify->shopify_call($token, $shop_name, $products_json, array(), 'GET');
         }
 
         $params['collects'] = json_decode($collects['response'], true);
         $params['themes'] = json_decode($themes['response'], true);
+        $shop_j = json_decode($shop_j['response'], true);
+        $products = json_decode($products['response'], true);
 
         $offers = $this->db->where('shop', $shop_name)->get('offers')->result_array();
         $data['settings'] = $this->db->where('shop', $shop_name)->get('settings')->row();
@@ -721,8 +731,15 @@ class Slade extends CI_Controller
             $data['offer'][$oid]['choices'] = $this->db->where('oid', $oid)->get('choices')->result_array();
         }
 
+        $money_format = $shop_j['shop']['money_format'];
+        $money_format = str_replace('<span class="money">', '', $money_format);
+        $money_format = str_replace('</span>', '', $money_format);
+        $data['money_format'] = $money_format;
+
         $data['collects'] = $params['collects']['collects'];
         $data['themes'] = $params['themes']['themes'];
+        $data['product'] = $products['product'];
+        $data['shop'] = $shop_j['shop'];
 
         header('Content-Type: application/json');
         header('X-Shopify-Access-Token: ' . $token);
@@ -1413,48 +1430,6 @@ class Slade extends CI_Controller
         $this->db->where('shop', $shop)->set('status', $status)->update('auto_collection');
     }
 
-    public function gv($shop, $id)
-    {
-        $shop_name = str_replace(".myshopify.com", "", $shop);
-        $token = $this->db->where('shop', $shop_name)->get('shops')->row()->token;
-
-        $products_json = '/admin/api/2020-04/products/' . $id . '.json';
-        $products = $this->Shopify->shopify_call($token, $shop_name, $products_json, array(), 'GET');
-        $products = json_decode($products['response'], true);
-
-        $shop_json = '/admin/api/2020-04/shop.json';
-        $shop_j = $this->Shopify->shopify_call($token, $shop_name, $shop_json, array('fields' => 'money_with_currency_format,money_format'), 'GET');
-        $shop_j = json_decode($shop_j['response'], true);
-
-        header('Content-Type: application/json');
-        header('X-Shopify-Access-Token: ' . $token);
-        $p = json_encode($products);
-        $s =  json_encode($shop_j);
-
-        $data['product'] = $products['product'];
-        $data['shop'] = $shop_j['shop'];
-
-        echo json_encode($data);
-    }
-
-    public function mf($shop)
-    {
-        $shop_name = str_replace(".myshopify.com", "", $shop);
-        $token = $this->db->where('shop', $shop_name)->get('shops')->row()->token;
-
-        $shop_json = '/admin/api/2020-04/shop.json';
-        $shop_j = $this->Shopify->shopify_call($token, $shop_name, $shop_json, array('fields' => 'money_format'), 'GET');
-        $shop_j = json_decode($shop_j['response'], true);
-
-        header('Content-Type: application/json');
-        header('X-Shopify-Access-Token: ' . $token);
-
-        $shop_j = $shop_j['shop']['money_format'];
-        $shop_j = str_replace('<span class="money">', '', $shop_j);
-        $shop_j = str_replace('</span>', '', $shop_j);
-        echo $shop_j;
-    }
-
     public function d()
     {
         $shop = str_replace(".myshopify.com", "", $_GET['shop']);
@@ -1771,6 +1746,12 @@ class Slade extends CI_Controller
         $shop_name = str_replace(".myshopify.com", "", $shop);
         $collects_json = '/admin/api/2020-04/collects.json';
         $themes_json = '/admin/api/2020-04/themes.json';
+        $products_json = '/admin/api/2020-04/products.json';
+        $shop_json = '/admin/api/2020-04/shop.json';
+
+
+
+
 
         if ($this->db->where('shop', $shop_name)->get('shops')->num_rows() == 0) {
             $offers = array();
@@ -1781,10 +1762,14 @@ class Slade extends CI_Controller
             $data['token'] = $token;
             $collects = $this->Shopify->shopify_call($token, $shop_name, $collects_json, array(), 'GET');
             $themes = $this->Shopify->shopify_call($token, $shop_name, $themes_json, array(), 'GET');
+            $shop_j = $this->Shopify->shopify_call($token, $shop_name, $shop_json, array('fields' => 'money_with_currency_format,money_format'), 'GET');
+            $products = $this->Shopify->shopify_call($token, $shop_name, $products_json, array(), 'GET');
         }
 
         $params['collects'] = json_decode($collects['response'], true);
         $params['themes'] = json_decode($themes['response'], true);
+        $shop_j = json_decode($shop_j['response'], true);
+        $products = json_decode($products['response'], true);
 
         $offers = $this->db->where('shop', $shop_name)->get('offers')->result_array();
         $data['settings'] = $this->db->where('shop', $shop_name)->get('settings')->row();
@@ -1801,11 +1786,60 @@ class Slade extends CI_Controller
             $data['offer'][$oid]['choices'] = $this->db->where('oid', $oid)->get('choices')->result_array();
         }
 
+        $money_format = $shop_j['shop']['money_format'];
+        $money_format = str_replace('<span class="money">', '', $money_format);
+        $money_format = str_replace('</span>', '', $money_format);
+        $data['money_format'] = $money_format;
+
         $data['collects'] = $params['collects']['collects'];
         $data['themes'] = $params['themes']['themes'];
+        $data['product'] = $products['product'];
+        $data['shop'] = $shop_j['shop'];
 
         $data['data'] = $data;
 
         $this->load->view('shopify', $data);
+    }
+
+    public function gv($shop, $id)
+    {
+        $shop_name = str_replace(".myshopify.com", "", $shop);
+        $token = $this->db->where('shop', $shop_name)->get('shops')->row()->token;
+
+        $products_json = '/admin/api/2020-04/products/' . $id . '.json';
+        $products = $this->Shopify->shopify_call($token, $shop_name, $products_json, array(), 'GET');
+        $products = json_decode($products['response'], true);
+
+        $shop_json = '/admin/api/2020-04/shop.json';
+        $shop_j = $this->Shopify->shopify_call($token, $shop_name, $shop_json, array('fields' => 'money_with_currency_format,money_format'), 'GET');
+        $shop_j = json_decode($shop_j['response'], true);
+
+        header('Content-Type: application/json');
+        header('X-Shopify-Access-Token: ' . $token);
+        $p = json_encode($products);
+        $s =  json_encode($shop_j);
+
+        $data['product'] = $products['product'];
+        $data['shop'] = $shop_j['shop'];
+
+        echo json_encode($data);
+    }
+
+    public function mf($shop)
+    {
+        $shop_name = str_replace(".myshopify.com", "", $shop);
+        $token = $this->db->where('shop', $shop_name)->get('shops')->row()->token;
+
+        $shop_json = '/admin/api/2020-04/shop.json';
+        $shop_j = $this->Shopify->shopify_call($token, $shop_name, $shop_json, array('fields' => 'money_format'), 'GET');
+        $shop_j = json_decode($shop_j['response'], true);
+
+        header('Content-Type: application/json');
+        header('X-Shopify-Access-Token: ' . $token);
+
+        $shop_j = $shop_j['shop']['money_format'];
+        $shop_j = str_replace('<span class="money">', '', $shop_j);
+        $shop_j = str_replace('</span>', '', $shop_j);
+        echo $shop_j;
     }
 }
