@@ -14,14 +14,20 @@
         return xmlHttp.responseText;
     }
 
-    function externalGetRequest(request) {
-        if (request) {
-            request.onload = function() {
-                return request.responseText;
-            };
-            request.send();
-        }
-    }
+    let page = window.location.pathname;
+
+    let offers = <?php echo json_encode($data); ?>
+    let cart = externalJsonRequest("/cart.js");
+
+    let products = offers.products;
+    let auto_collection = offers.auto_collection;
+    let settings = offers['settings'];
+    let drawer_selector = 'form[action="/cart"]';
+    let drawer_position = 'before';
+    let cart_selector = 'form[action="/cart"]';
+    let cart_position = 'before';
+
+
 
     var Base64 = {
         _keyStr: "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/=",
@@ -153,7 +159,7 @@
     // ---------------------------------------------------------------------------
     // Money format handler
     // ---------------------------------------------------------------------------
-    Shopify.money_format = externalTextRequest(burl + '/mf/' + Shopify.shop);
+    Shopify.money_format = offers.money_format;
     Shopify.currency = Shopify.money_format.substr(0, Shopify.money_format.indexOf('{')).substr(0, Shopify.money_format.indexOf('}'));
     // console.log(Shopify.currency);
     Shopify.formatMoney = function(cents, format) {
@@ -261,20 +267,6 @@
         Array.prototype.none = function(predicate) {
             return !this.some(predicate);
         }
-
-        let page = window.location.pathname;
-
-        let offers_url = 'https://sleekupsell.com/offers/' + Shopify.shop;
-
-        let offers = <?php echo json_encode($data); ?>
-        let cart = externalJsonRequest("/cart.js");
-
-        let auto_collection = offers['auto_collection'];
-        let settings = offers['settings'];
-        let drawer_selector = 'form[action="/cart"]';
-        let drawer_position = 'before';
-        let cart_selector = 'form[action="/cart"]';
-        let cart_position = 'before';
 
         if (settings != null) {
             drawer_selector = settings.drawer_location;
@@ -386,7 +378,7 @@
                                         // alert('Display '+cb[c]['product_id']);
                                         if (auto_collection['same_vendor'] == 'y') {
                                             pidV = items[i]['vendor'];;
-                                            pid2V = gv(base_url + '/gv/' + Shopify.shop + '/' + cb[c]['product_id']).product['vendor'];
+                                            pid2V = products[products.findIndex(p => p.id == pid)]['vendor'];
                                             if (pidV == pid2V) {
                                                 // console.log('Vendor ' + pidV + ' same as vendor ' + pid2V)
                                                 sessionStorage.setItem('c_used_' + cb[c]['product_id'], 'z');
@@ -763,7 +755,7 @@
                 let v = products[i];
                 let pid = v['product'];
 
-                let Pgv = externalJsonRequest(burl + '/gv/' + Shopify.shop + '/' + pid);
+                let Pgv = products[products.findIndex(p => p.id == pid)];
                 let pDet = Pgv.product;
 
                 let oatc = offers['offer'][oid]['offer'][0]['atc'];
@@ -881,8 +873,8 @@
                         externalTextRequest('/cart/change?id=' + v['rv'] + '&quantity=0');
                     } else {
                         if (v['rp'] != '') {
-                            let dc = externalJsonRequest(burl + '/gv/' + Shopify.shop + '/' + v['rp']);
-                            for (let vi = 0; vi < dc.product.variants.length; vi++) {
+                            let dc = products[products.findIndex(p => p.id == ['rp'])]
+                            for (let vi = 0; vi < dc.variants.length; vi++) {
                                 externalTextRequest('/cart/change?id=' + dc.product.variants[vi].id + '&quantity=0');
                             }
                         }
@@ -939,8 +931,8 @@
                         externalTextRequest('/cart/change?id=' + v['rv'] + '&quantity=0');
                     } else {
                         if (v['rp'] != '') {
-                            let dc = externalJsonRequest(burl + '/gv/' + Shopify.shop + '/' + v['rp']);
-                            for (let vi = 0; vi < dc.product.variants.length; vi++) {
+                            let dc = products[products.findIndex(p => p.id == ['rp'])]
+                            for (let vi = 0; vi < dc.variants.length; vi++) {
                                 externalTextRequest('/cart/change?id=' + dc.product.variants[vi].id + '&quantity=0');
                             }
                         }
@@ -1062,7 +1054,7 @@
                     $(lay_el).append('<div style="display: table; position: relative; width: 100%; text-align: right;"><span class="reject_offer" style="font-size: 15px; cursor: pointer;">x</span></div>');
                 }
 
-                let Pgv = externalJsonRequest(burl + '/gv/' + Shopify.shop + '/' + pid);
+                let Pgv = products[products.findIndex(p => p.id == pid)]
                 let pDet = Pgv.product;
 
                 let oatc = auto_collection['atc'];
