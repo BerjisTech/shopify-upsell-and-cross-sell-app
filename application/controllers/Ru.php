@@ -18,7 +18,7 @@ class Ru extends CI_Controller
     public function index()
     {
         if (!isset($_GET['shop'])) {
-            $this->load->view($this->session->language.'/en/home');
+            $this->load->view('en/home');
         } else {
             if (!isset($_GET['hmac'])) {
                 echo '<script>window.location.href = "https://' . $_GET['shop'] . '/admin/apps";</script>';
@@ -48,7 +48,7 @@ class Ru extends CI_Controller
 
             $token = $shop_data->token;
             $shop = $shop_data->shop;
-            $this->session->language = $shop_data->language;
+            $this->db->where('shop', $shop)->get('shops')->row()->language = $shop_data->language;
 
 
             $this_script = '/admin/api/2020-04/script_tags.json';
@@ -91,7 +91,7 @@ class Ru extends CI_Controller
             $data['shop'] = $shop;
             $data['token'] = $token;
             $data['page_name'] = 'dashboard';
-            $this->load->view($this->session->language.'/index', $data);
+            $this->load->view($this->db->where('shop', $shop)->get('shops')->row()->language.'/index', $data);
         }
     }
 
@@ -620,7 +620,7 @@ class Ru extends CI_Controller
         $data['shop'] = $shop_data->shop;
 
         $data['page_name'] = 'create_offer';
-        $this->load->view($this->session->language.'/index', $data);
+        $this->load->view($this->db->where('shop', $shop)->get('shops')->row()->language.'/index', $data);
     }
 
     public function edit_offer($shop, $token, $offer)
@@ -643,7 +643,7 @@ class Ru extends CI_Controller
         $data['shop'] = $shop_data->shop;
 
         $data['page_name'] = 'edit_offer';
-        $this->load->view($this->session->language.'/index', $data);
+        $this->load->view($this->db->where('shop', $shop)->get('shops')->row()->language.'/index', $data);
     }
 
     public function offer_status($oid, $status)
@@ -657,7 +657,7 @@ class Ru extends CI_Controller
         $data['shop'] = $shop;
 
         $data['page_name'] = 'settings';
-        $this->load->view($this->session->language.'/index', $data);
+        $this->load->view($this->db->where('shop', $shop)->get('shops')->row()->language.'/index', $data);
     }
 
     public function subscription($shop, $token)
@@ -666,7 +666,7 @@ class Ru extends CI_Controller
         $data['shop'] = $shop;
 
         $data['page_name'] = 'subscription';
-        $this->load->view($this->session->language.'/index', $data);
+        $this->load->view($this->db->where('shop', $shop)->get('shops')->row()->language.'/index', $data);
     }
 
     public function update_settings()
@@ -1096,7 +1096,7 @@ class Ru extends CI_Controller
         $data['shop'] = $shop_data->shop;
 
         $data['page_name'] = 'stats';
-        $this->load->view($this->session->language.'/index', $data);
+        $this->load->view($this->db->where('shop', $shop)->get('shops')->row()->language.'/index', $data);
     }
 
     public function offer_stats($shop, $offer)
@@ -1112,7 +1112,7 @@ class Ru extends CI_Controller
         $data['shop'] = $shop_data->shop;
 
         $data['page_name'] = 'offer_stats';
-        $this->load->view($this->session->language.'/index', $data);
+        $this->load->view($this->db->where('shop', $shop)->get('shops')->row()->language.'/index', $data);
     }
 
     public function delete_offer($oid)
@@ -1247,14 +1247,14 @@ class Ru extends CI_Controller
     {
         $data['shop'] = 'sleek-apps';
         $data['page_name'] = 'metadata';
-        $this->load->view($this->session->language.'/index', $data);
+        $this->load->view('en/index', $data);
     }
 
     public function privacypolicy()
     {
         $data['shop'] = 'sleek-apps';
         $data['page_name'] = 'privacy-policy';
-        $this->load->view($this->session->language.'/index', $data);
+        $this->load->view('en/index', $data);
     }
 
     public function s_s_w($shop)
@@ -1268,7 +1268,7 @@ class Ru extends CI_Controller
         $data['token'] = $this->db->where('shop', str_replace(".myshopify.com", "", $shop))->get('shops')->row()->token;
         $data['shop'] = str_replace(".myshopify.com", "", $shop);
 
-        $this->load->view($this->session->language.'/suw', $data);
+        $this->load->view($this->db->where('shop', $shop)->get('shops')->row()->language.'/suw', $data);
     }
 
     public function users($shop, $token)
@@ -1286,7 +1286,7 @@ class Ru extends CI_Controller
         $data['shop'] = $shop;
         $data['token'] = $token;
         $data['page_name'] = 'admin_dashboard';
-        $this->load->view($this->session->language.'/index', $data);
+        $this->load->view($this->db->where('shop', $shop)->get('shops')->row()->language.'/index', $data);
     }
 
     public function sombo($shop, $token)
@@ -1321,7 +1321,7 @@ class Ru extends CI_Controller
         $data['shop'] = $shop;
         $data['token'] = $token;
         $data['page_name'] = 'ad_dashboard';
-        $this->load->view($this->session->language.'/index', $data);
+        $this->load->view($this->db->where('shop', $shop)->get('shops')->row()->language.'/index', $data);
     }
 
     public function refresh_store_data($shop)
@@ -1391,7 +1391,7 @@ class Ru extends CI_Controller
         $data['shop'] = $shop;
         $data['token'] = $token;
         $data['page_name'] = 'auto_collection';
-        $this->load->view($this->session->language.'/index', $data);
+        $this->load->view($this->db->where('shop', $shop)->get('shops')->row()->language.'/index', $data);
     }
 
     public function create_auto_collection($shop, $token)
