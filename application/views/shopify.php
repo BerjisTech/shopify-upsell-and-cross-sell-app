@@ -747,14 +747,18 @@
                 $(lay_el).append('<div style="display: table position: relative width: 100% text-align: right"><span class="reject_offer" style="font-size: 15px cursor: pointer">x</span></div>')
             }
 
+            let offer_products = offers.offer[oid].products
 
             console.log('Found products')
-            console.log(products)
+            console.log(offer_products)
             console.log('Shop products')
 
-            for (let i = 0; i < products.length; i++) {
+            for (let i = 0; i < offer_products.length; i++) {
+                let v = offer_products[i]
+                let pid = v['product'];
+                
                 let pDet = products[i]
-                let pid = pDet.id
+
                 console.log(pDet)
 
                 let oatc = offers.offer[oid].offer[0].atc
