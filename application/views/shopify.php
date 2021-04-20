@@ -747,7 +747,7 @@
                 $(lay_el).append('<div style="display: table; position: relative; width: 100%; text-align: right;"><span class="reject_offer" style="font-size: 15px; cursor: pointer;">x</span></div>');
             }
 
-            let products = offers['offer'][oid]['products'];
+            
             console.log('Found products');
             console.log(products);
             console.log('Shop products');
