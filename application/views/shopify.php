@@ -754,7 +754,7 @@
 
             for (let i = 0; i < products.length; i++) {
                 let pDet = products[i]
-                let pid = pdet.id
+                let pid = pDet.id
                 console.log(pDet)
 
                 let oatc = offers.offer[oid].offer[0].atc
