@@ -753,10 +753,8 @@
             console.log('Shop products')
 
             for (let i = 0; i < products.length; i++) {
-                let v = products[i]
-                let pid = v['product']
-
                 let pDet = products[i]
+                let pid = pdet.id
                 console.log(pDet)
 
                 let oatc = offers.offer[oid].offer[0].atc
