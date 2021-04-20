@@ -756,7 +756,7 @@
                 let v = products[i]
                 let pid = v['product']
 
-                let pDet = products[products.findIndex(p => p.id == pid)]
+                let pDet = products[i]
                 console.log(pDet)
 
                 let oatc = offers['offer'][oid]['offer'][0]['atc']
