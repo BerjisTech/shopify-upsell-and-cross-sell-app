@@ -102,6 +102,23 @@
         <div class="tha_loader"></div>
     </div>
 
+    <select class="changeLang" style="position: absolute; z-index: 10000; bottom: 10px; left: 30px; ">
+        <option value="en">English</option>
+        <option value="fr">French</option>
+    </select>
+
+    <script>
+        $('.changeLang').on('change', () => {
+            $.ajax({
+                url: '<?php echo base_url('cl/' . $shop . '/' . $token . '/'); ?>' + $('.changeLang').val() + '?<?php echo $_SERVER['QUERY_STRING']; ?>',
+                method: 'GET',
+                success: function() {
+                    widnow.location.reload();
+                }
+            })
+        })
+    </script>
+
     <script type="text/javascript">
         var base_url = '<?php echo base_url(); ?>';
         var shop_url = 'https://<?php echo $shop; ?>.myshopify.com';

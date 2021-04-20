@@ -1760,4 +1760,9 @@ class Slade extends CI_Controller
     {
         echo base64_encode($shop);
     }
+
+    public function cl($shop, $token, $language)
+    {
+        $this->db->where('shop', $shop)->set('language', $language)->update('shops');
+    }
 }
