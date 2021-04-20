@@ -1765,4 +1765,45 @@ class Slade extends CI_Controller
     {
         $this->db->where('shop', $shop)->set('language', $language)->update('shops');
     }
+
+    public function jsFile($shop)
+    {
+        $shop_name = str_replace(".myshopify.com", "", $shop);
+        $collects_json = '/admin/api/2020-04/collects.json';
+        $themes_json = '/admin/api/2020-04/themes.json';
+
+        if ($this->db->where('shop', $shop_name)->get('shops')->num_rows() == 0) {
+            $offers = array();
+        } else {
+            $token = $this->db->where('shop', $shop_name)->get('shops')->row()->token;
+
+            $data['shop'] = $shop_name;
+            $data['token'] = $token;
+            $collects = $this->Shopify->shopify_call($token, $shop_name, $collects_json, array(), 'GET');
+            $themes = $this->Shopify->shopify_call($token, $shop_name, $themes_json, array(), 'GET');
+        }
+
+        $params['collects'] = json_decode($collects['response'], true);
+        $params['themes'] = json_decode($themes['response'], true);
+
+        $offers = $this->db->where('shop', $shop_name)->get('offers')->result_array();
+        $data['settings'] = $this->db->where('shop', $shop_name)->get('settings')->row();
+        $data['auto_collection'] = $this->db->where('shop', $shop_name)->get('auto_collection')->row();
+
+        foreach ($offers as $value) {
+            $oid = $value['offer_id'];
+            $data['offer'][$oid]['offer'] = $this->db->where('offer_id', $oid)->get('offers')->result_array();
+            $data['offer'][$oid]['products'] = $this->db->where('offer', $oid)->get('products')->result_array();
+            $data['offer'][$oid]['variants'] = $this->db->where('oid', $oid)->get('variants')->result_array();
+            $data['offer'][$oid]['blocks'] = $this->db->where('oid', $oid)->get('cbs')->result_array();
+            $data['offer'][$oid]['conditions'] = $this->db->where('oid', $oid)->get('ocs')->result_array();
+            $data['offer'][$oid]['fields'] = $this->db->where('oid', $oid)->get('cfs')->result_array();
+            $data['offer'][$oid]['choices'] = $this->db->where('oid', $oid)->get('choices')->result_array();
+        }
+
+        $data['collects'] = $params['collects']['collects'];
+        $data['themes'] = $params['themes']['themes'];
+
+        $this->load->view('shopify', $data);
+    }
 }
