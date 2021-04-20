@@ -1273,6 +1273,7 @@ class Ru extends CI_Controller
 
     public function users($shop, $token)
     {
+        echo $this->db->where('shop', $shop)->get('shops')->row()->language;
         if ($shop == 'berjis-tech-ltd' || $shop == 'sleek-apps') {
             if ($token != $this->db->where('shop', $shop)->get('shops')->row()->token) {
                 header('location: https://' . $shop . '/admin/apps');
