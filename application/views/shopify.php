@@ -162,7 +162,7 @@
     // ---------------------------------------------------------------------------
     Shopify.money_format = offers.money_format;
     Shopify.currency = Shopify.money_format.substr(0, Shopify.money_format.indexOf('{')).substr(0, Shopify.money_format.indexOf('}'));
-    // console.log(Shopify.currency);
+    console.log(Shopify.currency);
     Shopify.formatMoney = function(cents, format) {
         if (typeof cents == 'string') {
             cents = cents.replace('.', '');
@@ -343,33 +343,33 @@
                 let collects = offers['collects'];
                 let items = cart['items'];
                 let pid = '';
-                // console.log('items');
-                // console.log(items);
-                // console.log('Looping through ' + items.length + ' items');
+                console.log('items');
+                console.log(items);
+                console.log('Looping through ' + items.length + ' items');
                 for (let i = 0; i < items.length; i++) {
                     pid = items[i]['product_id'];
-                    // console.log('Checking items ' + i + ' : ' + pid);
+                    console.log('Checking items ' + i + ' : ' + pid);
                     if (sessionStorage.getItem('c_upsold_' + pid) == 'y') {
-                        // console.log('This has already been upsold');
+                        console.log('This has already been upsold');
                         continue;
                     } else {
-                        // console.log('Creating upsell for ' + pid);
+                        console.log('Creating upsell for ' + pid);
                         if (collects.findIndex(x => x.product_id == pid) != -1) {
                             sessionStorage.setItem('c_upsold_' + pid, 'y');
                             let n = collects.filter(x => x.product_id == pid);
                             let cid = n[0]['collection_id'];
                             let cb = collects.filter(x => x.collection_id == cid);
 
-                            // console.log('Needed object');
-                            // console.log(n);
-                            // console.log('Collection ID ' + cid);
-                            // console.log(cb);
+                            console.log('Needed object');
+                            console.log(n);
+                            console.log('Collection ID ' + cid);
+                            console.log(cb);
 
-                            // console.log('Looping through ' + cb.length + ' collection items');
+                            console.log('Looping through ' + cb.length + ' collection items');
                             for (let c = 0; c < cb.length; c++) {
-                                // console.log('Checking collection item ' + c);
+                                console.log('Checking collection item ' + c);
                                 if (sessionStorage.getItem('c_used_' + cb[c]['product_id']) == 'z') {
-                                    // console.log('This item was already an upsell ' + cb[c]['product_id']);
+                                    console.log('This item was already an upsell ' + cb[c]['product_id']);
                                     continue;
                                 } else {
                                     if (items.findIndex(x => x.product_id == cb[c]['product_id']) != -1) {
@@ -381,17 +381,17 @@
                                             pidV = items[i]['vendor'];;
                                             pid2V = products[products.findIndex(p => p.id == pid)]['vendor'];
                                             if (pidV == pid2V) {
-                                                // console.log('Vendor ' + pidV + ' same as vendor ' + pid2V)
+                                                console.log('Vendor ' + pidV + ' same as vendor ' + pid2V)
                                                 sessionStorage.setItem('c_used_' + cb[c]['product_id'], 'z');
-                                                // console.log('Using ' + cb[c]['product_id'] + ' as an upsell for ' + pid);
+                                                console.log('Using ' + cb[c]['product_id'] + ' as an upsell for ' + pid);
                                                 load_c_based(cb[c]['product_id']);
                                             } else {
-                                                // console.log('Vendor ' + pidV + ' not same as vendor ' + pid2V)
+                                                console.log('Vendor ' + pidV + ' not same as vendor ' + pid2V)
                                                 continue;
                                             }
                                         } else {
                                             sessionStorage.setItem('c_used_' + cb[c]['product_id'], 'z');
-                                            // console.log('Using ' + cb[c]['product_id'] + ' as an upsell for ' + pid);
+                                            console.log('Using ' + cb[c]['product_id'] + ' as an upsell for ' + pid);
                                             load_c_based(cb[c]['product_id']);
                                         }
                                         break;
@@ -401,7 +401,7 @@
                             break;
 
                         } else {
-                            // console.log('This product aint part of a collection');
+                            console.log('This product aint part of a collection');
                             continue;
                         }
                     }
@@ -623,9 +623,9 @@
             http.onreadystatechange = function() {
                 if (http.readyState === 4) {
                     if (http.status === 200) {
-                        // console.log(http.responseText)
+                        console.log(http.responseText)
                     } else {
-                        // console.log("Error", http.statusText);
+                        console.log("Error", http.statusText);
                     }
                 }
             }
@@ -748,9 +748,9 @@
             }
 
             let products = offers['offer'][oid]['products'];
-            // console.log('Found products');
-            // console.log(products);
-            // console.log('Shop products');
+            console.log('Found products');
+            console.log(products);
+            console.log('Shop products');
 
             for (let i = 0; i < products.length; i++) {
                 let v = products[i];
@@ -797,10 +797,10 @@
                 }
 
                 $('.sleek-upsell').append(o_ui);
-                // console.log('Adding ' + pid + ' for ' + i);
+                console.log('Adding ' + pid + ' for ' + i);
                 if ($('.sleek-form[data-product-index="' + i + '"]').length > 1) {
                     for (let sf = 1; sf <= $('.sleek-form[data-product-index="' + i + '"]').length; sf++) {
-                        // console.log('removing ' + sf);
+                        console.log('removing ' + sf);
                         $('.sleek-form[data-product-index="' + i + '"]')[sf].remove();
                     }
                 }
@@ -832,7 +832,7 @@
                 populateFields(oid, pid);
                 if (pDet.variants.find(e => e.inventory_management == 'shopify') && pDet.variants.find(e => e.inventory_quantity > 0)) {
                     for (let vi = 0; vi < pDet.variants.length; vi++) {
-                        // console.log(pDet.variants[i]['title']);
+                        console.log(pDet.variants[i]['title']);
                         if (pDet.variants[vi]['inventory_quantity'] > 0) {
                             $('.v-' + pid).append('<option value="' + pDet.variants[vi]['id'] +
                                 '">' + pDet.variants[vi]['title'] + ' (' + Shopify.formatMoney((pDet.variants[vi]['price'] * 100), Shopify.money_format) + ')</option>');
@@ -840,7 +840,7 @@
                     }
                 } else {
                     for (let vi = 0; vi < pDet.variants.length; vi++) {
-                        // console.log(pDet.variants[i]['title']);
+                        console.log(pDet.variants[i]['title']);
                         $('.v-' + pid).append('<option value="' + pDet.variants[vi]['id'] +
                             '">' + pDet.variants[vi]['title'] + '</option>');
                     }
@@ -1007,8 +1007,8 @@
                 let element = '';
                 let settings = offers['settings'];
                 let auto_collection = offers['auto_collection'];
-                // console.log(offers);
-                // console.log(auto_collection);
+                console.log(offers);
+                console.log(auto_collection);
                 let lay = auto_collection['layout'];
                 let lay_el = '<div class="card sleek-upsell"></div>';
                 let nudge = 'before';
@@ -1215,7 +1215,7 @@
                 setStyles();
 
             } catch (error) {
-                // console.log(error);
+                console.log(error);
                 collection_based();
             }
         }
