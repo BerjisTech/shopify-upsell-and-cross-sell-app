@@ -895,11 +895,10 @@
                                     if ($fetch['offer'] == 'collection') {
                                         echo "Auto-Collections";
                                     } else {
-                                        $title = $this->db->where('offer_id', $fetch['offer'])->get('offers')->row()->title;
-                                        if ($title == '') {
+                                        if ($fetch['title'] == '') {
                                             echo ' Offer #' . $fetch['offer'];
                                         } else {
-                                            echo ' ' . $title;
+                                            echo ' ' . $fetch['title'];;
                                         }
                                     }
                                     ?></td>
