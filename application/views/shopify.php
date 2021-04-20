@@ -570,7 +570,7 @@
                     ins_field(label_field(`<input type="${type}"`, `/>`, label, name), pid)
                     break
                 case 'swatch':
-                    ins_field(label_field(`<input type="color" style="min-width: 150px"`, `/>`, label, name), pid)
+                    ins_field(label_field(`<input type="color" style="min-width: 150px;"`, `/>`, label, name), pid)
                     break
             }
         }
@@ -708,7 +708,7 @@
                 nudge = drawer_position
             }
 
-            $('<style>.sleek-upsell{background: #ECF0F1 color: #2B3D51 padding: 5px font-family: inherit vertical-align: middle margin: 5px}.sleek-image img{width: 100px}.sleek-text{font-weight: bold}.sleek-upsell select{margin-top: 5pxmargin-bottom: 5px}.sleek-prices{font-weight: bold margin-bottom: 5px}.sleek-compare-price{text-decoration: line-through}.sleek-upsell button{padding: 10px border: none background: #2B3D51 color: #FFFFFF font-weight: bold border-radius: 0px cursor: pointer width: 100%}.card{display: table}.card .sleek-form{display: flex}.card .sleek-image, .card .sleek-offer, .card .sleek-card-atc{display: table align-self: center padding: 5px}.card .sleek-offer{flex-grow: 4}.card .sleek-prices{text-align: center}.block, .block .sleek-form, .block .sleek-text, .block .sleek-atc{display: table}.sleek-block{display: flex}.block .sleek-image, .block .sleek-offer{display: table align-self: center padding: 5px}.block .sleek-offer{flex-grow: 1}.half-block, .half-block .sleek-form, .half-block .sleek-text, .half-block .sleek-atc{display: table}.sleek-half-block{display: flex}.half-block .sleek-image, .half-block .sleek-offer{display: table align-self: center padding: 5px}.half-block .sleek-offer{flex-grow: 1}.flat, .flat .sleek-form, .flat .sleek-text{display: table}.sleek-flat{display: flex}.flat .sleek-image, .flat .sleek-offer{display: table align-self: center padding: 5px}.flat .sleek-offer{flex-grow: 1}.flat .flex-select{display: flex width: auto margin-top: 10px}.flat .v-select{display: table width: 100% align-items: center justify-content: space-between}.flat .atc{flex-grow: 4}.flat .q-select{margin-top: 0px margin-right: 10px}.compact, .compact .sleek-form, .compact .sleek-text, .compact .sleek-atc{display: table}.sleek-compact{display: flex}.compact .sleek-image, .compact .sleek-offer{display: table align-self: center padding: 5px}.compact .sleek-offer{flex-grow: 1}.compact .sleek-atc{margin-top: 5px}@media only screen and (max-width: 600px){.sleek-upsell{width: 97% margin: 5px auto}.card select{max-width: 100px}.block select{max-width: 200px}.sleek-prices *{display: inline-table}.block .sleek-form, .block .sleek-text, .block .sleek-atc{width: 100%}}</style>').insertBefore(element)
+            $('<style>.sleek-upsell{background: #ECF0F1; color: #2B3D51; padding: 5px; font-family: inherit; vertical-align: middle; margin: 5px;}.sleek-image img{width: 100px;}.sleek-text{font-weight: bold;}.sleek-upsell select{margin-top: 5px;margin-bottom: 5px;}.sleek-prices{font-weight: bold; margin-bottom: 5px;}.sleek-compare-price{text-decoration: line-through;}.sleek-upsell button{padding: 10px; border: none; background: #2B3D51; color: #FFFFFF; font-weight: bold; border-radius: 0px; cursor: pointer; width: 100%;}.card{display: table;}.card .sleek-form{display: flex;}.card .sleek-image, .card .sleek-offer, .card .sleek-card-atc{display: table; align-self: center; padding: 5px;}.card .sleek-offer{flex-grow: 4;}.card .sleek-prices{text-align: center;}.block, .block .sleek-form, .block .sleek-text, .block .sleek-atc{display: table;}.sleek-block{display: flex;}.block .sleek-image, .block .sleek-offer{display: table; align-self: center; padding: 5px;}.block .sleek-offer{flex-grow: 1;}.half-block, .half-block .sleek-form, .half-block .sleek-text, .half-block .sleek-atc{display: table;}.sleek-half-block{display: flex;}.half-block .sleek-image, .half-block .sleek-offer{display: table; align-self: center; padding: 5px;}.half-block .sleek-offer{flex-grow: 1;}.flat, .flat .sleek-form, .flat .sleek-text{display: table;}.sleek-flat{display: flex;}.flat .sleek-image, .flat .sleek-offer{display: table; align-self: center; padding: 5px;}.flat .sleek-offer{flex-grow: 1;}.flat .flex-select{display: flex; width: auto; margin-top: 10px;}.flat .v-select{display: table; width: 100%; align-items: center; justify-content: space-between;}.flat .atc{flex-grow: 4;}.flat .q-select{margin-top: 0px; margin-right: 10px;}.compact, .compact .sleek-form, .compact .sleek-text, .compact .sleek-atc{display: table;}.sleek-compact{display: flex;}.compact .sleek-image, .compact .sleek-offer{display: table; align-self: center; padding: 5px;}.compact .sleek-offer{flex-grow: 1;}.compact .sleek-atc{margin-top: 5px;}@media only screen and (max-width: 600px){.sleek-upsell{width: 97%; margin: 5px auto;}.card select{max-width: 100px;}.block select{max-width: 200px;}.sleek-prices *{display: inline-table;}.block .sleek-form, .block .sleek-text, .block .sleek-atc{width: 100%;}}</style>').insertBefore(element);
 
             switch (lay) {
                 case 'card':
@@ -744,7 +744,7 @@
             if (drawer_position == 'before') {}
 
             if (offers.offer[oid].offer[0].close == 'y') {
-                $(lay_el).append('<div style="display: table position: relative width: 100% text-align: right"><span class="reject_offer" style="font-size: 15px cursor: pointer">x</span></div>')
+                $(lay_el).append('<div style="display: table; position: relative; width: 100%; text-align: right;"><span class="reject_offer" style="font-size: 15px; cursor: pointer;">x</span></div>')
             }
 
             let offer_products = offers.offer[oid].products
@@ -756,7 +756,7 @@
             for (let i = 0; i < offer_products.length; i++) {
                 let v = offer_products[i]
                 let pid = v['product'];
-                
+
                 let pDet = products[i]
 
                 console.log(pDet)
@@ -1024,7 +1024,7 @@
                     nudge = drawer_position
                 }
 
-                $('<style>.sleek-upsell{background: #ECF0F1 color: #2B3D51 padding: 5px font-family: inherit vertical-align: middle margin: 5px}.sleek-image img{width: 100px}.sleek-text{font-weight: bold}.sleek-upsell select{padding: 4px margin-top: 5px}.sleek-prices{font-weight: bold margin-bottom: 5px}.sleek-compare-price{text-decoration: line-through}.sleek-upsell button{padding: 10px border: none background: #2B3D51 color: #FFFFFF font-weight: bold border-radius: 0px cursor: pointer width: 100%}.card{display: table}.card .sleek-form{display: flex}.card .sleek-image, .card .sleek-offer, .card .sleek-card-atc{display: table align-self: center padding: 5px}.card .sleek-offer{flex-grow: 4}.card .sleek-prices{text-align: center}.block, .block .sleek-form, .block .sleek-text, .block .sleek-atc{display: table}.sleek-block{display: flex}.block .sleek-image, .block .sleek-offer{display: table align-self: center padding: 5px}.block .sleek-offer{flex-grow: 1}.half-block, .half-block .sleek-form, .half-block .sleek-text, .half-block .sleek-atc{display: table}.sleek-half-block{display: flex}.half-block .sleek-image, .half-block .sleek-offer{display: table align-self: center padding: 5px}.half-block .sleek-offer{flex-grow: 1}.flat, .flat .sleek-form, .flat .sleek-text{display: table}.sleek-flat{display: flex}.flat .sleek-image, .flat .sleek-offer{display: table align-self: center padding: 5px}.flat .sleek-offer{flex-grow: 1}.flat .flex-select{display: flex width: auto margin-top: 10px}.flat .v-select{display: table width: 100% align-items: center justify-content: space-between}.flat .atc{flex-grow: 4}.flat .q-select{margin-top: 0px margin-right: 10px}.compact, .compact .sleek-form, .compact .sleek-text, .compact .sleek-atc{display: table}.sleek-compact{display: flex}.compact .sleek-image, .compact .sleek-offer{display: table align-self: center padding: 5px}.compact .sleek-offer{flex-grow: 1}.compact .sleek-atc{margin-top: 5px}@media only screen and (max-width: 600px){.sleek-upsell{width: 97% margin: 5px auto}.card select{max-width: 100px}.block select{max-width: 200px}.sleek-prices *{display: inline-table}.block .sleek-form, .block .sleek-text, .block .sleek-atc{width: 100%}}</style>').insertBefore(element)
+                $('<style>.sleek-upsell{background: #ECF0F1; color: #2B3D51; padding: 5px; font-family: inherit; vertical-align: middle; margin: 5px;}.sleek-image img{width: 100px;}.sleek-text{font-weight: bold;}.sleek-upsell select{padding: 4px; margin-top: 5px;}.sleek-prices{font-weight: bold; margin-bottom: 5px;}.sleek-compare-price{text-decoration: line-through;}.sleek-upsell button{padding: 10px; border: none; background: #2B3D51; color: #FFFFFF; font-weight: bold; border-radius: 0px; cursor: pointer; width: 100%;}.card{display: table;}.card .sleek-form{display: flex;}.card .sleek-image, .card .sleek-offer, .card .sleek-card-atc{display: table; align-self: center; padding: 5px;}.card .sleek-offer{flex-grow: 4;}.card .sleek-prices{text-align: center;}.block, .block .sleek-form, .block .sleek-text, .block .sleek-atc{display: table;}.sleek-block{display: flex;}.block .sleek-image, .block .sleek-offer{display: table; align-self: center; padding: 5px;}.block .sleek-offer{flex-grow: 1;}.half-block, .half-block .sleek-form, .half-block .sleek-text, .half-block .sleek-atc{display: table;}.sleek-half-block{display: flex;}.half-block .sleek-image, .half-block .sleek-offer{display: table; align-self: center; padding: 5px;}.half-block .sleek-offer{flex-grow: 1;}.flat, .flat .sleek-form, .flat .sleek-text{display: table;}.sleek-flat{display: flex;}.flat .sleek-image, .flat .sleek-offer{display: table; align-self: center; padding: 5px;}.flat .sleek-offer{flex-grow: 1;}.flat .flex-select{display: flex; width: auto; margin-top: 10px;}.flat .v-select{display: table; width: 100%; align-items: center; justify-content: space-between;}.flat .atc{flex-grow: 4;}.flat .q-select{margin-top: 0px; margin-right: 10px;}.compact, .compact .sleek-form, .compact .sleek-text, .compact .sleek-atc{display: table;}.sleek-compact{display: flex;}.compact .sleek-image, .compact .sleek-offer{display: table; align-self: center; padding: 5px;}.compact .sleek-offer{flex-grow: 1;}.compact .sleek-atc{margin-top: 5px;}@media only screen and (max-width: 600px){.sleek-upsell{width: 97%; margin: 5px auto;}.card select{max-width: 100px;}.block select{max-width: 200px;}.sleek-prices *{display: inline-table;}.block .sleek-form, .block .sleek-text, .block .sleek-atc{width: 100%;}}</style>').insertBefore(element);
 
                 switch (lay) {
                     case 'card':
@@ -1054,7 +1054,7 @@
                 if (drawer_position == 'before') {}
 
                 if (auto_collection['close'] == 'y') {
-                    $(lay_el).append('<div style="display: table position: relative width: 100% text-align: right"><span class="reject_offer" style="font-size: 15px cursor: pointer">x</span></div>')
+                    $(lay_el).append('<div style="display: table; position: relative; width: 100%; text-align: right;"><span class="reject_offer" style="font-size: 15px; cursor: pointer;">x</span></div>')
                 }
 
                 let pDet = products[products.findIndex(p => p.id == pid)]
@@ -1225,10 +1225,10 @@
     }
 
     function createSUW() {
-        $('body').prepend('<style>.suw{display: table width: 300px height: 500px background: #ffffff position: fixed bottom: 0px left: 0px z-index: 3000000}.suw_head, .suw_footer{display: table width: 100% height: 50px !important background: #981B1B !important color: #ffffff}.suw_body{overflow-Y: auto display: table width: 100% height: 400px}.suw_head:before{content: "" display: table position: absolute top: 10px left: 10px z-index: 2000000 color: #FFFFFF font-size: 12px}.suw_head{cursor:grab}</style>')
+        $('body').prepend('<style>.suw{display: table; width: 300px; height: 500px; background: #ffffff; position: fixed; bottom: 0px; left: 0px; z-index: 3000000;}.suw_head, .suw_footer{display: table; width: 100%; height: 50px !important; background: #981B1B !important; color: #ffffff;}.suw_body{overflow-Y: auto; display: table; width: 100%; height: 400px;}.suw_head:before{content: ""; display: table; position: absolute; top: 10px; left: 10px; z-index: 2000000; color: #FFFFFF; font-size: 12px;}.suw_head{cursor:grab;}</style>');
         $('body').prepend('<div class="draggable suw">' +
             '<div class="suw_head dragger"></div>' +
-            '<div class="suw_body"><img src="https://sleekupsell.com/assets/images/loader.gif" style="margin: 150px auto"/></div>' +
+            '<div class="suw_body"><img src="https://sleekupsell.com/assets/images/loader.gif" style="margin: 150px auto;"/></div>' +
             '<div class="suw_footer"></div>' +
             '</div>')
         let x, y, target = null
