@@ -18,7 +18,7 @@ class Slade extends CI_Controller
     public function index()
     {
         if (!isset($_GET['shop'])) {
-            $this->load->view('home');
+            $this->load->view('en/home');
         } else {
             if (!isset($_GET['hmac'])) {
                 echo '<script>window.location.href = "https://' . $_GET['shop'] . '/admin/apps";</script>';
@@ -90,7 +90,7 @@ class Slade extends CI_Controller
             $data['shop'] = $shop;
             $data['token'] = $token;
             $data['page_name'] = 'dashboard';
-            $this->load->view('index', $data);
+            $this->load->view($this->db->where('shop', $shop)->get('shops')->row()->language . '/index', $data);
         }
     }
 
@@ -619,7 +619,7 @@ class Slade extends CI_Controller
         $data['shop'] = $shop_data->shop;
 
         $data['page_name'] = 'create_offer';
-        $this->load->view('index', $data);
+        $this->load->view($this->db->where('shop', $shop)->get('shops')->row()->language . '/index', $data);
     }
 
     public function edit_offer($shop, $token, $offer)
@@ -642,7 +642,7 @@ class Slade extends CI_Controller
         $data['shop'] = $shop_data->shop;
 
         $data['page_name'] = 'edit_offer';
-        $this->load->view('index', $data);
+        $this->load->view($this->db->where('shop', $shop)->get('shops')->row()->language . '/index', $data);
     }
 
     public function offer_status($oid, $status)
@@ -656,7 +656,7 @@ class Slade extends CI_Controller
         $data['shop'] = $shop;
 
         $data['page_name'] = 'settings';
-        $this->load->view('index', $data);
+        $this->load->view($this->db->where('shop', $shop)->get('shops')->row()->language . '/index', $data);
     }
 
     public function subscription($shop, $token)
@@ -665,7 +665,7 @@ class Slade extends CI_Controller
         $data['shop'] = $shop;
 
         $data['page_name'] = 'subscription';
-        $this->load->view('index', $data);
+        $this->load->view($this->db->where('shop', $shop)->get('shops')->row()->language . '/index', $data);
     }
 
     public function update_settings()
@@ -1095,7 +1095,7 @@ class Slade extends CI_Controller
         $data['shop'] = $shop_data->shop;
 
         $data['page_name'] = 'stats';
-        $this->load->view('index', $data);
+        $this->load->view($this->db->where('shop', $shop)->get('shops')->row()->language . '/index', $data);
     }
 
     public function offer_stats($shop, $offer)
@@ -1111,7 +1111,7 @@ class Slade extends CI_Controller
         $data['shop'] = $shop_data->shop;
 
         $data['page_name'] = 'offer_stats';
-        $this->load->view('index', $data);
+        $this->load->view($this->db->where('shop', $shop)->get('shops')->row()->language . '/index', $data);
     }
 
     public function delete_offer($oid)
@@ -1246,14 +1246,14 @@ class Slade extends CI_Controller
     {
         $data['shop'] = 'sleek-apps';
         $data['page_name'] = 'metadata';
-        $this->load->view('index', $data);
+        $this->load->view('en/index', $data);
     }
 
     public function privacypolicy()
     {
         $data['shop'] = 'sleek-apps';
         $data['page_name'] = 'privacy-policy';
-        $this->load->view('index', $data);
+        $this->load->view('en/index', $data);
     }
 
     public function s_s_w($shop)
@@ -1267,7 +1267,7 @@ class Slade extends CI_Controller
         $data['token'] = $this->db->where('shop', str_replace(".myshopify.com", "", $shop))->get('shops')->row()->token;
         $data['shop'] = str_replace(".myshopify.com", "", $shop);
 
-        $this->load->view('suw', $data);
+        $this->load->view($this->db->where('shop', $shop)->get('shops')->row()->language . '/suw', $data);
     }
 
     public function users($shop, $token)
@@ -1285,7 +1285,7 @@ class Slade extends CI_Controller
         $data['shop'] = $shop;
         $data['token'] = $token;
         $data['page_name'] = 'admin_dashboard';
-        $this->load->view('index', $data);
+        $this->load->view($this->db->where('shop', $shop)->get('shops')->row()->language . '/index', $data);
     }
 
     public function sombo($shop, $token)
@@ -1320,7 +1320,7 @@ class Slade extends CI_Controller
         $data['shop'] = $shop;
         $data['token'] = $token;
         $data['page_name'] = 'ad_dashboard';
-        $this->load->view('index', $data);
+        $this->load->view($this->db->where('shop', $shop)->get('shops')->row()->language . '/index', $data);
     }
 
     public function refresh_store_data($shop)
@@ -1390,7 +1390,7 @@ class Slade extends CI_Controller
         $data['shop'] = $shop;
         $data['token'] = $token;
         $data['page_name'] = 'auto_collection';
-        $this->load->view('index', $data);
+        $this->load->view($this->db->where('shop', $shop)->get('shops')->row()->language . '/index', $data);
     }
 
     public function create_auto_collection($shop, $token)
