@@ -966,7 +966,7 @@ Not supports in Firefox and IE */
     function loadProducts(product) {
         $.ajax({
             type: "POST",
-            url: base_url + 'fr/search_products',
+            url: base_url + 'search_products',
             data: {
                 term: product,
                 shop: '<?php echo $shop; ?>',
@@ -1506,7 +1506,7 @@ Not supports in Firefox and IE */
         $('.saving').show();
         $.ajax({
             type: "POST",
-            url: base_url + 'fr/create_auto_collection/<?php echo $shop ?>/<?php echo $token; ?>?<?php echo $_SERVER['QUERY_STRING']; ?>',
+            url: base_url + 'create_auto_collection/<?php echo $shop ?>/<?php echo $token; ?>?<?php echo $_SERVER['QUERY_STRING']; ?>',
             data: {
                 auto_collection
             },

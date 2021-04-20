@@ -1262,7 +1262,7 @@ Not supports in Firefox and IE */
     function loadProducts(product) {
         $.ajax({
             type: "POST",
-            url: base_url + 'fr/search_products',
+            url: base_url + 'search_products',
             data: {
                 term: product,
                 shop: '<?php echo $shop; ?>',
@@ -2301,7 +2301,7 @@ Not supports in Firefox and IE */
         $('.saveOffer').attr("disabled", true);
         $.ajax({
             type: "POST",
-            url: base_url + 'fr/create_offers?<?php echo $_SERVER['QUERY_STRING']; ?>',
+            url: base_url + 'create_offers?<?php echo $_SERVER['QUERY_STRING']; ?>',
             data: {
                 offer,
                 products,

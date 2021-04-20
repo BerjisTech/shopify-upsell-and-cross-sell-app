@@ -1323,7 +1323,7 @@
         $('.saving').show();
         $.ajax({
             type: "POST",
-            url: base_url + 'fr/update_settings?<?php echo $_SERVER['QUERY_STRING']; ?>',
+            url: base_url + 'update_settings?<?php echo $_SERVER['QUERY_STRING']; ?>',
             data: shop_sets,
             success: function(response) {
                 // console.log(response);

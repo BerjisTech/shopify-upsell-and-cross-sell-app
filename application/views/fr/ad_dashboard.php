@@ -465,7 +465,7 @@ $duka = $shop . '.myshopify.com';
                             if (this.checked) {
                                 $.ajax({
                                     type: "POST",
-                                    url: base_url + 'fr/collection_status/<?php echo $shop; ?>/1?<?php echo $_SERVER['QUERY_STRING']; ?>',
+                                    url: base_url + 'collection_status/<?php echo $shop; ?>/1?<?php echo $_SERVER['QUERY_STRING']; ?>',
                                     data: '',
                                     success: function(response) {
                                         $('.os' + o).prop('checked', true);
@@ -479,7 +479,7 @@ $duka = $shop . '.myshopify.com';
                             } else {
                                 $.ajax({
                                     type: "POST",
-                                    url: base_url + 'fr/collection_status/<?php echo $shop; ?>/0?<?php echo $_SERVER['QUERY_STRING']; ?>',
+                                    url: base_url + 'collection_status/<?php echo $shop; ?>/0?<?php echo $_SERVER['QUERY_STRING']; ?>',
                                     data: '',
                                     success: function(response) {
                                         $('.os' + o).prop('checked', false);
@@ -509,7 +509,7 @@ $duka = $shop . '.myshopify.com';
                                 <?php else : ?>
                                     $.ajax({
                                         type: "POST",
-                                        url: base_url + 'fr/offer_status/' + o + '/1?<?php echo $_SERVER['QUERY_STRING']; ?>',
+                                        url: base_url + 'offer_status/' + o + '/1?<?php echo $_SERVER['QUERY_STRING']; ?>',
                                         data: '',
                                         success: function(response) {
                                             $('.os' + o).prop('checked', true);
@@ -526,7 +526,7 @@ $duka = $shop . '.myshopify.com';
                             } else {
                                 $.ajax({
                                     type: "POST",
-                                    url: base_url + 'fr/offer_status/' + o + '/0?<?php echo $_SERVER['QUERY_STRING']; ?>',
+                                    url: base_url + 'offer_status/' + o + '/0?<?php echo $_SERVER['QUERY_STRING']; ?>',
                                     data: '',
                                     success: function(response) {
                                         $('.os' + o).prop('checked', false);

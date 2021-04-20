@@ -298,20 +298,20 @@ Not supports in Firefox and IE */
             <div style="flex-grow: 4; margin: 0px; padding: 0px; height: 100%; vertical-align: middle;"><select style="border-radius: 0px; width: 100%; height: 100%; margin: 0px; vertical-align: middle;" class="toplect form-control">
                     <option value="global">Global</option>
                 </select></div>
-            <div style="margin: 0px; padding: 0px; height: 100%; vertical-align: middle;"><span style="width: 100%; height: 100%; margin: 0px; vertical-align: middle; padding-top: 2vh;" onclick="showAjaxModal('products');" class="btn btn-primary btn-icon icon-right"><i class="entypo-plus" style="padding-top: 2vh;"></i>Add
-                    Product</span></div>
+            <div style="margin: 0px; padding: 0px; height: 100%; vertical-align: middle;"><span style="width: 100%; height: 100%; margin: 0px; vertical-align: middle; padding-top: 2vh;" onclick="showAjaxModal('products');" class="btn btn-primary btn-icon icon-right"><i class="entypo-plus" style="padding-top: 2vh;"></i>Ajouter
+                    Produit</span></div>
         </div>
         <div style="position: absolute; top: 7vh; left: 0px; height: 93vh; overflow-y: auto; width: 100%;" class="globalSets">
             <div class="panel-group joined" id="accordion-test-2">
                 <div class="panel panel-default">
                     <div class="panel-heading">
                         <h4 class="panel-title"> <a data-toggle="collapse" data-parent="#accordion-test-2" href="#collapseOne-2" aria-expanded="true">
-                                1: Offer Details
+                                1: Détails de l'offre
                             </a> </h4>
                     </div>
                     <div id="collapseOne-2" class="panel-collapse collapse in">
                         <div class="panel-body">
-                            <h4>Offer Title <br /><small>(Optional) Your customers won't see this</small></h4>
+                            <h4>Titre de l'offre<br /><small>(Facultatif) Vos clients ne verront pas cela</small></h4>
                             <div style="display: table; width: 100%; margin-bottom: 10px;">
                                 <input type="text" class="form-control offer_title" style="padding: 10px; border: 2px solid #666666; border-radius: 5px;" />
                             </div>
@@ -326,30 +326,30 @@ Not supports in Firefox and IE */
                 <div class="panel panel-default">
                     <div class="panel-heading">
                         <h4 class="panel-title"> <a data-toggle="collapse" data-parent="#accordion-test-2" href="#collapseTwo-2" class="collapsed">
-                                2: Design
+                                2: conception
                             </a> </h4>
                     </div>
                     <div id="collapseTwo-2" class="panel-collapse collapse">
                         <div class="panel-body">
                             <div style="display: table; width: 100%;">
-                                <h4>Offer Text <br /><small>eg Get 20% discount</small></h4>
+                                <h4>Texte de l'offre <br /><small>par exemple, obtenez 20% de réduction</small></h4>
                                 <textarea class="form-control general_offer_text" placeholder="offer text" style="margin: 5px auto; height: auto; min-height: 100px; width: 99%; border: 2px solid #666666;"></textarea>
                             </div>
                             <div style="display: table; width: 100%;">
-                                <h4>Button Text <br /><small>eg Yes Please or Add To Cart</small></h4>
+                                <h4>Texte du bouton <br /><small>par exemple Oui s'il vous plaît ou ajouter au panier</small></h4>
                                 <input type="text" name="button-text" value="ADD TO CART" class="form-control general_offer_button_text" style="padding: 10px; border: 2px solid #666666; border-radius: 5px;" />
                             </div>
                             <div style="display: none; width: 100%;">
-                                <h4>Color Scheme <br /><small>Choose the offer color scheme</small></h4>
+                                <h4>Schéma de couleur <br /><small>Choisissez la palette de couleurs de l'offre</small></h4>
                                 <select name="button-text" placeholder="ADD TO CART" class="form-control general_offer_color_scheme" style="border: 2px solid #666666; border-radius: 5px;">
-                                    <option value="custom">Custom</option>
-                                    <option value="default">Default</option>
+                                    <option value="custom">Personnalisé</option>
+                                    <option value="default">Défaut</option>
                                 </select>
                             </div>
                             <div style="display: table; width: 100%;">
-                                <h4>Display options <br /><small>Extra general UI settings</small></h4>
-                                <label><input type="checkbox" class="offer_closable" value="1" /> Show an x to
-                                    dismiss offer</label><br />
+                                <h4>option d'affichage <br /><small>Paramètres d'interface utilisateur généraux supplémentaires</small></h4>
+                                <label><input type="checkbox" class="offer_closable" value="1" /> Afficher un x à
+                                    rejeter l'offre</label><br />
                             </div>
                         </div>
                     </div>
@@ -362,45 +362,45 @@ Not supports in Firefox and IE */
                     </div>
                     <div id="collapseThree-2" class="panel-collapse collapse">
                         <div class="panel-body">
-                            <h4>Offer Conditions <br /><small>Choose when to give your customers this offer</small></h4>
+                            <h4>Conditions de l'offre <br /><small>Choisissez quand offrir cette offre à vos clients</small></h4>
                             <div style="display: table; width: 100%; margin-bottom: 10px; vertical-align: top;">
                                 <div style="display: table; width: 100%; width: 100%; background: #ffffff; padding: 5px; margin-bottom: 5px;">
-                                    <p>Select the general rule that'll affect blocks e.g Block 1 and/or Block 2
+                                    <p>Sélectionnez la règle générale qui affectera les blocs, par exemple le bloc 1 et / ou le bloc 2
                                         <select class="form-control offer_general_rule">
-                                            <option value="ALL">ALL</option>
-                                            <option value="ANY">ANY</option>
+                                            <option value="ALL">TOUT</option>
+                                            <option value="ANY">QUELCONQUE</option>
                                         </select>
                                     </p>
                                     <p>
-                                    <p>Block Clause <br /><small>Affects conditions within specific blocks e.g this condition 1 and/or that condition 2</small></p>
+                                    <p>Clause de blocage <br /><small>Affecte les conditions dans des blocs spécifiques, par exemple cette condition 1 et / ou cette condition 2</small></p>
                                     <div class="input-group" style="margin: 0px; padding: 0px;">
                                         <select class="form-control offer_block_rule">
                                             <option value="ALL">ALL</option>
                                             <option value="ANY">ANY</option>
                                         </select>
-                                        <span class="btn btn-primary btn-icon icon-right input-group-addon" onclick="addBlock();"> <i class="entypo-plus"></i>Add Block</span>
+                                        <span class="btn btn-primary btn-icon icon-right input-group-addon" onclick="addBlock();"> <i class="entypo-plus"></i>Ajouter un bloc</span>
                                     </div>
                                     </p>
                                 </div>
                                 <div class="conditionsHandler">
                                 </div>
                                 <div class="single_conditions" style="display: none; width: 100%; width: 100%; background: #ffffff; padding: 5px; margin-bottom: 5px;">
-                                    <p>Add conditions to block <select class="which_b"></select> </p>
+                                    <p>Ajouter des conditions pour bloquer <select class="which_b"></select> </p>
                                 </div>
                             </div>
                             <div class="conditions_btn_wrapper" style="display: none; width: 100%; margin-bottom: 10px; vertical-align: top;">
-                                <span class="btn btn-info btn-icon icon-right pull-right" onclick="showAjaxModal('conditions');"> <i class="entypo-plus"></i>Add
-                                    Condition</span>
+                                <span class="btn btn-info btn-icon icon-right pull-right" onclick="showAjaxModal('conditions');"> <i class="entypo-plus"></i>Ajouter
+                                    État</span>
                             </div>
                             <div style="display: table; width: 100%; height: 1px; background: #333333;"></div>
-                            <h4>Extra Options <br /><small>Adjust the offers conditional triggers</small></h4>
+                            <h4>Options supplémentaires <br /><small>Ajuster les déclencheurs conditionnels des offres</small></h4>
                             <div style="display: table; width: 100%; margin-bottom: 10px; vertical-align: top;">
-                                <label><input type="checkbox" class="offer_show_after_accepted" value="1" /> Don't
-                                    continue to show the offer after it has been accepted</label><br />
-                                <label><input type="checkbox" class="offer_required_for_checkout" value="1" /> The
-                                    offer must be accepted in order to continue.</label><br />
-                                <label><input type="checkbox" class="offer_automatically_remove" value="1" /> Remove
-                                    offer product from cart if offer conditions are no longer met.</label><br />
+                                <label><input type="checkbox" class="offer_show_after_accepted" value="1" /> Ne pas
+                                    continuer à afficher l'offre après son acceptation</label><br />
+                                <label><input type="checkbox" class="offer_required_for_checkout" value="1" /> le
+                                    l'offre doit être acceptée pour continuer.</label><br />
+                                <label><input type="checkbox" class="offer_automatically_remove" value="1" /> Supprimer
+                                    offrir le produit du panier si les conditions de l'offre ne sont plus remplies.</label><br />
                             </div>
                         </div>
                     </div>
@@ -408,23 +408,23 @@ Not supports in Firefox and IE */
                 <div class="panel panel-default">
                     <div class="panel-heading">
                         <h4 class="panel-title"> <a data-toggle="collapse" data-parent="#accordion-test-2" href="#collapseFour-2" class="collapsed">
-                                4: Offer Addons
+                                4: Addons d'offres
                             </a> </h4>
                     </div>
                     <div id="collapseFour-2" class="panel-collapse collapse">
                         <div class="panel-body">
                             <div style="display: table; width: 100%; margin-bottom: 10px;">
-                                <label><input type="checkbox" class="offer_apply_discount" value="1" /> Add
-                                    discount to this offer. <br /><span class="text-info">Paste your discount code
-                                        below</span></label><br />
+                                <label><input type="checkbox" class="offer_apply_discount" value="1" /> Ajouter
+                                    remise à cette offre. <br /><span class="text-info">Collez votre code de réduction
+                                        au dessous de</span></label><br />
                                 <input type="text" name="discount-code" placeholder="Paste your discount code here" class="form-control offer_discount_code" style="padding: 10px; border: 2px solid #666666; border-radius: 5px;" />
                             </div>
                             <div style="display: table; width: 100%; margin-bottom: 10px;">
-                                <label><input type="checkbox" class="offer_to_checkout" value="1" /> Send user to
-                                    checkout after accepting offer</label><br />
+                                <label><input type="checkbox" class="offer_to_checkout" value="1" /> Envoyer l'utilisateur à
+                                    commander après avoir accepté l'offre</label><br />
                             </div>
                             <div style="display: table; width: 100%; margin-bottom: 10px;">
-                                <label><input type="checkbox" class="offer_auto_add" value="1" /> Automatically add this product(s) to cart if the conditions are met</label><br />
+                                <label><input type="checkbox" class="offer_auto_add" value="1" /> Ajouter automatiquement ce (s) produit (s) au panier si les conditions sont remplies</label><br />
                             </div>
                         </div>
                     </div>
@@ -432,18 +432,18 @@ Not supports in Firefox and IE */
                 <?php if ($shop_details->name == 'Free' && $this->db->where('shop', $shop)->where('status', 1)->get('offers')->num_rows() > 0) : ?>
                     <div class="panel panel-default">
                         <div class="panel-heading" style="text-align: center;">
-                            You already have one active offer. To enable this offer, kindly disable your active offer(s) or <a href="<?php echo base_url(); ?>/subscription/<?php echo $shop; ?>/<?php echo $token; ?>?<?php echo $_SERVER['QUERY_STRING']; ?>">Upgrade your plan</a>
+                            Vous avez déjà une offre active. Pour activer cette offre, veuillez désactiver votre (vos) offre (s) active (s) ou <a href="<?php echo base_url(); ?>/subscription/<?php echo $shop; ?>/<?php echo $token; ?>?<?php echo $_SERVER['QUERY_STRING']; ?>">Améliorez votre plan</a>
                         </div>
                         <div class="panel-body">
                             <div class="row">
-                                <a class="btn btn-primary" href="<?php echo base_url(); ?>/subscription/<?php echo $shop; ?>/<?php echo $token; ?>?<?php echo $_SERVER['QUERY_STRING']; ?>">Upgrade Now</a>
+                                <a class="btn btn-primary" href="<?php echo base_url(); ?>/subscription/<?php echo $shop; ?>/<?php echo $token; ?>?<?php echo $_SERVER['QUERY_STRING']; ?>">Mettre à jour maintenant</a>
                             </div>
                         </div>
                     </div>
                 <?php elseif ($shop_details->name == 'Sleek' && $this->db->where('shop', $shop)->where('status', 1)->get('offers')->num_rows() > 19) : ?>
                     <div class="panel panel-default">
                         <div class="panel-heading" style="text-align: center;">
-                            You already have one active offer. To enable this offer, kindly disable your active offer(s) or <a href="<?php echo base_url(); ?>/subscription/<?php echo $shop; ?>/<?php echo $token; ?>?<?php echo $_SERVER['QUERY_STRING']; ?>">Upgrade your plan</a>
+                            Vous avez déjà une offre active. Pour activer cette offre, veuillez désactiver votre (vos) offre (s) active (s) ou <a href="<?php echo base_url(); ?>/subscription/<?php echo $shop; ?>/<?php echo $token; ?>?<?php echo $_SERVER['QUERY_STRING']; ?>">Améliorez votre plan</a>
                         </div>
                         <div class="panel-body">
                             <div class="row">
@@ -461,8 +461,8 @@ Not supports in Firefox and IE */
                         </div>
                         <div class="panel-body">
                             <div class="row">
-                                <div class="col-xs-6 offerDraftBtn" onclick="deactivateOffer();" style="text-align: center; cursor: pointer;">DRAFT</div>
-                                <div class="col-xs-6 offerActiveBtn" onclick="activateOffer();" style="text-align: center; cursor: pointer;">ACTIVE</div>
+                                <div class="col-xs-6 offerDraftBtn" onclick="deactivateOffer();" style="text-align: center; cursor: pointer;">l' ébauche</div>
+                                <div class="col-xs-6 offerActiveBtn" onclick="activateOffer();" style="text-align: center; cursor: pointer;">ACTIF</div>
                             </div>
                         </div>
                     </div>
@@ -470,11 +470,11 @@ Not supports in Firefox and IE */
                 <div class="panel panel-default">
                     <div class="panel-heading" style="text-align: center;">
                         <?php if ($shop_details->name == 'Free' && $this->db->where('shop', $shop)->where('status', 1)->get('offers')->num_rows() > 0) : ?>
-                            <button class="btn btn-lg btn-flat btn-warning saveOffer">Save AS DRAFT</button>
+                            <button class="btn btn-lg btn-flat btn-warning saveOffer">Enregistrer comme brouillon</button>
                         <?php elseif ($shop_details->name == 'Sleek' && $this->db->where('shop', $shop)->where('status', 1)->get('offers')->num_rows() > 19) : ?>
-                            <button class="btn btn-lg btn-flat btn-warning saveOffer">Save AS DRAFT</button>
+                            <button class="btn btn-lg btn-flat btn-warning saveOffer">Enregistrer comme brouillon</button>
                         <?php else : ?>
-                            <button class="btn btn-lg btn-flat btn-primary saveOffer">Save</button>
+                            <button class="btn btn-lg btn-flat btn-primary saveOffer">Sauvegarder</button>
                         <?php endif; ?>
                     </div>
                     <div class="panel-body">
@@ -492,45 +492,45 @@ Not supports in Firefox and IE */
                 <div class="panel panel-default">
                     <div class="panel-heading">
                         <h4 class="panel-title"> <a data-toggle="collapse" data-parent="#accordion-test-p2" href="#collapseTwo-p2" aria-expanded="true">
-                                1: Product Design
+                                1: Conception du produit
                             </a> </h4>
                     </div>
                     <div id="collapseTwo-p2" class="panel-collapse collapse in">
                         <div class="panel-body">
                             <div style="display: table; width: 100%;">
-                                <h4>Offer Text <br /><small>eg Get 20% discount</small></h4>
+                                <h4>Texte de l'offre <br /><small>par exemple, obtenez 20% de réduction</small></h4>
                                 <textarea class="form-control offer_text" placeholder="offer text" style="margin: 5px auto; height: auto; min-height: 100px; width: 99%; border: 2px solid #666666;"></textarea>
                             </div>
                             <div style="display: table; width: 100%;">
-                                <h4>Button Text <br /><small>eg Yes Please or Add To Cart</small></h4>
+                                <h4>Texte du bouton <br /><small>par exemple Oui s'il vous plaît ou ajouter au panier</small></h4>
                                 <input type="text" name="button-text" value="ADD TO CART" class="form-control offer_button_text" style="padding: 10px; border: 2px solid #666666; border-radius: 5px;" />
                             </div>
                             <div style="display: table; width: 100%;">
-                                <h4>Color Scheme <br /><small>Product block color scheme (will only affect this product)</small></h4>
+                                <h4>Schéma de couleur <br /><small>Jeu de couleurs du bloc de produit (n'affectera que ce produit)</small></h4>
                                 <select name="button-text" placeholder="ADD TO CART" class="form-control offer_color_scheme" style="border: 2px solid #666666; border-radius: 5px;">
-                                    <option value="default">Default</option>
-                                    <option value="custom">Custom</option>
+                                    <option value="default">Défaut</option>
+                                    <option value="custom">Personnalisé</option>
                                 </select>
                             </div>
                             <div style="display: table; width: 100%;">
-                                <h4>Product options <br /><small>These will only affect this particular product</small></h4>
-                                <label><input type="checkbox" class="offer_product_image" value="1" checked /> Show
-                                    product image</label><br />
-                                <label><input type="checkbox" class="offer_product_title" value="1" checked /> Show
-                                    product title</label><br />
-                                <label><input type="checkbox" class="offer_product_price" value="1" checked /> Show
-                                    product price</label><br />
-                                <label><input type="checkbox" class="offer_compare_at_price" value="1" checked /> Show
-                                    product compare at price</label><br />
+                                <h4>Options de produits <br /><small>Celles-ci n'affecteront que ce produit particulier</small></h4>
+                                <label><input type="checkbox" class="offer_product_image" value="1" checked /> Spectacle
+                                    image du produit</label><br />
+                                <label><input type="checkbox" class="offer_product_title" value="1" checked /> Spectacle
+                                    titre du produit</label><br />
+                                <label><input type="checkbox" class="offer_product_price" value="1" checked /> Spectacle
+                                    prix du produit</label><br />
+                                <label><input type="checkbox" class="offer_compare_at_price" value="1" checked /> Spectacle
+                                    produit comparer au prix</label><br />
                                 <label><input type="checkbox" class="offer_variant_price" value="1" checked /> Show
                                     variant price</label><br />
                             </div>
                             <div style="display: table; width: 100%;">
-                                <h4>Display options <br /><small>Extra display options for this product</small></h4>
-                                <label><input type="checkbox" class="offer_linked" value="1" /> Link offer to product
+                                <h4>option d'affichage <br /><small>Options d'affichage supplémentaires pour ce produit</small></h4>
+                                <label><input type="checkbox" class="offer_linked" value="1" /> Lier l'offre au produit
                                     page</label><br />
-                                <label><input type="checkbox" class="offer_quantity_chooser" value="1" checked /> Show
-                                    quantity chooser</label><br />
+                                <label><input type="checkbox" class="offer_quantity_chooser" value="1" checked /> Spectacle
+                                    sélecteur de quantité</label><br />
                             </div>
                         </div>
                     </div>
@@ -538,17 +538,17 @@ Not supports in Firefox and IE */
                 <div class="panel panel-default">
                     <div class="panel-heading">
                         <h4 class="panel-title"> <a data-toggle="collapse" data-parent="#accordion-test-p2" href="#collapseThree-p2" class="collapsed">
-                                2: Upgrade Settings
+                                2: Paramètres de mise à niveau
                             </a> </h4>
                     </div>
                     <div id="collapseThree-p2" class="panel-collapse collapse">
                         <div class="panel-body">
-                            <h3>Want this to be an upgrade?</h3><br />
+                            <h3>Voulez-vous que ce soit une mise à niveau?</h3><br />
                             <div style="display: table; width: 100%; padding: 10px;">
-                                <h4>Choose the product to be replaced once this offered product is accepted<br /><small>Search product or variant</small></h4>
+                                <h4>Choisissez le produit à remplacer une fois que ce produit offert est accepté <br /><small>Rechercher un produit ou une variante</small></h4>
                                 <div class="input-group">
                                     <input type="text" placeholder="ADD TO CART" class="form-control replace_this" style="padding: 10px; border: 2px solid #666666; border-radius: 5px 0px 0px 5px;" />
-                                    <span class="input-group-addon btn btn-primary entypo-cancel" onclick="$('.replacer').html('');products[$('.toplect').val()]['rp']='';products[$('.toplect').val()]['rv']='';$('.replace_this').val('');">CLEAR</span>
+                                    <span class="input-group-addon btn btn-primary entypo-cancel" onclick="$('.replacer').html('');products[$('.toplect').val()]['rp']='';products[$('.toplect').val()]['rv']='';$('.replace_this').val('');">DÉGAGER</span>
                                 </div>
                                 <div class="replacer"></div>
                             </div>
@@ -558,7 +558,7 @@ Not supports in Firefox and IE */
                 <div class="panel panel-default">
                     <div class="panel-heading">
                         <h4 class="panel-title"> <a data-toggle="collapse" data-parent="#accordion-test-p2" href="#collapseFour-p2" class="collapsed">
-                                3: Product Custom Fields
+                        3: Champs personnalisés du produit
                             </a> </h4>
                     </div>
                     <div id="collapseFour-p2" class="panel-collapse collapse" style="margin: 0px; padding: 0px;">
@@ -567,15 +567,15 @@ Not supports in Firefox and IE */
                                 <div class="panel minimal minimal-gray">
                                     <div class="panel-heading">
                                         <div class="panel-title hidden">
-                                            <h4>Minimal Panel</h4>
+                                            <h4>Panneau minimal</h4>
                                         </div>
                                         <div class="panel-options">
                                             <ul class="nav nav-tabs">
                                                 <li class="active">
-                                                    <a href="#profile-1" data-toggle="tab" aria-expanded="1">Create Custom Fields</a>
+                                                    <a href="#profile-1" data-toggle="tab" aria-expanded="1">Créer des champs personnalisés</a>
                                                 </li>
                                                 <li class="">
-                                                    <a href="#profile-2" data-toggle="tab" aria-expanded="false">Check fields</a>
+                                                    <a href="#profile-2" data-toggle="tab" aria-expanded="false">Vérifier les champs</a>
                                                 </li>
                                             </ul>
                                         </div>
@@ -587,21 +587,21 @@ Not supports in Firefox and IE */
                                                     <select class="field_type form-control col-xs-12">
                                                         <option value="" selected="selected">Choose an option type...</option>
                                                         <option value="select">Dropdown</option>
-                                                        <option value="text">Single Line Text</option>
-                                                        <option value="number">Number</option>
-                                                        <option value="textarea">Paragraph Text</option>
-                                                        <option value="file">File Upload</option>
-                                                        <option value="checkbox">Single Checkbox</option>
-                                                        <option value="checkbox_group">Checkbox Group</option>
-                                                        <option value="radio">Radio Buttons</option>
-                                                        <option value="date">Date Picker</option>
-                                                        <option value="swatch">Swatch Picker</option>
+                                                        <option value="text">Texte sur une seule ligne</option>
+                                                        <option value="number">Nombre</option>
+                                                        <option value="textarea">Texte du paragraphe</option>
+                                                        <option value="file">Téléchargement de fichiers</option>
+                                                        <option value="checkbox">Case à cocher unique</option>
+                                                        <option value="checkbox_group">Groupe de cases à cocher</option>
+                                                        <option value="radio">Boutons radio</option>
+                                                        <option value="date">Sélecteur de date</option>
+                                                        <option value="swatch">Sélecteur d'échantillons</option>
                                                     </select>
-                                                    <input required type="text" class="field_name form-control col-xs-12" placeholder="Option name" />
-                                                    <input required type="text" class="field_placeholder form-control col-xs-12" placeholder="Option placeholder" />
+                                                    <input required type="text" class="field_name form-control col-xs-12" placeholder="Nom de l'option" />
+                                                    <input required type="text" class="field_placeholder form-control col-xs-12" placeholder="Espace réservé d'option" />
                                                     <input type="number" class="field_price form-control col-xs-12" placeholder="Option price" />
                                                     <div class="choices" style="display: none;">
-                                                        <p class="col-xs-12">Option Choices</p>
+                                                        <p class="col-xs-12">Choix d'options</p>
                                                         <div class="col-xs-12 c_1 sleek_choice" style="padding: 0px;">
                                                             <span class="btn btn-sm entypo-up pull-left btn-default" onclick="" style="margin: 0px;"></span>
                                                             <span class="btn btn-sm entypo-down pull-left btn-default" onclick="" style="margin: 0px;"></span>
@@ -627,8 +627,8 @@ Not supports in Firefox and IE */
                                                             <span class="btn btn-sm entypo-minus pull-right btn-default" onclick="" style="margin: 0px;"></span>
                                                         </div>
                                                     </div>
-                                                    <label class="col-xs-12" style="padding: 0px;"><input type="checkbox" class="field_required" /> Is this field required?</label>
-                                                    <button class="btn btn-primary form-control btn-md center col-xs-12 save_option">ADD OPTION</button>
+                                                    <label class="col-xs-12" style="padding: 0px;"><input type="checkbox" class="field_required" /> Ce champ est-il obligatoire?</label>
+                                                    <button class="btn btn-primary form-control btn-md center col-xs-12 save_option">AJOUTER UNE OPTION</button>
                                                 </form>
                                             </div>
                                             <div class="tab-pane" id="profile-2">
@@ -641,7 +641,7 @@ Not supports in Firefox and IE */
                         </div>
                     </div>
                 </div>
-                <div onclick="console.log(offer);console.log(products);console.log(variants);console.log(blocks);console.log(conditions);console.log(fields);console.log(choices);">Log Arrays</div>
+                <div onclick="console.log(offer);console.log(products);console.log(variants);console.log(blocks);console.log(conditions);console.log(fields);console.log(choices);">Tableaux de journaux</div>
             </div>
         </div>
     </div>
@@ -681,24 +681,24 @@ Not supports in Firefox and IE */
             </div>
             <div class="modal-body" style="padding: 0px; margin: 0px;">
                 <div style="display: table; width: 100%; padding: 0px; margin: 0px;" id="products-wrappers">
-                    <input type="text" autocomplete="off" class="form-control" id="search" name="search" style="display: table; width: 96%; margin: 3px auto; padding: 10px; border: 2px solid #666666; border-radius: 5px;" placeholder="Search for item">
+                    <input type="text" autocomplete="off" class="form-control" id="search" name="search" style="display: table; width: 96%; margin: 3px auto; padding: 10px; border: 2px solid #666666; border-radius: 5px;" placeholder="Rechercher un article">
                     <div style="display: table; margin: 3px auto; width: 96%;" id="products"></div>
                 </div>
                 <div class="form-inline" style="display: table; width: 100%; padding: 0px; margin: 0px;" id="conditions-wrappers">
                     <select type="text" autocomplete="off" class="small form-control" id="conditionSelector" style="margin: 3px; width: 250px; border: 2px solid #666666; border-radius: 5px;">
-                        <option value="oc1">Cart has at least</option>
-                        <option value="oc2">Cart has at most</option>
-                        <option value="oc3">Cart has exactly</option>
-                        <option value="oc4">Cart does not have any</option>
-                        <option value="oc5">Cart total is at least</option>
-                        <option value="oc6">Cart total is at most</option>
+                        <option value="oc1">Le panier a au moins</option>
+                        <option value="oc2">Le panier a au plus</option>
+                        <option value="oc3">Le panier a exactement</option>
+                        <option value="oc4">Le panier n'en a pas</option>
+                        <option value="oc5">Le total du panier est au moins</option>
+                        <option value="oc6">Le total du panier est au maximum</option>
                         <?php if ($shop_details->name == 'Premium') : ?>
-                            <option value="oc7">Customer is located in</option>
-                            <option value="oc8">Customer is not located in</option>
+                            <option value="oc7">Le client est situé dans</option>
+                            <option value="oc8">Le client n'est pas situé dans</option>
                         <?php endif; ?>
                         <?php if ($shop_details->name == 'Premium' || $shop_details->name == 'Sleek') : ?>
-                            <option value="oc9">Cart contains items from vendor</option>
-                            <option value="oc10">Cart has no items from vendor</option>
+                            <option value="oc9">Le panier contient des articles du fournisseur</option>
+                            <option value="oc10">Le panier ne contient aucun article du vendeur</option>
                         <?php endif; ?>
                     </select>
                     <select type="text" autocomplete="off" class="small form-control" id="oc1Quantity" style="margin: 3px; max-width: 250px; border: 2px solid #666666; border-radius: 5px;">
@@ -707,13 +707,13 @@ Not supports in Firefox and IE */
                         <?php endfor; ?>
                     </select>
                     <select type="text" autocomplete="off" class="small form-control" id="oc1Type" style="margin: 3px; width: 250px; border: 2px solid #666666; border-radius: 5px;">
-                        <option value="product">Of product</option>
-                        <option value="variant">Of variant</option>
-                        <option value="collection">Item from collection</option>
+                        <option value="product">Du produit</option>
+                        <option value="variant">De variante</option>
+                        <option value="collection">Article de la collection</option>
                     </select>
                     <input type="hidden" class="occ" />
                     <input type="text" autocomplete="off" class="small form-control" id="ocContent" style="margin: 3px; width: 96%; padding: 10px; border: 2px solid #666666; border-radius: 5px;" placeholder="Search for item">
-                    <input type="number" autocomplete="off" class="small form-control" id="ocNumber" style="margin: 3px; width: 250px; padding: 10px; border: 2px solid #666666; border-radius: 5px;" placeholder="0 cents">
+                    <input type="number" autocomplete="off" class="small form-control" id="ocNumber" style="margin: 3px; width: 250px; padding: 10px; border: 2px solid #666666; border-radius: 5px;" placeholder="0 centimes">
                     <?php if ($shop_details->name == 'Premium') : ?>
                         <select id="countries" style="display: none; margin: 3px; max-width: 200px; border: 2px solid #666666; border-radius: 5px;" class="form-control small">
                             <option value="AF">Afghanistan</option>
@@ -969,8 +969,8 @@ Not supports in Firefox and IE */
                 </div>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-info saveCondition" style="display: none;">Save changes</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal">Fermer</button>
+                <button type="button" class="btn btn-info saveCondition" style="display: none;">Sauvegarder les modifications</button>
             </div>
         </div>
     </div>
@@ -1038,7 +1038,7 @@ Not supports in Firefox and IE */
             $('.offer_auto_add').prop('checked', false);
         }
 
-        
+
 
         if (this_offer['status'] == 1) {
             $('.offer_status').prop('checked', true);
@@ -1327,7 +1327,7 @@ Not supports in Firefox and IE */
     function loadProducts(product) {
         $.ajax({
             type: "POST",
-            url: base_url + 'fr/search_products',
+            url: base_url + '/search_products',
             data: {
                 term: product,
                 shop: '<?php echo $shop; ?>',
@@ -2347,7 +2347,7 @@ Not supports in Firefox and IE */
     }
 
     function remove_option(key) {
-        var result = confirm('Are you sure you want to delete ' + fields[key]['name'] + '?');
+        var result = confirm('Etes-vous sûr que vous voulez supprimer ' + fields[key]['name'] + '?');
         if (result) {
             fid = fields[key]['fid'];
             choices = choices.filter(e => e.fid != fid);
@@ -2366,7 +2366,7 @@ Not supports in Firefox and IE */
         console.log(base_url + 'update_offers/' + updating_offer + '?<?php echo $_SERVER['QUERY_STRING']; ?>');
         $.ajax({
             type: "POST",
-            url: base_url + 'fr/update_offers/' + updating_offer + '?<?php echo $_SERVER['QUERY_STRING']; ?>',
+            url: base_url + 'update_offers/' + updating_offer + '?<?php echo $_SERVER['QUERY_STRING']; ?>',
             data: {
                 offer,
                 products,
