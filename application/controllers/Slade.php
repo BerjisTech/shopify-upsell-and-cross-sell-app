@@ -695,9 +695,6 @@ class Slade extends CI_Controller
         $shop_json = '/admin/api/2020-04/shop.json';
 
 
-
-
-
         if ($this->db->where('shop', $shop_name)->get('shops')->num_rows() == 0) {
             $offers = array();
         } else {
@@ -738,7 +735,7 @@ class Slade extends CI_Controller
 
         $data['collects'] = $params['collects']['collects'];
         $data['themes'] = $params['themes']['themes'];
-        $data['product'] = $products['product'];
+        $data['products'] = $products['products'];
         $data['shop'] = $shop_j['shop'];
 
         header('Content-Type: application/json');
@@ -1760,6 +1757,7 @@ class Slade extends CI_Controller
 
             $data['shop'] = $shop_name;
             $data['token'] = $token;
+            
             $collects = $this->Shopify->shopify_call($token, $shop_name, $collects_json, array(), 'GET');
             $themes = $this->Shopify->shopify_call($token, $shop_name, $themes_json, array(), 'GET');
             $shop_j = $this->Shopify->shopify_call($token, $shop_name, $shop_json, array('fields' => 'money_with_currency_format,money_format'), 'GET');
@@ -1793,7 +1791,7 @@ class Slade extends CI_Controller
 
         $data['collects'] = $params['collects']['collects'];
         $data['themes'] = $params['themes']['themes'];
-        $data['product'] = $products['product'];
+        $data['products'] = $products['products']['products'];
         $data['shop'] = $shop_j['shop'];
 
         $data['data'] = $data;
