@@ -17,6 +17,7 @@
     let page = window.location.pathname;
 
     let offers = <?php echo json_encode($data); ?>
+
     let cart = externalJsonRequest("/cart.js");
 
     let products = offers.products;
