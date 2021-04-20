@@ -102,9 +102,10 @@
         <div class="tha_loader"></div>
     </div>
 
-    <select class="changeLang" style="position: absolute; z-index: 10000; bottom: 10px; left: 30px; ">
-        <option value="en">English</option>
-        <option value="fr">French</option>
+    <select class="changeLang" style="height: 40px;position: absolute;z-index: 10000;bottom: 5px;left: 2px;width: 45px;font-weight: 800;
+    ">
+        <option value="fr">Fr</option>
+        <option value="en">En</option>
     </select>
 
     <script>
@@ -118,7 +119,7 @@
             })
         })
     </script>
-    
+
 
     <script type="text/javascript">
         var base_url = '<?php echo base_url(); ?>';
