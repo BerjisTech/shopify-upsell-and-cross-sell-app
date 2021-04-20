@@ -1743,7 +1743,7 @@ class Slade extends CI_Controller
         $shop_name = str_replace(".myshopify.com", "", $shop);
         $collects_json = '/admin/api/2020-04/collects.json';
         $themes_json = '/admin/api/2020-04/themes.json';
-        $products_json = '/admin/api/2020-04/products.json';
+        $products_json = "/admin/api/2020-04/products.json";
         $shop_json = '/admin/api/2020-04/shop.json';
 
 
@@ -1761,13 +1761,13 @@ class Slade extends CI_Controller
             $collects = $this->Shopify->shopify_call($token, $shop_name, $collects_json, array(), 'GET');
             $themes = $this->Shopify->shopify_call($token, $shop_name, $themes_json, array(), 'GET');
             $shop_j = $this->Shopify->shopify_call($token, $shop_name, $shop_json, array('fields' => 'money_with_currency_format,money_format'), 'GET');
-            $products = $this->Shopify->shopify_call($token, $shop_name, $products_json, array(), 'GET');
+            $products = $this->Shopify->shopify_call($token, $shop, $products_json, array(), 'GET');
         }
 
         $params['collects'] = json_decode($collects['response'], true);
         $params['themes'] = json_decode($themes['response'], true);
         $shop_j = json_decode($shop_j['response'], true);
-        $products = json_decode($products['response'], true);
+        $params['products'] = json_decode($products['response'], true);
 
         $offers = $this->db->where('shop', $shop_name)->get('offers')->result_array();
         $data['settings'] = $this->db->where('shop', $shop_name)->get('settings')->row();
@@ -1791,7 +1791,7 @@ class Slade extends CI_Controller
 
         $data['collects'] = $params['collects']['collects'];
         $data['themes'] = $params['themes']['themes'];
-        $data['products'] = $products['products']['products'];
+        $data['products'] = $params['products']['products'];
         $data['shop'] = $shop_j['shop'];
 
         $data['data'] = $data;
