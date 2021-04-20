@@ -266,7 +266,7 @@
 
         let offers_url = 'https://sleekupsell.com/offers/' + Shopify.shop;
 
-        let offers = $data['offers'];
+        let offers = <?php echo $data['offers']; ?>
         let cart = externalJsonRequest("/cart.js");
 
         let auto_collection = offers['auto_collection'];
