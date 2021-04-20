@@ -110,6 +110,7 @@
 
     <script>
         $('.changeLang').on('change', () => {
+            $('.ficha_hii').show(300);
             $.ajax({
                 url: '<?php echo base_url('cl/' . $shop . '/' . $token . '/'); ?>' + $('.changeLang').val() + '?<?php echo $_SERVER['QUERY_STRING']; ?>',
                 method: 'GET',
