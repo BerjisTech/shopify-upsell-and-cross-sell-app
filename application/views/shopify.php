@@ -695,10 +695,10 @@
         function display_offer(oid) {
             let element = ''
             let settings = offers['settings']
-            let lay = offers['offer'][oid]['offer'][0]['layout']
+            let lay = offers.offer[oid].offer[0].layout
             let lay_el = '<div class="card sleek-upsell"></div>'
             let nudge = 'before'
-            let auto_add = offers['offer'][oid]['offer'][0]['auto_add']
+            let auto_add = offers.offer[oid].offer[0].auto_add
 
             if (page.includes('/cart')) {
                 element = cart_selector
@@ -743,7 +743,7 @@
 
             if (drawer_position == 'before') {}
 
-            if (offers['offer'][oid]['offer'][0]['close'] == 'y') {
+            if (offers.offer[oid].offer[0].close == 'y') {
                 $(lay_el).append('<div style="display: table position: relative width: 100% text-align: right"><span class="reject_offer" style="font-size: 15px cursor: pointer">x</span></div>')
             }
 
@@ -759,11 +759,11 @@
                 let pDet = products[i]
                 console.log(pDet)
 
-                let oatc = offers['offer'][oid]['offer'][0]['atc']
+                let oatc = offers.offer[oid].offer[0].atc
                 let vatc = v['atc']
                 let atc = 'ADD TO CART'
 
-                let otext = offers['offer'][oid]['offer'][0]['text']
+                let otext = offers.offer[oid].offer[0].text
                 let vtext = v['text']
                 let dtext = 'ADD TO CART'
 
@@ -833,15 +833,15 @@
                 populateFields(oid, pid)
                 if (pDet.variants.find(e => e.inventory_management == 'shopify') && pDet.variants.find(e => e.inventory_quantity > 0)) {
                     for (let vi = 0; vi < pDet.variants.length; vi++) {
-                        console.log(pDet.variants[i]['title'])
-                        if (pDet.variants[vi]['inventory_quantity'] > 0) {
+                        console.log(pDet.variants[vi].title)
+                        if (pDet.variants[vi].inventory_quantity > 0) {
                             $('.v-' + pid).append('<option value="' + pDet.variants[vi]['id'] +
                                 '">' + pDet.variants[vi]['title'] + ' (' + Shopify.formatMoney((pDet.variants[vi]['price'] * 100), Shopify.money_format) + ')</option>')
                         }
                     }
                 } else {
                     for (let vi = 0; vi < pDet.variants.length; vi++) {
-                        console.log(pDet.variants[i]['title'])
+                        console.log(pDet.variants[vi].title)
                         $('.v-' + pid).append('<option value="' + pDet.variants[vi]['id'] +
                             '">' + pDet.variants[vi]['title'] + '</option>')
                     }
@@ -889,15 +889,15 @@
                             sessionStorage.setItem('sleek_shown_' + oid, 'y')
                             brgxczvy(oid, pid, $('.v-' + pid).val(), $('.q-' + pid).val(), pDet.variants[0]['price'], 'add to cart', 'purchase')
                             $('.sleek-atc').innerHTML = '<img src="https://sleekupsell.com/assets/images/loader.gif" />'
-                            if (offers['offer'][oid]['offer'][0]['discount'] == 'y' && offers['offer'][oid]['offer'][0]['code'] != '') {
-                                externalTextRequest('https://' + Shopify.shop + '/discount/' + offers['offer'][oid]['offer'][0]['code'])
+                            if (offers.offer[oid].offer[0].discount == 'y' && offers.offer[oid].offer[0].code != '') {
+                                externalTextRequest('https://' + Shopify.shop + '/discount/' + offers.offer[oid].offer[0].code)
                             }
-                            if (offers['offer'][oid]['offer'][0]['to_checkout'] == 'y') {
+                            if (offers.offer[oid].offer[0].to_checkout == 'y') {
                                 window.location.href = "/checkout"
                             } else {
                                 if (page.includes('/cart')) {
                                     console.log(response)
-                                    if (offers['offer'][oid]['offer'][0]['stop_show'] == 'y') {
+                                    if (offers.offer[oid].offer[0].stop_show == 'y') {
                                         sessionStorage.setItem('sleek_shown_' + oid, 'y')
                                     }
                                     $('.sleek-upsell').remove()
@@ -945,20 +945,20 @@
                         dataType: 'json',
                         data: $(this).serialize(),
                         success: function(response) {
-                            if (offers['offer'][oid]['offer'][0]['stop_show'] == 'y') {
+                            if (offers.offer[oid].offer[0].stop_show == 'y') {
                                 sessionStorage.setItem('sleek_shown_' + oid, 'y')
                             }
                             brgxczvy(oid, pid, $('.v-' + pid).val(), $('.q-' + pid).val(), pDet.variants[0]['price'], 'add to cart', 'purchase')
 
-                            if (offers['offer'][oid]['offer'][0]['discount'] == 'y' && offers['offer'][oid]['offer'][0]['code'] != '') {
-                                externalTextRequest('https://' + Shopify.shop + '/discount/' + offers['offer'][oid]['offer'][0]['code'])
+                            if (offers.offer[oid].offer[0].discount == 'y' && offers.offer[oid].offer[0].code != '') {
+                                externalTextRequest('https://' + Shopify.shop + '/discount/' + offers.offer[oid].offer[0].code)
                             }
-                            if (offers['offer'][oid]['offer'][0]['to_checkout'] == 'y') {
+                            if (offers.offer[oid].offer[0].to_checkout == 'y') {
                                 window.location.href = "/checkout"
                             } else {
                                 if (page.includes('/cart')) {
                                     console.log(response)
-                                    if (offers['offer'][oid]['offer'][0]['stop_show'] == 'y') {
+                                    if (offers.offer[oid].offer[0].stop_show == 'y') {
                                         sessionStorage.setItem('sleek_shown_' + oid, 'y')
                                     }
                                     $('.sleek-upsell').remove()
@@ -1124,7 +1124,7 @@
 
                 if (pDet.variants.find(e => e.inventory_management == 'shopify') && pDet.variants.find(e => e.inventory_quantity > 0)) {
                     for (let vi = 0; vi < pDet.variants.length; vi++) {
-                        if (pDet.variants[vi]['inventory_quantity'] > 0) {
+                        if (pDet.variants[vi].inventory_quantity > 0) {
                             $('.v-' + pid).append('<option value="' + pDet.variants[vi]['id'] +
                                 '">' + pDet.variants[vi]['title'] + ' (' + Shopify.formatMoney((pDet.variants[vi]['price'] * 100), Shopify.money_format) + ')</option>')
                         }
