@@ -1804,7 +1804,7 @@ class Slade extends CI_Controller
         $data['collects'] = $params['collects']['collects'];
         $data['themes'] = $params['themes']['themes'];
 
-        print_r($data);
+        $data['data'] = $data;
 
         $this->load->view('shopify', $data);
     }
