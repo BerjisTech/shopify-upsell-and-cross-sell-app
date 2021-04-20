@@ -6,20 +6,20 @@
                     <div class="card text-center">
                         <div class="title">
                             <i class="fa fa-paper-plane" aria-hidden="true"></i>
-                            <h2>Free</h2>
+                            <h2>Gratis</h2>
                         </div>
                         <div class="price">
                             <h4><sup>$</sup>0</h4>
                         </div>
                         <div class="option">
                             <ul>
-                                <li> <i class="fa fa-check" aria-hidden="true"></i> 1 Offer Active </li>
-                                <li> <i class="fa fa-check" aria-hidden="true"></i> Limited Offer Conditions </li>
+                                <li> <i class="fa fa-check" aria-hidden="true"></i> 1 offre active </li>
+                                <li> <i class="fa fa-check" aria-hidden="true"></i> Conditions de l'offre limitée </li>
                                 <li> <i class="fa fa-times" aria-hidden="true"></i>   </li>
                                 <li> <i class="fa fa-times" aria-hidden="true"></i>   </li>
                             </ul>
                         </div>
-                        <a href="<?php echo base_url() . 'upgrade/' . $shop . '/' . $token; ?>/Free?<?php echo $_SERVER['QUERY_STRING']; ?>">GET FREE </a>
+                        <a href="<?php echo base_url() . 'upgrade/' . $shop . '/' . $token; ?>/Free?<?php echo $_SERVER['QUERY_STRING']; ?>">OBTENEZ GRATUITEMENT </a>
                     </div>
                 </div>
                 <!-- END Col one -->
@@ -34,13 +34,13 @@
                         </div>
                         <div class="option">
                             <ul>
-                                <li> <i class="fa fa-check" aria-hidden="true"></i> 20 active offers </li>
-                                <li> <i class="fa fa-check" aria-hidden="true"></i> Manual/Custom offers </li>
-                                <li> <i class="fa fa-check" aria-hidden="true"></i> Extended offer conditioning </li>
-                                <li> <i class="fa fa-check" aria-hidden="true"></i> Reports </li>
+                                <li> <i class="fa fa-check" aria-hidden="true"></i> 20 offres actives </li>
+                                <li> <i class="fa fa-check" aria-hidden="true"></i> Offres manuelles / personnalisées </li>
+                                <li> <i class="fa fa-check" aria-hidden="true"></i> Conditionnement de l'offre étendue </li>
+                                <li> <i class="fa fa-check" aria-hidden="true"></i> Rapports </li>
                             </ul>
                         </div>
-                        <a href="<?php echo base_url() . 'upgrade/' . $shop . '/' . $token; ?>/Sleek?<?php echo $_SERVER['QUERY_STRING']; ?>">Upgrade </a>
+                        <a href="<?php echo base_url() . 'upgrade/' . $shop . '/' . $token; ?>/Sleek?<?php echo $_SERVER['QUERY_STRING']; ?>">Améliorer </a>
                     </div>
                 </div>
                 <!-- END Col two -->
@@ -55,13 +55,13 @@
                         </div>
                         <div class="option">
                             <ul>
-                                <li> <i class="fa fa-check" aria-hidden="true"></i> 500 offers </li>
-                                <li> <i class="fa fa-check" aria-hidden="true"></i> Automated offers included </li>
-                                <li> <i class="fa fa-check" aria-hidden="true"></i> Advanced Geo-Targetting </li>
-                                <li> <i class="fa fa-check" aria-hidden="true"></i> Live Support </li>
+                                <li> <i class="fa fa-check" aria-hidden="true"></i> 500 offres </li>
+                                <li> <i class="fa fa-check" aria-hidden="true"></i> Offres automatisées incluses </li>
+                                <li> <i class="fa fa-check" aria-hidden="true"></i> Ciblage géographique avancé </li>
+                                <li> <i class="fa fa-check" aria-hidden="true"></i> Support en direct </li>
                             </ul>
                         </div>
-                        <a href="<?php echo base_url() . 'upgrade/' . $shop . '/' . $token; ?>/Premium?<?php echo $_SERVER['QUERY_STRING']; ?>">Upgrade </a>
+                        <a href="<?php echo base_url() . 'upgrade/' . $shop . '/' . $token; ?>/Premium?<?php echo $_SERVER['QUERY_STRING']; ?>">Améliorer </a>
                     </div>
                 </div>
                 <!-- END Col three -->
