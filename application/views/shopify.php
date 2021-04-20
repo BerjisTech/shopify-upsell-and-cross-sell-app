@@ -895,7 +895,7 @@
                                 window.location.href = "/checkout";
                             } else {
                                 if (page.includes('/cart')) {
-                                    // console.log(response);
+                                    console.log(response);
                                     if (offers['offer'][oid]['offer'][0]['stop_show'] == 'y') {
                                         sessionStorage.setItem('sleek_shown_' + oid, 'y')
                                     };
@@ -903,7 +903,7 @@
                                     window.location.reload(false);
                                 } else {
                                     $('.sleek-upsell').remove();
-                                    // console.log(response);
+                                    console.log(response);
                                     if (settings != null) {
                                         if (settings['refresh_state'] == 'y') {
                                             eval(settings['drawer_refresh']);
@@ -914,7 +914,7 @@
                             }
                         },
                         error: function(response) {
-                            // console.log(response);
+                            console.log(response);
                             $(this).find('button').html('Could not add product');
                             setTimeout(function() {
                                 $(this).remove()
@@ -956,7 +956,7 @@
                                 window.location.href = "/checkout";
                             } else {
                                 if (page.includes('/cart')) {
-                                    // console.log(response);
+                                    console.log(response);
                                     if (offers['offer'][oid]['offer'][0]['stop_show'] == 'y') {
                                         sessionStorage.setItem('sleek_shown_' + oid, 'y')
                                     };
@@ -964,7 +964,7 @@
                                     window.location.reload(false);
                                 } else {
                                     $('.sleek-upsell').remove();
-                                    // console.log(response);
+                                    console.log(response);
                                     if (settings != null) {
                                         if (settings['refresh_state'] == 'y') {
                                             eval(settings['drawer_refresh']);
@@ -975,7 +975,7 @@
                             }
                         },
                         error: function(response) {
-                            // console.log(response);
+                            console.log(response);
                             $(this).find('button').html('Could not add product');
                             setTimeout(function() {
                                 $(this).remove()
@@ -1175,13 +1175,13 @@
                                 window.location.href = "/checkout";
                             } else {
                                 if (page.includes('/cart')) {
-                                    // console.log(response);
+                                    console.log(response);
                                     sessionStorage.setItem('sleek_shown_collection', 'y');
                                     $('.sleek-upsell').remove();
                                     window.location.reload(false);
                                 } else {
                                     $('.sleek-upsell').remove();
-                                    // console.log(response);
+                                    console.log(response);
                                     if (settings != null) {
                                         if (settings['refresh_state'] == 'y') {
                                             eval(settings['drawer_refresh']);
@@ -1192,7 +1192,7 @@
                             }
                         },
                         error: function(response) {
-                            // console.log(response);
+                            console.log(response);
                             $(this).find('button').html('Could not add product');
                             setTimeout(function() {
                                 $(this).remove()
