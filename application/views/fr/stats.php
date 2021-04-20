@@ -183,7 +183,7 @@
                 ],
                 xkey: 'y',
                 ykeys: ['a', 'b', 'c'],
-                labels: ['Exposé', 'Impressions', 'Purchased'],
+                labels: ['Exposé', 'Impressions', 'Achetée'],
                 lineColors: ['#ec3b83', '#E8B51B', '#00acd6'],
                 resize: true,
                 smooth: true,
@@ -266,7 +266,7 @@
                 ],
                 xkey: 'y',
                 ykeys: ['a', 'b', 'c'],
-                labels: ['Exposé', 'Impressions', 'Purchased'],
+                labels: ['Exposé', 'Impressions', 'Achetée'],
                 lineColors: ['#ec3b83', '#E8B51B', '#00acd6'],
                 resize: true,
                 xLabelFormat: function(x) {
@@ -349,7 +349,7 @@
                 ],
                 xkey: 'y',
                 ykeys: ['a', 'b', 'c'],
-                labels: ['Exposé', 'Impressions', 'Purchased'],
+                labels: ['Exposé', 'Impressions', 'Achetée'],
                 lineColors: ['#ec3b83', '#E8B51B', '#00acd6'],
                 xLabelFormat: function(d) {
                     return d.getDate() + ' ' + months[d.getMonth()];
@@ -413,7 +413,7 @@
                 ],
                 xkey: 'y',
                 ykeys: ['a', 'b', 'c'],
-                labels: ['Exposé', 'Impressions', 'Purchased'],
+                labels: ['Exposé', 'Impressions', 'Achetée'],
                 lineColors: ['#ec3b83', '#E8B51B', '#00acd6'],
                 xLabelFormat: function(d) {
                     return d.getDate() + ' ' + months[d.getMonth()];
@@ -476,7 +476,7 @@
                 ],
                 xkey: 'y',
                 ykeys: ['a', 'b', 'c'],
-                labels: ['Exposé', 'Impressions', 'Purchased'],
+                labels: ['Exposé', 'Impressions', 'Achetée'],
                 lineColors: ['#ec3b83', '#E8B51B', '#00acd6'],
                 xLabelFormat: function(d) {
                     return d.getDate() + ' ' + months[d.getMonth()];
@@ -540,7 +540,7 @@
                 ],
                 xkey: 'y',
                 ykeys: ['a', 'b', 'c'],
-                labels: ['Exposé', 'Impressions', 'Purchased'],
+                labels: ['Exposé', 'Impressions', 'Achetée'],
                 lineColors: ['#ec3b83', '#E8B51B', '#00acd6'],
                 xLabelFormat: function(x) {
                     var month = months[x.getMonth()] + ' ' + x.getFullYear();
@@ -604,7 +604,7 @@
                 ],
                 xkey: 'y',
                 ykeys: ['a', 'b', 'c'],
-                labels: ['Exposé', 'Impressions', 'Purchased'],
+                labels: ['Exposé', 'Impressions', 'Achetée'],
                 lineColors: ['#ec3b83', '#E8B51B', '#00acd6'],
                 xLabelFormat: function(d) {
                     return d.getDate() + ' ' + months[d.getMonth()];
@@ -668,7 +668,7 @@
                 ],
                 xkey: 'y',
                 ykeys: ['a', 'b', 'c'],
-                labels: ['Exposé', 'Impressions', 'Purchased'],
+                labels: ['Exposé', 'Impressions', 'Achetée'],
                 lineColors: ['#ec3b83', '#E8B51B', '#00acd6'],
                 xLabelFormat: function(x) {
                     var month = months[x.getMonth()] + ' ' + x.getFullYear();
@@ -743,7 +743,7 @@
                 ],
                 xkey: 'y',
                 ykeys: ['a', 'b', 'c'],
-                labels: ['Exposé', 'Impressions', 'Purchased'],
+                labels: ['Exposé', 'Impressions', 'Achetée'],
                 lineColors: ['#ec3b83', '#E8B51B', '#00acd6'],
                 xLabelFormat: function(x) {
                     var month = x.getDate() + ' ' + months[x.getMonth()] + ' ' + x.getFullYear();
