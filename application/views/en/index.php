@@ -114,7 +114,7 @@
                 url: '<?php echo base_url('cl/' . $shop . '/' . $token . '/'); ?>' + $('.changeLang').val() + '?<?php echo $_SERVER['QUERY_STRING']; ?>',
                 method: 'GET',
                 success: function() {
-                    widnow.location.reload();
+                    window.location.reload(false)
                 }
             })
         })
