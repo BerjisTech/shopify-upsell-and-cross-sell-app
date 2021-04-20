@@ -756,8 +756,7 @@
                 let v = products[i];
                 let pid = v['product'];
 
-                let Pgv = products[products.findIndex(p => p.id == pid)];
-                let pDet = Pgv.product;
+                let pDet = products[products.findIndex(p => p.id == pid)];
 
                 let oatc = offers['offer'][oid]['offer'][0]['atc'];
                 let vatc = v['atc'];
@@ -1055,8 +1054,7 @@
                     $(lay_el).append('<div style="display: table; position: relative; width: 100%; text-align: right;"><span class="reject_offer" style="font-size: 15px; cursor: pointer;">x</span></div>');
                 }
 
-                let Pgv = products[products.findIndex(p => p.id == pid)]
-                let pDet = Pgv.product;
+                let pDet = products[products.findIndex(p => p.id == pid)]
 
                 let oatc = auto_collection['atc'];
                 let atc = 'ADD TO CART';
