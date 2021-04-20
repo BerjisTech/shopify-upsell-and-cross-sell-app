@@ -1267,7 +1267,7 @@ class Slade extends CI_Controller
         $data['token'] = $this->db->where('shop', str_replace(".myshopify.com", "", $shop))->get('shops')->row()->token;
         $data['shop'] = str_replace(".myshopify.com", "", $shop);
 
-        $this->load->view($this->db->where('shop', $shop)->get('shops')->row()->language . '/suw', $data);
+        $this->load->view($this->db->where('shop', $data['shop'])->get('shops')->row()->language . '/suw', $data);
     }
 
     public function users($shop, $token)
