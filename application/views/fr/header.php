@@ -18,7 +18,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <meta name="description" content="Sleek Upsell" />
 <meta name="author" content="Sleek Apps" />
-<link rel="icon" href="<?php echo base_url(); ?>fr/logo.png">
+<link rel="icon" href="<?php echo base_url(); ?>/logo.png">
 <title>Sleek upsell | <?php if (isset($shop)) {
                             echo $shop . " | ";
                         } ?><?php echo date('d M, Y'); ?></title>

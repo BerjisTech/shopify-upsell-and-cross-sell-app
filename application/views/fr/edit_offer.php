@@ -432,22 +432,22 @@ Not supports in Firefox and IE */
                 <?php if ($shop_details->name == 'Free' && $this->db->where('shop', $shop)->where('status', 1)->get('offers')->num_rows() > 0) : ?>
                     <div class="panel panel-default">
                         <div class="panel-heading" style="text-align: center;">
-                            You already have one active offer. To enable this offer, kindly disable your active offer(s) or <a href="<?php echo base_url(); ?>fr/subscription/<?php echo $shop; ?>/<?php echo $token; ?>?<?php echo $_SERVER['QUERY_STRING']; ?>">Upgrade your plan</a>
+                            You already have one active offer. To enable this offer, kindly disable your active offer(s) or <a href="<?php echo base_url(); ?>/subscription/<?php echo $shop; ?>/<?php echo $token; ?>?<?php echo $_SERVER['QUERY_STRING']; ?>">Upgrade your plan</a>
                         </div>
                         <div class="panel-body">
                             <div class="row">
-                                <a class="btn btn-primary" href="<?php echo base_url(); ?>fr/subscription/<?php echo $shop; ?>/<?php echo $token; ?>?<?php echo $_SERVER['QUERY_STRING']; ?>">Upgrade Now</a>
+                                <a class="btn btn-primary" href="<?php echo base_url(); ?>/subscription/<?php echo $shop; ?>/<?php echo $token; ?>?<?php echo $_SERVER['QUERY_STRING']; ?>">Upgrade Now</a>
                             </div>
                         </div>
                     </div>
                 <?php elseif ($shop_details->name == 'Sleek' && $this->db->where('shop', $shop)->where('status', 1)->get('offers')->num_rows() > 19) : ?>
                     <div class="panel panel-default">
                         <div class="panel-heading" style="text-align: center;">
-                            You already have one active offer. To enable this offer, kindly disable your active offer(s) or <a href="<?php echo base_url(); ?>fr/subscription/<?php echo $shop; ?>/<?php echo $token; ?>?<?php echo $_SERVER['QUERY_STRING']; ?>">Upgrade your plan</a>
+                            You already have one active offer. To enable this offer, kindly disable your active offer(s) or <a href="<?php echo base_url(); ?>/subscription/<?php echo $shop; ?>/<?php echo $token; ?>?<?php echo $_SERVER['QUERY_STRING']; ?>">Upgrade your plan</a>
                         </div>
                         <div class="panel-body">
                             <div class="row">
-                                <a class="btn btn-primary" href="<?php echo base_url(); ?>fr/subscription/<?php echo $shop; ?>/<?php echo $token; ?>?<?php echo $_SERVER['QUERY_STRING']; ?>">Upgrade Now</a>
+                                <a class="btn btn-primary" href="<?php echo base_url(); ?>/subscription/<?php echo $shop; ?>/<?php echo $token; ?>?<?php echo $_SERVER['QUERY_STRING']; ?>">Upgrade Now</a>
                             </div>
                         </div>
                     </div>

@@ -143,7 +143,7 @@
 <script>
     function refreshData(shop) {
         $.ajax({
-            url: '<?php echo base_url(); ?>fr/refresh_store_data/' + shop,
+            url: '<?php echo base_url(); ?>/refresh_store_data/' + shop,
             success: function() {
                 window.location.reload(false);
             }

@@ -451,22 +451,22 @@ Not supports in Firefox and IE */
                 <?php if ($shop_details->name == 'Free' && $this->db->where('shop', $shop)->where('status', 1)->get('offers')->num_rows() > 0) : ?>
                     <div class="panel panel-default">
                         <div class="panel-heading" style="text-align: center;">
-                            Vous avez déjà une offre active. Pour activer cette offre, veuillez désactiver votre offre active ou <a href="<?php echo base_url(); ?>fr/subscription/<?php echo $shop; ?>/<?php echo $token; ?>?<?php echo $_SERVER['QUERY_STRING']; ?>">Améliorez votre plan</a>
+                            Vous avez déjà une offre active. Pour activer cette offre, veuillez désactiver votre offre active ou <a href="<?php echo base_url(); ?>/subscription/<?php echo $shop; ?>/<?php echo $token; ?>?<?php echo $_SERVER['QUERY_STRING']; ?>">Améliorez votre plan</a>
                         </div>
                         <div class="panel-body">
                             <div class="row">
-                                <a class="btn btn-primary" href="<?php echo base_url(); ?>fr/subscription/<?php echo $shop; ?>/<?php echo $token; ?>?<?php echo $_SERVER['QUERY_STRING']; ?>">Mettre à jour maintenant</a>
+                                <a class="btn btn-primary" href="<?php echo base_url(); ?>/subscription/<?php echo $shop; ?>/<?php echo $token; ?>?<?php echo $_SERVER['QUERY_STRING']; ?>">Mettre à jour maintenant</a>
                             </div>
                         </div>
                     </div>
                 <?php elseif ($shop_details->name == 'Sleek' && $this->db->where('shop', $shop)->where('status', 1)->get('offers')->num_rows() > 19) : ?>
                     <div class="panel panel-default">
                         <div class="panel-heading" style="text-align: center;">
-                            Vous avez déjà une offre active. Pour activer cette offre, veuillez désactiver vos offres actives ou <a href="<?php echo base_url(); ?>fr/subscription/<?php echo $shop; ?>/<?php echo $token; ?>?<?php echo $_SERVER['QUERY_STRING']; ?>">Améliorez votre plan</a>
+                            Vous avez déjà une offre active. Pour activer cette offre, veuillez désactiver vos offres actives ou <a href="<?php echo base_url(); ?>/subscription/<?php echo $shop; ?>/<?php echo $token; ?>?<?php echo $_SERVER['QUERY_STRING']; ?>">Améliorez votre plan</a>
                         </div>
                         <div class="panel-body">
                             <div class="row">
-                                <a class="btn btn-primary" href="<?php echo base_url(); ?>fr/subscription/<?php echo $shop; ?>/<?php echo $token; ?>?<?php echo $_SERVER['QUERY_STRING']; ?>">Mettre à jour maintenant</a>
+                                <a class="btn btn-primary" href="<?php echo base_url(); ?>/subscription/<?php echo $shop; ?>/<?php echo $token; ?>?<?php echo $_SERVER['QUERY_STRING']; ?>">Mettre à jour maintenant</a>
                             </div>
                         </div>
                     </div>
