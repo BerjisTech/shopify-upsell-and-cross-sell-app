@@ -782,15 +782,15 @@
             element: 'donut-chart-demo',
             data: [{
                     label: "ATC",
-                    value: <?php echo number_format($this->db->where('shop', $duka)->where('offer', $offer)->where('type', 'purchase')->get('stats')->num_rows()); ?>
+                    value: <?php echo $this->db->where('shop', $duka)->where('offer', $offer)->where('type', 'purchase')->get('stats')->num_rows(); ?>
                 },
                 {
                     label: "Impressions",
-                    value: <?php echo number_format($this->db->where('shop', $duka)->where('offer', $offer)->where('type', 'impression')->get('stats')->num_rows()); ?>
+                    value: <?php echo $this->db->where('shop', $duka)->where('offer', $offer)->where('type', 'impression')->get('stats')->num_rows(); ?>
                 },
                 {
                     label: "Shown",
-                    value: <?php echo number_format($this->db->where('shop', $duka)->where('offer', $offer)->where('type', 'show')->get('stats')->num_rows()); ?>
+                    value: <?php echo $this->db->where('shop', $duka)->where('offer', $offer)->where('type', 'show')->get('stats')->num_rows(); ?>
                 }
             ],
             colors: ['#EC3B83', '#00ACD6', '#E8B51B', '#002A5A']
@@ -818,7 +818,7 @@
     </div>
     <div class="col-md-4 col-sm-6">
         <div class="tile-stats tile-white stat-tile">
-            <h3>$ <?php echo number_format($this->db->select('sum(price) as total')->where('shop', $duka)->where('offer', $offer)->where('type', 'purchase')->get('stats')->row()->total); ?></h3>
+            <h3>$ <?php echo number_format((float)$this->db->select('sum(price) as total')->where('shop', $duka)->where('offer', $offer)->where('type', 'purchase')->get('stats')->row()->total, 2, '.'); ?></h3>
             <p>ATC</p> <span class="sales"></span>
         </div>
     </div>
@@ -917,7 +917,7 @@
                                         }
                                     }
                                     ?></td>
-                                <td><?php echo number_format(($fetch['reach'] * 100) / $total_stats); ?>% ($<?php echo number_format($this->db->select('sum(price) as total')->where('shop', $duka)->where('type', 'purchase')->where('offer', $fetch['offer'])->get('stats')->row()->total); ?>)</td>
+                                <td><?php echo number_format(($fetch['reach'] * 100) / $total_stats); ?>% ($<?php echo $this->db->select('sum(price) as total')->where('shop', $duka)->where('type', 'purchase')->where('offer', $fetch['offer'])->get('stats')->row()->total; ?>)</td>
                             </tr>
                         <?php endforeach; ?>
                     </tbody>
