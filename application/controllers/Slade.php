@@ -297,7 +297,7 @@ class Slade extends CI_Controller
 
         // $this->Shopify->welcome_email($s_data['customer_email']);
 
-        echo '<script>top.window.location="https://' . $_GET['shop'] . '/admin/apps/sleek-upsell?' . $_SERVER['QUERY_STRING'] . '";</script>';
+        echo '<script>top.window.location="https://' . $_GET['shop'] . '/admin/apps/sleek-upsell/subscription/' . $shop . '/' . $token . '/Sleek?' . $_SERVER['QUERY_STRING'] . '";</script>';
     }
 
     public function api_call_write_products()
@@ -384,80 +384,80 @@ class Slade extends CI_Controller
 
         $this->db->where('shop', $shop)->set($s_array)->update('shops');
 
-        if ($plan == 'Free') {
-            $this_script = '/admin/api/2020-04/recurring_application_charges.json';
+        // if ($plan == 'Free') {
+        //     // $this_script = '/admin/api/2020-04/recurring_application_charges.json';
 
-            $script_exists = $this->Shopify->shopify_call($token, $shop, $this_script, array(), 'GET');
-            $script_exists = json_decode($script_exists['response'], true);
+        //     // $script_exists = $this->Shopify->shopify_call($token, $shop, $this_script, array(), 'GET');
+        //     // $script_exists = json_decode($script_exists['response'], true);
 
-            foreach ($script_exists['recurring_application_charges'] as $key => $fetch) :
-                $del_url = '/admin/api/2020-04/recurring_application_charges/' . $fetch['id'] . '.json';
-                $del = $this->Shopify->shopify_call($token, $shop, $del_url, array(), 'DELETE');
-                $del = json_decode($del['response'], true);
-            endforeach;
+        //     // foreach ($script_exists['recurring_application_charges'] as $key => $fetch) :
+        //     //     $del_url = '/admin/api/2020-04/recurring_application_charges/' . $fetch['id'] . '.json';
+        //     //     $del = $this->Shopify->shopify_call($token, $shop, $del_url, array(), 'DELETE');
+        //     //     $del = json_decode($del['response'], true);
+        //     // endforeach;
 
-            $active_shop = array(
-                'type' => 'FREE',
-                'name' => $plan,
-                'price' => 0.00,
-                'bill_interval' => 'NEVER',
-                'capped_amount' => 0.00,
-                'terms' => 'NO_TERMS',
-                'trial_days' => '0',
-                'test' => 'false',
-                'on_install' => 1,
-                'created_at' => '',
-                'updated_at' => time(),
+        //     // $active_shop = array(
+        //     //     'type' => 'FREE',
+        //     //     'name' => $plan,
+        //     //     'price' => 0.00,
+        //     //     'bill_interval' => 'NEVER',
+        //     //     'capped_amount' => 0.00,
+        //     //     'terms' => 'NO_TERMS',
+        //     //     'trial_days' => '0',
+        //     //     'test' => 'false',
+        //     //     'on_install' => 1,
+        //     //     'created_at' => '',
+        //     //     'updated_at' => time(),
 
+        //     // );
+
+        //     // $this->db->where('shop', str_replace(".myshopify.com", "", $_GET['shop']))->set($active_shop)->update('shops');
+        //     // $this->db->where('shop', $shop)->set('status', 0)->update('offers');
+        //     // $this->db->where('shop', $shop)->set('status', 0)->update('auto_collection');
+
+        //     // echo '<script>top.window.location="https://' . $_GET['shop'] . '/admin/apps/sleek-upsell?' . $_SERVER['QUERY_STRING'] . '";</script>';
+        //     // exit();
+        // }
+          
+        if ($plan == 'Sleek') {
+            $array = array(
+                'recurring_application_charge' => array(
+                    'name' => 'Sleek',
+                    'test' => false,
+                    'price' => 19.99,
+                    'trial_days' => 7,
+                    'return_url' => 'https://' . $_GET['shop'] . '/admin/apps/sleek-upsell/activate/Sleek?t=false&hmac=' . $_GET['hmac'] . '&shop=' . $_GET['shop'],
+                ),
             );
-
-            $this->db->where('shop', str_replace(".myshopify.com", "", $_GET['shop']))->set($active_shop)->update('shops');
-            $this->db->where('shop', $shop)->set('status', 0)->update('offers');
-            $this->db->where('shop', $shop)->set('status', 0)->update('auto_collection');
-
-            echo '<script>top.window.location="https://' . $_GET['shop'] . '/admin/apps/sleek-upsell?' . $_SERVER['QUERY_STRING'] . '";</script>';
-            exit();
-        } else {
-            if ($plan == 'Sleek') {
-                $array = array(
-                    'recurring_application_charge' => array(
-                        'name' => 'Sleek',
-                        'test' => false,
-                        'price' => 19.99,
-                        'trial_days' => 7,
-                        'return_url' => 'https://' . $_GET['shop'] . '/admin/apps/sleek-upsell/activate/Sleek?t=false&hmac=' . $_GET['hmac'] . '&shop=' . $_GET['shop'],
-                    ),
-                );
-            }
-            if ($plan == 'Premium' && $shop == 'sleek-upsell-live') {
-                $array = array(
-                    'recurring_application_charge' => array(
-                        'name' => 'Premium',
-                        'test' => true,
-                        'price' => 59.99,
-                        'trial_days' => 7,
-                        'return_url' => 'https://' . $_GET['shop'] . '/admin/apps/sleek-upsell/activate/Premium?t=false&hmac=' . $_GET['hmac'] . '&shop=' . $_GET['shop'],
-                    ),
-                );
-            }
-            if ($plan == 'Premium' && $shop != 'sleek-upsell-live') {
-                $array = array(
-                    'recurring_application_charge' => array(
-                        'name' => 'Premium',
-                        'test' => false,
-                        'price' => 59.99,
-                        'trial_days' => 7,
-                        'return_url' => 'https://' . $_GET['shop'] . '/admin/apps/sleek-upsell/activate/Premium?t=false&hmac=' . $_GET['hmac'] . '&shop=' . $_GET['shop'],
-                    ),
-                );
-            }
-
-            $charge = $this->Shopify->shopify_call($token, $shop, "/admin/api/2020-04/recurring_application_charges.json", $array, 'POST');
-            $charge = json_decode($charge['response'], JSON_PRETTY_PRINT);
-
-            echo '<script>top.window.location="' . $charge['recurring_application_charge']['confirmation_url'] . '";</script>';
-            exit();
         }
+        if ($plan == 'Premium' && $shop == 'sleek-upsell-live') {
+            $array = array(
+                'recurring_application_charge' => array(
+                    'name' => 'Premium',
+                    'test' => true,
+                    'price' => 59.99,
+                    'trial_days' => 7,
+                    'return_url' => 'https://' . $_GET['shop'] . '/admin/apps/sleek-upsell/activate/Premium?t=false&hmac=' . $_GET['hmac'] . '&shop=' . $_GET['shop'],
+                ),
+            );
+        }
+        if ($plan == 'Premium' && $shop != 'sleek-upsell-live') {
+            $array = array(
+                'recurring_application_charge' => array(
+                    'name' => 'Premium',
+                    'test' => false,
+                    'price' => 59.99,
+                    'trial_days' => 7,
+                    'return_url' => 'https://' . $_GET['shop'] . '/admin/apps/sleek-upsell/activate/Premium?t=false&hmac=' . $_GET['hmac'] . '&shop=' . $_GET['shop'],
+                ),
+            );
+        }
+
+        $charge = $this->Shopify->shopify_call($token, $shop, "/admin/api/2020-04/recurring_application_charges.json", $array, 'POST');
+        $charge = json_decode($charge['response'], JSON_PRETTY_PRINT);
+
+        echo '<script>top.window.location="' . $charge['recurring_application_charge']['confirmation_url'] . '";</script>';
+        exit();
     }
 
     public function activate($plan)
@@ -486,7 +486,7 @@ class Slade extends CI_Controller
                     'activated_on' => null,
                     'trial_ends_on' => null,
                     'cancelled_on' => null,
-                    'trial_days' => 30,
+                    'trial_days' => 7,
                     'decorated_return_url' => 'https://' . $_GET['shop'] . '/admin/apps/sleek-upsell?charge_id=' . $charge_id,
                 ),
             );
@@ -1757,7 +1757,7 @@ class Slade extends CI_Controller
 
             $data['shop'] = $shop_name;
             $data['token'] = $token;
-            
+
             $collects = $this->Shopify->shopify_call($token, $shop_name, $collects_json, array(), 'GET');
             $themes = $this->Shopify->shopify_call($token, $shop_name, $themes_json, array(), 'GET');
             $shop_j = $this->Shopify->shopify_call($token, $shop_name, $shop_json, array('fields' => 'money_with_currency_format,money_format'), 'GET');

@@ -2,26 +2,29 @@
     <div class="container-fluid">
         <div class="container">
             <div class="row">
-                <div class="col-sm-4">
-                    <div class="card text-center">
-                        <div class="title">
-                            <i class="fa fa-paper-plane" aria-hidden="true"></i>
-                            <h2>Gratis</h2>
+                <?php if ($nothing == 'nothingness') : ?>
+
+                    <div class="col-sm-4">
+                        <div class="card text-center">
+                            <div class="title">
+                                <i class="fa fa-paper-plane" aria-hidden="true"></i>
+                                <h2>Gratis</h2>
+                            </div>
+                            <div class="price">
+                                <h4><sup>$</sup>0</h4>
+                            </div>
+                            <div class="option">
+                                <ul>
+                                    <li> <i class="fa fa-check" aria-hidden="true"></i> 1 offre active </li>
+                                    <li> <i class="fa fa-check" aria-hidden="true"></i> Conditions de l'offre limitée </li>
+                                    <li> <i class="fa fa-times" aria-hidden="true"></i> </li>
+                                    <li> <i class="fa fa-times" aria-hidden="true"></i> </li>
+                                </ul>
+                            </div>
+                            <a href="<?php echo base_url() . 'upgrade/' . $shop . '/' . $token; ?>/Free?<?php echo $_SERVER['QUERY_STRING']; ?>">OBTENEZ GRATUITEMENT </a>
                         </div>
-                        <div class="price">
-                            <h4><sup>$</sup>0</h4>
-                        </div>
-                        <div class="option">
-                            <ul>
-                                <li> <i class="fa fa-check" aria-hidden="true"></i> 1 offre active </li>
-                                <li> <i class="fa fa-check" aria-hidden="true"></i> Conditions de l'offre limitée </li>
-                                <li> <i class="fa fa-times" aria-hidden="true"></i>   </li>
-                                <li> <i class="fa fa-times" aria-hidden="true"></i>   </li>
-                            </ul>
-                        </div>
-                        <a href="<?php echo base_url() . 'upgrade/' . $shop . '/' . $token; ?>/Free?<?php echo $_SERVER['QUERY_STRING']; ?>">OBTENEZ GRATUITEMENT </a>
                     </div>
-                </div>
+                <?php endif; ?>
                 <!-- END Col one -->
                 <div class="col-sm-4">
                     <div class="card text-center">
