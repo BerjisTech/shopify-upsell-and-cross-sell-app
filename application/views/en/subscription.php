@@ -1,6 +1,8 @@
 <section>
     <div class="container-fluid">
         <div class="container">
+            <h3 class="text-center">Upgrade to start increasing your order value like a pro</h3>
+            <hr />
             <div class="row">
                 <?php if ($nothing == 'nothingness') : ?>
                     <div class="col-sm-4">
@@ -25,7 +27,7 @@
                     </div>
                 <?php endif; ?>
                 <!-- END Col one -->
-                <div class="col-sm-4">
+                <div class="col-sm-6">
                     <div class="card text-center">
                         <div class="title">
                             <i class="fa fa-plane" aria-hidden="true"></i>
@@ -46,7 +48,7 @@
                     </div>
                 </div>
                 <!-- END Col two -->
-                <div class="col-sm-4">
+                <div class="col-sm-6">
                     <div class="card text-center">
                         <div class="title">
                             <i class="fa fa-rocket" aria-hidden="true"></i>
