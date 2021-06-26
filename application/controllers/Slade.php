@@ -36,6 +36,14 @@ class Slade extends CI_Controller
 
             $shop_data = $this->db->where('shop', $this_shop)->get('shops')->row();
 
+            $token = $shop_data->token;
+            $shop = $shop_data->shop;
+
+            if ($shop_data->name != 'Sleek' || $shop_data->name != 'Premium') {
+                echo '<script>top.window.location="https://' . $_GET['shop'] . '/admin/apps/sleek-upsell/subscription/' . $shop . '/' . $token . '/Sleek?' . $_SERVER['QUERY_STRING'] . '";</script>';
+                die();
+            }
+
             if ($shop_data->type == '') {
                 echo '<script>window.location.href = "' . base_url() . 'install?' . $_SERVER['QUERY_STRING'] . '";</script>';
             }
@@ -220,10 +228,10 @@ class Slade extends CI_Controller
             'customer_email' => $s_data['customer_email'],
             'domain' => $s_data['domain'],
             'partner' => $s_data['id'],
-            'type' => 'FREE',
-            'name' => 'FREE',
+            'type' => 'NA',
+            'name' => 'NA',
             'price' => 0.0,
-            'bill_interval' => 'FOREVER',
+            'bill_interval' => 'MONTHLY',
             'capped_amount' => 0.0,
             'terms' => 'NO_TERMS',
             'trial_days' => '30',
@@ -418,7 +426,7 @@ class Slade extends CI_Controller
         //     // echo '<script>top.window.location="https://' . $_GET['shop'] . '/admin/apps/sleek-upsell?' . $_SERVER['QUERY_STRING'] . '";</script>';
         //     // exit();
         // }
-          
+
         if ($plan == 'Sleek') {
             $array = array(
                 'recurring_application_charge' => array(
