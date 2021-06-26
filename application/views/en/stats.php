@@ -767,16 +767,16 @@
         var donut_chart = Morris.Donut({
             element: 'donut-chart-demo',
             data: [{
-                    label: "ATC ($ <?php echo number_format($this->db->select('sum(price) as total')->where('shop', $duka)->where('type', 'purchase')->get('stats')->row()->total); ?>)",
-                    value: <?php echo number_format($this->db->where('shop', $duka)->where('type', 'purchase')->get('stats')->num_rows()); ?>
+                    label: "ATC ($ <?php echo $this->db->select('sum(price) as total')->where('shop', $duka)->where('type', 'purchase')->get('stats')->row()->total; ?>)",
+                    value: <?php echo $this->db->where('shop', $duka)->where('type', 'purchase')->get('stats')->num_rows(); ?>
                 },
                 {
                     label: "Impressions",
-                    value: <?php echo number_format($this->db->where('shop', $duka)->where('type', 'impression')->get('stats')->num_rows()); ?>
+                    value: <?php echo $this->db->where('shop', $duka)->where('type', 'impression')->get('stats')->num_rows(); ?>
                 },
                 {
                     label: "Shown",
-                    value: <?php echo number_format($this->db->where('shop', $duka)->where('type', 'show')->get('stats')->num_rows()); ?>
+                    value: <?php echo $this->db->where('shop', $duka)->where('type', 'show')->get('stats')->num_rows(); ?>
                 }
             ],
             colors: ['#EC3B83', '#00ACD6', '#E8B51B', '#002A5A']
@@ -792,19 +792,19 @@
 <div class="row">
     <div class="col-md-4 col-sm-12">
         <div class="tile-stats tile-white stat-tile">
-            <h3><?php echo number_format($this->db->where('shop', $duka)->where('type', 'show')->get('stats')->num_rows()); ?></h3>
+            <h3><?php echo $this->db->where('shop', $duka)->where('type', 'show')->get('stats')->num_rows(); ?></h3>
             <p>Shown</p> <span class="all-time-sales"></span>
         </div>
     </div>
     <div class="col-md-4 col-sm-6">
         <div class="tile-stats tile-white stat-tile">
-            <h3><?php echo number_format($this->db->where('shop', $duka)->where('type', 'impression')->get('stats')->num_rows()); ?></h3>
+            <h3><?php echo $this->db->where('shop', $duka)->where('type', 'impression')->get('stats')->num_rows(); ?></h3>
             <p>Customer impression</p> <span class="customer-reach"></span>
         </div>
     </div>
     <div class="col-md-4 col-sm-6">
         <div class="tile-stats tile-white stat-tile">
-            <h3>$ <?php echo number_format($this->db->select('sum(price) as total')->where('shop', $duka)->where('type', 'purchase')->get('stats')->row()->total); ?></h3>
+            <h3>$ <?php echo $this->db->select('sum(price) as total')->where('shop', $duka)->where('type', 'purchase')->get('stats')->row()->total; ?></h3>
             <p>ATC</p> <span class="sales"></span>
         </div>
     </div>
@@ -903,7 +903,7 @@
                                         }
                                     }
                                     ?></td>
-                                <td><?php echo number_format(($fetch['reach'] * 100) / $total_stats); ?>% ($<?php echo number_format($this->db->select('sum(price) as total')->where('shop', $duka)->where('type', 'purchase')->where('offer', $fetch['offer'])->get('stats')->row()->total); ?>)</td>
+                                <td><?php echo number_format(($fetch['reach'] * 100) / $total_stats); ?>% ($<?php echo $this->db->select('sum(price) as total')->where('shop', $duka)->where('type', 'purchase')->where('offer', $fetch['offer'])->get('stats')->row()->total; ?>)</td>
                             </tr>
                         <?php endforeach; ?>
                     </tbody>
