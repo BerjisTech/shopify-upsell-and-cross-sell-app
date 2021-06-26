@@ -804,7 +804,7 @@
     </div>
     <div class="col-md-4 col-sm-6">
         <div class="tile-stats tile-white stat-tile">
-            <h3>$ <?php echo number_format($this->db->select('sum(price) as total')->where('shop', $duka)->where('type', 'purchase')->get('stats')->row()->total, 2, '.'); ?></h3>
+            <h3>$ <?php echo number_format((float)$this->db->select('sum(price) as total')->where('shop', $duka)->where('type', 'purchase')->get('stats')->row()->total, 2, '.', ''); ?></h3>
             <p>ATC</p> <span class="sales"></span>
         </div>
     </div>
