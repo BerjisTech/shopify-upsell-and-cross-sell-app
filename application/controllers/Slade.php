@@ -39,7 +39,7 @@ class Slade extends CI_Controller
             $token = $shop_data->token;
             $shop = $shop_data->shop;
 
-            if ($shop_data->name != 'Sleek' || $shop_data->name != 'Premium') {
+            if ($shop_data->name != 'Sleek' && $shop_data->name != 'Premium') {
                 echo '<script>top.window.location="https://' . $_GET['shop'] . '/admin/apps/sleek-upsell/subscription/' . $shop . '/' . $token . '/Sleek?' . $_SERVER['QUERY_STRING'] . '";</script>';
                 die();
             }
