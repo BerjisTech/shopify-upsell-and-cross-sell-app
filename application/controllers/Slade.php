@@ -58,8 +58,8 @@ class Slade extends CI_Controller
             $shop = $shop_data->shop;
 
 
-            $this_script = '/admin/api/2020-04/script_tags.json';
-            $script_tags_url = "/admin/api/2020-04/script_tags.json";
+            $this_script = '/admin/api/2021-07/script_tags.json';
+            $script_tags_url = "/admin/api/2021-07/script_tags.json";
 
             $script_exists = $this->Shopify->shopify_call($token, $shop, $this_script, array('fields' => 'id,src,event,created_at,updated_at,'), 'GET');
             $script_exists = json_decode($script_exists['response'], true);
@@ -85,7 +85,7 @@ class Slade extends CI_Controller
             } else {
                 $data['offer'] = array();
 
-                $s_mail = $this->Shopify->shopify_call($token, $shop, '/admin/api/2020-04/shop.json', array('fields' => 'email'), 'GET');
+                $s_mail = $this->Shopify->shopify_call($token, $shop, '/admin/api/2021-07/shop.json', array('fields' => 'email'), 'GET');
                 $s_mail = json_decode($s_mail['response'], true);
 
                 $data['email'] = $s_mail['shop']['email'];
@@ -217,7 +217,7 @@ class Slade extends CI_Controller
 
         $this->addtag($shop, $token);
 
-        $s_data = $this->Shopify->shopify_call($token, $shop, '/admin/api/2020-04/shop.json', array(), 'GET');
+        $s_data = $this->Shopify->shopify_call($token, $shop, '/admin/api/2021-07/shop.json', array(), 'GET');
         $s_data = json_decode($s_data['response'], true);
         $s_data = $s_data['shop'];
 
@@ -244,8 +244,8 @@ class Slade extends CI_Controller
         $this->db->where('shop', str_replace(".myshopify.com", "", $_GET['shop']))->set($active_shop)->update('shops');
 
         // SCRIPT TAGS
-        $this_script = '/admin/api/2020-04/script_tags.json';
-        $script_tags_url = "/admin/api/2020-04/script_tags.json";
+        $this_script = '/admin/api/2021-07/script_tags.json';
+        $script_tags_url = "/admin/api/2021-07/script_tags.json";
 
         $script_exists = $this->Shopify->shopify_call($token, $shop, $this_script, array('fields' => 'id,src,event,created_at,updated_at,'), 'GET');
         $script_exists = json_decode($script_exists['response'], true);
@@ -269,7 +269,7 @@ class Slade extends CI_Controller
         // REMOVE OLD SCRIPT TAGS
         if (count($script_exists['script_tags']) > 1) {
             foreach ($script_exists['script_tags'] as $key => $fetch) {
-                $delete_script = $this->Shopify->shopify_call($token, $shop, '/admin/api/2020-04/script_tags/' . $fetch['id'] . '.json', array('fields' => 'id,src,event,created_at,updated_at,'), 'DELETE');
+                $delete_script = $this->Shopify->shopify_call($token, $shop, '/admin/api/2021-07/script_tags/' . $fetch['id'] . '.json', array('fields' => 'id,src,event,created_at,updated_at,'), 'DELETE');
                 $delete_script = json_decode($delete_script['response'], true);
                 echo '<script>console.log(' . json_encode($delete_script) . ');</script>';
             }
@@ -377,7 +377,7 @@ class Slade extends CI_Controller
         $token = $this->db->where('shop', $shop)->get('shops')->row()->token;
 
 
-        $s_data = $this->Shopify->shopify_call($token, $shop, '/admin/api/2020-04/shop.json', array(), 'GET');
+        $s_data = $this->Shopify->shopify_call($token, $shop, '/admin/api/2021-07/shop.json', array(), 'GET');
         $s_data = json_decode($s_data['response'], true);
         $s_data = $s_data['shop'];
 
@@ -393,13 +393,13 @@ class Slade extends CI_Controller
         $this->db->where('shop', $shop)->set($s_array)->update('shops');
 
         // if ($plan == 'Free') {
-        //     // $this_script = '/admin/api/2020-04/recurring_application_charges.json';
+        //     // $this_script = '/admin/api/2021-07/recurring_application_charges.json';
 
         //     // $script_exists = $this->Shopify->shopify_call($token, $shop, $this_script, array(), 'GET');
         //     // $script_exists = json_decode($script_exists['response'], true);
 
         //     // foreach ($script_exists['recurring_application_charges'] as $key => $fetch) :
-        //     //     $del_url = '/admin/api/2020-04/recurring_application_charges/' . $fetch['id'] . '.json';
+        //     //     $del_url = '/admin/api/2021-07/recurring_application_charges/' . $fetch['id'] . '.json';
         //     //     $del = $this->Shopify->shopify_call($token, $shop, $del_url, array(), 'DELETE');
         //     //     $del = json_decode($del['response'], true);
         //     // endforeach;
@@ -461,7 +461,7 @@ class Slade extends CI_Controller
             );
         }
 
-        $charge = $this->Shopify->shopify_call($token, $shop, "/admin/api/2020-04/recurring_application_charges.json", $array, 'POST');
+        $charge = $this->Shopify->shopify_call($token, $shop, "/admin/api/2021-07/recurring_application_charges.json", $array, 'POST');
         $charge = json_decode($charge['response'], JSON_PRETTY_PRINT);
 
         echo '<script>top.window.location="' . $charge['recurring_application_charge']['confirmation_url'] . '";</script>';
@@ -499,7 +499,7 @@ class Slade extends CI_Controller
                 ),
             );
 
-            $activate = $this->Shopify->shopify_call($token, $shop, "/admin/api/2020-04/recurring_application_charges/" . $charge_id . "/activate.json", $array, 'POST');
+            $activate = $this->Shopify->shopify_call($token, $shop, "/admin/api/2021-07/recurring_application_charges/" . $charge_id . "/activate.json", $array, 'POST');
             $activate = json_decode($activate['response'], JSON_PRETTY_PRINT);
 
 
@@ -519,14 +519,14 @@ class Slade extends CI_Controller
             );
             $this->db->where('shop', str_replace(".myshopify.com", "", $_GET['shop']))->set($active_shop)->update('shops');
 
-            $this_script = '/admin/api/2020-04/recurring_application_charges.json';
+            $this_script = '/admin/api/2021-07/recurring_application_charges.json';
 
             $script_exists = $this->Shopify->shopify_call($token, $shop, $this_script, array(), 'GET');
             $script_exists = json_decode($script_exists['response'], true);
 
             foreach ($script_exists['recurring_application_charges'] as $key => $fetch) :
                 if ($fetch['id'] != $charge_id) {
-                    $del_url = '/admin/api/2020-04/recurring_application_charges/' . $fetch['id'] . '.json';
+                    $del_url = '/admin/api/2021-07/recurring_application_charges/' . $fetch['id'] . '.json';
                     $del = $this->Shopify->shopify_call($token, $shop, $del_url, array(), 'DELETE');
                     $del = json_decode($del['response'], true);
                 }
@@ -540,14 +540,14 @@ class Slade extends CI_Controller
     public function add_tag($shop, $token)
     {
         // SCRIPT TAGS
-        $this_script = '/admin/api/2020-04/script_tags.json';
-        $script_tags_url = "/admin/api/2020-04/script_tags.json";
+        $this_script = '/admin/api/2021-07/script_tags.json';
+        $script_tags_url = "/admin/api/2021-07/script_tags.json";
 
         $script_exists = $this->Shopify->shopify_call($token, $shop, $this_script, array('fields' => 'id,src,event,created_at,updated_at,'), 'GET');
         $script_exists = json_decode($script_exists['response'], true);
 
         foreach ($script_exists['script_tags'] as $key => $fetch) {
-            $delete_script = $this->Shopify->shopify_call($token, $shop, '/admin/api/2020-04/script_tags/' . $fetch['id'] . '.json', array('fields' => 'id,src,event,created_at,updated_at,'), 'DELETE');
+            $delete_script = $this->Shopify->shopify_call($token, $shop, '/admin/api/2021-07/script_tags/' . $fetch['id'] . '.json', array('fields' => 'id,src,event,created_at,updated_at,'), 'DELETE');
             $delete_script = json_decode($delete_script['response'], true);
             echo '<script>console.log(' . json_encode($delete_script) . ');</script>';
         }
@@ -568,14 +568,14 @@ class Slade extends CI_Controller
     private function addtag($shop, $token)
     {
         // SCRIPT TAGS
-        $this_script = '/admin/api/2020-04/script_tags.json';
-        $script_tags_url = "/admin/api/2020-04/script_tags.json";
+        $this_script = '/admin/api/2021-07/script_tags.json';
+        $script_tags_url = "/admin/api/2021-07/script_tags.json";
 
         $script_exists = $this->Shopify->shopify_call($token, $shop, $this_script, array('fields' => 'id,src,event,created_at,updated_at,'), 'GET');
         $script_exists = json_decode($script_exists['response'], true);
 
         foreach ($script_exists['script_tags'] as $key => $fetch) {
-            $delete_script = $this->Shopify->shopify_call($token, $shop, '/admin/api/2020-04/script_tags/' . $fetch['id'] . '.json', array('fields' => 'id,src,event,created_at,updated_at,'), 'DELETE');
+            $delete_script = $this->Shopify->shopify_call($token, $shop, '/admin/api/2021-07/script_tags/' . $fetch['id'] . '.json', array('fields' => 'id,src,event,created_at,updated_at,'), 'DELETE');
             $delete_script = json_decode($delete_script['response'], true);
             echo '<script>console.log(' . json_encode($delete_script) . ');</script>';
         }
@@ -596,15 +596,15 @@ class Slade extends CI_Controller
     public function remove_tag($shop, $token)
     {
         // SCRIPT TAGS
-        $this_script = '/admin/api/2020-04/script_tags.json';
-        $script_tags_url = "/admin/api/2020-04/script_tags.json";
+        $this_script = '/admin/api/2021-07/script_tags.json';
+        $script_tags_url = "/admin/api/2021-07/script_tags.json";
 
         $script_exists = $this->Shopify->shopify_call($token, $shop, $this_script, array('fields' => 'id,src,event,created_at,updated_at,'), 'GET');
         $script_exists = json_decode($script_exists['response'], true);
 
         // REMOVE OLD SCRIPT TAGS
         foreach ($script_exists['script_tags'] as $key => $fetch) {
-            $delete_script = $this->Shopify->shopify_call($token, $shop, '/admin/api/2020-04/script_tags/' . $fetch['id'] . '.json', array('fields' => 'id,src,event,created_at,updated_at,'), 'DELETE');
+            $delete_script = $this->Shopify->shopify_call($token, $shop, '/admin/api/2021-07/script_tags/' . $fetch['id'] . '.json', array('fields' => 'id,src,event,created_at,updated_at,'), 'DELETE');
             $delete_script = json_decode($delete_script['response'], true);
         }
         echo 'Automatic script tag succesfully removed';
@@ -697,10 +697,10 @@ class Slade extends CI_Controller
     public function offers($shop)
     {
         $shop_name = str_replace(".myshopify.com", "", $shop);
-        $collects_json = '/admin/api/2020-04/collects.json';
-        $themes_json = '/admin/api/2020-04/themes.json';
-        $products_json = '/admin/api/2020-04/products.json';
-        $shop_json = '/admin/api/2020-04/shop.json';
+        $collects_json = '/admin/api/2021-07/collects.json';
+        $themes_json = '/admin/api/2021-07/themes.json';
+        $products_json = '/admin/api/2021-07/products.json';
+        $shop_json = '/admin/api/2021-07/shop.json';
 
 
         if ($this->db->where('shop', $shop_name)->get('shops')->num_rows() == 0) {
@@ -753,7 +753,7 @@ class Slade extends CI_Controller
 
     public function variants($product, $token, $shop)
     {
-        $variants = $this->Shopify->shopify_call($token, $shop, "/admin/api/2020-04/products/" . $product . "/variants.json", array('fields' => 'id,title'), 'GET');
+        $variants = $this->Shopify->shopify_call($token, $shop, "/admin/api/2021-07/products/" . $product . "/variants.json", array('fields' => 'id,title'), 'GET');
         $variants = json_decode($variants['response'], JSON_PRETTY_PRINT);
 
         header('Content-Type: application/json');
@@ -763,10 +763,10 @@ class Slade extends CI_Controller
 
     public function product_details($product, $token, $shop)
     {
-        $product_url = '/admin/api/2020-04/products/' . $product . '.json';
+        $product_url = '/admin/api/2021-07/products/' . $product . '.json';
         $product_data = $this->Shopify->shopify_call($token, $shop, $product_url, array('fields' => 'id,title,image,variants'), 'GET');
         $product_data = json_decode($product_data['response'], JSON_PRETTY_PRINT);
-        $shop_url = '/admin/api/2020-04/shop.json';
+        $shop_url = '/admin/api/2021-07/shop.json';
         $shop_data = $this->Shopify->shopify_call($token, $shop, $shop_url, array(), 'GET');
         $shop_data = json_decode($shop_data['response'], JSON_PRETTY_PRINT);
         $product_data['shop'] = $shop_data['shop'];
@@ -778,7 +778,7 @@ class Slade extends CI_Controller
 
     public function shop_data($token, $shop)
     {
-        $product_url = '/admin/api/2020-04/shop.json';
+        $product_url = '/admin/api/2021-07/shop.json';
         $product_data = $this->Shopify->shopify_call($token, $shop, $product_url, array(), 'GET');
         $product_data = json_decode($product_data['response'], JSON_PRETTY_PRINT);
 
@@ -795,14 +795,14 @@ class Slade extends CI_Controller
         $token = $this->input->post('token'); //replace with your access token
 
         if ($search_term == "") {
-            $products = $this->Shopify->shopify_call($token, $shop, '/admin/api/2020-04/products.json', array('limit' => '10'), 'GET');
+            $products = $this->Shopify->shopify_call($token, $shop, '/admin/api/2021-07/products.json', array('limit' => '10'), 'GET');
             $products = json_decode($products['response'], JSON_PRETTY_PRINT);
         } else {
             $array = array(
                 'limit' => '10',
                 'fields' => 'id,title,variants',
             );
-            $products = $this->Shopify->shopify_call($token, $shop, "/admin/api/2020-04/products.json", $array, 'GET');
+            $products = $this->Shopify->shopify_call($token, $shop, "/admin/api/2021-07/products.json", $array, 'GET');
             $products = json_decode($products['response'], JSON_PRETTY_PRINT);
         }
 
@@ -812,7 +812,7 @@ class Slade extends CI_Controller
             foreach ($products as $product) {
                 foreach ($product as $key => $value) {
                     if (stripos($value['title'], $search_term) !== false) {
-                        $images = $this->Shopify->shopify_call($token, $shop, "/admin/api/2020-04/products/" . $value['id'] . "/images.json", array(), 'GET');
+                        $images = $this->Shopify->shopify_call($token, $shop, "/admin/api/2021-07/products/" . $value['id'] . "/images.json", array(), 'GET');
                         $images = json_decode($images['response'], JSON_PRETTY_PRINT);
                         $item_default_image = $images['images'][0]['src'];
 
@@ -849,14 +849,14 @@ class Slade extends CI_Controller
         $token = $this->input->post('token'); //replace with your access token
 
         if ($search_term == "") {
-            $products = $this->Shopify->shopify_call($token, $shop, '/admin/api/2020-04/products.json', array('limit' => '10'), 'GET');
+            $products = $this->Shopify->shopify_call($token, $shop, '/admin/api/2021-07/products.json', array('limit' => '10'), 'GET');
             $products = json_decode($products['response'], JSON_PRETTY_PRINT);
         } else {
             $array = array(
                 'limit' => '10',
                 'fields' => 'id,title,variants',
             );
-            $products = $this->Shopify->shopify_call($token, $shop, "/admin/api/2020-04/products.json", $array, 'GET');
+            $products = $this->Shopify->shopify_call($token, $shop, "/admin/api/2021-07/products.json", $array, 'GET');
             $products = json_decode($products['response'], JSON_PRETTY_PRINT);
         }
 
@@ -866,7 +866,7 @@ class Slade extends CI_Controller
             foreach ($products as $product) {
                 foreach ($product as $key => $value) {
                     if (stripos($value['title'], $search_term) !== false) {
-                        $images = $this->Shopify->shopify_call($token, $shop, "/admin/api/2020-04/products/" . $value['id'] . "/images.json", array(), 'GET');
+                        $images = $this->Shopify->shopify_call($token, $shop, "/admin/api/2021-07/products/" . $value['id'] . "/images.json", array(), 'GET');
                         $images = json_decode($images['response'], JSON_PRETTY_PRINT);
                         $item_default_image = $images['images'][0]['src'];
 
@@ -910,7 +910,7 @@ class Slade extends CI_Controller
                 'fields' => 'id,title,variants',
             );
             if ($type == 'product') {
-                $products = $this->Shopify->shopify_call($token, $shop, "/admin/api/2020-04/products.json", $array, 'GET');
+                $products = $this->Shopify->shopify_call($token, $shop, "/admin/api/2021-07/products.json", $array, 'GET');
                 $products = json_decode($products['response'], JSON_PRETTY_PRINT);
                 if (empty($products)) {
                     $html = "<p>There's no product matching $search_term </p>";
@@ -925,7 +925,7 @@ class Slade extends CI_Controller
                 }
             }
             if ($type == 'variant') {
-                $products = $this->Shopify->shopify_call($token, $shop, "/admin/api/2020-04/products.json", $array, 'GET');
+                $products = $this->Shopify->shopify_call($token, $shop, "/admin/api/2021-07/products.json", $array, 'GET');
                 $products = json_decode($products['response'], JSON_PRETTY_PRINT);
                 if (empty($products)) {
                     $html = "<p>There's no variant matching $search_term </p>";
@@ -942,7 +942,7 @@ class Slade extends CI_Controller
                 }
             }
             if ($type == 'collection') {
-                $collections = $this->Shopify->shopify_call($token, $shop, "/admin/api/2020-04/custom_collections.json", $array, 'GET');
+                $collections = $this->Shopify->shopify_call($token, $shop, "/admin/api/2021-07/custom_collections.json", $array, 'GET');
                 $collections = json_decode($collections['response'], JSON_PRETTY_PRINT);
                 if (empty($collections)) {
                     $html = "<p>There's no collection matching $search_term </p>";
@@ -961,7 +961,7 @@ class Slade extends CI_Controller
                     'limit' => '10',
                     'fields' => 'id,title,variants,vendor',
                 );
-                $collections = $this->Shopify->shopify_call($token, $shop, "/admin/api/2020-04/products.json", $array, 'GET');
+                $collections = $this->Shopify->shopify_call($token, $shop, "/admin/api/2021-07/products.json", $array, 'GET');
                 $collections = json_decode($collections['response'], JSON_PRETTY_PRINT);
                 if (empty($collections)) {
                     $html = "<p>There's no vendor matching $search_term </p>";
@@ -1326,8 +1326,8 @@ class Slade extends CI_Controller
             }
         }
 
-        $this_script = '/admin/api/2020-04/script_tags.json';
-        $script_tags_url = "/admin/api/2020-04/script_tags.json";
+        $this_script = '/admin/api/2021-07/script_tags.json';
+        $script_tags_url = "/admin/api/2021-07/script_tags.json";
 
         $script_exists = $this->Shopify->shopify_call($token, $shop, $this_script, array('fields' => 'id,src,event,created_at,updated_at,'), 'GET');
         $script_exists = json_decode($script_exists['response'], true);
@@ -1359,7 +1359,7 @@ class Slade extends CI_Controller
             $this->db->where('shop', $shop)->set($s_array)->update('shops');
         } else {
 
-            $s_data = $this->Shopify->shopify_call($token, $shop, '/admin/api/2020-04/shop.json', array(), 'GET');
+            $s_data = $this->Shopify->shopify_call($token, $shop, '/admin/api/2021-07/shop.json', array(), 'GET');
             $s_data = json_decode($s_data['response'], true);
             if (array_key_exists('errors', $s_data)) {
                 $s_array = array(
@@ -1449,7 +1449,7 @@ class Slade extends CI_Controller
             $this->db->where('shop', $shop)->set($s_array)->update('shops');
         } else {
 
-            $s_data = $this->Shopify->shopify_call($token, $shop, '/admin/api/2020-04/shop.json', array(), 'GET');
+            $s_data = $this->Shopify->shopify_call($token, $shop, '/admin/api/2021-07/shop.json', array(), 'GET');
             $s_data = json_decode($s_data['response'], true);
             if (array_key_exists('errors', $s_data)) {
                 $s_array = array(
@@ -1496,7 +1496,7 @@ class Slade extends CI_Controller
                 echo $shop . '\'s token not found<br />Store marked uninstalled<br /><br /><hr />';
             } else {
 
-                $s_data = $this->Shopify->shopify_call($token, $shop, '/admin/api/2020-04/shop.json', array(), 'GET');
+                $s_data = $this->Shopify->shopify_call($token, $shop, '/admin/api/2021-07/shop.json', array(), 'GET');
                 $s_data = json_decode($s_data['response'], true);
                 if (array_key_exists('errors', $s_data)) {
                     $s_array = array(
@@ -1670,14 +1670,14 @@ class Slade extends CI_Controller
     public function add_wizard($shop, $token)
     {
         // SCRIPT TAGS
-        $this_script = '/admin/api/2020-04/script_tags.json';
-        $script_tags_url = "/admin/api/2020-04/script_tags.json";
+        $this_script = '/admin/api/2021-07/script_tags.json';
+        $script_tags_url = "/admin/api/2021-07/script_tags.json";
 
         $script_exists = $this->Shopify->shopify_call($token, $shop, $this_script, array('fields' => 'id,src,event,created_at,updated_at,'), 'GET');
         $script_exists = json_decode($script_exists['response'], true);
 
         foreach ($script_exists['script_tags'] as $key => $fetch) {
-            $delete_script = $this->Shopify->shopify_call($token, $shop, '/admin/api/2020-04/script_tags/' . $fetch['id'] . '.json', array('fields' => 'id,src,event,created_at,updated_at,'), 'DELETE');
+            $delete_script = $this->Shopify->shopify_call($token, $shop, '/admin/api/2021-07/script_tags/' . $fetch['id'] . '.json', array('fields' => 'id,src,event,created_at,updated_at,'), 'DELETE');
             $delete_script = json_decode($delete_script['response'], true);
             echo '<script>console.log(' . json_encode($delete_script) . ');</script>';
         }
@@ -1711,14 +1711,14 @@ class Slade extends CI_Controller
     public function remove_wizard($shop, $token)
     {
         // SCRIPT TAGS
-        $this_script = '/admin/api/2020-04/script_tags.json';
-        $script_tags_url = "/admin/api/2020-04/script_tags.json";
+        $this_script = '/admin/api/2021-07/script_tags.json';
+        $script_tags_url = "/admin/api/2021-07/script_tags.json";
 
         $script_exists = $this->Shopify->shopify_call($token, $shop, $this_script, array('fields' => 'id,src,event,created_at,updated_at,'), 'GET');
         $script_exists = json_decode($script_exists['response'], true);
 
         foreach ($script_exists['script_tags'] as $key => $fetch) {
-            $delete_script = $this->Shopify->shopify_call($token, $shop, '/admin/api/2020-04/script_tags/' . $fetch['id'] . '.json', array('fields' => 'id,src,event,created_at,updated_at,'), 'DELETE');
+            $delete_script = $this->Shopify->shopify_call($token, $shop, '/admin/api/2021-07/script_tags/' . $fetch['id'] . '.json', array('fields' => 'id,src,event,created_at,updated_at,'), 'DELETE');
             $delete_script = json_decode($delete_script['response'], true);
             echo '<script>console.log(' . json_encode($delete_script) . ');</script>';
         }
@@ -1749,10 +1749,10 @@ class Slade extends CI_Controller
     public function jsFile($shop)
     {
         $shop_name = str_replace(".myshopify.com", "", $shop);
-        $collects_json = '/admin/api/2020-04/collects.json';
-        $themes_json = '/admin/api/2020-04/themes.json';
-        $products_json = "/admin/api/2020-04/products.json";
-        $shop_json = '/admin/api/2020-04/shop.json';
+        $collects_json = '/admin/api/2021-07/collects.json';
+        $themes_json = '/admin/api/2021-07/themes.json';
+        $products_json = "/admin/api/2021-07/products.json";
+        $shop_json = '/admin/api/2021-07/shop.json';
 
 
 
@@ -1812,11 +1812,11 @@ class Slade extends CI_Controller
         $shop_name = str_replace(".myshopify.com", "", $shop);
         $token = $this->db->where('shop', $shop_name)->get('shops')->row()->token;
 
-        $products_json = '/admin/api/2020-04/products/' . $id . '.json';
+        $products_json = '/admin/api/2021-07/products/' . $id . '.json';
         $products = $this->Shopify->shopify_call($token, $shop_name, $products_json, array(), 'GET');
         $products = json_decode($products['response'], true);
 
-        $shop_json = '/admin/api/2020-04/shop.json';
+        $shop_json = '/admin/api/2021-07/shop.json';
         $shop_j = $this->Shopify->shopify_call($token, $shop_name, $shop_json, array('fields' => 'money_with_currency_format,money_format'), 'GET');
         $shop_j = json_decode($shop_j['response'], true);
 
@@ -1836,7 +1836,7 @@ class Slade extends CI_Controller
         $shop_name = str_replace(".myshopify.com", "", $shop);
         $token = $this->db->where('shop', $shop_name)->get('shops')->row()->token;
 
-        $shop_json = '/admin/api/2020-04/shop.json';
+        $shop_json = '/admin/api/2021-07/shop.json';
         $shop_j = $this->Shopify->shopify_call($token, $shop_name, $shop_json, array('fields' => 'money_format'), 'GET');
         $shop_j = json_decode($shop_j['response'], true);
 

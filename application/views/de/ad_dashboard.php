@@ -316,13 +316,13 @@ $duka = $shop . '.myshopify.com';
 
                                             if ($total_products == 1) {
                                                 $product_id = $products[0]['product'];
-                                                $product_name = $this->Shopify->shopify_call($token, $shop, '/admin/api/2020-04/products/' . $product_id . '.json', array('fields' => 'title'), 'GET');
+                                                $product_name = $this->Shopify->shopify_call($token, $shop, '/admin/api/2021-07/products/' . $product_id . '.json', array('fields' => 'title'), 'GET');
                                                 $product_name = json_decode($product_name['response'], true);
                                                 echo $product_name['product']['title'];
                                             } else {
                                                 foreach ($products as $key => $value) {
                                                     $product_id = $products[$key]['product'];
-                                                    $product_name = $this->Shopify->shopify_call($token, $shop, '/admin/api/2020-04/products/' . $product_id . '.json', array('fields' => 'title'), 'GET');
+                                                    $product_name = $this->Shopify->shopify_call($token, $shop, '/admin/api/2021-07/products/' . $product_id . '.json', array('fields' => 'title'), 'GET');
                                                     $product_name = json_decode($product_name['response'], true);
                                                     if ($key == '0') {
                                                         echo $product_name['product']['title'];
