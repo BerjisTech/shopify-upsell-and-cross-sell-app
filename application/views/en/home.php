@@ -67,8 +67,7 @@
         *::-webkit-scrollbar-button {
             display: none
         }
-    </style>
-    <style>
+        
         /* by Jamal Hassouni*/
         @import url('https://fonts.googleapis.com/css?family=Roboto:300');
 
@@ -258,7 +257,7 @@
                     </div>
                     <div class="col-12 col-md-7 my-3 my-md-lg">
                         <div class="youtube cast-shadow" data-video-id="4vL0uy-OVBM" data-params="modestbranding=1&amp;showinfo=0&amp;controls=1&amp;vq=hd720">
-                            <img src="https://apps.shopifycdn.com/listing_images/ad1d8c0159547e886af6d777c058e4d9/desktop_screenshot/56bc72b1333f1808669d07d32c51c7f6.jpeg" alt="image" class="img-fluid">
+                            <img src="<?php echo base_url('assets/images/cartPage.php'); ?>" alt="image" class="img-fluid">
                             <div style="display: none;" class="play"><span class="pe-7s-play pe-3x"></span></div>
                         </div>
                     </div>
@@ -346,7 +345,7 @@
                             </div>
                         </div>
                         <div class="content" style="max-height: 520px;">
-                            <img src="https://apps.shopifycdn.com/listing_images/ad1d8c0159547e886af6d777c058e4d9/desktop_screenshot/098658710174ca226fba1effc80ded67.jpeg" alt="image">
+                            <img src="<?php echo base_url('assets/images/dashboard.php'); ?>" alt="image">
                         </div>
                     </div>
                 </div>
@@ -371,7 +370,7 @@
                     </div>
                 </div>
                 <div class="col-sm-8">
-                    <img src="https://apps.shopifycdn.com/listing_images/ad1d8c0159547e886af6d777c058e4d9/desktop_screenshot/4f0ae7428139c51291fe71f7c6b467cc.jpeg" alt="image" class="img-fluid cast-shadow my-5">
+                    <img src="<?php echo base_url('assets/images/stats.php'); ?>" alt="image" class="img-fluid cast-shadow my-5">
                 </div>
             </div>
         </div>
