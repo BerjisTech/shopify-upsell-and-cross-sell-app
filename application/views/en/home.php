@@ -440,7 +440,7 @@
                         </div>
                     </div> -->
                     <!-- END Col one -->
-                    <div class="col-sm-4">
+                    <div class="col-sm-6">
                         <div class="card text-center">
                             <div class="title">
                                 <i class="fa fa-plane" aria-hidden="true"></i>
@@ -461,7 +461,7 @@
                         </div>
                     </div>
                     <!-- END Col two -->
-                    <div class="col-sm-4">
+                    <div class="col-sm-6">
                         <div class="card text-center">
                             <div class="title">
                                 <i class="fa fa-rocket" aria-hidden="true"></i>
