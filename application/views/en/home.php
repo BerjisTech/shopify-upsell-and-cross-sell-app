@@ -257,7 +257,7 @@
                     </div>
                     <div class="col-12 col-md-7 my-3 my-md-lg">
                         <div class="youtube cast-shadow" data-video-id="4vL0uy-OVBM" data-params="modestbranding=1&amp;showinfo=0&amp;controls=1&amp;vq=hd720">
-                            <img src="<?php echo base_url('assets/images/cartPage.php'); ?>" alt="image" class="img-fluid">
+                            <img src="<?php echo base_url('assets/images/cartPage.png'); ?>" alt="image" class="img-fluid">
                             <div style="display: none;" class="play"><span class="pe-7s-play pe-3x"></span></div>
                         </div>
                     </div>
@@ -345,7 +345,7 @@
                             </div>
                         </div>
                         <div class="content" style="max-height: 520px;">
-                            <img src="<?php echo base_url('assets/images/dashboard.php'); ?>" alt="image">
+                            <img src="<?php echo base_url('assets/images/dashboard.png'); ?>" alt="image">
                         </div>
                     </div>
                 </div>
@@ -370,7 +370,7 @@
                     </div>
                 </div>
                 <div class="col-sm-8">
-                    <img src="<?php echo base_url('assets/images/stats.php'); ?>" alt="image" class="img-fluid cast-shadow my-5">
+                    <img src="<?php echo base_url('assets/images/stats.png'); ?>" alt="image" class="img-fluid cast-shadow my-5">
                 </div>
             </div>
         </div>
