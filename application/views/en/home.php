@@ -67,7 +67,7 @@
         *::-webkit-scrollbar-button {
             display: none
         }
-        
+
         /* by Jamal Hassouni*/
         @import url('https://fonts.googleapis.com/css?family=Roboto:300');
 
@@ -419,7 +419,7 @@
         <div class="container-fluid">
             <div class="container">
                 <div class="row">
-                    <div class="col-sm-4">
+                    <!-- <div class="col-sm-4">
                         <div class="card text-center">
                             <div class="title">
                                 <i class="fa fa-paper-plane" aria-hidden="true"></i>
@@ -438,7 +438,7 @@
                             </div>
                             <a href="/get_app">GET FREE </a>
                         </div>
-                    </div>
+                    </div> -->
                     <!-- END Col one -->
                     <div class="col-sm-4">
                         <div class="card text-center">
